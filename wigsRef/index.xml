@@ -1,0 +1,4 @@
+<Modules>
+	<Module name="sketch">Create interactive animations with support for sprites and GUI controls.</Module>
+	<Module name="image">Load and manipulate images.</Module>
+</Modules>

@@ -1,0 +1,51 @@
+<Module name="sketch">
+<Class name="Sketch" super="papplet.PApplet">
+	<PropR name=""></PropR>
+	<PropA name=""></PropA>
+	<Method name="" inherit="papplet.PApplet"/>
+	<Method name="" return="">
+		<Arg name=""></Arg>
+		<Description></Description>
+	</Method>
+</Class><Class name="Sprite">
+	<PropR name=""></PropR>
+	<PropA name=""></PropA>
+	<Method name="" return="">
+		<Arg name=""></Arg>
+		<Description></Description>
+	</Method>
+</Class>
+
+<Function name="flipAll" return="list">
+	<Arg name="imgs">A sequence of images.</Arg>
+	<Arg name="xflip" default="False">Indicates whether to flip the images horizontally.</Arg>
+	<Arg name="yflip" default="False">Indicates whether to flip the images vertically.</Arg>
+	<Description>Performs a horizontal and/or vertical flip on a sequence of <code>Image</code> instances. Returns a new <code>list</code> of images.</Description>
+</Function>
+
+<Function name="onResize" return="float">
+	<Arg name="sk">A reference to the <code>Sketch</code> instance.</Arg>
+	<Arg name="ev">A reference to the <code>pygame.event.EventType</code> object.</Arg>
+	<Description>This is the default event handler function for VIDEORESIZE events. The function scales all sprite properties to the resize sketch size and returns the scale factor.</Description>
+</Function>
+
+<Function name="" return="">
+	<Arg name="" default=""></Arg>
+	<Description></Description>
+</Function>
+
+<Function name="" return="">
+	<Arg name="" default=""></Arg>
+	<Description></Description>
+</Function>
+
+<Constant name="VISIBLE">Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is to be drawn and updated.</Constant>
+<Constant name="HIDDEN">Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is to be updated but not drawn.</Constant>
+<Constant name="DISABLED">Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is not to be drawn or updated.</Constant>
+<Constant name="ENABLED">Indicates that a sprite is not disabled.</Constant>
+<Constant name="NO_EDGE">Indicates no action to be taken when the sprite reaches the edge of the sketch.</Constant>
+<Constant name="BOUNCE">Indicates that the sprite bounces from the edge of the sketch.</Constant>
+<Constant name="WRAP">Indicates that the sprite wraps to the far edge when crossing an edge of the sketch.</Constant>
+<Constant name="REMOVE">Indicates that the sprite is to be removed when it leaves the sketch area.</Constant>
+
+</Module>
