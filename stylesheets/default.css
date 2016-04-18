@@ -1,2 +1,7 @@
 .Center {text-align:center}
 .Small {font-size:0.75em}
+
+body {
+  font-family:Arsenal, "Open Sans", sans-serif;
+  font-size:1em;
+}
