@@ -8,17 +8,24 @@
 <link rel="stylesheet" type="text/css" href="../css/default.css"/>
 <style type="text/css">
 	
-
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"> </script>
 <script type="text/javascript">//<!--
 
 function nextScreen() {
-	var img = $("img[alt=Screenshot]");
-	var n = parseInt(img.attr("data-n")) + 1;
-	if (n > 1) n = 0;
-	img.attr({"data-n": n, src:"img/screen" + n + ".png"});
+	if ($("#Overview:visible").length) {
+		var img = $("img[alt=Screenshot]");
+		var n = parseInt(img.attr("data-n")) + 1;
+		if (n > 1) n = 0;
+		img.attr({"data-n": n, src:"img/screen" + n + ".png"});
+	}
 	setTimeout(nextScreen, 8000);
+}
+
+
+function show(id) {
+	$("div[id]").hide();
+	$("#" + id).show();
 }
 
 function init(data) {
@@ -37,6 +44,7 @@ function init(data) {
 $(function() {
 	$.ajax({url:"index.xml", dataType:"xml", success:init});
 	setTimeout(nextScreen, 8000);
+	show("Overview");
 })
 
 //--></script>
@@ -45,16 +53,29 @@ $(function() {
 
 <h1 class="Center">wigs</h1>
 
+<p class="Center" style="margin-bottom:3em">
+	<a href="javascript:show('Overview')">Overview</a> ·
+	<a href="javascript:show('Install')">Download &amp; Install</a> ·
+	<a href="javascript:show('Contents')">Reference</a> ·
+	<a href="javascript:show('License')">Copyright &amp; License</a>
+</p>
+
+<div id="Overview">
 <p><code>wigs</code> is a <a href="http://www.python.org">Python 3</a> package for educational programming. Its aim is to help beginning (and experienced!) programmers make interactive programs with graphics and animations easily.</p>
 
 <p class="Center"><img src="img/screen0.png" height="384" alt="Screenshot" data-n="0"/></p>
+</div>
 
-<h3>Installation</h3>
+<div id="Install">
+<!--h3>Installation</h3-->
 
 <p>The <code>wigs</code> package depends on <a href="http://pygame.org/download.shtml">Pygame</a>. Ensure that you have Pygame 1.9.1 or 1.9.2 installed for the Python version (3.2+) that you will be using.</p>
-<p><a href="https://github.com/dmaccarthy/wigs/releases">Download</a> the <code>wigs</code> source code an extract all files from the archive. As <code>wigs</code> is entirely Python 3 source code, no special installation is required. Simply move or copy the sub-folder named <code>wigs</code> to your source folder, or to another location in your PYTHONPATH (e.g. the <code>Lib/site-packages</code> folder of your Python installation.)</p>
+<p><a href="https://github.com/dmaccarthy/wigs/releases">Download</a> the <code>wigs</code> source code and extract all files from the archive. As <code>wigs</code> is entirely Python 3 source code, no special installation is required. Simply move or copy the sub-folder named <code>wigs</code> to your source folder, or to another location in your PYTHONPATH (e.g. the <code>Lib/site-packages</code> folder of your Python installation.)</p>
 
-<h3>Contents</h3>
+</div>
+
+<div id="Contents">
+<!--h3>Contents</h3-->
 
 <table>
 	<thead><tr>
@@ -62,10 +83,13 @@ $(function() {
 	</tr></thead>
 	<tbody id="modules"></tbody>
 </table>
+</div>
 
-<div style="margin-top:2em">
-<p class="Center Small">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
-<p class="Center"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></p>
+<div id="License" class="Center" style="margin-top:2em">
+	<p>Copyright &copy; 2016 <a href="mailto:devwigs@gmail.com">D. MacCarthy</a></p>
+	<p>The <code>wigs</code> software itself is licensed under the <a href="http://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License Version 3</a>.</p>
+	<p>This documentation is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></p>
 </div>
 
 </body>
