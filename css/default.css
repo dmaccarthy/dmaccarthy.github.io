@@ -16,4 +16,11 @@ td, th {
 	padding:4px;
 }
 
-code {font-weight:bold}
+pre.Code {
+	margin-left:2em;
+	margin-right:2em;
+	padding:6px;
+	background:#f0f0ff;
+}
+
+pre.Code, code {font-weight:bold}
