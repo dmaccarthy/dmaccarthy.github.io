@@ -5,3 +5,15 @@ body {
   font-family:Oxygen, Verdana, Calibri, "Open Sans", sans-serif;
   font-size:1em;
 }
+
+table {
+	border-collapse:collapse;
+	margin:auto;
+}
+
+td, th {
+	border:1px solid black;
+	padding:4px;
+}
+
+code {font-weight:bold}

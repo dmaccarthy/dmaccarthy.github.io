@@ -1,4 +1,16 @@
 <Modules>
-	<Module name="sketch">Create interactive animations with support for sprites and GUI controls.</Module>
-	<Module name="image">Load and manipulate images.</Module>
+	<Module id="sketch">Create interactive animations with support for sprites and GUI controls.</Module>
+	<Module id="image">Load and manipulate images.</Module>
+	<Module id="plot">Create graphs and other drawings that use an abstract coordinate system.</Module>
+	<Module id="physics">Create animations with objects that have physics-based collision behaviour.</Module>
+	<Module id="robot">Create robot sprites controlled by a “brain” that runs in its own thread.</Module>
+	<Module id="geometry">Defines various functions to perform geometric calculations.</Module>
+	<!--Module id="search">.</Module>
+	<Module id="gui">.</Module>
+	<Module id="widget">.</Module>
+	<Module id="grid">.</Module>
+	<Module id="color">.</Module>
+	<Module id="io">Simplified GUI input and output.</Module>
+	<Module id="papplet"><span>Defines a <code>PApplet</code> class to provide functionality of the similarly-named class in Processing. This module is used by other modules but rarely needs to be imported directly.</span></Module-->
+	<Module id="util">Miscellaneous features.</Module>
 </Modules>
