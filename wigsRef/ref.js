@@ -1,3 +1,16 @@
+function parseQuery(s, delim) {
+	if (!delim) delim = "&";
+	if (!s) s = location.search.slice(1);
+	s = s.split(delim);
+	var args = {}
+	for (var i=0;i<s.length;i++) {
+		var arg = s[i].split("=");
+		var key = decodeURIComponent(arg[0]);
+		if (key.length > 0) args[key] = decodeURIComponent(arg[1]);
+	}
+	return args;
+}
+
 function nextScreen() {
 	if ($("#Overview:visible").length) {
 		var img = $("img[alt=Screenshot]");
@@ -39,6 +52,8 @@ function toggle(alt, parent) {
 
 function nodeHtml(node) {
 	var e = $("<code>").html(node.getAttribute("name"));
+	var def = node.getAttribute("default");
+	if (def) e.append($("<span>").addClass("Default").html(" = " + def));
 	e = $("<p>").html(e);
 	e.append(": ").append(node.childNodes[0]);
 	var tags = ["Arg", "Constant", "PropA", "PropR", "Class", "Method", "Function"];
@@ -47,7 +62,8 @@ function nodeHtml(node) {
 	if (n > 0) {
 		e.prepend($("<img>").addClass("Icon").attr({alt:tags[n], src:"img/" + tags[n].toLowerCase() + ".png"}));
 	}
-	if (n >= 4 && cNodes.length) {
+	if (cNodes.length) {
+//	if (n >= 4 && cNodes.length) {
 		var div = $("<div>").addClass("Collapse");
 		for (var j=0;j<cNodes.length;j++)
 			div.append(nodeHtml(cNodes[j]));
@@ -73,13 +89,39 @@ function loadRef(data) {
 	$("#ModuleName").html(data.getAttribute("name"));
 }
 
-function noModule() {alert("Under Construction!")}
+function noModule() {
+	alert("Under Construction [" + this.url.replace(".xml","") + "]");
+}
+
+function hideNav(hide) {
+	var show = hide == false;
+	var n = -15, c = 2;
+	var h = $("nav").children();
+	if (show) {
+		n = 0;
+		c = 17;
+		h.show();
+	}
+	else h.hide();
+	h = $("nav").css({left:n + "em"}).attr({title: (show ? "" : "Show Navigation Panel")});
+	$("#Content").css({"margin-left":c + "em"});
+	if (show) h.removeClass("Link");
+	else h.addClass("Link");
+}
+
+function navClick(ev) {
+	if (!(ev.target === $("#HideNav")[0])) hideNav(false);
+}
 
 $(function() {
 	setTimeout(nextScreen, 8000);
 	onresize();
 	show("Overview");
 	$("nav p.Link").click(show);
+	$("nav").click(navClick);
+	var query = parseQuery();
+	if (query.module) goRef(query.module);
+	else if (query.show) show(query.show);
 })
 
 window.onresize = function() {

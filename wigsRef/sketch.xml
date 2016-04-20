@@ -1,13 +1,39 @@
 <Module name="sketch">
-<Class name="Sketch" super="wigs.papplet.PApplet">Represents an interactive, animation that runs in the Pygame window.
-	<PropR name=""></PropR>
-	<PropA name=""></PropA>
-	<Method name="" inherit="papplet.PApplet"/>
-	<Method name="" return="">
-		<Arg name=""></Arg>
+<Class name="Sketch" super="wigs.papplet.PApplet">Represents an interactive animation that runs in the Pygame window; supports sprites and GUI controls.
+	<Method name="Sketch(setup)"><span>The constructor creates a <code>Sketch</code> instance from a setup function. Use the <code>run</code> method to run the sketch.</span>
+		<Arg name="setup(sk)" default="None">An unbound function that initializes the sketch.
+			<Arg name="sk">A reference to the sketch.</Arg>
+		</Arg>
+	</Method>
+	<Method name="edge() → int">Returns the default edge behaviour for new sprites.</Method>
+	<Method name="setBackground(bgImage, bgColor, forceScale)">Set the sketch background.
+		<Arg name="bgImage" default="None">An image to be used for the sketch background. The sketch aspect ratio will be locked (except when maximized) to match the background image.</Arg>
+		<Arg name="bgColor" default="None">A color to be drawn as the background. If both arguments are given, the image will be blitted onto a background of the specified color.</Arg>
+		<Arg name="forceScale" default="False">Require the image to be scaled even if it matches the sketch size; this allows drawing on the background without affecting the original.</Arg>
+	</Method>
+	<Method name="simpleDraw()">Redraws the background and all visible sprites.</Method>
+	<Method name="animate(draw, eventMap)">Specifies a new drawing function and event map to control the animation.
+		<Arg name="draw(sk)" default="None">An unbound function that draws one frame of the animation.
+			<Arg name="sk">A reference to the sketch.</Arg>
+		</Arg>
+		<Arg name="eventMap" default="None"><span>A dictionary that maps event types or classes (keys) to handler functions (values). You can use <code>None</code> as a key to specify a handler for events that do not have a custom handler.</span></Arg>
+	</Method>
+	<PropA name="wall" default="False"><span>Assign a color to this property to create a wall around the sketch. Call the <code>setBackground</code> method after setting the wall color to draw the wall. This property affects the default edge behaviour of sprites.</span></PropA>
+	<PropR name="frameNumber"><span>The number of frames that have been drawn (including the current frame) since the <code>animate</code> method was last called.</span></PropR>
+	<PropR name="draw" default="simpleDraw"><span>A reference to the current drawing function. Use the <code>animate</code> method to change the drawing function.</span></PropR>
+	<PropR name="eventMap" default="{VIDEORESIZE:onResize}"><span>A dictionary that maps events types (keys) to handler functions (values). Use the <code>animate</code> method to change the event map.</span></PropR>
+	<PropR name="io"><span>A reference to the GUI dialog object created by the <code>prompt</code> or <code>fileDialog</code> methods. Will be <code>None</code> when no such dialog is running.</span></PropR>
+</Class>
+
+<Class name="Sprite">Represents a graphical object or character that can be drawn on top of the sketch background and is capable of interaction.
+	<PropR name="a"></PropR>
+	<PropA name="b">b</PropA>
+	<Method name="c">c
+		<Arg name="d">d</Arg>
 	</Method>
 </Class>
-<Class name="Sprite">Represents a graphical object or character capable of interaction.
+
+<Class name="SpriteList"><span>Represents the sequence of sprites that have been added to a sketch. The sketch’s <code>sprites</code> attribute is a reference to the <code>SpriteList</code> instance, which is created automatically by the <code>Sketch</code> constructor.</span>
 	<PropR name="a">a</PropR>
 	<PropA name="b">b</PropA>
 	<Method name="c">c
@@ -15,23 +41,39 @@
 	</Method>
 </Class>
 
-<Function name="flipAll(imgs, xflip, yflip) → list"><span>Performs a horizontal and/or vertical flip on a sequence of <code>Image</code> instances. Returns a new <code>list</code> of images.</span>
+<!--Function name="flipAll(imgs, xflip, yflip) → list"><span>Performs a horizontal and/or vertical flip on a sequence of <code>Image</code> instances. Returns a new <code>list</code> of images.</span>
 	<Arg name="imgs">A sequence of images.</Arg>
 	<Arg name="xflip" default="False">Indicates whether to flip the images horizontally.</Arg>
 	<Arg name="yflip" default="False">Indicates whether to flip the images vertically.</Arg>
+</Function-->
+
+<Function name="onResize(sk, ev) → float"><span>Default event handler function for <code>VIDEORESIZE</code> events. The function scales all sprite properties to the new sketch size and returns the scale factor.</span>
+	<Arg name="sk"><span>A reference to the <code>Sketch</code> instance.</span></Arg>
+	<Arg name="ev"><span>A reference to the <code>pygame.event.EventType</code> object.</span></Arg>
 </Function>
 
-<Function name="onResize(sk, ev) → float">This is the default event handler function for VIDEORESIZE events. The function scales all sprite properties to the resized sketch size and returns the scale factor.
-	<Arg name="sk">A reference to the <code>Sketch</code> instance.</Arg>
-	<Arg name="ev">A reference to the <code>pygame.event.EventType</code> object.</Arg>
+<Function name="collide_sprite(left, right) → bool"><span>Determines whether two sprites are colliding. Sprites are treated as circles if their <code>radius</code> property has been set, otherwise they are treated as rectangles. Rotation of the rectangular sprites is taken into account in determining the collision status. This is the most accurate (i.e. slowest) collision detection.</span>
+	<Arg name="left"><span>A <code>Sprite</code> instance.</span></Arg>
+	<Arg name="right"><span>A second <code>Sprite</code> instance.</span></Arg>
+</Function>
+
+<Function name="collide_rect(left, right) → bool">Determines whether two sprites are colliding. Sprites are treated as rectangles with no accounting for rotation. This is the simplest (i.e. fastest) but least accurate collision detection.
+	<Arg name="left"><span>A <code>Sprite</code> instance.</span></Arg>
+	<Arg name="right"><span>A second <code>Sprite</code> instance.</span></Arg>
+</Function>
+
+<Function name="collide_rect_advanced(left, right) → bool">Determines whether two sprites are colliding. Sprites are treated as rectangles and rotation is accounted for.
+	<Arg name="left"><span>A <code>Sprite</code> instance.</span></Arg>
+	<Arg name="right"><span>A second <code>Sprite</code> instance.</span></Arg>
+</Function>
+
+<Function name="collide_circ(left, right) → bool"><span>Determines whether two sprites are colliding. Sprites are treated as circles; both sprites must have a <code>radius</code> property for this function to work.</span>
+	<Arg name="left"><span>A <code>Sprite</code> instance.</span></Arg>
+	<Arg name="right"><span>A second <code>Sprite</code> instance.</span></Arg>
 </Function>
 
 <Function name="" return="">
-	<Arg name="" default=""></Arg>
-</Function>
-
-<Function name="" return="">
-	<Arg name="" default=""></Arg>
+	<Arg name="x" default="7"></Arg>
 </Function>
 
 <Constant name="VISIBLE"><span>Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is to be drawn and updated.</span></Constant>

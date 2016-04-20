@@ -21,6 +21,11 @@ nav p.Link:hover {
 	color:white;
 }
 
+#HideNav {
+	text-align:right;
+	margin-top:4px;
+}
+
 #Content {margin-left:17em}
 h1 {margin-top:4px}
 .Link {cursor:pointer}
@@ -44,3 +49,5 @@ img.Icon {
 	margin-right:4px;
 	vertical-align:middle;
 }
+
+span.Default {color:royalblue}
