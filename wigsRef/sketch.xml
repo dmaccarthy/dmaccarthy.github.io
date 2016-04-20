@@ -1,5 +1,5 @@
 <Module name="sketch">
-<Class name="Sketch" super="papplet.PApplet">Represents an interactive, animation that runs in the Pygame window.
+<Class name="Sketch" super="wigs.papplet.PApplet">Represents an interactive, animation that runs in the Pygame window.
 	<PropR name=""></PropR>
 	<PropA name=""></PropA>
 	<Method name="" inherit="papplet.PApplet"/>
@@ -8,20 +8,20 @@
 	</Method>
 </Class>
 <Class name="Sprite">Represents a graphical object or character capable of interaction.
-	<PropR name=""></PropR>
-	<PropA name=""></PropA>
-	<Method name="" return="">
-		<Arg name=""></Arg>
+	<PropR name="a">a</PropR>
+	<PropA name="b">b</PropA>
+	<Method name="c">c
+		<Arg name="d">d</Arg>
 	</Method>
 </Class>
 
-<Function name="flipAll" return="list"><span>Performs a horizontal and/or vertical flip on a sequence of <code>Image</code> instances. Returns a new <code>list</code> of images.</span>
+<Function name="flipAll(imgs, xflip, yflip) → list"><span>Performs a horizontal and/or vertical flip on a sequence of <code>Image</code> instances. Returns a new <code>list</code> of images.</span>
 	<Arg name="imgs">A sequence of images.</Arg>
 	<Arg name="xflip" default="False">Indicates whether to flip the images horizontally.</Arg>
 	<Arg name="yflip" default="False">Indicates whether to flip the images vertically.</Arg>
 </Function>
 
-<Function name="onResize" return="float">This is the default event handler function for VIDEORESIZE events. The function scales all sprite properties to the resize sketch size and returns the scale factor.
+<Function name="onResize(sk, ev) → float">This is the default event handler function for VIDEORESIZE events. The function scales all sprite properties to the resized sketch size and returns the scale factor.
 	<Arg name="sk">A reference to the <code>Sketch</code> instance.</Arg>
 	<Arg name="ev">A reference to the <code>pygame.event.EventType</code> object.</Arg>
 </Function>

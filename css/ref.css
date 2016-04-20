@@ -1,0 +1,46 @@
+nav {
+	width:16em;
+	position:fixed;
+	top:0;
+	left:0;
+	padding:4px;
+	overflow:auto;
+	background:#e0e0ff;
+}
+
+nav p.Link {
+	color:blue;
+	font-weight:bold;
+	padding:4px;
+	margin-top:6px;
+	margin-bottom:6px;
+}
+
+nav p.Link:hover {
+	background:blue;
+	color:white;
+}
+
+#Content {margin-left:17em}
+h1 {margin-top:4px}
+.Link {cursor:pointer}
+
+td.Link {
+	color:blue;
+	text-decoration:underline;
+}
+
+div.Collapse {margin-left:2em}
+
+p.Hanging {
+	margin-left:2em;
+	text-indent:-2em;
+	cursor:pointer;
+}
+
+img.Icon {
+	width:1.2em;
+	height:1.2em;
+	margin-right:4px;
+	vertical-align:middle;
+}

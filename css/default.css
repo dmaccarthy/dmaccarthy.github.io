@@ -1,5 +1,5 @@
 .Center {text-align:center}
-.Small {font-size:0.75em}
+.Small {font-size:0.8em}
 
 body {
   font-family:Oxygen, Verdana, Calibri, "Open Sans", sans-serif;
@@ -23,4 +23,7 @@ pre.Code {
 	background:#f0f0ff;
 }
 
-pre.Code, code {font-weight:bold}
+pre.Code, code {
+	font-family: "Source Code Pro", "Lucida Console", Consolas, monospace;
+	font-weight:bold;
+}

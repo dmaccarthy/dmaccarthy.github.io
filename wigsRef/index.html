@@ -5,102 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>WIGS</title>
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:700"/>
 <link rel="stylesheet" type="text/css" href="../css/default.css"/>
-<style type="text/css">
-
-nav {
-	width:16em;
-	position:fixed;
-	top:0;
-	left:0;
-	padding:4px;
-	overflow:auto;
-	background:#e0e0ff;
-}
-
-nav p.Link {
-	color:blue;
-	font-weight:bold;
-	padding:4px;
-	margin-top:6px;
-	margin-bottom:6px;
-}
-
-nav p.Link:hover {
-	background:blue;
-	color:white;
-}
-
-#Content {margin-left:17em}
-h1 {margin-top:4px}
-.Link {cursor:pointer}
-
-td.Link {
-	color:blue;
-	text-decoration:underline;
-}
-
-</style>
+<link rel="stylesheet" type="text/css" href="../css/ref.css"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"> </script>
+<script type="text/javascript" src="ref.js"> </script>
 <script type="text/javascript">//<!--
 
-function nextScreen() {
-	if ($("#Overview:visible").length) {
-		var img = $("img[alt=Screenshot]");
-		var n = parseInt(img.attr("data-n")) + 1;
-		if (n > 1) n = 0;
-		img.attr({"data-n": n, src:"img/screen" + n + ".png"});
-	}
-	setTimeout(nextScreen, 8000);
-}
-
-
-function show(id) {
-	if (typeof(id) != "string")
-		id = $(id.currentTarget).attr("data-go");
-	$("article[id]").hide();
-	$("#" + id).show();
-}
-
-function goRef(id) {
-	$.ajax({url: id + ".xml", dataType:"xml", success:loadRef, error:noModule});
-}
-
-function nodeHtml(node) {
-	var e = $("<b>").html(node.getAttribute("name"));
-	e = $("<p>").html(e);
-	e.append(": ").append(node.childNodes[0]);
-	return e;
-}
-
-function moduleHtml(doc, e) {
-	var nodes = doc.childNodes;
-	for (var i=0;i<nodes.length;i++) {
-		var node = nodes[i];
-		if (node.nodeType == 1) e.append(nodeHtml(node));
-	}
-}
-
-function loadRef(data) {
-	var e = $("#ModuleHtml");
-	e.html("");
-	moduleHtml(data.documentElement, e);
-	show("Module");
-}
-
-function noModule() {alert("Under Construction!")}
-
-
-$(function() {
-	setTimeout(nextScreen, 8000);
-	onresize();
-	show("Overview");
-	$("nav p.Link").click(show);
-})
-
-window.onresize = function() {
-	$("nav").height($(window).height());
-}
 
 //--></script>
 </head>
@@ -110,14 +21,12 @@ window.onresize = function() {
 	<p class="Link" data-go="Overview">Overview</p>
 	<p class="Link" data-go="Install">Installation Guide</p>
 	<p class="Link" data-go="Contents">Reference</p>
-
-<hr/>
-<div class="Small">
-	<p class="Center">Copyright &copy; 2016 <a href="mailto:devwigs@gmail.com">D. MacCarthy</a></p>
-	<p>The <code>wigs</code> software itself is licensed under the <a href="http://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License Version 3</a>.</p>
-	<p>This documentation is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
-	<p class="Center"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></p>
-</div>
+	<hr/><div class="Small">
+		<p class="Center">Copyright &copy; 2016 <a href="mailto:devwigs@gmail.com">D. MacCarthy</a></p>
+		<p>The <code>wigs</code> software itself is licensed under the <a href="http://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License Version 3</a>.</p>
+		<p>This documentation is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+		<p class="Center"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></p>
+	</div>
 </nav>
 
 <div id="Content">
@@ -175,9 +84,12 @@ Sketch(setup).run()</pre>
 </article>
 
 <article id="Module">
-	<h3>wigs.sketch</h3>
+	<h3>wigs.<span id="ModuleName">?</span></h3>
+	<p>This page is currently under construction.</p>
 	<p class="Center">
-		Classes &middot; Functions &middot; Constants
+		<button class="Link" onclick="toggle('Class', true)"><img class="Icon" src="img/class.png"/>Classes</button> &nbsp;
+		<button class="Link" onclick="toggle('Function', true)"><img class="Icon" src="img/function.png"/>Functions</button> &nbsp;
+		<button class="Link" onclick="toggle('Constant')"><img class="Icon" src="img/constant.png"/>Constants</button>
 	</p>
 	<div id="ModuleHtml">Content</div>
 </article>
