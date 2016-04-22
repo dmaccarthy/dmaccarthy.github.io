@@ -30,7 +30,7 @@ nav p.Link:hover {
 h1 {margin-top:4px}
 .Link {cursor:pointer}
 
-td.Link {
+td.Link, span.Link {
 	color:blue;
 	text-decoration:underline;
 }

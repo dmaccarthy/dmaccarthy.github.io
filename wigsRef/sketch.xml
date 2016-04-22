@@ -1,5 +1,5 @@
 <Module name="sketch">
-<Class name="Sketch" super="wigs.papplet.PApplet">Represents an interactive animation that runs in the Pygame window; supports sprites and GUI controls.
+<Class name="Sketch"><span>Represents an interactive animation that runs in the Pygame window; supports sprites and GUI controls. In addition to the attributes described here, this class inherits the attributes of its superclass, <span class="Link" onclick="goRef('papplet')" data-stop="1">PApplet</span>.</span>
 	<Method name="Sketch(setup)"><span>The constructor creates a <code>Sketch</code> instance from a setup function. Use the <code>run</code> method to run the sketch.</span>
 		<Arg name="setup(sk)" default="None">An unbound function that initializes the sketch.
 			<Arg name="sk">A reference to the sketch.</Arg>
@@ -26,7 +26,7 @@
 </Class>
 
 <Class name="Sprite">Represents a graphical object or character that can be drawn on top of the sketch background and is capable of interaction.
-	<PropR name="a"></PropR>
+	<PropR name="a">a</PropR>
 	<PropA name="b">b</PropA>
 	<Method name="c">c
 		<Arg name="d">d</Arg>
@@ -48,32 +48,32 @@
 </Function-->
 
 <Function name="onResize(sk, ev) → float"><span>Default event handler function for <code>VIDEORESIZE</code> events. The function scales all sprite properties to the new sketch size and returns the scale factor.</span>
-	<Arg name="sk"><span>A reference to the <code>Sketch</code> instance.</span></Arg>
-	<Arg name="ev"><span>A reference to the <code>pygame.event.EventType</code> object.</span></Arg>
+	<Arg name="sk">A reference to the <code>Sketch</code> instance.</Arg>
+	<Arg name="ev">A reference to the <code>pygame.event.EventType</code> object.</Arg>
 </Function>
 
 <Function name="collide_sprite(left, right) → bool"><span>Determines whether two sprites are colliding. Sprites are treated as circles if their <code>radius</code> property has been set, otherwise they are treated as rectangles. Rotation of the rectangular sprites is taken into account in determining the collision status. This is the most accurate (i.e. slowest) collision detection.</span>
-	<Arg name="left"><span>A <code>Sprite</code> instance.</span></Arg>
-	<Arg name="right"><span>A second <code>Sprite</code> instance.</span></Arg>
+	<Arg name="left">A <code>Sprite</code> instance.</Arg>
+	<Arg name="left">A second <code>Sprite</code> instance.</Arg>
 </Function>
 
 <Function name="collide_rect(left, right) → bool">Determines whether two sprites are colliding. Sprites are treated as rectangles with no accounting for rotation. This is the simplest (i.e. fastest) but least accurate collision detection.
-	<Arg name="left"><span>A <code>Sprite</code> instance.</span></Arg>
-	<Arg name="right"><span>A second <code>Sprite</code> instance.</span></Arg>
+	<Arg name="left">A <code>Sprite</code> instance.</Arg>
+	<Arg name="left">A second <code>Sprite</code> instance.</Arg>
 </Function>
 
 <Function name="collide_rect_advanced(left, right) → bool">Determines whether two sprites are colliding. Sprites are treated as rectangles and rotation is accounted for.
-	<Arg name="left"><span>A <code>Sprite</code> instance.</span></Arg>
-	<Arg name="right"><span>A second <code>Sprite</code> instance.</span></Arg>
+	<Arg name="left">A <code>Sprite</code> instance.</Arg>
+	<Arg name="left">A second <code>Sprite</code> instance.</Arg>
 </Function>
 
 <Function name="collide_circ(left, right) → bool"><span>Determines whether two sprites are colliding. Sprites are treated as circles; both sprites must have a <code>radius</code> property for this function to work.</span>
-	<Arg name="left"><span>A <code>Sprite</code> instance.</span></Arg>
-	<Arg name="right"><span>A second <code>Sprite</code> instance.</span></Arg>
+	<Arg name="left">A <code>Sprite</code> instance.</Arg>
+	<Arg name="left">A second <code>Sprite</code> instance.</Arg>
 </Function>
 
 <Function name="" return="">
-	<Arg name="x" default="7"></Arg>
+	<Arg name="x" default="7">a</Arg>
 </Function>
 
 <Constant name="VISIBLE"><span>Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is to be drawn and updated.</span></Constant>

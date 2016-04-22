@@ -42,7 +42,8 @@ function childElements(node) {
 }
 
 function collapse(ev) {
-	$(ev.currentTarget).next().toggle();
+	var e = ev.currentTarget;
+	if (!$(ev.target).attr("data-stop")) $(e).next().toggle();
 }
 
 function toggle(alt, parent) {
@@ -50,12 +51,17 @@ function toggle(alt, parent) {
 	(parent ? e.parent() : e).toggle();
 }
 
+function nodeText(node) {
+	node = node.childNodes[0];
+	return node.outerHTML ? node.outerHTML : node.textContent;
+}
+
 function nodeHtml(node) {
 	var e = $("<code>").html(node.getAttribute("name"));
 	var def = node.getAttribute("default");
 	if (def) e.append($("<span>").addClass("Default").html(" = " + def));
 	e = $("<p>").html(e);
-	e.append(": ").append(node.childNodes[0]);
+	e.append(": ").append(nodeText(node));
 	var tags = ["Arg", "Constant", "PropA", "PropR", "Class", "Method", "Function"];
 	var n = tags.indexOf(node.tagName);
 	var cNodes = childElements(node);
@@ -63,9 +69,8 @@ function nodeHtml(node) {
 		e.prepend($("<img>").addClass("Icon").attr({alt:tags[n], src:"img/" + tags[n].toLowerCase() + ".png"}));
 	}
 	if (cNodes.length) {
-//	if (n >= 4 && cNodes.length) {
 		var div = $("<div>").addClass("Collapse");
-		for (var j=0;j<cNodes.length;j++)
+		for (var j=0;j<cNodes.length;j++) if (cNodes[j] != node.childNodes[0])
 			div.append(nodeHtml(cNodes[j]));
 		e = $("<div>").append(e.addClass("Hanging").click(collapse).attr({title:"Click to exapnd or collapse"}));
 		e.append(div).find("div.Collapse").hide();
