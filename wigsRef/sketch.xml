@@ -1,12 +1,12 @@
 <Module name="sketch">
-<Class name="Sketch"><span>Represents an interactive animation that runs in the Pygame window; supports sprites and GUI controls. In addition to the attributes described here, this class inherits the attributes of its superclass, <span class="Link" onclick="goRef('papplet')" data-stop="1">PApplet</span>.</span>
-	<Method name="Sketch(setup)"><span>The constructor creates a <code>Sketch</code> instance from a setup function. Use the <code>run</code> method to run the sketch.</span>
+<Class name="Sketch"><Desc>Represents an interactive animation that runs in the Pygame window; supports sprites and GUI controls. In addition to the attributes described here, this class inherits the attributes of its superclass, <span class="Link" onclick="goRef('papplet')" data-stop="1">PApplet</span>.</Desc>
+	<Method name="Sketch(setup)"><Desc>The constructor creates a <code>Sketch</code> instance from a setup function. Use the <code>run</code> method to run the sketch.</Desc>
 		<Arg name="setup(sk)" default="None">An unbound function that initializes the sketch.
 			<Arg name="sk">A reference to the sketch.</Arg>
 		</Arg>
 	</Method>
 	<Method name="edge() → int">Returns the default edge behaviour for new sprites.</Method>
-	<Method name="setBackground(bgImage, bgColor)">Set the sketch background.  Draws a 1 pixel thick wall if the sketch’s <code>wall</code> property is a color.
+	<Method name="setBackground(bgImage, bgColor)"><Desc>Set the sketch background.  Draws a 1 pixel thick wall if the sketch’s <code>wall</code> property is a color.</Desc>
 		<Arg name="bgImage" default="None">An image to be used for the sketch background. The sketch aspect ratio will be locked (except when maximized) to match the background image.</Arg>
 		<Arg name="bgColor" default="None">A color to be drawn as the background. If both arguments are given, the image will be blitted onto a background of the specified color.</Arg>
 	</Method>
@@ -15,13 +15,16 @@
 		<Arg name="draw(sk)" default="None">An unbound function that draws one frame of the animation.
 			<Arg name="sk">A reference to the sketch.</Arg>
 		</Arg>
-		<Arg name="eventMap" default="None"><span>A dictionary that maps event types or classes (keys) to handler functions (values). You can use <code>None</code> as a key to specify a handler for events that do not have a custom handler.</span></Arg>
+		<Arg name="eventMap" default="None"><Desc>A dictionary that maps event types or classes (keys) to handler functions (values). You can use <code>None</code> as a key to specify a handler for events that do not have a custom handler.</Desc></Arg>
 	</Method>
-	<Method name="onResize() → float">Scales all sprites when the sketch is resized. Returns the scale factor.</Method>
-	<PropA name="wall" default="False"><span>Assign a color to this property to create a wall around the sketch. Call the <code>setBackground</code> method after setting the wall color to draw the wall. This property affects the default edge behaviour of sprites.</span></PropA>
-	<PropR name="frameNumber"><span>The number of frames that have been drawn (including the current frame) since the <code>animate</code> method was last called.</span></PropR>
-	<PropR name="draw" default="simpleDraw"><span>A reference to the current drawing function. Use the <code>animate</code> method to change the drawing function.</span></PropR>
-	<PropR name="io"><span>A reference to the GUI dialog object created by the <code>prompt</code> or <code>fileDialog</code> methods. Will be <code>None</code> when no such dialog is running.</span></PropR>
+	<Method name="resize(size, mode)">Changes the display size and optionally the mode as well. Adjusts the size to match the aspect ratio of the background image and scales all sprites to the new sketch size.
+		<Arg name="size">A tuple specifying the desired size of the sketch.</Arg>
+		<Arg name="mode" default="None"><Desc>An integer specifying the desired display mode. Set this to <code>pygame.RESIZABLE</code> to make the sketch user resizable, or to <code>0</code> to keep the size fixed.</Desc></Arg>
+	</Method>
+	<PropA name="wall" default="False"><Desc>Assign a color to this property to create a wall around the sketch. Call the <code>setBackground</code> method after setting the wall color to draw the wall. This property affects the default edge behaviour of sprites.</Desc></PropA>
+	<PropR name="frameNumber"><Desc>The number of frames that have been drawn (including the current frame) since the <code>animate</code> method was last called.</Desc></PropR>
+	<PropR name="draw" default="simpleDraw"><Desc>A reference to the current drawing function. Use the <code>animate</code> method to change the drawing function.</Desc></PropR>
+	<PropR name="io"><Desc>A reference to the GUI dialog object created by the <code>prompt</code> or <code>fileDialog</code> methods. Will be <code>None</code> when no such dialog is running.</Desc></PropR>
 </Class>
 
 <Class name="Sprite">Represents a graphical object or character that can be drawn on top of the sketch background and is capable of interaction.
@@ -32,7 +35,7 @@
 	</Method>
 </Class>
 
-<Class name="SpriteList"><span>Represents the sequence of sprites that have been added to a sketch. The sketch’s <code>sprites</code> attribute is a reference to the <code>SpriteList</code> instance, which is created automatically by the <code>Sketch</code> constructor.</span>
+<Class name="SpriteList"><Desc>Represents the sequence of sprites that have been added to a sketch. The sketch’s <code>sprites</code> attribute is a reference to the <code>SpriteList</code> instance, which is created automatically by the <code>Sketch</code> constructor.</Desc>
 	<PropR name="a">a</PropR>
 	<PropA name="b">b</PropA>
 	<Method name="c">c
@@ -46,12 +49,12 @@
 	<Arg name="yflip" default="False">Indicates whether to flip the images vertically.</Arg>
 </Function-->
 
-<Function name="onResize(sk, ev) → float"><span>Default event handler function for <code>VIDEORESIZE</code> events. The function scales all sprite properties to the new sketch size and returns the scale factor.</span>
+<Function name="onResize(sk, ev) → float"><Desc>Default event handler function for <code>VIDEORESIZE</code> events. The function scales all sprite properties to the new sketch size and returns the scale factor.</Desc>
 	<Arg name="sk">A reference to the <code>Sketch</code> instance.</Arg>
 	<Arg name="ev">A reference to the <code>pygame.event.EventType</code> object.</Arg>
 </Function>
 
-<Function name="collide_sprite(left, right) → bool"><span>Determines whether two sprites are colliding. Sprites are treated as circles if their <code>radius</code> property has been set, otherwise they are treated as rectangles. Rotation of the rectangular sprites is taken into account in determining the collision status. This is the most accurate (i.e. slowest) collision detection.</span>
+<Function name="collide_sprite(left, right) → bool"><Desc>Determines whether two sprites are colliding. Sprites are treated as circles if their <code>radius</code> property has been set, otherwise they are treated as rectangles. Rotation of the rectangular sprites is taken into account in determining the collision status. This is the most accurate (i.e. slowest) collision detection.</Desc>
 	<Arg name="left">A <code>Sprite</code> instance.</Arg>
 	<Arg name="left">A second <code>Sprite</code> instance.</Arg>
 </Function>
@@ -66,7 +69,7 @@
 	<Arg name="left">A second <code>Sprite</code> instance.</Arg>
 </Function>
 
-<Function name="collide_circ(left, right) → bool"><span>Determines whether two sprites are colliding. Sprites are treated as circles; both sprites must have a <code>radius</code> property for this function to work.</span>
+<Function name="collide_circ(left, right) → bool"><Desc>Determines whether two sprites are colliding. Sprites are treated as circles; both sprites must have a <code>radius</code> property for this function to work.</Desc>
 	<Arg name="left">A <code>Sprite</code> instance.</Arg>
 	<Arg name="left">A second <code>Sprite</code> instance.</Arg>
 </Function>
@@ -75,9 +78,9 @@
 	<Arg name="x" default="7">a</Arg>
 </Function>
 
-<Constant name="VISIBLE"><span>Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is to be drawn and updated.</span></Constant>
-<Constant name="HIDDEN"><span>Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is to be updated but not drawn.</span></Constant>
-<Constant name="DISABLED"><span>Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is not to be drawn or updated.</span></Constant>
+<Constant name="VISIBLE"><Desc>Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is to be drawn and updated.</Desc></Constant>
+<Constant name="HIDDEN"><Desc>Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is to be updated but not drawn.</Desc></Constant>
+<Constant name="DISABLED"><Desc>Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is not to be drawn or updated.</Desc></Constant>
 <Constant name="ENABLED">Indicates that a sprite is not disabled.</Constant>
 <Constant name="NO_EDGE">Indicates no action to be taken when the sprite reaches the edge of the sketch.</Constant>
 <Constant name="BOUNCE">Indicates that the sprite bounces from the edge of the sketch.</Constant>

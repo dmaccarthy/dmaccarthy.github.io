@@ -53,7 +53,7 @@ function toggle(alt, parent) {
 
 function nodeText(node) {
 	node = node.childNodes[0];
-	return node.outerHTML ? node.outerHTML : node.textContent;
+	return node.innerHTML ? node.innerHTML : node.textContent;
 }
 
 function nodeHtml(node) {
