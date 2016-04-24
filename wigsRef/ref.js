@@ -24,12 +24,14 @@ function nextScreen() {
 function show(id) {
 	if (typeof(id) != "string")
 		id = $(id.currentTarget).attr("data-go");
-	$("article[id]").hide();
-	$("#" + id).show();
+	if (id) {
+		$("article[id]").hide();
+		$("#" + id).show();
+	}
 }
 
 function goRef(id) {
-	$.ajax({url: id + ".xml", dataType:"xml", success:loadRef, error:noModule});
+	$.ajax({url: "ref/" + id + ".xml", dataType:"xml", success:loadRef, error:noModule});
 }
 
 function childElements(node) {
@@ -95,7 +97,94 @@ function loadRef(data) {
 }
 
 function noModule() {
-	alert("Under Construction [" + this.url.replace(".xml","") + "]");
+	alert("Under Construction [" + this.url.replace(".xml","").replace("ref/","") + "]");
+}
+
+function tutorial() {
+	if (!window.tutInfo) $.ajax({url: "tut/index.json", dataType:"json", success:loadTutJson});
+	else show("Tutorial");
+}
+
+function loadTutJson(data) {
+	tutInfo = data;
+	data.html = $("<div>"); //.html("Home!!");
+	data.seq = [];
+	seqAppend(data, $(data.html));
+	goTut(data.seq[0]);
+}
+
+function seqAppend(node, htmlParent) {
+	var id = node.id, div = htmlParent;
+	tutInfo.seq.push(id);
+	var span = $("<span>").html(node.title);
+	if (node != tutInfo) {
+		span.addClass("Link").attr({onclick:"goTut('" + id + "')"});
+		div = $("<div>").addClass("Collapse").append(span);
+		htmlParent.append(div);
+	}
+	if (node.pages) for (var i=0;i<node.pages.length;i++) {
+		var p = node.pages[i];
+		seqAppend(p, div);
+		p.parent = node;
+	}
+}
+
+function findNode(node, id) {
+	if (node.id == id) return node;
+	var pg = node.pages;
+	if (pg) for (var i=0;i<pg.length;i++) {
+		var n = findNode(pg[i], id);
+		if (n) return n;
+	}
+}
+
+function nodePath(node) {
+	var p = [node];
+	while (node.parent) {
+		node = node.parent;
+		p.push(node);
+	}
+	p.reverse();
+	return p;
+}
+
+function goTutNext(n) {
+	if (n == null) n = 1;
+	n += tutInfo.current;
+	var size = tutInfo.seq.length;
+	while (n < 0) n += size;
+	while (n >= size) n -= size;
+	goTut(tutInfo.seq[n]);
+}
+
+function goTut(id) {
+	var node = findNode(tutInfo, id);
+	if (node) {
+		tutInfo.current = tutInfo.seq.indexOf(id);
+		tutInfo.currentNode = node;
+		if (node.html) loadTut(node.html);
+		else $.ajax({url: "tut/" + id.toLowerCase() + ".htm", dataType:"html", success:loadTut});
+	}
+}
+
+function loadTut(data) {
+	$("#TutorHtml").html(data);
+	var e = $("#TutorPath");
+	e.html(""); //e.children()[0]).append("&nbsp;");
+	var p = nodePath(tutInfo.currentNode);
+	for (var i=0;i<p.length;i++) {
+		var span = $("<span>").html(p[i].title);
+		if (i < p.length - 1) span.addClass("Link").attr("data-id", p[i].id);
+		if (i) e.append(" / ");
+		e.append(span);
+	}
+	e.find("span[data-id]").click(clickPath);
+	show("Tutorial");
+}
+
+function clickPath(ev) {
+	var id = $(ev.currentTarget).attr("data-id");
+	goTut(id);
 }
 
 function hideNav(hide) {

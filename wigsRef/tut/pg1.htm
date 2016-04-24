@@ -1,0 +1,20 @@
+<div>
+<p>A <em>sketch</em> is an interactive animation that plays in the Pygame window.  The name <em>sketch</em> is a shortening of “sketchbook”, which is what such animations are called in the <a href="http://www.processing.org">Processing</a> programming language.</p>
+<p>Here is a Python 3 program to create a minimal sketch that displays nothing but a black background...</p>
+<pre class="Code">from wigs.sketch import Sketch
+
+Sketch().run()</pre>
+<p>The <code>Sketch</code> constructor (from the <code>wigs.sketch</code> module) creates a sketch object, and its <code>run</code> method runs the sketch in the Pygame window.</p>
+<p>To add content to the sketch, we need to provide a setup function. The setup function takes a single argument, which is a reference to the sketch object...</p>
+<pre class="Code">from wigs.sketch import Sketch, Sprite, BOUNCE
+
+def setup(sk):
+    sk.setBackground("bg.png")
+    Sprite(sk, "costume.png", spin=1, posn=sk.center, velocity=(2,1), edge=BOUNCE)
+
+Sketch(setup).run()</pre>
+<p></p>
+<p></p>
+<p></p>
+<p><code></code></p>
+</div>

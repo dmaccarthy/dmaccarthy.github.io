@@ -12,7 +12,6 @@
 		<Arg name="bgImage" default="None">An image to be used for the sketch background. The sketch aspect ratio will be locked (except when maximized) to match the background image.</Arg>
 		<Arg name="bgColor" default="None">A color to be drawn as the background. If both arguments are given, the image will be blitted onto a background of the specified color.</Arg>
 	</Method>
-	<PropA name="wall" default="False"><Desc>Assign a color to this property to create a wall around the sketch. Call the <code>setBackground</code> method after setting the wall color to draw the wall. This property affects the default edge behaviour of sprites.</Desc></PropA>
 	<PropR name="frameCount"><Desc>The total number of frames that have been drawn (including the current frame).</Desc></PropR>
 	<PropR name="draw" default="drawBackground"><Desc>A reference to the current drawing function.</Desc></PropR>
 	<PropR name="eventMap" default="{}"><Desc>A dictionary that maps events types (keys) to handler functions (values). Use the <code>animate</code> method to change the event map.</Desc></PropR>

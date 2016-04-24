@@ -20,7 +20,8 @@
 	<p id="HideNav"><a class="Small" href="javascript:hideNav()">Hide</a></p>
 	<p class="Link" data-go="Overview">Overview</p>
 	<p class="Link" data-go="Install">Installation Guide</p>
-	<p class="Link" data-go="Contents">Reference</p>
+	<p class="Link" onclick="tutorial()">Tutorial</p>
+	<p class="Link" data-go="Reference">Reference</p>
 	<hr/><div class="Small">
 		<p class="Center">Copyright &copy; 2016 <a href="mailto:devwigs@gmail.com">D. MacCarthy</a></p>
 		<p>The <code>wigs</code> software itself is licensed under the <a href="http://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License Version 3</a>.</p>
@@ -39,8 +40,10 @@
 	<ul>
 		<li>a simple framework for creating interactive animations</li>
 		<li>image manipulation</li>
-		<li>sprite management</li>
 		<li>graphical user interface</li>
+		<li>graph plotting</li>
+		<li>sprite management</li>
+		<li>physics-based collisions</li>
 		<li>robotics simulations</li>
 	</ul>
 	<p>It requires only a few lines of code to create a simple animation...</p>
@@ -66,21 +69,29 @@ Sketch(setup).run()</pre>
 	<p>As <code>wigs</code> is entirely Python 3 source code, no special installation is required. Simply extract the <code>wigs</code> folder to your source folder, or to another location in your PYTHONPATH (e.g. the <code>Lib/site-packages</code> folder of your Python installation.)</p>
 </article>
 
-<article id="Contents">
+<article id="Reference">
 	<h3>Reference</h3>
 	<table><thead><tr><th>Module</th><th>Description</th></tr></thead>
 		<tbody id="modules">
 			<tr><td class="Link" onclick="goRef('sketch')">sketch</td><td>Create interactive animations with support for sprites and GUI controls.</td></tr>
+			<tr><td class="Link" onclick="goRef('physics')">physics</td><td>Create animations with objects that have physics-based collision behaviour.</td></tr>
+			<tr><td class="Link" onclick="goRef('papplet')">papplet</td><td>Create interactive animations with a Processing-like API; no sprite or GUI features.</td></tr>
+			<tr><td class="Link" onclick="goRef('robot')">robot</td><td>Create robot sprites controlled by a “brain” that runs in its own thread.</td></tr>
 			<tr><td class="Link" onclick="goRef('image')">image</td><td>Load and manipulate images.</td></tr>
 			<tr><td class="Link" onclick="goRef('plot')">plot</td><td>Create graphs and other drawings that use an abstract coordinate system.</td></tr>
-			<tr><td class="Link" onclick="goRef('physics')">physics</td><td>Create animations with objects that have physics-based collision behaviour.</td></tr>
-			<tr><td class="Link" onclick="goRef('robot')">robot</td><td>Create robot sprites controlled by a “brain” that runs in its own thread.</td></tr>
 			<tr><td class="Link" onclick="goRef('geometry')">geometry</td><td>Perform various geometric calculations.</td></tr>
 			<tr><td class="Link" onclick="goRef('gui')">gui</td><td>Create and run GUI dialogs.</td></tr>
 			<tr><td class="Link" onclick="goRef('widgets')">widgets</td><td>Create GUI controls.</td></tr>
 			<tr><td class="Link" onclick="goRef('util')">util</td><td>Miscellaneous features.</td></tr>
 		</tbody>
 	</table>
+</article>
+
+<article id="Tutorial">
+	<!--h3>Tutorial</h3-->
+	<h3 id="TutorPath"></h3>
+	<p><button class="Link" onclick="goTutNext()">Next Page</button> &nbsp; The tutorial is currently under construction.</p>
+	<div id="TutorHtml"></div>
 </article>
 
 <article id="Module">
