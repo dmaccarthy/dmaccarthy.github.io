@@ -27,10 +27,15 @@ function show(id) {
 	if (id) {
 		$("article[id]").hide();
 		$("#" + id).show();
+		var qs;
+		if (id == "Tutorial") qs = "?tutorial=" + tutInfo.currentNode.id;
+		else qs = "?show=" + id;
+		history.replaceState(null, id, location.href.split("?")[0] + qs);
 	}
 }
 
-function goRef(id) {
+function goRef(id, attr) {
+	goRef.attr = attr;
 	$.ajax({url: "ref/" + id + ".xml", dataType:"xml", success:loadRef, error:noModule});
 }
 
@@ -48,9 +53,18 @@ function collapse(ev) {
 	if (!$(ev.target).attr("data-stop")) $(e).next().toggle();
 }
 
-function toggle(alt, parent) {
-	var e = $("img[alt='" + alt + "']").closest("p");
-	(parent ? e.parent() : e).toggle();
+function toggle(n) {
+	showAll();
+	showAll(true);
+	$("[data-type]").hide();
+	$("[data-type=" + n + "]").show();
+}
+
+function showAll(top) {
+	$("#ModuleHtml div").show();
+	var e = $("#ModuleHtml div.Collapse");
+	if (top) e.hide();
+	else e.show();
 }
 
 function nodeText(node) {
@@ -64,19 +78,18 @@ function nodeHtml(node) {
 	if (def) e.append($("<span>").addClass("Default").html(" = " + def));
 	e = $("<p>").html(e);
 	e.append(": ").append(nodeText(node));
-	var tags = ["Arg", "Constant", "PropA", "PropR", "Class", "Method", "Function"];
+	e.find("[onclick]").attr("data-stop", 1);
+	var tags = ["Class", "Function", "Constant", "PropA", "PropR", "Method", "Arg"];
 	var n = tags.indexOf(node.tagName);
 	var cNodes = childElements(node);
-	if (n > 0) {
+	if (n < tags.length-1)
 		e.prepend($("<img>").addClass("Icon").attr({alt:tags[n], src:"img/" + tags[n].toLowerCase() + ".png"}));
-	}
-	if (cNodes.length) {
-		var div = $("<div>").addClass("Collapse");
-		for (var j=0;j<cNodes.length;j++) if (cNodes[j] != node.childNodes[0])
-			div.append(nodeHtml(cNodes[j]));
-		e = $("<div>").append(e.addClass("Hanging").click(collapse).attr({title:"Click to exapnd or collapse"}));
-		e.append(div).find("div.Collapse").hide();
-	}
+	var div = $("<div>").addClass("Collapse");
+	for (var j=0;j<cNodes.length;j++) if (cNodes[j] != node.childNodes[0])
+		div.append(nodeHtml(cNodes[j]));
+	e = $("<div>").append(e.addClass("Hanging").click(collapse).attr({title:"Click to exapnd or collapse"}));
+	if (n<3) e.attr("data-type", n);
+	e.append(div).find("div.Collapse").hide();
 	return e;
 }
 
@@ -93,24 +106,76 @@ function loadRef(data) {
 	var e = $("#ModuleHtml").html("");
 	moduleHtml(data, e);
 	show("Module");
-	$("#ModuleName").html(data.getAttribute("name"));
+	var name = data.getAttribute("name");
+	$("#ModuleName").html(name);
+	history.replaceState(null, name, location.href.split("?")[0] + "?module=" + name);
+	if (goRef.attr) {
+		showModuleAttr(goRef.attr);
+		delete goRef.attr;
+	};
+}
+
+function findModuleAttr(id, e) {
+	if (e == null) e = $("#ModuleHtml");
+	e = e.find("div.Collapse");
+	var ids = id.split(".");
+	for (var i=0;i<e.length;i++) {
+		var cur = $(e[i]);
+		var node = cur.parent().find("p:first code:first");
+		var text = node.html().split("(")[0].split(":")[0].split("<")[0].split(" ")[0].split("=")[0];
+		if (text == ids[0]) {
+			return ids.length == 1 ? cur : findModuleAttr(id.slice(text.length + 1), cur);			
+		}
+	}
+}
+
+function showModuleAttr(id) {
+	var e = findModuleAttr(id);
+	$("#ModuleHtml div").hide();
+	e.parents().show();
+	e.find("*").show();
+	console.log(e)
+}
+
+function refFilter(id, e) {
+	if (e == null) e = $("#ModuleHtml").children("div").children("div.Collapse");
+	for (var i=0;i<e.length;i++) {
+		var node = $(e[i]).parent();
+		var text = node.find("p:first code:first").html();
+		text = text.split("(")[0].split(":")[0].split("<")[0].split(" ")[0].split("=")[0];
+		console.log(text, node, e[i]);
+		if (text == id) node.show();
+		else node.hide();
+	}
 }
 
 function noModule() {
 	alert("Under Construction [" + this.url.replace(".xml","").replace("ref/","") + "]");
 }
 
-function tutorial() {
-	if (!window.tutInfo) $.ajax({url: "tut/index.json", dataType:"json", success:loadTutJson});
-	else show("Tutorial");
+function tutorial(id) {
+	if (!window.tutInfo) {
+		$.ajax({url: "tut/index.json", dataType:"json", success:loadTutJson});
+		tutorial.id = id;
+	}
+	else {
+		show("Tutorial");
+		if (id) goTut(id);
+	}
 }
 
 function loadTutJson(data) {
 	tutInfo = data;
-	data.html = $("<div>"); //.html("Home!!");
+	var div = $("<div>").append($("<p>").html("This tutorial is intended for programmers who are already familiar Python. A tutorial for new Python programmers is planned for the near future."));;
+	data.html = $("<div>").append(div);
 	data.seq = [];
-	seqAppend(data, $(data.html));
-	goTut(data.seq[0]);
+	seqAppend(data, $(div));
+	id = data.seq[0];
+	if (tutorial.id) {
+		id = tutorial.id;
+		delete tutorial.id;
+	}
+	goTut(id);
 }
 
 function seqAppend(node, htmlParent) {
@@ -164,13 +229,14 @@ function goTut(id) {
 		tutInfo.currentNode = node;
 		if (node.html) loadTut(node.html);
 		else $.ajax({url: "tut/" + id.toLowerCase() + ".htm", dataType:"html", success:loadTut});
+		history.replaceState(null, node.title, location.href.split("?")[0] + "?tutorial=" + id);
 	}
 }
 
 function loadTut(data) {
 	$("#TutorHtml").html(data);
 	var e = $("#TutorPath");
-	e.html(""); //e.children()[0]).append("&nbsp;");
+	e.html("");
 	var p = nodePath(tutInfo.currentNode);
 	for (var i=0;i<p.length;i++) {
 		var span = $("<span>").html(p[i].title);
@@ -210,13 +276,18 @@ function navClick(ev) {
 $(function() {
 	setTimeout(nextScreen, 8000);
 	onresize();
-	show("Overview");
 	$("nav p.Link").click(show);
 	$("nav").click(navClick);
-	var query = parseQuery();
-	if (query.module) goRef(query.module);
-	else if (query.show) show(query.show);
+	goQuery(parseQuery());
 })
+
+
+function goQuery(query) {
+	if (query.module) goRef(query.module);
+	else if (query.tutorial) tutorial(query.tutorial);
+	else if (query.show) show(query.show);
+	else show("Overview");	
+}
 
 window.onresize = function() {
 	$("nav").height($(window).height());

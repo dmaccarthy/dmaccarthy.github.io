@@ -1,5 +1,5 @@
 <Module name="sketch">
-<Class name="Sketch"><Desc>Represents an interactive animation that runs in the Pygame window; supports sprites and GUI controls. In addition to the attributes described here, this class inherits the attributes of its superclass, <span class="Link" onclick="goRef('papplet')" data-stop="1">PApplet</span>.</Desc>
+<Class name="Sketch"><Desc>Represents an interactive animation that runs in the Pygame window; supports sprites and GUI controls. In addition to the attributes described here, this class inherits the attributes of its superclass, <code class="Link" onclick="goRef('papplet')">PApplet</code>.</Desc>
 	<Method name="Sketch(setup)"><Desc>The constructor creates a <code>Sketch</code> instance from a setup function. Use the <code>run</code> method to run the sketch.</Desc>
 		<Arg name="setup(sk)" default="None">An unbound function that initializes the sketch.
 			<Arg name="sk">A reference to the sketch.</Arg>
@@ -25,11 +25,14 @@
 </Class>
 
 <Class name="Sprite">Represents a graphical object or character that can be drawn on top of the sketch background and is capable of interaction.
-	<PropR name="a">a</PropR>
+	<Method name="Sprite(sk, costume, **kwargs)"><Desc>The constructor creates a <code>Sprite</code> instance from the <code>costume</code> argument.</Desc>
+		<Arg name="sk">A reference to the sketch.</Arg>
+	</Method>
+	<!--PropR name="a">a</PropR>
 	<PropA name="b">b</PropA>
 	<Method name="c">c
 		<Arg name="d">d</Arg>
-	</Method>
+	</Method-->
 </Class>
 
 <Class name="SpriteList"><Desc>Represents the sequence of sprites that have been added to a sketch. The sketch’s <code>sprites</code> attribute is a reference to the <code>SpriteList</code> instance, which is created automatically by the <code>Sketch</code> constructor.</Desc>
@@ -47,23 +50,23 @@
 </Function-->
 
 <Function name="collide_sprite(left, right) → bool"><Desc>Determines whether two sprites are colliding. Sprites are treated as circles if their <code>radius</code> property has been set, otherwise they are treated as rectangles. Rotation of the rectangular sprites is taken into account in determining the collision status. This is the most accurate (i.e. slowest) collision detection.</Desc>
-	<Arg name="left">A <code>Sprite</code> instance.</Arg>
-	<Arg name="left">A second <code>Sprite</code> instance.</Arg>
+	<Arg name="left"><Desc>A <code>Sprite</code> instance.</Desc></Arg>
+	<Arg name="right"><Desc>A second <code>Sprite</code> instance.</Desc></Arg>
 </Function>
 
 <Function name="collide_rect(left, right) → bool">Determines whether two sprites are colliding. Sprites are treated as rectangles with no accounting for rotation. This is the simplest (i.e. fastest) but least accurate collision detection.
-	<Arg name="left">A <code>Sprite</code> instance.</Arg>
-	<Arg name="left">A second <code>Sprite</code> instance.</Arg>
+	<Arg name="left"><Desc>A <code>Sprite</code> instance.</Desc></Arg>
+	<Arg name="right"><Desc>A second <code>Sprite</code> instance.</Desc></Arg>
 </Function>
 
 <Function name="collide_rect_advanced(left, right) → bool">Determines whether two sprites are colliding. Sprites are treated as rectangles and rotation is accounted for.
-	<Arg name="left">A <code>Sprite</code> instance.</Arg>
-	<Arg name="left">A second <code>Sprite</code> instance.</Arg>
+	<Arg name="left"><Desc>A <code>Sprite</code> instance.</Desc></Arg>
+	<Arg name="right"><Desc>A second <code>Sprite</code> instance.</Desc></Arg>
 </Function>
 
 <Function name="collide_circ(left, right) → bool"><Desc>Determines whether two sprites are colliding. Sprites are treated as circles; both sprites must have a <code>radius</code> property for this function to work.</Desc>
-	<Arg name="left">A <code>Sprite</code> instance.</Arg>
-	<Arg name="left">A second <code>Sprite</code> instance.</Arg>
+	<Arg name="left"><Desc>A <code>Sprite</code> instance.</Desc></Arg>
+	<Arg name="right"><Desc>A second <code>Sprite</code> instance.</Desc></Arg>
 </Function>
 
 <Function name="" return="">

@@ -1,5 +1,5 @@
 <Module name="papplet">
-<Class name="PApplet"><Desc>Represents an interactive animation that runs in the Pygame window; modelled on <span class="Link" onclick="window.open('http://www.processing.org')" data-stop="1">Processing’s</span> PApplet class.</Desc>
+<Class name="PApplet"><Desc>Represents an interactive animation that runs in the Pygame window and is modelled on <span class="Link" onclick="window.open('http://www.processing.org')">Processing’s</span> <code>PApplet</code> class. <code class="Link" onclick="goRef('sketch','Sketch')">Sketch</code> and <code class="Link" onclick="goRef('physics','Environment')">Environment</code> are subclasses which extend <code>PApplet</code>.</Desc>
 	<Method name="PApplet(setup, draw, eventMap)"><Desc>The constructor creates a <code>PApplet</code> instance. Use the <code>run</code> method to run the sketch.</Desc>
 		<Arg name="setup(sk)" default="None">An unbound function that initializes the sketch.
 			<Arg name="sk">A reference to the sketch.</Arg>
@@ -12,9 +12,15 @@
 		<Arg name="bgImage" default="None">An image to be used for the sketch background. The sketch aspect ratio will be locked (except when maximized) to match the background image.</Arg>
 		<Arg name="bgColor" default="None">A color to be drawn as the background. If both arguments are given, the image will be blitted onto a background of the specified color.</Arg>
 	</Method>
+	<Method name="run(size, caption, icon, mode)">Run the sketch.
+		<Arg name="size" default="(512,288)">The initial size of the sketch in pixels.</Arg>
+		<Arg name="caption" default="&quot;Sketch&quot;">A string specifying the caption for the sketch window.</Arg>
+		<Arg name="icon" default="None">The path to an image to be used as the window icon.</Arg>
+		<Arg name="mode" default="pygame.RESIZABLE"><Desc>Change to <code>0</code> to make the sketch non-resizable.</Desc></Arg>
+	</Method>
 	<PropR name="frameCount"><Desc>The total number of frames that have been drawn (including the current frame).</Desc></PropR>
 	<PropR name="draw" default="drawBackground"><Desc>A reference to the current drawing function.</Desc></PropR>
-	<PropR name="eventMap" default="{}"><Desc>A dictionary that maps events types (keys) to handler functions (values). Use the <code>animate</code> method to change the event map.</Desc></PropR>
+	<PropR name="eventMap" default="{}"><Desc>A dictionary that maps event types (keys) to handler functions (values). Use the <code>animate</code> method to change the event map.</Desc></PropR>
 </Class>
 
 </Module>

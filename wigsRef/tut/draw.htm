@@ -1,0 +1,41 @@
+<div>
+
+<pre class="Code">from wigs.sketch import Sketch, Sprite, BOUNCE
+from wigs.image import Image
+from random import uniform
+
+def setup(sk):
+    <span class="Blue">"Initialize the sketch"</span>
+    sk.setBackground("bg.png")
+    sk.image_costume = Image("costume.png")
+    sk.animate(customDraw)
+
+def customDraw(sk):
+    <span class="Blue">"Draw one frame of the sketch"</span>
+
+    <span class="Blue"># Create sprites randomly</span>
+    if randint(1, sk.frameRate) == 1:
+        spin = uniform(-2, 2)
+        velocity = uniform(-2, 2), uniform(-2, 2)
+        posn = sk.randPixel()
+        Sprite(sk, sk.image_costume, spin=1, posn=posn, velocity=velocity, edge=BOUNCE)
+
+    <span class="Blue"># Detect and remove colliding sprites</span>
+    collisions = sk.sprites.collisions()
+    sk.sprites.remove(collisions)
+
+    <span class="Blue"># Redraw the sketch</span>
+    sk.simpleDraw()
+
+<span class="Blue"># Run the sketch</span>
+Sketch(setup).run()</pre>
+
+<code>custom</code>
+<code>data</code>
+<code>font</code>
+<code>game</code>
+<code>image</code>
+<code>style</code>
+<code>player</code>
+<code>user</code>
+</div>

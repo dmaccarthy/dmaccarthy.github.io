@@ -30,7 +30,7 @@ nav p.Link:hover {
 h1 {margin-top:4px}
 .Link {cursor:pointer}
 
-td.Link, span.Link {
+td.Link, span.Link, code.Link {
 	color:blue;
 	text-decoration:underline;
 }
@@ -51,3 +51,8 @@ img.Icon {
 }
 
 span.Default {color:royalblue}
+
+.Def {
+	text-decoration:underline;
+	font-style:italic;
+}

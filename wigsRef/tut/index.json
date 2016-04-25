@@ -1,4 +1,6 @@
 {"id":"Home", "title":"wigs Tutorial", "pages":[
-	{"id":"Pg1", "title":"Creating a Sketch"},
-	{"id":"Pg2", "title":"Page 2"}
+	{"id":"Sketch", "title":"Creating a Sketch", "pages":[
+		{"id":"draw", "title":"Drawing Function"},
+		{"id":"eventMap", "title":"Handling Events"}
+	]}
 ]}
