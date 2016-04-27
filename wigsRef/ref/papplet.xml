@@ -7,6 +7,7 @@
 		<Arg name="draw(sk)" default="None">An unbound function that draws one frame of the animation.
 			<Arg name="sk">A reference to the sketch.</Arg>
 		</Arg>
+		<Arg name="eventMap" default="None"><Desc>A dictionary that maps event types or classes (keys) to handler functions (values). You can use <code>None</code> as a key to specify a handler for events that do not have a custom handler.</Desc></Arg>
 	</Method>
 	<Method name="setBackground(bgImage, bgColor)">Set the sketch background.
 		<Arg name="bgImage" default="None">An image to be used for the sketch background. The sketch aspect ratio will be locked (except when maximized) to match the background image.</Arg>
@@ -19,8 +20,8 @@
 		<Arg name="mode" default="pygame.RESIZABLE"><Desc>Change to <code>0</code> to make the sketch non-resizable.</Desc></Arg>
 	</Method>
 	<PropR name="frameCount"><Desc>The total number of frames that have been drawn (including the current frame).</Desc></PropR>
-	<PropR name="draw" default="drawBackground"><Desc>A reference to the current drawing function.</Desc></PropR>
-	<PropR name="eventMap" default="{}"><Desc>A dictionary that maps event types (keys) to handler functions (values). Use the <code>animate</code> method to change the event map.</Desc></PropR>
+	<PropR name="draw" default="drawBackground"><Desc>A reference to the current drawing function; set by the constructor to the function passed as the <code>draw</code> argument.</Desc></PropR>
+	<PropR name="eventMap" default="{}"><Desc>A dictionary that maps event types (keys) to handler functions (values); set by the constructor to the dictionary passed as the <code>eventMap</code> argument.</Desc></PropR>
 </Class>
 
 </Module>

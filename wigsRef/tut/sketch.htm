@@ -4,7 +4,7 @@
 <pre class="Code">from wigs.sketch import Sketch
 
 Sketch().run()</pre>
-<p>The <code class="Link" onclick="goRef('sketch','Sketch.Sketch')">Sketch</code> constructor (from the <code>wigs.sketch</code> module) creates a sketch object, and its <code class="Link" onclick="goRef('papplet','PApplet.run')">run</code> method runs the sketch in the Pygame window. To add content to the sketch, we need to provide a <em class="Def">setup</em> function. The setup function takes a single argument, which is a reference to the sketch object...</p>
+<p>The <code class="Link" onclick="goRef('sketch','Sketch.Sketch')">Sketch</code> constructor (from the <code>wigs.sketch</code> module) creates a sketch object, and its <code class="Link" onclick="goRef('papplet','PApplet.run')">run</code> method runs the sketch in the Pygame window. To add content to the sketch, we need to provide a <em class="Def">setup</em> function...</p>
 <pre class="Code">from wigs.sketch import Sketch, Sprite, BOUNCE
 
 def setup(sk):
@@ -12,7 +12,7 @@ def setup(sk):
     Sprite(sk, "costume.png", spin=1, posn=sk.center, velocity=(2,1), edge=BOUNCE)
 
 Sketch(setup).run()</pre>
-<p>In this example, the <code>setup</code> function loads an image from a file and sets it as the sketch background. It then loads a second image file and uses it to create a <em class="Def">sprite</em> within the sketch. Sprites are characters or objects that can interact with each other and that the user can interact with using the mouse or keyboard. The <code class="Link" onclick="goRef('sketch','Sprite.Sprite')">Sprite</code> constructor accepts a number of optional keyword arguments that describe the behaviour of the sprite.</p>
+<p>The setup function takes a single argument, which is a reference to the sketch object. In this example, the <code>setup</code> function loads an image from a file and sets it as the sketch background. It then loads a second image file and uses it to create a <em class="Def">sprite</em> within the sketch. Sprites are characters or objects that can interact with each other and that the user can interact with using the mouse or keyboard. The <code class="Link" onclick="goRef('sketch','Sprite.Sprite')">Sprite</code> constructor accepts a number of optional keyword arguments that describe the behaviour of the sprite.</p>
 <p>Note that in the final line of the program, the <code>setup</code> function is passed as the lone argument to the <code>Sketch</code> constructor.</p>
 <p></p>
 <p><code></code></p>

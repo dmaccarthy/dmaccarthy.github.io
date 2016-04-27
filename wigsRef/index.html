@@ -34,7 +34,7 @@
 
 <article id="Overview">
 	<h3>Overview</h3>
-	<p><code>wigs</code> is a Python 3 package for educational programming. Its aim is to help beginning (and experienced!) programmers make interactive programs with graphics and animations easily.</p>
+	<p><code>wigs</code> is a Python 3 package for educational programming. Its aim is to make it easy for new programmers (and experienced one too!) to create interactive programs with graphics and animations. The project is motivated by the recurring question: “What is the best language to learn as a first programming language?” Popular answers to this question include <a href="http://www.python.org">Python</a>, <a href="http://www.processing.org">Processing</a>, <a href="http://scratch.mit.edu">Scratch</a>, and various robot control languages. The <code>wigs</code> project aims to extend Python with the best features of Processing, Scratch, and robotics programming.</p>
 	<p class="Center"><img src="img/screen0.png" height="384" alt="Screenshot" data-n="0"/></p>
 	<p>Features include:</p>
 	<ul>
@@ -46,14 +46,7 @@
 		<li>physics-based collisions</li>
 		<li>robotics simulations</li>
 	</ul>
-	<p>It requires only a few lines of code to create a simple animation...</p>
-	<pre class="Code">from wigs.sketch import Sketch, Sprite
-
-def setup(sk):
-    sk.setBackground("bg.png")
-    Sprite(sk, "costume.png", posn=sk.center, spin=1)
-
-Sketch(setup).run()</pre>
+	<p>To learn more, select one of the blue links from the navigation panel along the left side of the page.</p>
 </article>
 
 <article id="Install">
@@ -88,7 +81,6 @@ Sketch(setup).run()</pre>
 </article>
 
 <article id="Tutorial">
-	<!--h3>Tutorial</h3-->
 	<h3 id="TutorPath"></h3>
 	<p><b style="color:red">The tutorial is currently under construction.</b></p>
 	<div id="TutorHtml"></div>
@@ -99,6 +91,7 @@ Sketch(setup).run()</pre>
 	<h3>wigs.<span id="ModuleName">?</span></h3>
 	<p><b style="color:red">The reference is currently under construction.</b></p>
 	<p class="Center">
+		<button class="Link" title="Expand / Collapse" onclick="expandAll(this)" data-state=1><img class="Icon" src="img/plus.png"/><span>Expand</span></button> &nbsp;
 		<button class="Link" title="Toggle Classes" onclick="toggle(0)"><img class="Icon" src="img/class.png"/>Classes</button> &nbsp;
 		<button class="Link" title="Toggle Functions" onclick="toggle(1)"><img class="Icon" src="img/function.png"/>Functions</button> &nbsp;
 		<button class="Link" title="Toggle Constants" onclick="toggle(2)"><img class="Icon" src="img/constant.png"/>Constants</button>

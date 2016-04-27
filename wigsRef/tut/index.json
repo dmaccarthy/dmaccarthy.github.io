@@ -1,6 +1,7 @@
 {"id":"Home", "title":"wigs Tutorial", "pages":[
 	{"id":"Sketch", "title":"Creating a Sketch", "pages":[
 		{"id":"draw", "title":"Drawing Function"},
+		{"id":"mouse", "title":"Mouse & Keyboard"},
 		{"id":"eventMap", "title":"Handling Events"}
 	]}
 ]}

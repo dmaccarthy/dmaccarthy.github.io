@@ -35,7 +35,13 @@ td.Link, span.Link, code.Link {
 	text-decoration:underline;
 }
 
-div.Collapse {margin-left:2em}
+div.Collapse {
+	border-left:1px solid #b0b0b0;
+}
+
+div.Indent, div.Collapse {
+	padding-left:1.25em;
+}
 
 p.Hanging {
 	margin-left:2em;
@@ -56,3 +62,6 @@ span.Default {color:royalblue}
 	text-decoration:underline;
 	font-style:italic;
 }
+
+Button {width:8em}
+Button img.Icon {float:left}

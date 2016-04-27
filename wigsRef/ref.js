@@ -54,7 +54,6 @@ function collapse(ev) {
 }
 
 function toggle(n) {
-	showAll();
 	showAll(true);
 	$("[data-type]").hide();
 	$("[data-type=" + n + "]").show();
@@ -64,7 +63,15 @@ function showAll(top) {
 	$("#ModuleHtml div").show();
 	var e = $("#ModuleHtml div.Collapse");
 	if (top) e.hide();
-	else e.show();
+}
+
+function expandAll(e) {
+	e = $(e);
+	var n = 1 - parseInt(e.attr("data-state"));
+	e.attr("data-state", n);
+	showAll(n == 1);
+	e.find("span").html(["Collapse", "Expand"][n]);
+	e.find("img").attr("src", "img/" + ["minus", "plus"][n] + ".png");
 }
 
 function nodeText(node) {
@@ -136,7 +143,7 @@ function showModuleAttr(id) {
 	e.find("*").show();
 	console.log(e)
 }
-
+/* 
 function refFilter(id, e) {
 	if (e == null) e = $("#ModuleHtml").children("div").children("div.Collapse");
 	for (var i=0;i<e.length;i++) {
@@ -147,7 +154,7 @@ function refFilter(id, e) {
 		if (text == id) node.show();
 		else node.hide();
 	}
-}
+} */
 
 function noModule() {
 	alert("Under Construction [" + this.url.replace(".xml","").replace("ref/","") + "]");
@@ -184,7 +191,7 @@ function seqAppend(node, htmlParent) {
 	var span = $("<span>").html(node.title);
 	if (node != tutInfo) {
 		span.addClass("Link").attr({onclick:"goTut('" + id + "')"});
-		div = $("<div>").addClass("Collapse").append(span);
+		div = $("<div>").addClass("Indent").append(span);
 		htmlParent.append(div);
 	}
 	if (node.pages) for (var i=0;i<node.pages.length;i++) {
@@ -274,6 +281,7 @@ function navClick(ev) {
 }
 
 $(function() {
+	$("article").hide();
 	setTimeout(nextScreen, 8000);
 	onresize();
 	$("nav p.Link").click(show);

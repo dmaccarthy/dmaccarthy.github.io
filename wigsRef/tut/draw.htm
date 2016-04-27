@@ -18,7 +18,7 @@ def customDraw(sk):
         spin = uniform(-2, 2)
         velocity = uniform(-2, 2), uniform(-2, 2)
         posn = sk.randPixel()
-        Sprite(sk, sk.image_costume, spin=1, posn=posn, velocity=velocity, edge=BOUNCE)
+        Sprite(sk, sk.image_costume, spin=spin, posn=posn, velocity=velocity, edge=BOUNCE)
 
     <span class="Blue"># Detect and remove colliding sprites</span>
     collisions = sk.sprites.collisions()
