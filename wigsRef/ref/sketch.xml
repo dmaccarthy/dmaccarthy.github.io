@@ -25,11 +25,14 @@
 </Class>
 
 <Class name="Sprite">Represents a graphical object or character that can be drawn on top of the sketch background and is capable of interaction.
-	<Method name="Sprite(sk, costume, **kwargs)"><Desc>The constructor creates a <code>Sprite</code> instance from the <code>costume</code> argument.</Desc>
-		<Arg name="sk">A reference to the sketch.</Arg>
+	<Method name="Sprite(sprites, costume, group, **kwargs)"><Desc>The constructor creates a <code>Sprite</code> instance from the <code>costume</code> argument.</Desc>
+		<Arg name="sprites">A reference to the Sketch or SpriteList instance to which the sprite is being added.</Arg>
+		<Arg name="costume">An image, sequence of images, or file name specifying the sprite’s costume.</Arg>
+		<Arg name="group" default="()"><Desc>A <code>set</code>, or tuple of sets representing the group(s) to which the sprite belongs.</Desc></Arg>
+		<Arg name="kwargs" default="{}">A dictionary of the sprites initial properties.</Arg>
 	</Method>
+	<PropA name="posn" default="(0,0)">An ordered pair describing the sprite’s position within the sketch.</PropA>
 	<!--PropR name="a">a</PropR>
-	<PropA name="b">b</PropA>
 	<Method name="c">c
 		<Arg name="d">d</Arg>
 	</Method-->
