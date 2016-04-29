@@ -65,3 +65,6 @@ span.Default {color:royalblue}
 
 Button {width:8em}
 Button img.Icon {float:left}
+
+#PrevTut {margin-right:0.5em}
+#NextTut {margin-left:0.5em}

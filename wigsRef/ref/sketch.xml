@@ -32,6 +32,37 @@
 		<Arg name="kwargs" default="{}">A dictionary of the sprites initial properties.</Arg>
 	</Method>
 	<PropA name="posn" default="(0,0)">An ordered pair describing the sprite’s position within the sketch.</PropA>
+	<PropA name="velocity" default="(0,0)">An ordered pair describing the sprite’s velocity.</PropA>
+	<PropA name="accel" default="(0,0)">An ordered pair describing the sprite’s acceleration.</PropA>
+	<PropA name="jerk" default="(0,0)">An ordered pair describing the rate of change of the sprite’s position.</PropA>
+	<PropA name="zoom" default="1">The size of the sprite relative to the size of the costume image.</PropA>
+	<PropA name="width">The width of the zoomed, unrotated sprite.</PropA>
+	<PropA name="height">The height of the zoomed, unrotated sprite.</PropA>
+	<PropA name="zoomRate" default="0"><Desc>The relative rate at which the <code>zoom</code> property changes. For example, a value of <code>-0.01</code> decreases the <code>zoom</code> value by 1% per frame.</Desc></PropA>
+	<PropA name="angle" default="0">The number of degrees clockwise to rotate the sprite’s costume before drawing it. Negative values indicate counter-clockwise rotation.</PropA>
+	<PropA name="spin" default="0"><Desc>The number of degrees by which the <code>angle</code> property changes per frame</Desc>.</PropA>
+	<PropA name="orient" default="False"><Desc>Indicates whether to recalculate the <code>angle</code> property to match the direction of the <code>velocity</code></Desc>.</PropA>
+	<PropA name="elasticity" default="1.0"><Desc>The proportion of the “kinetic energy” to conserve on <code>BOUNCE</code> actions.</Desc></PropA>
+	<PropA name="drag" default="0.0"><Desc>An amount by which to reduce the velocity each frame. For example, a value of <code>0.01</code> reduced the velocity by 1% each frame.</Desc></PropA>
+	<PropA name="spinDrag" default="0.0">An amount by which to reduce the spin each frame.</PropA>
+	<PropA name="status" default="VISIBLE"><Desc>An <code>int</code> constant indicating whether the sprite is to be drawn and/or update. Values are <code>VISIBLE</code>, <code>HIDDEN</code>, or <code>DISABLED</code>.</Desc></PropA>
+	<PropA name="currentCostume" default="0">The index specifying the sprite’s current costume.</PropA>
+	<PropA name="costumeTime" default="0">The period (number of frames) at which the costume changes.</PropA>
+	<PropA name="radius" default="None"><Desc>Setting a radius causes the sprite to be treated as a circle rather than a rectangle for collisions. Assigning a value of <code>True</code> causes the radius to be calculated from the width and height of the sprite.</Desc></PropA>
+	<PropA name="edge"><Desc>An <code>int</code> constant indicating what action is to be taken when the sprite reaches the edge of the sketch. Values are <code>BOUNCE</code>, <code>WRAP</code>, <code>REMOVE</code>, <code>HIDDEN</code>, <code>DISABLED</code>, or <code>NO_EDGE</code>.</Desc></PropA>
+	<PropA name="bounceThreshhold" default="0"><Desc>The speed below which a <code>BOUNCE</code> operation considers the perpendicular velocity to be zero.</Desc></PropA>
+	<PropR name="size">The current zoomed size of the sprite as a (width, height) tuple.</PropR>
+	<PropR name="costumes">A list of images representing the sprite’s “costumes”.</PropR>
+	<PropR name="image">An image of the sprite’s current costume that has been zoomed and rotated according to the sprite properties.</PropR>
+	<PropR name="edgeAdjust"><Desc>This property is set to <code>True</code> or <code>False</code> by the <code>frameStep</code> method to indicate whether or not the sprite’s have been adjusted as a result of an edge effect (e.g. <code>BOUNCE</code>, <code>WRAP</code>, etc.).</Desc></PropR>
+	<PropR name="rect">A rectangle object describing the screen location of the zoomed and rotated sprite.</PropR>
+	<PropR name="speed">The magnitude of the sprite’s velocity.</PropR>
+
+<!--	
+edgeAdjust = None
+bounceThreshhold = 0
+-->
+
 	<!--PropR name="a">a</PropR>
 	<Method name="c">c
 		<Arg name="d">d</Arg>

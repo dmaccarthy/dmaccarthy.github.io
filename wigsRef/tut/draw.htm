@@ -20,8 +20,8 @@ def customDraw(sk):
     if randint(1, sk.frameRate) == 1:
         velocity = uniform(-2, 2), uniform(-2, 2)
         posn = sk.randPixel()
-        r = sk.height / 20
-        Sprite(sk, sk.image_costume, height=2*r, radius=r,
+        h = sk.height / 15 * uniform(0.5, 2)
+        Sprite(sk, sk.image_costume, height=h, radius=True,
             orient=True, posn=posn, velocity=velocity, edge=BOUNCE)
 
     <span class="Blue"># Detect and remove colliding sprites</span>

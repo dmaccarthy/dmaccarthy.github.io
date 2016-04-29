@@ -232,11 +232,17 @@ function goTutNext(n) {
 function goTut(id) {
 	var node = findNode(tutInfo, id);
 	if (node) {
-		tutInfo.current = tutInfo.seq.indexOf(id);
+		var i = tutInfo.current = tutInfo.seq.indexOf(id);
 		tutInfo.currentNode = node;
 		if (node.html) loadTut(node.html);
 		else $.ajax({url: "tut/" + id.toLowerCase() + ".htm", dataType:"html", success:loadTut});
 		history.replaceState(null, node.title, location.href.split("?")[0] + "?tutorial=" + id);
+		var e = $("#PrevTut");
+		if (i) e.show();
+		else e.hide();
+		e = $("#NextTut");
+		if (i == tutInfo.seq.length - 1) e.hide();
+		else e.show();
 	}
 }
 
