@@ -1,10 +1,15 @@
 <div>
-<code>custom</code>
-<code>data</code>
-<code>font</code>
-<code>game</code>
-<code>image</code>
-<code>style</code>
-<code>player</code>
-<code>user</code>
+
+<p>The sketch monitors the Pygame event queue and keeps track of the mouse and keyboard state. Your sketch will have a <code>mouse</code> property which refers to the most recent mouse event, as well as properties <code>mouseX</code>, <code>mouseY</code>, and <code>mouseXY</code> which refer to the coordinates of that event. If the mouse leaves the sketch window, the <code>mouse</code> property will have the value <code>None</code>, while the others will have the coordinates of the mouse location before leaving the sketch.</p>
+
+<p>Adding the following loop to the <code>customDraw</code> function of the previous example will make all sprites accelerate toward the mouse position...</p>
+
+<pre class="Code">for sprite in sk.sprites:
+    a = sk.height / 10000
+    sprite.accel = sprite.toward(sk.mouseXY, a)</pre>
+
+<p>Here is the <a href="tut/example/mouseExample.py">complete program</a>.</p>
+
+<p>The sketch’s <code>key</code> property refers to the most recent keyboard event, or <code>None</code> if no such events have occurred. On <code>KEYDOWN</code> events, the sketch’s <code>keyCode</code> property will be set to an <code>int</code> identifying the key pressed while the <code>char</code> property will be set to the corresponding character as a <code>str</code>. For non-printable keys (e.g. the shift or home keys), the <code>char</code> property will be a string of length zero. When a <code>KEYUP</code> event occurs, the <code>char</code> property will be reset to a string of length zero while the <code>keyCode</code> property will still contain the code of the key involved.</p>
+
 </div>

@@ -1,5 +1,9 @@
 <div>
 
+<P>Your sketch’s <code>setup</code> function will run once, after the Pygame window is initialized but before the first frame of your animation is drawn. If you want to customize what happens after the animation begins, you can create a <em class="Def">drawing</em> function to be responsible for drawing the individual frames of the animation and for performing whatever additional tasks your program requires.<p>
+
+<P>Here is a revision of our previous example. This sketch will create sprites randomly as it runs, and will remove sprites that collide with each other...<p>
+
 <pre class="Code">from wigs.sketch import Sketch, Sprite, BOUNCE
 from wigs.image import Image
 from random import uniform, randint
@@ -7,7 +11,7 @@ from random import uniform, randint
 def setup(sk):
     <span class="Blue">"Initialize the sketch"</span>
     sk.setBackground("bg.png")
-    sk.image_costume = Image("costume.png")
+    sk.image_monster = Image("costume.png")
     sk.animate(customDraw)
 
 def customDraw(sk):
@@ -21,7 +25,7 @@ def customDraw(sk):
         velocity = uniform(-2, 2), uniform(-2, 2)
         posn = sk.randPixel()
         h = sk.height / 15 * uniform(0.5, 2)
-        Sprite(sk, sk.image_costume, height=h, radius=True,
+        Sprite(sk, sk.image_monster, height=h, radius=True,
             orient=True, posn=posn, velocity=velocity, edge=BOUNCE)
 
     <span class="Blue"># Detect and remove colliding sprites</span>
@@ -31,12 +35,57 @@ def customDraw(sk):
 <span class="Blue"># Run the sketch</span>
 Sketch(setup).run()</pre>
 
-<code>custom</code>
-<code>data</code>
-<code>font</code>
-<code>game</code>
-<code>image</code>
-<code>style</code>
-<code>player</code>
-<code>user</code>
+<P>Let’s look at the <code>setup</code> function first...<p>
+
+<pre class="Code">def setup(sk):
+    <span class="Blue">"Initialize the sketch"</span>
+    sk.setBackground("bg.png")
+    sk.image_monster = Image("costume.png")
+    sk.animate(customDraw)</pre>
+
+<P>As in the previous example, this <code>setup</code> loads and sets the background image. However, rather than creating a sprite, the <code>setup</code> uses the <code class="Link" onclick="goRef('image','Image')">Image</code> constructor to pre-load the image from which the sprite will be created. The final line calls the sketch’s <code class="Link" onclick="goRef('sketch','Sketch.animate')">animate</code> method which specifies the custom drawing function that we want to use to animate the sketch.<p>
+
+<p>In order for the pre-loaded image to be accessible to the drawing function, we need to create a reference to it as either a global variable or as an attribute of the sketch. If we use an attribute name that is already being used by the sketch, we risk causing the sketch to function improperly. To prevent this from happening, the following attribute names are reserved for your sketch’s custom data...</p>
+
+<ul>
+<li><code>custom</code></li>
+<li><code>data</code></li>
+<li><code>font</code></li>
+<li><code>game</code></li>
+<li><code>image</code></li>
+<li><code>style</code></li>
+<li><code>player</code></li>
+<li><code>user</code></li>
+</ul>
+
+<p>Attribute names that <em>begin</em> with any of the above (e.g. <code>image_monster</code>, <code>player2</code>, <code>font_Arial_36</code>) are also acceptable.</p>
+
+<p>Next, we need to create the drawing function that will be passed to <code>sk.animate</code>...</p>
+
+<pre class="Code">def customDraw(sk):
+    <span class="Blue">"Draw one frame of the sketch"</span>
+
+    <span class="Blue"># Redraw the sketch</span>
+    sk.simpleDraw()
+
+    <span class="Blue"># Create sprites randomly</span>
+    if randint(1, sk.frameRate) == 1:
+        velocity = uniform(-2, 2), uniform(-2, 2)
+        posn = sk.randPixel()
+        h = sk.height / 15 * uniform(0.5, 2)
+        Sprite(sk, sk.image_monster, height=h, radius=True,
+            orient=True, posn=posn, velocity=velocity, edge=BOUNCE)
+
+    <span class="Blue"># Detect and remove colliding sprites</span>
+    collisions = sk.sprites.collisions()
+    sk.sprites.remove(collisions)</pre>
+
+<p>The first instruction calls the sketch’s <code class="Link" onclick="goRef('sketch','Sketch.simpleDraw')">simpleDraw</code> method. This method redraws the background image (thereby covering the previous frame), draws each of the sprites, and then updates the sprites’ properties in preparation for the next frame. The <code>simpleDraw</code> method is the sketch’s default drawing function; if we had not specified a custom drawing function, the sketch would use <code>simpleDraw</code> to perform the animation.</p>
+
+<p>The <code>if</code> block randomly creates sprites with random properties. Note the second argument to the <code>Sprite</code> constructor is the pre-loaded image, <code>sk.image_monster</code>. Using an image file name here would be very inefficient, since it would cause the program to reload and decode the same image file every time it creates a new sprite.</p>
+
+<p>The final two lines of the function detect and remove colliding sprites. The <code class="Link" onclick="goRef('sketch','SpriteList.collisions')">sk.sprites.collisions</code> method returns a <code>set</code> of sprites that are currently colliding with other sprites, and the <code class="Link" onclick="goRef('sketch','SpriteList.remove')">sk.sprites.remove</code> method removes those sprites from the sketch.</p>
+
+<p>Your program can call the <code>animate</code> method as often as you need to. For example, if you are writing a game with a welcome screen, several different levels, and a game over screen, you can create separate drawing functions for each part and use the <code>animate</code> method to switch between those functions.</p>
+
 </div>

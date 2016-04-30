@@ -1,10 +1,24 @@
 <div>
-<code>custom</code>
-<code>data</code>
-<code>font</code>
-<code>game</code>
-<code>image</code>
-<code>style</code>
-<code>player</code>
-<code>user</code>
+
+<p>As the previous page explained, your sketch monitors the Pygame event queue to keep track of the mouse and keyboard state. Your program can provide event handler functions that the sketch will call to respond to any events in the queue. Event handlers take two arguments: a reference to the sketch object and a description of the event.</p>
+
+<p>For example, suppose we wanted to reset our animation by removing all sprites when the user typed the letter <code>"r"</code>. We could define the following event handler...</p>
+
+<pre class="Code">def keyDown(sk, ev):
+    if sk.char == "r":
+        sk.sprites.empty()</pre>
+
+<p>To tell the sketch when to run the event handler, we pass a second argument, <code>eventMap</code>, to the <code>animate</code> method. The <code>eventMap</code> is a dictionary that has event codes as its keys and handlers as its values...</p>
+
+<pre class="Code">from pygame import KEYDOWN
+
+...
+
+eventMap = {KEYDOWN: keyDown}
+sk.animate(customDraw, eventMap)</pre>
+
+<p>Here is the <a href="tut/example/keyDownExample.py">complete program</a>.</p>
+
+<p>See the <a href="http://www.pygame.org/docs/ref/event.html">Pygame documentation</a> for a list of event code constants. You can also use the value <code>None</code> as a key in the <code>eventMap</code>, to specify a handler for events that do not match any of the keys that explicitly appear in the dictionary.</p>
+
 </div>

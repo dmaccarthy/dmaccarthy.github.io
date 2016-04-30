@@ -6,7 +6,7 @@
 		</Arg>
 	</Method>
 	<Method name="edge() → int">Returns the default edge behaviour for new sprites.</Method>
-	<Method name="simpleDraw()">Redraws the background and all visible sprites.</Method>
+	<Method name="simpleDraw()">Redraws the background and all visible sprites, and then updates all enabled sprites.</Method>
 	<Method name="animate(draw, eventMap)">Specifies a new drawing function and event map to control the animation.
 		<Arg name="draw(sk)" default="None">An unbound function that draws one frame of the animation.
 			<Arg name="sk">A reference to the sketch.</Arg>
