@@ -1,0 +1,30 @@
+<div>
+
+<p>The <code class="Link" onclick="goRef('physics')">physics</code> module defines a <code>Sketch</code> subclass named <code class="Link" onclick="goRef('physics','Environment')">Environment</code>. This class simulates a physical environment in which (non-disabled) sprites that have a <code>mass</code> property with a positive value exhibit collision behaviour approximating the laws of physics. Here is an example...</p>
+
+<pre class="Code">from wigs.sketch import Sprite, WRAP, BOUNCE
+from <span class="Highlight">wigs.physics</span> import <span class="Highlight">Environment</span>
+from wigs.image import Image
+from random import uniform
+
+<span class="Proto">def</span> setup(sk):
+
+    <span class="Comment"># Load background and monster images</span>
+    sk.setBackground("bg.png")
+    img = Image("costume.png")
+
+    <span class="Comment"># Create 10 random monster sprites</span>
+    for i in range(10):
+        velocity = uniform(-3, 3), uniform(-3, 3)
+        posn = sk.randPixel()
+        mass = uniform(0.5, 2)
+        h = sk.height / 15 * mass
+        Sprite(sk, img, height=h, <span class="Highlight">mass</span>=mass, radius=True, edge=(WRAP, BOUNCE),
+            elasticity=0.98, posn=posn, velocity=velocity)
+
+<span class="Comment"># Run the sketch</span>
+<span class="Highlight">Environment</span>(setup).run()</pre>
+
+<p>If you create a custom drawing function, be sure to call the <code class="Link" onclick="goRef('physics','Environment.physicsDraw')">physicsDraw</code> method instead of <code>simpleDraw</code> to preserve the physics-based behaviour.</p>
+
+</div>

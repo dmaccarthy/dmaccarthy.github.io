@@ -8,19 +8,19 @@
 from wigs.image import Image
 from random import uniform, randint
 
-def setup(sk):
-    <span class="Blue">"Initialize the sketch"</span>
+<span class="Proto">def</span> setup(sk):
+    <span class="DocString">"Initialize the sketch"</span>
     sk.setBackground("bg.png")
     sk.image_monster = Image("costume.png")
     sk.animate(customDraw)
 
-def customDraw(sk):
-    <span class="Blue">"Draw one frame of the sketch"</span>
+<span class="Proto">def</span> customDraw(sk):
+    <span class="DocString">"Draw one frame of the sketch"</span>
 
-    <span class="Blue"># Redraw the sketch</span>
+    <span class="Comment"># Redraw the sketch</span>
     sk.simpleDraw()
 
-    <span class="Blue"># Create sprites randomly</span>
+    <span class="Comment"># Create sprites randomly</span>
     if randint(1, sk.frameRate) == 1:
         velocity = uniform(-2, 2), uniform(-2, 2)
         posn = sk.randPixel()
@@ -28,17 +28,17 @@ def customDraw(sk):
         Sprite(sk, sk.image_monster, height=h, radius=True,
             orient=True, posn=posn, velocity=velocity, edge=BOUNCE)
 
-    <span class="Blue"># Detect and remove colliding sprites</span>
+    <span class="Comment"># Detect and remove colliding sprites</span>
     collisions = sk.sprites.collisions()
     sk.sprites.remove(collisions)
 
-<span class="Blue"># Run the sketch</span>
+<span class="Comment"># Run the sketch</span>
 Sketch(setup).run()</pre>
 
 <P>Let’s look at the <code>setup</code> function first...<p>
 
-<pre class="Code">def setup(sk):
-    <span class="Blue">"Initialize the sketch"</span>
+<pre class="Code"><span class="Proto">def</span> setup(sk):
+    <span class="DocString">"Initialize the sketch"</span>
     sk.setBackground("bg.png")
     sk.image_monster = Image("costume.png")
     sk.animate(customDraw)</pre>
@@ -53,8 +53,10 @@ Sketch(setup).run()</pre>
 <li><code>font</code></li>
 <li><code>game</code></li>
 <li><code>image</code></li>
-<li><code>style</code></li>
 <li><code>player</code></li>
+<li><code>robot</code></li>
+<li><code>score</code></li>
+<li><code>style</code></li>
 <li><code>user</code></li>
 </ul>
 
@@ -62,13 +64,13 @@ Sketch(setup).run()</pre>
 
 <p>Next, we need to create the drawing function that will be passed to <code>sk.animate</code>...</p>
 
-<pre class="Code">def customDraw(sk):
-    <span class="Blue">"Draw one frame of the sketch"</span>
+<pre class="Code"><span class="Proto">def</span> customDraw(sk):
+    <span class="DocString">"Draw one frame of the sketch"</span>
 
-    <span class="Blue"># Redraw the sketch</span>
+    <span class="Comment"># Redraw the sketch</span>
     sk.simpleDraw()
 
-    <span class="Blue"># Create sprites randomly</span>
+    <span class="Comment"># Create sprites randomly</span>
     if randint(1, sk.frameRate) == 1:
         velocity = uniform(-2, 2), uniform(-2, 2)
         posn = sk.randPixel()
@@ -76,7 +78,7 @@ Sketch(setup).run()</pre>
         Sprite(sk, sk.image_monster, height=h, radius=True,
             orient=True, posn=posn, velocity=velocity, edge=BOUNCE)
 
-    <span class="Blue"># Detect and remove colliding sprites</span>
+    <span class="Comment"># Detect and remove colliding sprites</span>
     collisions = sk.sprites.collisions()
     sk.sprites.remove(collisions)</pre>
 
@@ -84,7 +86,9 @@ Sketch(setup).run()</pre>
 
 <p>The <code>if</code> block randomly creates sprites with random properties. Note the second argument to the <code>Sprite</code> constructor is the pre-loaded image, <code>sk.image_monster</code>. Using an image file name here would be very inefficient, since it would cause the program to reload and decode the same image file every time it creates a new sprite.</p>
 
-<p>The final two lines of the function detect and remove colliding sprites. The <code class="Link" onclick="goRef('sketch','SpriteList.collisions')">sk.sprites.collisions</code> method returns a <code>set</code> of sprites that are currently colliding with other sprites, and the <code class="Link" onclick="goRef('sketch','SpriteList.remove')">sk.sprites.remove</code> method removes those sprites from the sketch.</p>
+<p>Setting the <code>radius</code> keyword to <code>True</code> in the <code>Sprite</code> constructor indicates that we want to treat the sprite as a circle for the purpose of determining whether it is colliding; if this argument is not provided, the sprite will be treated as a rectangle. Specifying the <code>orient</code> keyword as <code>True</code> keeps the sprite oriented in the direction of its velocity.</p>
+
+<p>The final two lines of the <code>customDraw</code> function detect and remove colliding sprites. The <code class="Link" onclick="goRef('sketch','SpriteList.collisions')">sk.sprites.collisions</code> method returns a <code>set</code> of sprites that are currently colliding with other sprites, and the <code class="Link" onclick="goRef('sketch','SpriteList.remove')">sk.sprites.remove</code> method removes those sprites from the sketch.</p>
 
 <p>Your program can call the <code>animate</code> method as often as you need to. For example, if you are writing a game with a welcome screen, several different levels, and a game over screen, you can create separate drawing functions for each part and use the <code>animate</code> method to switch between those functions.</p>
 

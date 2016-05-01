@@ -68,3 +68,12 @@ Button img.Icon {float:left}
 
 #PrevTut {margin-right:0.5em}
 #NextTut {margin-left:0.5em}
+
+.Proto {color:red}
+.Highlight {color:blue}
+
+.Comment, .DocString {
+	color:#40c040;
+	font-style:italic;
+	font-weight:normal;
+}

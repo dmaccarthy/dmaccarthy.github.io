@@ -143,18 +143,6 @@ function showModuleAttr(id) {
 	e.find("*").show();
 	console.log(e)
 }
-/* 
-function refFilter(id, e) {
-	if (e == null) e = $("#ModuleHtml").children("div").children("div.Collapse");
-	for (var i=0;i<e.length;i++) {
-		var node = $(e[i]).parent();
-		var text = node.find("p:first code:first").html();
-		text = text.split("(")[0].split(":")[0].split("<")[0].split(" ")[0].split("=")[0];
-		console.log(text, node, e[i]);
-		if (text == id) node.show();
-		else node.hide();
-	}
-} */
 
 function noModule() {
 	alert("Under Construction [" + this.url.replace(".xml","").replace("ref/","") + "]");
@@ -225,7 +213,8 @@ function goTutNext(n) {
 	n += tutInfo.current;
 	var size = tutInfo.seq.length;
 	while (n < 0) n += size;
-	while (n >= size) n -= size;
+	if (n >= size)
+		if (confirm("You have reached the end of the tutorial!\nReturn to Table of Contents?")) n = 0;
 	goTut(tutInfo.seq[n]);
 }
 
@@ -240,9 +229,6 @@ function goTut(id) {
 		var e = $("#PrevTut");
 		if (i) e.show();
 		else e.hide();
-		e = $("#NextTut");
-		if (i == tutInfo.seq.length - 1) e.hide();
-		else e.show();
 	}
 }
 
@@ -251,6 +237,7 @@ function loadTut(data) {
 	var e = $("#TutorPath");
 	e.html("");
 	var p = nodePath(tutInfo.currentNode);
+	if (p.length > 2) p = [p[0], p[p.length-1]];
 	for (var i=0;i<p.length;i++) {
 		var span = $("<span>").html(p[i].title);
 		if (i < p.length - 1) span.addClass("Link").attr("data-id", p[i].id);
