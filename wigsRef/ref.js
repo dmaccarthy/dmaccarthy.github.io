@@ -157,7 +157,7 @@ function tutorial(id) {
 
 function loadTutJson(data) {
 	tutInfo = data;
-	var div = $("<div>").append($("<p>").html("This tutorial is intended for programmers who are already familiar Python. A tutorial for new Python programmers is planned for the near future."));;
+	var div = $("<div>").append($("<p>").html("This tutorial is intended for programmers who are already familiar with Python 3. A tutorial for new Python programmers is planned for the near future."));;
 	data.html = $("<div>").append(div);
 	data.seq = [];
 	seqAppend(data, $(div));
