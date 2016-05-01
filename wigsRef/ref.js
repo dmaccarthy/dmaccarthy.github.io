@@ -74,20 +74,13 @@ function expandAll(e) {
 	e.find("img").attr("src", "img/" + ["minus", "plus"][n] + ".png");
 }
 
-/*
-function nodeText(node) {
-//	node = node.childNodes[0];
-	return (new XMLSerializer()).serializeToString(node.childNodes[0]);
-//	return node.innerHTML ? node.innerHTML : node.textContent;
-}*/
-
 function nodeHtml(node) {
 	var e = $("<code>").html(node.getAttribute("name"));
 	var def = node.getAttribute("default");
 	if (def) e.append($("<span>").addClass("Default").html(" = " + def));
 	e = $("<p>").html(e);
 	var txt = (new XMLSerializer()).serializeToString(node.childNodes[0]);
-	e.append(": ").append(txt); //nodeText(node));
+	e.append(": ").append(txt);
 	e.find("[onclick]").attr("data-stop", 1);
 	var tags = ["Class", "Function", "Constant", "PropA", "PropR", "Method", "Arg"];
 	var n = tags.indexOf(node.tagName);
