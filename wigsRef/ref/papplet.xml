@@ -1,13 +1,13 @@
 <Module name="papplet">
-<Class name="PApplet"><Desc>Represents an interactive animation that runs in the Pygame window and is modelled on <span class="Link" onclick="window.open('http://www.processing.org')">Processing’s</span> <code>PApplet</code> class. <code class="Link" onclick="goRef('sketch','Sketch')">Sketch</code> and <code class="Link" onclick="goRef('physics','Environment')">Environment</code> are subclasses which extend <code>PApplet</code>.</Desc>
-	<Method name="PApplet(setup, draw, eventMap)"><Desc>The constructor creates a <code>PApplet</code> instance. Use the <code>run</code> method to run the sketch.</Desc>
+<Class name="PApplet"><span>Represents an interactive animation that runs in the Pygame window and is modelled on <span class="Link" onclick="window.open('http://www.processing.org')">Processing’s</span> <code>PApplet</code> class. <code class="Link" onclick="goRef('sketch','Sketch')">Sketch</code> and <code class="Link" onclick="goRef('physics','Environment')">Environment</code> are subclasses which extend <code>PApplet</code>.</span>
+	<Method name="PApplet(setup, draw, eventMap)"><span>The constructor creates a <code>PApplet</code> instance. Use the <code>run</code> method to run the sketch.</span>
 		<Arg name="setup(sk)" default="None">An unbound function that initializes the sketch.
 			<Arg name="sk">A reference to the sketch.</Arg>
 		</Arg>
 		<Arg name="draw(sk)" default="None">An unbound function that draws one frame of the animation.
 			<Arg name="sk">A reference to the sketch.</Arg>
 		</Arg>
-		<Arg name="eventMap" default="None"><Desc>A dictionary that maps event types or classes (keys) to handler functions (values). You can use <code>None</code> as a key to specify a handler for events that do not have a custom handler.</Desc></Arg>
+		<Arg name="eventMap" default="None"><span>A dictionary that maps event types or classes (keys) to handler functions (values). You can use <code>None</code> as a key to specify a handler for events that do not have a custom handler.</span></Arg>
 	</Method>
 	<Method name="setBackground(bgImage, bgColor)">Set the sketch background.
 		<Arg name="bgImage" default="None">An image to be used for the sketch background. The sketch aspect ratio will be locked (except when maximized) to match the background image.</Arg>
@@ -17,11 +17,11 @@
 		<Arg name="size" default="(512,288)">The initial size of the sketch in pixels.</Arg>
 		<Arg name="caption" default="&quot;Sketch&quot;">A string specifying the caption for the sketch window.</Arg>
 		<Arg name="icon" default="None">The path to an image to be used as the window icon.</Arg>
-		<Arg name="mode" default="pygame.RESIZABLE"><Desc>Change to <code>0</code> to make the sketch non-resizable.</Desc></Arg>
+		<Arg name="mode" default="pygame.RESIZABLE"><span>Change to <code>0</code> to make the sketch non-resizable.</span></Arg>
 	</Method>
-	<PropR name="frameCount"><Desc>The total number of frames that have been drawn (including the current frame).</Desc></PropR>
-	<PropR name="draw" default="drawBackground"><Desc>A reference to the current drawing function; set by the constructor to the function passed as the <code>draw</code> argument.</Desc></PropR>
-	<PropR name="eventMap" default="{}"><Desc>A dictionary that maps event types (keys) to handler functions (values); set by the constructor to the dictionary passed as the <code>eventMap</code> argument.</Desc></PropR>
+	<PropR name="frameCount"><span>The total number of frames that have been drawn (including the current frame).</span></PropR>
+	<PropR name="draw" default="drawBackground"><span>A reference to the current drawing function; set by the constructor to the function passed as the <code>draw</code> argument.</span></PropR>
+	<PropR name="eventMap" default="{}"><span>A dictionary that maps event types (keys) to handler functions (values); set by the constructor to the dictionary passed as the <code>eventMap</code> argument.</span></PropR>
 </Class>
 
 </Module>

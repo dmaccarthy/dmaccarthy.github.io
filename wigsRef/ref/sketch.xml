@@ -1,6 +1,6 @@
 <Module name="sketch">
-<Class name="Sketch"><Desc>Represents an interactive animation that runs in the Pygame window; supports sprites and GUI controls. In addition to the attributes described here, this class inherits the attributes of its superclass, <code class="Link" onclick="goRef('papplet')">PApplet</code>.</Desc>
-	<Method name="Sketch(setup)"><Desc>The constructor creates a <code>Sketch</code> instance from a setup function. Use the <code>run</code> method to run the sketch.</Desc>
+<Class name="Sketch"><span>Represents an interactive animation that runs in the Pygame window; supports sprites and GUI controls. In addition to the attributes described here, this class inherits the attributes of its superclass, <code class="Link" onclick="goRef('papplet')">PApplet</code>.</span>
+	<Method name="Sketch(setup)"><span>The constructor creates a <code>Sketch</code> instance from a setup function. Use the <code>run</code> method to run the sketch.</span>
 		<Arg name="setup(sk)" default="None">An unbound function that initializes the sketch.
 			<Arg name="sk">A reference to the sketch.</Arg>
 		</Arg>
@@ -11,24 +11,24 @@
 		<Arg name="draw(sk)" default="None">An unbound function that draws one frame of the animation.
 			<Arg name="sk">A reference to the sketch.</Arg>
 		</Arg>
-		<Arg name="eventMap" default="None"><Desc>A dictionary that maps event types or classes (keys) to handler functions (values). You can use <code>None</code> as a key to specify a handler for events that do not have a custom handler.</Desc></Arg>
+		<Arg name="eventMap" default="None"><span>A dictionary that maps event types or classes (keys) to handler functions (values). You can use <code>None</code> as a key to specify a handler for events that do not have a custom handler.</span></Arg>
 	</Method>
 	<Method name="resize(size, mode, ev)">Changes the display size and optionally the mode as well. Adjusts the size to match the aspect ratio of the background image and scales all sprites to the new sketch size.
 		<Arg name="size">A tuple specifying the desired size of the sketch.</Arg>
-		<Arg name="mode" default="None"><Desc>An integer specifying the desired display mode. Set this to <code>pygame.RESIZABLE</code> to make the sketch user resizable, or to <code>0</code> to keep the size fixed.</Desc></Arg>
-		<Arg name="ev" default="None"><Desc>When the called by the <code>run</code> method as a result of a user resize event, the event instance is passed; <code>resize</code> will add an <code>adjustSize</code> attribute to the event it needs to modify the requested size to match the background image aspect ratio.</Desc></Arg>
+		<Arg name="mode" default="None"><span>An integer specifying the desired display mode. Set this to <code>pygame.RESIZABLE</code> to make the sketch user resizable, or to <code>0</code> to keep the size fixed.</span></Arg>
+		<Arg name="ev" default="None"><span>When the called by the <code>run</code> method as a result of a user resize event, the event instance is passed; <code>resize</code> will add an <code>adjustSize</code> attribute to the event it needs to modify the requested size to match the background image aspect ratio.</span></Arg>
 	</Method>
-	<PropA name="wall" default="False"><Desc>Assign a color to this property to create a wall around the sketch. Call the <code>setBackground</code> method after setting the wall color to draw the wall. This property affects the default edge behaviour of sprites.</Desc></PropA>
-	<PropR name="frameNumber"><Desc>The number of frames that have been drawn (including the current frame) since the <code>animate</code> method was last called.</Desc></PropR>
-	<PropR name="draw" default="simpleDraw"><Desc>A reference to the current drawing function. Use the <code>animate</code> method to change the drawing function.</Desc></PropR>
-	<PropR name="io"><Desc>A reference to the GUI dialog object created by the <code>prompt</code> or <code>fileDialog</code> methods. Will be <code>None</code> when no such dialog is running.</Desc></PropR>
+	<PropA name="wall" default="False"><span>Assign a color to this property to create a wall around the sketch. Call the <code>setBackground</code> method after setting the wall color to draw the wall. This property affects the default edge behaviour of sprites.</span></PropA>
+	<PropR name="frameNumber"><span>The number of frames that have been drawn (including the current frame) since the <code>animate</code> method was last called.</span></PropR>
+	<PropR name="draw" default="simpleDraw"><span>A reference to the current drawing function. Use the <code>animate</code> method to change the drawing function.</span></PropR>
+	<PropR name="io"><span>A reference to the GUI dialog object created by the <code>prompt</code> or <code>fileDialog</code> methods. Will be <code>None</code> when no such dialog is running.</span></PropR>
 </Class>
 
 <Class name="Sprite">Represents a graphical object or character that can be drawn on top of the sketch background and is capable of interaction.
-	<Method name="Sprite(sprites, costume, group, **kwargs)"><Desc>The constructor creates a <code>Sprite</code> instance from the <code>costume</code> argument.</Desc>
+	<Method name="Sprite(sprites, costume, group, **kwargs)"><span>The constructor creates a <code>Sprite</code> instance from the <code>costume</code> argument.</span>
 		<Arg name="sprites">A reference to the Sketch or SpriteList instance to which the sprite is being added.</Arg>
 		<Arg name="costume">An image, sequence of images, or file name specifying the sprite’s costume.</Arg>
-		<Arg name="group" default="()"><Desc>A <code>set</code>, or tuple of sets representing the group(s) to which the sprite belongs.</Desc></Arg>
+		<Arg name="group" default="()"><span>A <code>set</code>, or tuple of sets representing the group(s) to which the sprite belongs.</span></Arg>
 		<Arg name="kwargs" default="{}">A dictionary of the sprites initial properties.</Arg>
 	</Method>
 	<PropA name="posn" default="(0,0)">An ordered pair describing the sprite’s position within the sketch.</PropA>
@@ -38,23 +38,23 @@
 	<PropA name="zoom" default="1">The size of the sprite relative to the size of the costume image.</PropA>
 	<PropA name="width">The width of the zoomed, unrotated sprite.</PropA>
 	<PropA name="height">The height of the zoomed, unrotated sprite.</PropA>
-	<PropA name="zoomRate" default="0"><Desc>The relative rate at which the <code>zoom</code> property changes. For example, a value of <code>-0.01</code> decreases the <code>zoom</code> value by 1% per frame.</Desc></PropA>
+	<PropA name="zoomRate" default="0"><span>The relative rate at which the <code>zoom</code> property changes. For example, a value of <code>-0.01</code> decreases the <code>zoom</code> value by 1% per frame.</span></PropA>
 	<PropA name="angle" default="0">The number of degrees clockwise to rotate the sprite’s costume before drawing it. Negative values indicate counter-clockwise rotation.</PropA>
-	<PropA name="spin" default="0"><Desc>The number of degrees by which the <code>angle</code> property changes per frame</Desc>.</PropA>
-	<PropA name="orient" default="False"><Desc>Indicates whether to recalculate the <code>angle</code> property to match the direction of the <code>velocity</code></Desc>.</PropA>
-	<PropA name="elasticity" default="1.0"><Desc>The proportion of the “kinetic energy” to conserve on <code>BOUNCE</code> actions.</Desc></PropA>
-	<PropA name="drag" default="0.0"><Desc>An amount by which to reduce the velocity each frame. For example, a value of <code>0.01</code> reduced the velocity by 1% each frame.</Desc></PropA>
+	<PropA name="spin" default="0"><span>The number of degrees by which the <code>angle</code> property changes per frame</span>.</PropA>
+	<PropA name="orient" default="False"><span>Indicates whether to recalculate the <code>angle</code> property to match the direction of the <code>velocity</code></span>.</PropA>
+	<PropA name="elasticity" default="1.0"><span>The proportion of the “kinetic energy” to conserve on <code>BOUNCE</code> actions.</span></PropA>
+	<PropA name="drag" default="0.0"><span>An amount by which to reduce the velocity each frame. For example, a value of <code>0.01</code> reduced the velocity by 1% each frame.</span></PropA>
 	<PropA name="spinDrag" default="0.0">An amount by which to reduce the spin each frame.</PropA>
-	<PropA name="status" default="VISIBLE"><Desc>An <code>int</code> constant indicating whether the sprite is to be drawn and/or update. Values are <code>VISIBLE</code>, <code>HIDDEN</code>, or <code>DISABLED</code>.</Desc></PropA>
+	<PropA name="status" default="VISIBLE"><span>An <code>int</code> constant indicating whether the sprite is to be drawn and/or update. Values are <code>VISIBLE</code>, <code>HIDDEN</code>, or <code>DISABLED</code>.</span></PropA>
 	<PropA name="currentCostume" default="0">The index specifying the sprite’s current costume.</PropA>
 	<PropA name="costumeTime" default="0">The period (number of frames) at which the costume changes.</PropA>
-	<PropA name="radius" default="None"><Desc>Setting a radius causes the sprite to be treated as a circle rather than a rectangle for collisions. Assigning a value of <code>True</code> causes the radius to be calculated from the width and height of the sprite.</Desc></PropA>
-	<PropA name="edge"><Desc>An <code>int</code> constant indicating what action is to be taken when the sprite reaches the edge of the sketch. Values are <code>BOUNCE</code>, <code>WRAP</code>, <code>REMOVE</code>, <code>HIDDEN</code>, <code>DISABLED</code>, or <code>NO_EDGE</code>.</Desc></PropA>
-	<PropA name="bounceThreshhold" default="0"><Desc>The speed below which a <code>BOUNCE</code> operation considers the perpendicular velocity to be zero.</Desc></PropA>
+	<PropA name="radius" default="None"><span>Setting a radius causes the sprite to be treated as a circle rather than a rectangle for collisions. Assigning a value of <code>True</code> causes the radius to be calculated from the width and height of the sprite.</span></PropA>
+	<PropA name="edge"><span>An <code>int</code> constant indicating what action is to be taken when the sprite reaches the edge of the sketch. Values are <code>BOUNCE</code>, <code>WRAP</code>, <code>REMOVE</code>, <code>HIDDEN</code>, <code>DISABLED</code>, or <code>NO_EDGE</code>.</span></PropA>
+	<PropA name="bounceThreshhold" default="0"><span>The speed below which a <code>BOUNCE</code> operation considers the perpendicular velocity to be zero.</span></PropA>
 	<PropR name="size">The current zoomed size of the sprite as a (width, height) tuple.</PropR>
 	<PropR name="costumes">A list of images representing the sprite’s “costumes”.</PropR>
 	<PropR name="image">An image of the sprite’s current costume that has been zoomed and rotated according to the sprite properties.</PropR>
-	<PropR name="edgeAdjust"><Desc>This property is set to <code>True</code> or <code>False</code> by the <code>frameStep</code> method to indicate whether or not the sprite’s have been adjusted as a result of an edge effect (e.g. <code>BOUNCE</code>, <code>WRAP</code>, etc.).</Desc></PropR>
+	<PropR name="edgeAdjust"><span>This property is set to <code>True</code> or <code>False</code> by the <code>frameStep</code> method to indicate whether or not the sprite’s have been adjusted as a result of an edge effect (e.g. <code>BOUNCE</code>, <code>WRAP</code>, etc.).</span></PropR>
 	<PropR name="rect">A rectangle object describing the screen location of the zoomed and rotated sprite.</PropR>
 	<PropR name="speed">The magnitude of the sprite’s velocity.</PropR>
 
@@ -69,7 +69,7 @@ bounceThreshhold = 0
 	</Method-->
 </Class>
 
-<Class name="SpriteList"><Desc>Represents the sequence of sprites that have been added to a sketch. The sketch’s <code>sprites</code> attribute is a reference to the <code>SpriteList</code> instance, which is created automatically by the <code>Sketch</code> constructor.</Desc>
+<Class name="SpriteList"><span>Represents the sequence of sprites that have been added to a sketch. The sketch’s <code>sprites</code> attribute is a reference to the <code>SpriteList</code> instance, which is created automatically by the <code>Sketch</code> constructor.</span>
 	<PropR name="a">a</PropR>
 	<PropA name="b">b</PropA>
 	<Method name="c">c
@@ -83,33 +83,33 @@ bounceThreshhold = 0
 	<Arg name="yflip" default="False">Indicates whether to flip the images vertically.</Arg>
 </Function-->
 
-<Function name="collide_sprite(left, right) → bool"><Desc>Determines whether two sprites are colliding. Sprites are treated as circles if their <code>radius</code> property has been set, otherwise they are treated as rectangles. Rotation of the rectangular sprites is taken into account in determining the collision status. This is the most accurate (i.e. slowest) collision detection.</Desc>
-	<Arg name="left"><Desc>A <code>Sprite</code> instance.</Desc></Arg>
-	<Arg name="right"><Desc>A second <code>Sprite</code> instance.</Desc></Arg>
+<Function name="collide_sprite(left, right) → bool"><span>Determines whether two sprites are colliding. Sprites are treated as circles if their <code>radius</code> property has been set, otherwise they are treated as rectangles. Rotation of the rectangular sprites is taken into account in determining the collision status. This is the most accurate (i.e. slowest) collision detection.</span>
+	<Arg name="left"><span>A <code>Sprite</code> instance.</span></Arg>
+	<Arg name="right"><span>A second <code>Sprite</code> instance.</span></Arg>
 </Function>
 
 <Function name="collide_rect(left, right) → bool">Determines whether two sprites are colliding. Sprites are treated as rectangles with no accounting for rotation. This is the simplest (i.e. fastest) but least accurate collision detection.
-	<Arg name="left"><Desc>A <code>Sprite</code> instance.</Desc></Arg>
-	<Arg name="right"><Desc>A second <code>Sprite</code> instance.</Desc></Arg>
+	<Arg name="left"><span>A <code>Sprite</code> instance.</span></Arg>
+	<Arg name="right"><span>A second <code>Sprite</code> instance.</span></Arg>
 </Function>
 
 <Function name="collide_rect_advanced(left, right) → bool">Determines whether two sprites are colliding. Sprites are treated as rectangles and rotation is accounted for.
-	<Arg name="left"><Desc>A <code>Sprite</code> instance.</Desc></Arg>
-	<Arg name="right"><Desc>A second <code>Sprite</code> instance.</Desc></Arg>
+	<Arg name="left"><span>A <code>Sprite</code> instance.</span></Arg>
+	<Arg name="right"><span>A second <code>Sprite</code> instance.</span></Arg>
 </Function>
 
-<Function name="collide_circ(left, right) → bool"><Desc>Determines whether two sprites are colliding. Sprites are treated as circles; both sprites must have a <code>radius</code> property for this function to work.</Desc>
-	<Arg name="left"><Desc>A <code>Sprite</code> instance.</Desc></Arg>
-	<Arg name="right"><Desc>A second <code>Sprite</code> instance.</Desc></Arg>
+<Function name="collide_circ(left, right) → bool"><span>Determines whether two sprites are colliding. Sprites are treated as circles; both sprites must have a <code>radius</code> property for this function to work.</span>
+	<Arg name="left"><span>A <code>Sprite</code> instance.</span></Arg>
+	<Arg name="right"><span>A second <code>Sprite</code> instance.</span></Arg>
 </Function>
 
 <Function name="" return="">
 	<Arg name="x" default="7">a</Arg>
 </Function>
 
-<Constant name="VISIBLE"><Desc>Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is to be drawn and updated.</Desc></Constant>
-<Constant name="HIDDEN"><Desc>Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is to be updated but not drawn.</Desc></Constant>
-<Constant name="DISABLED"><Desc>Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is not to be drawn or updated.</Desc></Constant>
+<Constant name="VISIBLE"><span>Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is to be drawn and updated.</span></Constant>
+<Constant name="HIDDEN"><span>Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is to be updated but not drawn.</span></Constant>
+<Constant name="DISABLED"><span>Used as a <code>Sprite</code> instance’s <code>status</code> property to indicate that the sprite is not to be drawn or updated.</span></Constant>
 <Constant name="ENABLED">Indicates that a sprite is not disabled.</Constant>
 <Constant name="NO_EDGE">Indicates no action to be taken when the sprite reaches the edge of the sketch.</Constant>
 <Constant name="BOUNCE">Indicates that the sprite bounces from the edge of the sketch.</Constant>
