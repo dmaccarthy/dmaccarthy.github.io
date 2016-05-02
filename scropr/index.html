@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>scropr Documentation</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:700"/>
+<link rel="stylesheet" type="text/css" href="../css/default.css"/>
+<link rel="stylesheet" type="text/css" href="../css/ref.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"> </script>
+<script type="text/javascript" src="ref.js"> </script>
+<script type="text/javascript">//<!--
+
+//--></script>
+</head>
+<body>
+<nav>
+	<h1 class="Center">scropr</h1>
+	<p id="HideNav"><a class="Small" href="javascript:hideNav()">Hide</a></p>
+	<p class="Link" data-go="Overview">Overview</p>
+	<p class="Link" data-go="Install">Installation Guide</p>
+	<p class="Link" onclick="tutorial()">Tutorial</p>
+	<p class="Link" data-go="Reference">Reference</p>
+	<hr/><div class="Small">
+		<p class="Center">Copyright &copy; 2015–2016 <a href="mailto:devscropr@gmail.com">D. MacCarthy</a></p>
+		<p>The <code>scropr</code> software itself is licensed under the <a href="http://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License Version 3</a>.</p>
+		<p>This documentation is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+		<p class="Center"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></p>
+	</div>
+</nav>
+
+<div id="Content">
+
+<article id="Overview">
+	<h3>Overview</h3>
+	<p><code>scropr</code> is a Python 3 package for educational programming. Its aim is to make it easy for new programmers (and experienced one too!) to create interactive programs with graphics and animations.</p>
+	<p>The project is motivated by the recurring question: “What is the best language to learn as a first programming language?” Popular answers to this question include <a href="http://www.python.org">Python</a>, <a href="http://www.processing.org">Processing</a>, <a href="http://scratch.mit.edu">Scratch</a>, and various robot control languages. The <code>scropr</code> project aims to make the best features of the other languages available in Python. (The name <code>scropr</code> comes from the first two letters of Scratch, robotics, and Porocessing.)</p>
+	<p class="Center"><img src="img/screen0.png" height="384" alt="Screenshot" data-n="0"/></p>
+	<p>Features include:</p>
+	<ul>
+		<li>a simple framework for creating interactive animations</li>
+		<li>image manipulation</li>
+		<li>graphical user interface</li>
+		<li>graph plotting</li>
+		<li>sprite management</li>
+		<li>physics-based collisions</li>
+		<li>robotics simulations</li>
+	</ul>
+	<p>To learn more, select one of the blue links from the navigation panel along the left side of the page.</p>
+</article>
+
+<article id="Install">
+	<h3>Installation Guide</h3>
+	<p>The <code>scropr</code> package requires:</p>
+	<ul>
+		<li><a href="http://www.python.org">Python 3.2+</a></li>
+		<li><a href="http://pygame.org/download.shtml">Pygame 1.9.1+</a></li>
+	</ul>
+	<p>Please ensure that Python and Pygame are both installed before setting up <code>scropr</code>.</p>
+	<p><a href="https://github.com/dmaccarthy/scropr/releases">Download</a> the <code>scropr</code> source code from GitHub as a zip or tar.gz archive. Open the archive with your favourite archive program* and extract the <code>scropr</code> package. (*Windows Explorer can be used to open the zip format archive.)</p>
+	<p class="Center"><img src="img/scroprZip.png" alt="Image"/></p>
+	<p>As <code>scropr</code> is entirely Python 3 source code, no special installation is required. Simply extract the <code>scropr</code> folder to your source folder, or to another location in your PYTHONPATH (e.g. the <code>Lib/site-packages</code> folder of your Python installation.)</p>
+</article>
+
+<article id="Reference">
+	<h3>Reference</h3>
+	<table><thead><tr><th>Module</th><th>Description</th></tr></thead>
+		<tbody id="modules">
+			<tr><td class="Link" onclick="goRef('sketch')">sketch</td><td>Create interactive animations with support for sprites and GUI controls.</td></tr>
+			<tr><td class="Link" onclick="goRef('physics')">physics</td><td>Create animations with objects that have physics-based collision behaviour.</td></tr>
+			<tr><td class="Link" onclick="goRef('papplet')">papplet</td><td>Create interactive animations with a Processing-like API; no sprite or GUI features.</td></tr>
+			<tr><td class="Link" onclick="goRef('robot')">robot</td><td>Create robot sprites controlled by a “brain” that runs in its own thread.</td></tr>
+			<tr><td class="Link" onclick="goRef('image')">image</td><td>Load and manipulate images.</td></tr>
+			<tr><td class="Link" onclick="goRef('plot')">plot</td><td>Create graphs and other drawings that use an abstract coordinate system.</td></tr>
+			<tr><td class="Link" onclick="goRef('geometry')">geometry</td><td>Perform various geometric calculations.</td></tr>
+			<tr><td class="Link" onclick="goRef('gui')">gui</td><td>Create and run GUI dialogs.</td></tr>
+			<tr><td class="Link" onclick="goRef('widgets')">widgets</td><td>Create GUI controls.</td></tr>
+			<tr><td class="Link" onclick="goRef('util')">util</td><td>Miscellaneous features.</td></tr>
+		</tbody>
+	</table>
+</article>
+
+<article id="Tutorial">
+	<h3 id="TutorPath"></h3>
+	<p><b style="color:red">The tutorial is currently under construction.</b></p>
+	<div id="TutorHtml"></div>
+	<p class="Center">
+		<button class="Link" id="PrevTut" onclick="goTutNext(-1)">Previous<br/>Page</button>
+		<button class="Link" id="NextTut" onclick="goTutNext()">Next<br/>Page</button></p>
+</article>
+
+<article id="Module">
+	<h3>scropr.<span id="ModuleName">?</span></h3>
+	<p><b style="color:red">The reference is currently under construction.</b></p>
+	<p class="Center">
+		<button class="Link" title="Expand / Collapse" onclick="expandAll(this)" data-state=1><img class="Icon" src="img/plus.png"/><span>Expand</span></button> &nbsp;
+		<button class="Link" title="Toggle Classes" onclick="toggle(0)"><img class="Icon" src="img/class.png"/>Classes</button> &nbsp;
+		<button class="Link" title="Toggle Functions" onclick="toggle(1)"><img class="Icon" src="img/function.png"/>Functions</button> &nbsp;
+		<button class="Link" title="Toggle Constants" onclick="toggle(2)"><img class="Icon" src="img/constant.png"/>Constants</button>
+	</p>
+	<p class="Center">
+		<img class="Icon" src="img/propa.png"/>Assignable &nbsp;
+		<img class="Icon" src="img/propr.png"/>Read-only
+	</p><hr/>
+	<div id="ModuleHtml">Content</div>
+</article>
+
+</div>
+
+</body>
+</html>

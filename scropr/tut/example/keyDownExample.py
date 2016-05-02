@@ -1,7 +1,7 @@
 #!python3
 
-from wigs.sketch import Sketch, Sprite, BOUNCE
-from wigs.image import Image
+from scropr.sketch import Sketch, Sprite, BOUNCE
+from scropr.image import Image
 from pygame import KEYDOWN
 from random import uniform, randint
 

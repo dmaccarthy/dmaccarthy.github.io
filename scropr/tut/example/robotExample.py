@@ -1,10 +1,10 @@
 #!python3
 
-from wigs.sketch import Sprite
-from wigs.image import Image
-from wigs.physics import Environment
-from wigs.util import rgba
-from wigs.robot import Robot, remote_control
+from scropr.sketch import Sprite
+from scropr.image import Image
+from scropr.physics import Environment
+from scropr.util import rgba
+from scropr.robot import Robot, remote_control
 from pygame import KEYDOWN
 
 WHITE, BLACK, RED, BLUE = rgba("white", "black", "red", "blue")
