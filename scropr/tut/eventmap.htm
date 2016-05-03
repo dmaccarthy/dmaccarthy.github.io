@@ -2,7 +2,7 @@
 
 <p>As the previous page explained, your sketch monitors the Pygame event queue to keep track of the mouse and keyboard state. Your program can provide event handler functions that the sketch will call to respond to any events in the queue. Event handlers take two arguments: a reference to the sketch object and a description of the event.</p>
 
-<p>For example, suppose we wanted to reset our animation by removing all sprites when the user typed the letter <code>"r"</code>. We could define the following event handler...</p>
+<p>For example, suppose we wanted to reset our animation by removing all sprites whenever the user typed the letter <code>"r"</code>. We could define the following event handler...</p>
 
 <pre class="Code"><span class="Proto">def</span> keyDown(sk, ev):
     if sk.char == "r":

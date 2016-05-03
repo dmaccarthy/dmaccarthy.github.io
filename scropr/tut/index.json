@@ -4,6 +4,7 @@
 		{"id":"mouse", "title":"Mouse & Keyboard"},
 		{"id":"eventMap", "title":"Handling Events"},
 		{"id":"OOP", "title":"Object-Oriented Sketches"},
-		{"id":"phys", "title":"Physics-Based Collisions"}
+		{"id":"phys", "title":"Physics-Based Collisions"},
+		{"id":"input", "title":"User Input"}
 	]}
 ]}

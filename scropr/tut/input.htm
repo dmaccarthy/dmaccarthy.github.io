@@ -1,0 +1,45 @@
+<div>
+
+<p>The <code>Sketch</code> class includes methods for obtaining higher-level user input. The <code class="Link" onclick="goRef('sketch', 'Sketch.prompt')">prompt</code> methods runs a GUI dialog requesting input from the user. The <code>prompt</code> dialog runs asynchronously: it does not wait for the user to finish providing input, but continues running the sketch while the dialog runs.</p>
+
+<pre class="Code">from scropr.sketch import Sketch, Sprite, BOUNCE, WRAP, <span class="Highlight">USERINPUT</span>
+from scropr.image import Image
+
+<span class="Proto">def</span> setup(sk):
+    sk.setBackground("bg.png")
+    Sprite(sk, "costume.png", height=sk.height/8, posn=sk.center, velocity=(2,1), edge=BOUNCE)
+    <span class="Highlight">sk.prompt</span>("What is your name?")
+    sk.animate(eventMap={<span class="Highlight">USERINPUT</span>:user})
+
+<span class="Proto">def</span> user(sk, ev):
+    img = Image.text(str(ev.value), font=sk.loadFont("serif", 32), color=(255,0,0))
+    Sprite(sk, img, posn=sk.center, velocity=(1,1), spin=2, edge=WRAP)
+
+Sketch(setup).run()</pre>
+
+<p>When the user closes the dialog, a custom <code>USERINPUT</code> event will be sent to the event handler that your program specifies. The event object will have a <code>value</code> attribute that contains the user’s input, or <code>None</code> if the dialog was closed with the <em>Cancel</em> button.</p>
+
+<p>The <code>prompt</code> method accepts a number of optional arguments to customize the dialog:</p>
+<ul>
+	<li><code>title</code>: A <code>str</code> specifying the title of the dialog.</li>
+	<li><code>allowCancel</code>: A <code>bool</code> indicating whether to enable or disable the <em>Cancel</em> button.</li>
+	<li><code>default</code>: The default value, as a <code>str</code>, to display in the input area.</li>
+	<li><code>minSize</code>: The minimum size for the dialog as a 2-tuple of integers.</li>
+	<li><code>password</code>: A character (usually <code>"*"</code>) to be printed in place of the characters typed.</li>
+	<li><code>validator</code>: This argument specifies the type of input requested: <code>str</code> (default), <code>int</code>, <code>float</code>, <code>bool</code>, or <code>datetime.date</code>. This can also be a custom validator function that converts the <code>str</code> input to processed data, and raises an exception for invalid data. There is a function <code>number</code> defined in the <code>scropr.io</code> module that can be used to request integer or floating point values within a certain range...</li>
+</ul>
+
+
+<pre class="Code">from scropr.io import number
+...
+
+<span class="Proto">def</span> setup(sk):
+    sk.setBackground("bg.png")
+    Sprite(sk, "costume.png", height=sk.height/8, posn=sk.center, velocity=(2,1), edge=BOUNCE)
+    msg = "Please enter a number between 1 and 100."
+    sk.prompt(msg, allowCancel=False, title="Guess a Number",
+        <span class="Highlight">validator=number</span>).<span class="Highlight">validConfig</span>(integer=True, low=1, high=100)
+    sk.animate(eventMap={USERINPUT:user})</pre>
+
+</div>
+
