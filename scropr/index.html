@@ -52,18 +52,35 @@
 </article>
 
 <article id="Install">
-	<h3>Installation Guide</h3>
+	<h3>Requirements</h3>
 	<p>The <code>scropr</code> package requires:</p>
 	<ul>
 		<li><a href="http://www.python.org">Python 3.2+</a></li>
 		<li><a href="http://pygame.org/download.shtml">Pygame 1.9.1+</a></li>
 	</ul>
 	<p>Please ensure that Python and Pygame are both installed before setting up <code>scropr</code>.</p>
-	<p>You can install <code>scropr</code> using <code>pip</code>...</p>
-	<pre class="Code">pip install https://github.com/dmaccarthy/scropr/archive/master.zip</pre>
-	<p>Alternatively, since <code>scropr</code> is entirely Python 3 source code, you can <a href="https://github.com/dmaccarthy/scropr/releases">download</a> the source code from GitHub and extract the <code>scropr</code> package into your project folder or elsewhere in your system PYTHONPATH...</p>
-	<p class="Center"><img src="img/scroprZip.png" alt="Image"/></p>
-	<!--p>As <code>scropr</code> is entirely Python 3 source code, no special installation is required. Simply extract the <code>scropr</code> folder to your source folder, or to another location in your PYTHONPATH (e.g. the <code>Lib/site-packages</code> folder of your Python installation.)</p-->
+	
+	<h3>Install with <code>pip</code></h3>
+	<p>To install using <code>pip</code>, run the following command to install the current development version with the latest improvements and bug fixes...</p>
+	<pre class="Code">pip install https://github.com/dmaccarthy/scropr/archive/<span class="Red">master</span>.zip</pre>
+	<p>If you prefer to install a versioned release, replace <code class="Red">master</code> with a specific version such as <code class="Red">v0.7a0</code>. A list of versions is available on <a href="https://github.com/dmaccarthy/scropr/releases">GitHub</a>.</p>
+
+	<h3>Alternate Install</h3>
+	<p>If you don’t want to use <code>pip</code>, the following alternative install is available...</p>
+	<ul>
+		<li>Download an archived release from <a href="https://github.com/dmaccarthy/scropr/releases">GitHub</a>.</li>
+		<li>Extract the folder containing <code>setup.py</code>.</li>
+		<li>Run <code>setup.py</code> with the Python version you will be using.</li>
+	</ul>
+
+	<h3>Project Install</h3>
+	<p>If you don’t want to install <code>scropr</code> as a site-package, you can simply add the <code>scropr</code> source code to your project folder or PYTHONPATH.</p>
+	<p class="Center"><img src="img/scroprZip.png" alt="Image" title="Archive Screenshoot"/></p>
+	<ul>
+		<li>Download an archived release from <a href="https://github.com/dmaccarthy/scropr/releases">GitHub</a>.</li>
+		<li>Locate the folder containing the <code>scropr</code> package (the same folder that contains <code>setup.py</code>).</li>
+		<li>Extract the <code>scropr</code> package into your project folder or PYTHONPATH.</li>
+	</ul>
 </article>
 
 <article id="Reference">
