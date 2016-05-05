@@ -35,9 +35,9 @@ from random import uniform, randint
         self.sprites.remove(collisions)
 
         <span class="Comment"># Make sprites follow mouse</span>
+        accel = self.height / 10000
         for sprite in self.sprites:
-            a = self.height / 10000
-            sprite.accel = sprite.toward(self.mouseXY, a)
+            sprite.accel = sprite.toward(self.mouseXY, accel)
 
     <span class="Proto">def</span> keyDown(self, ev):
         <span class="DocString">"Remove all sprites"</span>

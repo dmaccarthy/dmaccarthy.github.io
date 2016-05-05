@@ -4,9 +4,9 @@
 
 <p>Adding the following loop to the <code>customDraw</code> function of the previous example will make all sprites accelerate toward the mouse position...</p>
 
-<pre class="Code">for sprite in sk.sprites:
-    a = sk.height / 10000
-    sprite.accel = sprite.toward(sk.mouseXY, a)</pre>
+<pre class="Code">accel = sk.height / 10000
+for sprite in sk.sprites:
+    sprite.accel = sprite.toward(sk.mouseXY, accel)</pre>
 
 <p>Here is the <a href="tut/example/mouseExample.py">complete program</a>.</p>
 

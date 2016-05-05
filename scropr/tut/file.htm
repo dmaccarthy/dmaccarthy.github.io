@@ -1,0 +1,28 @@
+<div>
+
+<p>The <code>Sketch</code> class includes a <code>fileDialog</code> method that allows the user to browse for files or folders. File dialogs work much the same as user prompts in that they run asynchronously and they generate a <code>USERINPUT</code> event when the dialog is closed...</p>
+
+<pre class="Code">from scropr.sketch import Sketch, USERINPUT, OPEN
+
+def setup(sk):
+    sk.setBackground("bg.png")
+    sk.<span class="Highlight">fileDialog</span>(OPEN, initFilter="&lt;Image&gt;")
+    sk.animate(eventMap={USERINPUT:fileSelected})
+
+def fileSelected(sk, ev):
+    print(ev.value)
+    sk.quit = True
+
+Sketch(setup).run((800,600))</pre>
+
+<p>The first argument to the <code>fileDialog</code> method is one of the constants <code>OPEN</code>, <code>SAVE</code>, or <code>FOLDER</code> which specify the purpose of the dialog. The other arguments are <code>allowCancel</code> (which indicates whether the <em>Cancel</em> button is enabled or disabled), and <code>initFilter</code> (which indicates the types of files to display). The value of <code>initFilter</code> can be a pattern (e.g. <code>"*.png"</code> or <code>"*.png;*.jpg"</code>) or a group of file types (e.g. <code>"&lt;Image&gt;;&lt;Video&gt;"</code>)</p>
+
+<p>File types and their groups and icons are defined in the <code>"icons"</code> subfolder of the <code>scropr</code> package and in the file <code>"fileBrowser.json"</code> located in that folder. To customize the icons or file types, you can set the <code>iconPath</code> and <code>iconJson</code> attributes of the <code>FileBrowser</code> class...</p>
+
+<pre class="Code">from scropr.grid import FileBrowser
+
+FileBrowser.iconPath = "myIcons/{}.png"
+FileBrowser.iconJson = "myIcons/myIcons.json"</pre>
+
+</div>
+

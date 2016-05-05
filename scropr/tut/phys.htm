@@ -25,6 +25,10 @@ from random import uniform
 <span class="Comment"># Run the sketch</span>
 <span class="Highlight">Environment</span>(setup).run()</pre>
 
-<p>If you create a custom drawing function, be sure to call the <code class="Link" onclick="goRef('physics','Environment.physicsDraw')">physicsDraw</code> method instead of <code>simpleDraw</code> to preserve the physics-based behaviour.</p>
+<p>If you create a custom drawing function, be sure to call the <code class="Link" onclick="goRef('physics','Environment.physicsDraw')">physicsDraw</code> method instead of <code>simpleDraw</code> to preserve the physics-based behaviour. Alternatively, perform these three actions individually within your drawing function...</p>
+
+<pre class="Code">sk.drawBackground() <span class="Comment"># Redraw background</span>
+sk.physics()        <span class="Comment"># Update colliding masses</span>
+sk.sprites.draw()   <span class="Comment"># Redraw sprites</span></pre>
 
 </div>

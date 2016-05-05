@@ -31,9 +31,9 @@ def customDraw(sk):
     sk.sprites.remove(collisions)
 
     # Make sprites follow mouse
+    accel = sk.height / 10000
     for sprite in sk.sprites:
-        a = sk.height / 10000
-        sprite.accel = sprite.toward(sk.mouseXY, a)
+        sprite.accel = sprite.toward(sk.mouseXY, accel)
 
 def keyDown(sk, ev):
     "Remove all sprites"

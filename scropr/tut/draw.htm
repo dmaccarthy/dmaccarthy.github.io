@@ -85,6 +85,11 @@ Sketch(setup).run()</pre>
 
 <p>The first instruction calls the sketch’s <code class="Link" onclick="goRef('sketch','Sketch.simpleDraw')">simpleDraw</code> method. This method redraws the background image (thereby covering the previous frame), draws each of the sprites, and then updates the sprites’ properties in preparation for the next frame. The <code>simpleDraw</code> method is the sketch’s default drawing function; if we had not specified a custom drawing function, the sketch would use <code>simpleDraw</code> to perform the animation.</p>
 
+<p>If your program cannot draw the background and the sprites consecutively — for example if you need to draw something on top of the background but below the sprites — you can perform these operations separately rather than calling <code>simpleDraw</code>...</p>
+
+<pre class="Code">sk.drawBackground()
+sk.sprites.draw()</pre>
+	
 <p>The <code>if</code> block randomly creates sprites with random properties. Note the second argument to the <code>Sprite</code> constructor is the pre-loaded image, <code>sk.image_monster</code>. Using an image file name here would be very inefficient, since it would cause the program to reload and decode the same image file every time it creates a new sprite.</p>
 
 <p>Setting the <code>radius</code> keyword to <code>True</code> in the <code>Sprite</code> constructor indicates that we want to treat the sprite as a circle for the purpose of determining whether it is colliding; if this argument is not provided, the sprite will be treated as a rectangle. Specifying the <code>orient</code> keyword as <code>True</code> keeps the sprite oriented in the direction of its velocity.</p>
