@@ -90,7 +90,8 @@ function nodeHtml(node) {
 	var div = $("<div>").addClass("Collapse");
 	for (var j=0;j<cNodes.length;j++) if (cNodes[j] != node.childNodes[0])
 		div.append(nodeHtml(cNodes[j]));
-	e = $("<div>").append(e.addClass("Hanging").click(collapse).attr({title:"Click to exapnd or collapse"}));
+	if (node.childNodes.length > 1)
+		e = $("<div>").append(e.addClass("Hanging").click(collapse).attr({title:"Click to exapnd or collapse"}));
 	if (n<3) e.attr("data-type", n);
 	e.append(div).find("div.Collapse").hide();
 	return e;

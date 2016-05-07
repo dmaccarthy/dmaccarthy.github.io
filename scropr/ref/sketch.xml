@@ -25,12 +25,15 @@
 </Class>
 
 <Class name="Sprite">Represents a graphical object or character that can be drawn on top of the sketch background and is capable of interaction.
-	<Method name="Sprite(sprites, costume, group, **kwargs)"><span>The constructor creates a <code>Sprite</code> instance from the <code>costume</code> argument.</span>
-		<Arg name="sprites">A reference to the Sketch or SpriteList instance to which the sprite is being added.</Arg>
-		<Arg name="costume">An image, sequence of images, or file name specifying the sprite’s costume.</Arg>
-		<Arg name="group" default="()"><span>A <code>set</code>, or tuple of sets representing the group(s) to which the sprite belongs.</span></Arg>
-		<Arg name="kwargs" default="{}">A dictionary of the sprites initial properties.</Arg>
+	<Method name="Sprite(sprites, costume, *group, **kwargs)"><span>The constructor creates a <code>Sprite</code> instance from the <code>costume</code> argument.</span>
+		<Arg name="sprites"><span>A reference to the <code>Sketch</code> or <code>SpriteList</code> instance to which the sprite is being added.</span></Arg>
+		<Arg name="costume">An image, sequence of images, or file name specifying the sprite’s costumes.</Arg>
+		<Arg name="group" default="()"><span>A sequence of <code>set</code> instances representing the group(s) to which the sprite belongs.</span></Arg>
+		<Arg name="kwargs" default="{}">A dictionary of the sprite’s initial properties.</Arg>
 	</Method>
+	<Method name="config(**kwargs) → Sprite"><span>Modifies the sprite’s assignable properties as specified by <code>kwargs</code>.</span></Method>
+	<Method name="calcRect() → pygame.Rect"><span>Recalculate the <code>rect</code> property; called by the <code>config</code> and <code>frameStep</code> methods.</span></Method>
+	<PropA name="costumes"><span>A sequence of images representing the sprite’s “costumes”; returns a <code>list</code></span></PropA>
 	<PropA name="posn" default="(0,0)">An ordered pair describing the sprite’s position within the sketch.</PropA>
 	<PropA name="velocity" default="(0,0)">An ordered pair describing the sprite’s velocity.</PropA>
 	<PropA name="accel" default="(0,0)">An ordered pair describing the sprite’s acceleration.</PropA>
@@ -51,12 +54,10 @@
 	<PropA name="radius" default="None"><span>Setting a radius causes the sprite to be treated as a circle rather than a rectangle for collisions. Assigning a value of <code>True</code> causes the radius to be calculated from the width and height of the sprite.</span></PropA>
 	<PropA name="edge"><span>An <code>int</code> constant indicating what action is to be taken when the sprite reaches the edge of the sketch. Values are <code>BOUNCE</code>, <code>WRAP</code>, <code>REMOVE</code>, <code>HIDDEN</code>, <code>DISABLED</code>, or <code>NO_EDGE</code>.</span></PropA>
 	<PropA name="bounceThreshhold" default="0"><span>The speed below which a <code>BOUNCE</code> operation considers the perpendicular velocity to be zero.</span></PropA>
+	<PropR name="rect"><span>This property describes the sprite’s blit rectangle. For efficiency, it is not updated every time it is accessed; rather, the <code>frameStep</code> method updates the <code>rect</code> property once per frame. Each call to the <code>config</code> method also recalculates it. If properties affecting the blit rectangle e.g. (<code>posn</code>, <code>angle</code>, <code>zoom</code>, <code>height</code>, <code>width</code>) are modified outside of <code>frameStep</code> or <code>config</code>, the <code>rect</code> property will be stale. You can call the <code>calcRect</code> method to recalculate it.</span></PropR>
 	<PropR name="size">The current zoomed size of the sprite as a (width, height) tuple.</PropR>
-	<PropR name="costumes">A list of images representing the sprite’s “costumes”.</PropR>
 	<PropR name="image">An image of the sprite’s current costume that has been zoomed and rotated according to the sprite properties.</PropR>
 	<PropR name="edgeAdjust"><span>This property is set to <code>True</code> or <code>False</code> by the <code>frameStep</code> method to indicate whether or not the sprite’s have been adjusted as a result of an edge effect (e.g. <code>BOUNCE</code>, <code>WRAP</code>, etc.).</span></PropR>
-	<PropR name="rect">A rectangle object describing the screen location of the zoomed and rotated sprite.</PropR>
-	<PropR name="speed">The magnitude of the sprite’s velocity.</PropR>
 
 <!--	
 edgeAdjust = None
