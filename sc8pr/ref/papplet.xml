@@ -26,7 +26,7 @@
 		<Arg name="italic" default="False">Whether the font is to be rendered in italics.</Arg>
 		<Arg name="lineHeight" default="False">Whether the size is to be interpreted as the line height. This is slower but produces more consistent sizes among different typefaces.</Arg>
 	</Method>
-	<Method name="useFonts(path)"><span>A class method that specifies a JSON file defining font substitutions. If not called, <code>"fonts.json"</code> in the <code>scropr</code> folder will be used.</span>
+	<Method name="useFonts(path)"><span>A class method that specifies a JSON file defining font substitutions. If not called, <code>"fonts.json"</code> in the <code>sc8pr</code> folder will be used.</span>
 		<Arg name="path">Path to the file.</Arg>
 	</Method>
 	<Method name="pseudonym(pseudo, name)"><span>Get or set a font pseudonym.</span>
@@ -45,7 +45,7 @@
 	<PropA name="saveName" default="save/image{:05d}.png"><span>A string format template to use as the file name for individual captured frames.</span></PropA>
 	<PropA name="recordName" default="save/seq{:03d}_{:05d}.png"><span>A string format template to use as the file name for sequences of captured frames.</span></PropA>
 	<PropA name="recordGui" default="False"><span>A <code>bool</code> specifying whether frames are to be recorded after or before GUI controls are drawn.</span></PropA>
-	<PropA name="cursor" default="ARROW"><span>The cursor to be displayed within the sketch. The cursor can be a builtin or custom cursor from <code>pygame.cursor</code> or you can use these cursors from <code>scropr.util</code>: <code>ARROW</code>, <code>DIAMOND</code>, <code>MOVE</code>, <code>TEXT</code>, <code>CROSS</code>, <code>HAND</code>, <code>MENU</code>, <code>NO_CURSOR</code>.</span></PropA>
+	<PropA name="cursor" default="ARROW"><span>The cursor to be displayed within the sketch. The cursor can be a builtin or custom cursor from <code>pygame.cursor</code> or you can use these cursors from <code>sc8pr.util</code>: <code>ARROW</code>, <code>DIAMOND</code>, <code>MOVE</code>, <code>TEXT</code>, <code>CROSS</code>, <code>HAND</code>, <code>MENU</code>, <code>NO_CURSOR</code>.</span></PropA>
 	<PropA name="light" default="None"><span>A color specifying the ambient light; the sketch will be tinted based on this color.</span></PropA>
 	<PropR name="frameCount"><span>The total number of frames that have been drawn (including the current frame).</span></PropR>
 	<PropR name="draw" default="drawBackground"><span>A reference to the current drawing function; this attribute is set by the constructor based on its <code>draw</code> argument.</span></PropR>

@@ -1,10 +1,10 @@
 #!python3
 
-from scropr.sketch import Sprite
-from scropr.image import Image
-from scropr.physics import Environment
-from scropr.util import rgba
-from scropr.robot import Robot, remote_control
+from sc8pr.sketch import Sprite
+from sc8pr.image import Image
+from sc8pr.physics import Environment
+from sc8pr.util import rgba
+from sc8pr.robot import Robot, remote_control
 from pygame import KEYDOWN
 
 WHITE, BLACK, RED, BLUE = rgba("white", "black", "red", "blue")

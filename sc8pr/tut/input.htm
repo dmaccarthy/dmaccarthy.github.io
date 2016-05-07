@@ -2,8 +2,8 @@
 
 <p>The <code>Sketch</code> class includes methods for obtaining higher-level user input. The <code class="Link" onclick="goRef('sketch', 'Sketch.prompt')">prompt</code> methods runs a GUI dialog requesting input from the user. The <code>prompt</code> dialog runs asynchronously; it does not wait for the user to finish providing input, but continues running the sketch while the dialog runs.</p>
 
-<pre class="Code">from scropr.sketch import Sketch, Sprite, BOUNCE, WRAP, <span class="Highlight">USERINPUT</span>
-from scropr.image import Image
+<pre class="Code">from sc8pr.sketch import Sketch, Sprite, BOUNCE, WRAP, <span class="Highlight">USERINPUT</span>
+from sc8pr.image import Image
 
 <span class="Proto">def</span> setup(sk):
     sk.setBackground("bg.png")
@@ -26,11 +26,11 @@ Sketch(setup).run()</pre>
 	<li><code>default</code>: The default value, as a <code>str</code>, to display in the input area.</li>
 	<li><code>minSize</code>: The minimum size for the dialog as a 2-tuple of integers.</li>
 	<li><code>password</code>: A character (usually <code>"*"</code>) to be printed in place of the characters typed.</li>
-	<li><code>validator</code>: This argument specifies the type of input requested: <code>str</code> (default), <code>int</code>, <code>float</code>, <code>bool</code>, <code>datetime.date</code>, or <code>None</code>. This can also be a custom validator function that converts the <code>str</code> input to processed data, and raises an exception for invalid data. There is a function <code>number</code> defined in the <code>scropr.io</code> module that can be used to request integer or floating point values within a certain range...</li>
+	<li><code>validator</code>: This argument specifies the type of input requested: <code>str</code> (default), <code>int</code>, <code>float</code>, <code>bool</code>, <code>datetime.date</code>, or <code>None</code>. This can also be a custom validator function that converts the <code>str</code> input to processed data, and raises an exception for invalid data. There is a function <code>number</code> defined in the <code>sc8pr.io</code> module that can be used to request integer or floating point values within a certain range...</li>
 </ul>
 
 
-<pre class="Code">from scropr.io import number
+<pre class="Code">from sc8pr.io import number
 ...
 
 <span class="Proto">def</span> setup(sk):

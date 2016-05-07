@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scropr Documentation</title>
+<title>sc8pr Documentation</title>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:700"/>
@@ -17,15 +17,15 @@
 </head>
 <body>
 <nav>
-	<h1 class="Center">scropr</h1>
+	<h1 class="Center">sc8pr</h1>
 	<p id="HideNav"><a class="Small" href="javascript:hideNav()">Hide</a></p>
 	<p class="Link" data-go="Overview">Overview</p>
 	<p class="Link" data-go="Install">Installation Guide</p>
 	<p class="Link" onclick="tutorial()">Tutorial</p>
 	<p class="Link" data-go="Reference">Reference</p>
 	<hr/><div class="Small">
-		<p class="Center">Copyright &copy; 2015–2016 <a href="mailto:devscropr@gmail.com">D. MacCarthy</a></p>
-		<p>The <code>scropr</code> software itself is licensed under the <a href="http://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License Version 3</a>.</p>
+		<p class="Center">Copyright &copy; 2015–2016 <a href="mailto:devsc8pr@gmail.com">D. MacCarthy</a></p>
+		<p>The <code>sc8pr</code> software itself is licensed under the <a href="http://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License Version 3</a>.</p>
 		<p class="Center"><a rel="license" href="http://www.gnu.org/licenses/gpl-3.0.html"><img alt="GPLv3" style="border-width:0" src="http://www.gnu.org/graphics/gplv3-127x51.png"/></a></p>
 		<p>This documentation is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
 		<p class="Center"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></p>
@@ -36,8 +36,8 @@
 
 <article id="Overview">
 	<h3>Overview</h3>
-	<p><code>scropr</code> is a Python 3 package for educational programming. Its aim is to make it easy for new programmers (and experienced one too!) to create interactive programs with graphics and animations.</p>
-	<p>The project is motivated by the recurring question: “What is the best language to learn as a first programming language?” Popular answers to this question include <a href="http://www.python.org">Python</a>, <a href="http://www.processing.org">Processing</a>, <a href="http://scratch.mit.edu">Scratch</a>, and various robot control languages. The <code>scropr</code> project aims to make the best features of the other languages available in Python. (The name <code>scropr</code> comes from the first two letters of Scratch, robotics, and Porocessing.)</p>
+	<p><code>sc8pr</code> is a Python 3 package for educational programming. Its aim is to make it easy for new programmers (and experienced one too!) to create interactive programs with graphics and animations.</p>
+	<p>The project is motivated by the recurring question: “What is the best language to learn as a first programming language?” Popular answers to this question include <a href="http://www.python.org">Python</a>, <a href="http://www.processing.org">Processing</a>, <a href="http://scratch.mit.edu">Scratch</a>, and various robot control languages. The <code>sc8pr</code> project aims to make the best features of the other languages available in Python. (The name <code>sc8pr</code> comes from the first two letters of Scratch, robotics, and Porocessing.)</p>
 	<p class="Center"><img src="img/screen0.png" height="384" alt="Screenshot" data-n="0"/></p>
 	<p>Features include:</p>
 	<ul>
@@ -54,33 +54,33 @@
 
 <article id="Install">
 	<h3>Requirements</h3>
-	<p>The <code>scropr</code> package requires:</p>
+	<p>The <code>sc8pr</code> package requires:</p>
 	<ul>
 		<li><a href="http://www.python.org">Python 3.2+</a></li>
 		<li><a href="http://pygame.org/download.shtml">Pygame 1.9.1+</a></li>
 	</ul>
-	<p>Please ensure that Python and Pygame are both installed before setting up <code>scropr</code>.</p>
+	<p>Please ensure that Python and Pygame are both installed before setting up <code>sc8pr</code>.</p>
 	
 	<h3>Install with <code>pip</code></h3>
 	<p>To install using <code>pip</code>, run the following command to install the current development version with the latest improvements and bug fixes...</p>
-	<pre class="Code">pip install https://github.com/dmaccarthy/scropr/archive/<span class="Red">master</span>.zip</pre>
-	<p>If you prefer to install a versioned release, replace <code class="Red">master</code> with a specific version such as <code class="Red">v0.7a0</code>. A list of versions is available on <a href="https://github.com/dmaccarthy/scropr/releases">GitHub</a>.</p>
+	<pre class="Code">pip install https://github.com/dmaccarthy/sc8pr/archive/<span class="Red">master</span>.zip</pre>
+	<p>If you prefer to install a versioned release, replace <code class="Red">master</code> with a specific version such as <code class="Red">v0.7a0</code>. A list of versions is available on <a href="https://github.com/dmaccarthy/sc8pr/releases">GitHub</a>.</p>
 
 	<h3>Alternate Install</h3>
 	<p>If you don’t want to use <code>pip</code>, the following alternative install is available...</p>
 	<ul>
-		<li>Download an archived release from <a href="https://github.com/dmaccarthy/scropr/releases">GitHub</a>.</li>
+		<li>Download an archived release from <a href="https://github.com/dmaccarthy/sc8pr/releases">GitHub</a>.</li>
 		<li>Extract the folder containing <code>setup.py</code>.</li>
 		<li>Run <code>setup.py</code> with the Python version you will be using.</li>
 	</ul>
 
 	<h3>Project Install</h3>
-	<p>If you don’t want to install <code>scropr</code> as a site-package, you can simply add the <code>scropr</code> source code to your project folder or PYTHONPATH.</p>
-	<p class="Center"><img src="img/scroprZip.png" alt="Image" title="Archive Screenshoot"/></p>
+	<p>If you don’t want to install <code>sc8pr</code> as a site-package, you can simply add the <code>sc8pr</code> source code to your project folder or PYTHONPATH.</p>
+	<p class="Center"><img src="img/sc8prZip.png" alt="Image" title="Archive Screenshoot"/></p>
 	<ul>
-		<li>Download an archived release from <a href="https://github.com/dmaccarthy/scropr/releases">GitHub</a>.</li>
-		<li>Locate the folder containing the <code>scropr</code> package (the same folder that contains <code>setup.py</code>).</li>
-		<li>Extract the <code>scropr</code> package into your project folder or PYTHONPATH.</li>
+		<li>Download an archived release from <a href="https://github.com/dmaccarthy/sc8pr/releases">GitHub</a>.</li>
+		<li>Locate the folder containing the <code>sc8pr</code> package (the same folder that contains <code>setup.py</code>).</li>
+		<li>Extract the <code>sc8pr</code> package into your project folder or PYTHONPATH.</li>
 	</ul>
 </article>
 
@@ -112,7 +112,7 @@
 </article>
 
 <article id="Module">
-	<h3>scropr.<span id="ModuleName">?</span></h3>
+	<h3>sc8pr.<span id="ModuleName">?</span></h3>
 	<p><b style="color:red">The reference is currently under construction.</b></p>
 	<p class="Center">
 		<button class="Link" title="Expand / Collapse" onclick="expandAll(this)" data-state=1><img class="Icon" src="img/plus.png"/><span>Expand</span></button> &nbsp;

@@ -1,14 +1,16 @@
 #!python3
 
-from scropr.sketch import Sketch, Sprite, BOUNCE
-from scropr.image import Image
+from sc8pr.sketch import Sketch, Sprite, BOUNCE
+from sc8pr.image import Image
+from pygame import KEYDOWN
 from random import uniform, randint
 
 def setup(sk):
     "Initialize the sketch"
     sk.setBackground("bg.png")
     sk.image_monster = Image("costume.png")
-    sk.animate(customDraw)
+    eventMap = {KEYDOWN: keyDown}
+    sk.animate(customDraw, eventMap)
 
 def customDraw(sk):
     "Draw one frame of the sketch"
@@ -32,6 +34,12 @@ def customDraw(sk):
     accel = sk.height / 10000
     for sprite in sk.sprites:
         sprite.accel = sprite.toward(sk.mouseXY, accel)
+
+def keyDown(sk, ev):
+    "Remove all sprites"
+    if sk.char == "r":
+        sk.sprites.empty()
+
 
 # Run the sketch
 Sketch(setup).run()
