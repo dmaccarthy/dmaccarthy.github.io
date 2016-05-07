@@ -31,7 +31,7 @@
 		<Arg name="group" default="()"><span>A sequence of <code>set</code> instances representing the group(s) to which the sprite belongs.</span></Arg>
 		<Arg name="kwargs" default="{}">A dictionary of the sprite’s initial properties.</Arg>
 	</Method>
-	<Method name="config(**kwargs) → Sprite"><span>Modifies the sprite’s assignable properties as specified by <code>kwargs</code>.</span></Method>
+	<Method name="config(**kwargs) → self"><span>Modifies the sprite’s assignable properties as specified by <code>kwargs</code>.</span></Method>
 	<Method name="calcRect() → pygame.Rect"><span>Recalculate the <code>rect</code> property; called by the <code>config</code> and <code>frameStep</code> methods.</span></Method>
 	<PropA name="costumes"><span>A sequence of images representing the sprite’s “costumes”; returns a <code>list</code></span></PropA>
 	<PropA name="posn" default="(0,0)">An ordered pair describing the sprite’s position within the sketch.</PropA>
@@ -58,16 +58,6 @@
 	<PropR name="size">The current zoomed size of the sprite as a (width, height) tuple.</PropR>
 	<PropR name="image">An image of the sprite’s current costume that has been zoomed and rotated according to the sprite properties.</PropR>
 	<PropR name="edgeAdjust"><span>This property is set to <code>True</code> or <code>False</code> by the <code>frameStep</code> method to indicate whether or not the sprite’s have been adjusted as a result of an edge effect (e.g. <code>BOUNCE</code>, <code>WRAP</code>, etc.).</span></PropR>
-
-<!--	
-edgeAdjust = None
-bounceThreshhold = 0
--->
-
-	<!--PropR name="a">a</PropR>
-	<Method name="c">c
-		<Arg name="d">d</Arg>
-	</Method-->
 </Class>
 
 <Class name="SpriteList"><span>Represents the sequence of sprites that have been added to a sketch. The sketch’s <code>sprites</code> attribute is a reference to the <code>SpriteList</code> instance, which is created automatically by the <code>Sketch</code> constructor.</span>

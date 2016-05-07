@@ -19,7 +19,7 @@
 		<Arg name="size">The size of the sketch in pixels.</Arg>
 		<Arg name="mode" default="None">The new display mode.</Arg>
 	</Method>
-	<Method name="loadFont(name, size, bold, italic, lineHeight)"><span>Load a system font or font file.</span>
+	<Method name="loadFont(name, size, bold, italic, lineHeight) → pygame.font.Font"><span>Load a system font or font file.</span>
 		<Arg name="name" default="None">The name of the font or font file to load.</Arg>
 		<Arg name="size" default="16">The desired font size.</Arg>
 		<Arg name="bold" default="False">Whether the font is to be rendered as bold face.</Arg>
@@ -29,7 +29,7 @@
 	<Method name="useFonts(path)"><span>A class method that specifies a JSON file defining font substitutions. If not called, <code>"fonts.json"</code> in the <code>sc8pr</code> folder will be used.</span>
 		<Arg name="path">Path to the file.</Arg>
 	</Method>
-	<Method name="pseudonym(pseudo, name)"><span>Get or set a font pseudonym.</span>
+	<Method name="pseudonym(pseudo, name) → str/None"><span>Get or set a font pseudonym.</span>
 		<Arg name="pseudo">The font pseudonym.</Arg>
 		<Arg name="name" default="None">If specified, the font to use.</Arg>
 	</Method>
@@ -37,7 +37,26 @@
 		<Arg name="bgImage" default="None">An image to be used for the sketch background. The sketch aspect ratio will be locked (except when maximized) to match the background image.</Arg>
 		<Arg name="bgColor" default="None">A color to be drawn as the background. If both arguments are given, the image will be blitted onto a background of the specified color.</Arg>
 	</Method>
-	<Method name="randPixel()"><span>The coordinates of a random pixel within the sketch.</span></Method>
+	<Method name="randPixel() → tuple"><span>The coordinates of a random pixel within the sketch.</span></Method>
+	<Method name="record(interval)">Start or stop recording a sequence of frames.
+		<Arg name="interval" default="1"><span>The frequency at which to record; <code>None</code> to turn recording off.</span></Arg>
+	</Method>
+	<Method name="save(path)">Save the current sketch frame.
+		<Arg name="path" default="None"><span>The path and name of the file; if <code>None</code>, the path will be composed from the <code>saveName</code> and <code>frameNumber</code> properties.</span></Arg>
+	</Method>
+	<Method name="drawBackground()">Redraw the scaled background image to the sketch.</Method>
+	<Method name="tint(rgba)">Apply a tint operation to the entire sketch.
+		<Arg name="rgba"><span>An rgba color value describing the tint.</span></Arg>
+	</Method>
+	<Method name="blit(img, posn, anchor, size, angle, flags) → pygame.Rect">Draw an image on the sketch.
+		<Arg name="img"><span>An <code>Image</code> or <code>pygame.Surface</code> instance to draw.</span></Arg>
+		<Arg name="posn" default="(0,0)"><span>The position on the sketch at which to draw the image.</span></Arg>
+		<Arg name="anchor" default="NW"><span>The anchor point to use in interpreting the position; one of the constants defined in the <code class="Link" onclick="goRef('image')">image</code> module (<code>CENTER</code>, <code>NORTH</code>, <code>SOUTH</code>, <code>WEST</code>, <code>EAST</code>, <code>NW</code>, <code>NE</code>, <code>SW</code>, <code>SE</code>).</span></Arg>
+		<Arg name="size" default="None"><span>A size to which the image is scaled before drawing.</span></Arg>
+		<Arg name="angle" default="None"><span>An angle by which to rotate the image before drawing.</span></Arg>
+		<Arg name="flags" default="0"><span>Flags to be passed to <code class="Link" onclick="goRef('image', 'Image.transform')">Image.transform</code>.</span></Arg>
+	</Method>
+	<PropA name="quit" default="False"><span>A <code>bool</code> indicating whether the sketch should terminate at the end of the current drawing cycle; will be set to <code>True</code> on <code>QUIT</code> events.</span></PropA>
 	<PropA name="size" default="(512,288)"><span>The size of the sketch.</span></PropA>
 	<PropA name="width" default="512"><span>The width of the sketch.</span></PropA>
 	<PropA name="height" default="288"><span>The height of the sketch.</span></PropA>
@@ -47,13 +66,26 @@
 	<PropA name="recordGui" default="False"><span>A <code>bool</code> specifying whether frames are to be recorded after or before GUI controls are drawn.</span></PropA>
 	<PropA name="cursor" default="ARROW"><span>The cursor to be displayed within the sketch. The cursor can be a builtin or custom cursor from <code>pygame.cursor</code> or you can use these cursors from <code>sc8pr.util</code>: <code>ARROW</code>, <code>DIAMOND</code>, <code>MOVE</code>, <code>TEXT</code>, <code>CROSS</code>, <code>HAND</code>, <code>MENU</code>, <code>NO_CURSOR</code>.</span></PropA>
 	<PropA name="light" default="None"><span>A color specifying the ambient light; the sketch will be tinted based on this color.</span></PropA>
-	<PropR name="frameCount"><span>The total number of frames that have been drawn (including the current frame).</span></PropR>
+	<PropR name="screen">A reference to the Pygame display surface.</PropR>
+	<PropR name="frameCount">The total number of frames that have been drawn (including the current frame).</PropR>
+	<PropR name="time"><span>The time in seconds elapsed since the <code>setup</code> was called.</span></PropR>
+	<PropR name="setup"><span>A reference to the sketch’s setup method.</span></PropR>
 	<PropR name="draw" default="drawBackground"><span>A reference to the current drawing function; this attribute is set by the constructor based on its <code>draw</code> argument.</span></PropR>
 	<PropR name="eventMap" default="{}"><span>A dictionary that maps event types (keys) to handler functions (values); this attribute is set by the constructor to the dictionary passed as the <code>eventMap</code> argument.</span></PropR>
+	<PropR name="bgImage"><span>The background image, if any. Use the <code>setBackground</code> method to change.</span></PropR>
+	<PropR name="scaledBgImage">An image created by scaling the background image to the sketch size.</PropR>
+	<PropR name="bgColor"><span>The background color, if any. Use the <code>setBackground</code> method to change.</span></PropR>
 	<PropR name="center"><span>The coordinates of the center of the sketch.</span></PropR>
 	<PropR name="centerX"><span>The x-coordinate of the center of the sketch.</span></PropR>
 	<PropR name="centerY"><span>The y-coordinate of the center of the sketch.</span></PropR>
 	<PropR name="aspect"><span>The aspect ratio of the background image; <code>None</code> if no background image has been set.</span></PropR>
+	<PropR name="key"><span>The most recent keyboard event, or <code>None</code> if no such events have occurred.</span></PropR>
+	<PropR name="keyCode"><span>The code identifying the key associated with the most recent keyboard event.</span></PropR>
+	<PropR name="char"><span>The character (as a <code>str</code>) of the most recent keyboard event if the event type is <code>KEYDOWN</code> and the character is printable; <code>None</code> if the character is non-printable or the event is <code>KEYUP</code>.</span></PropR>
+	<PropR name="mouse"><span>The most recent mouse event, or <code>None</code> if the mouse is outside of the sketch.</span></PropR>
+	<PropR name="mouseXY"><span>The coordinates of the most recent mouse event within the sketch.</span></PropR>
+	<PropR name="mouseX"><span>The x-coordinate of the most recent mouse event within the sketch.</span></PropR>
+	<PropR name="mouseY"><span>The y-coordinate of the most recent mouse event within the sketch.</span></PropR>
 	<PropR name="gui"><span>A reference to the sketch’s GUI manager; this will be <code>None</code> for <code>PApplet</code> instances but will return an object for <code>Sketch</code> and its subclasses.</span></PropR>
 </Class>
 
