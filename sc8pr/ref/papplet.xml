@@ -34,7 +34,7 @@
 		<Arg name="name" default="None">If specified, the font to use.</Arg>
 	</Method>
 	<Method name="setBackground(bgImage, bgColor)">Set the sketch background.
-		<Arg name="bgImage" default="None">An image to be used for the sketch background. The sketch aspect ratio will be locked (except when maximized) to match the background image.</Arg>
+		<Arg name="bgImage" default="None">An image to be used for the sketch background. The sketch aspect ratio will be locked to match the background image.</Arg>
 		<Arg name="bgColor" default="None">A color to be drawn as the background. If both arguments are given, the image will be blitted onto a background of the specified color.</Arg>
 	</Method>
 	<Method name="randPixel() → tuple"><span>The coordinates of a random pixel within the sketch.</span></Method>
