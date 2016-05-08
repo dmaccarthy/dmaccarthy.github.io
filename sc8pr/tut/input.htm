@@ -21,10 +21,10 @@ Sketch(setup).run()</pre>
 
 <p>The <code>prompt</code> method accepts a number of optional arguments to customize the dialog:</p>
 <ul>
-	<li><code>title</code>: A <code>str</code> specifying the title of the dialog.</li>
-	<li><code>allowCancel</code>: A <code>bool</code> indicating whether to enable or disable the <em>Cancel</em> button.</li>
 	<li><code>default</code>: The default value, as a <code>str</code>, to display in the input area.</li>
+	<li><code>title</code>: A <code>str</code> specifying the title of the dialog.</li>
 	<li><code>minSize</code>: The minimum size for the dialog as a 2-tuple of integers.</li>
+	<li><code>allowCancel</code>: A <code>bool</code> indicating whether to enable or disable the <em>Cancel</em> button.</li>
 	<li><code>password</code>: A character (usually <code>"*"</code>) to be printed in place of the characters typed.</li>
 	<li><code>validator</code>: This argument specifies the type of input requested: <code>str</code> (default), <code>int</code>, <code>float</code>, <code>bool</code>, <code>datetime.date</code>, or <code>None</code>. This can also be a custom validator function that converts the <code>str</code> input to processed data, and raises an exception for invalid data. There is a function <code>number</code> defined in the <code>sc8pr.io</code> module that can be used to request integer or floating point values within a certain range...</li>
 </ul>

@@ -11,7 +11,7 @@ function parseQuery(s, delim) {
 	return args;
 }
 
-function nextScreen() {
+/* function nextScreen() {
 	if ($("#Overview:visible").length) {
 		var img = $("img[alt=Screenshot]");
 		var n = parseInt(img.attr("data-n")) + 1;
@@ -19,7 +19,7 @@ function nextScreen() {
 		img.attr({"data-n": n, src:"img/screen" + n + ".png"});
 	}
 	setTimeout(nextScreen, 8000);
-}
+} */
 
 function show(id) {
 	if (typeof(id) != "string")
@@ -272,7 +272,7 @@ function navClick(ev) {
 
 $(function() {
 	$("article").hide();
-	setTimeout(nextScreen, 8000);
+//	setTimeout(nextScreen, 8000);
 	onresize();
 	$("nav p.Link").click(show);
 	$("nav").click(navClick);

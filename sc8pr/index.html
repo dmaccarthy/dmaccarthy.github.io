@@ -11,9 +11,6 @@
 <link rel="stylesheet" type="text/css" href="../css/ref.css"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"> </script>
 <script type="text/javascript" src="ref.js"> </script>
-<script type="text/javascript">//<!--
-
-//--></script>
 </head>
 <body>
 <nav>
@@ -23,6 +20,7 @@
 	<p class="Link" data-go="Install">Installation Guide</p>
 	<p class="Link" onclick="tutorial()">Tutorial</p>
 	<p class="Link" data-go="Reference">Reference</p>
+	<!--p class="Link" data-go="Gallery">Gallery</p-->
 	<hr/><div class="Small">
 		<p class="Center">Copyright &copy; 2015–2016 <a href="mailto:devsc8pr@gmail.com">D. MacCarthy</a></p>
 		<p>The <code>sc8pr</code> software itself is licensed under the <a href="http://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License Version 3</a>.</p>
@@ -36,9 +34,9 @@
 
 <article id="Overview">
 	<h3>Overview</h3>
-	<p><code>sc8pr</code> is a Python 3 package for educational programming. Its aim is to make it easy for new programmers (and experienced one too!) to create interactive programs with graphics and animations.</p>
+	<img style="float:right" src="img/overview.png" alt="Screenshot"/>
+	<p><code>sc8pr</code> is a Python 3 package for educational programming. Its aim is to make it easy for new programmers (and experienced ones too!) to create interactive programs with graphics and animations.</p>
 	<p>The project is motivated by the recurring question: “What is the best language to learn as a first programming language?” Popular answers to this question include <a href="http://www.python.org">Python</a>, <a href="http://www.processing.org">Processing</a>, <a href="http://scratch.mit.edu">Scratch</a>, and various robot control languages. The <code>sc8pr</code> project aims to make the best features of the other languages available in Python.</p>
-	<p class="Center"><img src="img/screen0.png" height="384" alt="Screenshot" data-n="0"/></p>
 	<p>Features include:</p>
 	<ul>
 		<li>a simple framework for creating interactive animations</li>
@@ -89,15 +87,15 @@
 	<table><thead><tr><th>Module</th><th>Description</th></tr></thead>
 		<tbody id="modules">
 			<tr><td class="Link" onclick="goRef('sketch')">sketch</td><td>Create interactive animations with support for sprites and GUI controls.</td></tr>
-			<tr><td class="Link" onclick="goRef('physics')">physics</td><td>Create animations with objects that have physics-based collision behaviour.</td></tr>
 			<tr><td class="Link" onclick="goRef('papplet')">papplet</td><td>Create interactive animations with a Processing-like API; no sprite or GUI features.</td></tr>
+			<!--tr><td class="Link" onclick="goRef('physics')">physics</td><td>Create animations with objects that have physics-based collision behaviour.</td></tr>
 			<tr><td class="Link" onclick="goRef('robot')">robot</td><td>Create robot sprites controlled by a “brain” that runs in its own thread.</td></tr>
 			<tr><td class="Link" onclick="goRef('image')">image</td><td>Load and manipulate images.</td></tr>
 			<tr><td class="Link" onclick="goRef('plot')">plot</td><td>Create graphs and other drawings that use an abstract coordinate system.</td></tr>
 			<tr><td class="Link" onclick="goRef('geometry')">geometry</td><td>Perform various geometric calculations.</td></tr>
 			<tr><td class="Link" onclick="goRef('gui')">gui</td><td>Create and run GUI dialogs.</td></tr>
 			<tr><td class="Link" onclick="goRef('widgets')">widgets</td><td>Create GUI controls.</td></tr>
-			<tr><td class="Link" onclick="goRef('util')">util</td><td>Miscellaneous features.</td></tr>
+			<tr><td class="Link" onclick="goRef('util')">util</td><td>Miscellaneous features.</td></tr-->
 		</tbody>
 	</table>
 </article>
@@ -125,6 +123,10 @@
 		<img class="Icon" src="img/propr.png"/>Read-only
 	</p><hr/>
 	<div id="ModuleHtml">Content</div>
+</article>
+
+<article id="Gallery">
+	<h3>Gallery</h3>
 </article>
 
 </div>

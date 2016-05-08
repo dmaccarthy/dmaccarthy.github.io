@@ -18,6 +18,14 @@
 		<Arg name="mode" default="None"><span>An integer specifying the desired display mode. Set this to <code>pygame.RESIZABLE</code> to make the sketch user resizable, or to <code>0</code> to keep the size fixed.</span></Arg>
 		<Arg name="ev" default="None"><span>When the called by the <code>run</code> method as a result of a user resize event, the event instance is passed; <code>resize</code> will add an <code>adjustSize</code> attribute to the event it needs to modify the requested size to match the background image aspect ratio.</span></Arg>
 	</Method>
+	<Method name="prompt(msg, validator, default, title, minSize, **kwargs)"><span>Request asynchronous user input in a GUI dialog. This method is described in detail in the <span class="Link" onclick="tutorial('input')">tutorial</span>.</span>
+		<Arg name="msg">Text to display in the prompt dialog.</Arg>
+		<Arg name="validator" default="str">A type or function to validate the raw input.</Arg>
+		<Arg name="default" default="&quot;&quot;">Default response to display.</Arg>
+		<Arg name="title" default="None">The dialog title.</Arg>
+		<Arg name="minSize" default="(144,1)">The minimum size of the dialog.</Arg>
+		<Arg name="kwargs"><span>See the <span class="Link" onclick="tutorial('input')">tutorial</span> for details.</span></Arg>
+	</Method>
 	<PropA name="wall" default="False"><span>Assign a color to this property to create a wall around the sketch. Call the <code>setBackground</code> method after setting the wall color to draw the wall. This property affects the default edge behaviour of sprites.</span></PropA>
 	<PropR name="frameNumber"><span>The number of frames that have been drawn (including the current frame) since the <code>animate</code> method was last called.</span></PropR>
 	<PropR name="draw" default="simpleDraw"><span>A reference to the current drawing function. Use the <code>animate</code> method to change the drawing function.</span></PropR>
