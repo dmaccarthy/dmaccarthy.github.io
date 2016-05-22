@@ -40,8 +40,45 @@
 		<Arg name="kwargs" default="{}">A dictionary of the sprite’s initial properties.</Arg>
 	</Method>
 	<Method name="config(**kwargs) → self"><span>Modifies the sprite’s assignable properties as specified by <code>kwargs</code>.</span></Method>
+	<Method name="frameStep()"><span>Advances the sprite’s properties by one frame; for example, if the sprite has a <code>spin</code> property it will be used to recalculate the sprite’s <code>angle</code> property.</span></Method>
 	<Method name="calcRect() → pygame.Rect"><span>Recalculate the <code>rect</code> property; called by the <code>config</code> and <code>frameStep</code> methods.</span></Method>
-	<PropA name="costumes"><span>A sequence of images representing the sprite’s “costumes”; returns a <code>list</code></span></PropA>
+	<Method name="getSize(rotated) → tuple"><span>Return the current size of the sprite.</span>
+		<Arg name="rotated"><span>A <code>bool</code> specifying whether the size is to be calculated before (<code>False</code>) or after (<code>True</code>) the sprite image is rotated.</span></Arg>
+	</Method>
+	<Method name="corners() → tuple"><span>Return a 4-tuple containing the coordinates of the rotated sprite’s four corners.</span></Method>
+	<Method name="contains(*pts) → bool"><span>Returns whether the sprite’s rectangle or circle (depending on its <code>radius</code> property) contains any of the specified points.</span>
+		<Arg name="pts"><span>The point or points to be compared to the sprite’s location.</span></Arg>
+	</Method>
+	<Method name="exclude(pt)"><span>Move the sprite so that it does not overlap the specified point.</span>
+		<Arg name="pt"><span>The point to exclude.</span></Arg>
+	</Method>
+	<Method name="toward(posn, mag) → tuple"><span>Returns a vector (as a 2-tuple of numbers) of the specified magnitude pointing from the sprite’s position toward the specified point. This can be used to set the <code>velocity</code> or <code>accel</code> properties to make the sprite move toward a certain location.</span>
+		<Arg name="posn"><span>The point toward which the vector points.</span></Arg>
+		<Arg name="mag" default="1"><span>The magnitude of the vector.</span></Arg>
+	</Method>
+	<Method name="costumeSequence(costume, end, oscillate)"><span>Specify the order in which the sprite’s costumes are to be changed.</span>
+		<Arg name="costume" default="0"><span>This can be the sequence of costumes as a <code>list</code> or <code>tuple</code>; or the index of the first costume to be displayed.</span></Arg>
+		<Arg name="end" default="-1"><span>The index of the last costume in the sequence; only used if the <code>costume</code> argument is an <code>int</code>.</span></Arg>
+		<Arg name="oscillate" default="False"><span>Specifies whether the sequence is to repeated in reverse order.</span></Arg>
+	</Method>
+	<Method name="colliding(group, collided) → bool"><span>Determine whether the sprite is colliding with any of the sprites in <code>group</code>.</span>
+		<Arg name="group" default="None"><span>A sequence of sprites to check for collisions; if <code>None</code>, all sprites in the sketch sprite list are checked.</span></Arg>
+		<Arg name="collided" default="collide_sprite"><span>A function used to determine if a collision is occurring.</span></Arg>
+	</Method>
+	<Method name="collisions(group=None, collided=collide_sprite) → set"><span>Returns a <code>set</code> of sprites from the specified <code>group</code> that are colliding with the current sprite.</span>
+		<Arg name="group" default="None"><span>A sequence of sprites to check for collisions; if <code>None</code>, all sprites in the sketch sprite list are checked.</span></Arg>
+		<Arg name="collided" default="collide_sprite"><span>A function used to determine if a collision is occurring.</span></Arg>
+	</Method>
+	<Method name="transform(shift, factor)"><span>Scales and translates the sprite; this method is called automatically when the sketch is resized.</span>
+		<Arg name="shift" default="(0,0)"><span>A vector describing the translation to apply.</span></Arg>
+		<Arg name="factor" default="1"><span>A number describing the scale transformation.</span></Arg>
+	</Method>
+	<Method name="remove()">Remove the sprite from the sprite list; should not be called while iterating through the sprites.
+	</Method>
+	<Method name="top()">Move the sprite to the end of the sprite list so that is drawn as the top layer; should not be called while iterating through the sprites.
+	</Method>
+	<PropA name="update" default="frameStep"><span>A reference to a function that updates the sprite’s properties whenever a frame is drawn.</span></PropA>
+	<PropA name="costumes"><span>A sequence of images representing the sprite’s “costumes”; returns a <code>list</code>.</span></PropA>
 	<PropA name="posn" default="(0,0)">An ordered pair describing the sprite’s position within the sketch.</PropA>
 	<PropA name="velocity" default="(0,0)">An ordered pair describing the sprite’s velocity.</PropA>
 	<PropA name="accel" default="(0,0)">An ordered pair describing the sprite’s acceleration.</PropA>
@@ -62,10 +99,11 @@
 	<PropA name="radius" default="None"><span>Setting a radius causes the sprite to be treated as a circle rather than a rectangle for collisions. Assigning a value of <code>True</code> causes the radius to be calculated from the width and height of the sprite.</span></PropA>
 	<PropA name="edge"><span>An <code>int</code> constant indicating what action is to be taken when the sprite reaches the edge of the sketch. Values are <code>BOUNCE</code>, <code>WRAP</code>, <code>REMOVE</code>, <code>HIDDEN</code>, <code>DISABLED</code>, or <code>NO_EDGE</code>.</span></PropA>
 	<PropA name="bounceThreshhold" default="0"><span>The speed below which a <code>BOUNCE</code> operation considers the perpendicular velocity to be zero.</span></PropA>
+	<PropR name="index">The sprite’s position within the sprite list; determines the order in which sprites are drawn.</PropR>
 	<PropR name="rect"><span>This property describes the sprite’s blit rectangle. For efficiency, it is not updated every time it is accessed; rather, the <code>frameStep</code> method updates the <code>rect</code> property once per frame. Each call to the <code>config</code> method also recalculates it. If properties affecting the blit rectangle e.g. (<code>posn</code>, <code>angle</code>, <code>zoom</code>, <code>height</code>, <code>width</code>) are modified outside of <code>frameStep</code> or <code>config</code>, the <code>rect</code> property will be stale. You can call the <code>calcRect</code> method to recalculate it.</span></PropR>
 	<PropR name="size">The current zoomed size of the sprite as a (width, height) tuple.</PropR>
 	<PropR name="image">An image of the sprite’s current costume that has been zoomed and rotated according to the sprite properties.</PropR>
-	<PropR name="edgeAdjust"><span>This property is set to <code>True</code> or <code>False</code> by the <code>frameStep</code> method to indicate whether or not the sprite’s have been adjusted as a result of an edge effect (e.g. <code>BOUNCE</code>, <code>WRAP</code>, etc.).</span></PropR>
+	<PropR name="edgeAdjust"><span>This property is set to <code>True</code> or <code>False</code> by the <code>frameStep</code> method to indicate whether or not the sprite’s properties have been adjusted as a result of an edge effect (e.g. <code>BOUNCE</code>, <code>WRAP</code>, etc.).</span></PropR>
 </Class>
 
 <Class name="SpriteList"><span>Represents the sequence of sprites that have been added to a sketch. The sketch’s <code>sprites</code> attribute is a reference to the <code>SpriteList</code> instance, which is created automatically by the <code>Sketch</code> constructor.</span>
