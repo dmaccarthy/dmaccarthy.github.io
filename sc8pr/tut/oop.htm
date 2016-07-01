@@ -27,8 +27,8 @@ from random import uniform, randint
             velocity = uniform(-2, 2), uniform(-2, 2)
             posn = self.randPixel()
             h = self.height / 15 * uniform(0.5, 2)
-            Sprite(self, self.image_monster, height=h, radius=True,
-                orient=True, posn=posn, velocity=velocity, edge=BOUNCE)
+            Sprite(self, self.image_monster, height=h, orient=True,
+                posn=posn, velocity=velocity, edge=BOUNCE)
 
         <span class="Comment"># Detect and remove colliding sprites</span>
         collisions = self.sprites.collisions()

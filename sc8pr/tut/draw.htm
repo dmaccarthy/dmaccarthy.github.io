@@ -25,8 +25,8 @@ from random import uniform, randint
         velocity = uniform(-2, 2), uniform(-2, 2)
         posn = sk.randPixel()
         h = sk.height / 15 * uniform(0.5, 2)
-        Sprite(sk, sk.image_monster, height=h, radius=True,
-            orient=True, posn=posn, velocity=velocity, edge=BOUNCE)
+        Sprite(sk, sk.image_monster, height=h, orient=True,
+            posn=posn, velocity=velocity, edge=BOUNCE)
 
     <span class="Comment"># Detect and remove colliding sprites</span>
     collisions = sk.sprites.collisions()
@@ -76,8 +76,8 @@ Sketch(setup).run()</pre>
         velocity = uniform(-2, 2), uniform(-2, 2)
         posn = sk.randPixel()
         h = sk.height / 15 * uniform(0.5, 2)
-        Sprite(sk, sk.image_monster, height=h, radius=True,
-            orient=True, posn=posn, velocity=velocity, edge=BOUNCE)
+        Sprite(sk, sk.image_monster, height=h, orient=True,
+            posn=posn, velocity=velocity, edge=BOUNCE)
 
     <span class="Comment"># Detect and remove colliding sprites</span>
     collisions = sk.sprites.collisions()
@@ -92,7 +92,7 @@ sk.sprites.draw()</pre>
 	
 <p>The <code>if</code> block randomly creates sprites with random properties. Note the second argument to the <code>Sprite</code> constructor is the pre-loaded image, <code>sk.image_monster</code>. Using an image file name here would be very inefficient, since it would cause the program to reload and decode the same image file every time it creates a new sprite.</p>
 
-<p>Setting the <code>radius</code> keyword to <code>True</code> in the <code>Sprite</code> constructor indicates that we want to treat the sprite as a circle for the purpose of determining whether it is colliding; if this argument is not provided, the sprite will be treated as a rectangle. Specifying the <code>orient</code> keyword as <code>True</code> keeps the sprite oriented in the direction of its velocity.</p>
+<p>Specifying the <code>orient</code> keyword as <code>True</code> keeps the sprite oriented in the direction of its velocity.</p>
 
 <p>The final two lines of the <code>customDraw</code> function detect and remove colliding sprites. The <code class="Link" onclick="goRef('sketch','SpriteList.collisions')">sk.sprites.collisions</code> method returns a <code>set</code> of sprites that are currently colliding with other sprites, and the <code class="Link" onclick="goRef('sketch','SpriteList.remove')">sk.sprites.remove</code> method removes those sprites from the sketch.</p>
 

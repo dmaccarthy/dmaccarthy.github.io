@@ -21,8 +21,8 @@ def customDraw(sk):
         velocity = uniform(-2, 2), uniform(-2, 2)
         posn = sk.randPixel()
         h = sk.height / 15 * uniform(0.5, 2)
-        Sprite(sk, sk.image_monster, height=h, radius=True,
-            orient=True, posn=posn, velocity=velocity, edge=BOUNCE)
+        Sprite(sk, sk.image_monster, height=h, orient=True,
+            posn=posn, velocity=velocity, edge=BOUNCE)
 
     # Detect and remove colliding sprites
     collisions = sk.sprites.collisions()

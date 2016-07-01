@@ -1,5 +1,5 @@
 <Module name="papplet">
-<Class name="PApplet"><span>Represents an interactive animation that runs in the Pygame window and is modelled on <span class="Link" onclick="window.open('http://www.processing.org')">Processing’s</span> <code>PApplet</code> class. <code class="Link" onclick="goRef('sketch','Sketch')">Sketch</code> and <code class="Link" onclick="goRef('physics','Environment')">Environment</code> are subclasses which extend <code>PApplet</code>.</span>
+<Class name="PApplet"><span>Represents an interactive animation that runs in the Pygame window and is modelled on <span class="Link" onclick="window.open('http://www.processing.org')">Processing’s</span> <code>PApplet</code> class. <code class="Link" onclick="goRef('sketch','Sketch')">Sketch</code> is a subclass which extends <code>PApplet</code>.</span>
 	<Method name="PApplet(setup, draw, eventMap)"><span>The constructor creates a <code>PApplet</code> instance. Use the <code>run</code> method to run the sketch.</span>
 		<Arg name="setup(sk)" default="None">An unbound function that initializes the sketch.
 			<Arg name="sk">A reference to the sketch.</Arg>
