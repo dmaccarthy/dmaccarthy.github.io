@@ -6,7 +6,7 @@
 		</Arg>
 	</Method>
 	<Method name="simpleDraw()">Redraws the background and all visible sprites, and then updates all enabled sprites.</Method>
-	<Method name="physicsDraw()"><span>Calls <code>simpleDraw</code> and the updates colliding masses based on simplified 2D physics.</span></Method>
+	<Method name="physicsDraw()"><span>Calls <code>simpleDraw</code> and then updates colliding masses based on simplified 2D physics.</span></Method>
 	<Method name="drawWall(color, weight)"><span>Draw a wall around the edges of the sketch; called automatically by <code>simpleDraw</code>.</span>
 		<Arg name="color">The color to use for rendering the wall.</Arg>
 		<Arg name="weight" default="1">The thickness of the wall in pixels.</Arg>
@@ -47,7 +47,6 @@
 	<PropR name="frameNumber"><span>The number of frames that have been drawn (including the current frame) since the <code>animate</code> method was last called.</span></PropR>
 	<PropR name="draw" default="simpleDraw"><span>A reference to the current drawing function. Use the <code>animate</code> method to change the drawing function.</span></PropR>
 	<PropR name="sprites"><span>A reference to the <code>SpriteList</code> instance that represents all sprites currently in the sketch.</span></PropR>
-	<PropR name="gui"><span>A reference to the sketch’s GUI manager.</span></PropR>
 	<PropR name="io"><span>A reference to the GUI dialog object created by the <code>prompt</code> or <code>fileDialog</code> methods. Will be <code>None</code> when no such dialog is running.</span></PropR>
 </Class>
 
