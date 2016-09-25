@@ -40,10 +40,10 @@
 	<Method name="randPixel() → tuple"><span>The coordinates of a random pixel within the sketch.</span></Method>
 	<Method name="record(interval, name)">Start or stop recording a sequence of frames.
 		<Arg name="interval" default="1"><span>The frequency at which to record; <code>None</code> to turn recording off.</span></Arg>
-		<Arg name="name" default="None"><span>A string format template describing the file names to use when recording the sketch. If <code>None</code>, the name will be chosen by <code>sc8pr</code>.</span></Arg>
+		<Arg name="name" default="None"><span>A string format template describing the file names to use when recording the sketch; if <code>None</code>, the name will be chosen by <code>sc8pr</code>.</span></Arg>
 	</Method>
 	<Method name="save(path)">Save the current sketch frame.
-		<Arg name="path" default="None"><span>The path and name of the file; if <code>None</code>, the path will be composed from the <code>saveName</code> and <code>frameNumber</code> properties.</span></Arg>
+		<Arg name="path" default="None"><span>The path and name of the file; if <code>None</code>, the name will be chosen by <code>sc8pr</code>.</Arg>
 	</Method>
 	<Method name="drawBackground()">Redraw the scaled background image to the sketch.</Method>
 	<Method name="tint(rgba)">Apply a tint operation to the entire sketch.
