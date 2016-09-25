@@ -85,8 +85,10 @@ function nodeHtml(node) {
 	var tags = ["Class", "Function", "Constant", "PropA", "PropR", "Method", "Arg"];
 	var n = tags.indexOf(node.tagName);
 	var cNodes = childElements(node);
-	if (n < tags.length-1)
-		e.prepend($("<img>").addClass("Icon").attr({alt:tags[n], src:"img/" + tags[n].toLowerCase() + ".png"}));
+	if (n < tags.length-1) {
+//		console.log(n, node.tagName);
+		e.prepend($("<img>").addClass("Icon").attr({alt:tags[n], src:"img/" + tags[n].toLowerCase() + ".png"}));		
+	}
 	var div = $("<div>").addClass("Collapse");
 	for (var j=0;j<cNodes.length;j++) if (cNodes[j] != node.childNodes[0])
 		div.append(nodeHtml(cNodes[j]));
