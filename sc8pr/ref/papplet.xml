@@ -1,6 +1,6 @@
 <Module name="papplet">
 <Class name="PApplet"><span>Represents an interactive animation that runs in the Pygame window and is modelled on <span class="Link" onclick="window.open('http://www.processing.org')">Processing’s</span> <code>PApplet</code> class. <code class="Link" onclick="goRef('sketch','Sketch')">Sketch</code> is a subclass which extends <code>PApplet</code>.</span>
-	<Method name="PApplet(setup, draw, eventMap)"><span>The constructor creates a <code>PApplet</code> instance. Use the <code>run</code> method to run the sketch.</span>
+	<Method name="PApplet(setup, draw, eventMap)"><span>The constructor creates a <code>PApplet</code> instance. Use the <code>play</code> method to play the sketch.</span>
 		<Arg name="setup(sk)" default="None">An unbound function that initializes the sketch.
 			<Arg name="sk">A reference to the sketch.</Arg>
 		</Arg>
@@ -9,7 +9,7 @@
 		</Arg>
 		<Arg name="eventMap" default="None"><span>A dictionary that maps event types or classes (keys) to handler functions (values). The value <code>None</code> can be used as a key to specify a handler for events that do not have a custom handler. The constructor will also accept a single function to handle all events in place of a dictionary.</span></Arg>
 	</Method>
-	<Method name="run(size, caption, icon, mode)">Run the sketch.
+	<Method name="play(size, caption, icon, mode)">Play the sketch in the Pygame window.
 		<Arg name="size" default="(512,288)">The initial size of the sketch in pixels.</Arg>
 		<Arg name="caption" default="&quot;Sketch&quot;">A string specifying the caption for the sketch window.</Arg>
 		<Arg name="icon" default="None">The path to an image to be used as the window icon.</Arg>
@@ -38,8 +38,9 @@
 		<Arg name="bgColor" default="None">A color to be drawn as the background. If both arguments are given, the image will be blitted onto a background of the specified color.</Arg>
 	</Method>
 	<Method name="randPixel() → tuple"><span>The coordinates of a random pixel within the sketch.</span></Method>
-	<Method name="record(interval)">Start or stop recording a sequence of frames.
+	<Method name="record(interval, name)">Start or stop recording a sequence of frames.
 		<Arg name="interval" default="1"><span>The frequency at which to record; <code>None</code> to turn recording off.</span></Arg>
+		<Arg name="name" default="None"><span>A string format template describing the file names to use when recording the sketch. If <code>None</code>, the name will be chosen by <code>sc8pr</code>.</span></Arg>
 	</Method>
 	<Method name="save(path)">Save the current sketch frame.
 		<Arg name="path" default="None"><span>The path and name of the file; if <code>None</code>, the path will be composed from the <code>saveName</code> and <code>frameNumber</code> properties.</span></Arg>
@@ -62,8 +63,6 @@
 	<PropA name="height" default="288"><span>The height of the sketch.</span></PropA>
 	<PropA name="hRatio"><span>The ratio of the current sketch height to the original height.</span></PropA>
 	<PropA name="captureFolder" default="&quot;capture&quot;"><span>A string or <code>RAMFolder</code> instance specifying the folder where frame captures are to be saved.</span></PropA>
-	<PropA name="saveName" default="&quot;image{:05d}.png&quot;"><span>A string format template to use as the file name for individual captured frames.</span></PropA>
-	<PropA name="recordName" default="&quot;seq{:03d}/image{:05d}.png&quot;"><span>A string format template to use as the file name for sequences of captured frames.</span></PropA>
 	<PropA name="recordGui" default="False"><span>A <code>bool</code> specifying whether frames are to be recorded after or before GUI controls are drawn.</span></PropA>
 	<PropA name="cursor" default="ARROW"><span>The cursor to be displayed within the sketch. The cursor can be a builtin or custom cursor from <code>pygame.cursor</code> or you can use these cursors from <code>sc8pr.util</code>: <code>ARROW</code>, <code>DIAMOND</code>, <code>MOVE</code>, <code>TEXT</code>, <code>CROSS</code>, <code>HAND</code>, <code>MENU</code>, <code>NO_CURSOR</code>.</span></PropA>
 	<PropA name="light" default="None"><span>A color specifying the ambient light; the sketch will be tinted based on this color.</span></PropA>

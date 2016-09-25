@@ -20,7 +20,8 @@ from random import uniform, randint
         <span class="DocString">"Draw one frame of the sketch"</span>
 
         <span class="Comment"># Redraw the sketch</span>
-        self.simpleDraw()
+        self.drawBackground()
+        self.sprites.draw()
 
         <span class="Comment"># Create sprites randomly</span>
         if randint(1, self.frameRate) == 1:
@@ -47,8 +48,8 @@ from random import uniform, randint
     eventMap = {KEYDOWN: keyDown}
 
 
-<span class="Comment"># Run the sketch</span>
-Monsters().run()</pre>
+<span class="Comment"># Play the sketch</span>
+Monsters().play()</pre>
 
 <p>For simple sketches that do not use multiple drawing functions or event maps, it is not necessary to call the <code>animate</code> method: the sketch will assume that the method named <code>draw</code> is the drawing function and the class attribute <code>eventMap</code> is the event map dictionary.</p>
 

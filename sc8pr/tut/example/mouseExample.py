@@ -14,7 +14,8 @@ def customDraw(sk):
     "Draw one frame of the sketch"
 
     # Redraw the sketch
-    sk.simpleDraw()
+    sk.drawBackground()
+    sk.sprites.draw()
 
     # Create sprites randomly
     if randint(1, sk.frameRate) == 1:
@@ -33,5 +34,5 @@ def customDraw(sk):
     for sprite in sk.sprites:
         sprite.accel = sprite.toward(sk.mouseXY, accel)
 
-# Run the sketch
-Sketch(setup).run()
+# Play the sketch
+Sketch(setup).play()

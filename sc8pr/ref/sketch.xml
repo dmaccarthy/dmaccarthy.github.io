@@ -1,6 +1,6 @@
 <Module name="sketch">
 <Class name="Sketch"><span>Represents an interactive animation that runs in the Pygame window; supports sprites and GUI controls. In addition to the attributes described here, this class inherits the attributes of its superclass, <code class="Link" onclick="goRef('papplet')">PApplet</code>.</span>
-	<Method name="Sketch(setup)"><span>The constructor creates a <code>Sketch</code> instance from a setup function. Use the <code>run</code> method to run the sketch.</span>
+	<Method name="Sketch(setup)"><span>The constructor creates a <code>Sketch</code> instance from a setup function. Use the <code>play</code> method to play the sketch.</span>
 		<Arg name="setup(sk)" default="None">An unbound function that initializes the sketch.
 			<Arg name="sk">A reference to the sketch.</Arg>
 		</Arg>
@@ -20,7 +20,7 @@
 	<Method name="resize(size, mode, ev)">Changes the display size and optionally the mode as well. Adjusts the size to match the aspect ratio of the background image and scales all sprites to the new sketch size.
 		<Arg name="size">A tuple specifying the desired size of the sketch.</Arg>
 		<Arg name="mode" default="None"><span>An integer specifying the desired display mode. Set this to <code>pygame.RESIZABLE</code> to make the sketch user resizable, or to <code>0</code> to keep the size fixed.</span></Arg>
-		<Arg name="ev" default="None"><span>When the called by the <code>run</code> method as a result of a user resize event, the event instance is passed; <code>resize</code> will add an <code>adjustSize</code> attribute to the event if it needs to modify the requested size to match the background image aspect ratio.</span></Arg>
+		<Arg name="ev" default="None"><span>When the called by the <code>play</code> method as a result of a user resize event, the event instance is passed; <code>resize</code> will add an <code>adjustSize</code> attribute to the event if it needs to modify the requested size to match the background image aspect ratio.</span></Arg>
 	</Method>
 	<Method name="sound(key, cache, **kwargs) → pygame.mixer.Sound"><span>Loads and plays a sound file.</span>
 		<Arg name="key">The name of the sound file, or the key if playing a cached sound.</Arg>

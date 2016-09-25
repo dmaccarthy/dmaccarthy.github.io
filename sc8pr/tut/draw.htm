@@ -17,8 +17,9 @@ from random import uniform, randint
 <span class="Proto">def</span> customDraw(sk):
     <span class="DocString">"Draw one frame of the sketch"</span>
 
-    <span class="Comment"># Redraw the sketch</span>
-    sk.simpleDraw()
+    <span class="Comment"># Redraw the sketch (background and sprites)</span>
+    sk.drawBackground()
+    sk.sprites.draw()
 
     <span class="Comment"># Create sprites randomly</span>
     if randint(1, sk.frameRate) == 1:
@@ -33,7 +34,7 @@ from random import uniform, randint
     sk.sprites.remove(collisions)
 
 <span class="Comment"># Run the sketch</span>
-Sketch(setup).run()</pre>
+Sketch(setup).play()</pre>
 
 <P>Let’s look at the <code>setup</code> function first...<p>
 
@@ -68,8 +69,9 @@ Sketch(setup).run()</pre>
 <pre class="Code"><span class="Proto">def</span> customDraw(sk):
     <span class="DocString">"Draw one frame of the sketch"</span>
 
-    <span class="Comment"># Redraw the sketch</span>
-    sk.simpleDraw()
+    <span class="Comment"># Redraw the sketch (background and sprites)</span>
+    sk.drawBackground()
+    sk.sprites.draw()
 
     <span class="Comment"># Create sprites randomly</span>
     if randint(1, sk.frameRate) == 1:
@@ -83,12 +85,7 @@ Sketch(setup).run()</pre>
     collisions = sk.sprites.collisions()
     sk.sprites.remove(collisions)</pre>
 
-<p>The first instruction calls the sketch’s <code class="Link" onclick="goRef('sketch','Sketch.simpleDraw')">simpleDraw</code> method. This method redraws the background image (thereby covering the previous frame), draws each of the sprites, and then updates the sprites’ properties in preparation for the next frame. The <code>simpleDraw</code> method is the sketch’s default drawing function; if we had not specified a custom drawing function, the sketch would use <code>simpleDraw</code> to perform the animation.</p>
-
-<p>If your program cannot draw the background and the sprites consecutively — for example if you need to draw something on top of the background but below the sprites — you can perform these operations separately rather than calling <code>simpleDraw</code>...</p>
-
-<pre class="Code">sk.drawBackground()
-sk.sprites.draw()</pre>
+<p>The first two instructions redraw the background image (which covers the previous frame) and all sprites. As the sprites are redrawn, their properties are updated in preparation for the next frame.</p>
 	
 <p>The <code>if</code> block randomly creates sprites with random properties. Note the second argument to the <code>Sprite</code> constructor is the pre-loaded image, <code>sk.image_monster</code>. Using an image file name here would be very inefficient, since it would cause the program to reload and decode the same image file every time it creates a new sprite.</p>
 

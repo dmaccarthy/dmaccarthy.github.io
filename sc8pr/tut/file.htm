@@ -13,7 +13,7 @@ def fileSelected(sk, ev):
     print(ev.value)
     sk.quit = True
 
-Sketch(setup).run((800,600))</pre>
+Sketch(setup).play((800,600))</pre>
 
 <p>The first argument to the <code>fileDialog</code> method is one of the constants <code>OPEN</code>, <code>SAVE</code>, or <code>FOLDER</code> which specify the purpose of the dialog. The other arguments are <code>allowCancel</code> (which indicates whether the <em>Cancel</em> button is enabled or disabled), and <code>initFilter</code> (which indicates the types of files to display). The value of <code>initFilter</code> can be a pattern (e.g. <code>"*.png"</code> or <code>"*.png;*.jpg"</code>) or a group of file types (e.g. <code>"&lt;Image&gt;;&lt;Video&gt;"</code>)</p>
 
