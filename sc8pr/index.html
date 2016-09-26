@@ -20,7 +20,6 @@
 	<p class="Link" data-go="Install">Installation Guide</p>
 	<p class="Link" onclick="tutorial()">Tutorial</p>
 	<p class="Link" data-go="Reference">Reference</p>
-	<!--p class="Link" data-go="Gallery">Gallery</p-->
 	<hr/><div class="Small">
 		<p class="Center">Copyright &copy; 2015–2016 <a href="mailto:devsc8pr@gmail.com">D. MacCarthy</a></p>
 		<p>The <code>sc8pr</code> software itself is licensed under the <a href="http://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License Version 3</a>.</p>
@@ -35,11 +34,10 @@
 <article id="Overview">
 	<h3>Overview</h3>
 	<p><code>sc8pr</code> is a Python 3 package for educational programming. Inspired by <a href="http://scratch.mit.edu">Scratch</a> and <a href="http://www.processing.org">Processing</a>, <code>sc8pr</code>’s aim is to make it easy for new programmers (and experienced ones too!) to create interactive Python programs with graphics and animations.</p>
-	<p class="Center"><video width="480" height="270" autoplay loop controls>
+	<p>The video below shows programs written using <code>sc8pr</code>...</p>
+	<p class="Center"><video width="960" height="540" autoplay loop controls>
 	  <source src="vid/sc8pr.mp4" type="video/mp4"/>Your browser does not support the video tag.
 	</video></p>
-	<!--img style="float:right" src="img/overview.png" alt="Screenshot"/>
-	<p>The project is motivated by the recurring question: “What is the best language to learn as a first programming language?” Popular answers to this question include <a href="http://www.python.org">Python</a>, <a href="http://www.processing.org">Processing</a>, <a href="http://scratch.mit.edu">Scratch</a>, and various robot control languages. The <code>sc8pr</code> project aims to make the best features of the other languages available in Python.</p-->
 	<p>Features include:</p>
 	<ul>
 		<li>a simple framework for creating interactive animations</li>
@@ -69,20 +67,10 @@
 		<li>Open the <code>sc8pr-master</code> subfolder.</li>
 		<li>Extract the <code>sc8pr</code> package into your project folder or PYTHONPATH.</li>
 	</ul>
-	<!--p class="Center"><img src="img/sc8prZip.png" alt="Image" title="Archive Screenshoot"/></p-->
 	
 	<h3>Install with <code>pip</code></h3>
-	<p>To install using <code>pip</code>, run the following command <!--to install the current development version with the latest improvements and bug fixes-->...</p>
+	<p>To install using <code>pip</code>, run the following command...</p>
 	<pre class="Code">pip install https://github.com/dmaccarthy/sc8pr/archive/master.zip</pre>
-	<!--p>If you prefer to install a versioned release, replace <code class="Red">master</code> with a specific version such as <code class="Red">v0.7a0</code>. A list of versions is available on <a href="https://github.com/dmaccarthy/sc8pr/releases">GitHub</a>.</p-->
-
-	<!--h3>Alternate Install</h3>
-	<p>If you don’t want to use <code>pip</code>, the following alternative install is available...</p>
-	<ul>
-		<li>Download an archived release from <a href="https://github.com/dmaccarthy/sc8pr/releases">GitHub</a>.</li>
-		<li>Extract the folder containing <code>setup.py</code>.</li>
-		<li>Run <code>setup.py</code> with the Python version you will be using.</li>
-	</ul-->
 
 </article>
 
@@ -92,11 +80,9 @@
 		<tbody id="modules">
 			<tr><td class="Link" onclick="goRef('sketch')">sketch</td><td>Create interactive animations with support for sprites and GUI controls.</td></tr>
 			<tr><td class="Link" onclick="goRef('papplet')">papplet</td><td>Create interactive animations with a Processing-like API; no sprite or GUI features.</td></tr>
-			<!--tr><td class="Link" onclick="goRef('physics')">physics</td><td>Create animations with objects that have physics-based collision behaviour.</td></tr>
-			<tr><td class="Link" onclick="goRef('robot')">robot</td><td>Create robot sprites controlled by a “brain” that runs in its own thread.</td></tr>
-			<tr><td class="Link" onclick="goRef('image')">image</td><td>Load and manipulate images.</td></tr>
+			<!--tr><td class="Link" onclick="goRef('image')">image</td><td>Load and manipulate images.</td></tr>
 			<tr><td class="Link" onclick="goRef('plot')">plot</td><td>Create graphs and other drawings that use an abstract coordinate system.</td></tr>
-			<tr><td class="Link" onclick="goRef('geometry')">geometry</td><td>Perform various geometric calculations.</td></tr>
+			<tr><td class="Link" onclick="goRef('robot')">robot</td><td>Create robot sprites controlled by a “brain” that runs in its own thread.</td></tr>
 			<tr><td class="Link" onclick="goRef('gui')">gui</td><td>Create and run GUI dialogs.</td></tr>
 			<tr><td class="Link" onclick="goRef('widgets')">widgets</td><td>Create GUI controls.</td></tr>
 			<tr><td class="Link" onclick="goRef('util')">util</td><td>Miscellaneous features.</td></tr-->
