@@ -57,8 +57,7 @@
 		<Arg name="group" default="()"><span>A sequence of <code>set</code> instances representing the group(s) to which the sprite belongs.</span></Arg>
 		<Arg name="kwargs" default="{}">A dictionary of the sprite’s initial properties.</Arg>
 	</Method>
-	<Method name="calcRect() → pygame.Rect"><span>Recalculates the sprite’s blit rectangle based on its current position, angle, and size. Called automatically by the constructor and by the <code>config</code> and <code>frameStep</code> methods.</span></Method>
-	<Method name="config(**kwargs) → self"><span>Modifies the sprite’s assignable properties as specified by <code>kwargs</code> and recalculates the sprite’s blit rectangle.</span></Method>
+	<Method name="config(**kwargs) → self"><span>Modifies the sprite’s assignable properties as specified by <code>kwargs</code>.</span></Method>
 	<Method name="frameStep()"><span>Advances the sprite’s properties by one frame; for example, if the sprite has a <code>spin</code> property it will be used to recalculate the sprite’s <code>angle</code> property.</span></Method>
 	<Method name="getSize(rotated) → tuple"><span>Return the current size of the sprite.</span>
 		<Arg name="rotated"><span>A <code>bool</code> specifying whether the size is to be calculated before (<code>False</code>) or after (<code>True</code>) the sprite image is rotated.</span></Arg>
@@ -107,6 +106,13 @@
 	<Method name="velocityAt(posn) → tuple"><span>Calculate the combined translational plus rotational velocity of the sprite at the specified coordinates.</span>
 		<Arg name="posn">Coordinates of the point at which the velocity is to be calculated.</Arg>
 	</Method>
+	<Method name="applyEffects(img) → Image"><span>This method is called by the <code>image</code> getter to apply any effects to the sprite’s image after being scaled and rotated; by default it returns the image without modifications but can be overridden by subclasses.</span>
+		<Arg name="img">An Image instance to be modified.</Arg>
+	</Method>
+	<Method name="draw(srf)"><span>Draws the sprite to a surface; called automatically by the <code>SpriteList.draw</code> method.</span>
+		<Arg name="srf"><span>The surface on which to draw the sprite.</span></Arg>
+	</Method>
+	<!--Method name="calcRect() → pygame.Rect"><span>Recalculates the sprite’s blit rectangle based on its current position, angle, and size. Called automatically by the constructor and by the <code>draw</code> method.</span></Method-->
 	<PropA name="update" default="frameStep"><span>A reference to a function that updates the sprite’s properties whenever a frame is drawn.</span></PropA>
 	<PropA name="costumes"><span>A sequence of images representing the sprite’s “costumes”; returns a <code>list</code>.</span></PropA>
 	<PropA name="currentCostume" default="0">The index specifying the sprite’s current costume.</PropA>
@@ -131,7 +137,7 @@
 	<PropA name="edge"><span>An <code>int</code> constant indicating what action is to be taken when the sprite reaches the edge of the sketch. A value of <code>0</code> indicates no action; other constants are <code>BOUNCE</code>, <code>WRAP</code>, and <code>REMOVE</code>. This property can be a bitwise combination of <i>x</i> and <i>y</i> behaviours; e.g. <code>BOUNCE_X | WRAP_Y</code>. The default value is determined by the sketch’s <code>wall</code> property at the time the sprite is created.</span></PropA>
 	<PropA name="blitRectFilter" default="True"><span>Specifies whether to check for overlapping blit rectangles in determining collisions before examining the sprite’s shape model; should be set to <code>False</code> if the shape model extends outside the blit rectangle.</span></PropA>
 	<PropR name="index">The sprite’s position within the sprite list; determines the order in which sprites are drawn.</PropR>
-	<PropR name="rect"><span>This property describes the sprite’s blit rectangle. For efficiency, it is not updated every time it is accessed; rather, the <code>frameStep</code> method updates the <code>rect</code> property once per frame. Each call to the <code>config</code> method also recalculates it. If properties affecting the blit rectangle e.g. (<code>posn</code>, <code>angle</code>, <code>zoom</code>, <code>height</code>, <code>width</code>) are modified outside of <code>frameStep</code> or <code>config</code>, the <code>rect</code> property will be stale. You can call the <code>calcRect</code> method to recalculate it.</span></PropR>
+	<PropR name="rect"><span>This property describes the sprite’s blit rectangle. For efficiency it is updated only once per frame, immediately before the sprite is blitted to the display.</span></PropR>
 	<PropR name="size">The current zoomed size of the sprite as a (width, height) tuple.</PropR>
 	<PropR name="image">An image of the sprite’s current costume that has been zoomed and rotated according to the sprite properties.</PropR>
 	<PropR name="shape"><span>A <code>Polygon2D</code> or <code>Circle2D</code> instance describing the sprite’s shape model.</span></PropR>
