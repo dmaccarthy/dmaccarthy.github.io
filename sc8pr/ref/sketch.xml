@@ -44,6 +44,7 @@
 		<Arg name="initFilter" default="'*.*'">A pattern that specifies which files to display.</Arg>
 	</Method>
 	<PropA name="wall" default="None"><span>Assign a color to this property to create a wall around the sketch. Call the <code>setBackground</code> method after setting the wall color to draw the wall. This property affects the default edge behaviour of sprites.</span></PropA>
+	<PropA name="capture" default="None"><span>A <code>Capture</code> or <code>Video</code> instance used for recording the sketch.</span></PropA>
 	<PropR name="frameNumber"><span>The number of frames that have been drawn (including the current frame) since the <code>animate</code> method was last called.</span></PropR>
 	<PropR name="draw" default="simpleDraw"><span>A reference to the current drawing function. Use the <code>animate</code> method to change the drawing function.</span></PropR>
 	<PropR name="sprites"><span>A reference to the <code>SpriteList</code> instance that represents all sprites currently in the sketch.</span></PropR>
@@ -69,10 +70,10 @@
 		<Arg name="posn"><span>The point toward which the vector points.</span></Arg>
 		<Arg name="mag" default="1"><span>The magnitude of the vector.</span></Arg>
 	</Method>
-	<Method name="costumeSequence(costume, end, oscillate)"><span>Specify the order in which the sprite’s costumes are to be changed.</span>
+	<Method name="costumeSequence(costume, end)"><span>Specify the order in which the sprite’s costumes are to be changed.</span>
 		<Arg name="costume" default="0"><span>This can be the sequence of costumes as a <code>list</code> or <code>tuple</code>, or the index of the first costume to be displayed.</span></Arg>
 		<Arg name="end" default="-1"><span>The index of the last costume in the sequence; only used if the <code>costume</code> argument is an <code>int</code>.</span></Arg>
-		<Arg name="oscillate" default="False"><span>Specifies whether the sequence is to repeated in reverse order.</span></Arg>
+		<!--Arg name="oscillate" default="False"><span>Specifies whether the sequence is to repeated in reverse order.</span></Arg-->
 	</Method>
 	<Method name="colliding(group, collided) → bool"><span>Determine whether the sprite is colliding with any of the sprites in <code>group</code>.</span>
 		<Arg name="group" default="None"><span>A sequence of sprites to check for collisions; if <code>None</code>, all sprites in the sketch sprite list are checked.</span></Arg>
@@ -117,6 +118,7 @@
 	<PropA name="costumes"><span>A sequence of images representing the sprite’s “costumes”; returns a <code>list</code>.</span></PropA>
 	<PropA name="currentCostume" default="0">The index specifying the sprite’s current costume.</PropA>
 	<PropA name="costumeTime" default="0">The period (number of frames) at which the costume changes.</PropA>
+	<PropA name="lastCostume" default="WRAP"><span>A constant (<code>WRAP</code>, <code>PAUSE</code>, <code>REVERSE</code>, <code>REMOVE</code>) indicating what to do when the sprite reaches its last costume.</span></PropA>
 	<PropA name="tint" default="None">A color or RGB tuple specifying a color tint to apply to the sprite image.</PropA>
 	<PropA name="mass" default="0">The mass of the sprite to be used for physics-based collisions.</PropA>
 	<PropA name="posn" default="(0,0)">An ordered pair describing the sprite’s position within the sketch.</PropA>
@@ -198,6 +200,15 @@
 	<PropA name="run" default="True">Specifies whether to update all sprites’ properties after drawing.</PropA>
 </Class>
 
+<Class name="Capture">Used to create an object for recording sketch frames.
+	<Method name="Capture(pattern, interval, gui)"><span>Creates a <code>Capture</code> instance.</span>
+		<Arg name="pattern" default="&quot;?/img{:05d}.png&quot;">A template indicating the location and file name to use when saving frames.</Arg>
+		<Arg name="interval" default="None"><span>Indicates how often frames are to be captured; <code>None</code> pauses recording.</span></Arg>
+		<Arg name="gui" default="False">Indicates whether to include GUI dialogs in the captured image.</Arg>
+	</Method>
+	<Method name="capture()"><span>Called automatically by the sketch to perform the frame capture.</span></Method>
+</Class>
+
 <Function name="collide_rect(left, right) → bool">Determines whether two sprites are colliding based on whether their blit rectangles are overlapping.  This is the simplest (i.e. fastest) but least accurate collision detection.
 	<Arg name="left"><span>A <code>Sprite</code> instance.</span></Arg>
 	<Arg name="right"><span>A second <code>Sprite</code> instance.</span></Arg>
@@ -223,8 +234,10 @@
 <Constant name="WRAP">Indicates that the sprite wraps to the far edge when crossing any edge of the sketch.</Constant>
 <Constant name="WRAP_X">Indicates that the sprite wraps to the far edge when crossing the sides of the sketch.</Constant>
 <Constant name="WRAP_Y">Indicates that the sprite wraps to the far edge when crossing the top or bottom of the sketch.</Constant>
-<Constant name="REMOVE">Indicates that the sprite is to be removed when it passes any edge of the sketch.</Constant>
+<Constant name="REMOVE"><span>When set as the <code>edge</code> property, indicates that the sprite is to be removed when it passes any edge of the sketch. This constant can also be used for the <code>lastCostume</code> property to remove a sprite after being drawn with its last costume.</span></Constant>
 <Constant name="REMOVE_X">Indicates that the sprite is to be removed when it passes the sides of the sketch.</Constant>
 <Constant name="REMOVE_Y">Indicates that the sprite is to be removed when it passes the top or bottom of the sketch.</Constant>
+<Constant name="PAUSE">Indicates that the sprite costume changes are to be paused when the last costume is reached.</Constant>
+<Constant name="REVERSE">Indicates that the sprite costume sequence is to be reversed when the last costume is reached.</Constant>
 
 </Module>

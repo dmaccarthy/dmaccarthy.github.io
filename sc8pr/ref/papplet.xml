@@ -62,8 +62,6 @@
 	<PropA name="width" default="512"><span>The width of the sketch.</span></PropA>
 	<PropA name="height" default="288"><span>The height of the sketch.</span></PropA>
 	<PropA name="hRatio"><span>The ratio of the current sketch height to the original height.</span></PropA>
-	<PropA name="captureFolder" default="&quot;capture&quot;"><span>A string or <code>RAMFolder</code> instance specifying the folder where frame captures are to be saved.</span></PropA>
-	<PropA name="recordGui" default="False"><span>A <code>bool</code> specifying whether frames are to be recorded after or before GUI controls are drawn.</span></PropA>
 	<PropA name="cursor" default="ARROW"><span>The cursor to be displayed within the sketch. The cursor can be a builtin or custom cursor from <code>pygame.cursor</code> or you can use these cursors from <code>sc8pr.util</code>: <code>ARROW</code>, <code>DIAMOND</code>, <code>MOVE</code>, <code>TEXT</code>, <code>CROSS</code>, <code>HAND</code>, <code>MENU</code>, <code>NO_CURSOR</code>.</span></PropA>
 	<PropA name="light" default="None"><span>A color specifying the ambient light; the sketch will be tinted based on this color.</span></PropA>
 	<PropR name="surface">A reference to the Pygame display surface.</PropR>
