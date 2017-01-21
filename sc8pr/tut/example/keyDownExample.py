@@ -2,7 +2,7 @@
 
 from sc8pr.sketch import Sketch, Sprite, BOUNCE
 from sc8pr.image import Image
-from pygame import KEYDOWN
+from sc8pr.util import KEYDOWN
 from random import uniform, randint
 
 def setup(sk):

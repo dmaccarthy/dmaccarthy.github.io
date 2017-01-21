@@ -1,0 +1,53 @@
+<Module name="util">
+
+<Function name="rgba(*args) → pygame.Color"><span>Creates a <code>Color</code> instance from the data provided; if multiple arguments are passed, returns a <code>list</code> of <code>Color</code> instances.</span>
+	<Arg name="*args"><span>RGB or RGBA tuples, hex code strings, or color names.</span></Arg>
+</Function>
+
+<Function name="hsvaColor(h, s, v, a) → pygame.Color"><span>Creates a <code>Color</code> instance from the data provided.</span>
+	<Arg name="h"><span>A <i>hue</i> between 0 and 360.</span></Arg>
+	<Arg name="s"><span>A <i>saturation</i> between 0 and 100.</span></Arg>
+	<Arg name="v"><span>A <i>value</i> between 0 and 100.</span></Arg>
+	<Arg name="a" default="100"><span>An <i>alpha</i> between 0 and 100.</span></Arg>
+</Function>
+
+<Function name="randColor(alpha) → pygame.Color"><span>Return a random color.</span>
+	<Arg name="alpha" default="False">Specify whether to include a random alpha value as part of the color.</Arg>
+</Function>
+
+<Function name="randPixel(obj) → tuple">Randomly chooses a pixel from the specified object and returns the coordinates as a 2-tuple.
+	<Arg name="obj"><span>A <code>Sketch</code> or <code>Image</code> instance, or other object that has a comparable <code>size</code> property.</span></Arg>
+</Function>
+
+<Function name="shiftKey() → bool">Indicates whether the shift key is pressed.</Function>
+<Function name="controlKey() → bool">Indicates whether the control key is pressed.</Function>
+<Function name="altKey() → bool">Indicates whether the alt key is pressed.</Function>
+<Function name="keyMod() → bool">Indicates whether any of the shift, control, or alt keys is pressed.</Function>
+<Function name="capsLock() → bool">Indicates whether caps-lock is on.</Function>
+
+<Constant name="CENTER">Specify the center as the anchor point for blitting images.</Constant>
+<Constant name="NW">Specify the upper left corner as the anchor point for blitting images.</Constant>
+<Constant name="SW">Specify the lower left corner as the anchor point for blitting images.</Constant>
+<Constant name="NE">Specify the upper right corner as the anchor point for blitting images.</Constant>
+<Constant name="SE">Specify the lower right corner as the anchor point for blitting images.</Constant>
+<Constant name="WEST">Specify the middle of the left side as the anchor point for blitting images.</Constant>
+<Constant name="EAST">Specify the middle of the right side as the anchor point for blitting images.</Constant>
+<Constant name="NORTH">Specify the middle of the top side as the anchor point for blitting images.</Constant>
+<Constant name="SOUTH">Specify the middle of the bottom side as the anchor point for blitting images.</Constant>
+<Constant name="KEYDOWN">A numerical code identifying key down events.</Constant>
+<Constant name="KEYUP">A numerical code identifying key up events.</Constant>
+<Constant name="MOUSEMOTION">A numerical code identifying mouse motion events.</Constant>
+<Constant name="MOUSEDOWN">A numerical code identifying mouse button down events.</Constant>
+<Constant name="MOUSEUP">A numerical code identifying mouse button up events.</Constant>
+<Constant name="RESIZE">A numerical code identifying that the sketch window has been resized.</Constant>
+<Constant name="QUIT">A numerical code identifying a quit event.</Constant>
+<Constant name="ARROW">Data describing an arrow cursor.</Constant>
+<Constant name="DIAMOND">Data describing a diamond cursor.</Constant>
+<Constant name="MOVE">Data describing a move cursor.</Constant>
+<Constant name="TEXT">Data describing a text cursor.</Constant>
+<Constant name="CROSS">Data describing a cross cursor.</Constant>
+<Constant name="HAND">Data describing a hand cursor.</Constant>
+<Constant name="MENU">Data describing a menu cursor.</Constant>
+<Constant name="NO_CURSOR">Data describing an invisible cursor.</Constant>
+
+</Module>

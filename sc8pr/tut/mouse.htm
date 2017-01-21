@@ -4,7 +4,7 @@
 
 <p>Adding the following loop to the <code>customDraw</code> function of the previous example will make all sprites accelerate toward the mouse position...</p>
 
-<pre class="Code">accel = sk.height / 10000
+<pre class="Code">accel = sk.height / 10000 <span class="Comment"># (pixels/frame) / frame</span>
 for sprite in sk.sprites:
     sprite.accel = sprite.toward(sk.mouseXY, accel)</pre>
 

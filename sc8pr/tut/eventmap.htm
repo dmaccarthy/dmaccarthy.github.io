@@ -10,7 +10,7 @@
 
 <p>To tell the sketch when to run the event handler, we pass a second argument, <code>eventMap</code>, to the <code>animate</code> method. The <code>eventMap</code> is a dictionary that has event codes as its keys and handlers as its values...</p>
 
-<pre class="Code">from pygame import KEYDOWN
+<pre class="Code">from sc8pr.util import KEYDOWN
 
 ...
 
@@ -19,6 +19,15 @@ sk.animate(customDraw, eventMap)</pre>
 
 <p>Here is the <a href="tut/example/keyDownExample.py">complete program</a>.</p>
 
-<p>See the <a href="http://www.pygame.org/docs/ref/event.html">Pygame documentation</a> for a list of event code constants. You can also use the value <code>None</code> as a key in the <code>eventMap</code>, to specify a handler for events that do not match any of the keys that explicitly appear in the dictionary.</p>
-
+<p>The event code constants defined in the <code>sc8pr.util</code> module have the same values as their Pygame equivalents...<p>
+<ul>
+	<li><code>KEYDOWN</code></li>
+	<li><code>KEYUP</code></li>
+	<li><code>MOUSEMOTION</code></li>
+	<li><code>MOUSEDOWN</code> (shortened from Pygame's <code>MOUSEBUTTONDOWN</code>)</li>
+	<li><code>MOUSEUP</code> (shortened from Pygame's <code>MOUSEBUTTONUP</code>)</li>
+	<li><code>RESIZE</code> (shortened from Pygame's <code>VIDEORESIZE</code>)</li>
+	<li><code>QUIT</code></li>
+</ul>
+<p>You can also use the value <code>None</code> as a key in the <code>eventMap</code>, to specify a handler for events that do not match any of the keys that explicitly appear in the dictionary.</p>
 </div>

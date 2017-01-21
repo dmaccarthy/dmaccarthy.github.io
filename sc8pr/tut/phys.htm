@@ -1,6 +1,6 @@
 <div>
 
-<p>The <code>sketch</code> module includes a simple physics engine. To simulate physics-based collisions, assign a positive <code>mass</code> property to your sprites and use the <code class="Link" onclick="goRef('physics','Sketch.physicsDraw')">physicsDraw</code> method as your drawing function. Here is an example...</p>
+<p>The <code>sketch</code> module includes a simple physics engine. To simulate physics-based collisions, assign a positive <code>mass</code> property to your sprites and use the <code class="Link" onclick="goRef('sketch','Sketch.physicsDraw')">physicsDraw</code> method as your drawing function. Here is an example...</p>
 
 <pre class="Code">from sc8pr.sketch import Sketch, Sprite, WRAP_X, BOUNCE_Y
 from sc8pr.image import Image
@@ -30,5 +30,7 @@ Sketch(setup).play()</pre>
 <pre class="Code">sk.drawBackground()   <span class="Comment"># Redraw background</span>
 sk.sprites.physics()  <span class="Comment"># Update colliding masses</span>
 sk.sprites.draw()     <span class="Comment"># Redraw sprites</span></pre>
+
+<p>The <code class="Link" onclick="goRef('sketch','Sprite.circle')">circle</code> method was called in the example above go that the sprites will be treated as circles when calculating their collision begaviour. Omitting the call to <code>circle</code> would result in the sprites being treated as rectangles. There is also a <code class="Link" onclick="goRef('sketch','Sprite.polygon')">polygon</code> method that lets you model the sprite’s shape as a polygon.</p>
 
 </div>
