@@ -6,12 +6,10 @@
 		{"id":"OOP", "title":"Object-Oriented Sketches"},
 		{"id":"phys", "title":"Physics-Based Collisions"},
 		{"id":"input", "title":"User Input"},
-		{"id":"file", "title":"File Browser Dialog"}
-	]}
+		{"id":"file", "title":"File Browser Dialog"},
+		{"id":"image", "title":"Working with Images"}
+	]}	
 ], "future":[
-	{"id":"img", "title":"Images", "pages":[
-		{"id":"text", "title":"Rendering Text"}
-	]},
 	{"id":"img", "title":"Sprites", "pages":[]},
 	{"id":"img", "title":"Robotics", "pages":[]},
 	{"id":"img", "title":"GUI", "pages":[]}

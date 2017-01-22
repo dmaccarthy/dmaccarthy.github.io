@@ -1,0 +1,137 @@
+<Module name="image">
+
+<Class name="Image">Represents bitmap image data.
+	<Method name="Image(data, bgColor, alpha, bits)">Creates an image instance.
+		<Arg name="data"><span>A string identifying an image file; a 2-tuple specifying the size of a new image; or an existing image or <code>pygame.Surface</code> instance. When creating from an existing instance, the pixel data is not copied (use the <code>clone</code> method to do this).</span></Arg>
+		<Arg name="bgColor" default="None"><span>The color of the image background; only used when <code>data</code> is a 2-tuple.</span></Arg>
+		<Arg name="alpha" default="True"><span>Specify whether to include alpha data (transparency); only used when <code>data</code> is a 2-tuple.</span></Arg>
+		<Arg name="bits" default="None"><span>Specifies the bit depth of the image; only used when <code>data</code> is a 2-tuple.</span></Arg>
+	</Method>
+	<Method name="averageColor(alphaAdjust) → pygame.Color">Return the color averaged over the entire image.
+		<Arg name="alphaAdjust" default="False">Adjust the result to account for pixel transparency.</Arg>
+	</Method>
+	<Method name="blit(img, posn, anchor) → self">Draw another image onto the image.
+		<Arg name="img">A source image or surface to be drawn.</Arg>
+		<Arg name="posn" default="(0,0)">The position on the destination image where the source image is to be drawn.</Arg>
+		<Arg name="anchor" default="NW">The anchor point on the source that is to be drawn at the destination coordinates.</Arg>
+	</Method>
+	<Method name="blitTo(dest, posn, anchor, size, angle, flags) → pygame.Rect"><span>Draw the image onto another image; first calls the <code>transform</code> method (see below) if <code>size</code> or <code>angle</code> is specified.</span>
+		<Arg name="dest" defULT="None"><span>A destination image or surface; if <code>None</code> the Pygame display surface will be used.</span></Arg>
+		<Arg name="posn" default="(0,0)">The position on the destination image where the source image is to be drawn.</Arg>
+		<Arg name="anchor" default="NW">The anchor point on the source that is to be drawn at the destination coordinates.</Arg>
+	</Method>
+	<Method name="clone() → Image">Duplicate an image.</Method>
+	<Method name="convert(alpha, *args) → Image">Convert the image format.
+		<Arg name="alpha" default="True">Specifies whether the converted image has alpha (per-pixel transparency) data.</Arg>
+		<Arg name="*args"><span>Optional <code>depth</code> and <code>flags</code> data when <code>alpha</code> is <code>False</code>.</span></Arg>
+	</Method>
+	<Method name="crop(size, posn, bgColor) → Image">Crop an image to a new size
+		<Arg name="size">Size of the new image as a 2-tuple.</Arg>
+		<Arg name="posn" default="CENTER"><span>Location to crop the image; can be one of the anchor constants from <code class="Link" onclick="goRef('util')">sc8pr.util</code> or a 2-tuple specifying the coordinates where the cropping is to be done.</span></Arg>
+		<Arg name="bgColor" default="None">The color of the background to be added if the aspect ratio differs; will be transparent if not specified.</Arg>
+	</Method>
+	<Method name="ellipse(size, fill, stroke, strokeWeight, angle, arc, arcWeight) → Image">Static method that renders an ellipse, circle, arc, or sector as a new image.
+		<Arg name="size">A 2-tuple specifying the width and height of the ellipse; or an integer specifying the radius if circular.</Arg>
+		<Arg name="fill" default="(0,0,0)">The color of the shape’s interior.</Arg>
+		<Arg name="stroke" default="None">The color of the shape’s outline.</Arg>
+		<Arg name="strokeWeight" default="1">The width of the shape’s outline.</Arg>
+		<Arg name="angle" default="None">For arcs or sectors, a 2-tuple specifying the starting and ending angles in degrees measured clockwise.</Arg>
+		<Arg name="arc" default="False">A color in which to draw the arc if different from the “sides” of the sector.</Arg>
+		<Arg name="arcWeight" default="False">The stroke weight to be usedfor the arc if different from the “sides” of the sector.</Arg>
+	</Method>
+	<Method name="fit(size, posn, bgColor) → Image">Resize an image while preserving its aspect ratio.
+		<Arg name="size">Size of the new image as 2-tuple.</Arg>
+		<Arg name="posn" default="CENTER"><span>Location within the background to draw the resized image if the aspect ratio differs from the specified size; can be one of the anchor constants from <code class="Link" onclick="goRef('util')">sc8pr.util</code> or a 2-tuple specifying the background coordinates where the resized image is to be drawn.</span></Arg>
+		<Arg name="bgColor" default="None">The color of the background to be added if the aspect ratio differs; will be transparent if not specified.</Arg>
+	</Method>
+	<Method name="flip(xflip, yflip) → Image">Create a new image by flipping the original image.
+		<Arg name="xflip" default="False">Specify whether to flip horizontally.</Arg>
+		<Arg name="yflip" default="False">Specify whether to flip vertically.</Arg>
+	</Method>
+	<Method name="noTransform()"><span>Discard the cached image produced by the <code>transform</code> method.</span></Method>
+	<Method name="plot(pts, marker, fill, stroke, strokeWeight, markerSize=(15,15), closed=False)) → self">Plot a sequence of points as markers or line segments (but not both!) onto an existing image.
+		<Arg name="pts"><span>The sequence of points to plot; may include <code>None</code> to indicate a break in the line segments.</span></Arg>
+		<Arg name="marker" default="None">If markers are to be plotted, an integer between 1 and 7 specifying the marker shape; or an image to be used as the marker.</Arg>
+		<Arg name="fill" default="None">The interior color for the markers or polygon.</Arg>
+		<Arg name="stroke" default="(0,0,0)">The outline color for the markers or line segments.</Arg>
+		<Arg name="strokeWeight" default="1">The width of the stroke.</Arg>
+		<Arg name="markerSize" default="(15,15)">The size of the markers.</Arg>
+		<Arg name="closed" default="False">Specify whether the last vertex connects back to the first one.</Arg>
+	</Method>
+	<Method name="polygon(poly, closed, fill, stroke, strokeWeight, size) → Image">Static method that renders a polygon as a new image.
+		<Arg name="poly">A sequence of points decribing the vertices.</Arg>
+		<Arg name="closed" default="True">Specify whether the last vertex connects back to the first one.</Arg>
+		<Arg name="fill" default="None">The color of the shape’s interior.</Arg>
+		<Arg name="stroke" default="None">The color of the shape’s outline.</Arg>
+		<Arg name="strokeWeight" default="1">The width of the shape’s outline.</Arg>
+		<Arg name="size" default="False">The size of the image; if not specified will be determined from the vertex coordinates.</Arg>
+	</Method>
+	<Method name="randPixel() → tuple">Return the coordinates of a random pixel within the image.</Method>
+	<Method name="rect(size, fill, stroke, strokeWeight) → Image">Static method that renders a rectangle as a new image.
+		<Arg name="size">A 2-tuple specifying the width and height of the rectangle.</Arg>
+		<Arg name="fill" default="(0,0,0)">The color of the shape’s interior.</Arg>
+		<Arg name="stroke" default="None">The color of the shape’s outline.</Arg>
+		<Arg name="strokeWeight" default="1">The width of the shape’s outline.</Arg>
+	</Method>
+	<Method name="replaceColor(color, dist, replace) → Image">Return a new image with the specified color replaced by transparency or by another color.
+		<Arg name="color">The color to be removed or replaced.</Arg>
+		<Arg name="dist" default="0">The distance from the specified color to be considered a color match.</Arg>
+		<Arg name="replace" default="(0,0,0,0)">The color with which to replace matched pixels.</Arg>
+	</Method>
+	<Method name="rotate(angle) → Image">Create a new image by rotating the original image; adds transparency (if supported by image format) to the corners.
+		<Arg name="angle">An angle specifying degrees of clockwise rotation.</Arg>
+	</Method>
+	<Method name="saveAs(fn)">Save the image.
+		<Arg name="fn">File name to use when saving the image.</Arg>
+	</Method>
+	<Method name="scale(size, width, height) → Image">Resize an image.
+		<Arg name="size" default="None">Size of the new image as a 2-tuple.</Arg>
+		<Arg name="width" default="None">Width of the new image; the height will be calculated to preserve the aspect ratio if not specified.</Arg>
+		<Arg name="height" default="None">Height of the new image; the width will be calculated to preserve the aspect ratio if not specified.</Arg>
+	</Method>
+	<Method name="setAsIcon()">Set the image as the program icon.</Method>
+	<Method name="style(bgColor, pad=0, border, borderColor) → Image">Create a new image by adding a background color, border, and/or padding to an existing image.
+		<Arg name="bgColor" default="None">The color of the background and padding; if not specified will be left transparent.</Arg>
+		<Arg name="border" default="0">Width of the border in pixels.</Arg>
+		<Arg name="pad" default="0">Number of pixels of padding to add.</Arg>
+		<Arg name="borderColor" default="(0,0,0)">The color of the border.</Arg>
+	</Method>
+	<Method name="text(txt, font, color, align, bgColor) → Image">Static method that renders text as an image.
+		<Arg name="txt">A string to be rendered.</Arg>
+		<Arg name="font" default="None"><span>A <code>pygame.font.Font</code> instance specifying the font to use; fonts can be loaded using <code class="Link" onclick="goRef('papplet','PApplet.loadFont')">PApplet.loadFont</code>.</span></Arg>
+		<Arg name="color" default="(0,0,0)">The color in which to render the text.</Arg>
+		<Arg name="align" default="LEFT"><span>One of <code>LEFT</code>, <code>RIGHT</code>, or <code>CENTER</code> to specify the text alignment to use when the text contains multiple lines.</span></Arg>
+		<Arg name="bgColor" default="None">The background color behind the text; if not specified will be left transparent.</Arg>
+	</Method>
+	<Method name="tiles(number, rows=1, trim=0) → list">Slice an image into several rectangular tiles.
+		<Arg name="number" default="2">The number of tiles to create.</Arg>
+		<Arg name="rows" default="1">The number of rows to slice the image into.</Arg>
+		<Arg name="trim" default="0">The number of pixels to remove from the edges of the tiles; can be a 2-tuple to specify different values for the left/right and top/bottom edges.</Arg>
+	</Method>
+	<Method name="transform(size, angle, flags) → Image"><span>Resize and/or rotate an image. A reference to the transformed image is saved as an attribute of the original image so that calling this method again with the same arguments returns the cached image rather than transforming it again. Use the <code>scale</code>, <code>fit</code>, and <code>rotate</code> methods to transform an image without caching.</span>
+		<Arg name="size" default="None">A 2-tuple specifying dimensions to resize the image to before blitting.</Arg>
+		<Arg name="angle" default="None">An angle specifying rotation of the image.</Arg>
+		<Arg name="flags" default="0"><span>Set this to <code>FIT</code> to preserve aspect ratio when resizing.</span></Arg>
+	</Method>
+	<PropR name="surface"><span>A <code>pygame.Surface</code> instance that contains the image pixel data.</span></PropR>
+	<PropR name="width">The width of the image in pixels.</PropR>
+	<PropR name="height">The height of the image in pixels.</PropR>
+	<PropR name="size">The size of the image as a 2-tuple.</PropR>
+	<PropR name="center">The coordinates of the image center.</PropR>
+	<PropR name="bits">The image depth in bits per pixel.</PropR>
+	<!--PropR name="width"><span>.</span></PropR-->
+
+</Class>
+
+<Function name="flipAll(imgs, xflip, yflip) → list">Apply a flip transformation on a sequence of images; return the sequence of flipped images.
+	<Arg name="imgs"><span>A sequence of <code>Image</code> instances to flip.</span></Arg>
+	<Arg name="xflip" default="False">Specify whether to flip horizontally.</Arg>
+	<Arg name="yflip" default="False">Specify whether to flip vertically.</Arg>
+</Function>
+
+<Constant name="FIT"><span>A constant for use as a flag when calling the <code>Image.transform</code> method.</span></Constant>
+<Constant name="LEFT">Indicates multi-line text is to be left-aligned.</Constant>
+<Constant name="RIGHT">Indicates multi-line text is to be right-aligned.</Constant>
+<Constant name="CENTER"><span>Indicates multi-line text is to be center-aligned; same as <code>sc8pr.util.CENTER</code>.</span></Constant>
+
+</Module>
