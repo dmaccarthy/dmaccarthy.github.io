@@ -33,6 +33,8 @@
 <Constant name="EAST">Specify the middle of the right side as the anchor point for blitting images.</Constant>
 <Constant name="NORTH">Specify the middle of the top side as the anchor point for blitting images.</Constant>
 <Constant name="SOUTH">Specify the middle of the bottom side as the anchor point for blitting images.</Constant>
+<Constant name="BOLD"><span>Indicates bold type when calling <code class="Link" onclick="goRef('papplet','PApplet.loadFont')">PApplet.loadFont</code>.</span></Constant>
+<Constant name="ITALIC"><span>Indicates italicized type when calling <code class="Link" onclick="goRef('papplet','PApplet.loadFont')">PApplet.loadFont</code>.</span></Constant>
 <Constant name="KEYDOWN">A numerical code identifying key down events.</Constant>
 <Constant name="KEYUP">A numerical code identifying key up events.</Constant>
 <Constant name="MOUSEMOTION">A numerical code identifying mouse motion events.</Constant>

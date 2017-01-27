@@ -25,7 +25,7 @@ def postcard(sk):
     bg.plot(sail, fill=WHITE, stroke=None)
 
     <span class="Comment"># Draw the sea</span>
-    sea = Image.rect((w, h-y+1), BLUE)
+    sea = Image((w, h-y+1), BLUE)
     bg.blit(sea, (0, y))
 
     <span class="Comment"># Add some text</span>

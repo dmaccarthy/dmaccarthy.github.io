@@ -4,6 +4,7 @@
 
 <pre class="Code">from sc8pr.sketch import Sketch, Sprite, BOUNCE, WRAP, <span class="Highlight">USERINPUT</span>
 from sc8pr.image import Image
+from sc8pr.util import BOLD, ITALIC
 
 <span class="Proto">def</span> setup(sk):
     sk.setBackground("bg.png")
@@ -12,7 +13,8 @@ from sc8pr.image import Image
     sk.animate(eventMap={<span class="Highlight">USERINPUT</span>:user})
 
 <span class="Proto">def</span> user(sk, ev):
-    img = Image.text(str(ev.value), font=sk.loadFont("serif", 32), color=(255,0,0))
+    font = sk.loadFont("serif", 32, BOLD | ITALIC)
+    img = Image.text(str(ev.value), font, (255,0,0))
     Sprite(sk, img, posn=sk.center, velocity=(1,1), spin=2, edge=WRAP)
 
 Sketch(setup).play()</pre>

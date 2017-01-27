@@ -19,11 +19,10 @@
 		<Arg name="size">The size of the sketch in pixels.</Arg>
 		<Arg name="mode" default="None">The new display mode.</Arg>
 	</Method>
-	<Method name="loadFont(name, size, bold, italic, lineHeight) → pygame.font.Font"><span>Load a system font or font file.</span>
+	<Method name="loadFont(name, size, style, lineHeight) → pygame.font.Font"><span>Load a system font or font file.</span>
 		<Arg name="name" default="None">The name of the font or font file to load.</Arg>
 		<Arg name="size" default="16">The desired font size.</Arg>
-		<Arg name="bold" default="False">Whether the font is to be rendered as bold face.</Arg>
-		<Arg name="italic" default="False">Whether the font is to be rendered in italics.</Arg>
+		<Arg name="style" default="0"><span>The desired font style; use <code>BOLD</code> and <code>ITALIC</code> constants from <code class="Link" onclick="goRef('util')">sc8pr.util</code>.</span></Arg>
 		<Arg name="lineHeight" default="False">Whether the size is to be interpreted as the line height. This is slower but produces more consistent sizes among different typefaces.</Arg>
 	</Method>
 	<Method name="useFonts(path)"><span>A class method that specifies a JSON file defining font substitutions. If not called, <code>"fonts.json"</code> in the <code>sc8pr</code> folder will be used.</span>
