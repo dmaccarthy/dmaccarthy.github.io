@@ -10,10 +10,10 @@ p.LaTeX {text-align:center}
 
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"> </script>
-<script type="text/javascript" src="../../jslib/ccLatex.js"> </script>
+<script type="text/javascript" src="https://rawgit.com/dmaccarthy/ccLatex/master/ccLatex.js"> </script>
 <script type="text/javascript" >//<!--
 
-//$(function() {LaTeX()});
+$(function() {LaTeX()});
 
 //--></script>
 </head>
@@ -36,6 +36,7 @@ p.LaTeX {text-align:center}
 	<input type="button" value="Unrender" onclick="LaTeX.unrender()"/>
 </p>
 
+<!--
 Summary: Render LaTeX markup as PNG images using codecogs.com.
 Requires: jQuery 2+
 Author: D.G. MacCarthy <devwigs@gmail.com>
@@ -67,6 +68,6 @@ to be rendered.
 <p>Here is an inline equation: <span class="LaTeX" data-color="{128,0,128}">C
 = 2\pi r</span>. Here is a lerge, red, display equation:</p>
 <p class="LaTeX" data-zoom="2" data-color="red">A = \pi r^2</p>
-
+-->
 </body>
 </html>
