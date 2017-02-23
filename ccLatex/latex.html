@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head><title>ccLatex</title>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<style type="text/css">
+
+p.LaTeX {text-align:center}
+
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"> </script>
+<script type="text/javascript" src="../../jslib/ccLatex.js"> </script>
+<script type="text/javascript" >//<!--
+
+//$(function() {LaTeX()});
+
+//--></script>
+</head>
+<body>
+
+<p><pre>&lt;p&gt;Here is a display equation:&lt;/p&gt;
+&lt;p class="LaTeX" data-zoom="2" data-color="red"&gt;C = 2\pi r&lt;/p&gt;
+&lt;p&gt;Here is an inline equation:
+  &lt;span class="LaTeX" data-color="{128,0,128}"&gt;A = \pi r^2&lt;/span&gt;.
+&lt;/p&gt;</pre></p>
+
+<p>Here is a display equation:</p>
+<p class="LaTeX" data-zoom="2" data-color="red">C = 2\pi r</p>
+<p>Here is an inline equation:
+  <span class="LaTeX" data-color="{128,0,128}">A = \pi r^2</span>.
+</p>
+
+<p>
+	<input type="button" value="Render" onclick="LaTeX()"/>
+	<input type="button" value="Unrender" onclick="LaTeX.unrender()"/>
+</p>
+
+Summary: Render LaTeX markup as PNG images using codecogs.com.
+Requires: jQuery 2+
+Author: D.G. MacCarthy <devwigs@gmail.com>
+
+Usage:
+
+In your HTML, include the LaTeX markup enclosed in a <p> tag for display
+equations or a <span> tag for inline. For example...
+
+<p>Here is an inline equation: <span class="LaTeX" data-color="{128,0,128}">C
+= 2\pi r</span>. Here is a lerge, red, display equation:</p>
+<p class="LaTeX" data-zoom="2" data-color="red">A = \pi r^2</p>
+
+Give your LaTeX tags a class="LaTeX" attribute for easy identification and
+optionally a data-color attribute to control the color and a data-zoom
+attribute to control the size of the equation relative to the surrounding
+text. Colors can be specified as a name ("red") if supported by LaTeX or as
+RGB values enclosed in curly brackets ("{128,0,128}").
+
+To render the LaTeX as images, call the LaTeX() function. When called with no
+arguments, the function will render all elements with "LaTeX" as part of their
+class attribute. You can also pass a single element or a sequence of elements
+to be rendered. 
+
+<p>Here is a display equation that is 3 times the size of the current text...</p>
+<p class="LaTeX" data-zoom="3" data-color="red">\left | \vec{\mathbf F}_e \right | = {kq_1q_2 \over r^2}</p>
+<p style="font-size:2em">Here is an inline equation the same size as the text: <span class="LaTeX">C = 2\pi r</span>.</p>
+
+<p>Here is an inline equation: <span class="LaTeX" data-color="{128,0,128}">C
+= 2\pi r</span>. Here is a lerge, red, display equation:</p>
+<p class="LaTeX" data-zoom="2" data-color="red">A = \pi r^2</p>
+
+</body>
+</html>
