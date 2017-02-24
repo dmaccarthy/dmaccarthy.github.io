@@ -23,6 +23,7 @@ pre.Code {
 	margin-right:2em;
 	padding:6px;
 	background:#f0f0ff;
+	overflow:auto;
 }
 
 pre.Code, code {
