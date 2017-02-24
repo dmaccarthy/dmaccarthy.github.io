@@ -1,13 +1,17 @@
 ﻿<!DOCTYPE html>
 <html>
-<head><title>ccLatex Documentation</title>
+<head>
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ccLatex Documentation</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:700"/>
+<link rel="stylesheet" type="text/css" href="../css/default.css"/>
 <style type="text/css">
 
 p.LaTeX {text-align:center}
-
 input {width:6em}
 
 .Example {
@@ -19,14 +23,8 @@ input {width:6em}
 }
 
 </style>
-<title>sc8pr Documentation</title>
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:700"/>
-<link rel="stylesheet" type="text/css" href="../css/default.css"/>
-<!--link rel="stylesheet" type="text/css" href="../css/ref.css"/-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"> </script>
-<script type="text/javascript" src="https://cdn.rawgit.com/dmaccarthy/ccLatex/master/ccLatex.js"> </script>
+<script type="text/javascript" src="https://cdn.rawgit.com/dmaccarthy/ccLatex/v0.1.0/ccLatex.js"> </script>
 <script type="text/javascript" >//<!--
 
 $(function() {LaTeX()});
@@ -34,7 +32,6 @@ $(function() {LaTeX()});
 //--></script>
 </head>
 <body>
-
 <article><h3>ccLatex</h3>
 
 <p><code>ccLatex</code> is a very simple Javascript for rendering and unrendering LaTeX equations in HTML documents using <a href="http://codecogs.com">codecogs.com</a>.</p>
@@ -63,17 +60,15 @@ $(function() {LaTeX()});
 
 <p>To render the LaTeX as PNG images, we need to load <code>jQuery</code> and <code>ccLatex</code> into our document, and then run the <code>LaTeX</code> function after the document is completely loaded...</p>
 
-<pre class="Code">
-&lt;script type="text/javascript"
+<pre class="Code">&lt;script type="text/javascript"
     src="https://code.jquery.com/jquery-2.2.3.min.js"&gt; &lt;/script&gt;
 &lt;script type="text/javascript"
-    src="https://cdn.rawgit.com/dmaccarthy/ccLatex/master/ccLatex.js"&gt; &lt;/script&gt;
+    src="https://cdn.rawgit.com/dmaccarthy/ccLatex/v0.1.0/ccLatex.js"&gt; &lt;/script&gt;
 &lt;script type="text/javascript"&gt;
 
     $(LaTeX);
 
-&lt;/script&gt;
-</pre>
+&lt;/script&gt;</pre>
 
 <p>The <code>LaTeX</code> function can be called with two arguments. The first argument is an element or sequence of elements containing the LaTeX to be rendered.  If this argument is omitted, the function will use <code>jQuery</code> to find all elements with a <code>"LaTeX"</code> class.</p>
 
@@ -88,38 +83,5 @@ $(function() {LaTeX()});
 	<p>This documentation is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>. The <code>ccLatex</code> software itself is licensed under the <a href="http://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License Version 3</a>.</p>
 </div>
 
-<!--
-Summary: Render LaTeX markup as PNG images using codecogs.com.
-Requires: jQuery 2+
-Author: D.G. MacCarthy <devwigs@gmail.com>
-
-Usage:
-
-In your HTML, include the LaTeX markup enclosed in a <p> tag for display
-equations or a <span> tag for inline. For example...
-
-<p>Here is an inline equation: <span class="LaTeX" data-color="{128,0,128}">C
-= 2\pi r</span>. Here is a lerge, red, display equation:</p>
-<p class="LaTeX" data-zoom="2" data-color="red">A = \pi r^2</p>
-
-Give your LaTeX tags a class="LaTeX" attribute for easy identification and
-optionally a data-color attribute to control the color and a data-zoom
-attribute to control the size of the equation relative to the surrounding
-text. Colors can be specified as a name ("red") if supported by LaTeX or as
-RGB values enclosed in curly brackets ("{128,0,128}").
-
-To render the LaTeX as images, call the LaTeX() function. When called with no
-arguments, the function will render all elements with "LaTeX" as part of their
-class attribute. You can also pass a single element or a sequence of elements
-to be rendered. 
-
-<p>Here is a display equation that is 3 times the size of the current text...</p>
-<p class="LaTeX" data-zoom="3" data-color="red">\left | \vec{\mathbf F}_e \right | = {kq_1q_2 \over r^2}</p>
-<p style="font-size:2em">Here is an inline equation the same size as the text: <span class="LaTeX">C = 2\pi r</span>.</p>
-
-<p>Here is an inline equation: <span class="LaTeX" data-color="{128,0,128}">C
-= 2\pi r</span>. Here is a lerge, red, display equation:</p>
-<p class="LaTeX" data-zoom="2" data-color="red">A = \pi r^2</p>
--->
 </body>
 </html>
