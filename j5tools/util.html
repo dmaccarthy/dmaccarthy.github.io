@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ccLatex Documentation</title>
+<title>j5tools Documentation</title>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:700"/>
@@ -24,21 +24,21 @@ input {width:6em}
 
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
-<script type="text/javascript" src="https://cdn.rawgit.com/dmaccarthy/ccLatex/v0.1.0/ccLatex.js"> </script>
+<script type="text/javascript" src="../j5tools-min.js"> </script>
 <script type="text/javascript" >//<!--
 
-$(function() {LaTeX()});
+$(function() {latex()});
 
 //--></script>
 </head>
 <body>
-<article><h3>ccLatex</h3>
+<article><h3>util</h3>
 
 <p><code>ccLatex</code> is a very simple Javascript for rendering and unrendering LaTeX equations in HTML documents using <a href="http://codecogs.com">codecogs.com</a>.</p>
 
 <div class="Example">
-	<p style="margin:4px"><input type="button" value="Render" onclick="LaTeX()"/>
-		<input type="button" value="Unrender" onclick="LaTeX.unrender()"/></p>
+	<p style="margin:4px"><input type="button" value="Render" onclick="latex()"/>
+		<input type="button" value="Unrender" onclick="latex.unrender()"/></p>
 	<p>Here is a display equation:</p>
 	<p class="LaTeX" data-zoom="2" data-color="red">C = 2\pi r</p>
 	<p>Here is an inline equation:
@@ -62,19 +62,18 @@ $(function() {LaTeX()});
 
 <pre class="Code">&lt;script type="text/javascript"
     src="https://code.jquery.com/jquery-3.1.1.min.js"&gt; &lt;/script&gt;
-&lt;script type="text/javascript"
-    src="https://cdn.rawgit.com/dmaccarthy/ccLatex/v0.1.0/ccLatex.js"&gt; &lt;/script&gt;
+&lt;script type="text/javascript" src="j5tools-min.js"&gt; &lt;/script&gt;
 &lt;script type="text/javascript"&gt;
 
-    $(LaTeX);
+    $(latex);
 
 &lt;/script&gt;</pre>
 
-<p>The <code>LaTeX</code> function can be called with two arguments. The first argument is an element or sequence of elements containing the LaTeX to be rendered.  If this argument is omitted, the function will use <code>jQuery</code> to find all elements with a <code>"LaTeX"</code> class.</p>
+<p>The <code>latex</code> function can be called with two arguments. The first argument is an element or sequence of elements containing the LaTeX to be rendered.  If this argument is omitted, the function will use <code>jQuery</code> to find all elements with a <code>"LaTeX"</code> class.</p>
 
 <p>The second argument can be set to <code>true</code> to indicate that already-rendered equations should be rendered again. This is useful if the equation’s color or size has changed. If the second argument is <code>false</code> or omitted, equations that have already been rendered will not be rendered again.</p>
 
-<p>We can remove the equation’s image and replace it with the original LaTeX markup by calling the <code>LaTeX.unrender</code> function. This function  also accepts an element or sequence of elements as its argument, and if omitted will default to all elements with a <code>"LaTeX"</code> class.</p>
+<p>We can remove the equation’s image and replace it with the original LaTeX markup by calling the <code>latex.unrender</code> function. This function  also accepts an element or sequence of elements as its argument, and if omitted will default to all elements with a <code>"LaTeX"</code> class.</p>
 
 </article>
 

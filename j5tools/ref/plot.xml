@@ -1,0 +1,9 @@
+<Module name="plot">
+<Class name="Plot">Encapsulates a canvas element with an associated coordinate system, and methods for drawing on the canvas.
+	<Method name="new Plot(cv, coordSys, margin)">Creates a new Plot instance.
+		<Arg name="cv">A canvas element to associate with the plot.</Arg>
+	</Method>
+	<!--Method name="">.
+	</Method-->
+</Class>
+</Module>

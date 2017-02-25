@@ -1,0 +1,9 @@
+<Module name="util">
+<Function name="latex(elem, rerender)"><span>Renders LaTeX markup as an <code>&lt;img&gt;</code> using codecogs.com.</span>
+	<Arg name="elem" default="$(&quot;.LaTeX&quot;)"><span>An element or a sequence of elements containing LaTeX code to be rendered. These elements can contain a <code>data-zoom</code> atttribute specifying the equation size relative to the surrounding text, and a <code>data-color</code> attribute specifying the color as a LaTeX color name (<code>"red"</code>) or as decimal RGB values (<code>{255,0,0}</code>).</span></Arg>
+	<Arg name="rerender" default="false"><span>Specifies whether to rerender elements that have been previously rendered. Useful when changing the size or color.</span></Arg>
+</Function>
+<Function name="latex.unrender(elem)">Replaces an equation image by the LaTeX code from which it was originally rendered.
+	<Arg name="elem" default="$(&quot;.LaTeX&quot;)"><span>An element or a sequence of elements.</span></Arg>
+</Function>
+</Module>
