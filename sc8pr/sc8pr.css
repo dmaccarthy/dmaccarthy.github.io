@@ -1,0 +1,35 @@
+body {
+	font-family:Oxygen, sans-serif;
+	margin:0;
+}
+
+#Path {
+	position:fixed;
+	top:0; left:0;
+	z-index:1;
+	width:100%;
+	padding:0.5em;
+	background-color:#e0e0ff;
+}
+
+span[data-n] {
+	color:blue;
+	cursor:pointer;
+}
+
+#Path span.Current {
+	font-weight:bold;
+}
+
+code, .Code {
+	font-family:"Source Code Pro", Consolas, monospace;
+	font-weight:bold;
+}
+
+div.Links {
+	width:16em;;
+	float:right;
+	border:1px solid blue;
+	border-radius:4px;
+	background:#e0e0ff;
+}
