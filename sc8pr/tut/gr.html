@@ -11,20 +11,37 @@
 </head>
 <body><article>
 
-<p>You can use your <code>setup</code> function to add graphics objects to your sketch.  This can be done using the sketch’s <code>+=</code> operator...</p>
+<p>You can use your <code>setup</code> function to add additional graphics objects to the foreground of your sketch...</p>
 
 <pre class="Code">from sc8pr import Sketch, Image
 from sc8pr.sprite import Sprite
 from sc8pr.text import Text
 
 def setup(sk):
-    sk.bg = Image("bg.png")
-    sk += Sprite("ship.png")
-    sk += Text("Hello, world!")
+    sk.bg = Image("sky.png")
+    hello = Text("Hello, world!")
+    alien = Sprite("alien.png")
+    sk += hello, alien
 
-Sketch().play()</pre>
+Sketch((512,362)).play()</pre>
 
-<p>Here are the graphics classes currently provided in <code>sc8pr</code>...</p>
+<p>In the example above, we are loading an image from the file “alien.png” and using the image to create a <em>sprite</em> &mdash; an interactive, animated character or object. We are also creating a text object.  The final statement of the <code>setup</code> function adds the text and the alien sprite to the sketch using the sketch’s <code>+=</code> operator.</p>
+
+<p>If you run the program using <a href="img/gr.zip">these image files</a>, the sketch should look like this...</p>
+<p class="Center"><img src="img/ex1.png" alt="Image"/></p>
+
+<p>You will notice that the alien sprite and the text message are drawn in the upper left corner and are only partly visible on the screen. This happens because we have not provided any information about the positions or sizes of these graphics. We can configure the text message by adding the following instruction to the <code>setup</code>...</p>
+
+<pre class="Code">hello.config(pos=(8,8), anchor=TOPLEFT, color="red", fontSize=32)</pre>
+
+<p>The <code>config</code> method lets us adjust the properties of the graphics object. All of the arguments are passed by keyword and can be in any order. The <code>color</code> and <code>fontSize</code> keywords should be self-explanatory. The <code>pos</code> keyword is used to set the object’s position.</p>
+
+<pre class="Code">alien.config(pos=sk.center, width=sk.width/10)</pre>
+
+<p>The sketch should now look like this...</p>
+<p class="Center"><img src="img/ex2.png" alt="Image"/></p>
+
+<p><code>Sprite</code> and <code>Text</code> are only two of several different classes of graphics objects you can use in <code>sc8pr</code>. Here are the graphics classes currently available...</p>
 <table class="Default">
 	<thead><tr><th>Description</th><th>Classes</th></tr></thead>
 	<tbody>
@@ -34,8 +51,6 @@ Sketch().play()</pre>
 		<tr><td>Miscellaneous</td><td class="Code">Canvas<br/>Robot</td></tr>
 	</tbody>
 </table>
-
-<p></p>
 
 <p class="Center"><button onclick="goNext()">Next Page</button></p>
 </article></body>

@@ -25,16 +25,14 @@ Sketch().play()</pre>
 <pre class="Code">sk.bg = 0, 0, 255
 sk.bg = "#0000ff"</pre>
 
-<p>Your sketch background does not have to be a single color.  You can load an image to use as your background instead...</p>
+<p>Your sketch background does not have to be a single color; you can use an image as your background instead. The example below loads an image from the file “sky.png” and sets it as the sketch background. If the image file is in a different folder than your program, you must include the full path. If the image aspect ratio does not match the aspect ratio of the sketch, the sketch will be resized so that the background can be displayed without being stretched.  <!-- See the page on <a href="">managing the aspect ratio</a> for more information. --></p>
 
 <pre class="Code">from sc8pr import Sketch, Image
 
 def setup(sk):
-    sk.bg = Image("bg.png")
+    sk.bg = Image("sky.png")
 
 Sketch().play()</pre>
-
-<p>If the image aspect ratio does not match the aspect ratio of the sketch, the sketch will be resized so that the background can be displayed without being stretched.  <!-- See the page on <a href="">managing the aspect ratio</a> for more information. --></p>
 
 <p class="Center"><button onclick="goNext()">Next Page</button></p>
 </article></body>
