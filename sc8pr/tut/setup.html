@@ -2,7 +2,7 @@
 <meta charset="utf8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>sc8pr Reference</title>
+<title>The setup Function</title>
 <link rel="shortcut icon" href="../favicon.png" type="image/png" />
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
 <link rel="stylesheet" type="text/css" href="../sc8pr.css"/>
@@ -10,5 +10,18 @@
 <script type="text/javascript" src="../sc8pr.js"-->//</script>
 </head>
 <body><article>
+
+<p>The example program on the previous page created a sketch that displayed a white background. If you want to change the background or add more content to the sketch, you need to create a <code>setup</code> function. This function takes a single argument, which refers to the sketch object. In the example below, the <code>setup</code> function changes the sketch’s background color to blue...</p>
+
+<pre class="Code">from sc8pr import Sketch
+
+def setup(sk):
+    sk.bg = "blue"
+
+Sketch().play()</pre>
+
+<p></p>
+
+<p class="Center"><button onclick="goNext()">Next Page</button></p>
 </article></body>
 </html>

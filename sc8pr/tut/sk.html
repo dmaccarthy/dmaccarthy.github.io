@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html><html><head>
+<meta charset="utf8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Creating a Sketch</title>
+<link rel="shortcut icon" href="../favicon.png" type="image/png" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" type="text/css" href="../sc8pr.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../sc8pr.js"-->//</script>
+</head>
+<body><article>
+
+<p>In <code>sc8pr</code>, interactive animations are called <em>sketches</em>. This term is shorted from 'sketchbook', which is what animations are called in the Processing programming language. To run an animation, you will create a sketch and then play it...</p>
+
+<pre class="Code">from sc8pr import Sketch
+
+Sketch().play()</pre>
+
+<p>You can specify the initial size of your sketch be passing an ordered pair to <code>Sketch</code>. If you do not specify the size, it will default to 512 pixels wide by 288 pixels tall.</p>
+
+<pre class="Code">size = 640, 480
+Sketch(size).play()</pre>
+
+<p>You can also provide up to three optional arguments to the <code>play</code> method, to specify the window caption and icon. The third argument is a boolean value indicating whether to allow the user to resize the window; this defaults to <code>True</code>.</p>
+
+<pre class="Code">caption = "An Awesome Game"
+icon = "icon.png"
+mode = False
+Sketch().play(caption, icon, mode)</pre>
+
+<p class="Center"><button onclick="goNext()">Next Page</button></p>
+</article></body>
+</html>

@@ -3,6 +3,8 @@ body {
 	margin:0;
 }
 
+.Center {text-align:center}
+
 #Path {
 	position:fixed;
 	top:0; left:0;
@@ -12,12 +14,13 @@ body {
 	background-color:#e0e0ff;
 }
 
-span[data-n] {
+#Path a {
 	color:blue;
-	cursor:pointer;
+	text-decoration:none;
 }
 
-#Path span.Current {
+#Path a.Current {
+	color:black;
 	font-weight:bold;
 }
 
@@ -33,9 +36,7 @@ pre.Code {
 	overflow:auto;
 }
 
-pre.Scroll {
-	height:20em;
-}
+pre.Scroll {height:20em}
 
 div.Links {
 	width:16em;;
