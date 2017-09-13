@@ -73,14 +73,14 @@ function url() {
 
 var node = new SiteNode(["sc8pr Home", "index", [
 	["Installation Guide", "inst"],
-	["Tutorial", "tut/tut", [
+/*	["Tutorial", "tut/tut", [
 		["Sketch", "tut/sk", []],
 		["setup", "tut/setup", []],
 	]],
 	["Reference", "ref/ref", [
 		["sc8pr.__init__", "ref/init", []],
 		["sc8pr.text", "ref/text", []],
-	]]
+	]]*/
 ]]).find(url());
 
 function setMetrics() {

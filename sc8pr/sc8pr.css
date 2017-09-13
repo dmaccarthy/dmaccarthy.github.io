@@ -26,6 +26,17 @@ code, .Code {
 	font-weight:bold;
 }
 
+pre.Code {
+	background:#e8e8e8;
+	margin:1em;
+	padding:4px;
+	overflow:auto;
+}
+
+pre.Scroll {
+	height:20em;
+}
+
 div.Links {
 	width:16em;;
 	float:right;
