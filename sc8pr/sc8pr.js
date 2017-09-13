@@ -70,10 +70,12 @@ SiteNode.prototype.setLinks = function() {
 
 function url() {
 	var split = "/sc8pr/";
-	var path = location.pathname.split(split);
-	url.base = path[0] + split;
-	path = path[1].split(".")[0];
-	return path.length ? path : "index";
+	var loc = location.pathname;
+	var path = loc.split(split);
+	fn = path[path.length-1];
+	url.base = loc.slice(0, loc.length - fn.length);
+	fn = fn.split(".")[0];
+	return fn.length ? fn : "index";
 }
 
 function goNext() {
@@ -86,6 +88,7 @@ var node = new SiteNode(["sc8pr Home", "index", [
 	["Tutorial", "tut/tut", [
 		["Creating a Sketch", "tut/sk"],
 		["The setup Function", "tut/setup"],
+		["Adding Graphics", "tut/gr"],
 	]],
 /*	["Reference", "ref/ref", [
 		["sc8pr.__init__", "ref/init", []],

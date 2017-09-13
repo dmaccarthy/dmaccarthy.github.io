@@ -45,3 +45,14 @@ div.Links {
 	border-radius:4px;
 	background:#e0e0ff;
 }
+
+table.Default {
+	border-collapse:collapse;
+	margin:auto;
+}
+
+table.Default td, table.Default th {
+	border:1px solid black;
+	padding:4px;
+//	vertical-align:top;
+}

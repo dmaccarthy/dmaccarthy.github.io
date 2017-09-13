@@ -20,7 +20,21 @@ def setup(sk):
 
 Sketch().play()</pre>
 
-<p></p>
+<p>Colors can be described by any color name that pygame recognizes, or by an RGB tuple or hexadecimal string.  The following statements are alternative ways of describing the color blue...</p>
+
+<pre class="Code">sk.bg = 0, 0, 255
+sk.bg = "#0000ff"</pre>
+
+<p>Your sketch background does not have to be a single color.  You can load an image to use as your background instead...</p>
+
+<pre class="Code">from sc8pr import Sketch, Image
+
+def setup(sk):
+    sk.bg = Image("bg.png")
+
+Sketch().play()</pre>
+
+<p>If the image aspect ratio does not match the aspect ratio of the sketch, the sketch will be resized so that the background can be displayed without being stretched.  <!-- See the page on <a href="">managing the aspect ratio</a> for more information. --></p>
 
 <p class="Center"><button onclick="goNext()">Next Page</button></p>
 </article></body>
