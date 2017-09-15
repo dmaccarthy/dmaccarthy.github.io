@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html><html><head>
+<meta charset="utf8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sprites</title>
+<link rel="shortcut icon" href="../../favicon.png" type="image/png" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" type="text/css" href="../sc8pr.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../sc8pr.js"-->//</script>
+</head>
+<body><article><div class="Links"><ul id="Links"></ul></div>
+
+<p>The main difference between the <code>Sprite</code> and <code>Image</code> classes is that sprites are intended to be animated and interactive, while images are not. In the example below, we have made three changes (shown in <span class="Hilite">blue</span>) to our previous program. First, we have replaced the text message “Hello, world!” by a numerical value that we will eventually use to keep score. Second, we have used a different image file to create the alien sprite. Finally, we have added an extra keyword when configuring the alien sprite.</p>
+
+<pre class="Code">from sc8pr import Sketch, Image, TOPLEFT, VERTICAL, HORIZONTAL
+from sc8pr.sprite import Sprite
+from sc8pr.text import Text
+
+def setup(sk):
+    sk.bg = Image("sky.png")            <span class="Comment"># Set background</span>
+    score = <span class="Hilite">Text(0)</span>                     <span class="Comment"># Set the game score to 0</span>
+    score.config(                       <span class="Comment"># Configure the score object</span>
+        pos = (8, 8),
+        anchor = TOPLEFT,
+        color = "red",
+        fontSize = 32)
+    alien = Sprite(<span class="Hilite">"aliens.png", 2, 2</span>)  <span class="Comment"># Create a sprite</span>
+    alien.config(                       <span class="Comment"># Configure the alien</span>
+        pos = sk.center,
+        width = sk.width/10,
+        <span class="Hilite">costumeTime = 10</span>)
+    sk += score, alien                  <span class="Comment"># Add the graphics objects</span>
+
+Sketch((512,362)).play()                <span class="Comment"># Create and run the sketch</span></pre>
+
+<p>Let’s focus on the line where the sprite is created...</p>
+
+<pre class="Code">alien = Sprite("aliens.png", 2, 2)      <span class="Comment"># 2 by 2 spritesheet</span></pre>
+
+<p>The file being loaded here is a <em>spritesheet</em>. Here is what the contents of the file look like...</p>
+<p class="Center"><img src="img/aliens.png" alt="Image"/></p>
+
+<p>There are four different “<em>costumes</em>”<sup>†</sup> arranged into two columns by two rows. When loading the spritesheet, we have passed the number of columns and rows as the second and third arguments after the file name.  These costumes allow us to create the appearance that the alien’s eye is blinking and its crest is changing color. When we call the alien sprite’s <code>config</code> method, we have added a keyword argument, <code>costumeTime = 10</code>, to indicate that we want the costume to change every ten animation frames. The default animation rate is 60 frames per second, so this would correspond to changing costume six times per second.</p>
+
+<p>If you have the costumes saved as separate files rather than as a single spritesheet, you can load the images individually and then pass the sequence of images to the <code>Sprite</code> function...</p>
+
+<pre class="Code">costumes = [Image("alien0.png"), Image("alien1.png"),
+    Image("alien2.png"), Image("alien3.png")]
+alien = Sprite(costumes)</pre>
+
+<p>If you run the program, you may notice that the alien’s eye closes gradually but pops open suddenly. This happens because the animation cycles back to costume 0 after costume 3 is done. To make the eye open gradually, we can alter the costume sequence...</p>
+<pre class="Code">seq = 0, 1, 2, 3, 2, 1
+alien.costumeSequence(seq)</pre>
+
+<p>If we want to spend more time on costumes 0 and 3 before switching to the other costumes, we can repeat these costumes in the sequence...</p>
+<pre class="Code">seq = 0, 0, 0, 1, 2, 3, 3, 3, 2, 1
+alien.costumeSequence(seq)</pre>
+
+<p></p>
+
+<p class="Center"><button onclick="goNext()">Next Page</button></p>
+
+<hr id="Footnotes"/><p><sup>†</sup>The term <em>costume</em> is from <a href="https://scratch.mit.edu">Scratch</a>.</p>
+
+</article></body>
+</html>

@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html><html><head>
+<meta charset="utf8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ondraw Handlers</title>
+<link rel="shortcut icon" href="../../favicon.png" type="image/png" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" type="text/css" href="../sc8pr.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../sc8pr.js"-->//</script>
+</head>
+<body><article>
+
+<p>One of the most important events is the “draw” event. This event is triggered each time a graphics object is drawn, i.e. once per frame for each object. In the program below, this event will be triggered each frame for the <code>score</code> text object first, then for the <code>alien</code> sprite, and finally for the sketch itself. (The draw event does not occur for the background image.)</p>
+
+<pre class="Code">from sc8pr import Sketch, Image, TOPLEFT</span>
+from sc8pr.sprite import Sprite
+from sc8pr.text import Text
+
+def setup(sk):
+    sk.bg = Image("sky.png")
+    score = Text(0)
+    <span class="Hilite">score.bind(ondraw = countFrame)</span>
+    score.config(
+        pos = (8, 8),
+        anchor = TOPLEFT,
+        color = "red",
+        fontSize = 32)
+    alien = Sprite("aliens.png", 2, 2)
+    alien.config(
+        pos = sk.center,
+        width = sk.width/10,
+        costumeTime = 10)
+    sk += score, alien
+
+<span class="Hilite">def countFrame(score, sk):
+    score.config(data = sk.frameCount)</span>
+
+Sketch((512,362)).play()</pre>
+
+<p>This example provides an event handler for <code>score</code> only. During the setup, we call the object’s <code>bind</code> method to specify which function (i.e. <code>countFrame</code>) will serve as the event handler. The event handler takes two arguments: references to the graphics object itself and to the sketch. In this example, the event handler reconfigures the text so that it displays the current frame number rather than its original value which was the number 0.</p>
+
+<p>If we choose to, we can bind different functions to handle the draw event for the alien and for the sketch itself.</p>
+
+<p class="Center"><button onclick="goNext()">Next Page</button></p>
+
+</article></body>
+</html>

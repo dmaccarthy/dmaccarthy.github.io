@@ -18,7 +18,7 @@ from sc8pr.sprite import Sprite
 from sc8pr.text import Text
 
 def setup(sk):
-    sk.bg = Image("sky.png")      <span class="Comment"># Set background</span>
+    sk.bg = Image("sky.png")      <span class="Comment"># Load and set background image</span>
     hello = Text("Hello, world!") <span class="Comment"># Create a text message</span>
     alien = Sprite("alien.png")   <span class="Comment"># Create a sprite</span>
     sk += hello, alien            <span class="Comment"># Add text and sprite to sketch</span>
@@ -30,7 +30,7 @@ Sketch((512,362)).play()          <span class="Comment"># Create and run the ske
 <p>If you run the program using <a href="img/gr.zip">these image files</a>, the sketch should look like this...</p>
 <p class="Center"><img src="img/ex1.png" alt="Image"/></p>
 
-<p>You will notice that the alien sprite and the text message are drawn in the upper left corner and are only partly visible on the screen. This happens because we have not provided any information about the positions or sizes of these graphics. We can configure the text message by adding the following instruction to the <code>setup</code>...</p>
+<p>You will notice that the alien sprite and the text message are drawn in the upper left corner and are only partly visible on the screen. This happens because we have not provided any information about the positions or sizes of these graphics. Using the local variable <code>hello</code> which refers to the text object, we can configure the appearance by adding the following instruction to the <code>setup</code>...</p>
 
 <pre class="Code">hello.config(pos=(8,8), anchor=TOPLEFT, color="red", fontSize=32)</pre>
 
@@ -38,7 +38,7 @@ Sketch((512,362)).play()          <span class="Comment"># Create and run the ske
 
 <p>By default, <code>sc8pr</code> graphics are anchored to their center; <code>sc8pr</code> will draw the objects with their centers at the specified coordinates. We have changed the text object’s <code>anchor</code> to <code>TOPLEFT</code> so that the text is drawn with its top left corner at the coordinates <code>(8, 8)</code>. The anchor constants — <code>CENTER</code>, <code>TOP</code>, <code>BOTTOM</code>, <code>LEFT</code>, <code>RIGHT</code>, <code>TOPLEFT</code>, <code>TOPRIGHT</code>, <code>BOTTOMLEFT</code>, <code>BOTTOMRIGHT</code> — must be imported from the <code>sc8pr</code> module.</p>
 
-<p>Now let’s configure the alien sprite by positioning it the center of the sketch, and reducing its size...</p>
+<p>Now let’s configure the alien sprite by positioning it at the center of the sketch, and reducing its size...</p>
 
 <pre class="Code">alien.config(pos=sk.center, width=sk.width/10)</pre>
 

@@ -86,9 +86,14 @@ function goNext() {
 var node = new SiteNode(["sc8pr Home", "index", [
 	["Installation Guide", "inst"],
 	["Tutorial", "tut/tut", [
-		["Creating a Sketch", "tut/sk"],
-		["The setup Function", "tut/setup"],
-		["Adding Graphics", "tut/gr"],
+		["Creating a Sketch", "tut/sk", [
+			["The setup Function", "tut/setup"],
+			["Adding Graphics", "tut/gr"],
+		]],
+		["Sprites", "tut/sprite", [["Sprite Motion", "tut/kin"]]],
+		["Event Handlers", "tut/ev", [
+			["ondraw Handlers", "tut/draw"]
+		]],
 	]],
 /*	["Reference", "ref/ref", [
 		["sc8pr.__init__", "ref/init", []],

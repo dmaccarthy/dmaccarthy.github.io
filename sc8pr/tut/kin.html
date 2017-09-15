@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html><html><head>
+<meta charset="utf8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sprite Motion</title>
+<link rel="shortcut icon" href="../../favicon.png" type="image/png" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" type="text/css" href="../sc8pr.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../sc8pr.js"-->//</script>
+</head>
+<body><article>
+
+<p>Sprites also have the ability to move. In the example below, we have added a <code>spin</code> argument when configuring the sprite to make it rotate 1 degree clockwise per frame. We have also added a <code>vel</code> (velocity) argument to move the sprite 2 pixels right and 1 pixel down each frame...</p>
+
+<pre class="Code">from sc8pr import Sketch, Image, TOPLEFT, <span class="Hilite">VERTICAL, HORIZONTAL</span>
+from sc8pr.sprite import Sprite
+from sc8pr.text import Text
+
+def setup(sk):
+    sk.bg = Image("sky.png")
+    score = Text(0)
+    score.config(
+        pos = (8, 8),
+        anchor = TOPLEFT,
+        color = "red",
+        fontSize = 32)
+    alien = Sprite("aliens.png", 2, 2)
+    alien.config(
+        pos = sk.center,
+        width = sk.width/10,
+        costumeTime = 10,
+        <span class="Hilite">spin = 1,
+        vel = (2, 1),
+        bounce = HORIZONTAL,
+        wrap = VERTICAL</span>)
+    sk += score, alien
+
+Sketch((512,362)).play()</pre>
+
+<p>The <code>bounce</code> and <code>wrap</code> arguments determine what happens when the sprite reaches the edge of the sketch. By specifying <code>bounce = HORIZONTAL</code>, when the sprite hits the left or right sides it will bounce back the way it came. By setting <code>wrap = VERTICAL</code>, the sprite will disappear from the top or bottom and reappear from the opposite edge. If we want the same behaviour from all four edges, we could use <code>BOTH</code> rather than <code>HORIZONTAL</code> or <code>VERTICAL</code>. The <code>wrap</code> argument can also take values <code>REMOVE</code>, <code>REMOVE_X</code>, or <code>REMOVE_Y</code>, to indicate that the sprite should be removed from the animation if it completely leaves the sketch area.</p>
+
+<p class="Center"><button onclick="goNext()">Next Page</button></p>
+
+</article></body>
+</html>

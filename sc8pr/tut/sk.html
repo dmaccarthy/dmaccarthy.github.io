@@ -9,15 +9,15 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../sc8pr.js"-->//</script>
 </head>
-<body><article>
+<body><article><div class="Links"><ul id="Links"></ul></div>
 
-<p>In <code>sc8pr</code>, interactive animations are called <em>sketches</em>. This term is shorted from 'sketchbook', which is what animations are called in the Processing programming language. To run an animation, you will create a sketch and then play it...</p>
+<p>In <code>sc8pr</code>, interactive animations are called <em>sketches</em><sup>†</sup>. To run an animation, you will create a sketch and then play it...</p>
 
 <pre class="Code">from sc8pr import Sketch
 
 Sketch().play()</pre>
 
-<p>You can specify the initial size of your sketch by passing an ordered pair to <code>Sketch</code>. If you do not specify the size, it will default to 512 pixels wide by 288 pixels tall.</p>
+<p>You can specify the initial size of your sketch by passing an ordered pair to the <code>Sketch</code> function. If you do not specify the size, it will default to 512 pixels wide by 288 pixels tall.</p>
 
 <pre class="Code">size = 640, 480
 Sketch(size).play()</pre>
@@ -30,5 +30,8 @@ mode = False
 Sketch().play(caption, icon, mode)</pre>
 
 <p class="Center"><button onclick="goNext()">Next Page</button></p>
+
+<hr id="Footnotes"/><p><sup>†</sup>The term <em>sketch</em> is shorted from 'sketchbook', which is what animations are called in the <a href="https://www.processing.org">Processing</a> programming language.</p>
+
 </article></body>
 </html>
