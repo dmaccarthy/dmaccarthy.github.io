@@ -58,3 +58,7 @@ table.Default td, table.Default th {
 	border:1px solid black;
 	padding:4px;
 }
+
+img.Border {
+	border:1px solid black;
+}
