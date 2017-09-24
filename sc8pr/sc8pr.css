@@ -8,6 +8,16 @@ body {
 .Hilite {color:blue}
 .Hilite1 {color:violet}
 
+.Warning {
+	color:red;
+	font-weight:bold;
+}
+
+.Warning .Link {
+	text-decoration:underline;
+	cursor:pointer;
+}
+
 #Path {
 	position:fixed;
 	top:0; left:0;
@@ -63,3 +73,6 @@ table.Default td, table.Default th {
 img.Border {
 	border:1px solid black;
 }
+
+textarea.Clip {display:none}
+p.Clip {margin-left:1em}

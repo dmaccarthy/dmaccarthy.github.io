@@ -9,11 +9,11 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../sc8pr.js"-->//</script>
 </head>
-<body><article><div class="Links"><ul id="Links"></ul></div>
+<body><article><textarea class="Clip"></textarea>
 
-<p>The main difference between the <code>Sprite</code> and <code>Image</code> classes is that sprites are intended to be animated and interactive, while images are not. In the example below, as highlighted in <span class="Hilite">blue</span>, we have used a different image file to create the alien sprite and we have added two additional arguments when creating the sprite.</p>
+<p>We saw earlier that sprites can be animated by providing them with <code>spin</code>, <code>vel</code> (velocity), and <code>acc</code> (acceleration) values. Another feature of sprites is that they can have multiple <em>costumes</em><sup>†</sup>. In the example below, as highlighted in <span class="Hilite">blue</span>, we have used a different image file to create the alien sprite and we have added two additional arguments when creating the sprite.</p>
 
-<pre class="Code">from sc8pr import Sketch, Image
+<pre class="Code" id="Ex1">from sc8pr import Sketch, Image, BOTH
 from sc8pr.sprite import Sprite
 
 def setup(sk):
@@ -22,10 +22,15 @@ def setup(sk):
     sk += alien.config(                 <span class="Comment"># Configure the alien</span>
         pos = sk.center,
         width = sk.width/10,
+        bounce = BOTH,
+        vel = (2, 1),
+        spin = 1,
         <span class="Hilite1">costumeTime = 10</span>
     )
 
 Sketch((512,362)).play()                <span class="Comment"># Create and run the sketch</span></pre>
+<p class="Clip"><button onclick="clipCopy('#Ex1')">Copy to Clipboard</button></p>
+
 
 <p>Let’s focus on the line where the sprite is created...</p>
 
@@ -34,7 +39,7 @@ Sketch((512,362)).play()                <span class="Comment"># Create and run t
 <p>The file being loaded here is a <em>spritesheet</em>. Here is what the contents of the file look like...</p>
 <p class="Center"><img src="img/aliens.png" alt="Image" width="120" class="Border"/></p>
 
-<p>There are four different “<em>costumes</em>”<sup>†</sup> arranged into two columns by two rows. When loading the spritesheet, we have passed the number of columns and rows as the second and third arguments after the file name.  These costumes allow us to create the appearance that the alien’s eye is blinking and its crest is changing color. When we call the alien sprite’s <code>config</code> method, we have added a keyword argument, <code class="Hilite1">costumeTime = 10</code>, to indicate that we want the costume to change every ten animation frames. The default animation rate is 60 frames per second, so this would correspond to changing costume six times per second.</p>
+<p>There are four different costumes arranged into two columns by two rows. When loading the spritesheet, we have passed the number of columns and rows as the second and third arguments after the file name.  These costumes allow us to create the appearance that the alien’s eye is blinking and its crest is changing color. When we call the alien sprite’s <code>config</code> method, we have added a keyword argument, <code class="Hilite1">costumeTime = 10</code>, to indicate that we want the costume to change every ten animation frames. The default animation rate is 60 frames per second, so this would correspond to changing costume six times per second.</p>
 
 <p>If you have the costumes saved as separate files rather than as a single spritesheet, you can load the images individually and then pass the sequence of images to the <code>Sprite</code> function...</p>
 

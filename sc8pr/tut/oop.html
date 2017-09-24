@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html><html><head>
+<meta charset="utf8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Object-Oriented Style</title>
+<link rel="shortcut icon" href="../../favicon.png" type="image/png" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" type="text/css" href="../sc8pr.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../sc8pr.js"-->//</script>
+</head>
+<body><article><textarea class="Clip"></textarea>
+
+<p class="Warning">Warning: This page discusses advanced programming techniques. Novice programmers should <span class="Link" onclick="goNext()">skip this page</span>!</p>
+
+<p><code>sc8pr</code> programs can be written using an object-oriented style. In an earlier example, we created a text object to use as a timer. We updated the timer by binding an <em>ondraw</em> event handler to the text object.</p>
+
+<p>Using an OOP approach, we could define a <em>subclass</em> of <code>Text</code> to represent the timer. Event handlers can then be defined as methods within this class definition...</p>
+
+<pre class="Code Scroll" id="Ex1">from time import time
+from math import floor
+from sc8pr import Sketch
+from sc8pr.text import Text
+
+
+<span class="Hilite">class Timer(Text)</span>:
+
+    def __init__(self):
+        super().__init__(0)
+        self.config(color = "blue", fontSize = 64)
+
+    def ondraw(self, sk):
+        <span class="Comment">"Update the timer to display the current time"</span>
+        t = floor(time() - self.start)
+        if self.data != t:
+            self.config(data = t)
+
+			
+def setup(sk):
+    sk += <span class="Hilite">Timer()</span>.config(pos = sk.center, start = time())
+
+Sketch().play("Time Counter")</pre>
+<p class="Clip"><button onclick="clipCopy('#Ex1')">Copy to Clipboard</button></p>
+
+<p>There is no need to call the <code>bind</code> method anymore because the <code>Timer</code> instance will inherit the event handlers as bound methods from the <code>Timer</code> class.</p>
+
+<p>We could also create a <code>Sketch</code> subclass in which we define the <code>setup</code> method and any event handlers that we want to attach to the sketch instance...</p>
+
+<pre class="Code Scroll" id="Ex2">from time import time
+from math import floor
+from sc8pr import Sketch
+from sc8pr.text import Text
+
+
+class Timer(Text)</span>:
+
+    def __init__(self):
+        super().__init__(0)
+        self.config(color = "blue", fontSize = 64)
+
+    def ondraw(self, sk):
+        <span class="Comment">"Update the timer to display the current time"</span>
+        t = floor(time() - self.start)
+        if self.data != t:
+            self.config(data = t)
+
+			
+<span class="Hilite">class TimerSketch(Sketch)</span>:
+
+    def setup(self):
+        self += Timer().config(pos = self.center, start = time())
+
+    def onclick(self, ev):
+        t = self[0].data
+        print("The current time is {} seconds.".format(t))
+
+
+<span class="Hilite">TimerSketch()</span>.play("Time Counter")</pre>
+<p class="Clip"><button onclick="clipCopy('#Ex2')">Copy to Clipboard</button></p>
+
+<p>If your <code>Sketch</code> subclass overrides the <code>__init__</code> method, it must call <code>Sketch.__init__</code> for the sketch to work properly. Also keep in mind that the <code>pygame</code> system will not be initialized until you call the sketch’s <code>play</code> method, so <code>__init__</code> will not be able to perform any operations that require <code>pygame</code> to be initialized.</p>
+
+<p class="Center"><button onclick="goNext()">Next Page</button></p>
+
+</article></body>
+</html>

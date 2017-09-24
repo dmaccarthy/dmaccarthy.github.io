@@ -83,17 +83,26 @@ function goNext() {
 	if (n) location.href = n.fullUrl();
 }
 
+function clipCopy(e) {
+	var c = $("textarea.Clip");
+	c.removeClass("Clip").html($(e).text()).select();
+	document.execCommand('copy');
+	c.addClass("Clip");
+}
+
 var node = new SiteNode(["sc8pr Home", "index", [
 	["Installation Guide", "inst"],
 	["Tutorial", "tut/tut", [
 		["Creating a Sketch", "tut/sk", [
 			["The setup Function", "tut/setup"],
 			["Adding Graphics", "tut/gr"],
+			["Animations", "tut/anim"],
 		]],
-		["Sprites", "tut/sprite", [["Sprite Motion", "tut/kin"]]],
 		["Event Handlers", "tut/ev", [
 			["ondraw Handlers", "tut/draw"]
 		]],
+		["Object-Oriented Style", "tut/oop"],
+		["Sprites", "tut/sprite"],
 	]],
 /*	["Reference", "ref/ref", [
 		["sc8pr.__init__", "ref/init", []],
