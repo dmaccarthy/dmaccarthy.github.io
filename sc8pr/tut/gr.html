@@ -21,7 +21,7 @@ def setup(sk):
     sk.bg = Image("sky.png")      <span class="Comment"># Load and set background image</span>
     hello = Text("Hello, world!") <span class="Comment"># Create a text message</span>
     alien = Sprite("alien.png")   <span class="Comment"># Create a sprite</span>
-    sk += hello, alien            <span class="Comment"># Add text and sprite to sketch</span>
+    sk += alien, hello            <span class="Comment"># Add sprite and text to sketch</span>
 
 Sketch((512,362)).play()          <span class="Comment"># Create and run the sketch</span></pre>
 

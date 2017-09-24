@@ -6,6 +6,7 @@ body {
 .Center {text-align:center}
 .Comment {color:red}
 .Hilite {color:blue}
+.Hilite1 {color:violet}
 
 #Path {
 	position:fixed;

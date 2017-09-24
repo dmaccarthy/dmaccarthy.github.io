@@ -11,26 +11,19 @@
 </head>
 <body><article><div class="Links"><ul id="Links"></ul></div>
 
-<p>The main difference between the <code>Sprite</code> and <code>Image</code> classes is that sprites are intended to be animated and interactive, while images are not. In the example below, we have made three changes (shown in <span class="Hilite">blue</span>) to our previous program. First, we have replaced the text message “Hello, world!” by a numerical value that we will eventually use to keep score. Second, we have used a different image file to create the alien sprite. Finally, we have added an extra keyword when configuring the alien sprite.</p>
+<p>The main difference between the <code>Sprite</code> and <code>Image</code> classes is that sprites are intended to be animated and interactive, while images are not. In the example below, as highlighted in <span class="Hilite">blue</span>, we have used a different image file to create the alien sprite and we have added two additional arguments when creating the sprite.</p>
 
-<pre class="Code Scroll">from sc8pr import Sketch, Image, TOPLEFT, VERTICAL, HORIZONTAL
+<pre class="Code">from sc8pr import Sketch, Image
 from sc8pr.sprite import Sprite
-from sc8pr.text import Text
 
 def setup(sk):
     sk.bg = Image("sky.png")            <span class="Comment"># Set background</span>
-    score = <span class="Hilite">Text(0)</span>                     <span class="Comment"># Set the game score to 0</span>
-    score.config(                       <span class="Comment"># Configure the score object</span>
-        pos = (8, 8),
-        anchor = TOPLEFT,
-        color = "red",
-        fontSize = 32)
     alien = Sprite(<span class="Hilite">"aliens.png", 2, 2</span>)  <span class="Comment"># Create a sprite</span>
-    alien.config(                       <span class="Comment"># Configure the alien</span>
+    sk += alien.config(                 <span class="Comment"># Configure the alien</span>
         pos = sk.center,
         width = sk.width/10,
-        <span class="Hilite">costumeTime = 10</span>)
-    sk += score, alien                  <span class="Comment"># Add the graphics objects</span>
+        <span class="Hilite1">costumeTime = 10</span>
+    )
 
 Sketch((512,362)).play()                <span class="Comment"># Create and run the sketch</span></pre>
 
@@ -41,7 +34,7 @@ Sketch((512,362)).play()                <span class="Comment"># Create and run t
 <p>The file being loaded here is a <em>spritesheet</em>. Here is what the contents of the file look like...</p>
 <p class="Center"><img src="img/aliens.png" alt="Image" width="120" class="Border"/></p>
 
-<p>There are four different “<em>costumes</em>”<sup>†</sup> arranged into two columns by two rows. When loading the spritesheet, we have passed the number of columns and rows as the second and third arguments after the file name.  These costumes allow us to create the appearance that the alien’s eye is blinking and its crest is changing color. When we call the alien sprite’s <code>config</code> method, we have added a keyword argument, <code>costumeTime = 10</code>, to indicate that we want the costume to change every ten animation frames. The default animation rate is 60 frames per second, so this would correspond to changing costume six times per second.</p>
+<p>There are four different “<em>costumes</em>”<sup>†</sup> arranged into two columns by two rows. When loading the spritesheet, we have passed the number of columns and rows as the second and third arguments after the file name.  These costumes allow us to create the appearance that the alien’s eye is blinking and its crest is changing color. When we call the alien sprite’s <code>config</code> method, we have added a keyword argument, <code class="Hilite1">costumeTime = 10</code>, to indicate that we want the costume to change every ten animation frames. The default animation rate is 60 frames per second, so this would correspond to changing costume six times per second.</p>
 
 <p>If you have the costumes saved as separate files rather than as a single spritesheet, you can load the images individually and then pass the sequence of images to the <code>Sprite</code> function...</p>
 
@@ -55,9 +48,10 @@ alien.costumeSequence(seq)</pre>
 
 <p>If we want to spend more time on costumes 0 and 3 before switching to the other costumes, we can repeat these costumes in the sequence...</p>
 <pre class="Code">seq = 0, 0, 0, 1, 2, 3, 3, 3, 2, 1
-alien.costumeSequence(seq)</pre>
+alien.costumeSequence(seq)
+print(len(alien), len(alien.costumeList))  <span class="Comment"># 10 4</span></pre>
 
-<p></p>
+<p>As the final statement above shows, you can use the <code>len</code> function to count the length of the current costume sequence, and the sprite’s <code>costumeList</code> attribute to access the original costumes.</p>
 
 <p class="Center"><button onclick="goNext()">Next Page</button></p>
 

@@ -18,25 +18,8 @@
 <p>Here’s a program that uses chance to decide whether to allow the program to quit. The event handler is a function named <code>onquit</code>. It takes two arguments: a reference to the sketch and a description of the event. Four times out of five, this handler will just print a message to the console saying it can’t quit. The other time, it will print “Goodbye!” and signal that the sketch can close by setting its <code>quit</code> attribute to <code>True</code>.</p>
 
 <pre class="Code Scroll">from random import randint
-from sc8pr import Sketch, Image, TOPLEFT</span>
+from sc8pr import Sketch, Image, HORIZONTAL, VERTICAL</span>
 from sc8pr.sprite import Sprite
-from sc8pr.text import Text
-
-def setup(sk):
-    <span class="Hilite">sk.bind(onquit)</span>
-    sk.bg = Image("sky.png")
-    score = Text(0)
-    score.config(
-        pos = (8, 8),
-        anchor = TOPLEFT,
-        color = "red",
-        fontSize = 32)
-    alien = Sprite("aliens.png", 2, 2)
-    alien.config(
-        pos = sk.center,
-        width = sk.width/10,
-        costumeTime = 10)
-    sk += score, alien
 
 def onquit(sk, ev):
     <span class="Comment">"Handler for QUIT events"</span>
@@ -45,6 +28,20 @@ def onquit(sk, ev):
     else:
         print("Goodbye!")
         sk.quit = True</span>
+
+def setup(sk):
+    <span class="Hilite">sk.bind(onquit)</span>
+    sk.bg = Image("sky.png")
+    alien = Sprite("aliens.png", 2, 2)
+    sk += alien.config(
+        pos = sk.center,
+        width = sk.width/10,
+        costumeTime = 10,
+        spin = 1,
+        vel = (2, 1),
+        bounce = HORIZONTAL,
+        wrap = VERTICAL
+    )
 
 Sketch((512,362)).play()</pre>
 
