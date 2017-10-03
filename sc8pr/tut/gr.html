@@ -9,11 +9,11 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../sc8pr.js"-->//</script>
 </head>
-<body><article>
+<body><article><textarea class="Clip"></textarea>
 
 <p>You can use your <code>setup</code> function to add additional graphics objects to the foreground of your sketch...</p>
 
-<pre class="Code">from sc8pr import Sketch, Image
+<pre class="Code" id="Ex1"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex1')"/>from sc8pr import Sketch, Image
 from sc8pr.sprite import Sprite
 from sc8pr.text import Text
 
@@ -32,7 +32,7 @@ Sketch((512,362)).play()          <span class="Comment"># Create and run the ske
 
 <p>You will notice that the alien sprite and the text message are drawn in the upper left corner and are only partly visible on the screen. This happens because we have not provided any information about the positions or sizes of these graphics. Using the local variable <code>hello</code> which refers to the text object, we can configure the appearance by adding the following instruction to the <code>setup</code>...</p>
 
-<pre class="Code">hello.config(pos=(8,8), anchor=TOPLEFT, color="red", fontSize=32)</pre>
+<pre class="Code" id="Ex2">hello.config(pos=(8,8), anchor=TOPLEFT, color="red", fontSize=32)</pre>
 
 <p>The <code>config</code> method lets us adjust the properties of the graphics object. All of the arguments are passed by keyword and can be in any order. The <code>color</code> and <code>fontSize</code> keywords should be self-explanatory. The <code>pos</code> keyword is used to set the object’s position. <code>sc8pr</code> uses the <code>pygame</code> coordinate system where <code>(0, 0)</code> refers to the pixel at the top left of the sketch window, and <code>(511, 361)</code> refers to the lower right pixel for our sketch size of 512 × 362.</p>
 
@@ -40,7 +40,7 @@ Sketch((512,362)).play()          <span class="Comment"># Create and run the ske
 
 <p>Now let’s configure the alien sprite by positioning it at the center of the sketch, and reducing its size...</p>
 
-<pre class="Code">alien.config(pos=sk.center, width=sk.width/10)</pre>
+<pre class="Code" id="Ex3">alien.config(pos=sk.center, width=sk.width/10)</pre>
 
 <p>The sketch should now look like this...</p>
 <p class="Center"><img src="img/ex2.png" alt="Image"/></p>

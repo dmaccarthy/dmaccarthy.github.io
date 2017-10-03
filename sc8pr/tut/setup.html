@@ -9,11 +9,11 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../sc8pr.js"-->//</script>
 </head>
-<body><article>
+<body><article><textarea class="Clip"></textarea>
 
 <p>The example program on the previous page created a sketch that displayed a white background. If you want to change the background or add more content to the sketch, you need to create a <code>setup</code> function. This function takes a single argument, which refers to the sketch object. In the example below, the <code>setup</code> function changes the sketch’s background color to blue...</p>
 
-<pre class="Code">from sc8pr import Sketch
+<pre class="Code" id="Ex1"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex1')"/>from sc8pr import Sketch
 
 def setup(sk):
     sk.bg = "blue"
@@ -22,12 +22,12 @@ Sketch().play()</pre>
 
 <p>Colors can be described by any color name that pygame recognizes, or by an RGB tuple or hexadecimal string.  The following statements are alternative ways of describing the color blue...</p>
 
-<pre class="Code">sk.bg = 0, 0, 255
+<pre class="Code" id="Ex2">sk.bg = 0, 0, 255
 sk.bg = "#0000ff"</pre>
 
 <p>Your sketch background does not have to be a single color; you can use an image as your background instead. The example below loads an image from the file “sky.png” and sets it as the sketch background. If the image file is in a different folder than your program, you must include the full path. If the image aspect ratio does not match the aspect ratio of the sketch, the sketch will be resized so that the background can be displayed without being stretched.  <!-- See the page on <a href="">managing the aspect ratio</a> for more information. --></p>
 
-<pre class="Code">from sc8pr import Sketch, Image
+<pre class="Code" id="Ex3"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex3')"/>from sc8pr import Sketch, Image
 
 def setup(sk):
     sk.bg = Image("sky.png")

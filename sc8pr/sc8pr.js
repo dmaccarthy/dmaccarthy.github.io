@@ -78,6 +78,13 @@ function url() {
 	return fn.length ? fn : "index";
 }
 
+function depth() {
+	var u = url(), n = 0;
+	for (var i=0;i<u.length;i++)
+		if (u.charAt(i) == "/") n++;
+	return n;
+}
+
 function goNext() {
 	var n = node.next();
 	if (n) location.href = n.fullUrl();
@@ -98,8 +105,10 @@ var node = new SiteNode(["sc8pr Home", "index", [
 			["Adding Graphics", "tut/gr"],
 			["Animations", "tut/anim"],
 		]],
-		["Event Handlers", "tut/ev", [
-			["ondraw Handlers", "tut/draw"]
+		["Event Handling", "tut/ev", [
+			["ondraw Handlers", "tut/draw"],
+			["onclick Handlers", "tut/click"],
+			["More Mouse Events", "tut/mouse"],
 		]],
 		["Object-Oriented Style", "tut/oop"],
 		["Sprites", "tut/sprite"],
@@ -115,12 +124,21 @@ function setMetrics() {
 	var h = $("#Path").outerHeight() + 8;
 	$("body").css("margin-top", h + "px");
 	$("article").css("margin", "8px");
+	var e = $("div.Links");
+	if (e.length) {
+		if ($(window).width() < 512)
+			e.removeClass("LinkWide").addClass("LinkNarrow")
+		else e.removeClass("LinkNarrow").addClass("LinkWide")
+	}
 }
 
 window.onresize = setMetrics;
 
 window.onload = function() {
-	var e = $("<nav>").attr("id", "Path");//.click(navClick);
+	var e = $("<nav>").attr("id", "Path");
+/*	var path = "";
+	for (var i=depth();i;i--) path += "../";
+	e.append($("<img>").addClass("Logo").attr({src:path+"alien.png"}));*/
 	$("body").prepend(e).find("article");
 	node.setPath(e);
 	node.setLinks();

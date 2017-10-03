@@ -3,6 +3,18 @@ body {
 	margin:0;
 }
 
+img.Logo {
+	width:1.25em;
+	height:1.25em;	
+}
+
+img.CopyCode {
+	cursor:pointer;
+	float:right;
+	width:1.5em;
+	height:1.5em;	
+}
+
 .Center {text-align:center}
 .Comment {color:red}
 .Hilite {color:blue}
@@ -25,6 +37,7 @@ body {
 	width:100%;
 	padding:0.5em;
 	background-color:#e0e0ff;
+	vertical-align:center;
 }
 
 #Path a {
@@ -52,12 +65,20 @@ pre.Code {
 pre.Scroll {height:20em}
 
 div.Links {
-	width:16em;;
-	float:right;
 	border:1px solid blue;
 	border-radius:4px;
 	background:#e0e0ff;
+}
+
+div.LinkWide {
+	width:16em;
+	float:right;
 	margin-left:8px;
+}
+
+div.LinkNarrow {
+	width:100%;
+	background:#e0e0ff;
 }
 
 table.Default {
