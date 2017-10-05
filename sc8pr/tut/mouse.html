@@ -11,7 +11,7 @@
 </head>
 <body><article><textarea class="Clip"></textarea>
 
-<p>In addition to “click”, there are a number of other mouse events for which you can bind handlers...</p>
+<p>In addition to “click”, there are a number of other mouse events for which you can bind handlers. Each of these handlers takes two arguments: a reference to the bound graphics object, and an event description object.</p>
 
 <ul>
 <li><b>onmouseover</b>: Use this keyword to bind handlers to “mouseover” events, where the mouse pointer is moved onto a graphics object. This event is not triggered when an animated object moves under the stationary mouse; mouse motion is required to trigger the event. This event is triggered for graphics objects within the sketch but not on the sketch itself. You can still bind an <em>onmouseover</em> handler to the sketch to handle events where the <code>target</code> object does not have its own event handler.</li>
@@ -27,6 +27,8 @@ def setup(sk):
     sk += img.<span class="Hilite">bind(ondrag)</span>
 
 Sketch().play()</pre>
+
+<p>As mentioned above, the mouseover and mouseout events are not triggered on the sketch itself. When the mouse leaves or enters the sketch window, or when the window is maximized, minimized, or restored, <code>pygame</code> triggers an ACTIVEEVENT. You can bind a handler to the sketch for this event using the <code>onactive</code> keyword.</p>
 
 <p class="Center"><button onclick="goNext()">Next Page</button></p>
 

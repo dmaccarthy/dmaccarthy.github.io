@@ -108,7 +108,8 @@ var node = new SiteNode(["sc8pr Home", "index", [
 		["Event Handling", "tut/ev", [
 			["ondraw Handlers", "tut/draw"],
 			["onclick Handlers", "tut/click"],
-			["More Mouse Events", "tut/mouse"],
+//			["More Mouse Events", "tut/mouse"],
+			["Supported Events", "tut/evList"],
 		]],
 		["Object-Oriented Style", "tut/oop"],
 		["Sprites", "tut/sprite"],
