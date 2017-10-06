@@ -99,6 +99,7 @@ function clipCopy(e) {
 
 var node = new SiteNode(["sc8pr Home", "index", [
 	["Installation Guide", "inst"],
+	["Examples", "ex/ex"],
 	["Tutorial", "tut/tut", [
 		["Creating a Sketch", "tut/sk", [
 			["The setup Function", "tut/setup"],
@@ -114,10 +115,23 @@ var node = new SiteNode(["sc8pr Home", "index", [
 		["Object-Oriented Style", "tut/oop"],
 		["Sprites", "tut/sprite"],
 	]],
-/*	["Reference", "ref/ref", [
-		["sc8pr.__init__", "ref/init", []],
-		["sc8pr.text", "ref/text", []],
-	]],*/
+	["Reference", "ref/ref", [
+		["sc8pr", "ref/init", [
+/*			["Graphic", "ref/graphic"],
+			["Canvas", "ref/canvas"],
+			["Sketch", "ref/sketch"],
+			["Image", "ref/image"],
+			["BaseSprite", "ref/base"],
+			["Renderable", "ref/render"]*/
+		]],
+/*		["sc8pr.geom", "ref/geom", []],
+		["sc8pr.gui.*", "ref/gui", []],
+		["sc8pr.misc.*", "ref/misc", []],
+		["sc8pr.shape", "ref/shape", []],
+		["sc8pr.sprite", "ref/sprite", []],
+		["sc8pr.text", "ref/text", []], */
+		["sc8pr.util", "ref/util", []],
+	]],
 	["sc8pr on GitHub", "https://github.com/dmaccarthy/sc8pr"]
 ]]).find(url());
 
@@ -125,12 +139,12 @@ function setMetrics() {
 	var h = $("#Path").outerHeight() + 8;
 	$("body").css("margin-top", h + "px");
 	$("article").css("margin", "8px");
-	var e = $("div.Links");
-	if (e.length) {
+//	var e = $("div.Links");
+//	if (e.length) {
 		if ($(window).width() < 512)
-			e.removeClass("LinkWide").addClass("LinkNarrow")
-		else e.removeClass("LinkNarrow").addClass("LinkWide")
-	}
+			$("div.LinkWide").removeClass("LinkWide").addClass("LinkNarrow")
+		else $("div.LinkNarrow").removeClass("LinkNarrow").addClass("LinkWide")
+//	}
 }
 
 window.onresize = setMetrics;

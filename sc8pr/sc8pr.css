@@ -64,7 +64,9 @@ pre.Code {
 
 pre.Scroll {height:20em}
 
-div.Links {
+div.Indent {margin-left:1.5em}
+
+div.LinkWide, div.LinkNarrow {
 	border:1px solid blue;
 	border-radius:4px;
 	background:#e0e0ff;
