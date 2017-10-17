@@ -99,7 +99,7 @@ function clipCopy(e) {
 
 var node = new SiteNode(["sc8pr Home", "index", [
 	["Installation Guide", "inst"],
-	["Examples", "ex/ex"],
+//	["Examples", "ex/ex"],
 	["Tutorial", "tut/tut", [
 		["Creating a Sketch", "tut/sk", [
 			["The setup Function", "tut/setup"],
