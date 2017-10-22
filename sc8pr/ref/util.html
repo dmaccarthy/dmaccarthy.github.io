@@ -31,6 +31,7 @@
 		<p><code>data</code>: The dictionary to check.</p>
 		<p><code>keys</code>: A sequence of keys to check for.</p>
 		</div>
+	<p><code><span class="Hilite">hsva</span>(h, s, v=100, a=100)</code> → <code>pygame.Color</code>: Returns a color from HSVA data.</p>
 	<p><code><span class="Hilite">logError</span>()</code> → <code>None</code>: Prints the last exception and stack trace to <code>sys.stderr</code>.</p>
 	<p><code><span class="Hilite">noise</span>(c, amt=8, alpha=None)</code> → <code>pygame.Color</code>: Adds random “noise” to a color.</p>
 		<div class="Indent">
@@ -47,19 +48,29 @@
 		<div class="Indent">
 		<p><code>size</code>: A 2-tuple or 2-list specifiying the size within which to choose a random pixel. Will also accept an object that has a <code>size</code> attribute.</p>
 		</div>
+	<p><code><span class="Hilite">resolvePath</span>(rel="", start=__file__, isDir=False)</code> → <code>str</code>: Returns an absolute path.</p>
+		<div class="Indent">
+		<p><code>rel</code>: A <code>str</code> specifying the relative path.</p>
+		<p><code>start</code>: A file or folder indicating the starting location. If not specified, the <code>sc8pr</code> package folder is taken as the starting point.</p>
+		<p><code>isDir</code>: A <code>bool</code> specifying whether <code>start</code> is a directory or file.</p>
+		</div>
 	<p><code><span class="Hilite">rgba</span>(*args)</code> → <code>pygame.Color</code> or <code>list</code>: Creates a <code>pygame.Color</code> instance from a named color, RGB tuple, or RGB hex code. Can also be used to select a color randomly by passing a <code>bool</code> (<code>True</code> if you want a random alpha value or <code>False</code> for no transparency). If multiple <code>args</code> are passed, it will return multiple colors as a <code>list</code>. If a single argument is passed it will return a single color.</p>	<p><code><span class="Hilite">sc8prData</span>(*args, [archive])</code> → <code>bytes</code> or <code>list</code>: Reads data from a zipfile archive. Returns the data as <code>bytes</code> when reading a single file from the archive or as a </code>list</code> of <code>bytes</code> instances when reading multiple files.</p>
 		<div class="Indent">
 		<p><code>*args</code>: One or more file names to read from the archive.</p>
 		<p><code>archive</code>: Path to the zipfile to read from; if omitted the function will read from the “sc8pr.data” file of the <code>sc8pr</code> package.</p>
 		</div>
-	<p><code><span class="Hilite">sc8prPath</span>(rel="")</code> → <code>str</code>: Returns the absolute path of the <code>sc8pr</code> package or of a folder relative to the <code>sc8pr</code> folder.</p>
-		<div class="Indent">
-		<p><code>rel</code>: A <code>str</code> specifying the relative path.</p>
-		</div>
 	<p><code><span class="Hilite">setAlpha</span>(srf, a)</code> → <code>pygame.Surface</code>: Adjusts the per-pixel alpha values of a surface using <code>pygame.Surface.fill</code> with the <code>BLEND_RGBA_MIN</code> flag.</p>
 		<div class="Indent">
 		<p><code>srf</code>: The surface to adjust.</p>
 		<p><code>a</code>: The alpha value to fill with.</p>
+		</div>
+	<p><code><span class="Hilite">style</span>(srf, bg=None, border=(0,0,0), weight=0, padding=0)</code> → <code>pygame.Surface</code>: Create a new surface with padding, background color, and/or border.</p>
+		<div class="Indent">
+		<p><code>srf</code>: The original surface.</p>
+		<p><code>bg</code>: The background color to add.</p>
+		<p><code>border</code>: The border color.</p>
+		<p><code>weight</code>: The border thickness in pixels.</p>
+		<p><code>padding</code>: Number of pixels of padding to add around the surface.</p>
 		</div>
 	<p><code><span class="Hilite">surfaceData</span>(srf, compress=zlib.compress)</code> → <code>(bytes, bytes)</code>: Converts a surface to compressed binary data. The compressed data is returned as the first element of a tuple along with a 12-byte structure containing the mode, width, and height. The surface can be reconstructed by the <code>CachedSurface</code> constructor.</p>
 		<div class="Indent">

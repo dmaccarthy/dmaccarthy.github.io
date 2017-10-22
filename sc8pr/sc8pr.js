@@ -99,7 +99,6 @@ function clipCopy(e) {
 
 var node = new SiteNode(["sc8pr Home", "index", [
 	["Installation Guide", "inst"],
-//	["Examples", "ex/ex"],
 	["Tutorial", "tut/tut", [
 		["Creating a Sketch", "tut/sk", [
 			["The setup Function", "tut/setup"],
@@ -117,12 +116,12 @@ var node = new SiteNode(["sc8pr Home", "index", [
 	]],
 	["Reference", "ref/ref", [
 		["sc8pr", "ref/init", [
-/*			["Graphic", "ref/graphic"],
-			["Canvas", "ref/canvas"],
-			["Sketch", "ref/sketch"],
-			["Image", "ref/image"],
 			["BaseSprite", "ref/base"],
-			["Renderable", "ref/render"]*/
+			["Canvas", "ref/canvas"],
+			["Graphic", "ref/graphic"],
+			["Image", "ref/image"],
+			["Renderable", "ref/render"],
+			["Sketch", "ref/sketch"]
 		]],
 /*		["sc8pr.geom", "ref/geom", []],
 		["sc8pr.gui.*", "ref/gui", []],

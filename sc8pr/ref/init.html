@@ -12,11 +12,18 @@
 </style>
 </head>
 <body><article>
-<h4>Classes</h4><div class="Link Code"><ul id="Links"></ul></div><!--textarea class="Clip"></textarea-->
+<h4>Classes</h4><!--div class="Link Code"><ul id="Links"></ul></div><!--textarea class="Clip"></textarea-->
 <p>Pages for the classes defined in this module are currently under construction.</p>
 
+<div class="Indent"><p><code><a class="Hilite" href="base.html">BaseSprite</a> (Graphic)</code>: Abstract base class for various types of sprites.</p></div>
+<div class="Indent"><p><code><a class="Hilite" href="canvas.html">Canvas</a> (Graphic)</code>: Class for composing images by drawing graphics onto a rectangular background.</p></div>
+<div class="Indent"><p><code><a class="Hilite" href="graphic.html">Graphic</a></code>: Abstract base class for graphics instances which can be added to a sketch.</p></div>
+<div class="Indent"><p><code><a class="Hilite" href="image.html">Image</a> (Graphic)</code>: Class representing static bitmap images.</p></div>
+<div class="Indent"><p><code><a class="Hilite" href="render.html">Renderable</a> (Graphic)</code>: Abstract base class for graphics that are drawn using a <code>render</code> method.</p></div>
+<div class="Indent"><p><code><a class="Hilite" href="sketch.html">Sketch</a> (Canvas)</code>: Class representing the <code>sc8pr</code> application (i.e. the animation that plays in the <code>pygame</code> display window).</p></div>
+
 <h4>Constants</h4><div class="Indent">
-	<p><code class="Hilite">version</code>: A tuple describing the <code>sc8pr</code> version. For production versions, this will be a 3-tuple such as <code>(2, 0, 0)</code>. Non-production versions will have a string such as <code>"dev"</code>, <code>"alpha"</code>, <code>"beta"</code>, or <code>"rc"</code> as the fourth item of the tuple.</p>
+	<p><code class="Hilite">version</code>: A 3-tuple describing the <code>sc8pr</code> version, such as <code>(2, 0, 0)</code>. Non-production versions will have a string such as <code>"dev"</code>, <code>"a0"</code> (alpha), or <code>"b0"</code> (beta) as the final item of the tuple.</p>
 	<p><code class="Hilite">CENTER</code>, <code class="Hilite">TOP</code>, <code class="Hilite">BOTTOM</code>, <code class="Hilite">LEFT</code>, <code class="Hilite">RIGHT</code>, <code class="Hilite">TOPLEFT</code>, <code class="Hilite">TOPRIGHT</code>, <code class="Hilite">BOTTOMLEFT</code>, <code class="Hilite">BOTTOMRIGHT</code>: Constants representing possible values for the <code>anchor</code> attribute of <code>Graphic</code> instances.</p>
 	<p><code class="Hilite">HORIZONTAL</code>, <code class="Hilite">VERTICAL</code>, <code class="Hilite">BOTH</code>: Constants representing possible values for the <code>bounce</code> and <code>wrap</code> attributes of <code>BaseSprite</code> instances.</p>
 	<p><code class="Hilite">REMOVE</code>, <code class="Hilite">REMOVE_X</code>, <code class="Hilite">REMOVE_Y</code>: Constants representing additional values for the  <code>wrap</code> attribute of <code>BaseSprite</code> instances.</p>
