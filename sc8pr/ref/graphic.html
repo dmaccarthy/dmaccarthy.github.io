@@ -14,11 +14,41 @@
 <body><article>
 <p>The <code>Graphic</code> class is the abstract base class for all <code>sc8pr</code> graphics. This class defines attributes common to all graphics types.</p>
 
+<h4>Assignable Properties</h4><div class="Indent">
+	<p><code class="Hilite">anchor</code>: One of the anchor constants (e.g. <code>TOPLEFT</code> or <code>CENTER</code>) indicating how the <code>pos</code> property is interpreted.</p>
+	<p><code class="Hilite">aspectRatio</code>: The ratio of the graphic’s width to height.</p>
+	<p><code class="Hilite">autoPositionOnResize</code>: A <code>bool</code> indicating whether the <code>resize</code> method should call <code>scaleVectors</code>; default is <code>True</code> unless overridden by subclass.</p>
+	<p><code class="Hilite">effects</code>: A list of <code>sc8pr.misc.effect.Effect</code> instances to be applied before drawing the graphic; can be set to <code>None</code> (default) if no effects are to be applied.</p>
+	<p><code class="Hilite">focusable</code>: A <code>bool</code> value indicating whether the graphic gains focus when clicked; defaults to <code>False</code> unless overridden in the subclass definition.</p>
+	<p><code class="Hilite">height</code>: The height of the graphic, not accounting for rotation. When a new value is assigned, the width is also adjusted to maintain a constant aspect ratio.</p>
+	<p><code class="Hilite">layer</code>: An index (<code>int</code>) specifying the drawing order of the graphic relative to all other graphics in the canvas. Layers are numbered from bottom (<code>layer = 0</code>) to top. Graphic instances can be assigned a negative layer value to specify a position relative to the top (<code>layer = -1</code>).</p>
+	<p><code class="Hilite">pos</code>: A 2-tuple describing the position of the graphic relative to its canvas.</p>
+	<p><code class="Hilite">size</code>: A 2-tuple describing graphic’s width and height, not accounting for rotation. Use <code>gr.rect.size</code> for the actual blit-rectangle size.</p>
+	<p><code class="Hilite">width</code>: The width of the graphic, not accounting for rotation. When a new value is assigned, the height is also adjusted to maintain a constant aspect ratio.</p>
+</div>
+
+<h4>Read-Only Properties</h4><div class="Indent">
+	<p><code class="Hilite">avgColor</code>: The average color of the graphic as an RGBA 4-tuple.</p>
+	<p><code class="Hilite">canvas</code>: The <code>Canvas</code> instance to which the graphic belongs, or <code>None</code>.</p>
+	<p><code class="Hilite">center</code>: A 2-tuple calculated as half of the graphic’s width and height.</p>
+	<p><code class="Hilite">focussed</code>: A <code>bool</code> indicating whether the graphic is currently focussed.</p>
+	<p><code class="Hilite">path</code>: A list containing the graphic and all canvases that contain it, in order.</p>
+	<p><code class="Hilite">radius</code>: Half of the average of the graphic’s unrotated width and height. Subclasses may override this property to calculate it in a different manner.</p>
+	<p><code class="Hilite">rect</code>: A <code>pygame.Rect</code> instance describing the graphic’s location in the sketch. This property is updated each frame when the graphics are drawn. An <code>AttributeError</code> exception may be raised if you try to access this property for a graphic that is not currently in the sketch, or one that has just been added but not yet drawn.</p>
+	<p><code class="Hilite">sketch</code>: A reference to the sketch object if the graphic has been added to the sketch or to a canvas that has been added to the sketch; otherwise <code>None</code>.</p>
+	<p><code class="Hilite">surfaceEffect</code>: A rendering of the graphic as a surface, to which all of the graphic’s <code>effects</code> have been applied. Subclasses must have an <code>image</code> property to which the effects can be applied.</p>
+	<!--p><code class="Hilite">timeFactor</code>: .</p-->
+</div>
+
 <h4>Instance Methods</h4><div class="Indent">
 
-	<p><code><span class="Hilite">avgColor</span>()</code> → <code>tuple</code>: Return the average color of the graphic as an RGBA code.</p>
-
 	<p><code><span class="Hilite">bind</span>(*args, **kwargs)</code> → <code>self</code>: Bind functions as methods of the instance.  Functions passed as positional arguments will be bound using the function name as the attribute name. Functions passed by keyword will be bound using the keyword as the attribute name.</p>
+
+	<p><code><span class="Hilite">blitPosition</span>(offset, blitSize)</code> → <code>tuple</code>: Calculates the sketch coordinates where the graphic is to be drawn; called by <code>calcBlitRect</code>.</p>
+		<div class="Indent">
+		<p><code>offset</code>: A position offset based on the canvas’s position.</p>
+		<p><code>blitSize</code>: The size of the graphic adjusted for rotation.</p>
+		</div>
 
 	<p><code><span class="Hilite">blur</span>()</code> → <code>self</code>: Force the instance to relinquish focus.</p>
 
@@ -28,6 +58,11 @@
 		<p><code>ev</code>: A description of the event as a <code>pygame.event.EventType</code> instance.</p>
 		</div>
 
+	<p><code><span class="Hilite">calcBlitRect</span>(blitSize)</code> → <code>pygame.Rect</code>: Calculates the rectangle where the graphic will be drawn in the sketch, based on the graphic’s position, anchor, and canvas. This method is called when the graphic is drawn; applications would not normally call this method directly.</p>
+		<div class="Indent">
+		<p><code>blitSize</code>: The size of the graphic adjusted for rotation.</p>
+		</div>
+
 	<p><code><span class="Hilite">config</span>(**kwargs)</code> → <code>self</code>: Sets multiple properties. This method is generally preferred over direct assignment since the <code>config</code> method can perform any additional operations required.  For example, it can determine that a graphic’s current rendering is no longer valid and signal that it needs to be re-rendered. The order in which the properties are assigned may not correspond to the order in which the keywords are passed; use multiple calls to <code>config</code> if the assignments must be performed in a specific order.</p>
 
 	<p><code><span class="Hilite">contains</span>(pos)</code> → <code>bool</code>: Determines if the specified sketch coordinates are contained by the graphics instance.</p>
@@ -35,7 +70,7 @@
 		<p><code>pos</code>: Coordinates of a point relative to the sketch.</p>
 		</div>
 
-	<p><code><span class="Hilite">draw</span>(srf)</code> → <code>pygame.Rect</code>: Draw the graphic onto a surface. Return a description of the rectangle occupied on the surface by the graphic.</p>
+	<p><code><span class="Hilite">draw</span>(srf)</code> → <code>pygame.Rect</code>: Draw the graphic onto a surface and return a description of the rectangle occupied on the surface by the graphic. Subclasses must provide a <code>image</code> property that refers to a properly sized and rotated surface. The <code>draw</code> method will apply any effects as indicated by the graphic’s <code>effects</code> property.</p>
 		<div class="Indent">
 		<p><code>srf</code>: The surface being drawn upon. The surface clipping region will indicate the canvas rectangle.</p>
 		</div>
@@ -47,10 +82,22 @@
 
 	<p><code><span class="Hilite">remove</span>()</code> → <code>self</code>: Remove the instance from its current canvas (if applicable). The canvas’s <code>-=</code> operator performs the same task; <code>cv -= gr</code> is effectively the same as <code>gr.remove()</code>, where <code>gr</code> is the <code>Graphic</code> instance and <code>cv</code> is the <code>Canvas</code>.</p>
 
+	<p><code><span class="Hilite">resize</span>(size)</code> → <code>None</code>: Resize the graphic; called when the canvas is resized or when a new value is assigned to the <code>size</code>, <code>width</code>, or <code>height</code> properties.</p>
+		<div class="Indent">
+		<p><code>size</code>: A 2-tuple describing the new width and height.</p>
+		</div>
+
 	<p><code><span class="Hilite">save</span>(fn, **kwargs)</code> → <code>self</code>: Render and save the graphic.</p>
 		<div class="Indent">
 		<p><code>fn</code>: The name of the file to save. The format (e.g. PNG or JPEG) is determined by the file extension.</p>
 		<p><code>**kwargs</code>: Arguments to be passed to <code>sc8pr.util.style</code> after drawing the image.</p>
+		</div>
+
+	<p><code><span class="Hilite">scaleVectors</span>(fx, fy, attr=("pos", "vel", "acc"))</code> → <code>None</code>: Scales the specified vector attributes by the given factors; called when the canvas is resized.</p>
+		<div class="Indent">
+		<p><code>fx</code>: The factor by which to adjust the x-components of the vectors.</p>
+		<p><code>fy</code>: The factor by which to adjust the y-components of the vectors.</p>
+		<p><code>attr</code>: A sequence of attributes to be adjusted; the function will ignore any specified attributesd that are not defined.</p>
 		</div>
 
 	<p><code><span class="Hilite">setCanvas</span>(cv)</code> → <code>self</code>: Remove the instance from its current canvas (if applicable) and add it to another one. This method is not usually called directly as the canvas’s <code>+=</code> operator performs the same task; <code>cv += gr</code> is effectively the same as <code>gr.setCanvas(cv)</code>, where <code>gr</code> is the <code>Graphic</code> instance and <code>cv</code> is the <code>Canvas</code>.</p>
@@ -59,14 +106,6 @@
 		<div class="Indent">
 		<p><code>**kwargs</code>: Arguments to be passed to <code>sc8pr.util.style</code> after drawing the image.</p>
 		</div>
-</div>
-
-<h4>Properties</h4><div class="Indent">
-
-	<p><code class="Hilite">rect</code>: A <code>pygame.Rect</code> object describing the graphic’s location in the sketch. This property is updated each frame when the graphics are drawn. An <code>AttributeError</code> exception may be raised if you try to access this property for a graphic that is not currently in the sketch, or one that has just been added but not yet drawn.</p>
-	<p><code class="Hilite">size</code>: A 2-tuple describing graphic’s width and height, not accounting for rotation. Use <code>gr.rect.size</code> for the actual blit-rectangle size.</p>
-
-
 </div>
 
 </article></body>
