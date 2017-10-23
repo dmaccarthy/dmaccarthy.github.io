@@ -16,7 +16,6 @@
 
 <h4>Assignable Properties</h4><div class="Indent">
 	<p><code class="Hilite">anchor</code>: One of the anchor constants (e.g. <code>TOPLEFT</code> or <code>CENTER</code>) indicating how the <code>pos</code> property is interpreted.</p>
-	<p><code class="Hilite">aspectRatio</code>: The ratio of the graphic’s width to height.</p>
 	<p><code class="Hilite">autoPositionOnResize</code>: A <code>bool</code> indicating whether the <code>resize</code> method should call <code>scaleVectors</code>; default is <code>True</code> unless overridden by subclass.</p>
 	<p><code class="Hilite">effects</code>: A list of <code>sc8pr.misc.effect.Effect</code> instances to be applied before drawing the graphic; can be set to <code>None</code> (default) if no effects are to be applied.</p>
 	<p><code class="Hilite">focusable</code>: A <code>bool</code> value indicating whether the graphic gains focus when clicked; defaults to <code>False</code> unless overridden in the subclass definition.</p>
@@ -28,6 +27,7 @@
 </div>
 
 <h4>Read-Only Properties</h4><div class="Indent">
+	<p><code class="Hilite">aspectRatio</code>: The ratio of the graphic’s width to height.</p>
 	<p><code class="Hilite">avgColor</code>: The average color of the graphic as an RGBA 4-tuple.</p>
 	<p><code class="Hilite">canvas</code>: The <code>Canvas</code> instance to which the graphic belongs, or <code>None</code>.</p>
 	<p><code class="Hilite">center</code>: A 2-tuple calculated as half of the graphic’s width and height.</p>
