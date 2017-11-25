@@ -97,12 +97,12 @@
 		<div class="Indent">
 		<p><code>fx</code>: The factor by which to adjust the x-components of the vectors.</p>
 		<p><code>fy</code>: The factor by which to adjust the y-components of the vectors.</p>
-		<p><code>attr</code>: A sequence of attributes to be adjusted; the function will ignore any specified attributesd that are not defined.</p>
+		<p><code>attr</code>: A sequence of attributes to be adjusted; the function will ignore any specified attributes that are not defined.</p>
 		</div>
 
 	<p><code><span class="Hilite">setCanvas</span>(cv)</code> → <code>self</code>: Remove the instance from its current canvas (if applicable) and add it to another one. This method is not usually called directly as the canvas’s <code>+=</code> operator performs the same task; <code>cv += gr</code> is effectively the same as <code>gr.setCanvas(cv)</code>, where <code>gr</code> is the <code>Graphic</code> instance and <code>cv</code> is the <code>Canvas</code>.</p>
 
-	<p><code><span class="Hilite">snapshot</span>(**kwargs)</code> → <code>Image</code>: Create a new image by drawing the graphic.</p>
+	<p><code><span class="Hilite" id="snapshot">snapshot</span>(**kwargs)</code> → <code>Image</code>: Create a new image by drawing the graphic and applying any <code>effects</code>.</p>
 		<div class="Indent">
 		<p><code>**kwargs</code>: Arguments to be passed to <code>sc8pr.util.style</code> after drawing the image.</p>
 		</div>

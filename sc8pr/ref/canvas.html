@@ -12,6 +12,50 @@
 </style>
 </head>
 <body><article>
-<p>Under Construction...Please check back later.</p>
+
+<p>The <code>Canvas</code> class, a subclass of <code>Graphic</code>, represents rectangular regions on which additional graphics can be drawn. <code>Canvas</code> is the superclass of <code>Sketch</code>. In addition to the attributes it inherits from <code><a class="Hilite" href="graphic.html">Graphic</a></code>, <code>Canvas</code> defines the following...</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Canvas</span>(image, bg=None)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">image</code>: An <code>Image</code> instance to be used for the canvas background, or a 2-tuple specifying the canvas size if no image is provided. If an image is provided, the image size will be used as the canvas size.</p>
+		<p><code class="Hilite">bg</code>: A color to use as the background if no image is provided. If an image is provided and contains transparency, the image will be drawn over the background color. If a transparent color is used as a background with no image, the transparency will be respected when converting the canvas to an image but will be ignored when drawing the canvas to the sketch; you must use an image if you want the canvas to be drawn with a partially tansparent background..</p>
+		</div>
+</div>
+
+<h4>Assignable Properties</h4><div class="Indent">
+	<p><code class="Hilite">bg</code>: A color or image specifying the canvas background. If the background image has a different aspect ratio than the canvas, the image will be scaled.</p>
+	<p><code class="Hilite">border</code>: The color of the border to be drawn around the canvas; default is black.</p>
+	<p><code class="Hilite">weight</code>: The thickness in pixels of the canvas border; default is <code>0</code> (no border).</p>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">__contains__</span>(gr)</code> → <code>bool</code>: Checks whether the specified graphic is currently added to the canvas; enables use of the <code>in</code> operator.</p>
+		<div class="Indent">
+		<p><code>gr</code>: A <code>Graphic</code> instance, or the <code>name</code> property of the target <code>Graphic</code> instance.</p>
+		</div>
+	<p><code><span class="Hilite">__getitem__</span>(i)</code> → <code>Graphic</code>: Returns the graphic with the specified layer (index) or name; enables use of the <code>[]</code> operator. Raises a <code>KeyError</code> if no such graphic is found.</p>
+		<div class="Indent">
+		<p><code>i</code>: An <code>int</code> specifying the layer, or the <code>name</code> property of the target <code>Graphic</code> instance.</p>
+		</div>
+	<p><code><span class="Hilite">__iadd__</span>(gr)</code> → <code>self</code>: Adds a <code>Graphic</code> instance or a sequence of such graphics to the canvas; enables use of the <code>+=</code> operator.</p>
+	<p><code><span class="Hilite">__isub__</span>(gr)</code> → <code>self</code>: Removes a <code>Graphic</code> instance or a sequence of such graphics from the canvas; enables the use of the <code>-=</code> operator.</p>
+	<p><code><span class="Hilite">__len__</span>(gr)</code> → <code>int</code>: Enables the <code>len</code> function to determine the number of graphic instances currently added to the canvas.</p>
+
+	<p><code><span class="Hilite">instOf</span>(cls)</code> → <code>generator</code>: Yields a sequence of contained graphics that are instances of the specified class.</p>
+
+	<p><code><span class="Hilite">objectAt</span>(pos)</code> → <code>Graphic</code>: Returns the contained graphic instance located at the specified position. If more than one graphic is located at the position, the graphic with the highest layer is returned. If no contained graphics are at the position, the method will return <code>self</code>.</p>
+
+	<p><code><span class="Hilite">purge</span>(recursive=False)</code> → <code>None</code>: Remove all <code>Graphic</code> instances from the canvas.</p>
+		<div class="Indent">
+		<p><code>recursive</code>: Specifies whether to purge any contained canvases.</p>
+		</div>
+
+	<p><code><span class="Hilite">snapshot</span>()</code> → <code>Image</code>: Create a new image by drawing the canvas.</p>
+
+	<p><code><span class="Hilite">sprites</span>()</code> → <code>generator</code>: Yields a sequence of <code>BaseSprite</code> instances currently added to the canvas.</p>
+
+</div>
+
 </article></body>
 </html>
