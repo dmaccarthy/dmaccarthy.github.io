@@ -84,7 +84,7 @@
 	<td><code>onevent</code></td>
 	<td><code>sk, ev</code></td>
 	<td>Sketch only</td>
-	<td>Called for all <code>pygame</code> events before any processing by <code>sc8pr</code>. If it returns <code>True</code>, the event is considered to have been handled and no other event handlers will be called.</td>
+	<td>Called for all <code>pygame</code> events (except <code>VIDEORESIZE</code>) before dispatching the event to a specific handler. If it returns <code>True</code>, the event is considered to have been handled and no other handlers will be called.</td>
 </tr>
 <tr>
 	<td><code>onhandled</code></td>
