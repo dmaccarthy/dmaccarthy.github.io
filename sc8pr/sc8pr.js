@@ -113,6 +113,7 @@ var node = new SiteNode(["sc8pr Home", "index", [
 		]],
 		["Object-Oriented Style", "tut/oop"],
 		["Sprites", "tut/sprite"],
+		["GUI Controls", "tut/gui"],
 	]],
 	["Reference", "ref/ref", [
 		["sc8pr", "ref/init", [
