@@ -13,8 +13,6 @@
 </head>
 <body><article>
 
-<p><b class="Comment">Under Construction!</b></p>
-
 <p>The <code>Sketch</code> class represents the “top-level” canvas that contains all other <code>sc8pr</code> graphics objects. In addition to the attributes it inherits from <code><a class="Hilite" href="graphic.html">Graphic</a></code> and <code><a class="Hilite" href="canvas.html">Canvas</a></code>, <code>Sketch</code> defines the following...</p>
 
 <h4>Constructor</h4><div class="Indent">
@@ -25,8 +23,22 @@
 </div>
 
 <h4>Assignable Properties</h4><div class="Indent">
+	<p><code class="Hilite">cursor</code>: A reference to the current cursor data. You can load cursor data from <code>sc8pr.misc.cursors</code> or create your own using <a href="https://www.pygame.org/docs/ref/cursors.html" class="Code">pygame.cursors</a>.</p>
+	<p><code class="Hilite">dirtyRegions</code>: A list of <code>pygame.Rect</code> regions to be updated when drawing the next frame; you can set this to <code>None</code> to always update the entire screen, or reset it to an empty list to resume tracking dirty regions.</p>
+	<p><code class="Hilite">fixedAspect</code>: When set to <code>True</code> (default); the sketch will resize itself to match the aspect ratio of its background image and will maintain the aspect ratio when being resized.</p>
+	<p><code class="Hilite">frameCount</code>: The number of animation frames drawn; incremented at the beginning on each drawing cycle.</p>
 	<p><code class="Hilite">frameRate</code>: The approximate number of anmation frames to draw each second; default <code>60</code>.</p>
 	<p><code class="Hilite">quit</code>: A <code>bool</code> that can be set to <code>True</code> to terminate the animation.</p>
+	<p><code class="Hilite">realTime</code>: [<b>Experimental</b>] A <code>bool</code> specifying whether to attempt to correct for actual frame rates slower than requested by the <code>frameRate</code> property; default <code>False</code>.</p>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">play</span>(caption="sc8pr", icon=None, mode=True)</code> → <code>self</code>: Run the sketch.</p>
+		<div class="Indent">
+		<p><code>caption</code>: Text to use as the window caption.</p>
+		<p><code>icon</code>: Path to an image file to be used as the window icon.</p>
+		<p><code>mode</code>: A <code>bool</code> specifying whether the sketch window can be resize by the user.</p>
+		</div>
 </div>
 
 </article></body>

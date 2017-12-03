@@ -12,6 +12,33 @@
 </style>
 </head>
 <body><article>
-<p>Under Construction...Please check back later.</p>
+<p>The <code>BaseSprite</code> class is an abstract class that defines behavious common to sprites. You should not create <code>BaseSprite</code> instances directly but should use one of its subclasses (such as <code class="Code Hilite" href="sprite.html">Sprite</code>) instead.</p>
+
+<p>The <code>BaseSprite</code> class defines default event handlers for <code>ondraw</code> and <code>onwrap</code>. If overriding these handlers, you may need to call the default handler to ensure the sprites behave correctly.</p>
+
+<p>In addition to the attributes it inherits from <a class="Code Hilite" href="graphic.html">Graphic</a>, <code>BaseSprite</code> defines the following...</p>
+
+<h4>Assignable Properties</h4><div class="Indent">
+	<p><code class="Hilite">acc</code>: The acceleration of the sprite in pixels per frame-squared; defaults to <code>None</code> to disable acceleration.</p>
+	<p><code class="Hilite">bounce</code>: An <code>int</code> code specifying whether to bounce the sprite from the edge of the sketch. Constants for these codes are defined in the <a href="init.html" class="Code">sc8pr</a> module. Defaults to <code>0</code> which specifies no action.</p>
+	<p><code class="Hilite">drag</code>: A coefficient specifying how much drag force to apply to the sprite motion; default <code>0</code>.</p>
+	<p><code class="Hilite">spin</code>: The number of degrees by which to change the <code>angle</code> property each frame; default <code>0</code>.</p>
+	<p><code class="Hilite">pen</code>: A 2-tuple describing the pen color and thickness to trace the sprites position; default <code>None</code>.</p>
+	<p><code class="Hilite">vel</code>: The velocity of the sprite in pixels per frame; default <code>(0, 0)</code>.</p>
+	<p><code class="Hilite">wrap</code>: An <code>int</code> code specifying what action to take when the sprite leaves the sketch. Constants for these codes are defined in the <a href="init.html" class="Code">sc8pr</a> module. Can be set to <code>0</code> to specify no action. Defaults to <code>REMOVE</code>.</p>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">circleBounce</span>(cv)</code> → <code>None</code>: Performs bounce operations when necessary; called automatically be the default <code>ondraw</code> event handler.</p>
+		<div class="Indent">
+		<p><code class="Hilite">cv</code>: The sprite’s canvas.</p>
+		</div>
+	<p><code><span class="Hilite">kinematics</span>()</code> → <code>None</code>: Updates the motion of the sprite; called automatically be the default <code>ondraw</code> event handler.</p>
+	<p><code><span class="Hilite">simpleWrap</span>(cv)</code> → <code>None</code>: Performs wrap operations when necessary; called automatically be the default <code>ondraw</code> event handler.</p>
+		<div class="Indent">
+		<p><code class="Hilite">cv</code>: The sprite’s canvas.</p>
+		</div>
+</div>
+
 </article></body>
 </html>
