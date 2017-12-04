@@ -124,11 +124,13 @@ var node = new SiteNode(["sc8pr Home", "index", [
 			["Renderable", "ref/render"],
 			["Sketch", "ref/sketch"]
 		]],
+		["sc8pr.sprite", "ref/sprite", [
+			["Sprite", "ref/sprite_class"],
+		]],
 /*		["sc8pr.geom", "ref/geom", []],
 		["sc8pr.gui.*", "ref/gui", []],
 		["sc8pr.misc.*", "ref/misc", []],
 		["sc8pr.shape", "ref/shape", []],
-		["sc8pr.sprite", "ref/sprite", []],
 		["sc8pr.text", "ref/text", []], */
 		["sc8pr.util", "ref/util", []],
 	]],
