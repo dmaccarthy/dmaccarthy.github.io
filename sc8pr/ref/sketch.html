@@ -23,6 +23,7 @@
 </div>
 
 <h4>Assignable Properties</h4><div class="Indent">
+	<p><code class="Hilite">capture</code>: A <code>Video</code> instance used to record the animation; default <code>None</code>. The video must have an <code>interval</code> attribute specifying how often to record frames.</p>
 	<p><code class="Hilite">cursor</code>: A reference to the current cursor data. You can load cursor data from <code>sc8pr.misc.cursors</code> or create your own using <a href="https://www.pygame.org/docs/ref/cursors.html" class="Code">pygame.cursors</a>.</p>
 	<p><code class="Hilite">dirtyRegions</code>: A list of <code>pygame.Rect</code> regions to be updated when drawing the next frame; you can set this to <code>None</code> to always update the entire screen, or reset it to an empty list to resume tracking dirty regions.</p>
 	<p><code class="Hilite">fixedAspect</code>: When set to <code>True</code> (default); the sketch will resize itself to match the aspect ratio of its background image and will maintain the aspect ratio when being resized.</p>
