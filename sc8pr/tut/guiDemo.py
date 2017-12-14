@@ -45,18 +45,14 @@ def setup(sk):
 
     # Add a selectable button
     size = 120, 48
-    print(0)
     btn = Button(size).content("Selectable\nButton").bind(onaction=buttonClick)
-    print(1)
     cv += btn.config(pos=(240, 80), anchor=TOP, name="Selectable")
     btn[0].config(font=FONT, fontSize=16, color=BLUE, align=CENTER)
 
     # Add a non-selectable 'Okay' button
-    print(2)
     btn = Button(size, 2).content("Okay").bind(onaction=buttonClick)
     cv += btn.config(pos=(240, 180), anchor=TOP, name="Okay")
     btn[0].config(font=FONT, fontSize=16)
-    print(3)
 
 def onaction(gr, ev):
     "Event handler for TextInput"
