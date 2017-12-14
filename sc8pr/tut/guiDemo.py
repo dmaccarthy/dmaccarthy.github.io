@@ -5,7 +5,7 @@ from sc8pr.gui.textinput import TextInput
 from sc8pr.gui.radio import Radio, Options
 from sc8pr.gui.slider import Slider
 from sc8pr.gui.progress import ProgressBar
-from sc8pr.gui.button import TextButton
+from sc8pr.gui.button import Button
 
 GREY, BLUE = rgba("#ececec", "blue")
 FONT = Font.sans()
@@ -45,14 +45,18 @@ def setup(sk):
 
     # Add a selectable button
     size = 120, 48
-    btn = TextButton(size, "Selectable\nButton").bind(onaction=buttonClick)
+    print(0)
+    btn = Button(size).content("Selectable\nButton").bind(onaction=buttonClick)
+    print(1)
     cv += btn.config(pos=(240, 80), anchor=TOP, name="Selectable")
     btn[0].config(font=FONT, fontSize=16, color=BLUE, align=CENTER)
 
     # Add a non-selectable 'Okay' button
-    btn = TextButton.okay(size).bind(onaction=buttonClick)
+    print(2)
+    btn = Button(size, 2).content("Okay").bind(onaction=buttonClick)
     cv += btn.config(pos=(240, 180), anchor=TOP, name="Okay")
     btn[0].config(font=FONT, fontSize=16)
+    print(3)
 
 def onaction(gr, ev):
     "Event handler for TextInput"
