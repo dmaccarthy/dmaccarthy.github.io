@@ -20,9 +20,9 @@ from sc8pr.text import BOLD, Font
 from sc8pr.gui.textinput import TextInput
 from sc8pr.gui.radio import Radio, Options
 from sc8pr.gui.slider import Slider
-from sc8pr.gui.progress import ProgressBar
 from sc8pr.gui.button import Button, yesNo
 from sc8pr.gui.menu import Menu, R_TRIANGLE
+from sc8pr.misc.progress import ProgressBar
 
 GREY, BLUE = rgba("#ececec", "blue")
 FONT = Font.sans()

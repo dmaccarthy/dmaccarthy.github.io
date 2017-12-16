@@ -108,7 +108,6 @@ var node = new SiteNode(["sc8pr Home", "index", [
 		["Event Handling", "tut/ev", [
 			["ondraw Handlers", "tut/draw"],
 			["onclick Handlers", "tut/click"],
-//			["More Mouse Events", "tut/mouse"],
 			["Supported Events", "tut/evList"],
 		]],
 		["Object-Oriented Style", "tut/oop"],
@@ -121,17 +120,27 @@ var node = new SiteNode(["sc8pr Home", "index", [
 			["Canvas", "ref/canvas"],
 			["Graphic", "ref/graphic"],
 			["Image", "ref/image"],
-			["Renderable", "ref/render"],
+			["Renderable", "ref/render"], // !!!
 			["Sketch", "ref/sketch"]
+		]],
+		["sc8pr.shape", "ref/shape", [
+			["Shape", "ref/shape_class"],
+			["Line", "ref/line"],
+			["Circle", "ref/circle"],
+			["Polygon", "ref/polygon"],
+			["Arrow", "ref/arrow"],
 		]],
 		["sc8pr.sprite", "ref/sprite", [
 			["Sprite", "ref/sprite_class"],
+			["Collisions", "ref/collisions"], // !!!
 		]],
 /*		["sc8pr.geom", "ref/geom", []],
 		["sc8pr.gui.*", "ref/gui", []],
-		["sc8pr.misc.*", "ref/misc", []],
-		["sc8pr.shape", "ref/shape", []],
-		["sc8pr.text", "ref/text", []], */
+		["sc8pr.misc.*", "ref/misc", []],*/
+		["sc8pr.text", "ref/text", [
+			["Font", "ref/font"],
+			["Text", "ref/text_class"],
+		]],
 		["sc8pr.util", "ref/util", []],
 	]],
 	["sc8pr on GitHub", "https://github.com/dmaccarthy/sc8pr"]
