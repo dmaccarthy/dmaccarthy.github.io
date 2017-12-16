@@ -46,7 +46,15 @@
 	<p><code><span class="Hilite">__isub__</span>(gr)</code> → <code>self</code>: Removes a <code>Graphic</code> instance or a sequence of such graphics from the canvas; enables the use of the <code>-=</code> operator.</p>
 	<p><code><span class="Hilite">__len__</span>(gr)</code> → <code>int</code>: Enables the <code>len</code> function to determine the number of graphic instances currently added to the canvas.</p>
 
-	<p><code><span class="Hilite">instOf</span>(cls)</code> → <code>generator</code>: Yields a sequence of contained graphics that are instances of the specified class.</p>
+	<p><code><span class="Hilite">everything</span>()</code> → <code>generator</code>: Yields a sequence of contained graphics recursively; i.e. includes graphics contained by nested canvases.</p>
+
+	<p><code><span class="Hilite">find</span>(criteria, recursive=False)</code> → <code>generator</code>: Yields a sequence of contained graphics that meet the specified criteria.</p>
+		<div class="Indent">
+		<p><code class="Hilite">criteria(gr)</code>: A function that accepts a <code>Graphics</code> instance argument and returns a <code>bool</code> indicating whether the instance is a match.</p>
+		<p><code class="Hilite">recursive</code>: A <code>bool</code> specifying whether to search in contained canvases.</p>
+		</div>
+
+	<p><code><span class="Hilite">instOf</span>(cls)</code> → <code>generator</code>: Yields a sequence of contained graphics (non-recursive) that are instances of the specified class.</p>
 
 	<p><code><span class="Hilite">objectAt</span>(pos)</code> → <code>Graphic</code>: Returns the contained graphic instance located at the specified position. If more than one graphic is located at the position, the graphic with the highest layer is returned. If no contained graphics are at the position, the method will return <code>self</code>.</p>
 
