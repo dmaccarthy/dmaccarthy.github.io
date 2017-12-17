@@ -14,7 +14,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-from sc8pr import Sketch, Canvas, Image, TOPLEFT, TOPRIGHT, BOTTOM, CENTER, TOP
+from sc8pr import Sketch, Canvas, Image, TOPLEFT, TOPRIGHT, CENTER, TOP
 from sc8pr.util import rgba, nothing, sc8prData
 from sc8pr.text import BOLD, Font
 from sc8pr.gui.textinput import TextInput
@@ -22,62 +22,89 @@ from sc8pr.gui.radio import Radio, Options
 from sc8pr.gui.slider import Slider
 from sc8pr.gui.button import Button, yesNo
 from sc8pr.gui.menu import Menu, R_TRIANGLE
-from sc8pr.misc.progress import ProgressBar
 
 GREY, BLUE = rgba("#ececec", "blue")
 FONT = Font.sans()
 
+def buttons(cfg):
+    "Create a canvas containing two buttons"
+    cv = Canvas((256, 48)).config(name="Button Box")
+
+    # Selectable button
+    btn1 = Button((120, 48)).textIcon("Selectable\nButton", yesNo()[0])
+    cv += btn1.config(anchor=TOPLEFT, name="Selectable").bind(onaction=buttonClick)
+
+    # Non-selectable button
+    btn2 = Button(btn1.size, 2).textIcon("Popup Menu").bind(onaction=buttonClick)
+    cv += btn2.config(pos=(255, 0), anchor=TOPRIGHT, name="Popup")
+
+    # Configure button text
+    btn1[-1].config(color=BLUE, align=CENTER, **cfg)
+    btn2[-1].config(**cfg)
+    return cv
+
+def buttonClick(gr, ev):
+    "Event handler for buttons"
+    path = ev.target.path # [..., button, button box, dialog, sketch]
+    btn, dlg = path[-4], path[-2]
+    print(btn, btn.selected)
+    if btn.name == "Popup":
+        btn.status = "normal"
+        dlg += dlg.cover.config(size=dlg.size)
+        dlg += dlg.menu
+
 def setup(sk):
     # Create a Canvas as a GUI dialog
-    cv = Canvas(sk.size).config(pos=sk.center, bg="#f0f0ff", weight=1)
-    sk += cv.bind(resize=nothing)
+    cv = Canvas((384,256)).config(name="Dialog", bg="#f0f0ff", weight=1)
+
+    # Vertical positioning 12 pixels below last item added
+    down = lambda cv: 16 + cv[-1].height
 
     # Add a TextInput
-    xc = sk.center[0]
+    x, y = cv.center[0], 16
     cv += TextInput("", "Type Some Text...").config(anchor=TOP,
-        font=FONT, fontStyle=BOLD, pos=(xc,8), color=BLUE,
+        font=FONT, fontStyle=BOLD, pos=(x,y), color=BLUE,
         bg="#d8d8d8", padding=4, name="Input").bind(onaction)
+
+    # Add a Radio box
+    y += down(cv)
+    cfg = {"font":FONT, "fontSize":14}
+    text = "Option A", "Option B", "Option C"
+    radio = Radio(text, **cfg).bind(onchange=radioChange)
+    cv += radio.config(pos=(x,y), anchor=TOP, selected=1)
+
+    # Add an Options box
+    y += down(cv)
+    text = "Option X", "Option Y", "Option Z"
+    radio = Options(text, **cfg).config(pos=(x,y), anchor=TOP)
+    cv += radio.bind(onaction=optionsChange)
+
+    # Add Buttons
+    y += down(cv)
+    cv += buttons(cfg).config(anchor=TOP, pos=(x,y))
+
+    # Modify canvas and sketch size based on content
+    cv.resize((cv.width, y + down(cv)), False)
+    w, h = cv.size
+    sk.size = w + 48, h + 48
 
     # Add a Slider
     slider = Slider((16, cv.height), BLUE, 100, 0, 100)
     slider.config(pos=(cv.width, 0), anchor=TOPRIGHT, bg=GREY, weight=1)
     cv += slider.bind(onchange=sliderChange)
 
-    # Add a ProgressBar
-    prog = ProgressBar((180, 16), BLUE).bind(ondraw=progress)
-    cv += prog.config(pos=(xc, cv.height-5), bg=GREY,
-        anchor=BOTTOM, weight=1, change=0.01)
-
-    # Add a Radio box
-    cfg = {"font":FONT, "fontSize":14}
-    text = "Option A", "Option B", "Option C"
-    radio = Radio(text, **cfg).bind(onchange=radioChange)
-    cv += radio.config(pos=(8, 80), anchor=TOPLEFT, selected=1)
-
-    # Add an Options box
-    text = "Option X", "Option Y", "Option Z"
-    radio = Options(text, **cfg).config(pos=(8, 180), anchor=TOPLEFT)
-    cv += radio.bind(onaction=optionsChange)
-
-    # Add a selectable button
-    size = 120, 48
-    btn = Button(size).textIcon("Selectable\nButton", yesNo()[0]).bind(onaction=buttonClick)
-    cv += btn.config(pos=(240, 80), anchor=TOP, name="Selectable")
-    btn[-1].config(color=BLUE, align=CENTER, **cfg)
-
-    # Add a non-selectable button
-    btn = Button(size, 2).textIcon("Popup Menu").bind(onaction=buttonClick)
-    btn[-1].config(**cfg)
-    cv += btn.config(pos=(240, 180), anchor=TOP, name="Popup")
-
     # Create a popup menu
     img = Image.fromBytes(sc8prData("alien"))
     items = [("Action", img, None), ("Back", None, R_TRIANGLE)]
-    cv.menu = Menu(items, txtConfig=cfg).config(pos=sk.center)
+    cv.menu = Menu(items, txtConfig=cfg).config(pos=cv.center)
     cv.menu.bind(resize=nothing, onaction=menuAction)
 
     # Create a cover to block other controls when popup running
     cv.cover = Image(bg="#ffffffc0").config(anchor=TOPLEFT)
+
+    # Add the dialog to the sketch
+    sk += cv.bind(resize=nothing).config(pos=sk.center)
+
 
 def onaction(gr, ev):
     "Event handler for TextInput"
@@ -106,21 +133,5 @@ def sliderChange(gr, ev):
     "Event handler for Slider"
     print(gr, gr.value)
 
-def buttonClick(btn, ev):
-    "Event handler for buttons"
-    print(btn, btn.selected)
-    if btn.name == "Popup":
-        cv = btn.canvas
-        btn.status = "normal"
-        cv += cv.cover.config(size=cv.size)
-        cv += cv.menu
-
-def progress(gr):
-    "Update progress bar"
-    if gr.value >= 1: gr.change = -0.01
-    elif gr.value <= 0: gr.change = 0.01
-    gr.value += gr.change
-
-
 # Play the sketch
-Sketch((384, 288)).play("GUI Demo")
+Sketch().play("GUI Demo")

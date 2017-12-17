@@ -63,6 +63,11 @@
 		<p><code class="Hilite">recursive</code>: Specifies whether to purge any contained canvases.</p>
 		</div>
 
+	<p><code><span class="Hilite">resize</span>(size, resizeContent=True)</code> → <code>None</code>: Resize the canvas; called automatically when a new <code>size</code>, <code>width</code> or <code>height</code> property is assigned.</p>
+		<div class="Indent">
+		<p><code class="Hilite">resizeContent</code>: Specifies whether to resize and reposition the contents of the canvas.</p>
+		</div>
+
 	<p><code><span class="Hilite">snapshot</span>()</code> → <code>Image</code>: Create a new image by drawing the canvas.</p>
 
 	<p><code><span class="Hilite">sprites</span>()</code> → <code>generator</code>: Yields a sequence of <code>BaseSprite</code> instances currently added to the canvas.</p>

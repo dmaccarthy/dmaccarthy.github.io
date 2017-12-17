@@ -32,6 +32,7 @@
 	<p><code class="Hilite">avgColor</code>: The average color of the graphic as an RGBA 4-tuple.</p>
 	<p><code class="Hilite">canvas</code>: The <code>Canvas</code> instance to which the graphic belongs, or <code>None</code>.</p>
 	<p><code class="Hilite">center</code>: A 2-tuple calculated as half of the graphic’s width and height.</p>
+	<p><code class="Hilite">dialog</code>: The top canvas (one level below the sketch) in which the graphic is located. Will return the graphic itself if added directly to the sketch. An exception will occur if called on the sketch itself or on a graphic that has been removed from or not added to the sketch.</p>
 	<p><code class="Hilite">focussed</code>: A <code>bool</code> indicating whether the graphic is currently focussed.</p>
 	<p><code class="Hilite">path</code>: A list containing the graphic and all canvases that contain it, in order.</p>
 	<p><code class="Hilite">radius</code>: Half of the average of the graphic’s unrotated width and height. Subclasses may override this property to calculate it in a different manner.</p>
