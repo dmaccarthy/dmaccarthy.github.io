@@ -25,7 +25,10 @@ def setup(sk):
 
 Sketch((512,362)).play()          <span class="Comment"># Create and run the sketch</span></pre>
 
-<p>In the example above, we are loading an image from the file “alien.png” and using the image to create a <em>sprite</em> — an interactive, animated character or object. We are also creating a text object.  The final statement of the <code>setup</code> function adds the text and the alien sprite to the sketch using the sketch’s <code>+=</code> operator.</p>
+<p>In the example above, we are loading an image from the file “alien.png” and using the image to create a <em>sprite</em> — an interactive, animated character or object. We are also creating a text object.  The final statement of the <code>setup</code> function adds the text and the alien sprite to the sketch using the sketch’s <code>+=</code> operator. This operator adds the items to the sketch <i>anonymously</i>. Alternatively, if we need to be able to access the graphic again after the <code>setup</code> function is finished, we can add it to the sketch using a unique name or key...</p>
+
+<pre class="Code">sk["Alien"] = alien
+sk["Hello"] = hello</pre>
 
 <p>If you run the program using <a href="img/gr.zip">these image files</a>, the sketch should look like this...</p>
 <p class="Center"><img src="img/ex1.png" alt="Image"/></p>

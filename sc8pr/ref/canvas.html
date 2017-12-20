@@ -42,9 +42,10 @@
 		<div class="Indent">
 		<p><code class="Hilite">i</code>: An <code>int</code> specifying the layer, or the <code>name</code> property of the target <code>Graphic</code> instance.</p>
 		</div>
-	<p><code><span class="Hilite">__iadd__</span>(gr)</code> → <code>self</code>: Adds a <code>Graphic</code> instance or a sequence of such graphics to the canvas; enables use of the <code>+=</code> operator.</p>
+	<p><code><span class="Hilite">__iadd__</span>(gr)</code> → <code>self</code>: Adds a <code>Graphic</code> instance or a sequence of such graphics to the canvas anonymously; enables use of the <code>+=</code> operator.</p>
 	<p><code><span class="Hilite">__isub__</span>(gr)</code> → <code>self</code>: Removes a <code>Graphic</code> instance or a sequence of such graphics from the canvas; enables the use of the <code>-=</code> operator.</p>
 	<p><code><span class="Hilite">__len__</span>()</code> → <code>int</code>: Enables the <code>len</code> function to determine the number of graphic instances currently added to the canvas.</p>
+	<p><code><span class="Hilite">__setitem__</span>(key, gr)</code> → <code>None</code>: Adds a graphic instance to the canvas with the specified key (name). Raises a <code>KeyError</code> is the key already exists in the canvas.</p>
 
 	<p><code><span class="Hilite">everything</span>()</code> → <code>generator</code>: Yields a sequence of contained graphics recursively; i.e. includes graphics contained by nested canvases.</p>
 

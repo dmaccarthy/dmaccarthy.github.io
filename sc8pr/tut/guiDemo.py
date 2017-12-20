@@ -28,15 +28,15 @@ FONT = Font.sans()
 
 def buttons(cfg):
     "Create a canvas containing two buttons"
-    cv = Canvas((256, 48)).config(name="Button Box")
+    cv = Canvas((256, 48))
 
     # Selectable button
     btn1 = Button((120, 48)).textIcon("Selectable\nButton", yesNo()[0])
-    cv += btn1.config(anchor=TOPLEFT, name="Selectable").bind(onaction=buttonClick)
+    cv["Selectable"] = btn1.config(anchor=TOPLEFT).bind(onaction=buttonClick)
 
     # Non-selectable button
     btn2 = Button(btn1.size, 2).textIcon("Popup Menu").bind(onaction=buttonClick)
-    cv += btn2.config(pos=(255, 0), anchor=TOPRIGHT, name="Popup")
+    cv["Popup"] = btn2.config(pos=(255, 0), anchor=TOPRIGHT)
 
     # Configure button text
     btn1[-1].config(color=BLUE, align=CENTER, **cfg)
@@ -55,16 +55,16 @@ def buttonClick(gr, ev):
 
 def setup(sk):
     # Create a Canvas as a GUI dialog
-    cv = Canvas((384,256)).config(name="Dialog", bg="#f0f0ff", weight=1)
+    cv = Canvas((384,256)).config(bg="#f0f0ff", weight=1)
 
     # Vertical positioning 12 pixels below last item added
     down = lambda cv: 16 + cv[-1].height
 
     # Add a TextInput
     x, y = cv.center[0], 16
-    cv += TextInput("", "Type Some Text...").config(anchor=TOP,
+    cv["Input"] = TextInput("", "Type Some Text...").config(anchor=TOP,
         font=FONT, fontStyle=BOLD, pos=(x,y), color=BLUE,
-        bg="#d8d8d8", padding=4, name="Input").bind(onaction)
+        bg="#d8d8d8", padding=4).bind(onaction)
 
     # Add a Radio box
     y += down(cv)
@@ -81,7 +81,7 @@ def setup(sk):
 
     # Add Buttons
     y += down(cv)
-    cv += buttons(cfg).config(anchor=TOP, pos=(x,y))
+    cv["Button Box"] = buttons(cfg).config(anchor=TOP, pos=(x,y))
 
     # Modify canvas and sketch size based on content
     cv.resize((cv.width, y + down(cv)), False)
@@ -103,7 +103,7 @@ def setup(sk):
     cv.cover = Image(bg="#ffffffc0").config(anchor=TOPLEFT)
 
     # Add the dialog to the sketch
-    sk += cv.bind(resize=nothing).config(pos=sk.center)
+    sk["Dialog"] = cv.bind(resize=nothing).config(pos=sk.center)
 
 
 def onaction(gr, ev):

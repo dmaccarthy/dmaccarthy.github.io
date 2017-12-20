@@ -42,7 +42,7 @@
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
-	<p><code><span class="Hilite">add</span>(v)</code> → <code>self</code>: Adds the argument to the current <code>data</code> attribute value and marks the rendering as stale.</p>
+	<p><code><span class="Hilite">__iadd__</span>(v)</code> → <code>self</code>: Adds the argument to the current <code>data</code> attribute value and marks the rendering as stale. This operation is performed using the addition operator for the <code>data</code>, which will depend on whether it is a number or a string.</p>
 	<p><code><span class="Hilite">render</span>()</code> → <code>pygame.Surface</code>: Renders the text. This method is called automatically by <code>Renderable.image</code>. To force re-rendering, set the <code>Text</code> instance’s <code>stale</code> attribute to <code>True</code>.</p>
 </div>
 
