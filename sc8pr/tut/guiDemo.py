@@ -13,6 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+"A demonstration of some of sc8pr 2.0's GUI controls"
 
 from sc8pr import Sketch, Canvas, Image, TOPLEFT, TOPRIGHT, CENTER, TOP
 from sc8pr.util import rgba, nothing, sc8prData
@@ -131,7 +132,12 @@ def optionsChange(gr, ev):
 
 def sliderChange(gr, ev):
     "Event handler for Slider"
-    print(gr, gr.value)
+    m = ["Click", "Scroll", "Drag", "Key"][ev.method]
+    print(gr, round(gr.value), m)
+
+def onclick(sk, ev):
+    print("Unhandled click:", ev.target)
+
 
 # Play the sketch
-Sketch().play("GUI Demo")
+Sketch().bind(onclick).play("GUI Demo")

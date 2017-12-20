@@ -36,16 +36,16 @@
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">__contains__</span>(gr)</code> → <code>bool</code>: Checks whether the specified graphic is currently added to the canvas; enables use of the <code>in</code> operator.</p>
 		<div class="Indent">
-		<p><code class="Hilite">gr</code>: A <code>Graphic</code> instance, or the <code>name</code> property of the target <code>Graphic</code> instance.</p>
+		<p><code class="Hilite">gr</code>: A <code>Graphic</code> instance, or the key used when adding the graphic to the canvas.</p>
 		</div>
-	<p><code><span class="Hilite">__getitem__</span>(i)</code> → <code>Graphic</code>: Returns the graphic with the specified layer (index) or name; enables use of the <code>[]</code> operator. Raises a <code>KeyError</code> if no such graphic is found.</p>
+	<p><code><span class="Hilite">__getitem__</span>(i)</code> → <code>Graphic</code> or <code>list</code>: Returns the graphic with the specified layer (index) or name; enables use of the <code>[]</code> operator. Raises a <code>KeyError</code> if no such graphic is found.</p>
 		<div class="Indent">
-		<p><code class="Hilite">i</code>: An <code>int</code> specifying the layer, or the <code>name</code> property of the target <code>Graphic</code> instance.</p>
+		<p><code class="Hilite">i</code>: An <code>int</code> or <code>slice</code> specifying the layer(s), or the key used to add the <code>Graphic</code> instance to the canvas.</p>
 		</div>
 	<p><code><span class="Hilite">__iadd__</span>(gr)</code> → <code>self</code>: Adds a <code>Graphic</code> instance or a sequence of such graphics to the canvas anonymously; enables use of the <code>+=</code> operator.</p>
 	<p><code><span class="Hilite">__isub__</span>(gr)</code> → <code>self</code>: Removes a <code>Graphic</code> instance or a sequence of such graphics from the canvas; enables the use of the <code>-=</code> operator.</p>
 	<p><code><span class="Hilite">__len__</span>()</code> → <code>int</code>: Enables the <code>len</code> function to determine the number of graphic instances currently added to the canvas.</p>
-	<p><code><span class="Hilite">__setitem__</span>(key, gr)</code> → <code>None</code>: Adds a graphic instance to the canvas with the specified key (name). Raises a <code>KeyError</code> is the key already exists in the canvas.</p>
+	<p><code><span class="Hilite">__setitem__</span>(key, gr)</code> → <code>None</code>: Adds a graphic instance to the canvas with the specified key (name). The key cannot be an <code>int</code>, a <code>slice</code>, or a non-hashable type. A <code>KeyError</code> will be raised if an invalid type is used, or if the key is already in use by an instance other than <code>gr</code>.</p>
 
 	<p><code><span class="Hilite">everything</span>()</code> → <code>generator</code>: Yields a sequence of contained graphics recursively; i.e. includes graphics contained by nested canvases.</p>
 
