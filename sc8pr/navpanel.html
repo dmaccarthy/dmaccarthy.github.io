@@ -204,10 +204,20 @@ window.onpopstate = function(ev) {
 	goNode(pop);
 }
 
+function noblink(ev) {
+	var img = ev.target;
+	if (img.noGIF) goNode();
+	else {
+		img.noGIF = true;
+		img.src = "../favicon.png";
+		img.title = img.parentNode.title;
+	}
+}
+
 </script>
 </head>
 <body><nav>
-<p id="Home" title="sc8pr 2.0 Home" onclick="goNode(sitemap)"><img id="Logo" src="img/alien.gif" title="Stop Blinking!!" alt="Image" onclick="this.src='../favicon.png'"/></p>
+<p id="Home" title="sc8pr 2.0 Home" onclick="goNode()"><img id="Logo" src="img/alien.gif" title="Stop Blinking!!" alt="Image" onclick="noblink(event)"/></p>
 <p class="Center">
 	<button onclick="expandCollapse(this)">Expand</button> &nbsp;
 	<button onclick="goNext()">Next</button>
