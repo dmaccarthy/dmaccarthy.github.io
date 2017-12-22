@@ -1,0 +1,40 @@
+﻿<article><h1>Object-Oriented Style</h1><textarea class="Clip"></textarea>
+
+<p class="Warning">Warning: This page discusses advanced programming techniques. Novice programmers should <span class="Link" onclick="goNext()">skip this page</span>!</p>
+
+<p><code>sc8pr</code> programs can be written using an object-oriented style. In an earlier example, we created an animation of an alien and we attached <em>onclick</em> handlers to the sprite and the sketch, to print whether we hit or missed the ailen when clicking with the mouse.</p>
+
+<p>Using an OOP approach, we could define a <em>subclass</em> of <code>Sprite</code> to represent the alien. The sprite’s event handlers could then be defined as methods within this class definition. We could also create a subclass of <code>Sketch</code> for the sketch’s event handlers and <code>setup</code> method...</p>
+
+<pre class="Code Scroll" id="Ex1"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex1')"/>from sc8pr import Sketch, Image, BOTH
+from sc8pr.sprite import Sprite
+
+class Alien(Sprite):
+
+    def __init__(self):
+        super().__init__("alien.png")
+        self.config(spin=1, vel=(1,1), bounce=BOTH)
+
+    def onclick(self, ev):
+        print("Click @", ev.pos)     <span class="Comment"># Coordinates relative to sketch</span>
+        hitPos = self.relXY(ev.pos)  <span class="Comment"># Coordinates relative to target</span>
+        print("You hit the alien at {}.".format(hitPos))
+
+
+class Game(Sketch):
+
+    def onclick(self, ev):
+        print("You missed the alien.")
+    
+    def setup(self):
+        self.bg = Image("sky.png")
+        self += Alien().config(pos=self.center, width=self.width/10)
+
+
+Game((512,362)).play()</pre>
+
+<p>There is no need to call the <code>bind</code> method anymore because our <code>Alien</code> and <code>Game</code> instances will inherit the event handlers as bound methods from their respective classes.</p>
+
+<p>If your <code>Sketch</code> subclass overrides the <code>__init__</code> method, it must call <code>Sketch.__init__</code> for the sketch to work properly. Also keep in mind that the <code>pygame</code> system will not be initialized until you call the sketch’s <code>play</code> method, so <code>__init__</code> will not be able to perform any operations that require <code>pygame</code> to be initialized.</p>
+
+</article>

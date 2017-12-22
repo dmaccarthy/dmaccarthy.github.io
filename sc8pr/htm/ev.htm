@@ -1,0 +1,40 @@
+﻿<article><h1>Event Handling</h1><textarea class="Clip"></textarea>
+
+<p>The <code>setup</code> function runs <em>once</em>, immediately after the sketch window opens, but before the animation begins. Once the animation starts, you can control your program by writing <em>event handlers</em>.</p>
+
+<p>An event handler is a function that gets called in response to an event that occurs. Events can be triggered by user actions with the mouse or keyboard, or by the <code>sc8pr</code> software itself. For example, the user can trigger a “quit” event by closing the sketch window. Your program may want to handle this event by asking the user to confirm whether they really want to quit, or by saving any unsaved data.</p>
+
+<p>Here’s a program that uses chance to decide whether to allow the program to quit. The event handler is a function named <code>onquit</code>. It takes two arguments: a reference to the sketch and a description of the event. Four times out of five, this handler will just print a message to the console saying it can’t quit. The other time, it will print “Goodbye!” and signal that the sketch can close by setting its <code>quit</code> attribute to <code>True</code>.</p>
+
+<pre class="Code Scroll" id="Ex1"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex1')"/>from random import randint
+from sc8pr import Sketch, Image, HORIZONTAL, VERTICAL</span>
+from sc8pr.sprite import Sprite
+
+def onquit(sk, ev):
+    <span class="Comment">"Handler for QUIT events"</span>
+    if randint(0, 4):
+        print("Sorry...can't quit now.")
+    else:
+        print("Goodbye!")
+        sk.quit = True</span>
+
+def setup(sk):
+    <span class="Hilite">sk.bind(onquit)</span>
+    sk.bg = Image("sky.png")
+    alien = Sprite("aliens.png", 2, 2)
+    sk += alien.config(
+        pos = sk.center,
+        width = sk.width/10,
+        costumeTime = 10,
+        spin = 1,
+        vel = (2, 1),
+        bounce = VERTICAL,
+        wrap = HORIZONTAL
+    )
+
+Sketch((512,362)).play()</pre>
+
+<p>As shown in blue, we need to pass the <code>onquit</code> function to the sketch’s <code>bind</code> method before the sketch will recognize it as an event handler. If we give the event handler a name other than the default name, we will have to pass it to <code>bind</code> as a keyword argument. For example, if we name the handler <code>goodbye</code>...</p>
+<pre class="Code">sk.bind(onquit=goodbye)</pre>
+
+</article>

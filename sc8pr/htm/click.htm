@@ -1,0 +1,46 @@
+﻿<article><h1><code>onclick</code> Handlers</h1><textarea class="Clip"></textarea>
+
+<p>A “click” event is triggered whenver the user clicks one of the mouse buttons. We can write functions to handle click events as in the example below.</p>
+
+<pre class="Code Scroll" id="Ex1"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex1')"/>from sc8pr import Sketch, Image, BOTH
+from sc8pr.sprite import Sprite
+
+def hit(alien, ev):
+    <span class="Comment">"CLICK event handler for the alien sprite"</span>
+    print("Click @", ev.pos)      <span class="Comment"># Coordinates relative to sketch</span>
+    hitPos = <span class="Hilite1">alien.relXY(ev.pos)</span>  <span class="Comment"># Coordinates relative to target</span>
+    print("You hit the alien at {}.".format(hitPos))
+
+def miss(sk, ev):
+    <span class="Comment">"CLICK event handler for the sketch"</span>
+    print("You missed the alien.")
+
+def setup(sk):
+    sk.bg = Image("sky.png")
+    img = Sprite("alien.png").config(pos=sk.center,
+        spin=1, vel=(1,1), width=sk.width/10, bounce=BOTH)
+    sk += img.<span class="Hilite">bind(onclick=hit)</span>
+
+Sketch((512,362)).<span class="Hilite">bind(onclick=miss)</span>.play()</pre>
+
+<p>Notice that we have written two <em>onclick</em> handlers: the <code>hit</code> function handles click events when the mouse is pointing to the alien sprite, and the <code>miss</code> function handles clicks anywhere else in the sketch.</p>
+
+<p>The first argument passed to the event handlers is a reference to the object (either the alien sprite or the sketch) where the event occurred. The second argument is a description of the event. For click events, the event object includes the mouse position (<code>ev.pos</code>) and the button that was clicked (<code>ev.button</code>). The position always gives the coordinates relative to the sketch window. As shown in the example in <span class="Hilite1">purple</span>, we can use the <code>relXY</code> method to calculate coordinates relative to a particular object such as a sprite. This adjusts for the sprite’s position and orientation, allowing us to determine if the alien was clicked on the head, body, or feet.</p>
+
+<p>Clicking on a sprite or other graphics object that does not have its own <em>onclick</em> handler will cause the click event to be sent to the sketch’s <em>onclick</em> handler (if any) instead. The event argument has an attribute, <code>ev.target</code> that refers to the graphics object that was actually clicked...</p>
+
+<pre class="Code" id="Ex2"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex2')"/>from sc8pr import Sketch, Image, BOTH
+from sc8pr.sprite import Sprite
+
+def onclick(sk, ev):
+    <span class="Comment">"CLICK event handler for the sketch"</span>
+    print("You clicked {} at {}.".format(<span class="Hilite">ev.target</span>, ev.pos))
+
+def setup(sk):
+    sk.bg = Image("sky.png")
+    sk += Sprite("alien.png").config(pos=sk.center,
+        spin=1, vel=(1,1), width=sk.width/10, bounce=BOTH)
+
+Sketch((512,362)).bind(onclick).play()</pre>
+
+</article>

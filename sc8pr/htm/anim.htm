@@ -1,0 +1,28 @@
+﻿<article><h1>Animations</h1><textarea class="Clip"></textarea>
+
+<p>The main difference between the <code>Sprite</code> and <code>Image</code> classes is that sprites are intended to be animated while images are not. In the example below, we have added a <code>spin</code> argument when configuring the sprite to make it rotate 1 degree clockwise per frame. We have also added a <code>vel</code> (velocity) argument to move the sprite 2 pixels right and 1 pixel down each frame. The <code>acc</code> (acceleration) keyword is used to increase the sprite’s downward velocity by 0.01 each frame.</p>
+
+<pre class="Code" id="Ex1"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex1')"/>from sc8pr import Sketch, Image, <span class="Hilite">VERTICAL, HORIZONTAL</span>
+from sc8pr.sprite import Sprite
+
+def setup(sk):
+    sk.bg = Image("sky.png")
+    alien = Sprite("alien.png")
+    sk += alien.config(
+        pos = sk.center,
+        width = sk.width/10,
+        costumeTime = 10,
+        <span class="Hilite">spin = 1,
+        vel = (2, 1),
+        acc = (0, 0.01),
+        bounce = VERTICAL,
+        wrap = HORIZONTAL</span>
+    )
+
+Sketch((512,362)).play()</pre>
+
+<p>The <code>bounce</code> and <code>wrap</code> arguments determine what happens when the sprite reaches the edge of the sketch. By specifying <code>bounce = VERTICAL</code>, when the sprite hits the top or bottom edges it will bounce back the way it came. By setting <code>wrap = HORIZONTAL</code>, the sprite will disappear from the left or right and reappear from the opposite edge. If we want the same behaviour from all four edges, we could use <code>BOTH</code> rather than <code>HORIZONTAL</code> or <code>VERTICAL</code>.</p>
+
+<p>The <code>wrap</code> argument can also take values <code>REMOVE</code> (default), <code>REMOVE_X</code>, or <code>REMOVE_Y</code>, to indicate that the sprite should be removed from the animation if it completely leaves the sketch area. You can also specify the value <code>wrap = 0</code> to indicate that no action is to be taken when the sprite leaves the sketch area.</p>
+
+</article>

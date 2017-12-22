@@ -1,0 +1,219 @@
+<html>
+<head><title>sc8pr</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" type="text/css" href="sc8pr1.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js">//</script>
+<script type="text/javascript">
+
+var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
+	{title:"Installation", link:"inst"},
+	{title:"Tutorial", link:"tut", pages:[
+		{title:"Sketch Basics", link:"sk", pages:[
+			{title:"The <code>setup</code> Function", link:"setup"},
+			{title:"Adding Graphics", link:"gr"},
+			{title:"Animations", link:"anim"}
+		]},
+		{title:"Event Handling", link:"ev", pages:[
+			{title:"<code>ondraw</code> Handlers", link:"draw"},
+			{title:"<code>onclick</code> Handlers", link:"click"},
+			{title:"Supported Events", link:"evList"}
+		]},
+		{title:"Object-Oriented Style", link:"oop"},
+		{title:"Sprite Animations", link:"spriteAnim"},
+		{title:"GUI Controls", link:"gui"},
+	]},
+	{title:"Module Reference", link:"ref", pages:[
+		{title:"sc8pr", link:"init", pages:[
+			{title:"class Graphic", link:"graphic"},
+			{title:"class Renderable", link:"render"},
+			{title:"class Image", link:"image"},
+			{title:"class Canvas", link:"canvas"},
+			{title:"class Sketch", link:"sketch"},
+		]},
+		{title:"sc8pr.text", link:"text", pages:[
+			{title:"class Font", link:"font"},
+			{title:"class Text", link:"text_class"},
+		]},
+	]},
+]}
+
+function linkParentNodes(node) {
+	if (!node) node = sitemap;
+	var pg = node.pages ? node.pages : [];
+	for (var i=0;i<pg.length;i++) {
+		pg[i].parent = node;
+		linkParentNodes(pg[i]);
+	}
+}
+
+function nextSib(node) {
+	var p = node.parent;
+	if (!p) return;
+	var pgs = p.pages;
+	var i = pgs.indexOf(node);
+	if (i < pgs.length-1) return pgs[i+1];
+	return nextSib(p);
+}
+
+function next(node) {
+	var pg = node.pages;
+	if (pg) return pg[0];
+	return nextSib(node);
+}
+
+function find(link, node) {
+	if (!node) node = sitemap;
+	while (node) {
+		if (node.link == link) return node;
+		node = next(node);
+	}
+	if (node.link == link) return node;
+}
+
+function nodeHtml(node) {
+	var p = $("<p>").html(node.title).click(navClick).attr("data-id", node.link);
+	var div = $("<div>").html(p);
+	p[0].node = node;
+	if (node.pages) {
+		var pg = node.pages;
+		for (var i=0;i<pg.length;i++) div.append(nodeHtml(pg[i]));
+	}
+	return div;
+}
+
+function resize() {
+	var w = $(window).width();
+	var nav = $("nav");
+	if (w >= 640) {
+		nav.addClass("Wide");
+		var h = $(window).height();
+		h -= parseFloat(nav.css("padding-top")) + parseFloat(nav.css("padding-bottom"));
+		nav.height(h).width(240);
+		$("body").css("margin-left", 256);
+	}
+	else {
+		nav.removeClass("Wide");
+		w -= parseFloat(nav.css("padding-left")) + parseFloat(nav.css("padding-right"));
+		nav.width(w).height("auto");
+		$("body").css("margin-left", 0);
+		collapse();
+		$("nav button")[0].innerHTML = "Expand";
+	}
+}
+
+function navClick() {
+	var p = $(this);
+	var div = p.closest("div");
+	var node = p[0].node;
+	div.children("div").toggle();
+	if (node.link) goNode(node.link);
+}
+
+var current, pop, init = true;
+
+function goNode(node) {
+	if (!node) node = sitemap;
+	else if (typeof(node) == "string") node = find(node);
+	if (node != current) {
+		var url = "htm/" + node.link + ".htm";
+		if (node) $.ajax({url:url, success:function(h) {ajaxLoad(h, node)},
+			error:function(h) {notFound(node)}});
+	}
+}
+
+function goNext() {goNode(next(current))}
+
+function ajaxLoad(html, node) {
+	html = $(html).children();
+	$("article").html(html);
+	document.title = $(html[0]).text();
+	highlight(node);
+	$("body").scrollTop(0);
+}
+
+function highlight(node) {
+	var p = $("nav").find("p");
+	p.removeClass("Current");
+	p = $("nav").find("p[data-id='" + node.link + "']");
+	p.addClass("Current");
+	if (pop) pop = null;
+	else {
+		var url = location.href.split("?")[0];
+		if (node != sitemap) url += "?" + node.link;
+		if (init) history.replaceState({node:node}, "", url);
+		else history.pushState({node:node}, "", url);
+		init = false;
+	}
+	current = node;
+}
+
+function notFound(node) {
+	$("article").html("The requested location is not currently available.");
+	document.title = "sc8pr";
+	highlight(node);
+}
+
+function collapse(n) {
+	expandAll();
+	if (!n) n = 1;
+	var s = "nav div";
+	while (n--) s += " div";
+	$(s).hide();
+}
+
+function expandAll() {$("nav div").show()}
+
+function expandCollapse(e) {
+	if (e.innerHTML == "Collapse") {
+		collapse();
+		e.innerHTML = "Expand";
+	}
+	else {
+		expandAll();
+		e.innerHTML = "Collapse";
+	}
+}
+
+function clipCopy(e) {
+	var c = $("textarea.Clip");
+	c.removeClass("Clip").html($(e).text()).select();
+	document.execCommand('copy');
+	c.addClass("Clip");
+}
+
+window.onresize = resize;
+
+window.onload = function() {
+	linkParentNodes();
+	var c = $(nodeHtml(sitemap).children());
+	c.insertBefore($("#Copyright"));
+	$(c[0]).remove();
+	collapse();
+	resize();
+	goNode(location.href.split("?")[1]);
+}
+
+window.onpopstate = function(ev) {
+	pop = ev.state.node;
+	goNode(pop);
+}
+
+</script>
+</head>
+<body><nav>
+<p id="Home"><img id="Logo" src="../favicon.png" title="sc8pr 2.0 Home" alt="Image" onclick="goNode(sitemap)"/></p>
+<p class="Center">
+	<button onclick="expandCollapse(this)">Expand</button> &nbsp;
+	<button onclick="goNext()">Next</button>
+</p>
+<p id="Copyright">&copy; 2017 by <a href="https://github.com/dmaccarthy">D.G. MacCarthy</a>.
+	This documentation is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0</a>.
+	The sc8pr 2.0 software is licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPLv3</a>.</p>
+</nav>
+<article></article></body>
+</html>

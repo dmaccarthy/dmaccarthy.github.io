@@ -1,0 +1,114 @@
+body {
+	font-family:Oxygen, sans-serif;
+	margin-top:0;
+}
+
+#Home {
+	text-align:center;
+	margin:0.25em 0;
+}
+
+#Copyright {font-size:75%}
+#Logo {width:80px}
+nav p {padding:0.25em}
+nav p.Current {font-weight:bold}
+
+article {padding:0.5em}
+button {width:5em}
+
+nav {
+	margin:0;
+	padding:0.5em;
+	background-color:#f0f0ff;
+}
+
+nav.Wide {
+	position:fixed;
+	top:0; left:0;
+	overflow:auto;
+}
+
+nav div div {
+	margin-left:1em;
+}
+
+nav div p {
+	margin:0.25em 0;
+	cursor:pointer;
+	color:blue;
+}
+
+nav div p:hover, #Home:hover {
+	color:white;
+	cursor:pointer;
+	background-color:blue;
+}
+
+h1 {
+	color:blue;
+	text-align:center;
+}
+
+h4 {
+	margin-top:1.25em;
+	margin-bottom:0.75em;
+}
+
+img.Logo {
+	width:1.25em;
+	height:1.25em;	
+}
+
+img.CopyCode {
+	cursor:pointer;
+	float:right;
+	width:1.5em;
+	height:1.5em;	
+}
+
+.Center {text-align:center}
+.Comment {color:red}
+.Hilite {color:blue}
+.Hilite1 {color:violet}
+
+.Warning {
+	color:red;
+	font-weight:bold;
+}
+
+.Warning .Link {
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+code, .Code {
+	font-family:"Source Code Pro", Consolas, monospace;
+	font-weight:bold;
+}
+
+pre.Code {
+	background:#e8e8e8;
+	margin:1em;
+	padding:4px;
+	overflow:auto;
+}
+
+pre.Scroll {height:20em}
+div.Indent {margin-left:1.5em}
+
+table.Default {
+	border-collapse:collapse;
+	margin:auto;
+}
+
+table.Default td, table.Default th {
+	border:1px solid black;
+	padding:4px;
+}
+
+img.Border {
+	border:1px solid black;
+}
+
+textarea.Clip {display:none}
+p.Clip {margin-left:1em}
