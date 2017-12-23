@@ -24,8 +24,9 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 			{title:"class BaseSprite", link:"base"},
 			{title:"class Renderable", link:"render"},
 		]},
-		{title:"sc8pr.geom", link:"geom", pages:[]},
-/*		{title:"sc8pr.gui.*", link:"gui", pages:[]},
+		{title:"sc8pr.geom", link:"geom"},
+/*		{title:"sc8pr.gui.*", link:"gui", pages:[
+		]},
 		{title:"sc8pr.misc.*", link:"misc", pages:[
 			{title:".cursors", link:"cursors"},
 			{title:".effect", link:"effect"},
@@ -37,11 +38,18 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 		{title:"sc8pr.robot", link:"robot", pages:[]}, */
 		{title:"sc8pr.shape", link:"shape", pages:[
 			{title:"class Line", link:"line"},
+//			{title:"class Circle", link:"circle"},
+//			{title:"class Polygon", link:"polygon"},
+//			{title:"class Arrow", link:"arrow"},
+		]},
+		{title:"sc8pr.sprite", link:"sprite", pages:[
+			{title:"class Sprite", link:"sprite_class"},
+//			{title:"class Collisions", link:"collisions"},
 		]},
 		{title:"sc8pr.text", link:"text", pages:[
 			{title:"class Font", link:"font"},
 			{title:"class Text", link:"text_class"},
 		]},
-		{title:"sc8pr.util", link:"util", pages:[]},
+		{title:"sc8pr.util", link:"util"},
 	]},
 ]}
