@@ -72,13 +72,13 @@ def setup(sk):
     cfg = {"font":FONT, "fontSize":14}
     text = "Option A", "Option B", "Option C"
     radio = Radio(text, **cfg).bind(onchange=radioChange)
-    cv += radio.config(pos=(x,y), anchor=TOP, selected=1)
+    cv["ABC"] = radio.config(pos=(x,y), anchor=TOP, selected=1)
 
     # Add an Options box
     y += down(cv)
     text = "Option X", "Option Y", "Option Z"
     radio = Options(text, **cfg).config(pos=(x,y), anchor=TOP)
-    cv += radio.bind(onaction=optionsChange)
+    cv["XYZ"] = radio.bind(onaction=optionsChange)
 
     # Add Buttons
     y += down(cv)

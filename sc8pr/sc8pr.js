@@ -1,93 +1,152 @@
-function SiteNode(data, parent) {
-	this.name = data[0];
-	this.url = data[1];
-	this.parent = parent;
-	this.children = [];
-	if (data.length > 2) {
-		data = data[2];
-		for (var i=0;i<data.length;i++) {
-			var c = data[i];
-			this.children.push(new SiteNode(c, this));
-		}
+function linkParentNodes(node) {
+	if (!node) node = sitemap;
+	var pg = node.pages ? node.pages : [];
+	for (var i=0;i<pg.length;i++) {
+		pg[i].parent = node;
+		linkParentNodes(pg[i]);
 	}
 }
 
-SiteNode.prototype.fullUrl = function() {
-	var u = this.url;
-	return u.slice(0, 4) == "http" ? u : url.base + u + ".html";
+function nextSib(node) {
+	var p = node.parent;
+	if (!p) return;
+	var pgs = p.pages;
+	var i = pgs.indexOf(node);
+	if (i < pgs.length-1) return pgs[i+1];
+	return nextSib(p);
 }
 
-SiteNode.prototype.path = function() {
-	var p = this.parent;
-	p = p ? p.path() : [];
-	p.push(this);
-	return p;
+function next(node) {
+	var pg = node.pages;
+	if (pg) if (pg.length) return pg[0];
+	return nextSib(node);
 }
 
-SiteNode.prototype.nextSib = function() {
-	var p = this.parent;
-	if (p) {
-		var c = p.children;
-		var i = c.indexOf(this);
-		if (i < c.length - 1) return c[i+1];
-		return p.nextSib();
+function find(link, node) {
+	if (!node) node = sitemap;
+	while (node) {
+		if (node.link == link) return node;
+		node = next(node);
+	}
+	if (node.link == link) return node;
+}
+
+function nodeHtml(node) {
+	var p = $("<p>").html(node.title).click(navClick).attr("data-id", node.link);
+	var div = $("<div>").html(p);
+	p[0].node = node;
+	if (node.pages) {
+		var pg = node.pages;
+		for (var i=0;i<pg.length;i++) div.append(nodeHtml(pg[i]));
+	}
+	return div;
+}
+
+function resize() {
+	var w = $(window).width();
+	var nav = $("nav");
+	if (w >= 640) {
+		nav.addClass("Wide");
+		var h = $(window).height();
+		h -= parseFloat(nav.css("padding-top")) + parseFloat(nav.css("padding-bottom"));
+		nav.height(h).width(240);
+		$("body").css("margin-left", 256);
+	}
+	else {
+		nav.removeClass("Wide");
+		w -= parseFloat(nav.css("padding-left")) + parseFloat(nav.css("padding-right"));
+		nav.width(w).height("auto");
+		$("body").css("margin-left", 0);
+		collapse();
+		$("nav button")[0].innerHTML = "Expand";
+	}
+	fitImages();
+}
+
+function fitImages() {
+	var imgs = $("article img");
+	var w = parseInt(0.96 * $("article").width());
+	for (var i=0;i<imgs.length;i++) {
+		var img = $(imgs[i]);
+		img.width(Math.min(w, img[0].naturalWidth))
 	}
 }
 
-SiteNode.prototype.next = function() {
-	var c = this.children;
-	if (c.length) return c[0];
-	return this.nextSib();
+function navClick() {
+	var p = $(this);
+	var div = p.closest("div");
+	var node = p[0].node;
+	div.children("div").toggle();
+	if (node.link) goNode(node.link);
 }
 
-SiteNode.prototype.find = function(id) {
-	var n = this;
-	while (n) {
-		if (n.url == id) return n;
-		n = n.next();
+var current, pop, init = true;
+
+function goNode(node) {
+	if (!node) node = sitemap;
+	else if (typeof(node) == "string") node = find(node);
+	if (node != current) {
+		var url = "htm/" + node.link + ".htm";
+		if (node) $.ajax({url:url, success:function(h) {ajaxLoad(h, node)},
+			error:function(h) {notFound(node)}});
 	}
 }
 
-SiteNode.prototype.setPath = function(e) {
-	var p = this.path();
-	for (var i=0;i<p.length;i++) {
-		if (i) e.append(" / ");
-		var a = $("<a>").html(p[i].name);
-		if (i < p.length - 1) a.attr("href", p[i].fullUrl());
-		else a.addClass("Current");
-		e.append(a);
+function goNext() {goNode(next(current))}
+
+function ajaxLoad(html, node) {
+	html = $(html).children();
+	var w = parseInt(0.96 * $("article").width());
+	var imgs = html.find("img").on("load", function() {
+		if (this.width > w) this.width = w;
+	});
+	$("article").html(html);
+	document.title = $(html[0]).text();
+	highlight(node);
+	$("body").scrollTop(0);
+}
+
+function highlight(node) {
+	var p = $("nav").find("p");
+	p.removeClass("Current");
+	p = $("nav").find("p[data-id='" + node.link + "']");
+	p.addClass("Current");
+	if (pop) pop = null;
+	else {
+		var url = location.href.split("?")[0];
+		if (node != sitemap) url += "?" + node.link;
+		if (init) history.replaceState({node:node}, "", url);
+		else history.pushState({node:node}, "", url);
+		init = false;
 	}
+	current = node;
 }
 
-SiteNode.prototype.setLinks = function() {
-	var e = $("#Links");
-	var c = this.children;
-	for (var i=0;i<c.length;i++) {
-		var a = $("<a>").attr("href", c[i].fullUrl()).html(c[i].name);
-		e.append($("<li>").append(a));
+function notFound(node) {
+	$("article").html("The requested location is not currently available.");
+	document.title = "sc8pr";
+	highlight(node);
+}
+
+function collapse(n) {
+	expandAll();
+	if (!n) n = 1;
+	var s = "nav div";
+	while (n--) s += " div";
+	$(s).hide();
+}
+
+function expandAll() {$("nav div").show()}
+
+function expandCollapse(e) {
+	if (e.innerHTML == "Collapse") {
+		collapse();
+		e.innerHTML = "Expand";
 	}
-}
-
-function url() {
-	var split = "/sc8pr/";
-	var loc = location.pathname;
-	var path = loc.split(split);
-	fn = path[path.length-1];
-	url.base = loc.slice(0, loc.length - fn.length);
-	fn = fn.split(".")[0];
-	return fn.length ? fn : "index";
-}
-
-function depth() {
-	var u = url(), n = 0;
-	for (var i=0;i<u.length;i++)
-		if (u.charAt(i) == "/") n++;
-	return n;
-}
-
-function goNext() {
-	var n = node.next();
-	if (n) location.href = n.fullUrl();
+	else {
+		expandAll();
+		e.innerHTML = "Collapse";
+	}
 }
 
 function clipCopy(e) {
@@ -97,76 +156,46 @@ function clipCopy(e) {
 	c.addClass("Clip");
 }
 
-var node = new SiteNode(["sc8pr Home", "index", [
-	["Installation Guide", "inst"],
-	["Tutorial", "tut/tut", [
-		["Creating a Sketch", "tut/sk", [
-			["The setup Function", "tut/setup"],
-			["Adding Graphics", "tut/gr"],
-			["Animations", "tut/anim"],
-		]],
-		["Event Handling", "tut/ev", [
-			["ondraw Handlers", "tut/draw"],
-			["onclick Handlers", "tut/click"],
-			["Supported Events", "tut/evList"],
-		]],
-		["Object-Oriented Style", "tut/oop"],
-		["Sprites", "tut/sprite"],
-		["GUI Controls", "tut/gui"],
-	]],
-	["Reference", "ref/ref", [
-		["sc8pr", "ref/init", [
-			["BaseSprite", "ref/base"],
-			["Canvas", "ref/canvas"],
-			["Graphic", "ref/graphic"],
-			["Image", "ref/image"],
-			["Renderable", "ref/render"], // !!!
-			["Sketch", "ref/sketch"]
-		]],
-		["sc8pr.shape", "ref/shape", [
-			["Shape", "ref/shape_class"],
-			["Line", "ref/line"],
-			["Circle", "ref/circle"],
-			["Polygon", "ref/polygon"],
-			["Arrow", "ref/arrow"],
-		]],
-		["sc8pr.sprite", "ref/sprite", [
-			["Sprite", "ref/sprite_class"],
-			["Collisions", "ref/collisions"], // !!!
-		]],
-/*		["sc8pr.geom", "ref/geom", []],
-		["sc8pr.gui.*", "ref/gui", []],
-		["sc8pr.misc.*", "ref/misc", []],*/
-		["sc8pr.text", "ref/text", [
-			["Font", "ref/font"],
-			["Text", "ref/text_class"],
-		]],
-		["sc8pr.util", "ref/util", []],
-	]],
-	["sc8pr on GitHub", "https://github.com/dmaccarthy/sc8pr"]
-]]).find(url());
-
-function setMetrics() {
-	var h = $("#Path").outerHeight() + 8;
-	$("body").css("margin-top", h + "px");
-	$("article").css("margin", "8px");
-//	var e = $("div.Links");
-//	if (e.length) {
-		if ($(window).width() < 512)
-			$("div.LinkWide").removeClass("LinkWide").addClass("LinkNarrow")
-		else $("div.LinkNarrow").removeClass("LinkNarrow").addClass("LinkWide")
-//	}
-}
-
-window.onresize = setMetrics;
+window.onresize = resize;
 
 window.onload = function() {
-	var e = $("<nav>").attr("id", "Path");
-/*	var path = "";
-	for (var i=depth();i;i--) path += "../";
-	e.append($("<img>").addClass("Logo").attr({src:path+"alien.png"}));*/
-	$("body").prepend(e).find("article");
-	node.setPath(e);
-	node.setLinks();
-	setMetrics();
+	linkParentNodes();
+	var c = $(nodeHtml(sitemap).children());
+	c.insertBefore($("#Copyright"));
+	$(c[0]).remove();
+	collapse();
+	resize();
+	goNode(location.href.split("?")[1]);
+	animate();
 }
+
+window.onpopstate = function(ev) {
+	pop = ev.state.node;
+	goNode(pop);
+}
+
+window.onkeydown = function (ev) {
+	var tag = ev.target.tagName.toUpperCase();
+	if (tag != "INPUT" && tag != "TEXTAREA") {
+		if (ev.keyCode == 27) expandCollapse($("#Collapse")[0]);
+		else if (ev.keyCode == 37) history.back();
+		else if (ev.keyCode == 39) goNext();
+	}
+}
+
+
+function animate() {
+	var f = animate.frame;
+	var d = animate.change;
+	f += d;
+	if (f > 3 || f < 0) {
+		f -= 2 * d;
+		animate.change *= -1;
+	}
+	animate.frame = f;
+	$("#Logo").attr("src", "img/alien" + f + ".png");
+	setTimeout(animate, [8000, 100, 100, 500][f]);
+}
+
+animate.frame = 3;
+animate.change = 1;

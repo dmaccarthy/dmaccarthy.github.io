@@ -1,0 +1,17 @@
+﻿<article><h1><code>sc8pr.Renderable</code> Class</h1>
+
+<p>The <code>Renderable</code> class is an “abstract” class that implements an <code>image</code> property by calling a <code>render</code> method only when the current rendering is marked as <code>stale</code>. Subclasses must implement the <code>render</code> method for instances to function correctly.</p>
+
+<h4>Assignable Properties</h4><div class="Indent">
+	<p><code class="Hilite">stale</code>: A <code>bool</code> indicating whether the graphic needs to be re-rendered.</p>
+</div>
+
+<h4>Read-Only Properties</h4><div class="Indent">
+	<p><code class="Hilite">image</code>: A <code>pygame.Surface</code> containing the rendered, scaled, and rotated graphic.</p>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">refresh</span>()</code> → <code>self</code>: Checks if the current rendering is stale and, if so, re-renders immediately rather than waiting until the graphic needs to be drawn.</p>
+</div>
+
+</article>

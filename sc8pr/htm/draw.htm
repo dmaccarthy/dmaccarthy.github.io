@@ -48,16 +48,16 @@ Sketch().play("Time Counter")</pre>
 from sc8pr.sprite import Sprite
 
 def printUpdate(alien):
-    print(alien.costumeNumber, alien.pos)
+    print("My position is", alien.pos)
     <span class="Hilite">Sprite.ondraw(alien)</span>  <span class="Comment"># Default ondraw handler!</span>
 
 def setup(sk):
     sk.bg = Image("sky.png")
-    alien = Sprite("aliens.png", 2, 2).bind(ondraw=printUpdate)
+    alien = Sprite("alien.png").bind(ondraw=printUpdate)
     sk += alien.config(
         pos = sk.center,
         width = sk.width/10,
-        costumeTime = 10,
+        spin = -1,
         vel = (-1, 2),
         bounce = BOTH
     )

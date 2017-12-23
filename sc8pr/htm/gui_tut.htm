@@ -1,0 +1,33 @@
+﻿<article><h1>GUI Controls</h1><textarea class="Clip"></textarea>
+
+<p>The <code>sc8pr.gui</code> subpackage defines several types of graphics objects that can be used to interact with the user. The example below shows how to use <code>TextInput</code> controls to obtain text data from the user asynchronously.</p>
+
+<p><code>TextInput</code> instances already have event handlers defined for <code>onclick</code>, <code>onkeydown</code>, and <code>onblur</code> events. These event handlers allow the text input to behave as intended. These handlers trigger the <code>onchange</code> event whenever the data in the text input changes, and the <code>onaction</code> event whenever the control loses focus, such as when a mouse click occurs outside of the text input. Your program can bind handlers to these events to access the data...</p>
+
+<pre class="Code" id="Ex1"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex1')"/>from sc8pr import Sketch
+from sc8pr.gui.textinput import TextInput
+
+<span class="Comment"># Event handlers</span>
+def onchange(gr, ev): print("Change:", gr.data)
+def onaction(gr, ev): print("Action:", gr.data)
+
+def setup(sk):
+    <span class="Comment"># Create the TextInput</span>
+    name = TextInput("", "Enter Your Name")
+
+    <span class="Comment"># Configure the TextInput</span>
+    name.config(pos=sk.center, fontSize=40, color="blue", promptColor="red")
+
+    <span class="Comment"># Bind event handlers and add to the sketch</span>
+    sk += name.bind(onchange, onaction)
+	
+<span class="Comment"># Create and run the sketch</span>
+Sketch((384, 144)).play()</pre>
+
+<p>As with other types of graphics, you do not need to use the event names (<code>onchange</code>, <code>onaction</code>) as the names of the event handler functions. If you choose to use a different name, pass the handler to the <code>bind</code> method as a keyword argument rather than a positional one. For example, if you want to name the <code>onaction</code> handler <code>submitName</code>...</p>
+
+<pre class="Code">name.bind(onchange, onaction=submitName)</pre>
+
+<p>A more detailed tutorial is planned on using GUI controls in <code>sc8pr</code>. In the meantime, <a href="misc/guiDemo.py">here</a> is an example showing how to use several of the other GUI control classes currently available.</p>
+
+</article>

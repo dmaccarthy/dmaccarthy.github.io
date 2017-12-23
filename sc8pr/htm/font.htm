@@ -1,0 +1,25 @@
+﻿<article><h1><code>sc8pr.text.Font</code> Class</h1>
+
+<p><code>Font</code> is a “static” class for loading and caching font files.</p>
+
+<h4>Class Properties</h4><div class="Indent">
+	<p><code><span class="Hilite">cacheSize</span></code>: The maximum number of fonts to keep in the cache. Once the cache is full, a font will be removed from the cache each time a new font is loaded; default <code>32</code>.</p>
+	<p><code><span class="Hilite">log</span></code>: When <code>True</code> (default), a message will be printed to <code>sys.stderr</code> when the font cache is full.</p>
+</div>
+
+<h4>Static & Class Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">dumpCache</span>()</code> → <code>None</code>: Empties the font cache.</p>
+	<p><code><span class="Hilite">find</span>(*args)</code> → <code>str</code> or <code>None</code>: Searches for a system font from among the <code>args</code>. returns the name of the first system font found, or <code>None</code> if none of the fonts are available.</p>
+	<p><code><span class="Hilite">get</span>(name, size=24, style=0)</code> → <code>pygame.Font</code>: Load the requested font or retrieve it from the cache.</p>
+		<div class="Indent">
+		<p><code class="Hilite">name</code>: The font name.</p>
+		<p><code class="Hilite">size</code>: The size of the font in pixels.</p>
+		<p><code class="Hilite">style</code>: One of the constants <code>BOLD</code>, <code>ITALIC</code>, or <code>BOLD+ITALIC</code> specifying the font style; the default is <code>0</code> indicating neither bold not italic. This attribute applies only to system fonts.</p>
+		</div>
+	<p><code><span class="Hilite">installed</span>()</code> → <code>list</code>: Returns a sorted list of system font names.</p>
+	<p><code><span class="Hilite">mono</span>()</code> → <code>str</code> or <code>None</code>: Searches the system fonts for one of several common monospace fonts.</p>
+	<p><code><span class="Hilite">sans</span>()</code> → <code>str</code> or <code>None</code>: Searches the system fonts for one of several common sans-serif fonts.</p>
+	<p><code><span class="Hilite">serif</span>()</code> → <code>str</code> or <code>None</code>: Searches the system fonts for one of several common serif fonts.</p>
+</div>
+
+</article>

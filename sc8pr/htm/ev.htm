@@ -21,11 +21,10 @@ def onquit(sk, ev):
 def setup(sk):
     <span class="Hilite">sk.bind(onquit)</span>
     sk.bg = Image("sky.png")
-    alien = Sprite("aliens.png", 2, 2)
+    alien = Sprite("alien.png")
     sk += alien.config(
         pos = sk.center,
         width = sk.width/10,
-        costumeTime = 10,
         spin = 1,
         vel = (2, 1),
         bounce = VERTICAL,
@@ -34,7 +33,7 @@ def setup(sk):
 
 Sketch((512,362)).play()</pre>
 
-<p>As shown in blue, we need to pass the <code>onquit</code> function to the sketch’s <code>bind</code> method before the sketch will recognize it as an event handler. If we give the event handler a name other than the default name, we will have to pass it to <code>bind</code> as a keyword argument. For example, if we name the handler <code>goodbye</code>...</p>
+<p>As shown in blue, we need to pass the <code>onquit</code> function to the sketch’s <code>bind</code> method before the sketch will recognize it as an event handler. If we give the event handler a name other than the default name, we will have to pass it to <code>bind</code> as a keyword argument. For example, if we name the handler <code>goodbye</code>, we would change the blue line above to...</p>
 <pre class="Code">sk.bind(onquit=goodbye)</pre>
 
 </article>

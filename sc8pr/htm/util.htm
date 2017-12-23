@@ -1,0 +1,86 @@
+﻿<article><h1><code>sc8pr.util</code> Module</h1>
+<p>This module contains a number of helper features that are used by the other <code>sc8pr</code> modules. Some of these features may be useful to some <code>sc8pr</code> applications.</p>
+
+<h4>Classes</h4>
+<div class="Indent"><p><code><span class="Hilite">CachedSurface</span></code>: A class for managing <code>pygame.Surface</code> instances that have been scaled and/or rotated. This class is used by various <code>Graphic</code> subclasses but is not normally needed by <code>sc8pr</code> applications.</p>
+</div>
+
+<h4>Functions</h4><div class="Indent">
+	<p><code class="Hilite"><span class="Hilite">drawBorder</span>(srf, color=(0,0,0), weight=1)</code> → <code>None</code>: Draws a border in place on the surface.</p>
+		<div class="Indent">
+		<p><code class="Hilite">srf</code>: A <code>pygame.Surface</code> to draw on.</p>
+		<p><code class="Hilite">color</code>: A <code>pygame.Color</code> instance or data that can be passed to the <code>rgba</code> function to return a single color.</p>
+		<p><code class="Hilite">weight</code>: The border thickness in pixels.</p>
+		</div>
+	<p><code class="Hilite"><span class="Hilite">fileExt</span>(fn, ext)</code> → <code>str</code>: Add a file extension to the file name if it does not already have an acceptable extension.</p>
+		<div class="Indent">
+		<p><code class="Hilite">ext</code>: A string or sequence of strings specifying the acceptable extensions.</p>
+		</div>
+	<p><code><span class="Hilite">hasAlpha</span>(srf)</code> → <code>bool</code>: Checks whether a <code>pygame.Surface</code> has a per-pixel alpha value.</p>
+	<p><code><span class="Hilite">hasAny</span>(data, keys)</code> → <code>bool</code>: Checks whether a dictionary contains any of the specified keys.</p>
+		<div class="Indent">
+		<p><code class="Hilite">data</code>: The dictionary to check.</p>
+		<p><code class="Hilite">keys</code>: A sequence of keys to check for.</p>
+		</div>
+	<p><code><span class="Hilite">hsva</span>(h, s, v=100, a=100)</code> → <code>pygame.Color</code>: Returns a color from HSVA data.</p>
+	<p><code><span class="Hilite">logError</span>()</code> → <code>None</code>: Prints the last exception and stack trace to <code>sys.stderr</code>.</p>
+	<p><code><span class="Hilite">noise</span>(c, amt=8, alpha=None)</code> → <code>pygame.Color</code>: Adds random “noise” to a color.</p>
+		<div class="Indent">
+		<p><code class="Hilite">c</code>: The original color.</p>
+		<p><code class="Hilite">amt</code>: The maximum amount by which to adjust the RGBA values.</p>
+		<p><code class="Hilite">alpha</code>: If specified, the alpha value will be set to given value (e.g. 255) rather than randomized.</p>
+		</div>
+	<p><code><span class="Hilite">nothing</span>(*args)</code> → <code>None</code>: Does nothing. Can be used to override methods, for example, to prevent resizing of GUI controls.</p>
+	<p><code><span class="Hilite">ondrag</span>(gr, ev)</code> → <code>None</code>: A generic handler for “drag” mouse events that can be used to re-position graphics objects.</p>
+		<div class="Indent">
+		<p><code class="Hilite">gr</code>: A reference to the <code>Graphic</code> instance to which the handler is bound.</p>
+		<p><code class="Hilite">ev</code>: A reference to a <code>pygame.event.EventType</code> instance describing the <code>MOUSEMOTION</code> event.</p>
+		</div>
+	<p><code><span class="Hilite">randPixel</span>(size)</code> → <code>tuple</code>: Randomly choose pixel coordinates.</p>
+		<div class="Indent">
+		<p><code class="Hilite">size</code>: A 2-tuple or 2-list specifiying the size within which to choose a random pixel. Will also accept an object that has a <code>size</code> attribute.</p>
+		</div>
+	<p><code><span class="Hilite">resolvePath</span>(rel="", start=__file__, isDir=False)</code> → <code>str</code>: Returns an absolute path.</p>
+		<div class="Indent">
+		<p><code class="Hilite">rel</code>: A <code>str</code> specifying the relative path.</p>
+		<p><code class="Hilite">start</code>: A file or folder indicating the starting location. If not specified, the <code>sc8pr</code> package folder is taken as the starting point.</p>
+		<p><code class="Hilite">isDir</code>: A <code>bool</code> specifying whether <code>start</code> is a directory or file.</p>
+		</div>
+	<p><code><span class="Hilite">rgba</span>(*args)</code> → <code>pygame.Color</code> or <code>list</code>: Creates a <code>pygame.Color</code> instance from a named color, RGB tuple, or RGB hex code. Can also be used to select a color randomly by passing a <code>bool</code> (<code>True</code> if you want a random alpha value or <code>False</code> for no transparency). If multiple <code>args</code> are passed, it will return multiple colors as a <code>list</code>. If a single argument is passed it will return a single color.</p>
+	<p><code><span class="Hilite">sc8prData</span>(*args, [archive])</code> → <code>bytes</code> or <code>list</code>: Reads data from a zipfile archive. Returns the data as <code>bytes</code> when reading a single file from the archive or as a </code>list</code> of <code>bytes</code> instances when reading multiple files.</p>
+		<div class="Indent">
+		<p><code class="Hilite">*args</code>: One or more file names to read from the archive.</p>
+		<p><code class="Hilite">archive</code>: Path to the zipfile to read from; if omitted the function will read from the “sc8pr.data” file of the <code>sc8pr</code> package.</p>
+		</div>
+	<p><code><span class="Hilite">setAlpha</span>(srf, a)</code> → <code>pygame.Surface</code>: Adjusts the per-pixel alpha values of a surface using <code>pygame.Surface.fill</code> with the <code>BLEND_RGBA_MIN</code> flag.</p>
+		<div class="Indent">
+		<p><code class="Hilite">srf</code>: The surface to adjust.</p>
+		<p><code class="Hilite">a</code>: The alpha value to fill with.</p>
+		</div>
+	<p><code><span class="Hilite">style</span>(srf, bg=None, border=(0,0,0), weight=0, padding=0)</code> → <code>pygame.Surface</code>: Create a new surface with padding, background color, and/or border.</p>
+		<div class="Indent">
+		<p><code class="Hilite">srf</code>: The original surface.</p>
+		<p><code class="Hilite">bg</code>: The background color to add.</p>
+		<p><code class="Hilite">border</code>: The border color.</p>
+		<p><code class="Hilite">weight</code>: The border thickness in pixels.</p>
+		<p><code class="Hilite">padding</code>: Number of pixels of padding to add around the surface.</p>
+		</div>
+	<p><code><span class="Hilite" id="surfaceData">surfaceData</span>(srf, compress=zlib.compress)</code> → <code>(bytes, bytes)</code>: Converts a surface to compressed binary data. The compressed data is returned as the first element of a tuple along with a 12-byte structure containing the mode, width, and height. The surface can be reconstructed by the <code>CachedSurface</code> constructor.</p>
+		<div class="Indent">
+		<p><code class="Hilite">srf</code>: The surface; or an object with an <code>image</code> attribute that returns a surface.</p>
+		<p><code class="Hilite">compress</code>: A function to compress the <code>bytes</code> data.</p>
+		</div>
+	<p><code><span class="Hilite">tile</span>(srf, tile=0, cols=1, rows=1, padding=0)</code> → <code>pygame.Surface</code>: Return a subsurface representing one “tile” of a spritesheet or similar grid image.</p>
+		<div class="Indent">
+		<p><code class="Hilite">srf</code>: The original surface.</p>
+		<p><code class="Hilite">tile</code>: The index of the desired tile.</p>
+		<p><code class="Hilite">cols</code>: The number of columns in the image grid.</p>
+		<p><code class="Hilite">rows</code>: The number of rows in the image grid.</p>
+		</div>
+</div>
+
+<h4>Variables</h4>
+<div class="Indent"><p><code><span class="Hilite">scale</span></code>: Reference to a function that <code>sc8pr</code> will use to resize images; defaults to <code>pygame.transform.smoothscale</code>.</p>
+</div>
+
+</article>

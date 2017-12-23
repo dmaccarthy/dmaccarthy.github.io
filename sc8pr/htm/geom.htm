@@ -1,0 +1,58 @@
+﻿<article><h1><code>sc8pr.geom</code> Module</h1>
+<p>This module contains functions for performing 2D geometry calculations.</p>
+
+<h4>Functions</h4><div class="Indent">
+
+	<p><code><span class="Hilite">angleDifference</span>(a2, a1=0)</code> → <code>float</code>: Calculate the difference <code>a2-a1</code> and express the result as an angle between −180 and +180.</p>
+		<div class="Indent">
+		<p><code class="Hilite">a2</code>, <code class="Hilite">a1</code>: Angles in degrees.</p>
+		</div>
+	<p><code><span class="Hilite">delta</span>(v2, v1=None, mag=None)</code> → <code>tuple</code>: Calculate the difference between two vectors, <code>v2-v1</code>, and optionally adjust the magnitude of the result.</p>
+		<div class="Indent">
+		<p><code class="Hilite">v2</code>, <code class="Hilite">v1</code>: The vectors to subtract as 2-tuples or 2-lists; <code>v1</code> can be omitted, allowing the function to adjust the magnitude of <code>v2</code>.</p>
+		<p><code class="Hilite">mag</code>: If specified, the desired magntiude of the result; for example, passing <code>1</code> will produce a unit vector.</p>
+		</div>
+	<p><code><span class="Hilite">dist</span>(p1, p2=(0,0))</code> → <code>float</code>: Calculate the distance between two points.</p>
+		<div class="Indent">
+		<p><code class="Hilite">p1</code>, <code class="Hilite">p2</code>: Points as 2-tuples or 2-lists.</p>
+		</div>
+	<p><code><span class="Hilite">positiveAngle</span>(a)</code> → <code>float</code>: Express an angle as a value between 0 and 360.</p>
+		<div class="Indent">
+		<p><code class="Hilite">a</code>: Angle in degrees.</p>
+		</div>
+	<p><code><span class="Hilite">polar2d</span>(vx, vy, deg=True)</code> → <code>tuple</code>: Convert a vector to polar form, returning the magnitude and direction as a 2-tuple.</p>
+		<div class="Indent">
+		<p><code class="Hilite">vx</code>, <code class="Hilite">vy</code>: The components of the vector.</p>
+		<p><code class="Hilite">deg</code>: A <code>bool</code> indicating the angle units: <code>True</code> for degrees and <code>False</code> for radians.</p>
+		</div>
+	<p><code><span class="Hilite">sprod</span>(v1, v2)</code> → <code>float</code>: Calculate the scalar product of two vectors.</p>
+		<div class="Indent">
+		<p><code class="Hilite">v1</code>, <code class="Hilite">v2</code>: Vectors as 2-tuples or 2-lists.</p>
+		</div>
+	<p><code><span class="Hilite">transform2d</span>(pt, **kwargs)</code> → <code>tuple</code>: Perform a transformation (shift, scale, rotate) on a single point.</p>
+		<div class="Indent">
+		<p><code class="Hilite">kwargs</code>: Arguments describing the transformation, to be passed to the <code>transform2dGen</code> function (see below).</p>
+		</div>
+	<p><code><span class="Hilite">transform2dGen</span>(pts, mx=None, shift=(0,0), preShift=None, **kwargs)</code> → <code>generator</code>: Perform a transformation (shift, scale, rotate) on a sequence of points. The <code>kwargs</code> arguments are used only when <code>mx</code> is <code>None</code>.</p>
+		<div class="Indent">
+		<p><code class="Hilite">pts</code>: The sequence of points to transform; as 2-tuples or 2-lists.</p>
+		<p><code class="Hilite">mx</code>: A 4-tuple or 4-list representing a 2&times;2 matrix (linear transformation). If <code>None</code>, the function will construct the matrix from the <code>kwargs</code> data.</p>
+		<p><code class="Hilite">shift</code>: A translation to be applied after the matrix, as a 2-tuple or list.</p>
+		<p><code class="Hilite">preShift</code>: A translation to be applied before the matrix, as a 2-tuple or list. If this argument is <code>True</code> the <code>preShift</code> will be the negative of the <code>shift</code>, permitting rotations and scale transformations using a centre other than the origin.</p>
+		<p><code class="Hilite">kwargs["rotate"]</code>: A rotation angle in degrees, when <code>mx</code> is <code>None</code>.</p>
+		<p><code class="Hilite">kwargs["scale"]</code>: A scale factor as an <code>int</code> or <code>float</code>, or a 2-tuple or list if the <i>x</i> and <i>y</i> scale factors differ. Used only when <code>mx</code> is <code>None</code>.</p>
+		<p><code class="Hilite">kwargs["rev"]</code>: The default (<code>False</code>) performs the scale transformation and then the rotation. Changing this to <code>True</code> rotates first and then scales. The order only matters when the <i>x</i> and <i>y</i> scale factors differ. Used only when <code>mx</code> is <code>None</code>.</p>
+		</div>
+	<p><code><span class="Hilite">vec2d</span>(r, a, deg=True)</code> → <code>tuple</code>: Create a 2D vector from polar form.</p>
+		<div class="Indent">
+		<p><code class="Hilite">r</code>: The magnitude of the vector.</p>
+		<p><code class="Hilite">a</code>: The direction of the vector.</p>
+		<p><code class="Hilite">deg</code>: A <code>bool</code> indicating the angle units: <code>True</code> for degrees and <code>False</code> for radians.</p>
+		</div>
+</div>
+
+<h4>Constant</h4>
+<div class="Indent"><p><code><span class="Hilite">DEG</span></code>: The <code>float</code> value π / 180.</p>
+</div>
+
+</article>

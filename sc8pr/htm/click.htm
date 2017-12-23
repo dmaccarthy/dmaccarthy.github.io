@@ -17,9 +17,9 @@ def miss(sk, ev):
 
 def setup(sk):
     sk.bg = Image("sky.png")
-    img = Sprite("alien.png").config(pos=sk.center,
+    alien = Sprite("alien.png").config(pos=sk.center,
         spin=1, vel=(1,1), width=sk.width/10, bounce=BOTH)
-    sk += img.<span class="Hilite">bind(onclick=hit)</span>
+    sk += alien.<span class="Hilite">bind(onclick=hit)</span>
 
 Sketch((512,362)).<span class="Hilite">bind(onclick=miss)</span>.play()</pre>
 
@@ -38,9 +38,10 @@ def onclick(sk, ev):
 
 def setup(sk):
     sk.bg = Image("sky.png")
-    sk += Sprite("alien.png").config(pos=sk.center,
+    sk.bind(onclick)
+    sk["Alien"] = Sprite("alien.png").config(pos=sk.center,
         spin=1, vel=(1,1), width=sk.width/10, bounce=BOTH)
 
-Sketch((512,362)).bind(onclick).play()</pre>
+Sketch((512,362)).play()</pre>
 
 </article>
