@@ -28,7 +28,7 @@ function find(link, node) {
 		if (node.link == link) return node;
 		node = next(node);
 	}
-	if (node.link == link) return node;
+	if (node) if (node.link == link) return node;
 }
 
 function nodeHtml(node) {
@@ -85,7 +85,8 @@ var current, pop, init = true;
 function goNode(node) {
 	if (!node) node = sitemap;
 	else if (typeof(node) == "string") node = find(node);
-	if (node != current) {
+	if (!node) alert("Page under construction!");
+	else if (node != current) {
 		var url = "htm/" + node.link + ".htm";
 		if (node) $.ajax({url:url, success:function(h) {ajaxLoad(h, node)},
 			error:function(h) {notFound(node)}});
