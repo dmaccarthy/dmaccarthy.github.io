@@ -1,0 +1,58 @@
+﻿<article><h1><code>sc8pr.robot.Robot</code> Class</h1>
+
+<p>The <code>Robot</code> class is used to create simulations of autonomous robots that can interact with their environment (i.e. the sketch). Robots can only be added directly to the <code>Sketch</code> instance and not to canvases contained by the sketch.</p>
+
+<p>Each <code>Robot</code> instance can be controlled by a “robot control function” which runs in a separate thread. You can provide a robot control function by binding it as the robot’s <code>brain</code> method. The brain has access to the robot’s sensor input (<code>collision</code>, <code>gyro</code>, <code>proximity</code>, <code>sensorDown</code>, <code>sensorFront</code>, and <code>stopped</code>), its actuators (<code>motors</code> and <code>pen</code>) and its internal clock (<code>uptime</code>). The robot control thread starts as soon as the robot is added to the sketch, so the brain function must be bound to the robot before the robot is added to the sketch.</p>
+
+<p>When the brain runs a loop for an extended period of time (e.g. waiting for certain sensor input values), it is important that the loop calls the robot’s <code>updateSensors</code> method. This will ensure that new sensor data is received and that the robot thread does not consume an excessive amount of computing power leading to a slow-running animation.</p>
+
+<p>For the robot to be able to interact with other sprites as physical objects capable of colliding, you must assign a <code>mass</code> property to each sprite (including the robot) and you must call the <code><a class="Hilite" href="javascript:goNode('sprite')">sc8pr.sprite</a>.physics</code> function, usually from your sketch’s <code>ondraw</code> event handler.</p>
+
+<p>You can provide your robot with a <code>shutdown</code> method to define operations to be performed after the robot control function is complete but before the thread shuts down.</p>
+
+<p>The <code>Robot</code> class implements event handlers <code>ondraw</code>, <code>onbounce</code> and <code>oncollide</code>. If you override these methods, you will usually need to call the overridden handler to ensure the robot behaves correctly.</p>
+
+<p>In addition to the attributes it inherits from <a class="Hilite Code" href="javascript:goNode('sprite')">Sprite</a>, the <code>Robot</code> class defines the following...</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Robot</span>(colors=None)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">colors</code>: A 2-tuple or 2-list of colours representing the robot’s colour scheme.</p>
+		</div>
+</div>
+
+<h4>Assignable Properties</h4><div class="Indent">
+	<p><code class="Hilite">collision</code>: This property is initially <code>False</code> and will be changed to <code>True</code> by the <code>onbounce</code> or <code>oncollide</code> method. It will remain <code>True</code> until the brain resets it back to <code>False</code>.</p>
+	<p><code class="Hilite">gyro</code>: The robot’s gyroscope sensor as an angle in degrees between −180 and +180. You can calibrate the gyroscope by setting this property to <code>0</code> (to calibrate relative to the current orientation) or <code>self.angle</code> (to caliibrate relative to the +<i>x</i> axis), for example.</p>
+	<p><code class="Hilite">maxSpeed</code>: The maximum speed (as a fraction of the sketch width) that the robot is capable of when operating on full power to the wheel motors. The default is <code>1/512</code>, giving a maximum speed of 1 pixel per frame when the sketch is 512 pixels wide.</p>
+	<p><code class="Hilite">motors</code>: A 2-tuple (or list) of <code>float</code> values between <code>-1</code> and <code>+1</code> indicating the power to the motors operating the left and right wheels respectively. If a single number is provided, it will be used for both motors.</p>
+	<p><code class="Hilite">sensorNoise</code>: The amount of “noise” added to the <code>sensorDown</code> and <code>sensorFront</code> RGB values each time a measurement is made; default <code>8</code>.</p>
+	<p><code class="Hilite">sensorWidth</code>: The angle in degrees that the the <code>sensorFront</code> and <code>proximity</code> sensors are able to detect in both directions (i.e. clockwise and counter-clockwise from straight ahead); default <code>10</code>.</p>
+</div>
+
+<h4>Read-Only Properties</h4><div class="Indent">
+	<p><code class="Hilite">active</code>: A <code>bool</code> indicating that the robot is active; becomes <code>False</code> when the sketch is closed or the robot is removed from the sketch.</p>
+	<p><code class="Hilite">power</code>: Average power to the motors as a <code>float</code> between 0 and 1.</p>
+	<p><code class="Hilite">proximity</code>: The distance in pixels to the sprite directly in front of the robot, or <code>None</code> if no object is detected. The brain must call the <code>updateSensors</code> method to update this property.</p>
+	<p><code class="Hilite">sensorDown</code>: A colour representing the sketch colour directly beneath the robot’s sensor array, or <code>None</code> if the sensor moves outside of the sketch. The brain must call the <code>updateSensors</code> method to update this property.</p>
+	<p><code class="Hilite">sensorFront</code>: A colour representing the average colour of the sprite directly in front of the robot, or <code>None</code> if no object is detected. The brain must call the <code>updateSensors</code> method to update this property.</p>
+	<p><code class="Hilite">stopped</code>: A <code>bool</code> indicating that the motors are off and the robot velocity is zero.</p>
+	<p><code class="Hilite">uptime</code>: The time in seconds since the robot brain was started.</p>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">sensorObjects</span>()</code> → <code>list</code>: Returns a list of objects that are considered obstacles detectable by the front sensor; by default this returns all <code>BaseSprite</code> instances in the sketch but can be overridden to define the obstacle set differently.</p>
+	<p><code><span class="Hilite">sleep</span>(t=None)</code> → <code>None</code>: Puts the robot brain thread to sleep for the given time. If no time is given, this method will estimate the time until the next sensor update becomes available and will put the robot to sleep until then. If the robot’s <code>active</code> property becomes <code>False</code> while sleeping, an exception will be raised to prevent the robot thread getting stuck in an infinite loop.</p>
+	<p><code><span class="Hilite">updateSensors</span>(wait=None)</code> → <code>self</code>: Puts the robot thread to sleep until new sensor readings become available and then updates the sensor readings and indicator lights; this applies to the <code>proximity</code>, <code>sensorFront</code>, and <code>sensorDown</code> inputs only.</p>
+		<div class="Indent">
+		<p><code class="Hilite">wait</code>: The time (in seconds) to wait before updating the sensor; if <code>None</code>, this method will estimate the time until the next sensor update becomes available.</p>
+		</div>
+
+<h4>Static Method</h4><div class="Indent">
+	<p><code><span class="Hilite">remoteControl</span>(sk, ev)</code> → <code>None</code>: This function can be attached to the sketch as its <code>onkeydown</code> event handler to allow the user to control the robot motion with the keyboard. You will also need to give the sketch a reference to the robot, using <code>remoteRobot</code> as the attribute name...</p>
+	<pre class="Code">sk.config(remoteRobot=robot).bind(onkeydown=robot.remoteControl)</pre>
+</div>
+		
+</div>
+
+</article>

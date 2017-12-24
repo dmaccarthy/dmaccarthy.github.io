@@ -34,13 +34,14 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 			{title:".plot", link:"plot"},
 			{title:".progress", link:"progress"},
 			{title:".video", link:"video"},
+		]},*/
+		{title:"sc8pr.robot", link:"robot_class", pages:[
 		]},
-		{title:"sc8pr.robot", link:"robot", pages:[]}, */
 		{title:"sc8pr.shape", link:"shape", pages:[
 			{title:"class Line", link:"line"},
 			{title:"class Circle", link:"circle"},
 			{title:"class Polygon", link:"polygon"},
-//			{title:"class Arrow", link:"arrow"},
+			{title:"class Arrow", link:"arrow"},
 		]},
 		{title:"sc8pr.sprite", link:"sprite", pages:[
 			{title:"class Sprite", link:"sprite_class"},
