@@ -38,8 +38,8 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 		{title:"sc8pr.robot", link:"robot", pages:[]}, */
 		{title:"sc8pr.shape", link:"shape", pages:[
 			{title:"class Line", link:"line"},
-//			{title:"class Circle", link:"circle"},
-//			{title:"class Polygon", link:"polygon"},
+			{title:"class Circle", link:"circle"},
+			{title:"class Polygon", link:"polygon"},
 //			{title:"class Arrow", link:"arrow"},
 		]},
 		{title:"sc8pr.sprite", link:"sprite", pages:[

@@ -1,0 +1,26 @@
+﻿<article><h1><code>sc8pr.shape.Circle</code> Class</h1>
+
+<p>The <code>Circle</code> class is used to draw and perform calculations related to circles. In addition to attributes inherited from <a class="Hilite Code" href="javascript:goNode('shape')">Shape</a> and <a class="Hilite Code" href="javascript:goNode('graphic')">Graphic</a> it defines the following...</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Circle</span>(r)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">r</code>: The initial radius of the circle.</p>
+		</div>
+</div>
+
+<h4>Assignable Property</h4><div class="Indent">
+	<p><code><span class="Hilite">radius</span></code>: The radius of the circle.</p>
+</div>
+
+<h4>Read-Only Property</h4><div class="Indent">
+	<p><code><span class="Hilite">image</span></code>: A <code>pygame.Surface</code> containing the current rendering of the shape.</p>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">containsPoint</span>(pos)</code> → <code>bool</code>: Determines whether the given point, <code>pos</code>, is located within the circle. This method does <b>not</b> account for the offset of the circle’s canvas in the sketch; use the <code>contains</code> method for this.</p>
+	<p><code><span class="Hilite">intersect</span>(other)</code> → <code>list</code>: Calculates the points of intersection between the circles <code>self</code> and <code>other</code>.</p>
+
+</div>
+
+</article>
