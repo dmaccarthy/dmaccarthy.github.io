@@ -1,0 +1,54 @@
+﻿<article><h1><code>sc8pr.misc.video.Video</code> Class</h1>
+
+<p>The <code>Video</code> class is used to record and playback video clips. <code>Video</code> functions similar to the <code>Sprite</code> class, where each frame of the video is treated as a costume. The main difference between <code>Video</code> and <code>Sprite</code> is that <code>Video</code> frames are stored in compressed form. As a result, the <code>Video</code> class is slower but uses less memory than <code>Sprite</code>.</p>
+
+<p>This class loads and saves videos using a custom “sc8pr Video” format denoted by the file extension “s8v”. This format is used to load and save video clips quickly, but produces much larger files than modern video formats like MP4. You can use a program such as <a href="https://www.ffmpeg.org/">FFmpeg</a> to transcode between video formats.</p>
+
+<p>In addition to the attributes it inherits from <a class="Hilite Code" href="javascript:goNode('sprite')">Sprite</a>, the <code>Video</code> class defines the following...</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Video</span>(data=None, alpha=False, notify=None)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">data</code>: A string specifying an s8v file to load, a sequence of images to combine into a video, or a 2-tuple specifying the size of a new video.</p>
+		<p><code class="Hilite">alpha</code>: Specifies whether to convert frames with no alpha value; set this to <code>True</code> if you want to apply effects that require transparency, such as fade or wipe.</p>
+		<p><code class="Hilite">notify</code>: An optional callback function that can be called when loading large files. This function takes three arguments: the file name being loaded, the number of frames loaded, and the <code>Video</code> instance. When loading is complete, <code>notify</code> will be called with <code>None</code> as the middle argument instead of a frame count.</p>
+		</div>
+</div>
+
+<h4>Assignable Properties</h4><div class="Indent">
+	<p><code class="Hilite">meta</code>: A dictionary of metadata to be saved with the video. Data must be convertible into JSON format.</p>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">__getitem__</span>(n)</code> → <code>Image</code>: Extract and decompress frame <code>n</code>.</p>
+	<p><code><span class="Hilite">__iadd__</span>(img)</code> → <code>self</code>: Append an <code>Image</code>, a <code>pygame.Surface</code>, or a graphic that has an <code>image</code> property to the video.</p>
+	<p><code><span class="Hilite">__len__</span>()</code> → <code>int</code>: The number of frames in the video.</p>
+	<p><code><span class="Hilite">capture</span>(sk)</code>: Capture the sketch window and append it to the video as a new frame. Called automatically by the sketch on its <code>capture</code> property.</p>
+	<p><code><span class="Hilite">clip</span>(start=0, end=None)</code> → <code>Video</code>: Extracts a sequence if frames as a new <code>Video</code> instance; does not copy the frame pixel data.</p>
+		<div class="Indent">
+		<p><code class="Hilite">start</code>: The first frame to include in the extracted clip.</p>
+		<p><code class="Hilite">end</code>: The frame at which to stop extracting; the end frame itself is not included.</p>
+		</div>
+	<p><code><span class="Hilite">costumeSequence</span>(seq)</code>: Will raise a <code>NotImplementedError</code>.</p>
+	<p><code><span class="Hilite">exportFrames</span>(fn, notify=None)</code> → <code>self</code>: Save the video as a sequence of image files.</p>
+		<div class="Indent">
+		<p><code class="Hilite">fn</code>: A pattern describing the file names to use; <code>str.format</code> will be called to insert the frame number into the pattern to create a unique file name for each frame.</p>
+		<p><code class="Hilite">notify</code>: Callback function (same as for the <code>Video</code> constructor).</p>
+		</div>	
+	<p><code><span class="Hilite">save</span>(fn, notify=None)</code> → <code>self</code>: Save the video in s8v format.</p>
+		<div class="Indent">
+		<p><code class="Hilite">fn</code>: The path to the file being saved.</p>
+		<p><code class="Hilite">notify</code>: Callback function (same as for the <code>Video</code> constructor).</p>
+		</div>		
+</div>
+
+<h4>Static Method</h4><div class="Indent">
+	<p><code><span class="Hilite">importFrames</span>(fn, seq=1, notify=None)</code> → <code>Video</code>: Load a sequence of image files as a new video clip.</p>
+		<div class="Indent">
+		<p><code class="Hilite">fn</code>: A pattern describing the file names to use; <code>str.format</code> will be called to insert a sequence of numbers into the pattern to find the file name for each frame.</p>
+		<p><code class="Hilite">seq</code>: A sequence of integers identifying the files to be loaded, or a single integer specifying the start if numbers are consecutive.</p>
+		<p><code class="Hilite">notify</code>: Callback function (same as for the <code>Video</code> constructor).</p>
+		</div>	
+</div>
+
+</article>

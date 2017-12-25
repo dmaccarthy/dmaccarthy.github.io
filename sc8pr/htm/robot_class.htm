@@ -54,5 +54,35 @@
 </div>
 		
 </div>
+<!--
 
+from sc8pr import Sketch, Image, BOTH
+from sc8pr.robot import Robot
+from sc8pr.sprite import physics, Sprite
+
+def setup(sk):
+    sk.bind(ondraw)
+    sk.bg = Image("sky.png")
+    sk += Robot().bind(brain).config(mass=10, pos=sk.center, height=sk.height/6, bounce=BOTH)
+    sk += Sprite("alien.png").config(mass=1, height=sk.height/6, vel=(1,1), bounce=BOTH)
+
+def ondraw(sk): physics(sk)
+def shutdown(r): print("Goodbye!")
+
+def allData(r):
+    keys = ["collision", "gyro", "proximity", "sensorDown",
+        "sensorFront", "stopped", "motors", "pen", "uptime"]
+    return {key: getattr(r, key) for key in keys}
+
+def brain(r):
+    r.bind(shutdown)
+    r.pen = "red", 3
+    r.motors = 0.8, 0.3
+    while r.active:
+        r.updateSensors()
+        print(allData(r))
+
+Sketch().play()
+
+-->
 </article>

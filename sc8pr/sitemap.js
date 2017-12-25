@@ -25,18 +25,17 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 			{title:"class Renderable", link:"render"},
 		]},
 		{title:"sc8pr.geom", link:"geom"},
-/*		{title:"sc8pr.gui.*", link:"gui", pages:[
+		{title:"sc8pr.gui.*", link:"gui", pages:[
 		]},
 		{title:"sc8pr.misc.*", link:"misc", pages:[
-			{title:".cursors", link:"cursors"},
-			{title:".effect", link:"effect"},
-			{title:".grab", link:"grab"},
-			{title:".plot", link:"plot"},
-			{title:".progress", link:"progress"},
-			{title:".video", link:"video"},
-		]},*/
-		{title:"sc8pr.robot", link:"robot_class", pages:[
+/*			{title:".effect", link:"effect"},
+			{title:"class Grabber", link:"grabber"},
+			{title:"class Locus", link:"locus"},
+			{title:"class Plot", link:"plot_class"},
+			{title:"class ProgressBar", link:"progressbar"},*/
+			{title:"class Video", link:"video_class"},
 		]},
+		{title:"sc8pr.robot", link:"robot_class"},
 		{title:"sc8pr.shape", link:"shape", pages:[
 			{title:"class Line", link:"line"},
 			{title:"class Circle", link:"circle"},
