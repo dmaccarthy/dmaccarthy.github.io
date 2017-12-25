@@ -1,3 +1,5 @@
+/** Traverse the nodes within this site **/
+
 function linkParentNodes(node) {
 	if (!node) node = sitemap;
 	var pg = node.pages ? node.pages : [];
@@ -31,54 +33,8 @@ function find(link, node) {
 	if (node) if (node.link == link) return node;
 }
 
-function nodeHtml(node) {
-	var p = $("<p>").html(node.title).click(navClick).attr("data-id", node.link);
-	var div = $("<div>").html(p);
-	p[0].node = node;
-	if (node.pages) {
-		var pg = node.pages;
-		for (var i=0;i<pg.length;i++) div.append(nodeHtml(pg[i]));
-	}
-	return div;
-}
 
-function resize() {
-	var w = $(window).width();
-	var nav = $("nav");
-	if (w >= 640) {
-		nav.addClass("Wide");
-		var h = $(window).height();
-		h -= parseFloat(nav.css("padding-top")) + parseFloat(nav.css("padding-bottom"));
-		nav.height(h).width(240);
-		$("body").css("margin-left", 256);
-	}
-	else {
-		nav.removeClass("Wide");
-		w -= parseFloat(nav.css("padding-left")) + parseFloat(nav.css("padding-right"));
-		nav.width(w).height("auto");
-		$("body").css("margin-left", 0);
-		collapse();
-		$("nav button")[0].innerHTML = "Expand";
-	}
-	fitImages();
-}
-
-function fitImages() {
-	var imgs = $("article img");
-	var w = parseInt(0.96 * $("article").width());
-	for (var i=0;i<imgs.length;i++) {
-		var img = $(imgs[i]);
-		img.width(Math.min(w, img[0].naturalWidth))
-	}
-}
-
-function navClick() {
-	var p = $(this);
-	var div = p.closest("div");
-	var node = p[0].node;
-	div.children("div").toggle();
-	if (node.link) goNode(node.link);
-}
+/** AJAX **/
 
 var current, pop, init = true;
 
@@ -99,12 +55,34 @@ function ajaxLoad(html, node) {
 	html = $(html).children();
 	var w = parseInt(0.96 * $("article").width());
 	var imgs = html.find("img").on("load", function() {
+		var wMax = this.getAttribute("data-wide");
+		if (wMax) if (w > wMax) w = wMax;
 		if (this.width > w) this.width = w;
 	});
 	$("article").html(html);
 	document.title = $(html[0]).text();
 	highlight(node);
 	$("body").scrollTop(0);
+}
+
+function notFound(node) {
+	$("article").html("The requested location is not currently available.");
+	document.title = "sc8pr";
+	highlight(node);
+}
+
+
+/** Navigation Panel **/
+
+function nodeHtml(node) {
+	var p = $("<p>").html(node.title).click(navClick).attr("data-id", node.link);
+	var div = $("<div>").html(p);
+	p[0].node = node;
+	if (node.pages) {
+		var pg = node.pages;
+		for (var i=0;i<pg.length;i++) div.append(nodeHtml(pg[i]));
+	}
+	return div;
 }
 
 function highlight(node) {
@@ -121,12 +99,6 @@ function highlight(node) {
 		init = false;
 	}
 	current = node;
-}
-
-function notFound(node) {
-	$("article").html("The requested location is not currently available.");
-	document.title = "sc8pr";
-	highlight(node);
 }
 
 function collapse(n) {
@@ -150,11 +122,36 @@ function expandCollapse(e) {
 	}
 }
 
-function clipCopy(e) {
-	var c = $("textarea.Clip");
-	c.removeClass("Clip").html($(e).text()).select();
-	document.execCommand('copy');
-	c.addClass("Clip");
+
+/** Event Handling **/
+
+function resize() {
+	var w = $(window).width();
+	var nav = $("nav");
+	if (w >= 640) {
+		nav.addClass("Wide");
+		var h = $(window).height();
+		h -= parseFloat(nav.css("padding-top")) + parseFloat(nav.css("padding-bottom"));
+		nav.height(h).width(240);
+		$("body").css("margin-left", 256);
+	}
+	else {
+		nav.removeClass("Wide");
+		w -= parseFloat(nav.css("padding-left")) + parseFloat(nav.css("padding-right"));
+		nav.width(w).height("auto");
+		$("body").css("margin-left", 0);
+		collapse();
+		$("nav button")[0].innerHTML = "Expand";
+	}
+	fitImages();
+}
+
+function navClick() {
+	var p = $(this);
+	var div = p.closest("div");
+	var node = p[0].node;
+	div.children("div").toggle();
+	if (node.link) goNode(node.link);
 }
 
 window.onresize = resize;
@@ -184,6 +181,25 @@ window.onkeydown = function (ev) {
 	}
 }
 
+
+/** Other Functions **/
+
+function fitImages() {
+	var imgs = $("article img.Fit");
+	var w = parseInt(0.96 * $("article").width());
+	for (var i=0;i<imgs.length;i++) {
+		var img = $(imgs[i]);
+		var wMax = img[0].getAttribute("data-wide");
+		img.width(Math.min(w, wMax ? wMax : img[0].naturalWidth))
+	}
+}
+
+function clipCopy(e) {
+	var c = $("textarea.Clip");
+	c.removeClass("Clip").html($(e).text()).select();
+	document.execCommand('copy');
+	c.addClass("Clip");
+}
 
 function animate() {
 	var f = animate.frame;

@@ -6,6 +6,13 @@ body {
 #Home {
 	text-align:center;
 	margin:0.25em 0;
+	background-image:url("img/sc8text.png");
+	background-size:contain;
+	background-repeat:no-repeat;
+}
+
+#Home:hover {
+	background-image:url("img/sc8hover.png");
 }
 
 #Copyright {font-size:85%}

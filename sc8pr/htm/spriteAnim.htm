@@ -24,7 +24,7 @@ Sketch((512,362)).play()                <span class="Comment"># Create and run t
 <pre class="Code">alien = Sprite("aliens.png", 2, 2)      <span class="Comment"># 2 by 2 spritesheet</span></pre>
 
 <p>The file being loaded here is a <em>spritesheet</em>. Here is what the contents of the file look like...</p>
-<p class="Center"><img src="img/aliens.png" alt="Image" width="120" class="Border"/></p>
+<p class="Center"><img class="Border Fit" src="img/aliens.png" alt="Image"/></p>
 
 <p>There are four different costumes arranged into two columns by two rows. When loading the spritesheet, we have passed the number of columns and rows as the second and third arguments after the file name.  These costumes allow us to create the appearance that the alien’s eye is blinking and its crest is changing color. When we call the alien sprite’s <code>config</code> method, we have added a keyword argument, <code class="Hilite1">costumeTime = 10</code>, to indicate that we want the costume to change every ten animation frames. The default animation rate is 60 frames per second, so this would correspond to changing costume six times per second.</p>
 
