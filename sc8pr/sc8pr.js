@@ -105,7 +105,8 @@ function highlight(node) {
 
 function collapse(n) {
 	$("nav div").show();
-	if (!n) n = 1;
+	if (!n || n < 1) n = 1;
+	else if (n > 3) n = 3;
 	collapse.level = n;
 	var s = "nav div";
 	while (n--) s += " div";
@@ -130,7 +131,6 @@ function resize() {
 		w -= parseFloat(nav.css("padding-left")) + parseFloat(nav.css("padding-right"));
 		nav.width(w).height("auto");
 		$("body").css("margin-left", 0);
-//		collapse();
 	}
 	fitImages();
 }
@@ -173,9 +173,11 @@ window.onpopstate = function(ev) {
 window.onkeydown = function (ev) {
 	var tag = ev.target.tagName.toUpperCase();
 	if (tag != "INPUT" && tag != "TEXTAREA") {
-		if (ev.keyCode == 27) collapse((collapse.level + 1) % 4);
-		else if (ev.keyCode == 37) history.back();
-		else if (ev.keyCode == 39) goNext();
+		key = ev.key;
+		if (key == "ArrowUp") collapse(collapse.level - 1);
+		else if (key == "ArrowDown") collapse(collapse.level + 1);
+		else if (key == "ArrowLeft") history.back();
+		else if (key == "ArrowRight") goNext();
 	}
 }
 
@@ -183,7 +185,6 @@ window.onkeydown = function (ev) {
 /** Other Functions **/
 
 function fitImages() {
-	console.log("Fit!");
 	var imgs = $("article img.Fit");
 	var w = parseInt(0.96 * $("article").width());
 	for (var i=0;i<imgs.length;i++) {
