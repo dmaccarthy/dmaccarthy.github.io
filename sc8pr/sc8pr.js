@@ -173,11 +173,11 @@ window.onpopstate = function(ev) {
 window.onkeydown = function (ev) {
 	var tag = ev.target.tagName.toUpperCase();
 	if (tag != "INPUT" && tag != "TEXTAREA") {
-		var key = ev.key;
-		if (key == "ArrowUp") collapse(collapse.level - 1);
-		else if (key == "ArrowDown") collapse(collapse.level + 1);
-		else if (key == "ArrowLeft") history.back();
-		else if (key == "ArrowRight") goNext();
+		var key = ev.keyCode;
+		if (key == 38) collapse(collapse.level - 1);
+		else if (key == 40) collapse(collapse.level + 1);
+		else if (key == 37) history.back();
+		else if (key == 39) goNext();
 	}
 }
 
