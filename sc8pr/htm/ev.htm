@@ -1,4 +1,4 @@
-﻿<article><h1>Event Handling</h1><textarea class="Clip"></textarea>
+﻿<article><h1>Event Handling</h1>
 
 <p>The <code>setup</code> function runs <em>once</em>, immediately after the sketch window opens, but before the animation begins. Once the animation starts, you can control your program by writing <em>event handlers</em>.</p>
 
@@ -6,7 +6,7 @@
 
 <p>Here’s a program that uses chance to decide whether to allow the program to quit. The event handler is a function named <code>onquit</code>. It takes two arguments: a reference to the sketch and a description of the event. Four times out of five, this handler will just print a message to the console saying it can’t quit. The other time, it will print “Goodbye!” and signal that the sketch can close by setting its <code>quit</code> attribute to <code>True</code>.</p>
 
-<pre class="Code Scroll" id="Ex1"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex1')"/>from random import randint
+<pre class="Code Scroll" id="Ex1">from random import randint
 from sc8pr import Sketch, Image, HORIZONTAL, VERTICAL</span>
 from sc8pr.sprite import Sprite
 

@@ -1,8 +1,8 @@
-﻿<article><h1><code>ondraw</code> Handlers</h1><textarea class="Clip"></textarea>
+﻿<article><h1><code>ondraw</code> Handlers</h1>
 
 <p>One of the most important events is the “draw” event. This event is triggered each time a graphics object is drawn, i.e. once per frame for each object. In the <code>setup</code> function below, we have created a text object which initially displays the number 0. The text object has an event handler, the function <code>updateTimer</code>, that is bound using the <code>ondraw</code> keyword. Each time the sketch draws the text to the screen, the <code>updateTimer</code> function will be called. Note that <em>ondraw</em> event handlers take a single argument which refers to the graphics object that has just been drawn.</p>
 
-<pre class="Code" id="Ex1"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex1')"/>from sc8pr import Sketch
+<pre class="Code" id="Ex1">from sc8pr import Sketch
 from sc8pr.text import Text
 
 def updateTimer(timer):
@@ -22,7 +22,7 @@ Sketch().play("Time Counter")</pre>
 
 <p>Using the <code>frameCount</code> to determine the time will only be approximately correct since <code>pygame</code> does not maintain the frame rate perfectly. If your computer cannot run fast enough to maintain 60 frames per second, the timer will run slow. Also, the timer will pause when you drag the window since the frames will not be advancing. To create a more accurate timer based on the system clock, you can use Python’s <code>time</code> module.</p>
 
-<pre class="Code" id="Ex2"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex2')"/>from time import time
+<pre class="Code" id="Ex2">from time import time
 from math import floor
 from sc8pr import Sketch
 from sc8pr.text import Text
@@ -44,7 +44,7 @@ Sketch().play("Time Counter")</pre>
 
 <p>Some types of graphics already have an <em>ondraw</em> event handler built in. For example, <code>Sprite</code> objects come with an event handler that is responsible for moving and spinning the sprite, changing costumes, and bouncing or wrapping at the sketch edges. If you want to give your sprites a custom <em>ondraw</em> handler, be sure it calls the default handler! The default handler name will be the object’s class connected by a dot to the event description, i.e. <code>Sprite.ondraw</code>...</p>
 
-<pre class="Code" id="Ex3"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex3')"/>from sc8pr import Sketch, Image, BOTH
+<pre class="Code" id="Ex3">from sc8pr import Sketch, Image, BOTH
 from sc8pr.sprite import Sprite
 
 def printUpdate(alien):

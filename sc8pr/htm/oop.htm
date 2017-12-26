@@ -1,12 +1,12 @@
-﻿<article><h1>Object-Oriented Style</h1><textarea class="Clip"></textarea>
+﻿<article><h1>Object-Oriented Style</h1>
 
 <p class="Warning">Warning: This page discusses advanced programming techniques. Novice programmers should <span class="Link" onclick="goNext()">skip this page</span>!</p>
 
-<p><code>sc8pr</code> programs can be written using an object-oriented style. In an earlier example, we created an animation of an alien and we attached <em>onclick</em> handlers to the sprite and the sketch, to print whether we hit or missed the ailen when clicking with the mouse.</p>
+<p><code>sc8pr</code> programs can be written using an object-oriented style. In an earlier example we created an animation of an alien, with <code>onclick</code> handlers attached to both to the sprite (alien) and the sketch. These handlers printed whether we hit or missed the alien when clicking with the mouse.</p>
 
 <p>Using an OOP approach, we could define a <em>subclass</em> of <code>Sprite</code> to represent the alien. The sprite’s event handlers could then be defined as methods within this class definition. We could also create a subclass of <code>Sketch</code> for the sketch’s event handlers and <code>setup</code> method...</p>
 
-<pre class="Code Scroll" id="Ex1"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex1')"/>from sc8pr import Sketch, Image, BOTH
+<pre class="Code Scroll" id="Ex1">from sc8pr import Sketch, Image, BOTH
 from sc8pr.sprite import Sprite
 
 class Alien(Sprite):

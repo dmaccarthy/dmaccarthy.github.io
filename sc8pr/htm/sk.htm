@@ -1,18 +1,18 @@
-﻿<article><h1>Sketch Basics</h1><textarea class="Clip"></textarea>
+﻿<article><h1>Sketch Basics</h1>
 <p>In <code>sc8pr</code>, interactive animations are called <em>sketches</em><sup>†</sup>. To run an animation, you will create a sketch and then play it...</p>
 
-<pre class="Code" id="Ex1"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex1')"/>from sc8pr import Sketch
+<pre class="Code" id="Ex1">from sc8pr import Sketch
 
 Sketch().play()</pre>
 
 <p>You can specify the initial size of your sketch by passing an ordered pair to the <a class="Hilite Code" href="javascript:goNode('sketch')">Sketch</a> function. If you do not specify the size, it will default to 512 pixels wide by 288 pixels tall.</p>
 
-<pre class="Code" id="Ex2"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex2')"/>size = 640, 480
+<pre class="Code" id="Ex2">size = 640, 480
 Sketch(size).play()</pre>
 
 <p>You can also provide up to three optional arguments to the <code>play</code> method, to specify the animation window’s caption and icon. The third argument is a boolean value indicating whether to allow the user to resize the window; this defaults to <code>True</code>.</p>
 
-<pre class="Code" id="Ex3"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex3')"/>caption = "An Awesome Game"
+<pre class="Code" id="Ex3">caption = "An Awesome Game"
 icon = "icon.png"
 mode = False
 Sketch().play(caption, icon, mode)</pre>

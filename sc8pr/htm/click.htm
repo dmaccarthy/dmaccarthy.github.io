@@ -1,8 +1,8 @@
-﻿<article><h1><code>onclick</code> Handlers</h1><textarea class="Clip"></textarea>
+﻿<article><h1><code>onclick</code> Handlers</h1>
 
 <p>A “click” event is triggered whenver the user clicks one of the mouse buttons. We can write functions to handle click events as in the example below.</p>
 
-<pre class="Code Scroll" id="Ex1"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex1')"/>from sc8pr import Sketch, Image, BOTH
+<pre class="Code Scroll" id="Ex1">from sc8pr import Sketch, Image, BOTH
 from sc8pr.sprite import Sprite
 
 def hit(alien, ev):
@@ -29,7 +29,7 @@ Sketch((512,362)).<span class="Hilite">bind(onclick=miss)</span>.play()</pre>
 
 <p>Clicking on a sprite or other graphics object that does not have its own <em>onclick</em> handler will cause the click event to be sent to the sketch’s <em>onclick</em> handler (if any) instead. The event argument has an attribute, <code>ev.target</code> that refers to the graphics object that was actually clicked...</p>
 
-<pre class="Code" id="Ex2"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex2')"/>from sc8pr import Sketch, Image, BOTH
+<pre class="Code" id="Ex2">from sc8pr import Sketch, Image, BOTH
 from sc8pr.sprite import Sprite
 
 def onclick(sk, ev):

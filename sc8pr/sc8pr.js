@@ -59,7 +59,8 @@ function ajaxLoad(html, node) {
 		if (wMax) if (w > wMax) w = wMax;
 		if (this.width > w) this.width = w;
 	});
-	$("article").html(html);
+	var a = $("article").html(html);
+	a.find("pre.Code").click(codeExample).attr("title", "Shift+Click to Copy to Clipboard");
 	document.title = $(html[0]).text();
 	highlight(node);
 	$("body").scrollTop(0);
@@ -129,7 +130,6 @@ function resize() {
 		nav.width(w).height("auto");
 		$("body").css("margin-left", 0);
 		collapse();
-		$("nav button")[0].innerHTML = "Expand";
 	}
 	fitImages();
 }
@@ -140,6 +140,15 @@ function navClick() {
 	var node = p[0].node;
 	div.children("div").toggle();
 	if (node.link) goNode(node.link);
+}
+
+function codeExample(ev) {
+	if (ev.shiftKey) {
+		var c = $("textarea.Clip");
+		c.removeClass("Clip").html($(this).text()).select();
+		document.execCommand('copy');
+		c.addClass("Clip");
+	}
 }
 
 window.onresize = resize;
@@ -173,6 +182,7 @@ window.onkeydown = function (ev) {
 /** Other Functions **/
 
 function fitImages() {
+	console.log("Fit!");
 	var imgs = $("article img.Fit");
 	var w = parseInt(0.96 * $("article").width());
 	for (var i=0;i<imgs.length;i++) {
@@ -182,12 +192,13 @@ function fitImages() {
 	}
 }
 
+/*
 function clipCopy(e) {
 	var c = $("textarea.Clip");
 	c.removeClass("Clip").html($(e).text()).select();
 	document.execCommand('copy');
 	c.addClass("Clip");
-}
+}*/
 
 function animate() {
 	var f = animate.frame;

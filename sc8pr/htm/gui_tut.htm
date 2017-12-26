@@ -1,10 +1,10 @@
-﻿<article><h1>GUI Controls</h1><textarea class="Clip"></textarea>
+﻿<article><h1>GUI Controls</h1>
 
-<p>The <code>sc8pr.gui</code> subpackage defines several types of graphics objects that can be used to interact with the user. The example below shows how to use <code>TextInput</code> controls to obtain text data from the user asynchronously.</p>
+<p>The <a class="Hilite Code" href="javascript:goNode('gui')">sc8pr.gui</a> subpackage defines several types of graphics objects that can be used to interact with the user. The example below shows how to use <a class="Hilite Code" href="javascript:goNode('ti_class')">TextInput</a> controls to obtain text data from the user asynchronously.</p>
 
 <p><code>TextInput</code> instances already have event handlers defined for <code>onclick</code>, <code>onkeydown</code>, and <code>onblur</code> events. These event handlers allow the text input to behave as intended. These handlers trigger the <code>onchange</code> event whenever the data in the text input changes, and the <code>onaction</code> event whenever the control loses focus, such as when a mouse click occurs outside of the text input. Your program can bind handlers to these events to access the data...</p>
 
-<pre class="Code" id="Ex1"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex1')"/>from sc8pr import Sketch
+<pre class="Code" id="Ex1">from sc8pr import Sketch
 from sc8pr.gui.textinput import TextInput
 
 <span class="Comment"># Event handlers</span>

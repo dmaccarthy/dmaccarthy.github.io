@@ -1,8 +1,8 @@
-﻿<article><h1>Animations</h1><textarea class="Clip"></textarea>
+﻿<article><h1>Animations</h1>
 
 <p>The main difference between the <code>Sprite</code> and <code>Image</code> classes is that sprites are intended to be animated while images are not. In the example below, we have added a <code>spin</code> argument when configuring the sprite to make it rotate 1 degree clockwise per frame. We have also added a <code>vel</code> (velocity) argument to move the sprite 2 pixels right and 1 pixel down each frame. The <code>acc</code> (acceleration) keyword is used to increase the sprite’s downward velocity by 0.01 each frame.</p>
 
-<pre class="Code" id="Ex1"><img class="CopyCode" src="img/copy.png" title="Copy Code to Clipboard" onclick="clipCopy('#Ex1')"/>from sc8pr import Sketch, Image, <span class="Hilite">VERTICAL, HORIZONTAL</span>
+<pre class="Code" id="Ex1">from sc8pr import Sketch, Image, <span class="Hilite">VERTICAL, HORIZONTAL</span>
 from sc8pr.sprite import Sprite
 
 def setup(sk):
