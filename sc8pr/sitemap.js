@@ -1,7 +1,7 @@
 var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 	{title:"Installation", link:"inst"},
 	{title:"Tutorial", link:"tut", pages:[
-		{title:"Sketch Basics", link:"sk", pages:[
+		{title:"Basics", link:"sk", pages:[
 			{title:"The <code>setup</code> Function", link:"setup"},
 			{title:"Adding Graphics", link:"gr"},
 			{title:"Animations", link:"anim"}
@@ -15,7 +15,7 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 		{title:"Sprite Animations", link:"spriteAnim"},
 		{title:"GUI Controls", link:"gui_tut"},
 	]},
-	{title:"Module Reference", link:"ref", pages:[
+	{title:"Reference", link:"ref", pages:[
 		{title:"sc8pr", link:"init", pages:[
 			{title:"class Graphic", link:"graphic"},
 			{title:"class Image", link:"image"},
