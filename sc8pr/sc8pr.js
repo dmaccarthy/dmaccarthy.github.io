@@ -76,7 +76,8 @@ function notFound(node) {
 /** Navigation Panel **/
 
 function nodeHtml(node) {
-	var p = $("<p>").html(node.title).click(navClick).attr("data-id", node.link);
+	var span = $("<span>").html(node.title).click(navClick).attr("data-id", node.link);
+	var p = $("<p>").html(span);
 	var div = $("<div>").html(p);
 	p[0].node = node;
 	if (node.pages) {
@@ -89,7 +90,7 @@ function nodeHtml(node) {
 function highlight(node) {
 	var p = $("nav").find("p");
 	p.removeClass("Current");
-	p = $("nav").find("p[data-id='" + node.link + "']");
+	p = $("nav").find("[data-id='" + node.link + "']").closest("p");
 	p.addClass("Current");
 	if (pop) pop = null;
 	else {
@@ -135,7 +136,7 @@ function resize() {
 }
 
 function navClick() {
-	var p = $(this);
+	var p = $(this).closest("p");
 	var div = p.closest("div");
 	var node = p[0].node;
 	div.children("div").toggle();

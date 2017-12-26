@@ -45,7 +45,7 @@ nav div p {
 	color:blue;
 }
 
-nav div p:hover, #Home:hover {
+nav div p span:hover, #Home:hover {
 	color:white;
 	cursor:pointer;
 	background-color:blue;
