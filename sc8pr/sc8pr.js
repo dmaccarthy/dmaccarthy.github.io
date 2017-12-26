@@ -96,8 +96,10 @@ function highlight(node) {
 	else {
 		var url = location.href.split("?")[0];
 		if (node != sitemap) url += "?" + node.link;
-		if (init) history.replaceState({node:node}, "", url);
-		else history.pushState({node:node}, "", url);
+		if (history.pushState) {
+			if (init) history.replaceState({node:node}, "", url);
+			else history.pushState({node:node}, "", url);
+		}
 		init = false;
 	}
 	current = node;
