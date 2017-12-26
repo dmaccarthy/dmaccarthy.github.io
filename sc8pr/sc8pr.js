@@ -130,7 +130,7 @@ function resize() {
 		w -= parseFloat(nav.css("padding-left")) + parseFloat(nav.css("padding-right"));
 		nav.width(w).height("auto");
 		$("body").css("margin-left", 0);
-		collapse();
+//		collapse();
 	}
 	fitImages();
 }
@@ -192,14 +192,6 @@ function fitImages() {
 		img.width(Math.min(w, wMax ? wMax : img[0].naturalWidth))
 	}
 }
-
-/*
-function clipCopy(e) {
-	var c = $("textarea.Clip");
-	c.removeClass("Clip").html($(e).text()).select();
-	document.execCommand('copy');
-	c.addClass("Clip");
-}*/
 
 function animate() {
 	var f = animate.frame;
