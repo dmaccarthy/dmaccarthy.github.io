@@ -26,6 +26,12 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 		]},
 		{title:"sc8pr.geom", link:"geom"},
 		{title:"sc8pr.gui.*", link:"gui", pages:[
+			{title:"class Button", link:"button_class"},
+//			{title:"class Menu", link:""},
+//			{title:"class Options", link:"options_class"},
+//			{title:"class Radio", link:""},
+//			{title:"class Slider", link:""},
+//			{title:"class TextInput", link:"ti_class"},
 		]},
 		{title:"sc8pr.misc.*", link:"misc", pages:[
 /*			{title:".effect", link:"effect"},

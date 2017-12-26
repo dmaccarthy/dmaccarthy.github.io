@@ -19,7 +19,6 @@ body {
 #Logo {width:80px}
 nav p {padding:0.25em}
 nav p.Current {font-weight:bold}
-
 article {padding:0.5em}
 button {width:5em}
 
@@ -28,12 +27,12 @@ nav {
 	padding:0.5em;
 	background-color:#f0f0ff;
 	font-size:90%;
+	overflow:auto;
 }
 
 nav.Wide {
 	position:fixed;
 	top:0; left:0;
-	overflow:auto;
 }
 
 nav div div {
@@ -50,6 +49,11 @@ nav div p:hover, #Home:hover {
 	color:white;
 	cursor:pointer;
 	background-color:blue;
+}
+
+nav p.Expand img {
+	padding:0 0.8em;
+	cursor:pointer;
 }
 
 h1 {

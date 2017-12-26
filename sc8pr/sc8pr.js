@@ -102,24 +102,12 @@ function highlight(node) {
 }
 
 function collapse(n) {
-	expandAll();
+	$("nav div").show();
 	if (!n) n = 1;
+	collapse.level = n;
 	var s = "nav div";
 	while (n--) s += " div";
 	$(s).hide();
-}
-
-function expandAll() {$("nav div").show()}
-
-function expandCollapse(e) {
-	if (e.innerHTML == "Collapse") {
-		collapse();
-		e.innerHTML = "Expand";
-	}
-	else {
-		expandAll();
-		e.innerHTML = "Collapse";
-	}
 }
 
 
@@ -175,7 +163,7 @@ window.onpopstate = function(ev) {
 window.onkeydown = function (ev) {
 	var tag = ev.target.tagName.toUpperCase();
 	if (tag != "INPUT" && tag != "TEXTAREA") {
-		if (ev.keyCode == 27) expandCollapse($("#Collapse")[0]);
+		if (ev.keyCode == 27) collapse((collapse.level + 1) % 4);
 		else if (ev.keyCode == 37) history.back();
 		else if (ev.keyCode == 39) goNext();
 	}

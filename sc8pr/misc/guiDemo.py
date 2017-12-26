@@ -21,7 +21,7 @@ from sc8pr.text import BOLD, Font
 from sc8pr.gui.textinput import TextInput
 from sc8pr.gui.radio import Radio, Options
 from sc8pr.gui.slider import Slider
-from sc8pr.gui.button import Button, yesNo
+from sc8pr.gui.button import Button
 from sc8pr.gui.menu import Menu, R_TRIANGLE
 
 GREY, BLUE = rgba("#ececec", "blue")
@@ -32,7 +32,7 @@ def buttons(cfg):
     cv = Canvas((256, 48))
 
     # Selectable button
-    btn1 = Button((120, 48)).textIcon("Selectable\nButton", yesNo()[0])
+    btn1 = Button((120, 48)).textIcon("Selectable\nButton", True)
     cv["Selectable"] = btn1.config(anchor=TOPLEFT).bind(onaction=buttonClick)
 
     # Non-selectable button
