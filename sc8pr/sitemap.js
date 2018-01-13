@@ -34,8 +34,8 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 //			{title:"class TextInput", link:"ti_class"},
 		]},
 		{title:"sc8pr.misc.*", link:"misc", pages:[
-/*			{title:".effect", link:"effect"},
-			{title:"class Grabber", link:"grabber"},
+			{title:".effect", link:"effect"},
+/*			{title:"class Grabber", link:"grabber"},
 			{title:"class Locus", link:"locus"},
 			{title:"class Plot", link:"plot_class"},
 			{title:"class ProgressBar", link:"progressbar"},*/
@@ -50,7 +50,7 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 		]},
 		{title:"sc8pr.sprite", link:"sprite", pages:[
 			{title:"class Sprite", link:"sprite_class"},
-//			{title:"class Collisions", link:"collisions"},
+			{title:"class Collisions", link:"collisions"}
 		]},
 		{title:"sc8pr.text", link:"text", pages:[
 			{title:"class Font", link:"font"},
