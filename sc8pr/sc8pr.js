@@ -63,7 +63,7 @@ function ajaxLoad(html, node) {
 	a.find("pre.Code").click(codeExample).attr("title", "Shift+Click to Copy to Clipboard");
 	document.title = $(html[0]).text();
 	highlight(node);
-	$("body").scrollTop(0);
+	scrollTo(0, 0);
 }
 
 function notFound(node) {
@@ -127,12 +127,14 @@ function resize() {
 		h -= parseFloat(nav.css("padding-top")) + parseFloat(nav.css("padding-bottom"));
 		nav.height(h).width(240);
 		$("body").css("margin-left", 256);
+		$("#Bottom").hide();
 	}
 	else {
 		nav.removeClass("Wide");
 		w -= parseFloat(nav.css("padding-left")) + parseFloat(nav.css("padding-right"));
 		nav.width(w).height("auto");
 		$("body").css("margin-left", 0);
+		$("#Bottom").show();
 	}
 	fitImages();
 }

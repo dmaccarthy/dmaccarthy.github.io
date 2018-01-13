@@ -11,10 +11,7 @@ body {
 	background-repeat:no-repeat;
 }
 
-#Home:hover {
-	background-image:url("img/sc8hover.png");
-}
-
+#Home:hover {background-image:url("img/sc8hover.png")}
 #Copyright {font-size:85%}
 #Logo {width:80px}
 nav p {padding:0.25em}
@@ -35,13 +32,10 @@ nav.Wide {
 	top:0; left:0;
 }
 
-nav div div {
-	margin-left:1em;
-}
+nav div div {margin-left:1em}
 
 nav div p {
 	margin:0.2em 0;
-//	cursor:pointer;
 	color:blue;
 }
 
@@ -67,18 +61,6 @@ h4 {
 	margin-bottom:0.75em;
 }
 
-img.Logo {
-	width:1.25em;
-	height:1.25em;	
-}
-
-img.CopyCode {
-	cursor:pointer;
-	float:right;
-	width:1.5em;
-	height:1.5em;	
-}
-
 .Center {text-align:center}
 .Comment {color:red}
 .Hilite {color:blue}
@@ -89,7 +71,7 @@ img.CopyCode {
 	font-weight:bold;
 }
 
-.Warning .Link {
+.Link {
 	text-decoration:underline;
 	cursor:pointer;
 }
@@ -124,4 +106,6 @@ img.Border {
 }
 
 textarea.Clip {display:none}
-p.Clip {margin-left:1em}
+
+#Bottom {margin:0}
+#Bottom img {cursor:pointer}
