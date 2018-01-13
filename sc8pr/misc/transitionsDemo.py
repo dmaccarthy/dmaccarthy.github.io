@@ -17,7 +17,7 @@
 
 from sc8pr import Sketch, RIGHT, BOTTOM
 from sc8pr.sprite import Sprite
-from sc8pr.misc.effect import Tint, PaintDrops, Wipe, WipeSlope, Squish, Dissolve
+from sc8pr.misc.effect import Tint, PaintDrops, Wipe, WipeSlope, Squash, Dissolve
 from sc8pr.text import Text, Font
 #from sc8pr.misc.video import Video
 
@@ -55,7 +55,7 @@ def setEffect(alien, n=0, f=0):
         ]
     elif n == 3:
         alien.effects = [
-            Squish(BOTTOM).time(f, f+90),              # Transition in
+            Squash(BOTTOM).time(f, f+90),              # Transition in
             Dissolve().time(f+240, f+150),             # Transition out
         ]
 
@@ -79,7 +79,7 @@ def textDraw(text):
     elif f == 600: t = "Wipe(RIGHT)"
     elif f == 690: t = ""
     elif f == 750: t = "WipeSlope(-0.2)"
-    elif f == 840: t = "Squish(BOTTOM)"
+    elif f == 840: t = "Squash(BOTTOM)"
     elif f == 930: t = ""
     elif f == 990: t = "Dissolve()"
     if t is not None: text.config(data=t)
