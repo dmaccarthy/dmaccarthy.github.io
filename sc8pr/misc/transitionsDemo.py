@@ -17,7 +17,7 @@
 
 from sc8pr import Sketch, RIGHT, BOTTOM
 from sc8pr.sprite import Sprite
-from sc8pr.misc.effect import Tint, PaintDrops, Wipe, WipeSlope, Squash, Dissolve
+from sc8pr.misc.effect import Tint, PaintDrops, Wipe, WipeSlope, Squash, Dissolve, MathEffect
 from sc8pr.text import Text, Font
 #from sc8pr.misc.video import Video
 
@@ -28,7 +28,7 @@ def setup(sk):
     alien = Sprite("aliens.png", 2, 2).config(
         pos = (x, y),
         height = sk.height / 2,
-        costumeTime = 10,
+        costumeTime = 6,
     ).bind(ondraw=alienDraw)
     sk += alien.costumeSequence([0, 0, 0, 1, 2, 3, 3, 2, 1])
     text = Text("Tint('green')").config(fontSize=30, font=Font.mono(), pos=(x, 32))
@@ -58,16 +58,23 @@ def setEffect(alien, n=0, f=0):
             Squash(BOTTOM).time(f, f+90),              # Transition in
             Dissolve().time(f+240, f+150),             # Transition out
         ]
+    elif n == 4:
+        alien.effects = [
+            MathEffect().time(f, f+90)                 # Transition in
+        ]
 
 def alienDraw(alien):
     "ONDRAW event handler for alien sprite"
+    Sprite.ondraw(alien)
     f = alien.sketch.frameCount
     if f == 360: setEffect(alien, 1, f)
     elif f == 600: setEffect(alien, 2, f)
     elif f == 840: setEffect(alien, 3, f)
-    elif f == 1080: alien.sketch.quit = True
+    elif f == 1080: setEffect(alien, 4, f)
+    elif f == 1320: alien.sketch.quit = True
 
 def textDraw(text):
+    "ONDRAW event handler for text"
     f = text.sketch.frameCount
     t = None
     if f == 90: t = ""
@@ -82,7 +89,9 @@ def textDraw(text):
     elif f == 840: t = "Squash(BOTTOM)"
     elif f == 930: t = ""
     elif f == 990: t = "Dissolve()"
+    elif f == 1080: t = "MathEffect()"
+    elif f == 1170: t = ""
     if t is not None: text.config(data=t)
     
 
-Sketch((640,360)).play("Transitions Demo") #.capture.save("demo.s8v")
+Sketch((640,360)).play("Transitions Demo")#.capture.save("demo.s8v")
