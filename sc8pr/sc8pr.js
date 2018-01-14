@@ -63,6 +63,7 @@ function ajaxLoad(html, node) {
 	a.find("pre.Code").click(codeExample).attr("title", "Shift+Click to Copy to Clipboard");
 	document.title = $(html[0]).text();
 	highlight(node);
+	fitVideo();
 	scrollTo(0, 0);
 }
 
@@ -137,6 +138,7 @@ function resize() {
 		$("#Bottom").show();
 	}
 	fitImages();
+	fitVideo();
 }
 
 function navClick() {
@@ -189,12 +191,24 @@ window.onkeydown = function (ev) {
 /** Other Functions **/
 
 function fitImages() {
-	var imgs = $("article img.Fit");
 	var w = parseInt(0.96 * $("article").width());
+	var imgs = $("article img.Fit");
 	for (var i=0;i<imgs.length;i++) {
 		var img = $(imgs[i]);
 		var wMax = img[0].getAttribute("data-wide");
 		img.width(Math.min(w, wMax ? wMax : img[0].naturalWidth))
+	}
+}
+
+function fitVideo() {
+	var w = parseInt(0.96 * $("article").width());
+	var imgs = $("article iframe.Fit");
+	for (var i=0;i<imgs.length;i++) {
+		var img = $(imgs[i]);
+		var wMax = img[0].getAttribute("data-wide");
+		w = Math.min(w, wMax);
+		var h = w * img[0].height / img[0].width;
+		img.attr({width:w, height:h})
 	}
 }
 
