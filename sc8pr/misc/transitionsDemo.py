@@ -17,51 +17,45 @@
 
 from sc8pr import Sketch, RIGHT, BOTTOM
 from sc8pr.sprite import Sprite
-from sc8pr.misc.effect import Tint, PaintDrops, Wipe, WipeSlope, Squash, Dissolve, MathEffect
+from sc8pr.misc.effect import Tint, PaintDrops, Wipe, \
+    WipeSlope, Squash, Dissolve, MathEffect, ClockHand
 from sc8pr.text import Text, Font
 #from sc8pr.misc.video import Video
+
 
 def setup(sk):
     sk.frameRate = 30
 #    sk.capture = Video().config(interval=1)
-    x, y = sk.center
     alien = Sprite("aliens.png", 2, 2).config(
-        pos = (x, y),
+        pos = sk.center,
         height = sk.height / 2,
         costumeTime = 6,
     ).bind(ondraw=alienDraw)
     sk += alien.costumeSequence([0, 0, 0, 1, 2, 3, 3, 2, 1])
-    text = Text("Tint('green')").config(fontSize=30, font=Font.mono(), pos=(x, 32))
+    pos = alien.pos[0], 32
+    text = Text("Tint('green')").config(fontSize=30, font=Font.mono(), pos=pos)
     sk += text.bind(ondraw=textDraw)
     setEffect(alien)
 
 def setEffect(alien, n=0, f=0):
     "Modify transition effects for alien sprite"
-    if n == 0:
-        alien.effects = [
-            Tint("green").time(f, f+90),     # Transition in from green
-            Tint("red").time(f+270, f+150),  # Transition out to red
-            Tint().time(f+360, f+270),       # Fade out to transparent
-        ]
-    elif n == 1:
-        alien.effects = [
-            PaintDrops().time(f, f+90),                # Transition in
-            PaintDrops(drops=-64).time(f+240, f+150),  # Transition out
-        ]
-    elif n == 2:
-        alien.effects = [
-            Wipe(RIGHT).time(f, f+90),                 # Transition in
-            WipeSlope(-0.2).time(f+240, f+150),        # Transition out
-        ]
-    elif n == 3:
-        alien.effects = [
-            Squash(BOTTOM).time(f, f+90),              # Transition in
-            Dissolve().time(f+240, f+150),             # Transition out
-        ]
-    elif n == 4:
-        alien.effects = [
-            MathEffect().time(f, f+90)                 # Transition in
-        ]
+    alien.effects = [[
+        Tint("green").time(f, f+90),        # Transition in from green
+        Tint("red").time(f+270, f+150),     # Transition out to red
+        Tint().time(f+360, f+270)           # Fade out to transparent
+    ], [ # n = 1
+        PaintDrops().time(f, f+90),         # Transition in
+        PaintDrops(-8).time(f+240, f+150)   # Transition out
+    ], [ # n = 2
+        Wipe(RIGHT).time(f, f+90),          # Transition in
+        WipeSlope(-0.2).time(f+240, f+150)  # Transition out
+    ], [ # n = 3
+        Squash(BOTTOM).time(f, f+90),       # Transition in
+        Dissolve().time(f+240, f+150)       # Transition out
+    ], [ # n = 4
+        MathEffect().time(f, f+90),         # Transition out
+        ClockHand().time(f+240, f+150)]     # Transition in
+    ][n]
 
 def alienDraw(alien):
     "ONDRAW event handler for alien sprite"
@@ -71,27 +65,16 @@ def alienDraw(alien):
     elif f == 600: setEffect(alien, 2, f)
     elif f == 840: setEffect(alien, 3, f)
     elif f == 1080: setEffect(alien, 4, f)
-    elif f == 1320: alien.sketch.quit = True
+    elif f == 1350: alien.sketch.quit = True
 
 def textDraw(text):
     "ONDRAW event handler for text"
+    caption = {90:"", 150:"Tint('red')", 270:"Tint()", 360:"PaintDrops()",
+        450:"", 510:"PaintDrops(-8)", 600:"Wipe(RIGHT)", 690:"",
+        750:"WipeSlope(-0.2)", 840:"Squash(BOTTOM)", 930:"",
+        990:"Dissolve()", 1080:"MathEffect()", 1170:"", 1230:"ClockHand()",
+        1320:""}
     f = text.sketch.frameCount
-    t = None
-    if f == 90: t = ""
-    elif f == 150: t = "Tint('red')"
-    elif f == 270: t = "Tint()"
-    elif f == 360: t = "PaintDrops()"
-    elif f == 450: t = ""
-    elif f == 510: t = "PaintDrops(drops=-64)"
-    elif f == 600: t = "Wipe(RIGHT)"
-    elif f == 690: t = ""
-    elif f == 750: t = "WipeSlope(-0.2)"
-    elif f == 840: t = "Squash(BOTTOM)"
-    elif f == 930: t = ""
-    elif f == 990: t = "Dissolve()"
-    elif f == 1080: t = "MathEffect()"
-    elif f == 1170: t = ""
-    if t is not None: text.config(data=t)
-    
+    if f in caption: text.config(data=caption[f])
 
 Sketch((640,360)).play("Transitions Demo")#.capture.save("demo.s8v")
