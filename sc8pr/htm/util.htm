@@ -40,6 +40,7 @@
 		<div class="Indent">
 		<p><code class="Hilite">size</code>: A 2-tuple or 2-list specifiying the size within which to choose a random pixel. Will also accept an object that has a <code>size</code> attribute.</p>
 		</div>
+	<p><code><span class="Hilite">rangef</span>(x, xEnd, dx)</code> → <code>generator</code>: A <code>float</code> version of Python’s <code>range</code> function.</p>
 	<p><code><span class="Hilite">resolvePath</span>(rel="", start=__file__, isDir=False)</code> → <code>str</code>: Returns an absolute path.</p>
 		<div class="Indent">
 		<p><code class="Hilite">rel</code>: A <code>str</code> specifying the relative path.</p>
@@ -65,11 +66,11 @@
 		<p><code class="Hilite">weight</code>: The border thickness in pixels.</p>
 		<p><code class="Hilite">padding</code>: Number of pixels of padding to add around the surface.</p>
 		</div>
-	<p><code><span class="Hilite" id="surfaceData">surfaceData</span>(srf, compress=zlib.compress)</code> → <code>(bytes, bytes)</code>: Converts a surface to compressed binary data. The compressed data is returned as the first element of a tuple along with a 12-byte structure containing the mode, width, and height. The surface can be reconstructed by the <code>CachedSurface</code> constructor.</p>
+	<!--p><code><span class="Hilite" id="surfaceData">surfaceData</span>(srf, compress=zlib.compress)</code> → <code>(bytes, bytes)</code>: Converts a surface to compressed binary data. The compressed data is returned as the first element of a tuple along with a 12-byte structure containing the mode, width, and height. The surface can be reconstructed by the <code>CachedSurface</code> constructor.</p>
 		<div class="Indent">
 		<p><code class="Hilite">srf</code>: The surface; or an object with an <code>image</code> attribute that returns a surface.</p>
 		<p><code class="Hilite">compress</code>: A function to compress the <code>bytes</code> data.</p>
-		</div>
+		</div-->
 	<p><code><span class="Hilite">tile</span>(srf, tile=0, cols=1, rows=1, padding=0)</code> → <code>pygame.Surface</code>: Return a subsurface representing one “tile” of a spritesheet or similar grid image.</p>
 		<div class="Indent">
 		<p><code class="Hilite">srf</code>: The original surface.</p>
