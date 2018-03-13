@@ -66,11 +66,7 @@
 		<p><code class="Hilite">weight</code>: The border thickness in pixels.</p>
 		<p><code class="Hilite">padding</code>: Number of pixels of padding to add around the surface.</p>
 		</div>
-	<!--p><code><span class="Hilite" id="surfaceData">surfaceData</span>(srf, compress=zlib.compress)</code> → <code>(bytes, bytes)</code>: Converts a surface to compressed binary data. The compressed data is returned as the first element of a tuple along with a 12-byte structure containing the mode, width, and height. The surface can be reconstructed by the <code>CachedSurface</code> constructor.</p>
-		<div class="Indent">
-		<p><code class="Hilite">srf</code>: The surface; or an object with an <code>image</code> attribute that returns a surface.</p>
-		<p><code class="Hilite">compress</code>: A function to compress the <code>bytes</code> data.</p>
-		</div-->
+	<p><code><span class="Hilite">tall</span>(w, h)</code> → <code>int</code>: Returns <code>1</code> if <code>h</code> is greater than <code>w</code> (portait orientation) otherwise <code>0</code>.</p>
 	<p><code><span class="Hilite">tile</span>(srf, tile=0, cols=1, rows=1, padding=0)</code> → <code>pygame.Surface</code>: Return a subsurface representing one “tile” of a spritesheet or similar grid image.</p>
 		<div class="Indent">
 		<p><code class="Hilite">srf</code>: The original surface.</p>

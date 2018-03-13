@@ -29,7 +29,7 @@
 </div>
 
 <h4>Static Methods</h4><div class="Indent">
-	<p><code><span class="Hilite">fromBytes</span>(data)</code> → <code>Image</code>: Create an <ocde>Image</code> instance from binary data; see <code><a href="javascript:goNode('util')">sc8pr.util</a>.surfaceData</code>.</p>
+	<p><code><span class="Hilite">fromBytes</span>(data)</code> → <code>Image</code>: Create an <code>Image</code> instance from binary data; the last 12 bytes of the data contain the format, width, and height of the image as big-endian unsigned integers. The formats are: 0 (RGB, uncompressed), 1 (RGBA, uncompressed), 2 (RGB, compressed with <code>zlib</code>), 3 (RGBA, compressed with <code>zlib</code>).</p>
 
 </div>
 
