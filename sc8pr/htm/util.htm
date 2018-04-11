@@ -6,11 +6,12 @@
 </div>
 
 <h4>Functions</h4><div class="Indent">
-	<p><code class="Hilite"><span class="Hilite">drawBorder</span>(srf, color=(0,0,0), weight=1)</code> → <code>None</code>: Draws a border in place on the surface.</p>
+	<p><code class="Hilite"><span class="Hilite">drawBorder</span>(srf, color=(0,0,0), weight=1, r=None)</code> → <code>None</code>: Draws a border in place on the surface.</p>
 		<div class="Indent">
 		<p><code class="Hilite">srf</code>: A <code>pygame.Surface</code> to draw on.</p>
 		<p><code class="Hilite">color</code>: A <code>pygame.Color</code> instance or data that can be passed to the <code>rgba</code> function to return a single color.</p>
 		<p><code class="Hilite">weight</code>: The border thickness in pixels.</p>
+		<p><code class="Hilite">r</code>: A <code>pygame.Rect</code> specifying a border location other than the edge. <b class="Comment">[Added in v2.0.1]</b></p>
 		</div>
 	<p><code class="Hilite"><span class="Hilite">fileExt</span>(fn, ext)</code> → <code>str</code>: Add a file extension to the file name if it does not already have an acceptable extension.</p>
 		<div class="Indent">
