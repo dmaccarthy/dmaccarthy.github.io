@@ -6,12 +6,12 @@
 	<p><code><span class="Hilite">Canvas</span>(image, bg=None)</code></p>
 		<div class="Indent">
 		<p><code class="Hilite">image</code>: An <code>Image</code> instance to be used for the canvas background, or a 2-tuple specifying the canvas size if no image is provided. If an image is provided, the image size will be used as the canvas size.</p>
-		<p><code class="Hilite">bg</code>: A color to use as the background if no image is provided. If an image is provided and contains transparency, the image will be drawn over the background color. If a transparent color is used as a background with no image, the transparency will be respected when converting the canvas to an image but will be ignored when drawing the canvas to the sketch; you must use an image if you want the canvas to be drawn with a partially tansparent background..</p>
+		<p><code class="Hilite">bg</code>: A color to use as the background if no image is provided. If an image is provided and contains transparency, the image will be drawn over the background color. If a transparent color is used as a background with no image, the transparency will be respected when converting the canvas to an image but will be ignored when drawing the canvas to the sketch; you must use an image if you want the canvas to be drawn with a partially transparent background.</p>
 		</div>
 </div>
 
 <h4>Assignable Properties</h4><div class="Indent">
-	<p><code class="Hilite">bg</code>: A color or image specifying the canvas background. If the background image has a different aspect ratio than the canvas, the image will be scaled.</p>
+	<p><code class="Hilite">bg</code>: A color or <code><a class="Hilite" href="javascript:goNode('image')">Image</a></code> instance specifying the canvas background. If the background image has a different aspect ratio than the canvas, the image will be scaled.</p>
 	<p><code class="Hilite">border</code>: The color of the border to be drawn around the canvas; default is black.</p>
 	<p><code class="Hilite">weight</code>: The thickness in pixels of the canvas border; default is <code>0</code> (no border).</p>
 </div>
