@@ -34,6 +34,11 @@
 <h4>Instance Methods</h4><div class="Indent">
 
 	<p><code><span class="Hilite">anon</span>()</code> → <code>self</code>: Anonymize the graphic by deleting its name (key).</p>
+	<p><code><span class="Hilite">at</span>(pos, r=None)</code> → <code>pygame.Color</code> or <code>None</code>: Determines the pixel color at the given position. This method can only be called on subclasses that implement the <code>image</code> property. <b class="Comment">[Added in v2.0.1]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">pos</code>: A 2-tuple specifying the pixel coordinates.</p>
+		<p><code class="Hilite">r</code>: A <code>pygame.Rect</code> describing where the position is relative to. If omitted, the method will use the graphic’s blit rectangle.</p>
+		</div>
 	<p><code><span class="Hilite">bind</span>(*args, **kwargs)</code> → <code>self</code>: Bind functions as methods of the instance.  Functions passed as positional arguments will be bound using the function name as the attribute name. Functions passed by keyword will be bound using the keyword as the attribute name.</p>
 	<p><code><span class="Hilite">blitPosition</span>(offset, blitSize)</code> → <code>tuple</code>: Calculates the sketch coordinates where the graphic is to be drawn; called by <code>calcBlitRect</code>.</p>
 		<div class="Indent">
