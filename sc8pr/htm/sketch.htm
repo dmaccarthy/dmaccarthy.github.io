@@ -17,7 +17,16 @@
 	<p><code class="Hilite">frameCount</code>: The number of animation frames drawn; incremented at the beginning on each drawing cycle.</p>
 	<p><code class="Hilite">frameRate</code>: The approximate number of anmation frames to draw each second; default <code>60</code>.</p>
 	<p><code class="Hilite">quit</code>: A <code>bool</code> that can be set to <code>True</code> to terminate the animation.</p>
-	<p><code class="Hilite">realTime</code>: [<b>Experimental</b>] A <code>bool</code> specifying whether to attempt to correct for actual frame rates slower than requested by the <code>frameRate</code> property; default <code>False</code>.</p>
+	<p><code class="Hilite">realTime</code>: A <code>bool</code> specifying whether to attempt to correct for actual frame rates slower than requested by the <code>frameRate</code> property; default <code>False</code>. <b class="Comment">[Experimental]</b></p>
+</div>
+
+<h4>Read-Only Properties</h4><div class="Indent">
+	<p><code class="Hilite">evMgr</code>: An object that manages the sketch’s event loop. This object has the following read-only properties:</p>
+	<div class="Indent">
+	<p><code class="Hilite">drag</code>: A reference to the <code>Graphic</code> instance being dragged, or <code>None</code>.</p>
+	<p><code class="Hilite">focus</code>: A reference to the currently-focused <code>Graphic</code> instance.</p>
+	<p><code class="Hilite">hover</code>: A reference to the <code>Graphic</code> instance over which the mouse is currently hovering; if the mouse leaves the sketch window, <code>hover</code> will refer to the sketch itself.</p>
+	</div>
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">

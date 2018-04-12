@@ -1,8 +1,20 @@
 ﻿<article><h1><code>sc8pr</code> Reference</h1>
-<p>The <em>core</em> of <code>sc8pr</code> is defined in the <code>sc8pr</code>, <code>sc8pr.geom</code> and <code>sc8pr.util</code> modules. The <a href="javascript:goNode('init')"><code>sc8pr</code></a> module defines essential classes such as <code>Sketch</code>, <code>Image</code>, and <code>Canvas</code>. The <a href="javascript:goNode('geom')"><code>sc8pr.geom</code></a> module defines various 2D geometry-related functions, while <a href="javascript:goNode('util')"><code>sc8pr.util</code></a> defines several helper and general purpose functions.</p>
 
-<p>Additional modules in the main package define additional graphic classes. The <a href="javascript:goNode('shape')"><code>sc8pr.shape</code></a> module defines the <code>Line</code>, <code>Circle</code>, <code>Polygon</code>, and <code>Arrow</code> classes. The <code>Text</code> and <code>Robot</code> classes are defined in the <a href="javascript:goNode('text')"><code>sc8pr.text</code></a> and <a href="javascript:goNode('robot')"><code>sc8pr.robot</code></a> modules respectively.</p>
+<h4>Essentials</h4><ul>
+<li>The <a href="javascript:goNode('init')"><code>sc8pr</code></a> module defines essential classes such as <code>Sketch</code>, <code>Image</code>, and <code>Canvas</code>.</li>
+<li>The <a href="javascript:goNode('geom')"><code>sc8pr.geom</code></a> module defines various 2D geometry-related functions.</li>
+<li>The <a href="javascript:goNode('util')"><code>sc8pr.util</code></a> module defines several helper and general purpose functions.</li>
+</ul>
 
-<p>The <a href="javascript:goNode('gui')"><code>sc8pr.gui</code></a> subpackage defines additional graphics classes for creating Graphical User Interface controls. The <a href="javascript:goNode('misc')"><code>sc8pr.misc</code></a> subpackage defines additional features such as video effects and the <code>Video</code>, <code>Plot</code>, and <code>Locus</code> graphics classes.</p>
+<h4>Common</h4><ul>
+<li>The <a href="javascript:goNode('sprite')"><code>sc8pr.sprite</code></a> module defines the <code>Sprite</code> class for creating interactive, animated graphics.</li>
+<li>The <a href="javascript:goNode('shape')"><code>sc8pr.shape</code></a> module defines the <code>Line</code>, <code>Circle</code>, <code>Polygon</code>, and <code>Arrow</code> classes and their corresponding sprites.</li>
+<li>The <a href="javascript:goNode('text')"><code>sc8pr.text</code></a> module defines the <code>Text</code> and <code>Font</code> classes for adding text to your sketch.</li>
+<li>The <a href="javascript:goNode('robot_class')"><code>sc8pr.robot</code></a> module defines features for creating robotics simulations.</li>
+<li>The <a href="javascript:goNode('gui')"><code>sc8pr.gui</code></a> package defines additional graphics classes for creating Graphical User Interface controls.</li></ul>
+
+<h4>Extras</h4>
+<ul><li>The <a href="javascript:goNode('misc')"><code>sc8pr.misc</code></a> package defines additional features such as video effects and the <code>Video</code>, <code>Plot</code>, and <code>Locus</code> graphics classes. This package also includes experimental features that may be included in future versions of <code>sc8pr</code>.</li>
+<li>The <a href="javascript:goNode('examples')"><code>sc8pr.examples</code></a> package includes example programs that make use of <code>sc8pr</code>. Some of these examples may have additional dependencies (such as <code>Pillow</code> or <code>imageio</code>) and some make use of experimental <code>sc8pr</code> features.</li></ul>
 
 </article>

@@ -1,0 +1,21 @@
+﻿<article><h1><code>sc8pr.gui.menu.Menu</code> Class</h1>
+
+<p>The <code>Menu</code> class is a <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> subclass for stacking buttons into a popup menu.</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Menu</span>(items, size=(192,24), weight=1, padding=6, options=2, txtConfig={})</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">items</code>: A <code>list</code> or <code>tuple</code> describing the buttons. Each item can be a string specifying the button text, or a 3-tuple containing the button text and a left and right image (or <code>None</code>). The constant <code>R_TRIANGLE</code> can be used in place of the right image to specify a triangle pointing to the right. The <code>items</code> argument can also be just an <code>int</code> specifying the number of buttons, leaving the button content to be added later.</p>
+		<p><code class="Hilite">size</code>: The size of each button as a 2-tuple.</p>
+		<p><code class="Hilite">weight</code>: Thickness of the menu border in pixels.</p>
+		<p><code class="Hilite">padding</code>: Pixels of space to add around the buttons.</p>
+		<p><code class="Hilite">options</code>: Data to be passed each time the <a class="Hilite Code" href="javascript:goNode('button_class')">Button</a> constructor is called.</p>
+		<p><code class="Hilite">txtConfig</code>: A dictionary containing text options such as <code>font</code>, <code>fontSize</code> and <code>color</code>. See the <a class="Hilite Code" href="javascript:goNode('text_class')">Text</a> class for details.</p>
+		</div>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">buttonNumber</span>(target)</code> → <code>int</code>: Return the layer (index) of the button that contains the target <code>Graphic</code> instance. This method can be used to identify which button was involved in various mouse events.</p>
+</div>
+
+</article>
