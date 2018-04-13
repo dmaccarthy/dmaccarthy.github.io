@@ -1,0 +1,21 @@
+﻿<article><h1><code>sc8pr.misc.latex</code> Module</h1>
+
+<p><span class="Comment"><b>Added in v2.0.1</b>. The <code>latex</code> module in v2.0.0 was experimental and does not conform to this API!</span></p>
+
+<p>This module renders LaTeX markup as images using <a href="http://www.codecogs.com/latex/about.php">codecogs.com</a>. This example renders the equations for the area and circumference of a circle as a list of two <code>Image</code> instances:</p>
+<pre class="Code">eqns = "A = \\pi r^2", "C = 2 \\pi r"
+imgs = render(*eqns, dpi=256, onload=Image)</pre>
+
+<h4>Functions</h4>
+<div class="Indent"><p><code><span class="Hilite">render</span>(*args, **kwargs)</code>: Returns a single image or a list of images, depending on the number of positional arguments supplied. The format of the images is determined by the keyword arguments.</p>
+	<div class="Indent">
+	<p><code class="Hilite">*args</code>: A string or sequence of strings containing the LaTeX markup to be rendered.</p>
+	<p>The following optional keyword arguments are supported:</p>
+	<div class="Indent">
+		<p><code class="Hilite">dpi</code>: The “dots per inch” argument (default <code>128</code>) determines the image size.</p>
+		<p><code class="Hilite">raw</code>: The codecogs server returns the image as PNG-formatted <code>bytes</code>. By default, this data will be converted to a <code>pygame.Surface</code> instance. Set the <code>raw</code> argument to <code>True</code> to prevent this conversion.</p>
+		<p><code class="Hilite">onload</code>: This is a callback to perform additional processing on each image. Setting this to <code>Image</code> (as in the example above) will convert the rendering to an <code>Image</code> instance. You can provide a custom callback that takes a <code>bytes</code> or <code>pygame.Surface</code> instance (depending on the value of <code>raw</code>) as its argument.</p>
+	</div></div>
+</div>
+</article></body>
+</html>
