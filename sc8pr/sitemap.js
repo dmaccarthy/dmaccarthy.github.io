@@ -35,7 +35,9 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 		]},
 		{title:"sc8pr.misc.*", link:"misc", pages:[
 			{title:".effect", link:"effect"},
-			{title:".latex", link:"latex"},
+			{title:".latex", link:"latex", pages:[
+				{title:"class LatexCache", link:"latexcache"},
+			]},
 /*			{title:"class Grabber", link:"grabber"},
 			{title:"class Locus", link:"locus"},
 			{title:"class Plot", link:"plot_class"},
