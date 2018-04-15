@@ -2,7 +2,7 @@
 
 <p><span class="Comment"><b>Added in v2.0.1</b>. The <code>latex</code> module in v2.0.0 was experimental and does not conform to this API!</span></p>
 
-<p>This module renders LaTeX markup as images using <a href="http://www.codecogs.com/latex/about.php">codecogs.com</a>. The reulting images can be cached in a local folder. This example renders the equations for the area and circumference of a circle as a list of two <code>Image</code> instances:</p>
+<p>This module renders LaTeX markup as images using <a href="http://www.codecogs.com/latex/about.php">codecogs.com</a>. The reulting images can be cached in a local folder.</p>
 
 <h4>Classes</h4>
 <div class="Indent"><p><code>CodeCogs</code>: This class is for sending requests and receiving responses from the codecogs server. Applications should not need to use the class directly.</p></div>
@@ -10,8 +10,8 @@
 
 <h4>Functions</h4>
 <div class="Indent"><p><code><span class="Hilite">render</span>(*args, **kwargs)</code>: Use this function to render LaTeX without caching. Returns a single image or a list of images, depending on the number of positional arguments supplied. The format of the images is determined by the keyword arguments. Usage example:</p>
-<pre class="Code">eqns = "A = \\pi r^2", "C = 2 \\pi r"
-imgs = render(*eqns, dpi=256, onload=Image)</pre>
+<pre class="Code">latex = "A = \\pi r^2", "C = 2 \\pi r"
+imgs = render(*latex, dpi=256, onload=Image)</pre>
 	<div class="Indent">
 	<p><code class="Hilite">*args</code>: A string or sequence of strings containing the LaTeX markup to be rendered.</p>
 	<p>The following optional keyword arguments are supported:</p>
