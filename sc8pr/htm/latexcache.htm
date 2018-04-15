@@ -1,9 +1,7 @@
 ﻿<article><h1><code>sc8pr.misc.latex.LatexCache</code> Class</h1>
-
 <p><span class="Comment"><b>Added in v2.0.1</b>.</span></p>
 
-
-<p>The <code>LatexCache</code> sends requests to the <a href="http://www.codecogs.com/latex/about.php">codescogs.com</a> server in order to render LaTeX markup as images. Responses are saved as PNG files in a local folder.</p>
+<p>The <code>LatexCache</code> class sends requests to the <a href="http://www.codecogs.com/latex/about.php">codescogs.com</a> server in order to render LaTeX markup as images. Responses are saved as PNG files in a local folder.</p>
 
 <h4>Constructor</h4><div class="Indent">
 	<p><code><span class="Hilite">LatexCache</span>(folder="./")</code></p>
@@ -31,10 +29,10 @@
 latex = "A = \\pi r^2", "C = 2 \\pi r"
 area, circum = lc.get(*latex, dpi=256, onload=Image)</pre>
 		<div class="Indent">
-		<p><code class="Hilite">args</code>: A sequence of strings containg the LaTeX to be rendered. It is faster to get many images at once rather than calling <code>get</code> multiple times since the <code>get</code> function sends all requests asynchronously.</p>
+		<p><code class="Hilite">args</code>: A sequence of strings containg the LaTeX to be rendered. It is faster to get many images at once rather than calling <code>get</code> multiple times since the <code>get</code> method sends all requests asynchronously.</p>
 		<p><code class="Hilite">dpi</code>: The “dots per inch” argument determines the image size. You can set this to <code>None</code> if you prefer to set the dpi within your LaTeX code.</p>
-		<p><code class="Hilite">update</code>: Specifies whether to save the modified index when rendering LaTeX not currently in the index. If calling <code>get</code> multiple times, you can improve the efficiency of your program by setting this to <code>False</code> and then calling the <code>update</code> method after all new renderings are complete.</p>
-		<p><code class="Hilite">onload</code>: A callback function specifying how to process the <code>pygame.Surface</code> instances that are returned. Set this to <code>sc8pr.Image</code> to use the images in your <code>sc8pr</code> application.</p>
+		<p><code class="Hilite">update</code>: Specifies whether to save the modified index when rendering LaTeX that has not yet been assigned an alias. If calling <code>get</code> multiple times, you can improve the efficiency of your program by setting this to <code>False</code> and then calling the <code>update</code> method after all new renderings are complete.</p>
+		<p><code class="Hilite">onload</code>: A callback function specifying how to process the <code>pygame.Surface</code> instances that are returned. Set this to <code>sc8pr.Image</code> (as in the usage example above) to use the images in your <code>sc8pr</code> application.</p>
 		</div>
 
 	<p><code><span class="Hilite">png</span>(alias, dpi=128)</code> → <code>str</code>: Returns the PNG file name for the specified alias and image resolution.</p>
