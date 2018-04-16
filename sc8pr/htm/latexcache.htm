@@ -10,18 +10,17 @@
 		</div>
 </div>
 
-<h4>Read-Only Properties</h4><div class="Indent"><p></p>
+<h4>Read-Only Properties</h4><div class="Indent">
 	<p><code class="Hilite">index</code>: A dictionary containing cached LaTeX markup as keys with an alias as the corresponding value. The alias is used to determine the names of the cached image files.</p>
 	<p><code class="Hilite">indexFile</code>: The name of the JSON file to which the cache index is saved.</p>
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
-	<p><code><span class="Hilite">cached</span>(alias, dpi=128)</code> → <code>bool</code>: Determines whether the specified alias exists in the cache at the specified resolution.</p>
+	<p><code><span class="Hilite">cached</span>(alias, dpi=128)</code> → <code>bool</code>: Determines whether the PNG file associated with the specified alias and resolution exists in the cache folder. Does not check whether the alias still exists in the cache index.</p>
 		<div class="Indent">
 		<p><code class="Hilite">alias</code>: A random sequence of characters assigned when the LaTeX markup is first rendered.</p>
 		<p><code class="Hilite">dpi</code>: The resolution of the image in “dots per inch”.</p>
 		</div>
-
 	<p><code><span class="Hilite">file</span>(name)</code> → <code>str</code>: Uses <code>os.path.abspath</code> to return the absolute path of a file relative to the cache folder.</p>
 
 	<p><code><span class="Hilite">get</span>(*args, dpi=128, update=True, onload=None)</code>: Renders LaTeX markup and caches the resulting images as PNG files. Returns an image or a list of images, depending on the number of positional arguments supplied. The format of the images is determined by the <code>onload</code> argument. Usage example:</p>
@@ -32,12 +31,26 @@ area, circum = lc.get(*latex, dpi=256, onload=Image)</pre>
 		<p><code class="Hilite">args</code>: A sequence of strings containg the LaTeX to be rendered. It is faster to fetch many images at once rather than calling <code>get</code> multiple times since the <code>get</code> method sends all requests asynchronously.</p>
 		<p><code class="Hilite">dpi</code>: The “dots per inch” argument determines the image size. You can set this to <code>None</code> if you prefer to set the dpi within your LaTeX code.</p>
 		<p><code class="Hilite">update</code>: Specifies whether to save the modified index when rendering LaTeX that has not yet been assigned an alias. If calling <code>get</code> multiple times, you can improve the efficiency of your program by setting this to <code>False</code> and then calling the <code>update</code> method after all new renderings are complete.</p>
-		<p><code class="Hilite">onload</code>: A callback function specifying how to process the <code>pygame.Surface</code> instances that are retrieved. If <code><a class="Hilite" href="javascript:goNode('latex')">sc8pr.misc.latex</a>.usePygame</code> is <code>False</code>, the images passed to <code>onload</code> will be PNG-encoded <code>bytes</code> instances rather than surfaces. Images are passed to <code>onload</code> individually. Set this to <code>sc8pr.Image</code> (as in the usage example above) to use the images in your <code>sc8pr</code> application.</p>
+		<p><code class="Hilite">onload</code>: A callback function specifying how to process the <code>pygame.Surface</code>* instances that are retrieved. Set this argument to <code>sc8pr.Image</code> (as in the usage example above) to use the images in your <code>sc8pr</code> application. Images are passed to <code>onload</code> individually. [*If <code><a class="Hilite" href="javascript:goNode('latex')">sc8pr.misc.latex</a>.usePygame</code> is <code>False</code>, the images passed to <code>onload</code> will be PNG-encoded <code>bytes</code> instances rather than surfaces.]</p>
 		</div>
 
-	<p><code><span class="Hilite">png</span>(alias, dpi=128)</code> → <code>str</code>: Returns the PNG file name for the specified alias and image resolution.</p>
+	<p><code><span class="Hilite">latex</span>(alias)</code> → <code>str</code> or <code>None</code>: Returns the LaTeX markup associated with the specified alias, or <code>None</code> if the alias is not found in the cache index.</p>
+	<p><code><span class="Hilite">png</span>(alias, dpi=128)</code> → <code>str</code>: Returns the PNG file name for the specified alias and image resolution. Setting <code>dpi="*"</code> will produce a pattern that matches all resolutions.</p>
 	<p><code><span class="Hilite">update</span>()</code> → <code>None</code>: Saves the cache index as a JSON file.</p>
 
+<h4>Removing from the Cache </h4><div class="Indent">
+	<p>To remove LaTeX markup from the cache without deleting any rendered images use the follow code, where <code>latex</code> refers to the LaTeX markup string to be removed and <code>lc</code> to the <code>LatexCache</code> instance:</p>
+	<pre class="Code">if latex in lc.index:
+    del lc.index[latex]
+    lc.update()</pre>
+	<p>To remove the item from the cache and delete all cached renderings:</p>
+	<pre class="Code">alias = lc.index.get(latex)
+if alias:
+    pattern = lc.png(alias, dpi="*")
+    for png in glob.glob(pattern): os.remove(png)
+    del lc.index[latex]
+    lc.update()</pre>
+</div>
 
 </div>
 
