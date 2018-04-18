@@ -1,0 +1,54 @@
+﻿<article><h1><code>sc8pr.misc.plot.Plot</code> Class</h1>
+
+<p><span class="Comment"><b>Added in v2.0.1</b>. The <code>Plot</code> class in v2.0.0 was experimental and does not conform to this API!</span></p>
+
+<p>The <code>Plot</code> class can be used to construct graphs or drawings based on equations or data. In addition to the attributes inherited from from <a class="Hilite Code" href="javascript:goNode('render')">Renderable</a> and <a class="Hilite Code" href="javascript:goNode('graphic')">Graphic</a> it defines the following...</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Plot</span>(size, lrbt)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">size</code>: A 2-tuple or 2-list specifying the plot size in pixels.</p>
+		<p><code class="Hilite">lrbt</code>: A <code>list</code> specifying the coordinates corresponding to the <i>left</i>, <i>right</i>, <i>bottom</i>, and <i>top</i> edges of the plot area. If <i>top</i> is not specified, it will be calculated so that the <i>y</i>-axis has the same scale as the <i>x</i>-axis. If <i>top</i> and <i>bottom</i> are both omitted, the axes will have the same scales and the <i>x</i>-axis will be positioned in the middle of the plot.</p>
+		</div>
+</div>
+
+<h4>Assignable Property</h4><div class="Indent">
+	<p><code><span class="Hilite">coords</span></code>: A 4-list specifying the <code>lrbt</code> coordinates set by the constructor (or later modified). When assigning new coordinates, the final two items of the list can be omitted as decribed for the constructor’s <code>lrbt</code> argument.</p>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">__delitem__</span>(k)</code> → <code>None</code>: Allow the use of the <code>del</code> operator to remove series from the plot.</p>
+		<div class="Indent">
+		<p><code class="Hilite">k</code>: The key or index identifying the series to delete.</p>
+		</div>
+	<p><code><span class="Hilite">__getitem__</span>(k)</code> → <code>Series</code>: Returns the <a class="Hilite Code" href="javascript:goNode('series')">Series</a> instance with the specified key or index. Raises an <code>KeyError</code> or <code>IndexError</code> if the argument does not correspond to any series.</p>
+	<p><code><span class="Hilite">__iter__</span>()</code> → <code>generator</code>: Allows iteration through the series keys.</p>
+	<p><code><span class="Hilite">__len__</span>()</code> → <code>int</code>: Enables the <code>len</code> function to determine the number of data series currently in the plot.</p>
+	<p><code><span class="Hilite">__setitem__</span>(k, s)</code> → <code>None</code>: Allows series to be added to the plot by dictionary-like assignment.</p>
+		<div class="Indent">
+		<p><code class="Hilite">k</code>: The key to associate with the series. If the key is already in use, the series associated with it will be removed in favour of the new series.</p>
+		<p><code class="Hilite">s</code>: A <code>Series</code> instance to add to the plot.</p>
+		</div>
+	<p><code><span class="Hilite">axis</span>(n=None, ends=None, stroke="black", weight=2)</code> → <code>self</code>: Adds one or both axes to the plot as a new series, using the key <code>_xaxis</code> or <code>_yaxis</code>.</p>
+		<div class="Indent">
+		<p><code class="Hilite">n</code>: Either <code>0</code> or <code>1</code>, to identify the <i>x</i>- or <i>y</i>-axis. If not specified, both axes are added.</p>
+		<p><code class="Hilite">ends</code>: A 2-tuple specifying the starting and ending values of the axis. If omitted, the axis will be drawn over the entire plot area.</p>
+		<p><code class="Hilite">stroke</code>: The color of the line.</p>
+		<p><code class="Hilite">weight</code>: The thickness of the line.</p>
+		</div>
+	<p><code><span class="Hilite">pixelCoords</span>(xy)</code> → <code>tuple</code>: Calculates pixel coordinates relative to the plot.</p>
+		<div class="Indent">
+		<p><code class="Hilite">xy</code>: A 2-tuple describing a position using the plot’s coordinate system.</p>
+		</div>
+
+<!--h4>Static Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">xtick</span>(param, marker=9, **kwargs)</code> → <code>Series</code>: Creates a series representing the tick marks along the <i>x</i>-axis.</p>
+		<div class="Indent">
+		<p><code class="Hilite">param</code>: A 3-tuple or list specifying the start value, end value, and interval for the tick marks.</p>
+		<p><code class="Hilite">marker</code>: .</p>
+		<p><code class="Hilite"></code>: .</p>
+		</div-->
+		
+</div>
+
+</article>

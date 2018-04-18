@@ -39,9 +39,9 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 				{title:"class LatexCache", link:"latexcache"},
 			]},
 /*			{title:"class Grabber", link:"grabber"},
-			{title:"class Locus", link:"locus"},
+			{title:"class Locus", link:"locus"},*/
 			{title:"class Plot", link:"plot_class"},
-			{title:"class ProgressBar", link:"progressbar"},*/
+//			{title:"class ProgressBar", link:"progressbar"},
 			{title:"class Video", link:"video_class"},
 		]},
 		{title:"sc8pr.robot", link:"robot_class"},
