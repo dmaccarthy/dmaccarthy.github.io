@@ -1,0 +1,46 @@
+﻿<article><h1><code>sc8pr.misc.plot.Series</code> Class</h1>
+<p><span class="Comment"><b>Added in v2.0.1</b>. The <code>Series</code> class in v2.0.0 was experimental and does not conform to this API!</span></p>
+
+<p>Each <code>Series</code> instance represents a single data series as either a sequence of points or a function that generates such points. Series can be added to a <a class="Hilite Code" href="javascript:goNode('plot_class')">Plot</a> instance. The plot will recognize that it needs to be re-rendered whenver a series is added or removed. However, when a series is modified after being added to the plot, you will need to set the <code>Plot</code> instance’s <code>stale</code> attribute to <code>True</code> to ensure re-rendering.</p>
+
+<p>Events are not sent to <code>Series</code> instances for handling; events go to the <code>Plot</code> instance to which the series belongs.</p>
+<p>The <code>Series</code> class defines the following attributes...</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Series</span>(x, y=None, param=None)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">x</code>, <code class="Hilite">y</code>: The data can be provided as a single list of points (2-tuples or 2-lists), or as two separate sequences which specify the <i>x</i> and <i>y</i> data respectively. Alternatively, you can provide a function describing a parameterized path.</p>
+		<p><code class="Hilite">param</code>: This argument is only used when the data series is described by a function. The argument is a 3-list or 3-tuple specifying the starting and ending values of the path parameter, and the number of steps.</p>
+		</div>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">__getitem__</span>(i)</code> → <code>list</code> or <code>tuple</code>: Returns the coordinates of the data point with index <code>i</code>. Raises an exception when the series is generated from a function rather than a sequence of points.</p>
+	<p><code><span class="Hilite">__setitem__</span>(i, pt)</code> → <code>None</code>: Replace the data point at the given index by new data. Raises an exception when the series is generated from a function rather than a sequence of points.</p>
+		<div class="Indent">
+		<p><code class="Hilite">i</code>: The index of the item being set.</p>
+		<p><code class="Hilite">pt</code>: A 2-tuple or 2-list containing the coordinates of the data point.</p>
+		</div>
+	<p><code><span class="Hilite">dataGen</span>(n)</code> → <code>generator</code>: A generator for the sequence of either <i>x</i> or <i>y</i> values; works with equation-generated data as well as data points.</p>
+		<div class="Indent">
+		<p><code class="Hilite">n</code>: <code>0</code> for <i>x</i>, or <code>1</code> for <i>y</i>.</p>
+		</div>
+	<p><code><span class="Hilite">pointGen</span>()</code> → <code>generator</code>: A generator for the sequence of data points; works with equation-generated data as well as data points.</p>
+	<p><code><span class="Hilite">regression</span>(model=leastSq)</code> → <code>(lambda, tuple)</code>: Performs a regression on the data using the supplied model. Returns the fit equation as a lambda and the fit coefficients as a tuple. See <code><a class="Hilite" href="javascript:goNode('plot')">sc8pr.misc.plot</a>.leastSq</code>.</p>
+	<p><code><span class="Hilite">scaleMarkers</span>(s)</code> → <code>None</code>: Adjust the size of all marker graphics by a factor <code>s</code>. This method is called automatically when the plot is resized.</p>
+	<p><code><span class="Hilite">transform</span>(**kwargs)</code> → <code>self</code>: Modifies all points in the series using <code><a class="Hilite" href="javascript:goNode('geom')">sc8pr.geom</a>.transform2dGen</code>. Raises an exception when the series is generated from a function rather than a sequence of points.</p>
+		<div class="Indent">
+		<p><code class="Hilite">kwargs</code>: Arguments passed to <code>transform2dGen</code>.</p>
+		</div></div>
+
+<h4>Read-Only Properties</h4><div class="Indent">
+	<p><code class="Hilite">pointList</code>: A list of data points; works with equation-generated data as well as data points.</p>
+	<p><code class="Hilite">x</code>: A list containing the independent variable values; works with equation-generated data as well as data points.</p>
+	<p><code class="Hilite">y</code>: A list containing the dependent variable values; works with equation-generated data as well as data points.</p>
+</div>
+
+<h4>Assignable Properties</h4><div class="Indent">
+	<p><code class="Hilite">marker</code>: A <code>Graphic</code> instance representing the marker to be used when drawing the data points, or a list or tuple of such markers. Marker graphics do not respond to <code>ondraw</code> or other events since they do not belong to a canvas. The default marker is <code>None</code>, in which case the series appearance is determined by the <code>stroke</code> and <code>weight</code> properties.</p>
+</div>
+
+</article>

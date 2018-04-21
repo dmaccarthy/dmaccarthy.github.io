@@ -1,0 +1,36 @@
+﻿<article><h1><code>sc8pr.misc.plot</code> Module</h1>
+<p><span class="Comment"><b>Added in v2.0.1</b>. The <code>plot</code> module in v2.0.0 was experimental and does not conform to this API!</span></p>
+
+<h4>Classes</h4>
+<div class="Indent"><p><code><a class="Hilite" href="javascript:goNode('locus')">Locus</a> (<a class="Hilite" href="javascript:goNode('shape')">Shape</a>)</code>: Class for drawing functions or parameterized paths directly onto a canvas.</p>
+<p><code><a class="Hilite" href="javascript:goNode('plot_class')">Plot</a> (<a class="Hilite" href="javascript:goNode('plot_class')">Renderable</a>)</code>: Class for plotting series of data and/or equations, with optional axes and using an arbitrary coordinate system.</p>
+<p><code><span class="Hilite">PlotSprite</span> (Plot, <a class="Hilite" href="javascript:goNode('base')">BaseSprite</a>)</code>: Does not define any additional attributes.</p>
+<p><code><a class="Hilite" href="javascript:goNode('series')">Series</a></code>: Class for representing data as a sequence of points or as an equation.</p></div>
+
+<h4>Functions</h4><div class="Indent">
+	<p><code><span class="Hilite">coordTr</span>(lrbt, size)</code> → <code>lambda</code>: Returns a coordinate transformation for mapping coordinates within a coordinate system onto pixel coordinates.</p>
+	<div class="Indent">
+		<p><code class="Hilite">lrbt</code>: A 4-tuple or 4-list specifying the coordinates corresponding to the <i>left</i>, <i>right</i>, <i>bottom</i>, and <i>top</i> edges of the canvas.
+		<p><code class="Hilite">size</code>: A 2-tuple or 2-list specifying the canvas size in pixels.</p>
+	</div>
+	<p><code><span class="Hilite">leastSq</span>(x, y)</code> → <code>(lambda, (float, float))</code>: Performs a least squares fit on the data provided. Returns the model equation as a lambda, and the slope and <i>y</i>-intercept as a 2-tuple.</p>
+	<div class="Indent">
+		<p><code class="Hilite">x</code>: A list or tuple containing the independent variable.
+		<p><code class="Hilite">y</code>: A list or tuple containing the dependent variable.
+	</div>
+	<p><code><span class="Hilite">locus</span>(func, param, **kwargs)</code> → <code>generator</code>: Generates a sequence of points along a 
+parameterized path. This example prints a sequence of four points on the function <i>y</i> = 0.25 <i>x</i><sup>2</sup>:</p>
+<pre class="Code">def f(x, A): return A * x * x
+
+for pt in locus(f, [0, 12, 3], A=0.25):
+    print(pt)</pre>
+	<div class="Indent">
+		<p><code class="Hilite">func</code>: A function defining the relation to be plotted; may be of the form <code>f</code>: <i>x</i> → <i>y</i> or <code>f</code>: <i>t</i> → (<i>x, y</i>).
+		<p><code class="Hilite">param</code>: A 3-list or 3-tuple specifying the starting and ending values of the parameter, and the number of steps.
+		<p><code class="Hilite">kwargs</code>: Additional variables to be passed to <code>func</code> each time it is called.
+	</div>
+
+</div>
+
+</article></body>
+</html>
