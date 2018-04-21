@@ -13,7 +13,8 @@
 		<p><code class="Hilite">lrbt</code>: A 4-tuple or 4-list specifying the coordinates corresponding to the <i>left</i>, <i>right</i>, <i>bottom</i>, and <i>top</i> edges of the canvas.
 		<p><code class="Hilite">size</code>: A 2-tuple or 2-list specifying the canvas size in pixels.</p>
 	</div>
-	<p><code><span class="Hilite">leastSq</span>(x, y)</code> → <code>(lambda, (float, float))</code>: Performs a least squares fit on the data provided. Returns the model equation as a lambda, and the slope and <i>y</i>-intercept as a 2-tuple.</p>
+	<p><code><span class="Hilite">expon</span>(x, y)</code> → <code>(lambda, (float, float))</code>: Performs a least squares fit for an exponential model. Arguments and return value are the same as for the <code>leastSq</code> function.</p>
+	<p><code><span class="Hilite">leastSq</span>(x, y)</code> → <code>(lambda, (float, float))</code>: Performs a least squares fit on the data provided. Returns the linear model equation as a lambda, and the fit coefficients as a 2-tuple.</p>
 	<div class="Indent">
 		<p><code class="Hilite">x</code>: A list or tuple containing the independent variable.
 		<p><code class="Hilite">y</code>: A list or tuple containing the dependent variable.
@@ -29,6 +30,7 @@ for pt in locus(f, [0, 12, 3], A=0.25):
 		<p><code class="Hilite">param</code>: A 3-list or 3-tuple specifying the starting and ending values of the parameter, and the number of steps.
 		<p><code class="Hilite">kwargs</code>: Additional variables to be passed to <code>func</code> each time it is called.
 	</div>
+	<p><code><span class="Hilite">power</span>(x, y)</code> → <code>(lambda, (float, float))</code>: Performs a least squares fit for a power model. Arguments and return value are the same as for the <code>leastSq</code> function.</p>
 
 </div>
 
