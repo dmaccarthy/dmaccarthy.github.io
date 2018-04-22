@@ -28,8 +28,8 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 		{title:"sc8pr.gui.*", link:"gui", pages:[
 			{title:"class Button", link:"button_class"},
 			{title:"class Menu", link:"menu_class"},
-//			{title:"class Options", link:"options_class"},
-//			{title:"class Radio", link:""},
+			{title:"class Options", link:"options"},
+			{title:"class Radio", link:"radio"},
 //			{title:"class Slider", link:""},
 			{title:"class TextInput", link:"ti_class"}
 		]},
