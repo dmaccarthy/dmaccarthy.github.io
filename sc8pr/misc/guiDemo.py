@@ -1,4 +1,4 @@
-# Copyright 2017 D.G. MacCarthy <http://dmaccarthy.github.io>
+# Copyright 2017-2018 D.G. MacCarthy <http://dmaccarthy.github.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -71,13 +71,13 @@ def setup(sk):
     y += down(cv)
     cfg = {"font":FONT, "fontSize":14}
     text = "Option A", "Option B", "Option C"
-    radio = Radio(text, **cfg).bind(onchange=radioChange)
+    radio = Radio(text, txtConfig=cfg).bind(onchange=radioChange)
     cv["ABC"] = radio.config(pos=(x,y), anchor=TOP, selected=1)
 
     # Add an Options box
     y += down(cv)
     text = "Option X", "Option Y", "Option Z"
-    radio = Options(text, **cfg).config(pos=(x,y), anchor=TOP)
+    radio = Options(text, txtConfig=cfg).config(pos=(x,y), anchor=TOP)
     cv["XYZ"] = radio.bind(onaction=optionsChange)
 
     # Add Buttons
