@@ -19,7 +19,6 @@
 	<p><code><span class="Hilite">copy</span>()</code> → <code>Image</code>: Copy the pixel data and wrap it as a new <code>Image</code> instance. This method applies any scaling and rotation but does not apply any <code>effects</code>. Use the <code>snapshot</code> method to apply effects.</p>
 	<p><code><span class="Hilite">dumpCache</span>()</code> → <code>None</code>: Discards the cached pixel data for the scaled and/or rotated image. This should be called when the original pixel data of the image is modified.</p>
 	<p><code><span class="Hilite">save</span>(fn)</code> → <code>self</code>: Saves the original (unscaled, unrotated) pixel data as an image file.  To save the transformed image, call the <code>copy</code> or <code>snapshot</code> methods before saving.</p>
-
 	<p><code><span class="Hilite">tiles</span>(cols=1, rows=1, flip=0, padding=0)</code> → <code>list</code>: Slices the image into rectangular “tiles”.</p>
 		<div class="Indent">
 		<p><code class="Hilite">cols</code>: The number of columns.</p>
@@ -31,6 +30,12 @@
 
 <h4>Static Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">fromBytes</span>(data)</code> → <code>Image</code>: Create an <code>Image</code> instance from binary data; the last 12 bytes of the data contain the format, width, and height of the image as big-endian unsigned integers. The formats are: 0 (RGB, uncompressed), 1 (RGBA, uncompressed), 2 (RGB, compressed with <code>zlib</code>), 3 (RGBA, compressed with <code>zlib</code>).</p>
+	<p><code><span class="Hilite">fromPIL</span>(img, raw=False, compress=None)</code> → <code>Image</code> or <code>(bytes, bytes)</code>: Convert an image from Pillow format to an <code>Image</code> instance or raw <code>bytes</code> data; see <code><a href="javascript:goNode('graphic')">Graphic</a>.raw</code> for a description of the binary format. <b class="Comment">[Added in v2.1]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">img</code>: A Pillow image.</p>
+		<p><code class="Hilite">raw</code>: Specify whether to return the image as binary data rather than as an <code>Image</code> instance.</p>
+		<p><code class="Hilite">compress</code>: If raw binary data is requested, you can pass <code>zlib.compress</code> to compress the data.</p>
+		</div>
 
 </div>
 

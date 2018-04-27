@@ -38,14 +38,16 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 			{title:".latex", link:"latex", pages:[
 				{title:"class LatexCache", link:"latexcache"},
 			]},
-//			{title:"class Grabber", link:"grabber"},
 			{title:".plot", link:"plot", pages:[
 				{title:"class Locus", link:"locus"},
 				{title:"class Plot", link:"plot_class"},
 				{title:"class Series", link:"series"}
 			]},	
 //			{title:"class ProgressBar", link:"progressbar"},
-			{title:"class Video", link:"video_class"},
+			{title:".video", link:"video", pages:[
+				{title:"class Grabber", link:"grabber"},
+				{title:"class Video", link:"video_class"},
+			]},
 		]},
 		{title:"sc8pr.robot", link:"robot_class"},
 		{title:"sc8pr.shape", link:"shape", pages:[
