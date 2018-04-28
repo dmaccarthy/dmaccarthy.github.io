@@ -20,8 +20,11 @@
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
-	<p><code><span class="Hilite">__getitem__</span>(n)</code> → <code>Image</code>: Extract and decompress frame <code>n</code>.</p>
-	<p><code><span class="Hilite">__iadd__</span>(img)</code> → <code>self</code>: Append an <code>Image</code>, a <code>pygame.Surface</code>, or a graphic that has an <code>image</code> property to the video.</p>
+	<p><code><span class="Hilite">__getitem__</span>(n)</code> → <code>Image</code>: Extract the specified frame number as an <code>Image</code> instance.</p>
+	<p><code><span class="Hilite">__iadd__</span>(img)</code> → <code>self</code>: Append an image as a new frame at the end of the video.</p>
+		<div class="Indent">
+		<p><code class="Hilite">img</code>: The image to be appended. It can be an <code>Image</code> instance (or any <code>Graphic</code> subclass that implements the <code>image</code> property) or a <code>pygame.Surface</code> instance. <b class="Comment">As of v2.1</b>, any object that can be decoded by the <a class="Code" href="javascript:goNode('pixeldata')">PixelData</a> constructor, such as raw <code>bytes</code> or a <a class="Code" href="http://python-pillow.org/">Pillow</a> image, is acceptable.</p>
+		</div>
 	<p><code><span class="Hilite">__len__</span>()</code> → <code>int</code>: The number of frames in the video.</p>
 	<p><code><span class="Hilite">capture</span>(sk)</code>: Capture the sketch window and append it to the video as a new frame. Called automatically by the sketch on its <code>capture</code> property.</p>
 	<p><code><span class="Hilite">clip</span>(start=0, end=None)</code> → <code>Video</code>: Extracts a sequence if frames as a new <code>Video</code> instance; does not copy the frame pixel data.</p>
@@ -30,25 +33,36 @@
 		<p><code class="Hilite">end</code>: The frame at which to stop extracting; the end frame itself is not included.</p>
 		</div>
 	<p><code><span class="Hilite">costumeSequence</span>(seq)</code>: Will raise a <code>NotImplementedError</code>.</p>
-	<p><code><span class="Hilite">exportFrames</span>(fn, notify=None)</code> → <code>self</code>: Save the video as a sequence of image files.</p>
+	<!--p><code><span class="Hilite">exportFrames</span>(fn, notify=None)</code> → <code>self</code>: Save the video as a sequence of image files.</p>
 		<div class="Indent">
 		<p><code class="Hilite">fn</code>: A pattern describing the file names to use; <code>str.format</code> will be called to insert the frame number into the pattern to create a unique file name for each frame.</p>
 		<p><code class="Hilite">notify</code>: Callback function (same as for the <code>Video</code> constructor).</p>
-		</div>	
+		</div-->
+	<p><code><span class="Hilite">extend</span>(imgs)</code> → <code>self</code>: Append multiple images as new frames at the end of the video.</p>
+		<div class="Indent">
+		<p><code class="Hilite">imgs</code>: An iterable sequence of images in any format that can be passed to <code>__iadd__</code>.</p>
+		</div>
+	<p><code><span class="Hilite">frame</span>(n)</code> → <code>PixelData</code>: Extract the specified frame number as a <code>PixelData</code> instance.</p>
+	<p><code><span class="Hilite">frames</span>()</code> → <code>generator</code>: Generate the sequence of frames as <code>PixelData</code> instances. You can iterate through the <code>Video</code> instance itself to obtain a sequence of frames as <code>Image</code> instances.</p>
 	<p><code><span class="Hilite">save</span>(fn, notify=None)</code> → <code>self</code>: Save the video in s8v format.</p>
 		<div class="Indent">
 		<p><code class="Hilite">fn</code>: The path to the file being saved.</p>
 		<p><code class="Hilite">notify</code>: Callback function (same as for the <code>Video</code> constructor).</p>
+		</div>	
+	<p><code><span class="Hilite">scaleFrames</span>(size=None, inPlace=False)</code> → <code>Video</code>: Adjust the frame data so that every frame has the same size. This should be called before encoding the video if there is any chance that the frame sizes vary.</p>
+		<div class="Indent">
+		<p><code class="Hilite">size</code>: The output size. If omitted, the <code>size</code> property of the video will be used.</p>
+		<p><code class="Hilite">inPlace</code>: Specifies whether to adjust the data in place, or create a new <code>Video</code> instance.</p>
 		</div>		
 </div>
 
-<h4>Static Method</h4><div class="Indent">
+<!--h4>Static Method</h4><div class="Indent">
 	<p><code><span class="Hilite">importFrames</span>(fn, seq=1, notify=None)</code> → <code>Video</code>: Load a sequence of image files as a new video clip.</p>
 		<div class="Indent">
 		<p><code class="Hilite">fn</code>: A pattern describing the file names to use; <code>str.format</code> will be called to insert a sequence of numbers into the pattern to find the file name for each frame.</p>
 		<p><code class="Hilite">seq</code>: A sequence of integers identifying the files to be loaded, or a single integer specifying the start if numbers are consecutive.</p>
 		<p><code class="Hilite">notify</code>: Callback function (same as for the <code>Video</code> constructor).</p>
 		</div>	
-</div>
+</div-->
 
 </article>

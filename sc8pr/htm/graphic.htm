@@ -33,7 +33,6 @@
 
 <h4>Instance Methods</h4><div class="Indent">
 
-	<p><code><span class="Hilite">__bytes__</span>()</code> → <code>bytes</code>: Converts a graphic to binary pixel data. The final 12 bytes encodes the image size and mode; the preceeding bytes describe the uncompressed pixel data. Can be used with subclasses that implement the <code>image</code> property. <b class="Comment">[Added in v2.1]</b></p>
 	<p><code><span class="Hilite">anon</span>()</code> → <code>self</code>: Anonymize the graphic by deleting its name (key).</p>
 	<p><code><span class="Hilite">at</span>(pos, r=None)</code> → <code>pygame.Color</code> or <code>None</code>: Determines the pixel color at the given position. This method can only be called on subclasses that implement the <code>image</code> property. <b class="Comment">[Added in v2.1]</b></p>
 		<div class="Indent">
@@ -69,7 +68,6 @@
 		<div class="Indent">
 		<p><code>cv</code>: A <code>Canvas</code> instance at which to terminate the list.</p>
 		</div>
-	<p><code><span class="Hilite">raw</span>(compress=None)</code> → <code>(bytes, bytes)</code>: Converts a graphic to binary pixel data. Returns two tuples containing the pixel data, and a 12-byte structure encoding the image size and mode. Can be used with subclasses that implement the <code>image</code> property. <b class="Comment">[Added in v2.1]</b></p>
 		<div class="Indent">
 		<p><code>compress</code>: Set this to <code>zlib.compress</code> to compress the binary data.</p>
 		</div>

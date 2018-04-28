@@ -29,13 +29,13 @@
 </div>
 
 <h4>Static Methods</h4><div class="Indent">
-	<p><code><span class="Hilite">fromBytes</span>(data)</code> → <code>Image</code>: Create an <code>Image</code> instance from binary data; the last 12 bytes of the data contain the format, width, and height of the image as big-endian unsigned integers. The formats are: 0 (RGB, uncompressed), 1 (RGBA, uncompressed), 2 (RGB, compressed with <code>zlib</code>), 3 (RGBA, compressed with <code>zlib</code>).</p>
-	<p><code><span class="Hilite">fromPIL</span>(img, raw=False, compress=None)</code> → <code>Image</code> or <code>(bytes, bytes)</code>: Convert an image from Pillow format to an <code>Image</code> instance or raw <code>bytes</code> data; see <code><a href="javascript:goNode('graphic')">Graphic</a>.raw</code> for a description of the binary format. <b class="Comment">[Added in v2.1]</b></p>
+	<p><code><span class="Hilite">fromBytes</span>(data)</code> → <code>Image</code>: Create an <code>Image</code> instance from binary data. <b class="Comment">As of v2.1</b>, <code>data</code> can be any object that the <a class="Code" href="javascript:goNode('pixeldata')">PixelData</a> constructor can decode.</p>
+	<!--p><code><span class="Hilite">fromPIL</span>(img, raw=False, compress=None)</code> → <code>Image</code> or <code>(bytes, bytes)</code>: Convert an image from Pillow format to an <code>Image</code> instance or raw <code>bytes</code> data; see <code><a href="javascript:goNode('graphic')">Graphic</a>.raw</code> for a description of the binary format. <b class="Comment">[Added in v2.1]</b></p>
 		<div class="Indent">
 		<p><code class="Hilite">img</code>: A Pillow image.</p>
 		<p><code class="Hilite">raw</code>: Specify whether to return the image as binary data rather than as an <code>Image</code> instance.</p>
 		<p><code class="Hilite">compress</code>: If raw binary data is requested, you can pass <code>zlib.compress</code> to compress the data.</p>
-		</div>
+		</div-->
 
 </div>
 
