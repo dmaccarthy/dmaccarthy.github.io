@@ -23,6 +23,7 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 			{title:"class Sketch", link:"sketch"},
 			{title:"class BaseSprite", link:"base"},
 			{title:"class Renderable", link:"render"},
+			{title:"class PixelData", link:"pixeldata"}
 		]},
 		{title:"sc8pr.geom", link:"geom"},
 		{title:"sc8pr.gui.*", link:"gui", pages:[
