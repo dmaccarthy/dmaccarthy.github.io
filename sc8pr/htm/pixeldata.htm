@@ -24,6 +24,7 @@
 
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">__bytes__</span>()</code> → <code>bytes</code>: Get the raw binary data. The final 12 bytes are a packed structure containing the image size and mode.</p>
+	<p><code><span class="Hilite">__eq__</span>(other)</code> → <code>bool</code>: Test equality by comparing the tuples returned by the <code>raw</code> method.</p>
 	<p><code><span class="Hilite">compress</span>()</code> → <code>self</code>: Compress the binary data.</p>
 	<p><code><span class="Hilite">decompress</span>()</code> → <code>self</code>: Decompress the binary data.</p>
 	<p><code><span class="Hilite">pil</span>(pil)</code> → Pillow image: Convert the image to Pillow format.</p>
