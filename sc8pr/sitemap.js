@@ -12,7 +12,9 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 			{title:"Supported Events", link:"evList"}
 		]},
 		{title:"Object-Oriented Style", link:"oop"},
-		{title:"Sprite Animations", link:"spriteAnim"},
+		{title:"Sprite Animations", link:"spriteAnim", pages:[
+//			{title:"Collision Physics", link:"collision_tut"},
+		]},
 		{title:"GUI Controls", link:"gui_tut"},
 	]},
 	{title:"Reference", link:"ref", pages:[
