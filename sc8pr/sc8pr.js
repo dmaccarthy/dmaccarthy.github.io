@@ -41,7 +41,10 @@ var current, pop, init = true;
 function goNode(node) {
 	if (!node) node = sitemap;
 	else if (typeof(node) == "string") node = find(node);
-	if (!node) alert("Page under construction!");
+	if (!node) {
+		if (current == null) goNode();
+		alert("Page not found. This could be a bad URL or a page still under construction!");
+	}
 	else if (node != current) {
 		var url = "htm/" + node.link + ".htm";
 		if (node) $.ajax({url:url, success:function(h) {ajaxLoad(h, node)},
