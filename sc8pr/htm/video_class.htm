@@ -11,7 +11,7 @@
 		<div class="Indent">
 		<p><code class="Hilite">data</code>: A string specifying an s8v file to load, a 2-tuple specifying the size of a new video, or a sequence of images to combine into a video. <b class="Comment">As of v2.1</b>, anything that can be passed to the <a class="Code" href="javascript:goNode('pixeldata')">PixelData</a> constructor can be used as an image.</p>
 		<p><code class="Hilite">alpha</code>: Specifies whether to convert frames with no alpha value; set this to <code>True</code> if you want to apply effects that require transparency, such as fade or wipe.</p>
-		<p><code class="Hilite">progress</code>: An optional callback function that can be called when loading large files. This function takes three arguments: the file name being loaded, the number of frames loaded, and the <code>Video</code> instance. When loading is complete, <code>progress</code> will be called with <code>None</code> as the middle argument instead of a frame count.</p>
+		<p><code class="Hilite">progress</code>: A callback function that informs the program of the load progress. This function must accept two arguments: a reference to the <code>Video</code> instance, and the number of frames loaded.</p>
 		<p><code class="Hilite">start</code>: The first frame number to load. <b class="Comment">[Added in v2.1]</b></p>
 		<p><code class="Hilite">end</code>: The frame number at which to stop loading. Omit this argument to load up to and including the last available frame. <b class="Comment">[Added in v2.1]</b></p>
 		</div>
@@ -28,23 +28,18 @@
 		<p><code class="Hilite">img</code>: The image to be appended. It can be an <code>Image</code> instance (or any <code>Graphic</code> subclass that implements the <code>image</code> property) or a <code>pygame.Surface</code> instance. <b class="Comment">As of v2.1</b>, any object that can be decoded by the <a class="Code" href="javascript:goNode('pixeldata')">PixelData</a> constructor, such as raw <code>bytes</code> or a <a class="Code" href="http://python-pillow.org/">Pillow</a> image, is acceptable.</p>
 		</div>
 	<p><code><span class="Hilite">__len__</span>()</code> → <code>int</code>: The number of frames in the video.</p>
-	<p><code><span class="Hilite">capture</span>(sk)</code>: Capture the sketch window and append it to the video as a new frame. Called automatically by the sketch on its <code>capture</code> property.</p>
 	<p><code><span class="Hilite">autoSave</span>(fn=True, size=None)</code> → <code>self</code>: Automatically save and purge the video instance when the number of frames reaches the specified value. Call <code>autoSave</code> with arguments as described below to start automatic saving. Call again with no arguments to flush remaining frames, or with the argument <code>False</code> to disable autosave.  <b class="Comment">[Added in v2.1]</b></p>
 		<div class="Indent">
 		<p><code class="Hilite">fn</code>: The s8v file name.</p>
 		<p><code class="Hilite">size</code>: The number of stored frames at which the autosave operation is to occur.</p>
 		</div>
+	<p><code><span class="Hilite">capture</span>(sk)</code>: Capture the sketch window and append it to the video as a new frame. Called automatically by the sketch on its <code>capture</code> property.</p>
 	<p><code><span class="Hilite">clip</span>(start=0, end=None)</code> → <code>Video</code>: Extracts a sequence if frames as a new <code>Video</code> instance; does not copy the frame pixel data.</p>
 		<div class="Indent">
 		<p><code class="Hilite">start</code>: The first frame to include in the extracted clip.</p>
 		<p><code class="Hilite">end</code>: The frame at which to stop extracting; the end frame itself is not included.</p>
 		</div>
 	<p><code><span class="Hilite">costumeSequence</span>(seq)</code>: Will raise a <code>NotImplementedError</code>.</p>
-	<!--p><code><span class="Hilite">exportFrames</span>(fn, notify=None)</code> → <code>self</code>: Save the video as a sequence of image files.</p>
-		<div class="Indent">
-		<p><code class="Hilite">fn</code>: A pattern describing the file names to use; <code>str.format</code> will be called to insert the frame number into the pattern to create a unique file name for each frame.</p>
-		<p><code class="Hilite">notify</code>: Callback function (same as for the <code>Video</code> constructor).</p>
-		</div-->
 	<p><code><span class="Hilite">extend</span>(imgs)</code> → <code>self</code>: Append multiple images as new frames at the end of the video.</p>
 		<div class="Indent">
 		<p><code class="Hilite">imgs</code>: An iterable sequence of images in any format that can be passed to <code>__iadd__</code>.</p>
@@ -55,7 +50,7 @@
 	<p><code><span class="Hilite">save</span>(fn, progress=None, append=False)</code> → <code>self</code>: Save the video in s8v format.</p>
 		<div class="Indent">
 		<p><code class="Hilite">fn</code>: The path to the file being saved.</p>
-		<p><code class="Hilite">progress</code>: Callback function (same as for the <code>Video</code> constructor).</p>
+		<p><code class="Hilite">progress</code>: A callback function that informs the program of the save progress. This function must accept three arguments: a reference to the <code>Video</code> instance, the number of frames saved, and the total number of frames.</p>
 		<p><code class="Hilite">append</code>: Specifies whether the data is to be appended to an existing s8v file. Metadata is only written when the file is created and cannot be overwritten when appending. If an <code>int</code> is used for this argument, appended frames will be numbered starting at the given value. If existing frames are numbered consecutively from zero, you can specify <code>True</code> to calculate the number at which to begin appending frames. <b class="Comment">[Added in v2.1]</b></p>
 		</div>	
 	<p><code><span class="Hilite">scaleFrames</span>(size=None, inPlace=False)</code> → <code>Video</code>: Adjust the frame data so that every frame has the same size. This should be called before encoding the video if there is any chance that the frame sizes vary.</p>
@@ -64,14 +59,5 @@
 		<p><code class="Hilite">inPlace</code>: Specifies whether to adjust the data in place, or create a new <code>Video</code> instance.</p>
 		</div>		
 </div>
-
-<!--h4>Static Method</h4><div class="Indent">
-	<p><code><span class="Hilite">importFrames</span>(fn, seq=1, notify=None)</code> → <code>Video</code>: Load a sequence of image files as a new video clip.</p>
-		<div class="Indent">
-		<p><code class="Hilite">fn</code>: A pattern describing the file names to use; <code>str.format</code> will be called to insert a sequence of numbers into the pattern to find the file name for each frame.</p>
-		<p><code class="Hilite">seq</code>: A sequence of integers identifying the files to be loaded, or a single integer specifying the start if numbers are consecutive.</p>
-		<p><code class="Hilite">notify</code>: Callback function (same as for the <code>Video</code> constructor).</p>
-		</div>	
-</div-->
 
 </article>
