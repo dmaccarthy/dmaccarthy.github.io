@@ -65,7 +65,7 @@ def setup(sk):
     x, y = cv.center[0], 16
     cv["Input"] = TextInput("", "Type Some Text...").config(anchor=TOP,
         font=FONT, fontStyle=BOLD, pos=(x,y), color=BLUE,
-        bg="#d8d8d8", padding=4).bind(onaction)
+        bg="white", padding=4).bind(onaction)
 
     # Add a Radio box
     y += down(cv)
@@ -100,12 +100,9 @@ def setup(sk):
     cv.menu = Menu(items, txtConfig=cfg).config(pos=cv.center)
     cv.menu.bind(resize=nothing, onaction=menuAction)
 
-    # Create a cover to block other controls when popup running
-    cv.cover = Image(bg="#ffffffc0").config(anchor=TOPLEFT)
-
     # Add the dialog to the sketch
+    cv.cover = sk.cover()
     sk["Dialog"] = cv.bind(resize=nothing).config(pos=sk.center)
-
 
 def onaction(gr, ev):
     "Event handler for TextInput"
