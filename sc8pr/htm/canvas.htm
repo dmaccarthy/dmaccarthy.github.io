@@ -49,6 +49,12 @@
 		<div class="Indent">
 		<p><code class="Hilite">resizeContent</code>: Specifies whether to resize and reposition the contents of the canvas.</p>
 		</div>
+	<p><code><span class="Hilite">shiftContents</span>(offset, *args, resize=True)</code> → <code>self</code>: Shift all of the content in the canvas by a fixed amount.</p>
+		<div class="Indent">
+		<p><code class="Hilite">offset</code>: The number of pixels to shift as a 2-tuple or 2-list.</p>
+		<p><code class="Hilite">args</code>: Items to omit from the shift.</p>
+		<p><code class="Hilite">resize</code>: Specifies whether to change the canvas size by the offset amount.</p>
+		</div>
 	<p><code><span class="Hilite">snapshot</span>()</code> → <code>Image</code>: Create a new image by drawing the canvas.</p>
 	<p><code><span class="Hilite">sprites</span>()</code> → <code>generator</code>: Yields a sequence of <code>BaseSprite</code> instances currently added to the canvas.</p>
 

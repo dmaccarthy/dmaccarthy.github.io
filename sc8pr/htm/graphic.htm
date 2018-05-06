@@ -11,6 +11,7 @@
 	<p><code class="Hilite">height</code>: The height of the graphic, not accounting for rotation. When a new value is assigned, the width is also adjusted to maintain a constant aspect ratio.</p>
 	<p><code class="Hilite">layer</code>: An index (<code>int</code>) specifying the drawing order of the graphic relative to all other graphics in the canvas. Layers are numbered from bottom (<code>layer = 0</code>) to top. Graphic instances can be assigned a negative layer value to specify a position relative to the top (<code>layer = -1</code>). The <code>layer</code> property can only be used while the graphic is contained by a canvas.</p>
 	<p><code class="Hilite">pos</code>: A 2-tuple describing the position of the graphic relative to its canvas.</p>
+	<p><code class="Hilite">radiusFactor</code>: A factor used to calculate the graphics <code>radius</code> property from its <code>width</code> and <code>height</code>; default <code>0.25</code>.</p>
 	<p><code class="Hilite">size</code>: A 2-tuple describing graphic’s width and height, not accounting for rotation. Use <code>gr.rect.size</code> for the actual blit-rectangle size.</p>
 	<p><code class="Hilite">width</code>: The width of the graphic, not accounting for rotation. When a new value is assigned, the height is also adjusted to maintain a constant aspect ratio.</p>
 </div>
@@ -24,7 +25,7 @@
 	<p><code class="Hilite">focussed</code>: A <code>bool</code> indicating whether the graphic is currently focussed.</p>
 	<p><code class="Hilite">name</code>: The key with which the graphic was added to its canvas, or <code>None</code> if added anonymously.</p>
 	<p><code class="Hilite">path</code>: A list containing the graphic and all canvases that contain it, in order.</p>
-	<p><code class="Hilite">radius</code>: Half of the average of the graphic’s unrotated width and height. Subclasses may override this property to calculate it in a different manner.</p>
+	<p><code class="Hilite">radius</code>: The approximate radius of the graphic based on its unrotated width and height and its <code>radiusFactor</code> property.</p>
 	<p><code class="Hilite">rect</code>: A <code>pygame.Rect</code> instance describing the graphic’s location in the sketch. This property is updated each frame when the graphics are drawn. An <code>AttributeError</code> exception may be raised if you try to access this property for a graphic that is not currently in the sketch, or one that has just been added but not yet drawn.</p>
 	<p><code class="Hilite">sketch</code>: A reference to the sketch object if the graphic has been added to the sketch or to a canvas that has been added to the sketch; otherwise <code>None</code>.</p>
 	<p><code class="Hilite">surfaceEffect</code>: A rendering of the graphic as a surface, to which all of the graphic’s <code>effects</code> have been applied. Subclasses must have an <code>image</code> property to which the effects can be applied.</p>

@@ -13,7 +13,7 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 		]},
 		{title:"Object-Oriented Style", link:"oop"},
 		{title:"Sprite Animations", link:"spriteAnim", pages:[
-//			{title:"Collision Physics", link:"collision_tut"},
+			{title:"Sprite Collision", link:"collision_tut"},
 		]},
 		{title:"GUI Controls", link:"gui_tut"},
 	]},
@@ -30,10 +30,11 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 		{title:"sc8pr.geom", link:"geom"},
 		{title:"sc8pr.gui.*", link:"gui", pages:[
 			{title:"class Button", link:"button_class"},
+//			{title:"class MessageBox", link:"msgbox"},
 			{title:"class Menu", link:"menu_class"},
 			{title:"class Options", link:"options"},
 			{title:"class Radio", link:"radio"},
-//			{title:"class Slider", link:""},
+//			{title:"class Slider", link:"slider"},
 			{title:"class TextInput", link:"ti_class"}
 		]},
 		{title:"sc8pr.misc.*", link:"misc", pages:[
