@@ -130,7 +130,7 @@ def optionsChange(gr, ev):
 def sliderChange(gr, ev):
     "Event handler for Slider"
     m = ["Click", "Scroll", "Drag", "Key"][ev.method]
-    print(gr, round(gr.value), m)
+    print(gr, round(gr.val), m)
 
 def onclick(sk, ev):
     print("Unhandled click:", ev.target)

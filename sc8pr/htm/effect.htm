@@ -1,6 +1,12 @@
 ﻿<article><h1><code>sc8pr.misc.effect</code> Module</h1>
 
-<p>This module defines several classes for applying transitions and video effects. Effects can by applied to <code>sc8pr.Image</code> and <code>pygame.Surface</code> instances, as well as any <code>Graphic</code> subclasses that implement the <code>image</code> property. The video below shows some examples of animated effects.</p>
+<p>This module defines several classes for applying transitions and video effects. Effects can by applied to <code>sc8pr.Image</code> and <code>pygame.Surface</code> instances, as well as any <code>Graphic</code> subclasses that implement the <code>image</code> property.</p>
+
+<p> Effects are ignored by the event manager. This means that mouse actions are dispatched based on how the drawing would appear if there were no effects.</p>
+
+<p><span class="Comment">As of v2.1</span>, effects can be applied to canvases and other graphics that have a <code>snapshot</code> method but no <code>image</code> property. This is done by rendering the object as an image before applying the effect. This can lead to slower drawing, and has the side effect of blocking mouse events to the canvas contents. Use with caution!</p>
+
+<p>The video below shows some examples of animated effects.</p>
 
 <div class="Center"><iframe class="Fit" data-wide="640" src="https://www.youtube.com/embed/quHgWw_BM4M?ecver=2" width="640" height="360" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 <p class="Center"><a href="misc/transitionsDemo.py">Demo Source Code</a></p>
@@ -20,13 +26,14 @@ Sketch().play()</pre>
 <p>Most of the effects can be animated. Set the graphic’s <code>effects</code> property to a list of effect instances as in the example below. Each effect should specify two time arguments over which the effect will be applied. In the example below, the image will “transition in” with the <code>PaintDrops</code> effect between frames 60 and 180, and then will “transition out” with the <code>Dissolve</code> effect between frames 300 and 420. Note that the time arguments are in reverse order for the dissolve out effect.</p>
 
 <pre class="Code">from sc8pr import Sketch, Image
-from sc8pr.misc.effect import Dissolve, PaintDrops
+from sc8pr.misc.effect import Dissolve, PaintDrops, Remove
 
 def setup(sk):
     img = Image("alien.png")
     img.effects = [
-        PaintDrops().time(60, 180), # Transition in (frames 60-180)
-        Dissolve().time(420, 300)   # Transition out (frames 300-420)
+        PaintDrops().time(60, 180), <span class="Comment"># Transition in (frames 60-180)</span>
+        Dissolve().time(420, 300),  <span class="Comment"># Transition out (frames 300-420)</span>
+        Remove(img).time(420)       <span class="Comment"># Remove image after final transition</span>
     ]
     sk += img.config(pos=sk.center)
 
@@ -37,9 +44,19 @@ Sketch().play()</pre>
 <p></p>
 
 <h4>Constructors</h4><div class="Indent">
+	<p><code><span class="Hilite">Remove</span>(gr, complete=True)</code>: Remove a graphic completely, or remove its <code>effects</code> lists. This will speed up drawing the sketch. <b class="Comment">[Added in v2.1]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">gr</code>: The graphic to be modified. The <code>Remove</code> effect instance must appear in the effects list of the graphic being removed.</p>
+		<p><code class="Hilite">complete</code>: Set to <code>False</code> to leave the graphic in its canvas and set the <code>effects</code> property to <code>None</code>. The default (<code>True</code>) will remove the graphic completelt from its canvas.</p>
+		</div>
 	<p><code><span class="Hilite">Tint</span>(color=(255,255,255,0))</code>: Reduces the RGBA values of the image.</p>
 		<div class="Indent">
 		<p><code class="Hilite">color</code>: The RGBA color to tint to. The default value fades to transparency.</p>
+		</div>
+	<p><code><span class="Hilite">Assemble</span>(grid=(16, 9), angles=(0, 360))</code>: Assemble the image from small rectangular tiles that fly in from outside the graphic. <b class="Comment">[Added in v2.1]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">grid</code>: A 2-tuple or 2-list specifying the number of rows and columns of tiles.</p>
+		<p><code class="Hilite">angles</code>: A range of angles in degrees specifying the direction of motion of the tiles.</p>
 		</div>
 	<p><code><span class="Hilite">Wipe</span>(start=CENTER)</code>: Apply a simple “wipe” transition from any side, corner, or center.</p>
 		<div class="Indent">

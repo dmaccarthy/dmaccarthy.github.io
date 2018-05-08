@@ -18,9 +18,9 @@
 		<div class="Indent">
 		<p><code class="Hilite">mass1, mass2</code>: Sprites with a <code>mass</code> property.</p>
 		</div>
-	<p><code><span class="Hilite">physics</span>(sk, model=elasticCircles)</code> → <code>list</code>: Updates motion properties for colliding sprites that have a <code>mass</code> property. Calls the sprites <code>oncollide</code> handlers by layer order. Returns a list of colliding sprites.</p>
+	<p><code><span class="Hilite">physics</span>(cv, model=elasticCircles)</code> → <code>list</code>: Updates motion properties for colliding sprites that have a <code>mass</code> property. Calls the sprites’ <code>oncollide</code> handlers by layer order. Returns a list of colliding sprites.</p>
 		<div class="Indent">
-		<p><code class="Hilite">sk</code>: A reference to the sketch.</p>
+		<p><code class="Hilite">cv</code>: A reference to the canvas in which the collisions are occurring. <span class="Comment">[Renamed in v2.1 from <code>sk</code> in v2.0.]</span></p>
 		<p><code class="Hilite">model</code>: A function that determines whether two masses are colliding and updates their properties if so.</p>
 		</div>
 </div>

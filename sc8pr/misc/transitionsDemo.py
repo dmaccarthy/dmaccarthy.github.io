@@ -17,8 +17,8 @@
 
 from sc8pr import Sketch, RIGHT, BOTTOM
 from sc8pr.sprite import Sprite
-from sc8pr.misc.effect import Tint, PaintDrops, Wipe, \
-    WipeSlope, Squash, Dissolve, MathEffect, ClockHand
+from sc8pr.misc.effect import Remove, Tint, PaintDrops, Wipe, \
+    WipeSlope, Squash, Dissolve, MathEffect, ClockHand, Assemble
 from sc8pr.text import Text, Font
 #from sc8pr.misc.video import Video
 
@@ -44,7 +44,7 @@ def setEffect(alien, n=0, f=0):
         Tint("red").time(f+270, f+150),     # Transition out to red
         Tint().time(f+360, f+270)           # Fade out to transparent
     ], [ # n = 1
-        PaintDrops().time(f, f+90),         # Transition in
+        Assemble().time(f, f+90),           # Transition in
         PaintDrops(-8).time(f+240, f+150)   # Transition out
     ], [ # n = 2
         Wipe(RIGHT).time(f, f+90),          # Transition in
@@ -53,9 +53,10 @@ def setEffect(alien, n=0, f=0):
         Squash(BOTTOM).time(f, f+90),       # Transition in
         Dissolve().time(f+240, f+150)       # Transition out
     ], [ # n = 4
-        MathEffect().time(f, f+90),         # Transition out
-        ClockHand().time(f+240, f+150)]     # Transition in
-    ][n]
+        MathEffect().time(f, f+90),         # Transition in
+        ClockHand().time(f+240, f+150),     # Transition out
+        Remove(alien).time(f+240)
+    ]][n]
 
 def alienDraw(alien):
     "ONDRAW event handler for alien sprite"
@@ -65,11 +66,12 @@ def alienDraw(alien):
     elif f == 600: setEffect(alien, 2, f)
     elif f == 840: setEffect(alien, 3, f)
     elif f == 1080: setEffect(alien, 4, f)
-    elif f == 1350: alien.sketch.quit = True
+    sk = alien.sketch
+    if len(sk) < 2: sk.quit = True
 
 def textDraw(text):
     "ONDRAW event handler for text"
-    caption = {90:"", 150:"Tint('red')", 270:"Tint()", 360:"PaintDrops()",
+    caption = {90:"", 150:"Tint('red')", 270:"Tint()", 360:"Assemble()",
         450:"", 510:"PaintDrops(-8)", 600:"Wipe(RIGHT)", 690:"",
         750:"WipeSlope(-0.2)", 840:"Squash(BOTTOM)", 930:"",
         990:"Dissolve()", 1080:"MathEffect()", 1170:"", 1230:"ClockHand()",

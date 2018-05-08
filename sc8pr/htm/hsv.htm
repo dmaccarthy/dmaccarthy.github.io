@@ -1,0 +1,21 @@
+﻿<article><h1><code>sc8pr.misc.hsv</code> Module</h1>
+
+<h4>Class</h4>
+<div class="Indent">
+	<p><code>HSV (<a class="Hilite" href="javascript:goNode('render')">Renderable</a>)</code>: Represents a color wheel or color matrix graphic. The constructor takes no arguments. The class inherits most of its attributes from <code>Renderable</code>, and defines two additional properties...</p>
+	<div class="Indent">
+	<p><code><span class="Hilite">val</span></code>: The brightness of the image as a value between <code>0</code> and <code>100</code>; default <code>100</code>.</p>
+	<p><code><span class="Hilite">wheel</span></code>: Specifies whether the graphic should be displayed as a wheel (<code>True</code>, default) or a matrix (<code>False</code>).</p>
+	</div>
+</div>
+
+<h4>Functions</h4>
+<p><code><span class="Hilite">hs_surface</span>(size=(100,100), v=100, wheel=False)</code> → <code>pygame.Surface</code>: Render a color wheel or matrix as a surface.</p>
+	<div class="Indent">
+	<p><code class="Hilite">size</code>: The size of the surface as a 2-tuple or 2-list.</p>
+	<p><code class="Hilite">v</code>: The brightness value.</p>
+	<p><code class="Hilite">wheel</code>: A <code>bool</code> specifying whether to render a color wheel or matrix.</p>
+	</div>
+<p><code><span class="Hilite">hsva</span>(h, s, v=100, a=100)</code> → <code>pygame.Color</code>: Create a color from the given <code>h</code>, <code>s</code>, <code>v</code>, and <code>a</code> values.</p>
+</article></body>
+</html>

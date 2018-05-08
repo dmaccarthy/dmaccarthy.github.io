@@ -34,11 +34,12 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 			{title:"class Menu", link:"menu_class"},
 			{title:"class Options", link:"options"},
 			{title:"class Radio", link:"radio"},
-//			{title:"class Slider", link:"slider"},
+			{title:"class Slider", link:"slider"},
 			{title:"class TextInput", link:"ti_class"}
 		]},
 		{title:"sc8pr.misc.*", link:"misc", pages:[
 			{title:".effect", link:"effect"},
+			{title:".hsv", link:"hsv"},
 			{title:".latex", link:"latex", pages:[
 				{title:"class LatexCache", link:"latexcache"},
 			]},
