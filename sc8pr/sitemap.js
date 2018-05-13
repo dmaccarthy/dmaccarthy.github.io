@@ -50,8 +50,8 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 				{title:"class Grabber", link:"grabber"},
 				{title:"class Video", link:"video_class"},
 			]},
-			{title:".webCache", link:"webCache", pages:[
-				{title:"class WebCache", link:"webcache_class"},
+			{title:".webCache", link:"webcache", pages:[
+				{title:"class WebCache", link:"wc"},
 			]},
 		]},
 		{title:"sc8pr.robot", link:"robot_class"},

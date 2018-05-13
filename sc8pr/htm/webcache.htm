@@ -24,7 +24,7 @@ wc.get("V={4\\pi \\over 3} r^3", dpi=384, color="red")
 for img in wc.flush():
     print(img)</pre>
 
-<h4>Classes</h4><div class="Indent"><p><a class="Code Hilite" href="javascript:goNode('webcache_class')">WebCache</a>: This classes manages requests and responses.</p>
+<h4>Classes</h4><div class="Indent"><p><a class="Code Hilite" href="javascript:goNode('wc')">WebCache</a>: This classes manages requests and responses.</p>
 <p><code class="Hilite">WebRequest</code>: A <code>Thread</code> subclass for performing asynchronus web requests using <a class="Code" href="https://docs.python.org/3/library/urllib.request.html?highlight=urlopen#urllib.request.urlopen">urlopen</a>. A <code>WebRequest</code> instance is created when <code>WebCache.get</code> determines that a requested resource is not available in the cache. Instances have the following attributes:</p>
 	<div class="Indent">
 	<p><code class="Hilite">data</code>: The response data as a <code>bytes</code> object. For images, the data may be a <a class="Code" href="javascript:goNode('image')">sc8pr.Image</a> or <a class="Code" href="https://www.pygame.org/docs/ref/surface.html">pygame.Surface</a> instance as specified using the <code>WebCache.imageData</code> method.</p>
