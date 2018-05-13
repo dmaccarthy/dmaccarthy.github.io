@@ -1,0 +1,52 @@
+﻿<article><h1><code>sc8pr.misc.webCache</code> Module</h1>
+
+<p><span class="Comment"><b>Added in v2.1</b>.</span></p>
+
+<p>This module sends asynchronous requests for images and other web-based data. Data that is received is stored locally in a cache folder and subsequent requests for the same URL will read the cached data. This module includes features for rendering LaTeX markup as images using <a href="http://www.codecogs.com/latex/about.php">codecogs.com</a>.</p>
+<p>Usage example...</p>
+
+<pre class="Code">from sc8pr import Image
+from sc8pr.misc.webCache import WebCache
+
+<span class="Comment"># Optional: Set function to log activity</span>
+WebCache.log = print
+
+<span class="Comment"># Open web cache folder; specify image data type</span>
+wc = WebCache("foo/bar").imageData(Image)
+
+<span class="Comment"># Send request(s) by URL</span>
+wc.get("https://dmaccarthy.github.io/sc8pr/img/alien0.png")
+
+<span class="Comment"># Send LaTeX request(s)</span>
+wc.get("V={4\\pi \\over 3} r^3", dpi=384, color="red")
+
+<span class="Comment"># Get response data; reset request queue</span>
+for img in wc.flush():
+    print(img)</pre>
+
+<h4>Classes</h4><div class="Indent"><p><a class="Code Hilite" href="javascript:goNode('webcache_class')">WebCache</a>: This classes manages requests and responses.</p>
+<p><code class="Hilite">WebRequest</code>: A <code>Thread</code> subclass for performing asynchronus web requests using <a class="Code" href="https://docs.python.org/3/library/urllib.request.html?highlight=urlopen#urllib.request.urlopen">urlopen</a>. A <code>WebRequest</code> instance is created when <code>WebCache.get</code> determines that a requested resource is not available in the cache. Instances have the following attributes:</p>
+	<div class="Indent">
+	<p><code class="Hilite">data</code>: The response data as a <code>bytes</code> object. For images, the data may be a <a class="Code" href="javascript:goNode('image')">sc8pr.Image</a> or <a class="Code" href="https://www.pygame.org/docs/ref/surface.html">pygame.Surface</a> instance as specified using the <code>WebCache.imageData</code> method.</p>
+	<p><code class="Hilite">response</code>: This will be <code>None</code> when the request is created. When a successful response is received, it will refer to the <a class="Code" href="https://docs.python.org/3/library/http.client.html?highlight=httpresponse#http.client.HTTPResponse">HTTPResponse</a> instance.</p>
+	<p><code class="Hilite">save</code>: A string containing the path to the locally cached file. This is set when the request is created with no guarantee that the request will be successful or that the file will be created.</p>
+	<p><code class="Hilite">url</code>: The requested URL as a string.</p>
+	<p><code><span class="Hilite">wait</span>()</code>  → <code>self</code>: This method waits for the response to become available.</p>
+	</div>
+<p><code class="Hilite">CacheRequest</code>: A <code>WebRequest</code> subclass for retreiving cached data. A <code>CacheRequest</code> instance is created when <code>WebCache.get</code> determines that a requested resource is available in the cache. Attributes are the same as for <code>WebRequest</code> except that <code>response</code> will always be <code>None</code>.</p>
+</div>
+
+
+<h4>Functions</h4>
+<div class="Indent"><p><code><span class=" Code Hilite">pref</span>(latex, val, key="dpi")</code> → <code>str</code>: Prefixes some LaTeX markup with a modifier (such as <code>\dpi{256}</code>).</p>
+	<div class="Indent">
+	<p><code class="Hilite">latex</code>: The LaTeX markup to be modified..</p>
+	<p><code class="Hilite">val</code>: The modifier value.</p>
+	<p><code class="Hilite">key</code>: The modifier description.</p>
+	</div>
+</div>
+<div class="Indent"><p><code><span class="Hilite">wrap</span>(latex, val, key="color")</code> → <code>str</code>: Same as <code>pref</code> but encloses the entire string in curly brackets.</p>
+</div>
+
+</article></body>
+</html>

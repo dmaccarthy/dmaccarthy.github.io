@@ -1,0 +1,44 @@
+﻿<article><h1><code>sc8pr.misc.webCache.WebCache</code> Class</h1>
+<p><span class="Comment"><b>Added in v2.1</b>.</span></p>
+
+<p>The <code>WebCache</code> class is used to manage asynchronous web requests and the response cache.</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">WebCache</span>(folder="./")</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">folder</code>: The location in which to save the response data. If the argument provided is not an existing folder, a <code>NotADirectoryError</code> exception will be raised.</p>
+		</div>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">__getitem__</span>(i)</code> → <code>WebRequest</code>: Returns a current request with index <code>i</code>. Requests can be added with the <code>get</code> method.</p>
+	<p><code><span class="Hilite">error</span>(ignorePending=False)</code> → <code>Exception</code> or <code>None</code>: Checks current requests and returns the first exception encountered; if all requests are successful, the method will return <code>None</code>.</p>
+		<div class="Indent">
+		<p><code class="Hilite">ignorePending</code>: If <code>True</code>, requests that have not completed are skipped; by default, the method will wait for each request to finish and then check for an exception.</p>
+		</div>
+	<p><code><span class="Hilite">flush</span>()</code> → <code>generator</code>: Removes all current requests and generates the response data.</p>
+	<p><code><span class="Hilite">get</span>(key, save=None, dpi=None, color=None)</code> → <code>WebRequest</code> or <code>CacheRequest</code>: Initiates a request for a web resource.</p>
+		<div class="Indent">
+		<p><code class="Hilite">key</code>: The URL being requested, or LaTeX markup to be rendered using <a href="http://www.codecogs.com/latex/about.php">codecogs.com</a>. This method interprets the key as LaTeX only when a non-zero <code>dpi</code> argument is provided.</p>
+		<p><code class="Hilite">save</code>: A string indicating the file name to use when saving the response to the cache. This argument is ignored if the resource already exists in the cache.</p>
+		<p><code class="Hilite">dpi</code>: The “dots per inch” setting for LaTeX rendering; determines the size of the rendered image.</p>
+		<p><code class="Hilite">color</code>: The color for LaTeX rendering, as a string.</p>
+		</div>
+	<p><code><span class="Hilite">imageData</span>(dataType=True, formats=True)</code> → <code>self</code>: Specifies the format of the response data when identified as an image.</p>
+		<div class="Indent">
+		<p><code class="Hilite">dataType</code>: Specifies the desired data type for image data as <code>bytes</code>, <code>sc8pr.Image</code>,  or <code>pygame.Surface</code>. A value of <code>False</code> or <code>None</code> is treated as <code>bytes</code>, while <code>True</code> is treated as <code>pygame.Surface</code>.</p>
+		<p><code class="Hilite">formats</code>: A list or tuple of file extensions to be considered as images. If <code>True</code>, the formats will be <code>("png", "jpg", "jpeg", "jpe", "gif", "bmp", "tif", "tiff", "tga", "pcx")</code>.</p>
+		</div>
+	<p><code><span class="Hilite">tidy</span>()</code> → <code>self</code>: Removes deleted and unsuccessful downloads from the cache index.</p>
+	<p><code><span class="Hilite">wait</span>()</code> → <code>self</code>: Waits until all current requests have finished.</p>
+
+</div>
+
+<h4>Static Property</h4>
+<div class="Indent"><p><code class="Hilite">log</code>: A reference to a function called to log web cache activity, or <code>None</code> (default).</p></div>
+
+<h4>Read-Only Properties</h4><div class="Indent">
+	<p><code class="Hilite">index</code>: A dictionary containing cached URLs or LaTeX markup as the key, and the name of the cached file as a value. The index does not guaranteee that the file exists.</p>
+</div>
+
+</article>

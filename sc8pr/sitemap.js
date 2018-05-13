@@ -40,9 +40,6 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 		{title:"sc8pr.misc.*", link:"misc", pages:[
 			{title:".effect", link:"effect"},
 			{title:".hsv", link:"hsv"},
-			{title:".latex", link:"latex", pages:[
-				{title:"class LatexCache", link:"latexcache"},
-			]},
 			{title:".plot", link:"plot", pages:[
 				{title:"class Locus", link:"locus"},
 				{title:"class Plot", link:"plot_class"},
@@ -52,6 +49,9 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 			{title:".video", link:"video", pages:[
 				{title:"class Grabber", link:"grabber"},
 				{title:"class Video", link:"video_class"},
+			]},
+			{title:".webCache", link:"webCache", pages:[
+				{title:"class WebCache", link:"webcache_class"},
 			]},
 		]},
 		{title:"sc8pr.robot", link:"robot_class"},
