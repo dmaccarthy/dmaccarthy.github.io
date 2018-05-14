@@ -1,4 +1,4 @@
-var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
+var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 	{title:"Installation", link:"inst"},
 	{title:"Tutorial", link:"tut", pages:[
 		{title:"Basics", link:"sk", pages:[
@@ -30,8 +30,8 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 		{title:"sc8pr.geom", link:"geom"},
 		{title:"sc8pr.gui.*", link:"gui", pages:[
 			{title:"class Button", link:"button_class"},
-//			{title:"class MessageBox", link:"msgbox"},
 			{title:"class Menu", link:"menu_class"},
+			{title:"class MessageBox", link:"msgbox"},
 			{title:"class Options", link:"options"},
 			{title:"class Radio", link:"radio"},
 			{title:"class Slider", link:"slider"},
@@ -45,7 +45,7 @@ var sitemap = {title:"sc8pr 2.0 Home", link:"home", pages:[
 				{title:"class Plot", link:"plot_class"},
 				{title:"class Series", link:"series"}
 			]},	
-//			{title:"class ProgressBar", link:"progressbar"},
+			{title:".progress", link:"progress"},
 			{title:".video", link:"video", pages:[
 				{title:"class Grabber", link:"grabber"},
 				{title:"class Video", link:"video_class"},

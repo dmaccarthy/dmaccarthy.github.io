@@ -1,0 +1,59 @@
+﻿<article><h1><code>sc8pr.gui.dialog.MessageBox</code> Class</h1>
+
+<p>The <code>MessageBox</code> class is a <code>Canvas</code> subclass for creating simple GUI dialogs. Message boxes trigger the <code>onaction</code> event when a button is clicked or the Enter key is pressed while the text input is focused.</p>
+<p class="Center"><img src="img/msgbox.png" alt="Image"/></p>
+
+<p>Here is an example program that creates and runs the dialog illustrated above...</p>
+<pre class="Code">from sc8pr import Sketch
+from sc8pr.gui.dialog import MessageBox
+
+def setup(sk):
+    mb = MessageBox("Please enter your name.", "", title="User Name")
+    sk += mb.bind(onaction).config(pos=sk.center)
+
+def onaction(mb, ev):
+    <span class="Comment">"Close the message box"</span>
+    cmd = ev.command
+    print("Command: {} [{}]".format(cmd.name, cmd.layer))
+    print("Data: '{}'".format(mb["Input"].data))
+    mb.remove()
+
+Sketch().play()</pre>
+
+<p><code>MessageBox</code> defines the following attributes in addition those inherited from the <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> class...</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">MessageBox</span>(text, userInput=None, buttons=None, title=None, size=(1,1), **kwargs)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">text</code>: A text message to be displayed in the dialog.</p>
+		<p><code class="Hilite">userInput</code>: If the dialog is to allow the user to type some text, this argument specifies the initial value of the text, which can be an empty string. The <code>TextInput</code> instance can be referred to as <code>mb["Input"]</code>, where <code>mb</code> refers to the message box. Passing <code>None</code> (the default) for this argument indicates that the dialog will not contain a user text input.</p>
+		<p><code class="Hilite">buttons</code>: A string or a list or tuple of strings specifying the text to display on the “Okay” and “Cancel” buttons. If only one string is provided, only the “Okay” button will be drawn. If omitted, “Okay” and “Cancel” will be used as the button text. <code>Button</code> instances can be referenced by the button text prefixed by <code>Button_</code> or by their <code>layer</code> property; for example <code>mb["Button_Okay"]</code> and <code>mb[0]</code> both refer to the “Okay” button where <code>mb</code> refers to the message box.</p>
+		<p><code class="Hilite">title</code>: An optional title for the message box.</p>
+		<p><code class="Hilite">size</code>: The minimum size of the dialog as a 2-tuple or 2-list.</p>
+		<p><code class="Hilite">kwargs</code>: Additional arguments such as <code>font</code> or <code>fontSize</code> that will be used to configure the <a class="Hilite Code" href="javascript:goNode('text_class')">Text</a> and <code>TextInput</code> items.</p>
+		</div>
+</div>
+
+<h4>Read-Only Properties</h4><div class="Indent">
+	<p><code class="Hilite">buttons</code>: A list of the <code>Button</code> instances.</p>
+	<p><code class="Hilite">command</code>: Initially <code>None</code>, this property will become a reference to the <code>Button</code> or <code>TextInput</code> instance used to dismiss the dialog. You can use its <code>name</code> or <code>layer</code> property to identify the control used.</p>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">onaction</span>(mb, ev)</code> → <code>None</code>: The default event handler removes the message box when an action occurs. This method can be overridden.</p>
+	<p><code><span class="Hilite">resize</span>()</code> → <code>None</code>: Overrides <code>Canvas.resize</code> so that the dialog is not resized along with the sketch.</p>
+	<p><code><span class="Hilite">title</span>(title, padding=4, **kwargs)</code> → <code>self</code>: You can add a title bar manually be calling this method rather than passing a title to the constructor. This is useful if you want to add custom content to the dialog.</p>
+		<div class="Indent">
+		<p><code class="Hilite">title</code>: The title as a string.</p>
+		<p><code class="Hilite">padding</code>: The number of pixels of space to be added around the title bar.</p>
+		<p><code class="Hilite">kwargs</code>: Additional arguments such as <code>font</code> or <code>fontSize</code> that will be used to configure the <a class="Hilite Code" href="javascript:goNode('text_class')">Text</a> and <code>TextInput</code> items.</p>
+		</div>
+	<p><code><span class="Hilite">insertTop</span>(gr, padding=12, name=None)</code> → <code>self</code>: Inserts a graphic into the top of the message box.</p>
+		<div class="Indent">
+		<p><code class="Hilite">gr</code>: The graphic to insert.</p>
+		<p><code class="Hilite">padding</code>: Additional vertical space to insert, in pixels.</p>
+		<p><code class="Hilite">name</code>: The name (key) to use when adding the graphic to the dialog.</p>
+		</div>	
+</div>
+
+</article>
