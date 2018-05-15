@@ -1,12 +1,11 @@
-﻿<article><h1><code>sc8pr.misc.webCache</code> Module</h1>
-
-<p><span class="Comment"><b>Added in v2.1</b>.</span></p>
+﻿<article><h1><code>sc8pr.misc.webcache</code> Module</h1>
+<p><span class="Comment"><b>Added in v2.1</b>. This module replaces the experimental <code>latex</code> module from v2.0.</span></p>
 
 <p>This module sends asynchronous requests for images and other web-based data. Data that is received is stored locally in a cache folder and subsequent requests for the same URL will read the cached data. This module includes features for rendering LaTeX markup as images using <a href="http://www.codecogs.com/latex/about.php">codecogs.com</a>.</p>
 <p>Usage example...</p>
 
 <pre class="Code">from sc8pr import Image
-from sc8pr.misc.webCache import WebCache
+from sc8pr.misc.webcache import WebCache
 
 <span class="Comment"># Optional: Set function to log activity</span>
 WebCache.log = print
@@ -40,7 +39,7 @@ for img in wc.flush():
 <h4>Functions</h4>
 <div class="Indent"><p><code><span class=" Code Hilite">pref</span>(latex, val, key="dpi")</code> → <code>str</code>: Prefixes some LaTeX markup with a modifier (such as <code>\dpi{256}</code>).</p>
 	<div class="Indent">
-	<p><code class="Hilite">latex</code>: The LaTeX markup to be modified..</p>
+	<p><code class="Hilite">latex</code>: The LaTeX markup to be modified.</p>
 	<p><code class="Hilite">val</code>: The modifier value.</p>
 	<p><code class="Hilite">key</code>: The modifier description.</p>
 	</div>

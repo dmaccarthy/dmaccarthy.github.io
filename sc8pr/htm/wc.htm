@@ -1,4 +1,4 @@
-﻿<article><h1><code>sc8pr.misc.webCache.WebCache</code> Class</h1>
+﻿<article><h1><code>sc8pr.misc.webcache.WebCache</code> Class</h1>
 <p><span class="Comment"><b>Added in v2.1</b>.</span></p>
 
 <p>The <code>WebCache</code> class is used to manage asynchronous web requests and the response cache.</p>
@@ -16,29 +16,29 @@
 		<div class="Indent">
 		<p><code class="Hilite">ignorePending</code>: If <code>True</code>, requests that have not completed are skipped; by default, the method will wait for each request to finish and then check for an exception.</p>
 		</div>
-	<p><code><span class="Hilite">flush</span>()</code> → <code>generator</code>: Removes all current requests and generates the response data.</p>
+	<p><code><span class="Hilite">flush</span>()</code> → <code>generator</code>: Removes all current requests and generates the corresponding response data.</p>
 	<p><code><span class="Hilite">get</span>(key, save=None, dpi=None, color=None)</code> → <code>WebRequest</code> or <code>CacheRequest</code>: Initiates a request for a web resource.</p>
 		<div class="Indent">
 		<p><code class="Hilite">key</code>: The URL being requested, or LaTeX markup to be rendered using <a href="http://www.codecogs.com/latex/about.php">codecogs.com</a>. This method interprets the key as LaTeX only when a non-zero <code>dpi</code> argument is provided.</p>
-		<p><code class="Hilite">save</code>: A string indicating the file name to use when saving the response to the cache. This argument is ignored if the resource already exists in the cache.</p>
+		<p><code class="Hilite">save</code>: A string indicating the file name to use when saving the response to the cache. Files can only be saved into the cache folder. This argument is ignored if the resource already exists in the cache.</p>
 		<p><code class="Hilite">dpi</code>: The “dots per inch” setting for LaTeX rendering; determines the size of the rendered image.</p>
-		<p><code class="Hilite">color</code>: The color for LaTeX rendering, as a string.</p>
+		<p><code class="Hilite">color</code>: The color for LaTeX rendering as a string; can be omitted when rendering in black type.</p>
 		</div>
 	<p><code><span class="Hilite">imageData</span>(dataType=True, formats=True)</code> → <code>self</code>: Specifies the format of the response data when identified as an image.</p>
 		<div class="Indent">
 		<p><code class="Hilite">dataType</code>: Specifies the desired data type for image data as <code>bytes</code>, <code>sc8pr.Image</code>,  or <code>pygame.Surface</code>. A value of <code>False</code> or <code>None</code> is treated as <code>bytes</code>, while <code>True</code> is treated as <code>pygame.Surface</code>.</p>
 		<p><code class="Hilite">formats</code>: A list or tuple of file extensions to be considered as images. If <code>True</code>, the formats will be <code>("png", "jpg", "jpeg", "jpe", "gif", "bmp", "tif", "tiff", "tga", "pcx")</code>.</p>
 		</div>
-	<p><code><span class="Hilite">tidy</span>()</code> → <code>self</code>: Removes deleted and unsuccessful downloads from the cache index.</p>
+	<p><code><span class="Hilite">tidy</span>()</code> → <code>self</code>: Removes deleted and unsuccessful downloads from the cache index and saves the index to disk. If your program delete items from the index, you must call <code>tidy</code> to prevent those items from being reloaded the next time the <code>WebCache</code> is instantiated.</p>
 	<p><code><span class="Hilite">wait</span>()</code> → <code>self</code>: Waits until all current requests have finished.</p>
 
 </div>
 
 <h4>Static Property</h4>
-<div class="Indent"><p><code class="Hilite">log</code>: A reference to a function called to log web cache activity, or <code>None</code> (default).</p></div>
+<div class="Indent"><p><code class="Hilite">log</code>: A reference to a function called to log web cache activity (such as <code>print</code>), or <code>None</code> (default).</p></div>
 
 <h4>Read-Only Properties</h4><div class="Indent">
-	<p><code class="Hilite">index</code>: A dictionary containing cached URLs or LaTeX markup as the key, and the name of the cached file as a value. The index does not guaranteee that the file exists.</p>
+	<p><code class="Hilite">index</code>: A dictionary containing cached URLs or LaTeX markup as the key, and the name of the cached file as a value. The index does not guarantee that the file exists.</p>
 </div>
 
 </article>

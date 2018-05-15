@@ -96,6 +96,10 @@ function highlight(node) {
 	p.removeClass("Current");
 	p = $("nav").find("[data-id='" + node.link + "']").closest("p");
 	p.addClass("Current");
+	p = p.closest("div").show();
+	p.siblings("div").show();
+	p.children("div").show();
+	p.parents("div").show();
 	if (pop) pop = null;
 	else {
 		var url = location.href.split("?")[0];
@@ -148,7 +152,7 @@ function navClick() {
 	var p = $(this).closest("p");
 	var div = p.closest("div");
 	var node = p[0].node;
-	div.children("div").toggle();
+	div.children("div").show();
 	if (node.link) goNode(node.link);
 }
 
@@ -168,7 +172,7 @@ window.onload = function() {
 	var c = $(nodeHtml(sitemap).children());
 	c.insertBefore($("#Copyright"));
 	$(c[0]).remove();
-	collapse();
+	collapse(2);
 	resize();
 	goNode(location.href.split("?")[1]);
 	animate();

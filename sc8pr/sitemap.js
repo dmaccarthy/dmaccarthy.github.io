@@ -18,6 +18,7 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 		{title:"GUI Controls", link:"gui_tut"},
 	]},
 	{title:"Reference", link:"ref", pages:[
+		{title:"Graphic Class Hierarchy", link:"hierarchy"},
 		{title:"sc8pr", link:"init", pages:[
 			{title:"class Graphic", link:"graphic"},
 			{title:"class Image", link:"image"},
@@ -50,7 +51,7 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 				{title:"class Grabber", link:"grabber"},
 				{title:"class Video", link:"video_class"},
 			]},
-			{title:".webCache", link:"webcache", pages:[
+			{title:".webcache", link:"webcache", pages:[
 				{title:"class WebCache", link:"wc"},
 			]},
 		]},
