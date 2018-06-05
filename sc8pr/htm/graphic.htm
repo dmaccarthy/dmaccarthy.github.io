@@ -92,7 +92,11 @@
 		<p><code>fy</code>: The factor by which to adjust the y-components of the vectors.</p>
 		<p><code>attr</code>: A sequence of attributes to be adjusted; the function will ignore any specified attributes that are not defined.</p>
 		</div>
-	<p><code><span class="Hilite">setCanvas</span>(cv)</code> → <code>self</code>: Remove the instance from its current canvas (if applicable) and add it to another one. This method is not usually called directly as the canvas’s assignment (<code>=</code>) and increment <code>+=</code> operators perform the same task; <code>cv += gr</code> is effectively the same as <code>gr.setCanvas(cv)</code>, where <code>gr</code> is the <code>Graphic</code> instance and <code>cv</code> is the <code>Canvas</code>.</p>
+	<p><code><span class="Hilite">setCanvas</span>(cv, key=None)</code> → <code>self</code>: Remove the instance from its current canvas (if applicable) and add it to another one. This method is not usually called directly as the canvas’s assignment (<code>=</code>) and increment (<code>+=</code>) operators perform the same task; <code>cv += gr</code> is effectively the same as <code>gr.setCanvas(cv)</code> and <code>cv[key] = gr</code> is effectively the same as <code>gr.setCanvas(cv, key)</code>.</p>
+		<div class="Indent">
+		<p><code>cv</code>: The canvas to which the graphic should be added.</p>
+		<p><code>key</code>: A key that can be used with the canvas <code>__getitem__</code>code> method to obtain a reference to the graphic. <b class="Comment">[Added in v2.1]</b></p>
+		</div>
 	<p><code><span class="Hilite" id="snapshot">snapshot</span>(**kwargs)</code> → <code>Image</code>: Create a new image by drawing the graphic and applying any <code>effects</code>.</p>
 		<div class="Indent">
 		<p><code>**kwargs</code>: Arguments to be passed to <code>sc8pr.util.style</code> after drawing the image.</p>
