@@ -11,31 +11,13 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js">//</script>
 <script type="text/javascript" src="sitemap.js">//</script>
 <script type="text/javascript" src="sc8pr.js">//</script>
-<!--script type="text/javascript">
-
-function gsearch(f, ev) {
-	if (ev.keyCode == 13) {
-		var site = encodeURIComponent("site:github.com/dmaccarthy/sc8pr");
-		var url = "https://www.google.com/search?q=" + f.value + "+" + site;
-		console.log(url);
-	}
-}
-
-</script-->
 </head>
 <body><nav><textarea class="Clip"></textarea>
 <p id="Home" title="sc8pr 2 Home" onclick="goNode()"><img id="Logo" src="img/alien0.png" alt="Image"/></p>
-<p class="Center Expand">
-	<img src="img/1.png" alt="Collapse" title="Collapse ↑" onclick="collapse(1)" height="30"/>
-	<img src="img/2.png" alt="Semi-Expand" title="Semi-Expand" onclick="collapse(2)" height="30"/>
-	<img src="img/3.png" alt="Expand" title="Expand ↓" onclick="collapse(3)" height="30"/>
-	<img src="img/next.png" alt="Next" title="Next Page →" onclick="goNext()" height="30"/>
-</p>
-<!--p id="Search" class="Center"><input type="text" size="24" value="" onkeyup="gsearch(this, event)"></p-->
 <p id="Copyright">&copy; 2017-2018 by <a href="https://github.com/dmaccarthy">D.G. MacCarthy</a>.
 	This documentation is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0</a>.
 	The <code>sc8pr</code> software is hosted on <a href="https://github.com/dmaccarthy/sc8pr">GitHub</a> and is licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPLv3</a>.</p>
 </nav>
 <article></article>
-<p id="Bottom" class="Center"><img src="img/next.png" alt="Next" title="Next Page →" onclick="goNext()" height="30"/></p>
+<p id="Bottom" class="Center"><button onclick="goNext()">Next Page →</button></p>
 </body></html>

@@ -14,10 +14,8 @@ body {
 #Home:hover {background-image:url("img/sc8hover.png")}
 #Copyright {font-size:85%}
 #Logo {width:80px}
-nav p {padding:0.25em}
-nav p.Current {font-weight:bold}
 article {padding:0.5em}
-button {width:5em}
+button {width:8em}
 
 nav {
 	margin:0;
@@ -32,22 +30,31 @@ nav.Wide {
 	top:0; left:0;
 }
 
-nav div div {margin-left:1em}
+nav ul {
+	padding-left:0;
+	color:blue;
+	list-style-type: none;
+}
 
-nav div p {
-	margin:0.2em 0;
+nav ul ul {
+	padding-left:1.25em;
 	color:blue;
 }
 
-nav div p span:hover, #Home:hover {
+nav ul.Menu {margin:2em 0}
+nav ul li {margin:0.5em 0}
+nav ul li span {padding:0.25em}
+nav ul.Collapsed {display:none}
+
+nav ul li span:hover, #Home:hover {
 	color:white;
 	cursor:pointer;
 	background-color:blue;
 }
 
-nav p.Expand img {
-	padding:0 0.8em;
-	cursor:pointer;
+nav span.Current {
+	font-weight:bold;
+	color:red;
 }
 
 h1 {
@@ -101,11 +108,6 @@ table.Default td, table.Default th {
 	padding:4px;
 }
 
-img.Border {
-	border:1px solid black;
-}
-
+img.Border {border:1px solid black}
 textarea.Clip {display:none}
-
-#Bottom {margin:0}
-#Bottom img {cursor:pointer}
+#Bottom {margin-top:0}

@@ -80,26 +80,26 @@ function notFound(node) {
 /** Navigation Panel **/
 
 function nodeHtml(node) {
+	var img = $("<img>").attr({src:"img/blank.png"});
 	var span = $("<span>").html(node.title).click(navClick).attr("data-id", node.link);
-	var p = $("<p>").html(span);
-	var div = $("<div>").html(p);
-	p[0].node = node;
+	var li = $("<li>").html(img).append("&nbsp;").append(span);
+	li[0].node = node;
 	if (node.pages) {
+		img.click(collapseToggle).attr({src:"img/minus.png", title:"Expand or Collapse Menu", style:"cursor:pointer"});
+		var ul = $("<ul>").addClass("Expanded");
+		li.append(ul).addClass("Expanded");
 		var pg = node.pages;
-		for (var i=0;i<pg.length;i++) div.append(nodeHtml(pg[i]));
+		for (var i=0;i<pg.length;i++) ul.append(nodeHtml(pg[i]));
 	}
-	return div;
+	return li;
 }
 
 function highlight(node) {
-	var p = $("nav").find("p");
-	p.removeClass("Current");
-	p = $("nav").find("[data-id='" + node.link + "']").closest("p");
-	p.addClass("Current");
-	p = p.closest("div").show();
-	p.siblings("div").show();
-	p.children("div").show();
-	p.parents("div").show();
+	var nav = $("nav");
+	nav.find(".Current").removeClass("Current");
+	var li = nav.find("[data-id='" + node.link + "']").addClass("Current").closest("li");
+	console.log("Highlight!", li)
+	expandUp(li);
 	if (pop) pop = null;
 	else {
 		var url = location.href.split("?")[0];
@@ -113,14 +113,39 @@ function highlight(node) {
 	current = node;
 }
 
-function collapse(n) {
-	$("nav div").show();
-	if (!n || n < 1) n = 1;
-	else if (n > 3) n = 3;
-	collapse.level = n;
-	var s = "nav div";
-	while (n--) s += " div";
-	$(s).hide();
+function collapseToggle(ev) {
+	var li = $(this).closest("li");
+	if (li.hasClass("Expanded")) collapse(li);
+	else expand(li);
+	console.log(li[0].node);	
+	console.log(ev);
+}
+
+function collapse(li) {
+	if (li.hasClass("Expanded")) {
+		li.removeClass("Expanded").addClass("Collapsed");
+		li.children("img").attr({src:"img/plus.png"});
+		var ul = li.children("ul");
+		ul.removeClass("Expanded").addClass("Collapsed");
+		li = ul.children("li");
+		for (var i=0;i<li.length;i++) collapse($(li[i]));
+	}
+}
+
+function expand(li) {
+	if (li.hasClass("Collapsed")) {
+		li.removeClass("Collapsed").addClass("Expanded");
+		li.children("img").attr({src:"img/minus.png"});
+		var ul = li.children("ul");
+		ul.removeClass("Collapsed").addClass("Expanded");		
+	}
+}
+
+function expandUp(li) {
+	while (li.length) {
+		expand(li);
+		li = $(li[0].parentNode.parentNode);
+	}
 }
 
 
@@ -135,24 +160,20 @@ function resize() {
 		h -= parseFloat(nav.css("padding-top")) + parseFloat(nav.css("padding-bottom"));
 		nav.height(h).width(240);
 		$("body").css("margin-left", 256);
-		$("#Bottom").hide();
 	}
 	else {
 		nav.removeClass("Wide");
 		w -= parseFloat(nav.css("padding-left")) + parseFloat(nav.css("padding-right"));
 		nav.width(w).height("auto");
 		$("body").css("margin-left", 0);
-		$("#Bottom").show();
 	}
 	fitImages();
 	fitVideo();
 }
 
 function navClick() {
-	var p = $(this).closest("p");
-	var div = p.closest("div");
-	var node = p[0].node;
-	div.children("div").show();
+	var li = $(this).closest("li");
+	var node = li[0].node;
 	if (node.link) goNode(node.link);
 }
 
@@ -169,10 +190,9 @@ window.onresize = resize;
 
 window.onload = function() {
 	linkParentNodes();
-	var c = $(nodeHtml(sitemap).children());
-	c.insertBefore($("#Copyright"));
-	$(c[0]).remove();
-	collapse(2);
+	$($(nodeHtml(sitemap)).find("ul")[0]).addClass("Menu").insertBefore($("#Copyright"));
+	var li = $("nav").children("ul").children("li");
+	for (var i=0;i<li.length;i++) collapse($(li[i]));
 	resize();
 	goNode(location.href.split("?")[1]);
 	animate();
@@ -187,9 +207,7 @@ window.onkeydown = function (ev) {
 	var tag = ev.target.tagName.toUpperCase();
 	if (tag != "INPUT" && tag != "TEXTAREA") {
 		var key = ev.keyCode;
-		if (key == 38) collapse(collapse.level - 1);
-		else if (key == 40) collapse(collapse.level + 1);
-		else if (key == 37) history.back();
+		if (key == 37) history.back();
 		else if (key == 39) goNext();
 	}
 }
