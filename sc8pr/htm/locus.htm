@@ -2,32 +2,47 @@
 <p><span class="Comment"><b>Added in v2.1</b>. The <code>Locus</code> class in v2.0 was experimental and does not conform to this API!</span></p>
 
 <p>The <code>Locus</code> class represents graphics described by an equation or a sequence of points. Loci are  drawn directly onto the canvas. The example below produces the following output:</p>
-<p class="Center"><img class="Fit" src="img/wave.png" alt="Image" style="border:1px solid black"/></p>
-<pre class="Code">from math import pi, sin
+<p class="Center"><img class="Fit" src="img/waves.gif" alt="Image" style="border:1px solid black"/></p>
+<pre class="Code">from time import time
+from math import pi, sin, cos
 from sc8pr import Sketch
 from sc8pr.misc.plot import Locus
 
-def setup(sk):
-    lrbt = -10, 10, -1, 1
-    param = -2*pi, 2*pi, 500
-    wave = Locus(sin, lrbt, param)
-    sk += wave.config(weight=2, stroke="red")
+def sineWave(x, A=1, k=2*pi, shift=(0,0)):
+    <span class="Comment">"Calculate points on the locus"</span>
+    return A * sin(k * (x - shift[0])) + shift[1]
 
-Sketch().play()</pre>
+def ondraw(wave):
+    <span class="Comment">"Update amplitude each frame"</span>
+    wave.vars["A"] = cos(2 * pi / wave.period * (time() - wave.start))
+
+def setup(sk):
+    lrbt = -1.2, 1.2, -1.5, 1.5
+    param = -1, 1, 500
+
+    <span class="Comment"># Static locus...</span>
+    sk += Locus(sineWave, lrbt, param).config(weight=2, stroke="blue")
+
+    <span class="Comment"># Animated locus...</span>
+    wave = Locus(sineWave, lrbt, param).bind(ondraw)
+    sk += wave.config(weight=2, stroke="red",
+        start=time(), period=2, vars={"k":4*pi})
+
+Sketch().play("Locus Demo")</pre>
 <p>In addition to the attributes inherited from from <a class="Hilite Code" href="javascript:goNode('shape')">Shape</a> and <a class="Hilite Code" href="javascript:goNode('graphic')">Graphic</a> the <code>Locus</code> class defines the following...</p>
 
 <h4>Constructor</h4><div class="Indent">
 	<p><code><span class="Hilite">Locus</span>(data, lrbt, param)</code></p>
 		<div class="Indent">
-		<p><code class="Hilite">data</code>: A list or tuple of points, or a function from which points can be generated.</p>
+		<p><code class="Hilite">data</code>: A list or tuple of points, or a function from which points can be generated. The function may be of the form <i>f: x → y</i> if it is a function in the mathematical sense, or <i>f: t → (x, y)</i> for a parameterized curve.</p>
 		<p><code class="Hilite">lrbt</code>: A list or tuple specifying the coordinates corresponding to the <i>left</i>, <i>right</i>, <i>bottom</i>, and <i>top</i> edges of the plot area. If <i>top</i> is not specified, it will be calculated so that the <i>y</i>-axis has the same scale as the <i>x</i>-axis. If <i>top</i> and <i>bottom</i> are both omitted, the axes will have the same scales and the <i>x</i>-axis will be positioned in the middle of the plot.</p>
-		<p><code class="Hilite">param</code>: A 3-list or 3-tuple specifying the starting and ending values of the parameter, and the number of steps. This is used to generate the data points when a function is provided as <code>data</code>. The <code>param</code> argument is ignored if <code>data</code> is a sequence of points. In the example above, the <code>sin</code> function is graphed from −2π to +2π by drawing 500 segments.
+		<p><code class="Hilite">param</code>: A 3-list or 3-tuple specifying the starting and ending values of the parameter, and the number of steps. This is used to generate the data points when a function is provided as <code>data</code>. The <code>param</code> argument is ignored if <code>data</code> is a sequence of points. In the example above, the <code>sinWave</code> function is graphed from <i>x</i> = −1 to +1 by drawing 500 segments.
 		</div>
 </div>
 
 <h4>Assignable Properties</h4><div class="Indent">
 	<p><code class="Hilite">data</code>, <code class="Hilite">lrbt</code>, <code class="Hilite">param</code>: See descriptions for the constructor arguments.</p>
-	<p><code class="Hilite">vars</code>: A dictionary to be passed to the function that generates the data.</p>
+	<p><code class="Hilite">vars</code>: A dictionary to be passed to the function that generates the data. In the example above, the dictionary may contain the keys <code>A</code> (amplitude), <code>k</code> (wavenumber), and <code>shift</code>.</p>
 </div>
 
 <h4>Read-Only Properties</h4><div class="Indent">

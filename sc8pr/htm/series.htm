@@ -9,7 +9,7 @@
 <h4>Constructor</h4><div class="Indent">
 	<p><code><span class="Hilite">Series</span>(x, y=None, param=None)</code></p>
 		<div class="Indent">
-		<p><code class="Hilite">x</code>, <code class="Hilite">y</code>: The data can be provided as a single list of points (2-tuples or 2-lists), or as two separate sequences which specify the <i>x</i> and <i>y</i> data respectively. Alternatively, you can provide a function describing a parameterized path.</p>
+		<p><code class="Hilite">x</code>, <code class="Hilite">y</code>: The data can be provided as a single list of points (2-tuples or 2-lists), or as two separate sequences which specify the <i>x</i> and <i>y</i> data respectively. Alternatively, you can provide a function describing a parameterized path. The function may be of the form <i>f: x → y</i> if it is a function in the mathematical sense, or more generally <i>f: t → (x, y)</i>.</p>
 		<p><code class="Hilite">param</code>: This argument is only used when the data series is described by a function. The argument is a 3-list or 3-tuple specifying the starting and ending values of the path parameter, and the number of steps.</p>
 		</div>
 </div>
