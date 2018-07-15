@@ -1,6 +1,39 @@
 ﻿<article><h1><code>sc8pr.Canvas</code> Class</h1>
 
-<p>The <code>Canvas</code> class, a subclass of <code>Graphic</code>, represents rectangular regions on which additional graphics can be drawn. <code>Canvas</code> is the superclass of <code>Sketch</code>. In addition to the attributes it inherits from <code><a class="Hilite" href="javascript:goNode('graphic')">Graphic</a></code>, <code>Canvas</code> defines the following...</p>
+<p>The <code>Canvas</code> class represents rectangular regions on which additional graphics can be drawn. Canvases can be used to compose images, and to create separate animated regions within the sketch.</p>
+
+<p>Usage example:</p>
+<pre class="Code Scroll">from random import uniform
+from sc8pr import Sketch, Image, Canvas, BOTH, CENTER
+from sc8pr.sprite import Sprite
+from sc8pr.text import Text
+from sc8pr.util import randPixel
+
+def setup(sk):
+    <span class="Comment"># Add a canvas to the sketch</span>
+    cv = Canvas((256,192), "#f0f0f0").config(weight=1, pos=(132,100))
+    sk += cv.bind(onclick)
+
+    <span class="Comment"># Add sprites to the canvas</span>
+    img = Image("alien.png")
+    for i in range(3):
+        v = uniform(-1,1), uniform(-1,1)
+        cv += Sprite(img).config(height=32, bounce=BOTH,
+            pos=randPixel(cv), vel=v, spin=uniform(-1,1))
+
+    <span class="Comment"># Add a text message to the sketch</span>
+    msg = "Click the canvas\nto take a snapshot."
+    sk["Snapshot"] = Text(msg).config(pos=(392,100), align=CENTER)
+
+def onclick(cv, ev):
+    <span class="Comment">"Take a snapshot of the canvas and add it to the sketch"</span>
+    sk = cv.sketch
+    old = sk["Snapshot"].remove()
+    sk["Snapshot"] = cv.snapshot().config(pos=old.pos)
+
+Sketch((524,200)).play("Canvas Demo")</pre>
+
+<p><code>Canvas</code> is the superclass of <code>Sketch</code> and of several GUI controls. In addition to the attributes it inherits from <code><a class="Hilite" href="javascript:goNode('graphic')">Graphic</a></code>, <code>Canvas</code> defines the following...</p>
 
 <h4>Constructor</h4><div class="Indent">
 	<p><code><span class="Hilite">Canvas</span>(image, bg=None)</code></p>
@@ -49,7 +82,7 @@
 		<div class="Indent">
 		<p><code class="Hilite">resizeContent</code>: Specifies whether to resize and reposition the contents of the canvas.</p>
 		</div>
-	<p><code><span class="Hilite">shiftContents</span>(offset, *args, resize=True)</code> → <code>self</code>: Shift all of the content in the canvas by a fixed amount.</p>
+	<p><code><span class="Hilite">shiftContents</span>(offset, *args, resize=True)</code> → <code>self</code>: Shift all of the content in the canvas by a fixed amount. This method may be useful for compsing GUI dialogs.</p>
 		<div class="Indent">
 		<p><code class="Hilite">offset</code>: The number of pixels to shift as a 2-tuple or 2-list.</p>
 		<p><code class="Hilite">args</code>: Items to omit from the shift.</p>
