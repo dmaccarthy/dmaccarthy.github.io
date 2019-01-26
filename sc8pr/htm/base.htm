@@ -22,6 +22,11 @@
 		</div>
 	<p><code><span class="Hilite">penReset</span>(self)</code> → <code>None</code>: Lifts the pen to allow wrapping or resizing.</p>
 	<p><code><span class="Hilite">simpleWrap</span>(self)</code> → <code>None</code>: Performs calculations to wrap the sprite when it leaves the canvas; called by <code>ondraw</code>.</p>
+	<p><code><span class="Hilite">toward</span>(self, pos, mag=None)</code> → <code>tuple</code>: Returns a vector directed from the sprite’s current position to the position specified. <b class="Comment">[Added in v2.1]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">pos</code>: The target position as a 2-tuple or 2-list.</p>
+		<p><code class="Hilite">mag</code>: The magnitude of the vector; if <code>None</code>, the sprite’s current speed will be used.</p>
+		</div>
 </div>
 
 </article>
