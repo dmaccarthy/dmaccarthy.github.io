@@ -37,23 +37,34 @@
 		<p><code class="Hilite">stroke</code>: The color of the line.</p>
 		<p><code class="Hilite">weight</code>: The thickness of the line.</p>
 		</div>
+	<p><code><span class="Hilite">grid</span>(dx=None, dy=None, xends=None, yends=None, stroke="grey", weight=1)</code> → <code>self</code>: Add horizontal and/or vertical gridlines to the plot.</p>
+		<div class="Indent">
+		<p><code class="Hilite">dx</code>, <code class="Hilite">dy</code>: The interval at which gridlines are to be drawn. These can be set to <code>False</code> to disable gridlines. If omitted, the gridline configuration is not changed.</p>
+		<p><code class="Hilite">xends</code>, <code class="Hilite">yends</code>: 2-lists or 2-tuples describing the extent of the gridlines. If omitted, gridlines will extend over the entire plot.</p>
+		<p><code class="Hilite">stroke</code>: The gridline color; default <code>"grey"</code>.</p>
+		<p><code class="Hilite">weight</code>: The gridline thickness; default <code>1</code>.</p>
+		</div>
 	<p><code><span class="Hilite">pixelCoords</span>(xy)</code> → <code>tuple</code>: Calculates pixel coordinates relative to the plot.</p>
 		<div class="Indent">
 		<p><code class="Hilite">xy</code>: A 2-tuple describing a position using the plot’s coordinate system.</p>
 		</div>
+	<p><code><span class="Hilite">xtick</span>(dx, ends=None, marker=9, **kwargs)</code> → <code>Series</code>: Creates a series representing the tick marks or labels along the <i>x</i>-axis.</p>
+		<div class="Indent">
+		<p><code class="Hilite">dx</code>: The interval for the tick marks.</p>
+		<p><code class="Hilite">ends</code>: A 2-tuple or list specifying the start and end values for the tick marks.</p>
+		<p><code class="Hilite">marker</code>: An <code>int</code> representing the tick size, a <code>Graphics</code> instance to use as an alternative tick mark, or a format string to use for tick labels.</p>
+		<p><code class="Hilite">kwargs</code>: Arguments for rendering the tick labels as text, such as <code>font</code>, <code>fontSize</code> or <code>color</code>. Can also include <code>omitZero=True</code> if you want to omit labeling the axis at 0.</p>
+		</div>
+	<p><code><span class="Hilite">ytick</span>(dy, ends=None, marker=9, **kwargs)</code> → <code>Series</code>: Creates a series representing the tick marks or labels along the <i>y</i>-axis. Arguments are the same as for <code>xtick</code>.</p>
 
-<h4>Static Methods</h4><div class="Indent">
+	</div>
+
+<h4>Static Method</h4><div class="Indent">
 	<p><code><span class="Hilite">labels</span>(text, pos, **kwargs)</code> → <code>Series</code>: Creates a series containing text labels as markers.</p>
 		<div class="Indent">
 		<p><code class="Hilite">text</code>: A list or tuple of strings describing the text.</p>
 		<p><code class="Hilite">pos</code>: A list or tuple of points specifying the locations of the labels.</p>
 		<p><code class="Hilite">kwargs</code>: Arguments to be passed to <code>Text.config</code> to specify the <code>font</code>, <code>fontSize</code>, <code>color</code>, etc.</p>
-		</div>
-	<p><code><span class="Hilite">xtick</span>(param, marker=9, **kwargs)</code> → <code>Series</code>: Creates a series representing the tick marks or labels along the <i>x</i>-axis.</p>
-		<div class="Indent">
-		<p><code class="Hilite">param</code>: A 3-tuple or list specifying the start value, end value, and interval for the tick marks.</p>
-		<p><code class="Hilite">marker</code>: An <code>int</code> representing the tick size, a <code>Graphics</code> instance to use as an alternative tick mark, or a format string to use for tick labels.</p>
-		<p><code class="Hilite">kwargs</code>: Arguments for rendering the tick labels as text, such as <code>font</code>, <code>fontSize</code> or <code>color</code>. Can also include <code>omitZero=True</code> if you want to omit labeling the axis at 0.</p>
 		</div>
 </div>
 

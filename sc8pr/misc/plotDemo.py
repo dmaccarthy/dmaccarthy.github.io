@@ -1,4 +1,4 @@
-# Copyright 2018 D.G. MacCarthy <http://dmaccarthy.github.io>
+# Copyright 2018-2019 D.G. MacCarthy <http://dmaccarthy.github.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-"A demonstration of sc8pr 2.0's Plot class"
+"A demonstration of sc8pr 2.1's Plot class"
 
 from sc8pr import Sketch
 from sc8pr.misc.plot import Plot, Series
@@ -24,28 +24,28 @@ def wave(x, A=1, k=1, x0=0, y0=0):
     return A * sin(k * (x - x0)) + y0
 
 def setup(sk):
-    # Create the Plot
+    # Create the Plot; configure axes and gridlines
     param = [-3.5, 3.5, -1.6, 1.6]
     p = Plot(sk.size, param).bind(ondraw)
     sk += p.config(pos=sk.center).axis()
+    pi_4 = pi / 4
+    ends = [-pi, 3.2]
+    p.grid(dx=pi_4, xends=ends).grid(dy=0.5, yends=[-1.5, 1.6])
 
     # Add a sine wave Series
     param = param[:2] + [sk.width - 1]
     p["Wave"] = Series(wave, param=param).config(
         stroke="blue", weight=2, vars={"k":4, "x0":0, "A":1.5})
 
-    # Add tick marks to the x-axis
-    param = [-pi, 3.2, pi / 4]
-    p["_xtick"] = p.xtick(param)
-
-    # Add labels to the x-axis
+    # Add tick marks and labels to the x-axis
+    p["_xtick"] = p.xtick(pi_4, ends)
     attr = dict(marker="{:.2f}", fontSize=16, omitZero=True)
-    p["_xlabel"] = p.xtick(param, **attr).transform(shift=(0, -0.15))
+    p["_xlabel"] = p.xtick(pi_4, ends, **attr).transform(shift=(0, -0.15))
 
     # Add tick marks and labels to the y-axis
-    param = [-1.5, 1.6, 0.5]
-    p["_ytick"] = p.ytick(param)
-    p["_ylabel"] = p.ytick(param, **attr).transform(shift=(-0.3, 0))
+    ends = [-1.5, 1.6]
+    p["_ytick"] = p.ytick(0.5, ends)
+    p["_ylabel"] = p.ytick(0.5, ends, **attr).transform(shift=(-0.3, 0))
 
 def ondraw(p):
     "Modify wave variables"
