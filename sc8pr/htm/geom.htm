@@ -30,10 +30,15 @@
 		<p><code class="Hilite">w</code>, <code class="Hilite">h</code>: Dimensions of the original rectangle.</p>
 		<p><code class="Hilite">angle</code>: Rotation angle in degrees.</p>
 		</div>
-	<p><code><span class="Hilite">sigma</span>(*args)</code> → <code>tuple</code>: Calculate the sum of one or more vectors.</p>
+	<p><code><span class="Hilite">sigma</span>(*args)</code> → <code>tuple</code>: Calculate the sum of one or more vectors. <b class="Comment">[Added in v2.1]</b></p>
 	<p><code><span class="Hilite">sprod</span>(v1, v2)</code> → <code>float</code>: Calculate the scalar product of two vectors.</p>
 		<div class="Indent">
 		<p><code class="Hilite">v1</code>, <code class="Hilite">v2</code>: Vectors as 2-tuples or 2-lists.</p>
+		</div>
+	<p><code><span class="Hilite">subtend</span>(P, C, r)</code> → <code>tuple</code>: Calculates the half-angle subtended by a circle of radius <code>r</code> centred at point <code>C</code>, observed from point <code>P</code>. Returns a 3-tuple containing the separation between <code>P</code> and <code>C</code>, the direction in degrees of <code>C</code> relative to <code>P</code>, and the half-angle. <b class="Comment">[Added in v2.1]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">P</code>, <code class="Hilite">C</code>: Points as 2-tuples or 2-lists.</p>
+		<p><code class="Hilite">r</code>: Radius of the circle.</p>
 		</div>
 	<p><code><span class="Hilite">transform2d</span>(pt, **kwargs)</code> → <code>tuple</code>: Perform a transformation (shift, scale, rotate) on a single point.</p>
 		<div class="Indent">
