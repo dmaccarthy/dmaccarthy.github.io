@@ -98,7 +98,7 @@ function highlight(node) {
 	var nav = $("nav");
 	nav.find(".Current").removeClass("Current");
 	var li = nav.find("[data-id='" + node.link + "']").addClass("Current").closest("li");
-	console.log("Highlight!", li)
+//	console.log("Highlight!", li);
 	expandUp(li);
 	if (pop) pop = null;
 	else {
