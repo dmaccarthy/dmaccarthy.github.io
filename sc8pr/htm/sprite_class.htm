@@ -26,9 +26,10 @@
 	<p><code><span class="Hilite">__getitem__</span>(i)</code> → <code>Image</code>: Returns the costume in the current costume sequence with index <code>i</code>.</p>
 	<p><code><span class="Hilite">__len__</span>()</code> → <code>int</code>: Enables the <code>len</code> function to count the number of costumes in the current costume sequence.</p>
 	<p><code><span class="Hilite">costume</span>()</code> → <code>Image</code>: Returns the sprite’s current costume.</p>
-	<p><code><span class="Hilite">costumeSequence</span>(seq)</code> → <code>self</code>: Specifies the order in which to change the costumes when animating.</p>
+	<p><code><span class="Hilite">costumeSequence</span>(seq, n=None)</code> → <code>self</code>: Specifies the order in which to change the costumes when animating.</p>
 		<div class="Indent">
 		<p><code class="Hilite">seq</code>: A sequence of indices referring to the original costume sequence.</p>
+		<p><code class="Hilite">n</code>: An index specifying the <code>costumeNumber</code>. If omitted, the current value is retained unless it would result in an <code>IndexError</code> in which case it is reset to zero.</p>
 		</div>
 </div>
 
