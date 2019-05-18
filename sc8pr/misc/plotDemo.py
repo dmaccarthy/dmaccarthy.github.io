@@ -25,15 +25,15 @@ def wave(x, A=1, k=1, x0=0, y0=0):
 
 def setup(sk):
     # Create the Plot; configure axes and gridlines
-    param = [-3.5, 3.5, -1.6, 1.6]
-    p = Plot(sk.size, param).bind(ondraw)
+    lrbt = [-3.5, 3.5, -1.6, 1.6]
+    p = Plot(sk.size, lrbt).bind(ondraw)
     sk += p.config(pos=sk.center).axis()
     pi_4 = pi / 4
     ends = [-pi, 3.2]
     p.grid(dx=pi_4, xends=ends).grid(dy=0.5, yends=[-1.5, 1.6])
 
     # Add a sine wave Series
-    param = param[:2] + [sk.width - 1]
+    param = lrbt[:2] + [sk.width - 1]
     p["Wave"] = Series(wave, param=param).config(
         stroke="blue", weight=2, vars={"k":4, "x0":0, "A":1.5})
 

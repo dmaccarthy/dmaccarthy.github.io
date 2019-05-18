@@ -21,7 +21,9 @@
 	</div>
 	<p><code><span class="Hilite">locus</span>(func, param, **kwargs)</code> → <code>generator</code>: Generates a sequence of points along a 
 parameterized path. This example prints a sequence of four points on the function <i>y</i> = 0.25 <i>x</i><sup>2</sup>:</p>
-<pre class="Code">def f(x, A): return A * x * x
+<pre class="Code">from sc8pr.misc.plot import locus
+
+def f(x, A): return A * x * x
 
 for pt in locus(f, [0, 12, 3], A=0.25):
     print(pt)</pre>
