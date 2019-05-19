@@ -1,4 +1,4 @@
-# Copyright 2017-2018 D.G. MacCarthy <http://dmaccarthy.github.io>
+# Copyright 2017-2019 D.G. MacCarthy <http://dmaccarthy.github.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-"A demonstration of some of sc8pr 2.0's GUI controls"
+"A demonstration of some of sc8pr 2's GUI controls"
 
 from sc8pr import Sketch, Canvas, Image, TOPLEFT, TOPRIGHT, CENTER, TOP
 from sc8pr.util import rgba, nothing, sc8prData
@@ -133,7 +133,7 @@ def sliderChange(gr, ev):
     print(gr, round(gr.val), m)
 
 def onclick(sk, ev):
-    print("Unhandled click:", ev.target)
+    print("Click:", ev.target)
 
 
 # Play the sketch
