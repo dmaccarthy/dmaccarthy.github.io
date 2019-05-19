@@ -46,7 +46,7 @@
 		<p><code>offset</code>: A position offset based on the canvas’s position.</p>
 		<p><code>blitSize</code>: The size of the graphic adjusted for rotation.</p>
 		</div>
-	<p><code><span class="Hilite">blur</span>()</code> → <code>self</code>: Force the instance to relinquish focus.</p>
+	<p><code><span class="Hilite">blur</span>()</code> → <code>self</code>: Force the instance to relinquish focus. This method does <i>not</i> call the <code>onblur</code> event handler or the sketch’s <code>onfocus</code> handler.</p>
 	<p><code><span class="Hilite">bubble</span>(eventName, ev)</code> → <code>None</code>: Call the instance’s event handler to process an event. If no event handler exists for the specified event, the call will “bubble” to the instance’s canvas.</p>
 		<div class="Indent">
 		<p><code>eventName</code>: A string describing the event handler (e.g. <code>"onclick"</code>).</p>

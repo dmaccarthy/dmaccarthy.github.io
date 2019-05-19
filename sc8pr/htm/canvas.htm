@@ -73,7 +73,11 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 		<p><code class="Hilite">recursive</code>: A <code>bool</code> specifying whether to search in contained canvases.</p>
 		</div>
 	<p><code><span class="Hilite">instOf</span>(cls)</code> → <code>generator</code>: Yields a sequence of contained graphics (non-recursive) that are instances of the specified class.</p>
-	<p><code><span class="Hilite">objectAt</span>(pos)</code> → <code>Graphic</code>: Returns the contained graphic instance located at the specified position. If more than one graphic is located at the position, the graphic with the highest layer is returned. If no contained graphics are at the position, the method will return <code>self</code>.</p>
+	<p><code><span class="Hilite">objectAt</span>(pos, includeAll=False)</code> → <code>Graphic</code>: Returns the contained graphic instance located at the specified position. If more than one graphic is located at the position, the graphic with the highest layer is returned. If no contained graphics are at the position, the method will return <code>self</code>.</p>
+		<div class="Indent">
+		<p><code class="Hilite">pos</code>: The canvas coordinates to be checked.</p>
+		<p><code class="Hilite">includeAll</code>: A <code>bool</code> that specifies whether to include non-hoverable graphics in the search. <b class="Comment">[Added in development version but not yet released in v2.1.0]</b></p>
+		</div>
 	<p><code><span class="Hilite">purge</span>(recursive=False)</code> → <code>None</code>: Remove all <code>Graphic</code> instances from the canvas.</p>
 		<div class="Indent">
 		<p><code class="Hilite">recursive</code>: Specifies whether to purge any contained canvases.</p>
