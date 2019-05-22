@@ -110,7 +110,7 @@ def setup(sk):
 
 def onaction(gr, ev):
     "Event handler for TextInput"
-    print(gr, gr.data)
+    if not gr.refocus(ev): print(gr, gr.data)
 
 def radioChange(gr, ev):
     "Event handler for Radio"
