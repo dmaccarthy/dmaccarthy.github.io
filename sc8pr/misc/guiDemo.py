@@ -58,14 +58,18 @@ def setup(sk):
     # Create a Canvas as a GUI dialog
     cv = Canvas((384,256)).config(bg="#f0f0ff", weight=1)
 
-    # Vertical positioning 12 pixels below last item added
+    # Vertical positioning 16 pixels below last item added
     down = lambda cv: 16 + cv[-1].height
 
     # Add a TextInput
-    x, y = cv.center[0], 16
-    cv["Input"] = TextInput("", "Type Some Text...").config(anchor=TOP,
-        font=FONT, fontStyle=BOLD, pos=(x,y), color=BLUE,
-        bg="white", padding=4).bind(onaction)
+    ti = TextInput("", "Type Some Text...").config(color=BLUE,
+        font=FONT, fontStyle=BOLD, padding=4).bind(onaction)
+    try: # Experimental in v2.2.dev...
+        from sc8pr.gui.textinput import TextInputCanvas
+        ti = TextInputCanvas(ti, 336)
+    except: pass
+    x, y = cv.center[0] - 8, 16
+    cv["Input"] = ti.config(anchor=TOP, pos=(x,y), bg="white", weight=1)
 
     # Add a Radio box
     y += down(cv)
