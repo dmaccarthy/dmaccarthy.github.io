@@ -108,11 +108,11 @@ def setup(sk):
     cv.cover = sk.cover()
     sk["Dialog"] = cv.bind(resize=nothing).config(pos=sk.center)
 
-def onaction(gr, ev):
+def onaction(ti, ev):
     "Event handler for TextInput"
-    try: r = not gr.refocus(ev) # v2.2.dev
+    try: r = not ti.refocus(ev) # v2.2.dev
     except: r = True
-    if r: print(gr, gr.data)
+    if r: print(ti, ti.data)
 
 def radioChange(gr, ev):
     "Event handler for Radio"
