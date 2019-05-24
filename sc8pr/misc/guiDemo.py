@@ -51,7 +51,7 @@ def buttonClick(gr, ev):
     print(btn, btn.selected)
     if btn.name == "Popup":
         btn.status = "normal"
-        dlg += dlg.cover.config(size=dlg.size)
+        dlg["Cover"] = dlg.cover.config(size=dlg.size)
         dlg += dlg.menu
 
 def setup(sk):
