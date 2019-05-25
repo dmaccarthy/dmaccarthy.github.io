@@ -140,4 +140,4 @@ def onclick(sk, ev):
 
 
 # Play the sketch
-Sketch().bind(onclick).play("GUI Demo")
+Sketch().bind(setup, onclick).play("GUI Demo")
