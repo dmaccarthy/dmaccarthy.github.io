@@ -27,6 +27,59 @@ from sc8pr.gui.menu import Menu, R_TRIANGLE
 GREY, BLUE = rgba("#ececec", "blue")
 FONT = Font.sans()
 
+def setup(sk):
+    # Create a Canvas as a GUI dialog
+    cv = Canvas((384,256)).config(bg="#f0f0ff", weight=1)
+
+    # Vertical positioning 16 pixels below last item added
+    down = lambda cv: 16 + cv[-1].height
+
+    # Add a TextInput (v2.0, 2.1) or TextInputCanvas (v2.2)
+    ti = TextInput("", "Type Some Text...").config(color=BLUE,
+        font=FONT, fontStyle=BOLD, padding=4).bind(onaction)
+    try: # Experimental in v2.2.dev...
+        from sc8pr.gui.textinput import TextInputCanvas
+        ti = TextInputCanvas(ti, 336)
+    except: pass
+    x, y = cv.center[0] - 8, 16
+    cv["Input"] = ti.config(anchor=TOP, pos=(x,y), bg="white", weight=1)
+
+    # Add a Radio box
+    y += down(cv)
+    cfg = {"font":FONT, "fontSize":14}
+    text = "Option A", "Option B", "Option C"
+    box = Radio(text, txtConfig=cfg).bind(onchange=radioChange)
+    cv["ABC"] = box.config(pos=(x,y), anchor=TOP, selected=1)
+
+    # Add an Options box
+    y += down(cv)
+    text = "Option X", "Option Y", "Option Z"
+    box = Options(text, txtConfig=cfg).config(pos=(x,y), anchor=TOP)
+    cv["XYZ"] = box.bind(onaction=optionsChange)
+
+    # Add Buttons
+    y += down(cv)
+    cv["Button Box"] = buttons(cfg).config(anchor=TOP, pos=(x,y))
+
+    # Modify canvas and sketch size based on content
+    cv.resize((cv.width, y + down(cv)), False)
+    w, h = cv.size
+    sk.size = w + 48, h + 48
+
+    # Add a Slider
+    slider = Slider((16, cv.height), BLUE, 100, 0, 100)
+    slider.config(pos=(cv.width, 0), anchor=TOPRIGHT, bg=GREY, weight=1)
+    cv += slider.bind(onchange=sliderChange)
+
+    # Create a popup menu
+    img = Image.fromBytes(sc8prData("alien"))
+    items = [("Action", img, None), ("Back", None, R_TRIANGLE)]
+    cv.menu = Menu(items, txtConfig=cfg).config(pos=cv.center)
+    cv.menu.bind(onaction=menuAction)
+
+    # Add the dialog to the sketch
+    sk["Dialog"] = cv.bind(resize=nothing).config(pos=sk.center)
+
 def buttons(cfg):
     "Create a canvas containing two buttons"
     cv = Canvas((256, 48))
@@ -51,68 +104,12 @@ def buttonClick(gr, ev):
     print(btn, btn.selected)
     if btn.name == "Popup":
         btn.status = "normal"
-        dlg["Cover"] = dlg.cover.config(size=dlg.size)
+        dlg["Cover"] = Image(dlg.size, "#ffffffc0").config(anchor=TOPLEFT)
         dlg += dlg.menu
-
-def setup(sk):
-    # Create a Canvas as a GUI dialog
-    cv = Canvas((384,256)).config(bg="#f0f0ff", weight=1)
-
-    # Vertical positioning 16 pixels below last item added
-    down = lambda cv: 16 + cv[-1].height
-
-    # Add a TextInput
-    ti = TextInput("", "Type Some Text...").config(color=BLUE,
-        font=FONT, fontStyle=BOLD, padding=4).bind(onaction)
-    try: # Experimental in v2.2.dev...
-        from sc8pr.gui.textinput import TextInputCanvas
-        ti = TextInputCanvas(ti, 336)
-    except: pass
-    x, y = cv.center[0] - 8, 16
-    cv["Input"] = ti.config(anchor=TOP, pos=(x,y), bg="white", weight=1)
-
-    # Add a Radio box
-    y += down(cv)
-    cfg = {"font":FONT, "fontSize":14}
-    text = "Option A", "Option B", "Option C"
-    radio = Radio(text, txtConfig=cfg).bind(onchange=radioChange)
-    cv["ABC"] = radio.config(pos=(x,y), anchor=TOP, selected=1)
-
-    # Add an Options box
-    y += down(cv)
-    text = "Option X", "Option Y", "Option Z"
-    radio = Options(text, txtConfig=cfg).config(pos=(x,y), anchor=TOP)
-    cv["XYZ"] = radio.bind(onaction=optionsChange)
-
-    # Add Buttons
-    y += down(cv)
-    cv["Button Box"] = buttons(cfg).config(anchor=TOP, pos=(x,y))
-
-    # Modify canvas and sketch size based on content
-    cv.resize((cv.width, y + down(cv)), False)
-    w, h = cv.size
-    sk.size = w + 48, h + 48
-
-    # Add a Slider
-    slider = Slider((16, cv.height), BLUE, 100, 0, 100)
-    slider.config(pos=(cv.width, 0), anchor=TOPRIGHT, bg=GREY, weight=1)
-    cv += slider.bind(onchange=sliderChange)
-
-    # Create a popup menu
-    img = Image.fromBytes(sc8prData("alien"))
-    items = [("Action", img, None), ("Back", None, R_TRIANGLE)]
-    cv.menu = Menu(items, txtConfig=cfg).config(pos=cv.center)
-    cv.menu.bind(resize=nothing, onaction=menuAction)
-
-    # Add the dialog to the sketch
-    cv.cover = sk.cover()
-    sk["Dialog"] = cv.bind(resize=nothing).config(pos=sk.center)
 
 def onaction(ti, ev):
     "Event handler for TextInput"
-    try: r = not ti.refocus(ev) # v2.2.dev
-    except: r = True
-    if r: print(ti, ti.data)
+    print(ti, ti.data)
 
 def radioChange(gr, ev):
     "Event handler for Radio"
@@ -125,8 +122,8 @@ def menuAction(menu, ev):
     if n == 1: # Item 1 = Back
         for btn in menu: btn.status = "normal"
         cv = menu.canvas
-        cv.cover.remove()
         menu.remove()
+        cv["Cover"].remove()
 
 def optionsChange(gr, ev):
     "Event handler for Options"
