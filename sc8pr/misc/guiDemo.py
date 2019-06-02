@@ -39,6 +39,8 @@ def setup(sk):
         font=FONT, fontStyle=BOLD, padding=4).bind(onaction)
     try: # Experimental in v2.2.dev...
         from sc8pr.gui.textinput import TextInputCanvas
+        from sc8pr.gui.tk import clipboardGet
+        clipboardGet()
         ti = TextInputCanvas(ti, 336)
     except: pass
     x, y = cv.center[0] - 8, 16
@@ -110,6 +112,7 @@ def buttonClick(gr, ev):
 def onaction(ti, ev):
     "Event handler for TextInput"
     print(ti, ti.data)
+#     print("{} [{}] {}".format(ti, ev.handler, ti.data))
 
 def radioChange(gr, ev):
     "Event handler for Radio"
