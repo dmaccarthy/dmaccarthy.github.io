@@ -117,7 +117,8 @@ function linkURL(url) {
     return url;
 }
 
-linkURL.home = "https://dmaccarthy.github.io/learn";
+linkURL.repl = location.host == "learn.davidmaccarthy.repl.co";
+linkURL.home = "https://" + (linkURL.repl ? location.host : "dmaccarthy.github.io/learn");
 
 function goNode(node) {
     if (typeof(node) == "string") node = findNode(home, node);
@@ -240,4 +241,4 @@ function wake_webapp() {
         error:function() {setTimeout(wake_webapp, 5000)}});
 }
 
-//wake_webapp();
+if (linkURL.repl) wake_webapp();
