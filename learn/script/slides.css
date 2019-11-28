@@ -1,0 +1,60 @@
+:root {
+    --bodyMargin:12px;
+    --blue:#4f8cf5;
+}
+
+body {
+    font-family:Oxygen, sans-serif;
+    margin:var(--bodyMargin);
+    text-align:center;
+}
+
+body.Print section.Slide h1:first-child {
+    border-top:1px solid blue;
+}
+
+section.Slide .MathJax_Display {margin-bottom:12px}
+section.Slide > :first-child {margin-top:var(--bodyMargin)}
+section.Slide > :last-child {margin-bottom:var(--bodyMargin)}
+section.Slide p {text-align:left}
+section.Slide h1, section.Slide h2, section.Slide h3 {color:blue}
+section.Slide em.Defn {font-weight:bold}
+
+section.Slide em {
+    font-style:normal;
+    color:blue;
+}
+
+span[onclick], em[onclick] {
+    color:blue;
+    cursor:pointer;
+    text-decoration:underline;
+}
+
+#Menu {
+    position:fixed;
+    right:0; bottom:0;
+    width:auto;
+    margin:0;
+    padding:0.35em;
+    color:var(--blue);
+    font-family:monospace;
+    font-size:120%;
+    cursor:pointer;
+}
+
+#Menu img {
+    width:1.25em;
+    height:1.25em;
+    vertical-align:middle;
+    margin-left:1em;
+}
+
+#Menu.Min .Max, #Menu.Max .Min, #Menu.Min img:not(#MenuIcon) {
+    display:none;
+}
+
+#Menu input[type=text] {
+    width:3em;
+    text-align:center;
+}

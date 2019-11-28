@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mr. Mac’s Website</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" type="text/css" href="script/learn.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script-->
+<script type="text/javascript" src="script/tree.js"></script>
+<script type="text/javascript" src="script/touch.js"></script>
+<script type="text/javascript" src="script/learn.js"></script>
+<script type="text/javascript" src="script/home.js"></script>
+<script type="text/javascript">
+
+$(function() {
+    let m = home.menu;
+    let n = m.length;
+    init({sep:[n], menu:m.concat(links.slice(1,4))});
+})
+
+</script>
+</head>
+<body data-node="home"><article class="Center Normal">
+    <h3>Mr. Mac’s Website</h3>
+    <p>Please select a link from the menu.</p>
+    <p><img class="Wide" width="640" src="https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/ssc2006-02a_0.jpg" alt="NASA Image" onclick="window.open('https://www.nasa.gov/image-feature/revealing-the-milky-way-s-center')"/></p>
+</article></body>
+</html>

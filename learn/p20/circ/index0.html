@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Circular &amp; Planetary Motion</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" type="text/css" href="/script/learn.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<script type="text/javascript" src="/script/tree.js"></script>
+<script type="text/javascript" src="/script/touch.js"></script>
+<script type="text/javascript" src="/script/learn.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript">
+
+let opt = {sep:[4], section:0, menu:[
+    {title:"Uniform Circular Motion", section:"#ucm"},
+    {title:"Centripetal Acceleration", section:"#ac"},
+    {title:"Apparent Weight", section:"#wt"},
+    {title:"Kepler’s Laws of Planetary Motion", section:"#kep"},
+    // {title:"Assignment Solutions", icon:"@contents", menu:[
+    //     {title:"Uniform Circular Motion", icon:"#doc", drive:"1cOfjsiY9fraS1_k5KcH1glRgZeMxkbNFIIAC1vnSUzc"},
+    //     {title:"Centripetal Acceleration", icon:"#doc", drive:"1YDfLPzpLVarQI-SL3yNjMO1VfcFG6XcadSFNnkiiHWc"},
+    //     {title:"Apparent Weight", icon:"#doc", drive:"1kjsJRORwWrr8sAkbe6jJJ-KvVX6YAEoDQQGaB7hUrzc"},
+    //     {title:"Planetary Motion (Kepler’s Laws)", icon:"#doc", drive:"17Er14f4YFJVtyrmdku1Pa2UAqoB1vyccmDQxffGJsvs"},
+    // ]},
+    {title:"Notes & Assignments Booklet", drive:"1YqKNxrxAnQffKWNgsaa14hhfL4xI_LPs"},
+    {title:"Next Topic: Universal Gravitation", icon:"@newton", href:"/p20/grav/"},
+]}
+
+$(function () {init20(opt)});
+
+</script>
+</head>
+<body data-node="circ"><article id="Main">
+
+<section class="Solo" id="ucm" data-next="ac">
+<h3>1 – Uniform Circular Motion</h3>
+$$v = {2\pi r \over T}$$
+</section>
+
+<section class="Solo" id="ac" data-next="wt">
+<h3>2 – Centripetal Acceleration</h3>
+$$a_c = {v^2\over r} = {4\pi^2 r\over T^2}$$
+
+</section>
+
+<section class="Solo" id="wt" data-next="kep">
+<h3>3 – Apparent Weight</h3>
+$${\vec{\mathbf F}} = m{\vec{\mathbf a}}$$
+
+</section>
+
+<section class="Solo" id="kep">
+<h3>4 – Kepler’s Laws of Planetary Motion</h3>
+
+<p>Hi there:</p>
+$$\left({T_2\over T_1}\right)^2 = \left({r_2\over r_1}\right)^3$$
+
+<!--p class="Right"><button onclick="showSection('#')">Next</button></p-->
+</section>
+
+</article>
+</body>
+</html>
