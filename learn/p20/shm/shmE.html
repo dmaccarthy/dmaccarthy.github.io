@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Energy of SHM</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/slides.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script type="text/javascript" src="../../webData/webData.js"></script>
+<script type="text/javascript" src="../../script/tree.js"></script>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../script/slides.js"></script>
+<script type="text/javascript" src="../../script/image.js"></script>
+<script type="text/javascript" src="../../script/plot.js"></script>
+<script type="text/javascript" src="../../script/plotItems.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript" src="shmE.js"></script>
+<script type="text/javascript">
+
+$(function() {
+    init("shmE", [
+        {title:"Assignment"},
+        {title:"Solutions"},
+    ]);
+});
+
+slide.actions = {
+    shm: function(m) {if (!shm.plot.playing) shm.plot.animate(shm.fps)},
+}
+
+</script>
+</head>
+<body><article class="SlideShow">
+
+<section class="Slide">
+<p id="Crumbs" class="NoPrint"></p>
+<h1>4.1 – Energy of SHM</h1>
+<div id="Contents" class="NoWinClick NoPrint"></div>
+<p id="StartLesson"></p>
+</section>
+
+<section class="Slide" data-markers="2">
+<h1>Potential Energy of SHM</h1>
+<p data-t="0+">For SHM, potential energy is usually measured relative to equilibrium, which is where the \(E_p\) is the lowest.</p>
+<p data-t="1+">When the object is moved away from equilibrium, the potential energy can be calculated as the <em>work</em> done by the restoring force when the object returns to equilibrium.</p>
+<p data-t="1+">$$E_p = {\vec{\mathbf F}} \cdot \Delta{\vec{\mathbf d}}$$</p>
+<p data-t="1+">The restoring force is \({\vec{\mathbf F}}_i = -kx_i\) <em>initially</em>, and <em>zero</em> when the mass returns to equilibirium.</p>
+<p data-t="1+">The <em>average</em> restoring force is$${\vec{\mathbf F}} = -{1\over 2}kx_i$$</p>
+</section>
+
+<section class="Slide" data-markers="5" data-action="shm">
+<h1>Energy of SHM</h1>
+    <div data-t="0+" style="float:right">
+        <canvas id="shm" class="Wide NoWinClick" width="640" height="480"></canvas>
+        <p class="Center" id="Controls">
+            <em class="material-icons" title="Rewind 5 seconds" onclick="rewind(5)">replay_5</em> &nbsp;
+            <em class="material-icons" title="Settings" onclick="config()">settings_applications</em> &nbsp;
+        </p>
+    </div>
+    <p data-t="0,1">With SHM, energy is constantly being transformed from potential to kinetic and back.</p>
+    <p data-t="1">At most points in the motion, the energy is a mix of kinetic and potential energy:</p>
+    <p data-t="1+">$$E = {1\over 2}mv^2 + {1\over 2}kx^2$$</p>
+    <p data-t="2">When the pendulum passes through <em>equilibrium</em> (\(x = 0\)), it has <em>only</em> kinetic energy and is moving at its <em>maximum speed</em>:</p>
+    <p data-t="2+">$$E = {1\over 2}mv_{max}^2$$</p>
+    <p data-t="3">When the pendulum is <em>furthest</em> from equilibirium (\(x = A\)), its <em>speed is zero</em> and it has <em>only</em> potential energy:</p>
+    <p data-t="3+">$$E = {1\over 2}kA^2$$</p>
+</section>
+
+<section class="Slide">
+<h1>Examples</h1>
+<p data-t="0+">Eg.</p>
+</section>
+
+</article>
+
+<div id="LaTeX-Preload">
+    <div data-key="E_k" class="Bar">$$E_k$$</div>
+    <div data-key="E_p" class="Bar">$$E_p$$</div>
+    <div data-key="-W" class="Bar">$$-\Delta E$$</div>
+</div>
+
+</body>
+</html>

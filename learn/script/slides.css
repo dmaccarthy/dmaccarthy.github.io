@@ -1,23 +1,59 @@
 :root {
     --bodyMargin:12px;
-    --blue:#4f8cf5;
+    --blue:#c0c0ff;
+    --grey:#f1f3f4;
 }
 
 body {
     font-family:Oxygen, sans-serif;
     margin:var(--bodyMargin);
+    margin-bottom:calc(var(--bodyMargin) + 32px);
     text-align:center;
 }
 
-body.Print section.Slide h1:first-child {
-    border-top:1px solid blue;
+body:not(.Print) article.SlideShow {
+    max-width:64em;
+    margin:auto;
 }
 
-section.Slide .MathJax_Display {margin-bottom:12px}
-section.Slide > :first-child {margin-top:var(--bodyMargin)}
-section.Slide > :last-child {margin-bottom:var(--bodyMargin)}
-section.Slide p {text-align:left}
-section.Slide h1, section.Slide h2, section.Slide h3 {color:blue}
+body.Narrow.Audio {margin-bottom:calc(var(--bodyMargin) + 64px)}
+body.Print section.Slide h1:first-child {border-top:1px solid blue}
+
+.Wide {
+    max-width:calc(100% - 2px);
+    max-height:calc(100% - 2 * var(--bodyMargin) - 2px);
+    display:block;
+    margin:0 auto;
+}
+
+.Wide:not(.Stretch) {height:auto}
+
+#Toolbar {
+    font-size:16px;
+    height:1.5em;
+    padding:0.25em;
+    position:fixed;
+    left:0; bottom:0;
+    background-color:var(--grey);
+    width:calc(100% - 0.5em);
+    z-index:1;
+}
+
+body.Normal.Audio #Toolbar {width:calc(50% - 0.5em)}
+body.Narrow.Audio #Toolbar {bottom:32px}
+em.material-icons {font-size:1.5em}
+body.Normal #Toolbar .material-icons:hover {background-color:var(--blue)}
+
+#Toolbar .material-icons {
+    vertical-align:top;
+    color:blue;
+    padding:0 0.5em;
+    margin:0 0.5em;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+section.Slide > p:not(.Center) {text-align:left}
 section.Slide em.Defn {font-weight:bold}
 
 section.Slide em {
@@ -25,36 +61,174 @@ section.Slide em {
     color:blue;
 }
 
-span[onclick], em[onclick] {
-    color:blue;
+section.Slide ul {
+    text-align:left;
+    padding-left:1.5em;
+}
+
+section.Slide ul li {margin:8px auto}
+a {text-decoration:none}
+span[onclick], em:not(.material-icons)[onclick] {color:blue}
+
+span[onclick]:hover, em:not(.material-icons)[onclick]:hover, a:hover {
     cursor:pointer;
     text-decoration:underline;
 }
 
-#Menu {
-    position:fixed;
-    right:0; bottom:0;
-    width:auto;
-    margin:0;
-    padding:0.35em;
-    color:var(--blue);
-    font-family:monospace;
-    font-size:120%;
+#StartLesson {text-align:center}
+
+#StartLesson img {
+    max-width:80%;
+    width:22em;
+    height:auto;
+}
+
+button {
+    padding:0 8px 0 0;
+    color:blue;
+    background-color:var(--grey);
+    border:1px solid var(--blue);
+    border-radius:6px;
+}
+
+button:hover {
     cursor:pointer;
+    background-color:var(--blue);
+    border:1px solid blue;
 }
 
-#Menu img {
-    width:1.25em;
-    height:1.25em;
-    vertical-align:middle;
-    margin-left:1em;
+button img.Icon {
+    width:28px;
+    height:28px;
+    padding:6px;
 }
 
-#Menu.Min .Max, #Menu.Max .Min, #Menu.Min img:not(#MenuIcon) {
+button * {vertical-align:middle}
+
+h4.End {
+    color:blue;
+    font-weight:normal;
+    font-style:italic;
+}
+
+#Narration {
+    height:32px;
+    position:fixed;
+    right:0;
+    bottom:0;
+    background-color:var(--grey);
+}
+
+h1 {
+    font-size:150%;
+    margin-top:0.25em;
+    margin-bottom:0.5em;
+}
+
+body.Normal #Narration {width:50%}
+body.Narrow #Narration {width:100%}
+
+#Menu {
+    font-size:16px;
+    background-color:var(--grey);
+    border:1px solid var(--blue);
+    border-radius:6px;
+    text-align:left;
+    position:fixed;
+    bottom:32px;
+    left:var(--bodyMargin);
+    width:22em;
+    max-height:75vh;
+    max-width:calc(100vw - 2 * var(--bodyMargin));
+    overflow:auto;
+    white-space:nowrap;
     display:none;
 }
 
-#Menu input[type=text] {
-    width:3em;
+body.Normal:not(.Audio) #Menu {left:calc(50% - 11em - 1px)}
+body.Normal.Audio #Menu {left:calc(25% - 11em - 1px)}
+body.Narrow.Audio #Menu {bottom:64px}
+
+#Menu p {
+    margin:0;
+    padding:4px;
+    padding-left:1em;
+    color:blue;
+    cursor:pointer;
+}
+
+#License {
+    width:32em;
+    max-width:98%;
     text-align:center;
+    margin:4em auto;
+    font-size:12px;
+}
+
+#Crumbs {
+    font-size:75%;
+    margin-top:0;
+}
+
+#Contents {
+    color:blue;
+    background-color:var(--grey);
+    border:1px solid var(--blue);
+    text-align:left;
+    max-width:100%;
+    border-radius:6px;
+    margin:2em auto;
+    width:22em;
+    overflow:auto;
+}
+
+#Contents p {
+    margin:0;
+    padding:6px;
+}
+
+#Contents p:hover, #Contents p:hover em, #Menu p:hover {
+    background-color:blue;
+    color:white;
+    cursor:pointer;
+}
+
+#Contents > div.Collapse {display:none}
+#Contents p.Collapse, #Contents p.Expand {font-weight:bold}
+#Contents p.Collapse *, #Contents p.Expand * {vertical-align:middle}
+#Contents > div {margin:0 2em}
+
+canvas.ImageBG {
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+}
+
+#EndSlides {
+    position:fixed;
+    top:4em;
+    left:calc(50% - 6em);
+    width:12em;
+    height:5em;
+    background-color:var(--grey);
+    border:0.2em solid blue;
+    border-radius:8px;
+}
+
+#LaTeX-Preload > [data-key] {
+    font-size:2.5em;
+    padding:0;
+    position:fixed;
+    bottom:0;
+}
+
+#LaTeX-Preload > [data-key].Bar {
+    padding-top:4px;
+    font-size:2em;
+}
+
+#LaTeX-Preload > [data-key] div {margin:0}
+
+#Controls em {
+    font-size:1.5em;
+    cursor:pointer;
 }

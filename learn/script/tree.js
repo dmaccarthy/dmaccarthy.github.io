@@ -27,11 +27,11 @@ function hasChildren(node, ph) {
     return node[childKey] && node[childKey].length;
 }
 
-function nextSib(node) {
+function nextSib(node, n) {
 	var p = node.parent;
 	if (p) {
 		var sibs = p[childKey];
-		var i = sibs.indexOf(node) + 1;
+		var i = sibs.indexOf(node) + (n == null ? 1 : n);
 		if (i && i < sibs.length) return sibs[i];
 		return nextSib(p);
 	}

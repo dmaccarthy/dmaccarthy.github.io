@@ -1,0 +1,40 @@
+#Menu {
+    position:fixed;
+    right:0; bottom:0;
+    width:auto;
+    margin:0;
+    padding:0.35em;
+    color:var(--blue);
+    font-family:monospace;
+    font-size:120%;
+    cursor:pointer;
+}
+
+#Menu img {
+    width:1.25em;
+    height:1.25em;
+    vertical-align:middle;
+    margin-left:1em;
+}
+
+#Menu.Min .Max, #Menu.Max .Min, #Menu.Min img:not(#MenuIcon) {
+    display:none;
+}
+
+#Menu input[type=text] {
+    width:3em;
+    text-align:center;
+}
+
+#login {
+    width:100vw;
+    margin:0;
+    padding:6px;
+    line-height:2;
+    font-size:16px;
+    position:fixed;
+    top:0; left:0;
+    background-color:#d0d0ff;
+}
+
+#login input {margin:0 4px}

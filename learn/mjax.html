@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LaTeX Render</title>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script type="text/javascript" src="script/latexCanvas.js"></script>
+<script type="text/javascript">
+
+function asCanvas(selector, callback) {
+    html2canvas($(selector)[0], {onrendered:callback});
+}
+
+function mjEndMath() {
+// Run when MathJax is done typesetting
+    if (mjEndMath.init) asCanvas("#MJax", function(canvas) {
+        $("#Canvas").html(canvas);
+        img = new Image();
+        img.src = canvas.toDataURL();
+        $("#Image").html(img);
+    });
+    else mjEndMath.init = true;
+}
+
+mjEndMath.init = false;
+
+function render() {
+// Render the LaTeX using MathJax
+    let latex = $("#Latex").val();
+    let f = $("#Font").html();
+    let w = $("#w").html();
+    $("#MJax").css({fontSize:f, width:w}).html("$$" + latex + "$$");
+    MathJax.Hub.Typeset();
+}
+
+MathJax.Hub.Register.MessageHook("End Math", mjEndMath);
+
+</script>
+<style type="text/css">
+
+textarea {width:calc(100% - 14px);height:6em;color:blue}
+table {border-collapse:collapse}
+td, textarea {padding:6px; border:1px solid black}
+td {text-align:center}
+td[contenteditable] {color:blue;font-family:monospace}
+input[type='text'] {width:4em}
+canvas, img {border:1px solid black; padding:2px}
+
+</style>
+</head>
+<body>
+    <h3>CSS</h3>
+    <table>
+        <tr><td>Font Size</td><td contenteditable="true" id="Font">1.5em</td></tr>
+        <tr><td>Image Width</td><td contenteditable="true" id="w">5em</td></tr>
+    </table>
+    <h3>LaTeX</h3>
+    <textarea id="Latex" type="text">V={4\pi\over 3} r^3</textarea>
+    <p><input type="button" value="Render" onclick="render()"/></p>
+    <h3>MathJax</h3><div id="MJax"></div>
+    <h3>Canvas</h3><div id="Canvas"></div>
+    <h3>Image</h3><div id="Image"></div>
+</body>
+</html>

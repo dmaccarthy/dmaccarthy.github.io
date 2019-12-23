@@ -3,26 +3,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Physics 20</title>
 <meta name="description" content=""/>
-<link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico"/>
+<link rel="shortcut icon" type="image/png" href="../../media/lecturer.png"/>
+<!--link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/-->
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" type="text/css" href="../script/learn.css"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/slides.css"/>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script-->
-<script type="text/javascript" src="../script/tree.js"></script>
-<script type="text/javascript" src="../script/touch.js"></script>
-<script type="text/javascript" src="../script/learn.js"></script>
-<script type="text/javascript" src="../script/home.js"></script>
+<script type="text/javascript" src="../../script/tree.js"></script>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../script/slides.js"></script>
 <script type="text/javascript" src="p20.js"></script>
-<script type="text/javascript">$(init20)</script>
+<script type="text/javascript">
+
+$(function() {init("p20", [
+    {title:"Links", heading:-1},
+	{title:"Class Calendar", icon:"@cal", open:"https://calendar.google.com/calendar/embed?src=eips.ca_classrooma95b0655%40group.calendar.google.com&ctz=America%2FEdmonton"},
+    {title:"Data Sheet", drive:"0B_gX0kaqRFXTNVk0Y0ZuVHBMN1U"},
+	{title:"TI-83+ Data Analysis", drive:"0B_gX0kaqRFXTenBOOTNNNkczZ3M"},
+    {title:"Course Outline", open:"https://scienceoutlines.davidmaccarthy.repl.co/?p20"},
+    {title:"Salisbury Composite High School", open:"https://salcomp.ca"},
+	{title:"PowerSchool", open:"https://powerschool.eips.ca/public/home.html"},
+	{title:"Alberta Education", open:"https://www.alberta.ca/writing-diploma-exams.aspx#toc-3"}, //"https://www.alberta.ca/k-12-education.aspx"},
+	{title:"Cognitive Expectations", drive:"1AjmZ-bxJCUNfOfGE8g5u7dMjQ11jFyvq"},
+	{title:"Other Courses", href:"#/"},
+])});
+
+</script>
+<style>
+
+/* body {
+    background-image:url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/iss060e014848.jpg');
+    background-size:100vw 100vh;
+    background-repeat:no-repeat;
+} */
+
+</style>
 </head>
-<body data-node="p20">
-
-<!--div id="Data">
-
-<section id="§p20"-->
-    <iframe src="https://calendar.google.com/calendar/embed?showPrint=0&amp;showTabs=0&amp;mode=AGENDA&amp;height=288&amp;wkst=1&amp;hl=en_GB&amp;bgcolor=%23FFFFFF&amp;src=eips.ca_classrooma95b0655%40group.calendar.google.com&amp;color=%23711616&amp;ctz=America%2FEdmonton" width="722" height="384" frameborder="0" scrolling="no" class="Wide" style="border: solid 1px var(--paleblue);"></iframe>
-<!--/section>
-
-</div-->
-</body>
+<body><article class="SlideShow"><section class="Slide">
+    <p id="Crumbs" class="NoPrint"></p>
+    <h1>Physics 20</h1>
+    <p class="Center"><button onclick="goNode(today)">
+        <img class="Icon" alt="Today" title="Today’s Lesson"/>Today’s Lesson
+    </button></p>
+    <div id="Contents" class="NoWinClick NoPrint"></div>
+    <div id="License"></div>
+</section></article></body>
 </html>

@@ -3,28 +3,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Mr. Mac’s Website</title>
 <meta name="description" content=""/>
-<link rel="shortcut icon" type="image/x-icon" href="media/favicon.ico"/>
+<link rel="shortcut icon" type="image/png" href="../../media/lecturer.png"/>
+<!--link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/-->
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" type="text/css" href="script/learn.css"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/slides.css"/>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script-->
 <script type="text/javascript" src="script/tree.js"></script>
 <script type="text/javascript" src="script/touch.js"></script>
-<script type="text/javascript" src="script/learn.js"></script>
-<script type="text/javascript" src="script/home.js"></script>
+<script type="text/javascript" src="script/slides.js"></script>
 <script type="text/javascript">
 
-$(function() {
-    let m = home.menu;
-    let n = m.length;
-    init({sep:[n], menu:m.concat(links.slice(1,4))});
-})
+let home = {title:"Mr. Mac’s Website", id:"home", href:"#/", menu:[
+    {title:"Courses", heading:1},
+    {title:"Science 10", href:"https://www.davidmaccarthy.repl.co/learn/s10/"},
+    {title:"Physics 20(New)", href:"#/p20/"},
+    {title:"Physics 20", href:"https://www.davidmaccarthy.repl.co/learn/p20/"},
+    {title:"Physics 30", href:"https://www.davidmaccarthy.repl.co/learn/p30/"},
+    {title:"Computing Science(New)", href:"#/cs/"},
+    {title:"Computing Science", href:"https://www.davidmaccarthy.repl.co/learn/cs/"},
+    {title:"Links", heading:-1},
+    {title:"Salisbury Composite High School", open:"https://salcomp.ca"},
+	{title:"PowerSchool", open:"https://powerschool.eips.ca/public/home.html"},
+	{title:"Alberta Education", open:"https://www.alberta.ca/writing-diploma-exams.aspx#toc-3"},
+]}
+
+$(function() {init("home")});
 
 </script>
 </head>
-<body data-node="home"><article class="Center Normal">
-    <h3>Mr. Mac’s Website</h3>
-    <p>Please select a link from the menu.</p>
-    <p><img class="Wide" width="640" src="https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/ssc2006-02a_0.jpg" alt="NASA Image" onclick="window.open('https://www.nasa.gov/image-feature/revealing-the-milky-way-s-center')"/></p>
-</article></body>
+<body><article class="SlideShow"><section class="Slide">
+    <h1>Mr. Mac’s Website</h1>
+    <div id="Contents" class="NoWinClick NoPrint"></div>
+    <div id="License"></div>
+</section></article></body>
 </html>

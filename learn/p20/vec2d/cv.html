@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2D Vectors</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/slides.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script type="text/javascript" src="../../webData/webData.js"></script>
+<script type="text/javascript" src="../../script/tree.js"></script>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../script/slides.js"></script>
+<script type="text/javascript" src="../../script/image.js"></script>
+<script type="text/javascript" src="../../script/plot.js"></script>
+<script type="text/javascript" src="../../script/plotItems.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript">
+
+// preload("#/media/home.png");
+
+$(function() {
+    init("vTest", [
+        {title:"Assignment"},
+        {title:"Solutions"},
+    ]);
+});
+
+function canvas1() {
+    let p = new Plot("#Canvas1", [-50, 50], 1);
+    let decimals = 0;
+    let xlabel = ["black", "16px Arial", [TOP, -5], decimals];
+    let ylabel = ["black", "16px Arial", [RIGHT, -5], decimals];
+    p.items = [
+        new Grid({x:5, y:5, gridStyle:["grey", 0.5], axisStyle:["black", 2],
+            tickStyle:["black",3,7,0], xLabel:xlabel, yLabel:ylabel}),
+        new Arrow([0,0], {tip:[10,-10]}, {stroke:"black", fill:"red"}, {frames:[1,2]}),
+        new Text("Test!", [0,0], {fill:"red", frames:1}),
+        new Graphic(preload.get("v1"), [3,-9], {frames:2}),
+    ];
+    canvas1.plot = p;
+    // p.animationFrames = 6;
+}
+
+latexPreload.onload = canvas1;
+
+slide.actions = {
+    canvas1: function(m) {canvas1.plot.draw(m)},
+}
+
+</script>
+<style>
+
+</style>
+</head>
+<body><article class="SlideShow">
+
+<section class="Slide">
+<p id="Crumbs" class="NoPrint"></p>
+<h1>8.1 – 2D Vectors</h1>
+<div id="Contents" class="NoWinClick NoPrint"></div>
+<p id="StartLesson"></p>
+</section>
+
+<section class="Slide" data-markers="3" data-action="canvas1">
+<h1>2D Vectors</h1>
+    <p data-t="0+"><canvas id="Canvas1" class="Wide" width="960" height="680"></canvas></p>
+</section>
+
+</article>
+
+<div id="LaTeX-Preload">
+    <div data-key="v1" style="color:blue">$${\vec{\mathrm v}}_1$$</div>
+</div>
+
+</body>
+</html>

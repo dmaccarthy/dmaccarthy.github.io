@@ -5,78 +5,28 @@
 <meta name="description" content=""/>
 <link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" type="text/css" href="../../script/learn.css"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/slides.css"/>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
 <script type="text/javascript" src="../../script/tree.js"></script>
 <script type="text/javascript" src="../../script/touch.js"></script>
-<script type="text/javascript" src="../../script/learn.js"></script>
-<script type="text/javascript" src="../../script/home.js"></script>
+<script type="text/javascript" src="../../script/slides.js"></script>
 <script type="text/javascript" src="../p20.js"></script>
 <script type="text/javascript">
 
-$(function() {init20({sep:[1], menu:[
-    {title:"Notes & Assignments Booklet", drive:"1CF1ZLDQKXDck--ylUYvMIpP0pgWo-jPY"},
-    {title:"Newton’s Law of Universal Gravitation", id:"ngrav", icon:"@book",menu:[
-        {title:"Lesson", slides:"../grav/grav.html"},
-        {title:"Video", yt:"KDp1tiUsZw8", aspect:4/3},
-        {title:"Assignment Solutions", drive:"?"},
-    ]},
-    {title:"Cavendish Experiment", id:"cav", icon:"@book", menu:[
-        {title:"Assignment Solutions", drive:"?"},
-    ]},
-    {title:"Gravitational Fields", id:"g", icon:"@book", menu:[
-        {title:"Trampoline Video", yt:"MTY1Kje0yLg?start=75", aspect:16/9},
-        {title:"PhET Field Simulator", icon:"#phet", open:"https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields_en.html"},
-        {title:"Lesson"},
-    ]},
-    {title:"Orbital Motion", id:"orb", icon:"@book", menu:[
-        {title:"Lesson"},
-    ]},
-]})});
+$(function() {init("grav")});
 
 </script>
+<style>
+
+</style>
 </head>
-<body data-node="grav">
-
-<div id="Data">
-
-<section id="§grav">
-    <h3 class="Normal">Universal Gravitation</h3>
-    <p>We have already studied how the force of gravity works on Earth’s surface. In this topic, we will study gravity more generally to understand how it works within the solar system and the larger universe.</p>
-    <p class="Center"><img class="Wide" width="640" src="https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/ssc2006-02a_0.jpg" alt="NASA Image" onclick="window.open('https://www.nasa.gov/image-feature/revealing-the-milky-way-s-center')"/></p>
-    <p>This topic corresponds to General Learning Outcome B2 of the Physics 20 <span onclick="window.open(ab_pos)">Program of Studies</span>, and to chapter 4 of your Pearson Physics textbook.</p>
-</section>
-
-<section id="§ngrav">
-    <h3 class="Normal">Newton’s Law of Universal Gravitation</h3>
-    <p>Isaac Newton proposed that gravitation is a <em>universal</em> force that acts between <em>all</em> masses, no matter how big or small: $$F_g = {GMm \over r^2}$$</p>
-    <p>Newton derived this equation by applying Kepler’s Laws to circular planetary orbits.</p>
-    <p>This is an <em>inverse square</em> law; as the separation between masses increases, the gravitational attraction gets weaker in proportion to the <em>square</em> of the distance.</p>
-    <p>The universal gravitational constant was measured by Cavendish’s torsion balance experiment. The modern value is:$$G = 6.67\times 10^{-11} {\mathrm {N\cdot m^2\over kg^2}}$$</p>
-</section>
-
-<section id="§cav">
-    <h3 class="Normal">Cavendish Experiment</h3>
-    <p>A torsion balance is a device that will twist when a force is applied, until the wire’s tendency to untwist balances the force. The twist angle (\(\theta\)) tells us how strong the force is.</p>
-    <p class="Center"><img class="Wide" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Cavendish_Torsion_Balance_Diagram.svg/384px-Cavendish_Torsion_Balance_Diagram.svg.png" alt="Torsion Balance" onclick="window.open('https://commons.wikimedia.org/wiki/File:Cavendish_Torsion_Balance_Diagram.svg')"/></p>
-    <p>Henry Cavendish used a large torsion balance to measure the force of gravity (\(F_g\)) between the masses (\(M, m\)) as he manipulated the separation (\(r\)) between them.</p>
-    <p>His data confirmed that gravitational force obeys the inverse square law that Newton predicted:$$F_g = {GMm \over r^2}$$</p>
-    </p>The results of Cavendish’s experiment gave a calculated value of \(G\) within about 1% of the modern value.</p>
-</section>
-
-<section id="§g">
-    <h3 class="Normal">Gravitational Fields</h3>
-    <p>Newton originally understood gravity as an example of <em>action at a distance</em>. Every mass in the universe somehow reaches out over large distances to exert a force on every other mass.</p>
-    <p></p>
-    $${\vec {\mathbf a}} = {{\vec {\mathbf F}}_g \over m} = {GM \over r^2} = {\vec {\mathbf g}}$$
-    </p>
-</section>
-
-<section id="§orb">
-    <h3 class="Normal">Orbital Motion</h3>
-</section>
-
-</div>
-</body>
+<body><article class="SlideShow"><section class="Slide">
+    <p id="Crumbs" class="NoPrint"></p>
+    <h1>7 – Universal Gravitation</h1>
+    <div id="Contents" class="NoWinClick NoPrint"></div>
+    <p>We have already studied how the force of gravity works on Earth’s surface. In this chapter, we will study gravity more generally to understand how it works within the solar system and the larger universe.</p>
+    <p class="Center"><img class="Wide" width="480" src="https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/ssc2006-02a_0.jpg" alt="NASA Image" onclick="window.open('https://www.nasa.gov/image-feature/revealing-the-milky-way-s-center')"/></p>
+    <p>Topics in this chapter correspond to General Learning Outcome B2 of the Physics 20 <span onclick="window.open(ab_pos)">Program of Studies</span>, and to chapter 4 of your Pearson Physics textbook.</p>
+</section></article></body>
 </html>
