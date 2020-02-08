@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2D Collisions</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/slides.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script type="text/javascript" src="../../webData/webData.js"></script>
+<script type="text/javascript" src="../../script/tree.js"></script>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../script/slides.js"></script>
+<script type="text/javascript" src="../../script/image.js"></script>
+<script type="text/javascript" src="../../script/plot.js"></script>
+<script type="text/javascript" src="../../script/plotItems.js"></script>
+<script type="text/javascript" src="../p30.js"></script>
+<script type="text/javascript">
+
+// var supplement = "soln/coll2d$.html";
+
+Plot.prototype.labels = function(labels) {
+    let k;
+    for (k in labels) {
+        let pos = labels[k];
+        let opt = pos.length > 2 ? pos[2] : {};
+        let img = preload.get(k);
+        if (img == null) img = new Text(k, pos, opt);
+        else img = new Graphic(img, pos, opt);
+        this.items.push(img);
+    }
+}
+
+
+labelOrigin = false;
+
+$(function() {
+    init("coll2d");
+});
+
+function unit(p) {
+    p.items.push(new Text("kN·s", [-29.8, -0.2], {align:TOPLEFT, font:"22px sans-serif"}));
+    return p;
+}
+
+function vector1() {
+    let p = vector1.plot = vectorDiagram("#ex1", [-30, 1, -1], 16, {grid:5, dp:0});
+    p.labels({
+        "pAi":[-2, 14, {frames:2}],
+        "pBi": [-12.5, 29, {frames:3}],
+        "p": [-14, 12.5, {frames:4}],
+    });
+    return vectorSum(unit(p), [[0, 1.5*18], [-1.2*20, 0]], {frame:2});
+}
+
+function vector2() {
+    let p = vector2.plot = vectorDiagram("#ex2", [-30, 1, -1], 16, {grid:5, dp:0});
+    p.labels({
+        "pAi":[-2, 14, {frames:7}],
+        "pBi": [-11, 19.5, {frames:8}],
+        "p": [-10, 3.5, {frames:9}],
+    });
+    let p2x = -1.2 * 20 / Math.sqrt(2);
+    return vectorSum(unit(p), [[0, 1.5*18], [p2x, p2x]], {frame:7});
+}
+
+latexPreload.onload = function() {
+    vector1().draw(99);
+    vector2().draw(99);
+};
+
+slide.actions = {
+    vector: function(m) {
+        if (m < 5) vector1.plot.draw(m);
+        else if (m > 5) vector2.plot.draw(m);
+    },
+}
+
+</script>
+<style>
+
+</style>
+</head>
+<body><article class="SlideShow">
+
+<section class="Slide">
+<p id="Crumbs" class="NoPrint"></p>
+<h1>1.7 – 2D Collisions</h1>
+<p id="StartLesson"></p>
+</section>
+
+<section class="Slide" data-markers="6">
+<h1>Momentum &amp; Impulse Vectors</h1>
+    <p data-t="0+">Momentum and impulse are <em class="Defn">vector</em> quantities.</p>
+    <ul data-t="1,2">
+        <li>Momentum will always have the same direction as the velocity:$${\vec{\mathbf p}} = m{\vec{\mathbf v}}$$</li>
+        <li data-t="2">Impulse will always have the same direction as the force:$$\Delta{\vec{\mathbf p}} = {\vec{\mathbf F}}\Delta t$$</li>
+    </ul>
+    <p data-t="3+">When calculating impulse as the change in momentum...$$\Delta{\vec{\mathbf p}} = {\vec{\mathbf p}}_f - {\vec{\mathbf p}}_i$$
+    <p data-t="4+">or calculating the total momentum to use the Law of Momentum Conservation...$$\Sigma{\vec{\mathbf p}}_f = \Sigma{\vec{\mathbf p}}_i$$</p>
+    <p data-t="5+">...we need to remember that in 2D or 3D situations, vector addition and subtraction is different than adding and subtracting scalar quantities.</p>
+</section>
+
+<section class="Slide" data-markers="10" data-action="vector">
+<h1>Vector Addition</h1>
+    <p data-t="0,4">Example: A 1500 kg car moving at 18.0 m/s [north] and a 1200 kg car moving at 20.0 m/s [west] collide in an intersection. What is the total momentum of the system?</p>
+    <p data-t="1,4"><canvas id="ex1" class="Wide" width="640" height="640"></canvas></p>
+    <p data-t="5+">Example: A 1500 kg car moving at 18.0 m/s [north] and a 1200 kg car moving at 20.0 m/s [southwest] collide in an intersection. What is the total momentum of the system?</p>
+    <p data-t="6+"><canvas id="ex2" class="Wide" width="640" height="640"></canvas></p>
+</section>
+
+</article>
+
+<div id="LaTeX-Preload" style="color:red">
+    <div data-key="p" class="Bar" style="color:blue">$$\Sigma{\vec{\mathbf p}}$$</div>
+    <div data-key="pAi" class="Bar">$${\vec{\mathbf p}}_{Ai}$$</div>
+    <div data-key="pBi" class="Bar">$${\vec{\mathbf p}}_{Bi}$$</div>
+</div>
+
+</body>
+</html>

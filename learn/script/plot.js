@@ -95,6 +95,19 @@ Plot.prototype.coords = function(xy, invert) {
 	return invert ? [(xy[0] - b) / a, (xy[1] - d) / c] : [a * xy[0] + b, c * xy[1] + d];
 }
 
+Plot.prototype.manyCoords = function(xy, invert) {
+// Convert between Plot and canvas coordinates for several points...
+	var a = this.coeff;
+	var b = a[1], c = a[2], d = a[3];
+	a = a[0];
+    let pts = [];
+    for (let i=0;i<xy.length;i++) {
+        let pt = xy[i];
+        pts.push(invert ? [(pt[0] - b) / a, (pt[1] - d) / c] : [a * pt[0] + b, c * pt[1] + d]);
+    }
+	return pts;
+}
+
 Plot.prototype.cxBegin = function(alpha, clip) {
 // Create a canvas 2D context with globalAlpha and clipping region...
 	var cx = this.cv.getContext("2d");
@@ -147,6 +160,8 @@ Plot.prototype.connect = function(pts, fill, stroke, lineWidth, closed, alpha, c
 	cx.restore();
 }
 
+let labelOrigin = true;
+
 function _ticks(x0, x1, dx) {
 // Return a list of evenly spaced tick/grid line values...
 	if (!dx || dx == true && typeof(dx) == "boolean") return [];
@@ -154,7 +169,10 @@ function _ticks(x0, x1, dx) {
 		var n0 = Math.floor(x0/ dx);
 		var n1 = Math.ceil(x1/ dx);
 		var x = [];
-		while (n0 <= n1) x.push(dx * (n0++));
+		while (n0 <= n1) {
+            if (labelOrigin || n0) x.push(dx * n0);
+            n0++;
+        }
 		return x;
 	}
 }
@@ -250,24 +268,14 @@ Plot.optimalLabel = function(x, n) {
 
 Plot.prototype.plot = function(pts, args) {
 // Plot a sequence of points with lines and/or markers...
-	var fill = args.fill, stroke = args.stroke, marker = args.marker;
-	var a = args.alpha;
-	if (fill || stroke) this.connect(pts, fill, stroke, args.lineWidth, args.closed, a);
-	if (marker)
-		for (var i=0;i<pts.length;i++)
-			this.blit(marker, pts[i], {anchor:CENTER, size:args.markerSize, rotate:args.markerRotate, alpha:a, clip:args.clip});
-}
-
-Plot.prototype.locus = function(pCurve, style, args, coeff) {
-// Draw points as defined by a parameterized curve function...
-	if (args == null) args = {}
-	var t0 = args.start == null ? this.left() : args.start;
-	var t1 = args.end == null? this.right() : args.end;
-	var n = args.steps ? args.steps : Math.max(1, Math.round(Math.abs(this.coeff[0] * (t1-t0))));
-	var dt = (t1 - t0) / n;
-	var pts = new Array(n + 1);
-	for (var i=0;i<=n;i++) pts[i] = pCurve(t0 + i *dt, coeff);
-	this.plot(pts, style);
+    let stroke = args.stroke ? args.stroke : "black";
+    if (args.lineWidth) this.connect(pts, null, stroke, args.lineWidth, false);
+    if (args.fill) {
+        let style = {stroke:stroke, fill:args.fill, lineWidth:1};
+        let r = args.size;
+        if (!r) r = this.pixels(args.pixels ? args.pixels : 6, true);
+        for (let i=0;i<pts.length;i++) this.circle(pts[i], r, style);
+    }
 }
 
 Plot.prototype.blit = function(img, posn, args) {
@@ -304,8 +312,8 @@ Plot.prototype.arrow = function(tail, tip, style, args) {
 // Draw an arrow...
 	if (args == null) args = {}
 	var pts = arrow(this.coords(tail), this.coords(tip), args.tailWidth, args.headLength, args.flatness);
-	if (style.stroke && !("closed" in style)) style.closed = true;
-	this.native().plot(pts, style);
+	this.native().connect(pts, style.fill, style.stroke,
+        style.lineWidth, true, style.alpha, style.clip);
 }
 
 Plot.prototype.fill = function(color, pt, size) {
@@ -324,7 +332,7 @@ Plot.prototype.fill = function(color, pt, size) {
 
 Plot.prototype.clear = function(pt, size) {return this.fill(null, pt, size)}
 
-Plot.prototype.text = function(text, posn, font, fill, align, alpha, clip) {
+Plot.prototype.text = function(text, posn, font, fill, align, alpha, clip, angle) {
 // Draw some text...
 	var cx = this.cxBegin(alpha, clip);
 	cx.font = font;
@@ -333,8 +341,13 @@ Plot.prototype.text = function(text, posn, font, fill, align, alpha, clip) {
 		cx.textAlign = ["left", "center", "right"][align & 3];
 		cx.textBaseline = ["top", "middle", "alphanumeric"][(align & 12) / 4];
 	}
+    angle = DEG * (angle ? angle : 0);
 	posn = this.coords(posn);
-	cx.fillText(text, posn[0], posn[1]);
+    cx.translate(posn[0], posn[1]);
+    cx.rotate(-angle);
+	cx.fillText(text, 0, 0);
+    cx.rotate(angle);
+    cx.translate(-posn[0], -posn[1]);
 	cx.restore();
 }
 

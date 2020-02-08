@@ -4,11 +4,31 @@
     --grey:#f1f3f4;
 }
 
+ul div.MathJax_Display {margin-left:-0.75em}
+
+#MathJax_Message {
+    top:2.5em;
+    height:1.25em;
+}
+
+.Red {color:red}
+.Blue {color:blue}
+.FlipX {transform:scaleX(-1)}
+
+.Caption {
+    text-align:center;
+    font-weight:bold;
+    margin-bottom:0.25em;
+}
+
+.Center, #StartLesson, #Toolbar, #EndSlides, h1 {text-align:center}
+.Left {text-align:left}
+
 body {
     font-family:Oxygen, sans-serif;
     margin:var(--bodyMargin);
     margin-bottom:calc(var(--bodyMargin) + 32px);
-    text-align:center;
+    /* text-align:center; */
 }
 
 body:not(.Print) article.SlideShow {
@@ -19,6 +39,23 @@ body:not(.Print) article.SlideShow {
 body.Narrow.Audio {margin-bottom:calc(var(--bodyMargin) + 64px)}
 body.Print section.Slide h1:first-child {border-top:1px solid blue}
 
+img.Right {
+    float:right;
+    max-width:25%;
+}
+
+table.Normal {
+    margin:auto;
+    border-collapse:collapse;
+}
+
+table.Normal td, table.Normal th {
+    text-align:center;
+    border:1px solid black;
+    padding:3px;
+    min-width:3em;
+}
+
 .Wide {
     max-width:calc(100% - 2px);
     max-height:calc(100% - 2 * var(--bodyMargin) - 2px);
@@ -27,6 +64,10 @@ body.Print section.Slide h1:first-child {border-top:1px solid blue}
 }
 
 .Wide:not(.Stretch) {height:auto}
+
+body.Print .Wide {
+    max-width:384px;
+}
 
 #Toolbar {
     font-size:16px;
@@ -53,13 +94,19 @@ body.Normal #Toolbar .material-icons:hover {background-color:var(--blue)}
     border-radius:4px;
 }
 
-section.Slide > p:not(.Center) {text-align:left}
-section.Slide em.Defn {font-weight:bold}
+/* section.Slide > p:not(.Center) {text-align:left} */
 
-section.Slide em {
+section.Slide em.Defn {
+    font-weight:bold;
+    color:blue;
+    padding-right:2px;
+}
+
+/* section.Slide em {
     font-style:normal;
     color:blue;
-}
+    text-decoration:underline;
+} */
 
 section.Slide ul {
     text-align:left;
@@ -68,14 +115,13 @@ section.Slide ul {
 
 section.Slide ul li {margin:8px auto}
 a {text-decoration:none}
-span[onclick], em:not(.material-icons)[onclick] {color:blue}
+/* span[onclick], em:not(.material-icons)[onclick] {color:blue} */
+span[onclick], em[onclick] {color:blue}
 
 span[onclick]:hover, em:not(.material-icons)[onclick]:hover, a:hover {
     cursor:pointer;
     text-decoration:underline;
 }
-
-#StartLesson {text-align:center}
 
 #StartLesson img {
     max-width:80%;
@@ -98,8 +144,8 @@ button:hover {
 }
 
 button img.Icon {
-    width:28px;
-    height:28px;
+    width:1.75em;
+    height:1.75em;
     padding:6px;
 }
 
@@ -180,6 +226,11 @@ body.Narrow.Audio #Menu {bottom:64px}
     margin:2em auto;
     width:22em;
     overflow:auto;
+}
+
+#Contents hr, #Menu hr {
+    border-bottom:1px solid var(--blue);
+    border-top:none;
 }
 
 #Contents p {

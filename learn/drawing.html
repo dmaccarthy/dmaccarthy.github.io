@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Drawing</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/png" href="/media/lecturer.png"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+function Drawing(size, lrbt) {
+    this.offset([0, 0]);
+    this.frame = 0;
+    this.items = [];
+    this.width = size[0];
+    this.height = size[1];
+    this.left = lrbt[0];
+    this.right = lrbt[1];
+    this.bottom = lrbt[2];
+    this.top = lrbt[3];
+    this.xScale = (size[0] - 1) / (lrbt[1] - lrbt[0]);
+    this.yScale = (size[1] - 1) / (lrbt[2] - lrbt[3]);
+    this.pixel = Math.sqrt(1 / Math.abs(this.xScale * this.yScale));
+    this.pxCoords = function(x, y) {
+        x = this.xScale * (x - this.left);
+        y = this.height - 1 + this.yScale * (y - this.bottom);
+        return [x + this._dx, y + this._dy];
+    }
+    this.csCoords = function(x, y) {
+        x = this.left + (x - this._dx) / this.xScale;
+        y = this.bottom + (y - this._dy + 1 - this.height) / this.yScale;
+        return [x, y];
+    }
+}
+
+Drawing.prototype.offset = function(offset) {
+    this._dx = offset[0];
+    this._dy = offset[1];
+}
+
+Drawing.prototype.visible = function(item) {return true}
+
+Drawing.prototype.draw = function(cv, cvFill, offset) {
+    if (offset) this.offset(offset);
+    cv = $(cv)[0];
+    let w = cv.width, h = cv.height;
+    let cx = cv.getContext("2d");
+    if (cvFill == true) cx.clearRect(0, 0, w, h);
+    else if (cvFill) {
+        cx.fillStyle = cvFill;
+        cx.fillRect(0, 0, w, h);
+    }
+    for (let i=0;i<this.items.length;i++) {
+        let item = this.items[i];
+        if (this.visible(item)) item.draw(cv, this);
+    }
+}
+
+Drawing.prototype._points = function(pts) {
+    let r = [];
+    for (let i=0;i<pts.length;i++) {
+        let pt = pts[i];
+        r.push(this.pxCoords(pt[0], pt[1]));
+    }
+    return r;
+}
+
+
+function Points(pts, opt) {
+    this.pts = pts;
+    this.opt = opt;
+}
+
+Points.prototype.draw = function(cv, drawing) {
+    let opt = this.opt;
+    let pts = drawing._points(this.pts);
+    console.log(pts);
+}
+
+var d = new Drawing([720,512], [0, 1, 0, 1]);
+d.items.push(
+    new Points([[0,0], [1,1], [1,0]], {fill:"red", stroke:"blue"}),
+);
+
+</script>
+</head>
+<body>
+
+<p><canvas class="Wide" width="720" height="512"></p>
+
+</body>
+</html>

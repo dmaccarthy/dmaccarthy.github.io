@@ -1,3 +1,4 @@
+winclick.allow = false;
 energyBarGraph.noLabelY();
 
 function shm() {
@@ -46,7 +47,11 @@ shm.fps = 30;
 shm.speed = 1;
 shm.damp = 1;
 
-latexPreload.onload = shm;
+latexPreload.onload = function() {
+    shm();
+    ep();
+    winclick.allow = true;
+}
 
 function rewind(t) {
     let p = shm.plot;

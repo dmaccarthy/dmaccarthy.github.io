@@ -22,41 +22,84 @@
 <script type="text/javascript">
 
 $(function() {
-    init("shmE", [
-        {title:"Assignment"},
-        {title:"Solutions"},
-    ]);
+    init("shmE");
 });
 
 slide.actions = {
+    ep: function(m) {ep.plot.draw(m)},
     shm: function(m) {if (!shm.plot.playing) shm.plot.animate(shm.fps)},
 }
 
+function ep() {
+    let p = ep.plot = new Plot("#ep", [-0.1, 0.8, -0.8], 1);
+    let k = 1, x = 0.6;
+    let pt = [x, -k * x];
+    let avg = [x / 2, -k * x / 2];
+    p.items = [
+        new Segments([[0, 0], [x, 0], pt], {fill:"#f0f0ff", closed:true, frames:[6]}),
+        new Grid({x:0.1, y:0.1, axisStyle:["black", 2]}),
+        new Graphic("x", [0.79, 0], {anchor:BOTTOMRIGHT}),
+        new Graphic("F", [-0.01, -0.79], {anchor:BOTTOMRIGHT}),
+        new Segments([[-1, k], [2, -2 * k]], {stroke:"blue", frames:[1]}),
+
+        // Initial point
+        new Segments([[x, 0], pt], {stroke:"grey", lineWidth:0.5, frames:[2]}),
+        new Circle(pt, 0.015, {fill:"blue", stroke:"black", frames:[2]}),
+
+        // Average point
+        new Graphic("Hooke", pt, {anchor:TOPRIGHT, frames:[1, 1]}),
+        new Graphic("Fi", pt, {anchor:TOPRIGHT, frames:[2]}),
+        new Circle([0, 0], 0.015, {fill:"blue", stroke:"black", frames:[3]}),
+        new Graphic("Feq", [0.01, 0.02], {anchor:BOTTOMLEFT, frames:[3]}),
+        new Circle(avg, 0.015, {fill:"blue", stroke:"black", frames:[4]}),
+        new Graphic("Favg", [0.01, -0.37], {anchor:LEFT, frames:[4]}),
+
+        // Displacement
+        new Arrow([x, 0], {tip:[0, 0]}, {stroke:"black", fill:"red"}, {tailWidth:12, frames:[3]}),
+        new Graphic("d", [x / 2, -0.01], {anchor:TOP, frames:[3]}),
+    ];
+}
+
 </script>
+<style>
+
+body:not(.Print) div.Canvas {float:right;margin-left:12px}
+body.Print div.Canvas {width:24em; margin:auto}
+
+</style>
 </head>
 <body><article class="SlideShow">
 
 <section class="Slide">
 <p id="Crumbs" class="NoPrint"></p>
-<h1>4.1 – Energy of SHM</h1>
-<div id="Contents" class="NoWinClick NoPrint"></div>
+<h1>7.1 – Energy of SHM</h1>
 <p id="StartLesson"></p>
 </section>
 
-<section class="Slide" data-markers="2">
+<section class="Slide" data-markers="9" data-action="ep">
 <h1>Potential Energy of SHM</h1>
-<p data-t="0+">For SHM, potential energy is usually measured relative to equilibrium, which is where the \(E_p\) is the lowest.</p>
-<p data-t="1+">When the object is moved away from equilibrium, the potential energy can be calculated as the <em>work</em> done by the restoring force when the object returns to equilibrium.</p>
-<p data-t="1+">$$E_p = {\vec{\mathbf F}} \cdot \Delta{\vec{\mathbf d}}$$</p>
-<p data-t="1+">The restoring force is \({\vec{\mathbf F}}_i = -kx_i\) <em>initially</em>, and <em>zero</em> when the mass returns to equilibirium.</p>
-<p data-t="1+">The <em>average</em> restoring force is$${\vec{\mathbf F}} = -{1\over 2}kx_i$$</p>
+    <div data-t="1,6" class="Canvas">
+        <canvas id="ep" class="Wide" width="512" height="512"></canvas>
+    </div>
+    <p data-t="0">For SHM, potential energy is usually measured relative to equilibrium, which is where the \(E_p\) is the lowest.</p>
+    <p data-t="1">When the object is moved away from equilibrium, the potential energy can be calculated as the <em>work</em> done by the restoring force when the object returns to equilibrium.</p>
+    <p data-t="1,5">$$E_p = {\vec{\mathbf F}}_{avg} \cdot \Delta{\vec{\mathbf d}}$$</p>
+    <p data-t="2,3">The restoring force is \({\vec{\mathbf F}}_i = -kx_i\) <em>initially</em>.</p>
+    <p data-t="3,3">As the object moves toward equilibrium, the restoring force gets weaker. At equilibrium, the force is <em>zero</em>.</p>
+    <p data-t="4">Because the relationship is linear, the <em>average</em> restoring force occurs at the midpoint:</p>
+    <p data-t="4,5">$${\vec{\mathbf F}}_{avg} = -{1\over 2}kx_i$$</p>
+    <p data-t="5">Multiplying by the displacement, \(\Delta{\vec{\mathbf d}} = -x_i\):$$E_{pi} = \left(-{1\over 2}kx_i\right) \left(-x_i\right) = {1\over 2}kx_i^2$$</p>
+    <p data-t="6+">$$E_p = {1\over 2}kx^2$$</p>
+    <p data-t="6">The potential energy is equal to the <em>area</em> of the shaded triangle on the graph.</p>
+    <p data-t="7+">Since the restoring force is <em>net</em> force, it includes <em>all</em> forces acting on the object.</p>
+    <p data-t="8">This means that the potential energy formula for SHM is correct regardless of whether the \(E_p\) is gravitational, elastic, or some combination of the two!</p>
 </section>
 
 <section class="Slide" data-markers="5" data-action="shm">
 <h1>Energy of SHM</h1>
-    <div data-t="0+" style="float:right">
+    <div data-t="0+" class="Canvas">
         <canvas id="shm" class="Wide NoWinClick" width="640" height="480"></canvas>
-        <p class="Center" id="Controls">
+        <p class="Center NoPrint" id="Controls">
             <em class="material-icons" title="Rewind 5 seconds" onclick="rewind(5)">replay_5</em> &nbsp;
             <em class="material-icons" title="Settings" onclick="config()">settings_applications</em> &nbsp;
         </p>
@@ -66,7 +109,7 @@ slide.actions = {
     <p data-t="1+">$$E = {1\over 2}mv^2 + {1\over 2}kx^2$$</p>
     <p data-t="2">When the pendulum passes through <em>equilibrium</em> (\(x = 0\)), it has <em>only</em> kinetic energy and is moving at its <em>maximum speed</em>:</p>
     <p data-t="2+">$$E = {1\over 2}mv_{max}^2$$</p>
-    <p data-t="3">When the pendulum is <em>furthest</em> from equilibirium (\(x = A\)), its <em>speed is zero</em> and it has <em>only</em> potential energy:</p>
+    <p data-t="3">When the pendulum is <em>furthest</em> from equilibirium (\(x = \pm A\)), its <em>speed is zero</em> and it has <em>only</em> potential energy:</p>
     <p data-t="3+">$$E = {1\over 2}kA^2$$</p>
 </section>
 
@@ -78,6 +121,15 @@ slide.actions = {
 </article>
 
 <div id="LaTeX-Preload">
+    <div data-key="x" class="Bar">$$x$$</div>
+    <div data-key="F" class="Bar">$${\vec {\mathbf F}}$$</div>
+    <!--div data-key="xi" class="Bar">$$x_i$$</div>
+    <div data-key="Fi" class="Bar">$${\vec {\mathbf F}}_i$$</div-->
+    <div data-key="Hooke" class="Bar" style="font-size:1.5em;color:blue">$${\vec {\mathbf F}} = -kx$$</div>
+    <div data-key="Fi" class="Bar" style="font-size:1.5em;color:blue">$${\vec {\mathbf F}}_i = -kx_i$$</div>
+    <div data-key="Favg" class="Bar" style="font-size:1.5em;color:blue">$${\vec {\mathbf F}}_{avg} = -{1\over 2}kx$$</div>
+    <div data-key="Feq" class="Bar" style="font-size:1.5em;color:blue">$${\vec {\mathbf F}}_{eq} = 0$$</div>
+    <div data-key="d" class="Bar" style="font-size:1.5em;color:red">$$\Delta{\vec {\mathbf d}} = -x_i$$</div>
     <div data-key="E_k" class="Bar">$$E_k$$</div>
     <div data-key="E_p" class="Bar">$$E_p$$</div>
     <div data-key="-W" class="Bar">$$-\Delta E$$</div>

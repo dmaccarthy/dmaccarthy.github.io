@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Non-Isolated Systems</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../../script/slides.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script type="text/javascript" src="../../../webData/webData.js"></script>
+<script type="text/javascript" src="../../../script/tree.js"></script>
+<script type="text/javascript" src="../../../script/touch.js"></script>
+<script type="text/javascript" src="../../../script/slides.js"></script>
+<script type="text/javascript" src="../../../script/image.js"></script>
+<script type="text/javascript" src="../../../script/plot.js"></script>
+<script type="text/javascript" src="../../../script/plotItems.js"></script>
+<script type="text/javascript" src="../../p20.js"></script>
+<script type="text/javascript">
+
+$(init);
+
+latexPreload.onload = function() {barGraph(0)};
+
+function title(q, p) {
+    $("#Title").html("Question " + q + " (" + p + ")");
+}
+
+function q1(n) {
+    title(1, n ? "Final" : "Initial");
+    let m = 32, vf = 2.3, vi = 1.25;
+    let Eki = m / 2 * vi * vi;
+    let Ekf = m / 2 * vf * vf;
+    let W = Ekf - Eki;
+    let data = [[
+        ["Ek", Eki],
+        ["W+", W, "blue"],
+    ],[
+        ["Ek", Ekf],
+        ["W-", 0, "blue"],
+    ]][n];
+    energyBarGraph.grid.yLabel[3] = 0;
+    let step = 10, digit = 1;
+    return [data, step, digit];
+}
+
+function q2(n) {
+    title(2, ["Initial", "Final, No Friction", "Final, Friction"][n]);
+    let m = 2.5, vi = 2.5, g = 9.81, hf = 0.25;
+    let E = m / 2 * vi * vi, Eg = m * g * hf;
+    let h = E / (m * g);
+    let data = [[
+        ["Ek", E],
+        ["Eg", 0],
+        ["W+", 0, "blue"],
+    ],[
+        ["Ek", 0],
+        ["Eg", E],
+        ["W-", 0, "blue"],
+    ],[
+        ["Ek", 0],
+        ["Eg", Eg],
+        ["W-", E - Eg, "blue"],
+    ]][n];
+    energyBarGraph.grid.yLabel[3] = 0;
+    let step = 1, digit = 2;
+    return [data, step, digit];
+}
+
+function barGraph(n) {
+    if (latexPreload.waiting) return;
+    if (n < 2) data = q1(n);
+    else if (n < 5) data = q2(n - 2);
+    energyBarGraph("#BarGraph",
+        data[0], data[1], data[2], " J").draw();
+}
+
+slide.actions = {barGraph: barGraph}
+
+</script>
+<style>
+
+</style>
+</head>
+<body><article class="SlideShow">
+
+<section class="Slide" data-markers="5" data-action="barGraph">
+<h1 id="Title"></h1>
+    <p class="Center"><canvas class="Wide" id="BarGraph" width="720" height="680"></canvas></p>
+</section>
+
+</article>
+
+<div id="LaTeX-Preload">
+    <div data-key="Er">$$E_{rotn}$$</div>
+    <div data-key="Eg">$$E_g$$</div>
+    <div data-key="Ek">$$E_k$$</div>
+    <div data-key="W-">$$-\Delta E$$</div>
+    <div data-key="W+">$$+\Delta E$$</div>
+</div>
+
+</body>
+</html>

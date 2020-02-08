@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mechanical Forms of Energy</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../../script/slides.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script type="text/javascript" src="../../../webData/webData.js"></script>
+<script type="text/javascript" src="../../../script/tree.js"></script>
+<script type="text/javascript" src="../../../script/touch.js"></script>
+<script type="text/javascript" src="../../../script/slides.js"></script>
+<script type="text/javascript" src="../../../script/image.js"></script>
+<script type="text/javascript" src="../../../script/plot.js"></script>
+<script type="text/javascript" src="../../../script/plotItems.js"></script>
+<script type="text/javascript" src="../../p20.js"></script>
+<script type="text/javascript">
+
+$(init);
+
+latexPreload.onload = function() {barGraph(0)};
+
+function barGraph(n) {
+    if (latexPreload.waiting) return;
+    $("#Title").html([
+        "Question 3 (Top)",
+        "Question 3 (Halfway)",
+        "Question 3 (Bottom)"][n]);
+    let g = 9.81, m = 0.2, v = 2.0;
+    let Ekf = m / 2 * v * v;
+    let Erf = 0.4 * Ekf;
+    let Egf = Ekf + Erf;
+    let data = [[
+        ["Eg", 2 * Egf],
+        ["Ek", 0],
+        ["Er", 0],
+    ], [
+        ["Eg", Egf],
+        ["Ek", Ekf],
+        ["Er", Erf],
+    ], [
+        ["Eg", 0],
+        ["Ek", 2 * Ekf],
+        ["Er", 2 * Erf],
+    ]][n];
+    energyBarGraph.grid.yLabel[3] = 2;
+    energyBarGraph("#BarGraph", data, 0.12, 2, " J").draw();
+}
+
+slide.actions = {barGraph: barGraph}
+
+</script>
+<style>
+
+</style>
+</head>
+<body><article class="SlideShow">
+
+<section class="Slide" data-markers="3" data-action="barGraph">
+<h1 id="Title"></h1>
+    <p class="Center"><canvas class="Wide" id="BarGraph" width="720" height="680"></canvas></p>
+</section>
+
+</article>
+
+<div id="LaTeX-Preload">
+    <div data-key="Er">$$E_{rotn}$$</div>
+    <div data-key="Eg">$$E_g$$</div>
+    <div data-key="Ek">$$E_k$$</div>
+</div>
+
+</body>
+</html>

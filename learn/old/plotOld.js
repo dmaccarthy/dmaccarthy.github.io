@@ -1,3 +1,13 @@
+Plot.prototype.plot = function(pts, args) {
+// Plot a sequence of points with lines and/or markers...
+	var fill = args.fill, stroke = args.stroke, marker = args.marker;
+	var a = args.alpha;
+	if (fill || stroke) this.connect(pts, fill, stroke, args.lineWidth, args.closed, a);
+	if (marker)
+		for (var i=0;i<pts.length;i++)
+			this.blit(marker, pts[i], {anchor:CENTER, size:args.markerSize, rotate:args.markerRotate, alpha:a, clip:args.clip});
+}
+
 Plot.image = function (draw, size, coordSys, margin) {
 // Draw a graphic as an Image instance...
 	var cv = document.createElement("canvas");

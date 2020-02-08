@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Energy Conservation</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/slides.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script type="text/javascript" src="../../webData/webData.js"></script>
+<script type="text/javascript" src="../../script/tree.js"></script>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../script/slides.js"></script>
+<script type="text/javascript" src="../../script/image.js"></script>
+<script type="text/javascript" src="../../script/plot.js"></script>
+<script type="text/javascript" src="../../script/plotItems.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript">
+
+// var supplement = "soln/Econs$.html";
+
+$(function() {
+    init("Econs");
+});
+
+latexPreload.onload = function() {};
+
+function barGraph(m) {
+    energyBarGraph.grid.yLabel[3] = 0;
+    if (m) m -= 1;
+    let data = [
+        ["Eg", 0.7*(12-m)],
+        ["Ek", 0.5*m],
+        ["Er", 0.2*m],
+    ];
+    let p = energyBarGraph("#BarGraph", data, 1, 1, " J");
+    p.items.push(new Text("ΣE = 8.4 J", [5, 10], {align:TOPRIGHT}));
+    p.draw();
+}
+
+function examples(i) {
+    if (i < 1) return;
+    energyBarGraph.grid.yLabel[3] = 1;
+    let m = 0.17, v = 3.0, h = 0.3, g = 9.81;
+    let E = m / 2 * v * v, Eg = m * g * h;
+    let data = [[
+        ["Eg", E],
+        ["Ek", 0]
+    ], [
+        ["Eg", 0],
+        ["Ek", E]
+    ], [
+        ["Eg", Eg],
+        ["Ek", E - Eg]
+    ]][i-1];
+    let p = energyBarGraph("#Examples", data, 0.1, 3, " J");
+    p.items.push(new Text("ΣE = 0.765 J", [3, 1], {align:TOPRIGHT}));
+    p.draw();
+}
+
+slide.actions = {
+    barGraph: barGraph,
+    examples: examples,
+}
+
+</script>
+<style>
+
+</style>
+</head>
+<body><article class="SlideShow">
+
+<section class="Slide">
+<p id="Crumbs" class="NoPrint"></p>
+<h1>1.2 – Energy Conservation</h1>
+<p id="StartLesson"></p>
+</section>
+
+<section class="Slide" data-markers="6">
+<h1>Energy Conservation</h1>
+    <p>The <em class="Defn">Law of Energy Conservation</em> is one of the most important laws in all of Science.</p>
+    <ul data-t="1+">
+        <li>Energy cannot be created or destroyed.</li> 
+        <li data-t="2+">The <b>total energy</b> must always remain constant.</li>
+        <li data-t="3+">Energy <b>can</b> be <i>transformed</i> from one form to another.</li>
+        <li data-t="4+">Energy <b>can</b> be <i>transferred</i> to different objects or locations.</li>
+        <li data-t="5+">All energy <em>gains</em> must be perfectly balanced by energy <em>losses</em> elsewhere.</li>
+    </ul>
+</section>
+
+<section class="Slide" data-markers="6">
+<h1>Defining the System</h1>
+    <p data-t="0,2">Because there is no practical way we can account for <i>all</i> of the energy everywhere in the universe, we need to define our <em class="Defn">system</em> before we can apply the Law of Energy Conservation.</p>
+    <ul data-t="1,2">
+        <li>The system consists of all objects and energy forms that we are intertested in accounting for.</li> 
+        <li data-t="2+">Everything that is not part of the system is part of the <em class="Defn">environment</em> or <em class="Defn">surroundings</em>.</li>
+    </ul>
+    <p data-t="3+">Example: A ball rolls down a ramp.</p>
+    <ul data-t="4+">
+        <li>The system includes the ball and its gravitational potential energy, kinetic energy, and rotational energy.</li> 
+        <li data-t="5+">The environment includes the person lifting the ball, the ramp, and the air in the room.</li>
+    </ul></section>
+
+<section class="Slide" data-markers="14" data-action="barGraph">
+<h1>Energy Bar Chart</h1>
+    <p class="Center"><canvas class="Wide" id="BarGraph" width="720" height="680"></canvas></p>
+    <p data-t="0">An <em class="Defn">energy bar chart</em> is a way to keep track of how much of each form of energy is present in a system.</p>
+    <ul data-t="1+">
+        <li data-t="1">This graph is for a ball that rolls down a ramp. Initially, it has not started moving, so it only has gravitational potential energy (8.4 J).</li> 
+        <li data-t="2,4">As the ball rolls down the ramp, energy is transformed and the height of each bar changes.</li> 
+        <li data-t="5,12">The total energy must remain constant; the total of the bars is always 8.4 joules in this example.</li>
+        <li data-t="13">At the bottom of the ramp, the 8.4 joules of energy has been completely transformed into kinetic and rotational energy.</li>
+    </ul>
+</section>
+
+<section class="Slide NoPrint" data-markers="4"  data-action="examples">
+<h1>Examples</h1>
+    <p data-t="0">Complete the Examples in the lesson handout.</p>
+    <p class="Center" data-t="1+"><canvas class="Wide" id="Examples" width="720" height="680"></canvas></p>
+</section>
+
+</article>
+
+<div id="LaTeX-Preload">
+    <div data-key="Er">$$E_{rotn}$$</div>
+    <div data-key="Eg">$$E_g$$</div>
+    <div data-key="Ek">$$E_k$$</div>
+    <!--div data-key="E" style="color:red">$$\Sigma E = 8.4\ {\mathrm J}$$</div-->
+</div>
+
+</body>
+</html>

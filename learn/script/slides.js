@@ -4,11 +4,32 @@ license.html = `<p>&copy; 2019 by <a target="_blank" href="mailto:david.maccarth
 <p><img onclick="license()" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/>
 <p>This work is licensed under a <span onclick="license()">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</span></p>`;
 
+function tableData(rows, num) {
+// Get table data as a 2D array
+// Usage: data = tableData("table > tbody > tr", "float");
+    rows = $(rows);
+    let data = [];
+    for (let i=0;i<rows.length;i++) {
+        let c = $(rows[i]).find("td");
+        let x = [];
+        for (let j=0;j<c.length;j++) {
+            let s = $(c[j]).html();
+            if (num == "int") s = parseInt(s);
+            else if (num == "float") s = parseFloat(s);
+            x.push(s);
+        }
+        data.push(x);
+    }
+    return data;
+}
 
 function zoom(z) {
 // Get [set] the zoom factor
     let b = $("body");
-    if (z) b.css("font-size", z+"em");
+    if (z) {
+        b.css("font-size", z+"em");
+        $(".Zoom").css("font-size", "1em");
+    }
     return parseFloat(b.css("font-size")) / 16;
 }
 
@@ -86,14 +107,14 @@ function markers() {
     return n == null ? 1 : parseInt(n);
 }
 
-function advance(n) {
+function advance(n, nextTopic) {
 // Advance by n mouseclicks
     let b = $("body");
     if (b.hasClass("Print")) { // Exit Print View
         location.reload();
         return;
     }
-    if (slide.count < 2 && markers() < 2) { // Next topic or chapter
+    if (nextTopic || slide.count < 2 && markers() < 2) { // Next topic or chapter
         let node = nextSib(current, n);
         while (node && !node.href) node = nextSib(node, n);
         if (node == null) {
@@ -163,15 +184,18 @@ function goNode(n) {
     }
 }
 
+// function soln() {location.href = soln.href}
+
 function toolbarClick(e) {
     e = e.currentTarget.innerHTML;
     if (e == "zoom_in") setZoom();
     else if (e == "print") printAll();
+    else if (e == "assignment") window.open(supplement);
     else if (e == "volume_off") {
         $(this).hide();
         narrator.init();
     }
-    else if (e == "pages") {
+    else if (e == "menu_open") {
         let m = $("#Menu");
         if (m.is(":visible")) m.fadeOut();
         else {
@@ -188,8 +212,17 @@ function toolbarClick(e) {
                 slide(parseInt($(this).attr("data-i")));
                 $("#Menu").fadeOut();
             });
+            let p = current.parent;
+            if (p) m.append("<hr/>").append(upMenuItem(p));
+            if (p != home) m.append(upMenuItem(home));
         }
     }
+    else if (toolbar.customAction) toolbar.customAction(e);
+}
+
+function upMenuItem(node) {
+    let p = $("<p>").html("↱ " + node.title);
+    return p.click(function() {goNode(node)});
 }
 
 function toolbar() {
@@ -205,7 +238,7 @@ function toolbar() {
 
 toolbar.btn = [
         // ["settings_remote", "Remote"],
-    ["pages", "Contents"],
+    ["menu_open", "Contents"],
     ["zoom_in", "Zoom"],
     ["print", "Print View"]
 ];
@@ -237,18 +270,22 @@ function contents() {
     let p = current.menu;
     if (p) for (let i=0;i<p.length;i++) {
         let pi = p[i];
-        let s = $("<span>").html(pi.title);
-        if (pi.heading) {
-            let ce = pi.heading == 1 ? "Expand" : "Collapse";
-            let em = $("<em>").addClass("material-icons");
-            em.html("expand_" + (pi.heading == 1 ? "less" : "more"));
-            c.append($("<p>").html(em).append(s).addClass(ce).click(contentsHeading));
-            div = $("<div>").addClass(ce);
-            c.append(div);
+        if (pi.hr == -1) div.append("<hr/>");
+        if (!pi.hide) {
+            let s = $("<span>").html(pi.title);
+            if (pi.heading) {
+                let ce = pi.heading == 1 ? "Expand" : "Collapse";
+                let em = $("<em>").addClass("material-icons");
+                em.html("expand_" + (pi.heading == 1 ? "less" : "more"));
+                c.append($("<p>").html(em).append(s).addClass(ce).click(contentsHeading));
+                div = $("<div>").addClass(ce);
+                c.append(div);
+            }
+            else div.append($("<p>").html(s).attr("data-i", i).click(function() {
+                goNode(current.menu[$(this).attr("data-i")]);
+            }));
         }
-        else div.append($("<p>").html(s).attr("data-i", i).click(function() {
-            goNode(current.menu[$(this).attr("data-i")]);
-        }));
+        if (pi.hr == 1) div.append("<hr/>");
     }
 }
 
@@ -270,16 +307,21 @@ function init(id, menu) {
     linkParents(home);
 
     // Add navigation breadcrumbs, table of contents, and license info
-    crumbs();
-    contents();
+    if (current) {
+        crumbs();
+        contents();
+    }
     $("#License").html(license.html);
 
     // Add start graphic
     $("#StartLesson").addClass("NoPrint").html($("<img>").attr({src:linkURL("#/media/lesson.png")}));
 
     let div = $("<div>").addClass("NoWinClick NoPrint").attr({id:"EndSlides"});
-    div.html($("<p>").html("End of Slideshow!"));
-    div.append($("<p>").html($("<span>").html("Restart").attr({onclick:"slide(0)"})));
+    let p = $("<p>")
+        .html($("<span>").html("Next Topic").attr({onclick:"advance(1, true)"}))
+        .append("&nbsp; | &nbsp;")
+        .append($("<span>").html("Restart").attr({onclick:"slide(0)"}));
+    div.html($("<p>").html("End of Slideshow!")).append(p);
     $("body").append(div.click(function() {
         $("#EndSlides").hide();
     }).hide());
@@ -289,13 +331,16 @@ function init(id, menu) {
 
     // Add toolbar
     if (narrator.src) toolbar.btn.push(["volume_off", "Soundtrack is OFF"]);
+    if (window.supplement && localStorage.getItem("remote_login"))
+        toolbar.btn.push(["assignment", "Supplemental Page"]);
     $("body").prepend(toolbar());
     $("#Toolbar em.material-icons").click(toolbarClick);
 
     // Window/console actions
-    if (slide.count > 1) logActions();
+    // if (slide.count > 1) 
+    logActions();
     let w = $(window).click(function(ev) {
-        if (slide.count > 1 && winclick(ev.target)) advance(1);
+        if (/*slide.count > 1 &&*/ winclick(ev.target)) advance(1);
     });
     window.onresize();
 };
@@ -334,10 +379,10 @@ window.onresize = function() {
 touch.swipe = function(data) {
     if (data.swipe == "right") advance(-1);
     else if (data.swipe == "left") advance(1);
-    else if (data.axis == 1) {
-        if (slide.index) slide(0);
-        else if (current.parent) goNode(current.parent);
-    }    
+    // else if (data.axis == 1) {
+    //     if (slide.index) slide(0);
+    //     else if (current.parent) goNode(current.parent);
+    // }
 }
 
 function visibleLinks() {
@@ -416,5 +461,5 @@ function narrator(ev) {
 function logActions() {
     console.log("Keyboard Commands:\n    → = Next\n    ← = Previous\n  Esc = Remote\n" +
         "    Z = Zoom\n    - = Zoom Out\n    + = Zoom In");
-    console.log("Swipe Commands:\n Left = Next\nRight = Previous\n   Up = Toolbar");
+    // console.log("Swipe Commands:\n Left = Next\nRight = Previous\n   Up = Toolbar");
 }

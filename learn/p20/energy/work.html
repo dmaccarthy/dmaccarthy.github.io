@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Energy Transformations (Work)</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/slides.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script type="text/javascript" src="../../webData/webData.js"></script>
+<script type="text/javascript" src="../../script/tree.js"></script>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../script/slides.js"></script>
+<script type="text/javascript" src="../../script/image.js"></script>
+<script type="text/javascript" src="../../script/plot.js"></script>
+<script type="text/javascript" src="../../script/plotItems.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript">
+
+var supplement = "soln/work$.html";
+
+$(function() {
+    init("work");
+});
+
+energyBarGraph.label.font = Text.font = "bold 28px monospace";
+energyBarGraph.margin = [24, 16, 48, 16];
+
+latexPreload.onload = function() {
+// Draw graphs when LaTeX images are ready
+    example(0);
+    example(1);
+    flow();
+};
+
+function example(n) {
+// Draw bar graphs
+    // let m = 30, g = 9.81; vi = 3, h = 5, vf = 8;
+    // let Egi = m * g * h, Eki = 0.5 * m * vi * vi, Ekf = 0.5 * m * vf * vf;
+    let data = [
+        ["Eg", n ? 5.0 : 0],
+        ["Ek", n ? 3.0 : 0],
+    ];
+    data.push(n ? ["W-", 1.0, "blue"] : ["W+", 9.0, "blue"]);
+    let p = energyBarGraph("#Example" + n, data, 1, 1);
+    let txt = (n ? "Final / J" : "Initial / J");
+    p.items.push(new Text(txt, [0.25, 9.5], {align:LEFT, fill:"black"}));
+    p.draw();
+}
+
+function flow() {
+    let p = flow.plot = new Plot("#Flow", [-2, 1, -1], 1), f = 11;
+    let opt = {font: "bold 36px monospace", fill:"blue"};
+    // let ropt = {font: "bold 24px monospace", fill:"red", align:TOP};
+    // let bopt = {font: "bold 24px monospace", fill:"blue", align:LEFT};
+    p.items = [
+        new Circle([0,0], 1, {stroke:"red", lineWidth:3}),
+        new Graphic("$Ek", [-0.5, 0]),
+        new Graphic("$Eg", [0.5, 0]),
+        new Text("Food", [-1.5, 0.75], opt),
+        new Text("Waste", [-1.5, -0.75], opt),
+        new Arrow([-0.9, 0.375], {angle:-45, length:0.6}, {stroke:"blue", fill:"white"}, {frames:f}),
+        new Graphic("$Wa", [-0.75, 0.525], {rotate:-45*DEG, frames:f}),
+        new Arrow([0, 0], {angle:0, length:0.6}, {stroke:"red"}, {frames:f+1}),
+        new Graphic("$Wg", [0, 0.1], {anchor:BOTTOM, frames:f+1}),
+        new Arrow([-0.9, -0.375], {angle:225, length:0.6}, {stroke:"blue", fill:"white"}, {frames:f+2}),
+        new Graphic("$Wf", [-0.75, -0.525], {rotate:45*DEG, frames:f+2}),
+    ];
+    p.draw(99);
+}
+
+slide.actions = {lol:function(m) {flow.plot.draw(m)}}
+
+</script>
+<style type="text/css">
+
+table.Normal {margin-bottom:1em}
+table.Normal th, table.Normal td {width:8em}
+table.Normal th.Work, table.Normal td.Work {width:5em}
+table.LOL {width:100%}
+table.LOL td {padding:12px}
+table.LOL td canvas {max-width:96%}
+
+#LaTeX-Preload > .Flow[data-key] {
+    font-size:2em;
+    color:red;
+}
+
+#LaTeX-Preload > .Work[data-key] {
+    font-size:1.5em;
+    color:blue;
+}
+
+</style>
+</head>
+<body><article class="SlideShow">
+
+<section class="Slide">
+<p id="Crumbs" class="NoPrint"></p>
+<h1>1.5 – Energy Transformations (Work)</h1>
+<p id="StartLesson"></p>
+</section>
+
+<section class="Slide" data-markers="12">
+<h1>Force</h1>
+    <p data-t="0,3">A <em class="Defn">force</em> is an interaction in which two objects push or pull on each other.</p>
+    <ul data-t="1,3">
+        <li>Force is measured in newtons:$$\mathrm {N = kg\cdot {m\over s^2}}$$</li>
+        <li data-t="2+">A newton is the amount of force needed to make a 1-kilogram object accelerate at 1 m/s<sup>2</sup>.</li>
+        <li data-t="3+">Force is a <em class="Defn">vector</em>; it acts in a specific direction.</li>
+    </ul>
+    <p data-t="4+">Some common forces are:</p>
+    <ul data-t="4+">
+        <li data-t="4+"><em class="Defn">Gravity</em>: An attractive force between masses.</li>
+        <li data-t="5+"><em class="Defn">Elastic</em>: Exerted by a stretched or compressed object trying to return to its original shape (bow, spring, bungee).</li>
+        <li data-t="6+"><em class="Defn">Tension</em>: Exerted by an object that does not stretch (rope, rod).</li>
+        <li data-t="7+"><em class="Defn">Normal</em>: Exerted by a surface (ground, floor, table) on an object in contact; acts perpendicular to the surface.</li>
+        <li data-t="8+"><em class="Defn">Friction</em>: Exerted by a surface on an object opposite to the motion; acts parallel to the surface.</li>
+        <li data-t="9+"><em class="Defn">Air Resistance</em>: Exerted by air (or other gases) on objects moving through.</li>
+        <li data-t="10+"><em class="Defn">Applied</em>: Exerted by a person, animal, or machine.</li>
+        <li data-t="11">Others: <em class="Defn">Buoyancy</em>, <em class="Defn">Electric</em>, <em class="Defn">Magnetic</em>, <em class="Defn">Nuclear</em></li>
+    </ul>
+</section>
+
+<section class="Slide" data-markers="6">
+<h1>Energy Transformations</h1>
+    <p data-t="0,4">When a force acts on an object, it may cause the object’s kinetic energy to change.</p>
+    <p data-t="1,4">The <em>amount</em> of kinetic energy transformed is called the <em class="Defn">work</em> done by the force
+        $$W = \Delta E_k$$</p>
+    <ul data-t="2,4">
+        <li>A force that acts in the direction of motion (or at less than 90°) will cause an <em>increase</em> in kinetic energy (a <em>positive</em> amount of work).</li>
+        <li data-t="3+">A force that acts opposite to the direction of motion (or at more than 90°) will cause an <em>decrease</em> in kinetic energy (a <em>negative</em> amount of work).</li>
+        <li data-t="4">If more than one force does work on an object, the change in kinetic energy is equal to the <em>total</em> work done by all forces.</li>
+    </ul>
+    <p data-t="5+">According to the Law of Energy Convervation, the kinetic energy gained (lost) must come from (go) somewhere.</p>
+</section>
+
+<section class="Slide" data-markers="17" data-action="lol">
+<h1>Example</h1>
+    <p data-t="0,7">A student pushes a crate up a ramp...</p>
+    <table data-t="1,7" class="Normal">
+        <tr class="Blue"><th>Force</th><th>Transforms...</th><th>Into...</th><th class="Work">Work</th></tr>
+        <tr><td>Applied</td><td data-t="2+">Chemical (Food) Energy</td><td data-t="2+">Kinetic Energy</td><td data-t="2+" class="Work">+</td></tr>
+        <tr data-t="3+"><td>Gravitational</td><td data-t="4+">Kinetic Energy</td><td data-t="4+">Gravitational Potential Energy</td><td data-t="4+" class="Work">−</td></tr>
+        <tr data-t="5+"><td>Friction / Air Resistance</td><td data-t="6+">Kinetic Energy</td><td data-t="6+">Thermal and/or Sound Energy</td><td data-t="6+" class="Work">−</td></tr>
+    </table>
+    <p data-t="7,8">Suppose the student does 9.0 joules of work. The crate reaches the top of the ramp with 5.0 J of gravitational potential energy and 3.0 J of kinetic energy.</p>
+    <table class="LOL" data-t="8"><tr>
+        <td><canvas class="Wide" id="Example0" width="640" height="532"></canvas></td>
+        <td><canvas class="Wide" id="Example1" width="640" height="532"></canvas></td>
+    </tr></table>
+    <p data-t="9,14">An <em class="Defn">energy flow diagram</em> illustrates the energy transformations that have occured...</p>
+    <canvas data-t="9+" class="Wide" id="Flow" width="640" height="432"></canvas>
+    <ul data-t="10+">
+        <li data-t="10,14">The circle represents the boundary between the system and its environment.</li>
+        <li data-t="14">The change in kinetic energy (+3.0 joules) is the <em>total</em> of the work done by all three forces.</li>
+        <li data-t="15+">An energy flow diagram combined with “initial” and “final” energy bar charts is sometimes called a <em class="Defn">LOL Diagram</em>.</li>
+        <li data-t="16">The L’s represent the axes of the bar charts and the O represents the system / environment boundary.</li>
+    </ul>
+</section>
+
+</article>
+
+<div id="LaTeX-Preload" style="font-size:1em">
+    <div data-key="W-" class="Bar">$$-\Delta E$$</div>
+    <div data-key="W+" class="Bar">$$+\Delta E$$</div>
+    <div data-key="Eg" class="Bar">$$E_g$$</div>
+    <div data-key="Ek" class="Bar">$$E_k$$</div>
+    <div data-key="$Ek" class="Flow">$$E_k$$</div>
+    <div data-key="$Eg" class="Flow">$$E_g$$</div>
+    <div data-key="$Wg" class="Work" style="color:red">$$W_g = -5.0\ {\mathrm J}$$</div>
+    <div data-key="$Wa" class="Work">$$W_a = +9.0\ {\mathrm J}$$</div>
+    <div data-key="$Wf" class="Work">$$W_f = -1.0\ {\mathrm J}$$</div>
+</div>
+
+</body>
+</html>

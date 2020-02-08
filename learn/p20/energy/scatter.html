@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Scatter Plots &amp; Model Equations</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/slides.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script-->
+<script type="text/javascript" src="../../webData/webData.js"></script>
+<script type="text/javascript" src="../../script/tree.js"></script>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../script/slides.js"></script>
+<!--script type="text/javascript" src="../../script/image.js"></script-->
+<script type="text/javascript" src="../../script/plot.js"></script>
+<script type="text/javascript" src="../../script/plotItems.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript">
+
+// var supplement = "soln/scatter$.html";
+
+toolbar.btn.push(["table_chart", "Toggle Data Table"]);
+
+toolbar.customAction = function(e) {
+    if (e == "table_chart") $("#DataClone").toggle();
+}
+
+$(function() {
+    $("table").clone()
+        .attr({id:"DataClone"})
+        .addClass("NoPrint NoWinClick")
+        .appendTo($("body"))
+        .hide();
+    init("scatter");
+    scatter(0);
+    scatter(1);
+});
+
+function scatter(n) {
+    let sel = ["#Scatter", "#BestFit"][n];
+    let f = "28px Arial";
+    let data = tableData("table > tbody > tr", "float");
+    let b = 4.8857, k = 3.9857;
+    let ends = [[0, b], [(12 - b) / k, 12]];
+    let p = new Plot(sel, [0, 2, 4, 12], [64, 28, 64, 36]);
+    p.items = [
+        new Grid({x:0.1, y:0.5, gridStyle:["grey", 0.5]}),
+        new Text("Stretching a Spring: L vs F", [1, 12.2], {align:BOTTOM, font:f, frames:2}),
+        new Text("Force / N", [1, 3.4], {align:TOP, font:f, frames:3}),
+        new Text("Length / cm", [-0.12, 8], {align:BOTTOM, font:f, angle:90, frames:3}),
+        new Grid({x:0.5, y:2, frames:4,
+            axisStyle:["black", 2],
+            // tickStyle:["black", 3, 2, 0],
+            yLabel:["black", f, [RIGHT, -5], 0],
+            xLabel:["black", f, [TOP, 242], 2],
+        }),
+        new PlotData(data, {fill:"blue", frames:6}),
+        new Segments(ends, {stroke:"blue", frames:7}),
+    ];
+    f = "24px Arial";
+    if (n) {
+        for (let i=0;i<p.items.length;i++) delete p.items[i].opt.frames;
+        p.items.push(
+            new Segments(ends, {stroke:"blue", frames:0}),
+            new PlotData(ends, {fill:"red", frames:2}),
+            new Arrow([ends[1][0], ends[1][1] - 1.5], {tip:[ends[1][0], ends[1][1] - 0.15], angle:90}, {fill:"red"}, {frames:2}),
+            new Arrow([0.3, b], {tip:[0.03, b], angle:180}, {fill:"red"}, {frames:2}),
+            new Text("(1.78 N, 12.0 cm)", [2, 10.4], {font:f, fill:"red", align:TOPRIGHT, frames:2}),
+            new Text("(0.00 N, 4.9 cm)", [0.33, 4.9], {font:f, fill:"red", align:LEFT, frames:2}),
+        );
+        p.items[5].opt.frames = [0, 0];
+    }
+    scatter.plot.push(p);
+}
+
+scatter.plot = [];
+
+slide.actions = {
+    scatter: function(m) {scatter.plot[0].draw(m)},
+    bestFit: function(m) {scatter.plot[1].draw(m)},
+}
+
+</script>
+<style>
+
+th {
+    font-weight:normal;
+    width:5em;
+}
+
+#DataClone th {font-weight:bold}
+
+#DataClone {
+    font-weight:bold;
+    position:fixed;
+    top:0.5em; left:0.5em;
+    background-color:#e0e0ff;
+    font-size:22px;
+}
+
+</style>
+</head>
+<body><article class="SlideShow">
+
+<section class="Slide">
+<p id="Crumbs" class="NoPrint"></p>
+<h1>1.3 – Scatter Plots &amp; Model Equations</h1>
+<p id="StartLesson"></p>
+</section>
+
+<section class="Slide" data-markers="10" data-action="scatter">
+<h1 data-t="0">Scatter Plots</h1>
+	<p data-t="0">When analyzing experimental data, we often use a <em class="Defn">scatter plot</em> to illustrate the relationship between the manipulated and responding variables.</p>
+    <p data-t="0" class="Caption">Stretching a Spring</p>
+    <table data-t="0" class="Normal">
+        <thead>
+            <tr><th>Force<br/><i>F</i> / N</th><th>Length<br/><i>L</i> / cm</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>0.25</td><td>5.8</td></tr>
+            <tr><td>0.50</td><td>6.9</td></tr>
+            <tr><td>0.75</td><td>8.0</td></tr>
+            <tr><td>1.00</td><td>8.8</td></tr>
+            <tr><td>1.25</td><td>10.0</td></tr>
+            <tr><td>1.50</td><td>10.7</td></tr>
+            <tr><td>1.75</td><td>11.9</td></tr>
+        </tbody>
+    </table>
+    <p class="Center" data-t="1+"><canvas class="Wide" id="Scatter" width="760" height="600"></canvas></p>
+	<ul data-t="1+">
+		<li data-t="1">Graphs must be drawn on graph paper and should be <em>large</em>; at least half of a standard 8.5” × 11” page.</li>
+		<li data-t="2">Graphs must have a descriptive title. The subtitle should identify the variables being plotted in the form “responding vs. manipulated.”</li>
+		<li data-t="3">Each axis must be labelled with the variable name and/or symbol, and units.</li>
+		<li data-t="3">The <em>manipulated</em> variable must be graphed on the horizontal (<i>x</i>) axis and the responding variable on the vertical (<i>y</i>) axis.</li>
+		<li data-t="4">Label the axes so that all data points fit on the graph, using as much space as possible.</li>
+		<li data-t="5">The “tick marks” on each axis must be evenly spaced. Tick marks must be numbered using a common interval and must start either at zero or a multiple of the interval used.</li>
+		<li data-t="5">For example, if you are counting by 2’s on your <i>y</i>-axis, your first labelled tick mark must be 0 or a multiple of 2.</li>
+		<li data-t="6,7">Data points must be drawn <em>accurately</em> and must <em>not</em> be connected.</li>
+		<li data-t="7">If the data shows a linear trend, you can add a best-fit line.</li>
+		<li data-t="8+">A good best-fit line illustrates the trend of the data with equal numbers of data points above and below the line.</li>
+		<li data-t="9">The average distance between the data points and the best-fit line should be minimized.</li>
+	</ul>
+</section>
+
+<section class="Slide" data-markers="17" data-action="bestFit">
+<h1 data-t="-1">Slope &amp; <i>y</i>-Intercept</h1>
+    <p class="Center" data-t="0,10"><canvas class="Wide" id="BestFit" width="760" height="600"></canvas></p>
+	<p data-t="0">We can use our graph to calculate the <em class="Defn">slope</em> and <em class="Defn"><i>y</i>-intercept</em> of the best-fit line.</p>
+	<ul data-t="1,6">
+		<li data-t="1">When calculating a model equation, we are looking only at the best-fit line, not the individual data points.</li>
+		<li data-t="2,4">Choose two convenient points and write down their coordinates.</li>
+		<li data-t="3,4">In principle, any two points will work. In practice however, results will be more accurate if the points are far apart.</li>
+		<li data-t="4">The points chosen do not have to be data points, but <em>must</em> be points that lie on the best-fit line.</li>
+		<li data-t="5,6">Use the coordinates to calculate the <em class="Defn">slope</em> as you learned in Math 10:</li>
+    </ul>
+	<p data-t="6,7">$$k = {{\mathrm {“Rise”}}\over {\mathrm {“Run”}}} = {y_2 - y_1 \over x_2 - x_1}$$</p>
+	<p data-t="7,8">$$k = {{\mathrm{12.0\ cm}} - {\mathrm{4.9\ cm}} \over {\mathrm{1.78\ N}} - {\mathrm{0.00\ N}}}$$</p>
+	<p data-t="8,9">$$k = {\mathrm {4.0\ cm/N}}$$</p>
+	<ul data-t="9,10">
+		<li data-t="9">The slope tells us the <em>rate of change</em>: the length of the spring increases by 4.0 cm for each additional newton of force applied.</li>
+		<li data-t="10">The <em class="Defn">y-intercept</em> is the point where the best-fit line crosses the <i>y</i>-axis, where \(x = 0\):$$b = {\mathrm{4.9\ cm}}$$</li>
+    </ul>
+<!--/section>
+
+<section class="Slide" data-markers="6"-->
+	<p data-t="11+">Sometimes the <i>y</i>-intercept may not be visible on the graph. If this happens you can calculate \(b\) using algebra:</p>
+	<p data-t="12+">$$y = kx + b$$</p>
+	<p data-t="13+">$$b = y - kx$$</p>
+	<ul data-t="14+">
+		<li data-t="14+">Substitute the calculated slope for \(k\), and <em>either</em> of your two points for \(x\) and \(y\):</li>
+    </ul>
+	<p data-t="15+">$$b = {\mathrm{4.9\ cm - 4.0\ cm/N \cdot 0.00\ N = 4.9\ cm}}$$</p>
+	<p class="Center" data-t="16"><b>or</b>$$b = {\mathrm{12.0\ cm - 4.0\ cm/N \cdot 1.78\ N = 4.9\ cm}}$$</p>
+</section>
+
+<section class="Slide" data-markers="7">
+<h1>Model Equation</h1>
+	<p data-t="0,2">Once we know the slope and <i>y</i>-intercept, we can write the <em class="Defn">model equation</em>:$$y = kx + b$$</p>
+	<ul data-t="1,2">
+        <li>Replace \(k\) and \(b\) by the calculated numerical values, including units:$$y = (\color{Red}{\mathrm{4.0\ cm/N}})\cdot x + \color{Red}{\mathrm{4.9\ cm}}$$</li>
+        <li data-t="2">Replace \(x\) and \(y\) by the appropriate symbols for the variables graphed:$$\color{Red}L = ({\mathrm{4.0\ cm/N}})\cdot \color{Red}F + {\mathrm{4.9\ cm}}$$</li>
+    </ul>
+    <p data-t="3+" class="NoPrint">$$L = ({\mathrm{4.0\ cm/N}})\cdot F + {\mathrm{4.9\ cm}}$$</p>
+	<ul data-t="3+">
+        <li>We can use the model equation to make <em>predictions</em> about the data.</li>
+        <li data-t="4+">Prediction within the range of data on the scatter plot is called <em class="Defn">interpolation</em>.
+            <span class="Red">(How long will the spring be when 0.80 newtons of force is applied?)</span></li>
+        <li data-t="5+">Prediction beyond the range of data is called <em class="Defn">extrapolation</em>.
+            <span class="Red">(How much force must be applied to stretch the spring to 15.0 cm in length?)</span></li>
+        <li data-t="6">Extrapolation is less reliable than interpolation.</li>
+    </ul></section>
+
+</article>
+
+</body>
+</html>

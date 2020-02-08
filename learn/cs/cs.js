@@ -10,3 +10,5 @@ let home = {title:"Computing Science", id:"cs", href:"#/cs/", menu:[
 ]}
 
 linkParents(home);
+
+$.ajax({url:"https://webapp.davidmaccarthy.repl.co/utc.json"});

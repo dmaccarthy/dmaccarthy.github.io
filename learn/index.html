@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en-ca">
+<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
 <head><meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Mr. Mac’s Website</title>
 <meta name="description" content=""/>
-<link rel="shortcut icon" type="image/png" href="/media/lecturer.png"/>
+<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico"/>
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 <link rel="stylesheet" type="text/css" href="script/slides.css"/>
@@ -15,11 +15,12 @@
 
 let home = {title:"Mr. Mac’s Website", id:"home", href:"#/", menu:[
     {title:"Courses", heading:1},
-    {title:"Science 10", href:"https://www.davidmaccarthy.repl.co/learn/s10/"},
-    {title:"Physics 20(New)", href:"#/p20/"},
-    {title:"Physics 20", href:"https://www.davidmaccarthy.repl.co/learn/p20/"},
-    {title:"Physics 30", href:"https://www.davidmaccarthy.repl.co/learn/p30/"},
-    {title:"Computing Science(New)", href:"#/cs/"},
+    // {title:"Science 10", href:"https://www.davidmaccarthy.repl.co/learn/s10/"},
+    // {title:"Physics 20 (Semester 1)", href:"https://www.davidmaccarthy.repl.co/learn/p20/"},
+    {title:"Physics 20", href:"#/p20/"},
+    {title:"Physics 30", href:"https://learn.davidmaccarthy.repl.co/p30/"},
+    {title:"Physics 30 (Full Year)", href:"https://www.davidmaccarthy.repl.co/learn/p30/"},
+    // {title:"Computing Science (Revised)", href:"#/cs/", hide:true},
     {title:"Computing Science", href:"https://www.davidmaccarthy.repl.co/learn/cs/"},
     {title:"Links", heading:-1},
     {title:"Salisbury Composite High School", open:"https://salcomp.ca"},
@@ -27,13 +28,16 @@ let home = {title:"Mr. Mac’s Website", id:"home", href:"#/", menu:[
 	{title:"Alberta Education", open:"https://www.alberta.ca/writing-diploma-exams.aspx#toc-3"},
 ]}
 
-$(function() {init("home")});
+$(function() {
+    init("home");
+    $("#Toolbar").remove();
+});
 
 </script>
 </head>
 <body><article class="SlideShow"><section class="Slide">
     <h1>Mr. Mac’s Website</h1>
-    <div id="Contents" class="NoWinClick NoPrint"></div>
+    <div id="Contents"></div>
     <div id="License"></div>
 </section></article></body>
 </html>

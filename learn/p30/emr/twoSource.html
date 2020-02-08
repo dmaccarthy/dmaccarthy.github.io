@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Two-Source Interference</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/slides.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="../../script/plot.js"></script>
+<script type="text/javascript" src="../../script/plotItems.js"></script>
+<script type="text/javascript">
+
+function sin(t, locus) {
+    let p = locus.phase * wave.pd + wave.t;
+    return Math.sin(wave.n * (t - p));
+}
+
+function pd() {
+    let w = TWO_PI / wave.n;
+    let n = wave.pd / w;
+    $("#PD").html(n.toFixed(3));
+}
+
+function wave() {
+    let p = wave.plot = new Plot("canvas", [-2.1*PI, 0.1*PI, -2.05, 2.05], 4);
+    let x = -TWO_PI;
+    let l1 = new Locus(sin, {steps:960}, {stroke:"blue", lineWidth:2});
+    let l2 = new Locus(sin, {steps:960}, {stroke:"red", lineWidth:2});
+    let s1 = new PlotData([[0,1]], {fill:"blue"});
+    let s2 = new PlotData([[0,1]], {fill:"red"});
+    l1.phase = s1.phase = 0; l2.phase = s2.phase = 1;
+    p.items = [
+        new Grid({x:true, y:0.5, axisStyle:["black", 1], tickStyle:["black", 2, 4, 0]}),
+        new Segments([[0, -1.5], [0, 1.5]], {lineWidth:1}),
+        new Segments([[x, -1.5], [x, 1.5]], {lineWidth:1}),
+        l1, l2,
+        new Text("P", [-0.05, -1.75], {fill:"black", align:TOPRIGHT, font:"30px Arial"}),
+        new Text("S1", [x, -1.75], {fill:"blue", align:TOP, font:"30px Arial"}),
+        new Text("S2", [0, -1.75], {fill:"red", align:TOP, font:"30px Arial"}),
+        s1, s2,
+        new PlotData([[0,1]], {fill:"purple"})
+    ];
+    pd();
+    p.animate(30);
+    p.ondraw = update;
+}
+
+wave.n = 2;
+wave.t = 0;
+wave.step = 0.005;
+wave.pd = PI / 10;
+
+$(wave);
+
+function update() {
+    wave.t += wave.step;
+    let items = wave.plot.items;
+    let s1 = items[8], s2 = items[9];
+    let y1 = s1.pts[0][1] = sin(0, s1);
+    let y2 = s2.pts[0][1] = sin(0, s2);
+    items[10].pts[0][1] = y1 + y2;
+    let x = wave.pd - TWO_PI;
+    items[1].pts[0][0] = items[1].pts[1][0] = x;
+    items[7].posn[0] = x;
+}
+
+window.onkeydown = function(ev) {
+    left = ev.key == "ArrowLeft";
+    right = ev.key == "ArrowRight";
+    if (left || right) {
+        let dp = TWO_PI / wave.n * 0.025;
+        if (right) wave.pd += dp;
+        else wave.pd -= dp;
+        pd();
+    }
+    else if (ev.key == "ArrowUp") wave.n -= 0.2;
+    else if (ev.key == "ArrowDown") wave.n += 0.2;
+    else if (ev.key == "z") {
+        let b = $("body");
+        let z = 2.5 * 16 / parseFloat(b.css("fontSize"));
+        b.css("fontSize", z + "em")
+    }
+    let p = wave.plot;
+    if (!p.playing) {
+        update();
+        p.draw();
+    }
+}
+
+</script>
+<style>
+
+p {font-family:"Source code Pro", monospace}
+
+</style>
+</head>
+<body class="Center">
+<h1>Two-Source Interference</h1>
+    <p><canvas id="ramp" class="Wide" onclick="wave.plot.pause()" width="960" height="384"></canvas>
+    <p>n = <span id="PD"></span></p>
+</body>
+</html>

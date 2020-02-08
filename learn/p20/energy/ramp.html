@@ -17,99 +17,25 @@
 <script type="text/javascript" src="../../script/image.js"></script>
 <script type="text/javascript" src="../../script/plot.js"></script>
 <script type="text/javascript" src="../../script/plotItems.js"></script>
+<script type="text/javascript" src="rampAnimation.js"></script>
 <script type="text/javascript" src="../p20.js"></script>
 <script type="text/javascript">
 
-energyBarGraph.noLabelY();
+latexPreload.onload = function() {ramp("#ramp")};
 
-function ramp() {
-    // Create ramp energy bar graph Plot instance
-    let p = ramp.plot = energyBarGraph("#ramp", [
-        ["E_g", 100],
-        ["E_k", 0],
-        ["E_r", 0],
-        ["-W", 0, "blue"],
-    ], 10, 1, "%");
-
-    p.items.push(new Segments([[0, 50], [7, 0]], {stroke:"grey", lineWidth:2}));
-    p.items.push(new Circle([0, 52.3], 0.5, {fill:"yellow", stroke:"black"}));
-    p.items.push(new Segments([[0, 52.3], [0.128, 52.3]], {stroke:"black", lineWidth:2}));
-    p.items.push(new Text("0.00", [7, 100], {fill:"black", align:TOPRIGHT}));
-
-    // Event handlers
-    $(p.cv).click(function() {ramp.plot.pause()});
-    p.ondraw = ramp.update;
-}
-
-ramp.rLine = function(x) {
-    let p = ramp.plot;
-    let xy = p.items[2].pos;
-    let r = p.pixels(0.5) / p.coeff[0];
-    let a = ramp.rotn ? Math.sqrt(49 + Math.pow(50/ramp.plot.ratio, 2)) / r * x : 0;
-    let dx = r * Math.cos(a);
-    let dy = r * ramp.plot.ratio * Math.sin(a);
-    let pts = p.items[3].pts;
-    pts[0] = [xy[0]+dx, xy[1]+dy];
-    pts[1] = [xy[0]-dx, xy[1]-dy];
-}
-
-ramp.update = function() {
-    let p = ramp.plot;
-    let t = Math.pow(p.frameCount / p.animationFrames, 1);
-    let x = t * t;
-    let Eg = 100 * (1 - x);
-    let W = 100 * (1 - ramp.eff) * x;
-    let Ek = (100 - Eg - W) / (1 + ramp.rotn);
-    p.items[0].setData([Eg, Ek, ramp.rotn * Ek, W]);
-    p.items[2].pos = [7 * (100 - Eg) / 100, Eg / 2 + 2.3];
-    ramp.rLine(x);
-    p.items[4].text = ((new Date() - ramp.t0) / 1000).toFixed(2);
-}
-
-ramp.fps = 30;
-ramp.eff = 0.85;
-
-ramp.start = function() {
-    let p = ramp.plot;
-    p.frameCount = 0;
-    let s = $("#Shape")[0];
-    ramp.rotn = eval(s.options[s.selectedIndex].value);
-    let t = Math.sqrt((1 + ramp.rotn) / ramp.eff);
-    p.animationFrames = Math.round(8 * t * ramp.fps);
-    ramp.t0 = new Date();
-    p.animate(ramp.fps);
-    // p.draw();
-}
-
-function config() {
-    let x = parseFloat(prompt("Efficiency [0.01-1]?", ramp.eff));
-    if (!isNaN(x)) ramp.eff = Math.max(0.01, Math.min(1, x));
-}
-
-latexPreload.onload = ramp;
-
-$(function() {
-    init("ramp", [
-        {title:"Assignment"},
-        {title:"Solutions"},
-    ]);
-});
+$(init);
 
 slide.actions = {
     ramp: ramp.start,
 }
 
 </script>
-<style>
-
-</style>
 </head>
 <body><article class="SlideShow">
 
 <section class="Slide">
 <p id="Crumbs" class="NoPrint"></p>
 <h1>Energy on a Ramp</h1>
-<div id="Contents" class="NoWinClick NoPrint"></div>
 <p id="StartLesson"></p>
 </section>
 
@@ -118,7 +44,7 @@ slide.actions = {
     <p data-t="0+"><canvas id="ramp" class="Wide NoWinClick" width="720" height="680"></canvas></p>
     <p class="Center" id="Controls" class="NoWinClick">
         <em class="material-icons" title="Restart" onclick="ramp.start()">fast_rewind</em> &nbsp;
-        <em class="material-icons" title="Settings" onclick="config()">settings_applications</em>
+        <em class="material-icons" title="Settings" onclick="ramp.config()">settings_applications</em>
         <br/><select id="Shape" onchange="ramp.start()">
             <option value="0">Sliding (No Rotation)</option>
             <option value="0.4">Sphere (Solid)</option>
@@ -132,10 +58,10 @@ slide.actions = {
 </article>
 
 <div id="LaTeX-Preload">
-    <div data-key="E_g" class="Bar">$$E_g$$</div>
-    <div data-key="E_k" class="Bar">$$E_k$$</div>
-    <div data-key="E_r" class="Bar">$$E_{rotn}$$</div>
-    <div data-key="-W" class="Bar">$$-\Delta E$$</div>
+    <div data-key="Eg" class="Bar">$$E_g$$</div>
+    <div data-key="Ek" class="Bar">$$E_k$$</div>
+    <div data-key="Er" class="Bar">$$E_{rotn}$$</div>
+    <div data-key="W-" class="Bar">$$-\Delta E$$</div>
 </div>
 
 </body>
