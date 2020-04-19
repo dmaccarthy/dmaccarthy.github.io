@@ -18,6 +18,7 @@
 </div>
 
 <h4>Assignable Properties</h4><div class="Indent">
+	<p><code class="Hilite">frameTimes</code>: Set this to an empty list to record the capture times for each frame. This must occur before any frames are added to the video. Call the <code>sync</code> method after recrding to ensure the video can be saved and replayed with the correct frame rate. Default is <code>None</code>. <b class="Comment">[To be added in v2.2]</b></p>
 	<p><code class="Hilite">meta</code>: A dictionary of metadata to be saved with the video. Data must be convertible into JSON format.</p>
 </div>
 
@@ -58,6 +59,7 @@
 		<p><code class="Hilite">size</code>: The output size. If omitted, the <code>size</code> property of the video will be used.</p>
 		<p><code class="Hilite">inPlace</code>: Specifies whether to adjust the data in place, or create a new <code>Video</code> instance.</p>
 		</div>		
+	<p><code><span class="Hilite">sync</span>(fps=30, original=None)</code> → <code>self</code>: Creates a copy of the video changing the frame rate from <code>original</code> to <code>fps</code>. If <code>original</code> is <code>None</code>, frames will be synced using the recording time data in the <code>frameTimes</code> attribute or the value in <code>meta["frameRate"]</code>. <b class="Comment">[To be added in v2.2]</b></p>
 </div>
 
 </article>
