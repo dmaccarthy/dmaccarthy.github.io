@@ -24,7 +24,7 @@
 
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">__getitem__</span>(n)</code> → <code>Image</code>: Extract the specified frame number as an <code>Image</code> instance.</p>
-	<p><code><span class="Hilite">__iadd__</span>(img)</code> → <code>self</code>: Append an image as a new frame at the end of the video.</p>
+	<p><code><span class="Hilite">__iadd__</span>(img)</code> → <code>self</code>: Append an image as a new frame at the end of the video. <b class="Comment">As of v2.2</b>, the argument can also be a <code>Video</code> instance to be concatenated in place.</p>
 		<div class="Indent">
 		<p><code class="Hilite">img</code>: The image to be appended. It can be an <code>Image</code> instance (or any <code>Graphic</code> subclass that implements the <code>image</code> property) or a <code>pygame.Surface</code> instance. <b class="Comment">As of v2.1</b>, any object that can be decoded by the <a class="Code" href="javascript:goNode('pixeldata')">PixelData</a> constructor, such as raw <code>bytes</code> or a <a class="Code" href="http://python-pillow.org/">Pillow</a> image, is acceptable.</p>
 		</div>
@@ -48,6 +48,11 @@
 	<p><code><span class="Hilite">frame</span>(n)</code> → <code>PixelData</code>: Extract the specified frame number as a <code>PixelData</code> instance.</p>
 	<p><code><span class="Hilite">frames</span>()</code> → <code>generator</code>: Generate the sequence of frames as <code>PixelData</code> instances. You can iterate through the <code>Video</code> instance itself to obtain a sequence of frames as <code>Image</code> instances.</p>
 	<p><code><span class="Hilite">purge</span>()</code> → <code>self</code>: Remove all frames of the video. <b class="Comment">[Added in v2.1]</b></p>
+	<p><code><span class="Hilite">removeGaps</span>(gap, repl)</code> → <code>self</code>: Modifies the <code>frameTimes</code> data to remove large time gaps. <b class="Comment">[To be added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">gap</code>: The minimum sive of the gap to remove.</p>
+		<p><code class="Hilite">repl</code>: The replacement gap.</p>
+		</div>	
 	<p><code><span class="Hilite">save</span>(fn, progress=None, append=False)</code> → <code>self</code>: Save the video in s8v format.</p>
 		<div class="Indent">
 		<p><code class="Hilite">fn</code>: The path to the file being saved.</p>
