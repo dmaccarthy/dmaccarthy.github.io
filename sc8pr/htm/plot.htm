@@ -8,10 +8,11 @@
 <p><code><a class="Hilite" href="javascript:goNode('series')">Series</a></code>: Class for representing data as a sequence of points or as an equation.</p></div>
 
 <h4>Functions</h4><div class="Indent">
-	<p><code><span class="Hilite">coordTr</span>(lrbt, size)</code> → <code>lambda</code>: Returns a coordinate transformation for mapping coordinates within a coordinate system onto pixel coordinates.</p>
+	<p><code><span class="Hilite">coordTr</span>(lrbt, size, invert=False)</code> → <code>lambda</code>: Returns a coordinate transformation for mapping coordinates within a coordinate system onto pixel coordinates.</p>
 	<div class="Indent">
 		<p><code class="Hilite">lrbt</code>: A 4-tuple or 4-list specifying the coordinates corresponding to the <i>left</i>, <i>right</i>, <i>bottom</i>, and <i>top</i> edges of the canvas.
 		<p><code class="Hilite">size</code>: A 2-tuple or 2-list specifying the canvas size in pixels.</p>
+		<p><code class="Hilite">invert</code>: If <code>True</code>, returns the inverse transformation. <b class="Comment">[To be added in v2.2]</b></p>
 	</div>
 	<p><code><span class="Hilite">expon</span>(x, y)</code> → <code>(lambda, (float, float))</code>: Performs a least squares fit for an exponential model. Arguments and return value are the same as for the <code>leastSq</code> function.</p>
 	<p><code><span class="Hilite">leastSq</span>(x, y)</code> → <code>(lambda, (float, float))</code>: Performs a least squares fit on the data provided. Returns the linear model equation as a lambda, and the fit coefficients as a 2-tuple.</p>
