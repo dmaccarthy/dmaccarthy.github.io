@@ -1,4 +1,4 @@
-# Copyright 2017-2019 D.G. MacCarthy <http://dmaccarthy.github.io>
+# Copyright 2017-2020 D.G. MacCarthy <http://dmaccarthy.github.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,8 +24,15 @@ from sc8pr.gui.slider import Slider
 from sc8pr.gui.button import Button
 from sc8pr.gui.menu import Menu, R_TRIANGLE
 
+try:    # v2.2.dev
+    from sc8pr.gui.textinput import TextInputCanvas
+except: #v2.0-2.1
+    TextInputCanvas = lambda *x: x[0]
+
+
 GREY, BLUE = rgba("#ececec", "blue")
 FONT = Font.sans()
+
 
 def setup(sk):
     # Create a Canvas as a GUI dialog
@@ -37,14 +44,8 @@ def setup(sk):
     # Add a TextInput (v2.0, 2.1) or TextInputCanvas (v2.2)
     ti = TextInput("", "Type Some Text...").config(color=BLUE,
         font=FONT, fontStyle=BOLD, padding=4).bind(onaction)
-    try: # Experimental in v2.2.dev...
-        from sc8pr.gui.textinput import TextInputCanvas
-        from sc8pr.gui.tk import clipboardGet
-        clipboardGet()
-        ti = TextInputCanvas(ti, 336)
-    except: pass
     x, y = cv.center[0] - 8, 16
-    cv["Input"] = ti.config(anchor=TOP, pos=(x,y), bg="white", weight=1)
+    cv["Input"] = TextInputCanvas(ti, 336).config(anchor=TOP, pos=(x,y), bg="white", weight=1)
 
     # Add a Radio box
     y += down(cv)
