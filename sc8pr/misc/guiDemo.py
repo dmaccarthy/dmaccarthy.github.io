@@ -27,7 +27,7 @@ from sc8pr.gui.menu import Menu, R_TRIANGLE
 try:    # v2.2.dev
     from sc8pr.gui.textinput import TextInputCanvas
 except: #v2.0-2.1
-    TextInputCanvas = lambda *x: x[0]
+    TextInputCanvas = None
 
 
 GREY, BLUE = rgba("#ececec", "blue")
@@ -41,11 +41,13 @@ def setup(sk):
     # Vertical positioning 16 pixels below last item added
     down = lambda cv: 16 + cv[-1].height
 
-    # Add a TextInput (v2.0, 2.1) or TextInputCanvas (v2.2)
-    ti = TextInput("", "Type Some Text...").config(color=BLUE,
-        font=FONT, fontStyle=BOLD, padding=4).bind(onaction)
+    text = dict(color = BLUE, font = FONT, fontStyle = BOLD, padding = 4)
+    if TextInputCanvas: # v2.2.dev
+        ti = TextInputCanvas(336, "", "Type Some Text...", **text)
+    else: # v2.0-2.1
+        ti = TextInput("", "Type Some Text...").config(**text)
     x, y = cv.center[0] - 8, 16
-    cv["Input"] = TextInputCanvas(ti, 336).config(anchor=TOP, pos=(x,y), bg="white", weight=1)
+    cv["Input"] = ti.bind(onaction, onchange=onaction).config(anchor=TOP, pos=(x,y), bg="white", weight=1)
 
     # Add a Radio box
     y += down(cv)
@@ -111,9 +113,8 @@ def buttonClick(gr, ev):
         dlg += dlg.menu
 
 def onaction(ti, ev):
-    "Event handler for TextInput"
-    print(ti, ti.data)
-#     print("{} [{}] {}".format(ti, ev.handler, ti.data))
+    "Event handler for TextInput[Canvas]"
+    print("{} [{}] {}".format(ti, getattr(ev, "handler", None), ti.data))
 
 def radioChange(gr, ev):
     "Event handler for Radio"
