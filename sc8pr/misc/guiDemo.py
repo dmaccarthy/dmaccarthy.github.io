@@ -36,7 +36,7 @@ FONT = Font.sans()
 
 def setup(sk):
     # Create a Canvas as a GUI dialog
-    cv = Canvas((384,256)).config(bg="#f0f0ff", weight=1, resizeContent=False)
+    cv = Canvas((384,256)).config(bg="#f0f0ff", weight=1)
 
     # Vertical positioning 16 pixels below last item added
     down = lambda cv: 16 + cv[-1].height
@@ -65,9 +65,10 @@ def setup(sk):
     # Add Buttons
     y += down(cv)
     cv["Button Box"] = buttons(cfg).config(anchor=TOP, pos=(x,y))
+    print(y, cv[-1].height)
 
     # Modify canvas and sketch size based on content
-    cv.resize((cv.width, y + down(cv)))
+    cv.resize((cv.width, y + down(cv)), False)
     w, h = cv.size
     sk.size = w + 48, h + 48
 
