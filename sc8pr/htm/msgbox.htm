@@ -1,7 +1,7 @@
-﻿<article><h1><code>sc8pr.gui.dialog.MessageBox</code> Class</h1>
+﻿<article><h1><code>sc8pr.gui.dialog</code> Module</h1>
 <p><span class="Comment"><b>Added in v2.1</b>.</span></p>
 
-<p><code>MessageBox</code> is a <code>Canvas</code> subclass for creating simple GUI dialogs. Message boxes trigger the <code>onaction</code> event when a button is clicked or the Enter key is pressed while the text input is focused.</p>
+<p><code>MessageBox</code> is a <code>Canvas</code> subclass for creating simple GUI dialogs. Message boxes trigger the <code>onaction</code> event when a button is clicked or the Enter key is pressed while the text input is focused. <b class="Comment">In v2.2</b> a subclass <code>NumInputBox</code> will be added that is nearly identical, but will reject input that cannot be converted to a <code>float</code>.</p>
 <p class="Center"><img src="img/msgbox.png" alt="Image"/></p>
 
 <p>Here is an example program that creates and runs the dialog illustrated above...</p>
@@ -15,36 +15,47 @@ def setup(sk):
 def onaction(mb, ev):
     <span class="Comment">"Close the message box"</span>
     cmd = mb.command
-    print("Command: {} [{}]".format(cmd.name, cmd.layer))
-    print("Data: '{}'".format(mb["Input"].data))
+    print("Command: {} [{}]".format(cmd, cmd.layer))
+    try: <span class="Comment"># sc8pr v2.2</span>
+        print("Data: '{}'".format(mb.data))
+        print("Result: {}".format(mb.result))
+    except:
+        print("Data: '{}'".format(mb["Input"].data))
+        print("Result: [Add in sc8pr 2.2]")
     mb.remove()
 
 Sketch().play()</pre>
 
-<p><code>MessageBox</code> defines the following attributes in addition those inherited from the <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> class...</p>
+<p><code>MessageBox</code> and <code>NumInputBox</code> define the following attributes in addition those inherited from the <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> class...</p>
 
 <h4>Constructor</h4><div class="Indent">
-	<p><code><span class="Hilite">MessageBox</span>(text, userInput=None, buttons=None, title=None, size=(1,1), **kwargs)</code></p>
+	<p><code><span class="Hilite">MessageBox</span>(text, userInput=None, buttons=None, title=None, size=(1,1), inputWidth=None, **kwargs)</code></p>
+	<p><code><span class="Hilite">NumInputBox</span>(text, userInput=None, buttons=None, title=None, size=(1,1), inputWidth=None, **kwargs)</code></p>
 		<div class="Indent">
 		<p><code class="Hilite">text</code>: A text message to be displayed in the dialog.</p>
-		<p><code class="Hilite">userInput</code>: If the dialog is to allow the user to type some text, this argument specifies the initial value of the text, which can be an empty string. The <code>TextInput</code> instance can be referred to as <code>mb["Input"]</code>, where <code>mb</code> refers to the message box. Passing <code>None</code> (the default) for this argument indicates that the dialog will not contain a user text input.</p>
+		<p><code class="Hilite">userInput</code>: If the dialog is to allow the user to type some text, this argument specifies the initial value of the text, which can be an empty string. The <code>TextInput</code> instance (<code>TextInputCanvas</code> <b class="Comment">in v2.2</b>) can be referred to as <code>mb["Input"]</code>, where <code>mb</code> refers to the message box. Passing <code>None</code> (the default) for this argument indicates that the <code>MessageBox</code> will not contain a user text input. <code>NumInputBox</code> treats <code>None</code> as equivalent to an empty string.</p>
 		<p><code class="Hilite">buttons</code>: A string or a list or tuple of strings specifying the text to display on the “Okay” and “Cancel” buttons. If only one string is provided, only the “Okay” button will be drawn. If omitted, “Okay” and “Cancel” will be used as the button text. <code>Button</code> instances can be referenced by the button text prefixed by <code>Button_</code> or by their <code>layer</code> property; for example <code>mb["Button_Okay"]</code> and <code>mb[0]</code> both refer to the “Okay” button where <code>mb</code> refers to the message box.</p>
 		<p><code class="Hilite">title</code>: An optional title for the message box.</p>
 		<p><code class="Hilite">size</code>: The minimum size of the dialog as a 2-tuple or 2-list. The constructor will increase the size as necessary to fit the contents.</p>
+		<p><code class="Hilite">inputWidth</code>: An optional minimum width for the text input. <b class="Comment">[To be added in v2.2]</b></p>
 		<p><code class="Hilite">kwargs</code>: Additional arguments such as <code>font</code> or <code>fontSize</code> that will be used to configure the <a class="Hilite Code" href="javascript:goNode('text_class')">Text</a> and <code>TextInput</code> items.</p>
 		</div>
 </div>
 
 <h4>Assignable Property</h4><div class="Indent">
-	<p><code class="Hilite">command</code>: Initially <code>None</code>, this property will become a reference to the <code>Button</code> or <code>TextInput</code> instance used to dismiss the dialog. You can use its <code>name</code> or <code>layer</code> property to identify the control used. You can set this attribute back to <code>None</code> if you want to re-run the dialog.</p>
+	<p><code class="Hilite">command</code>: Initially <code>None</code>, this property will become a reference to the <code>Button</code> or <code>TextInput</code> instance used to dismiss the dialog. When <code>command</code> refers to a button, you can use its <code>name</code> or <code>layer</code> property to identify which button. You can set this attribute back to <code>None</code> if you want to re-run the dialog.</p>
 </div>
 
-<h4>Read-Only Property</h4><div class="Indent">
+<h4>Read-Only Properties</h4><div class="Indent">
 	<p><code class="Hilite">buttons</code>: A list of the <code>Button</code> instances.</p>
+	<p><code class="Hilite">data</code>: The data contained in the text input as a <code>str</code> (for <code>MessageBox</code>) or <code>float</code> (for <code>NumInputBox</code>). This property will be <code>None</code> when there is no text input or if the data is invalid.<b class="Comment">[To be added in v2.2]</b></p>
+	<p><code class="Hilite">result</code>: This will evaluate as <code>None</code> when the dialog is incomplete. Once complete, it will give the text input data as a <code>str</code> or <code>float</code>, or <code>False</code> if the dialog was cancelled. If there is no text input and the dialog was closed with the Okay button, the result will be <code>True</code>. <b class="Comment">[To be added in v2.2]</b></p>
+	<p><code class="Hilite">valid</code>: Returns <code>False</code> if the <code>NumInputBox</code> contains data that cannot be converted to a <code>float</code>; otherwise <code>True</code>. <b class="Comment">[To be added in v2.2]</b></p>
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">onaction</span>(mb, ev)</code> → <code>None</code>: The default event handler removes the message box when an action occurs. This method can be overridden.</p>
+	<p><code><span class="Hilite">ondrag</span>(mb, ev)</code> → <code>None</code>: By default, message boxes are draggable within their canvas.</p>
 	<p><code><span class="Hilite">resize</span>()</code> → <code>None</code>: Overrides <code>Canvas.resize</code> so that the dialog is not resized along with the sketch. If you want the dialog to resize with the sketch, call <code>mb.bind(resize=Canvas.resize)</code> where <code>mb</code> refers to the message box, or create a subclass defining the <code>resize</code> attribute as <code>Canvas.resize</code>.</p>
 	<p><code><span class="Hilite">title</span>(title, padding=4, **kwargs)</code> → <code>self</code>: You can add a title bar manually be calling this method rather than passing a title to the constructor. This is useful if you want to add custom content to the dialog.</p>
 		<div class="Indent">

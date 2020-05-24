@@ -33,10 +33,12 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 			{title:"class Button", link:"button_class"},
 			{title:"class Menu", link:"menu_class"},
 			{title:"class MessageBox", link:"msgbox"},
+			{title:"class NumInputBox", link:"msgbox"},
 			{title:"class Options", link:"options"},
 			{title:"class Radio", link:"radio"},
 			{title:"class Slider", link:"slider"},
 			{title:"class TextInput", link:"ti_class"}
+//			{title:"class TextInputCanvas", link:""}
 		]},
 		{title:"sc8pr.misc.*", link:"misc", pages:[
 			{title:".effect", link:"effect"},
