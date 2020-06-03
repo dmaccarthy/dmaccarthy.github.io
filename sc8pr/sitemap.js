@@ -18,7 +18,7 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 		{title:"GUI Controls", link:"gui_tut"},
 	]},
 	{title:"Reference", link:"ref", pages:[
-		{title:"Graphic Class Hierarchy", link:"hierarchy"},
+		{title:"Graphic Class Hierarchy", link:"hierarchy22"},
 		{title:"sc8pr", link:"init", pages:[
 			{title:"class Graphic", link:"graphic"},
 			{title:"class Image", link:"image"},

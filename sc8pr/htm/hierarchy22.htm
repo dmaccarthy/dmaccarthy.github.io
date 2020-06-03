@@ -1,0 +1,68 @@
+﻿<article><h1>Graphic Class Hierarchy</h1>
+<style type="text/css">
+
+#ClassHierarchy{
+	font-size:0.85em;
+	margin:auto;
+	border-spacing:1em;
+}
+
+td.Empty {
+	border:none;
+	width:1.75em;
+	text-align:center;
+}
+
+td.Class {
+	border:1px solid black;
+	width:8em;
+	text-align:center;
+}
+
+td.Class:hover {
+	background-color:#c0c0ff;
+	cursor:pointer;
+}
+
+</style>
+
+<p>Below is the <code>Graphic</code> “class hierarchy”. Classes shown in <span class="Comment">red</span> are “abstract” and should not be used to create graphics instances directly. Classes shown in <span class="Hilite">blue</span> are also subclasses of <code>BaseSprite</code>. An asterisk(*) denotes a new class that may be included in v2.2 and which may not be included in the documentation yet.</p>
+
+<table id="ClassHierarchy">
+<tr><td class="Class Comment" rowspan="25">Graphic</td><td class="Empty">→</td><td class="Class">Image</td><td class="Empty">→</td><td class="Class">*PImage</td></tr>
+<tr><td class="Empty" rowspan="9">→</td><td class="Class" rowspan="9">Canvas</td><td class="Empty">→</td><td class="Class">Sketch</td><td class="Empty">→</td><td class="Class">*PSketch</td></tr>
+<tr><td class="Empty">→</td><td class="Class" link="button_class">*PCanvas</td></tr>
+<tr><td class="Empty">→</td><td class="Class" link="button_class">Button</td></tr>
+<tr><td class="Empty">→</td><td class="Class" link="menu_class">Menu</td></tr>
+<tr><td class="Empty">→</td><td class="Class">Options</td><td class="Empty">→</td><td class="Class">Radio</td></tr>
+<tr><td class="Empty">→</td><td class="Class">Slider</td></tr>
+<tr><td class="Empty">→</td><td class="Class">*Dialog</td><td class="Empty">→</td><td class="Class" link="msgbox">MessageBox</td></tr>
+<tr><td class="Empty">→</td><td class="Class" link="progress">ProgressBar</td></tr>
+<tr><td class="Empty">→</td><td class="Class" link="gui">*TextInputCanvas</td></tr>
+<tr><td class="Empty" rowspan="1">→</td><td class="Class Comment" rowspan="1" link="base">BaseSprite</td><td class="Empty" rowspan="1">→</td><td class="Class" rowspan="2" link="sprite_class">Sprite</td><td class="Empty">→</td><td class="Class" link="robot_class">Robot</td></tr>
+<tr><td class="Empty">→</td><td class="Class">*CostumeImage</td><td class="Empty">→</td>
+<td class="Empty">→</td><td class="Class" link="video_class">Video</td></tr>
+<tr><td class="Empty" rowspan="7">→</td><td class="Class Comment" rowspan="7" link="render">Renderable</td><td class="Empty" rowspan="3">→</td><td class="Class" rowspan="3" link="text_class">Text</td><td class="Empty">→</td><td class="Class">*PText</td></tr>
+<tr><td class="Empty">→</td><td class="Class Hilite" link="text">TextSprite</td></tr>
+<tr><td class="Empty">→</td><td class="Class" link="ti_class">TextInput</td></tr>
+<tr><td class="Empty">→</td><td class="Class">*PVector</td></tr>
+<tr><td class="Empty">→</td><td class="Class">*PBar</td></tr>
+<tr><td class="Empty">→</td><td class="Class" link="plot_class">Plot</td></tr>
+<tr><td class="Empty">→</td><td class="Class">HSV</td></tr>
+<tr><td class="Empty" rowspan="6">→</td><td class="Class Comment" rowspan="6">Shape</td><td class="Empty">→</td><td class="Class">Line</td><td class="Empty">→</td><td class="Class">*PLine</td></tr>
+<tr><td class="Empty">→</td><td class="Class">Locus</td><td class="Empty">→</td><td class="Class">*PLocus</td></tr>
+<tr><td class="Empty">→</td><td class="Class">Circle</td><td class="Empty">→</td><td class="Class Hilite" link="shape">CircleSprite</td></tr>
+<tr><td class="Empty">→</td><td class="Class">*Ellipse</td><td class="Empty">→</td><td class="Class">*Arc</td></tr>
+<tr><td class="Empty" rowspan="2">→</td><td class="Class" rowspan="2">Polygon</td><td class="Empty">→</td><td class="Class">Arrow</td><td class="Empty">→</td><td class="Class Hilite" link="shape">ArrowSprite</td></tr>
+<tr><td class="Empty">→</td><td class="Class Hilite" link="shape">PolygonSprite</td></tr>
+</table>
+<script type="text/javascript">
+
+$("#ClassHierarchy td.Class").attr("title", "Click for details").click(function(ev) {
+	var e = $(this);
+	var a = e.attr("link");
+	if (a == null) a = e.html();
+	goNode(a.toLowerCase());
+});
+
+</script></article>
