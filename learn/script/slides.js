@@ -1,6 +1,6 @@
 function license() {window.open("http://creativecommons.org/licenses/by-nc-sa/4.0/")}
 
-license.html = `<p>&copy; 2019 by <a target="_blank" href="mailto:david.maccarthy@eips.ca">D.G. MacCarthy</a></p>
+license.html = `<p>&copy; 2019-2020 by <a target="_blank" href="mailto:david.maccarthy@eips.ca">D.G. MacCarthy</a></p>
 <p><img onclick="license()" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/>
 <p>This work is licensed under a <span onclick="license()">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</span></p>`;
 
@@ -13,7 +13,7 @@ function tableData(rows, num) {
         let c = $(rows[i]).find("td");
         let x = [];
         for (let j=0;j<c.length;j++) {
-            let s = $(c[j]).html();
+            let s = $(c[j]).html().replace("–", "-");
             if (num == "int") s = parseInt(s);
             else if (num == "float") s = parseFloat(s);
             x.push(s);
@@ -27,8 +27,10 @@ function zoom(z) {
 // Get [set] the zoom factor
     let b = $("body");
     if (z) {
+        if (z === true) z = localStorage.getItem("defaultZoom");
         b.css("font-size", z+"em");
         $(".Zoom").css("font-size", "1em");
+        localStorage.setItem("defaultZoom", z);
     }
     return parseFloat(b.css("font-size")) / 16;
 }
@@ -166,8 +168,10 @@ function linkURL(url) {
     return url;
 }
 
-linkURL.repl = location.host == "learn.davidmaccarthy.repl.co";
-linkURL.home = "https://" + (linkURL.repl ? location.host : "dmaccarthy.github.io/learn");
+// linkURL.repl = location.host == "learn.davidmaccarthy.repl.co";
+// linkURL.home = "https://" + (linkURL.repl ? location.host : "dmaccarthy.github.io/learn");
+linkURL.home = location.protocol + "//" + location.host;
+if (location.host == "dmaccarthy.github.io/learn") linkURL.home += "/learn";
 
 function goNode(n) {
     if (n == null) location.href = linkURL("#/");
@@ -340,7 +344,7 @@ function init(id, menu) {
     // if (slide.count > 1) 
     logActions();
     let w = $(window).click(function(ev) {
-        if (/*slide.count > 1 &&*/ winclick(ev.target)) advance(1);
+        if (winclick(ev.target) && !window.disableClick) advance(1);
     });
     window.onresize();
 };

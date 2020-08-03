@@ -22,12 +22,7 @@
 
 var supplement = "soln/Emech$.html";
 
-$(function() {
-    init("Emech", [
-        // {title:"Assignment"},
-        // {title:"Solutions"},
-    ]);
-});
+$(function() {init("Emech")});
 
 preload("#/p20/energy/img/stone_red.png", "#/p20/energy/img/stone_blue.png");
 
@@ -54,6 +49,7 @@ function curling() {
         }
     }
     curling.run(0);
+    zoom(true);
 }
 
 curling.run = function(m) {
@@ -79,7 +75,9 @@ function barGraph(m) {
         ["Eg", 0.055 * g * 1.6],
     ]][m - 1];
     let scale = [8, 5][m - 1];
-    energyBarGraph("#BarGraph", data, scale, 1, " J").draw();
+    let p = energyBarGraph("#BarGraph", data, scale, 1, " J");
+    console.log(p.items[0]);
+    p.draw();
 }
 
 slide.actions = {

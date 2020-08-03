@@ -22,9 +22,7 @@
 
 var supplement = "soln/work$.html";
 
-$(function() {
-    init("work");
-});
+$(function() {init("work"); zoom(true)});
 
 energyBarGraph.label.font = Text.font = "bold 28px monospace";
 energyBarGraph.margin = [24, 16, 48, 16];
@@ -54,8 +52,6 @@ function example(n) {
 function flow() {
     let p = flow.plot = new Plot("#Flow", [-2, 1, -1], 1), f = 11;
     let opt = {font: "bold 36px monospace", fill:"blue"};
-    // let ropt = {font: "bold 24px monospace", fill:"red", align:TOP};
-    // let bopt = {font: "bold 24px monospace", fill:"blue", align:LEFT};
     p.items = [
         new Circle([0,0], 1, {stroke:"red", lineWidth:3}),
         new Graphic("$Ek", [-0.5, 0]),

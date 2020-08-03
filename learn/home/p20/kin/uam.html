@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Uniform Accelerated Motion</title>
+<meta name="description" pageContent=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../lesson.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<script type="text/javascript" src="../../../script/tree.js"></script>
+<script type="text/javascript" src="../../../script/touch.js"></script>
+<script type="text/javascript" src="../../lesson.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript">
+
+let vid = {list:"PLpVmtCaB-lykMzpjcg79la6effekhfsJq"};
+
+let pageContent = {youtubx:vid, buttons:[
+    // {icon:"#youtube", youtube:vid},
+    {icon:"#check", js:"uc()"},
+]}
+
+$(function() {renderPage("uam")});
+
+</script>
+</head>
+<body><article>
+<p><em class="Defn">Uniform accelerated motion</em> means motion with constant acceleration.</p>
+<ul>
+    <li>For UAM, the \(\vec{\mathbf v}\)-\(t\) graph will be linear and the \(\vec{\mathbf d}\)-\(t\) graph will be parabola-shaped.</li>
+    <li>For motion that is not UAM, you can “slice” the \(\vec{\mathbf v}\)-\(t\) graph into sections that have constant acceleration and solve each section separately.</li>
+    <li>The area under a \(\vec{\mathbf v}\)-\(t\) graph represents the displacement of the object.</li>
+</ul>
+<p>The two basic relations for UAM are:
+    $$\vec{\mathbf a} = {{\vec{\mathbf v}}_f - {\vec{\mathbf v}}_i \over \Delta t}$$
+    $$\Delta\vec{\mathbf d} = {{\vec{\mathbf v}}_i + {\vec{\mathbf v}}_f \over 2} \Delta t$$
+</p>
+<p>The equations can be combined in different ways to make three new equations:
+    $$v_f^2 = v_i^2 + 2 \vec{\mathbf a} \cdot \Delta{\vec{\mathbf d}}$$
+    $$\Delta\vec{\mathbf d} = {\vec{\mathbf v}}_i \Delta t + {1\over 2}{\vec{\mathbf a}} (\Delta t)^2$$
+    $$\Delta\vec{\mathbf d} = {\vec{\mathbf v}}_f \Delta t - {1\over 2}{\vec{\mathbf a}} (\Delta t)^2$$
+</p>
+<p>To solve UAM problems:</p>
+<ul>
+    <li>Identify values for three of the five variables.</li>
+    <li>Choose an equation that contains only one of the two unknown variables. It is best to go through the equations in order. Use this equation to find the first unknown.</li>
+    <li>Choose the simplest equation (other than the one already used) to find the second unknown.</li>
+</ul>
+</article></body>
+</html>

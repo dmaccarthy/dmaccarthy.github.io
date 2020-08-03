@@ -11,6 +11,7 @@ ul div.MathJax_Display {margin-left:-0.75em}
     height:1.25em;
 }
 
+.Left {text-align:left}
 .Red {color:red}
 .Blue {color:blue}
 .FlipX {transform:scaleX(-1)}
@@ -22,13 +23,11 @@ ul div.MathJax_Display {margin-left:-0.75em}
 }
 
 .Center, #StartLesson, #Toolbar, #EndSlides, h1 {text-align:center}
-.Left {text-align:left}
 
 body {
     font-family:Oxygen, sans-serif;
     margin:var(--bodyMargin);
     margin-bottom:calc(var(--bodyMargin) + 32px);
-    /* text-align:center; */
 }
 
 body:not(.Print) article.SlideShow {
@@ -39,9 +38,23 @@ body:not(.Print) article.SlideShow {
 body.Narrow.Audio {margin-bottom:calc(var(--bodyMargin) + 64px)}
 body.Print section.Slide h1:first-child {border-top:1px solid blue}
 
-img.Right {
+body.Normal:not(.Print) p.Right, body.Normal:not(.Print) img.Right {
     float:right;
-    max-width:25%;
+    max-width:35vw;
+}
+
+body.Narrow:not(.Print) p.Right, body.Narrow:not(.Print) img.Right {
+    float:right;
+    max-width:90%;
+}
+
+body.Print p.Right {
+    text-align:center;
+}
+
+body.Print img.Right {
+    display:block;
+    margin:auto;
 }
 
 table.Normal {
@@ -102,12 +115,6 @@ section.Slide em.Defn {
     padding-right:2px;
 }
 
-/* section.Slide em {
-    font-style:normal;
-    color:blue;
-    text-decoration:underline;
-} */
-
 section.Slide ul {
     text-align:left;
     padding-left:1.5em;
@@ -115,7 +122,6 @@ section.Slide ul {
 
 section.Slide ul li {margin:8px auto}
 a {text-decoration:none}
-/* span[onclick], em:not(.material-icons)[onclick] {color:blue} */
 span[onclick], em[onclick] {color:blue}
 
 span[onclick]:hover, em:not(.material-icons)[onclick]:hover, a:hover {
@@ -189,6 +195,7 @@ body.Narrow #Narration {width:100%}
     overflow:auto;
     white-space:nowrap;
     display:none;
+    z-index:1;
 }
 
 body.Normal:not(.Audio) #Menu {left:calc(50% - 11em - 1px)}

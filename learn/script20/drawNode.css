@@ -1,0 +1,86 @@
+:root {
+    --menuMargin:320px;
+    --small:8px;
+    --icon:36px;
+}
+
+body.Normal.MenuMin:not(.MenuHidden), body.Narrow:not(.MenuHidden) {
+    margin-right:calc(var(--icon) + var(--small));
+}
+
+body.Normal:not(.MenuMin):not(.MenuHidden) {
+    margin-right:calc(var(--menuMargin) + var(--small));
+}
+
+nav {
+    width:var(--menuMargin);
+    max-width:85vw;
+    overflow:auto;
+    height:calc(100vh - 0px);
+    position:fixed;
+    top:0;
+    right:0;
+    background-color:#f0f0f0;
+	font-size:16px;
+    z-index:1;
+}
+
+body.MenuMin #Menu tr.NoIcon {
+    display:none;
+}
+
+#Menu table {
+    border-collapse:collapse;
+}
+
+#Menu tr {
+    height:var(--icon);
+    font-size:1.125em;
+}
+
+#Menu tr td em.material-icons {
+    font-size:27px;
+}
+
+#Menu tr:hover {
+    background-color:blue;
+    color:white;
+    cursor:pointer;
+}
+
+#Menu tr > td {
+    padding:calc(var(--small) / 2);
+    vertical-align:middle;
+}
+
+#Menu tr > td.Icon {
+    width:var(--icon);
+    text-align:center;
+}
+
+#Menu tr > td.Icon > img {
+    height:calc(var(--icon) - 1.5 * var(--small));
+    width:auto;
+    margin:0;
+    padding:0;
+}
+
+#Menu tr > td:not(.Icon) {
+    width:calc(var(--menuMargin) - var(--icon));
+}
+
+#Menu tr > td.Icon > em {
+    vertical-align:middle;
+}
+
+#Menu tr.Current > td:not(.Icon) {
+    font-weight:bold;
+}
+
+#Menu tr.Sep {
+    border-top:1px solid #a0a0c0;
+}
+
+#Menu tr:not(:hover) {
+    color:blue;
+}

@@ -54,6 +54,18 @@ Plot.prototype.pause = function(pause) {
     return this;
 }
 
+Plot.prototype.labels = function(labels) {
+    let k;
+    for (k in labels) {
+        let pos = labels[k];
+        let opt = pos.length > 2 ? pos[2] : {};
+        let img = preload.get(k);
+        if (img == null) img = new Text(k, pos, opt);
+        else img = new Graphic(img, pos, opt);
+        this.items.push(img);
+    }
+}
+
 Plot.itemVisible = function(item, f) {
     let frames = item.opt.frames;
     return (frames == null) ||
@@ -267,28 +279,15 @@ function vectorDiagram(sel, lrbt, margin, opt) {
     return p;
 }
 
-function vectorSum(p, data, opt) {
-    let tail = opt.tail ? opt.tail : [0, 0];
-    let frame = opt.frame;
-    let x = tail[0], y = tail[1];
-    if (data.length == 1) data = [[data[0][0], 0], [0, data[0][1]]];
-    for (let i=0;i<data.length;i++) {
-        let d = data[i];
-        let x1 = x + d[0];
-        let y1 = y + d[1];
-        opt = Object.assign({}, vectorSum.args);
-        if (frame != null) opt.frames = frame++;
-        let v = new Arrow([x,y], {tip:[x1,y1]}, vectorSum.style0, opt);
-        p.items.push(v);
-        x = x1; y = y1;
+Plot.prototype.tipToTail = function(vecs, style, frames) {
+    let v0;
+    for (let i=0;i<vecs.length;i++) {
+        let v = vecs[i];
+        v.drawMode = 0;
+        if (style) v.style = style;
+        if (frames) v.opt.frames = frames[i];
+        this.items.push(v);
+        if (i) v.tail = v0.tip();
+        v0 = v;
     }
-    opt = Object.assign({}, vectorSum.args);
-    if (frame != null) opt.frames = frame;
-    p.tip = [x, y];
-    p.items.push(new Arrow(tail, {tip:p.tip}, vectorSum.style1, opt));
-    return p;
 }
-
-vectorSum.style0 = {fill:"#ff0000a0", stroke:"black"}
-vectorSum.style1 = {fill:"#0000ffa0", stroke:"black"}
-vectorSum.args = {tailWidth:12}

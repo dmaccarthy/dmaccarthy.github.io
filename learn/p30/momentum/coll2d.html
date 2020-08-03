@@ -17,29 +17,15 @@
 <script type="text/javascript" src="../../script/image.js"></script>
 <script type="text/javascript" src="../../script/plot.js"></script>
 <script type="text/javascript" src="../../script/plotItems.js"></script>
+<script type="text/javascript" src="../../script/vec.js"></script>
 <script type="text/javascript" src="../p30.js"></script>
 <script type="text/javascript">
 
 // var supplement = "soln/coll2d$.html";
 
-Plot.prototype.labels = function(labels) {
-    let k;
-    for (k in labels) {
-        let pos = labels[k];
-        let opt = pos.length > 2 ? pos[2] : {};
-        let img = preload.get(k);
-        if (img == null) img = new Text(k, pos, opt);
-        else img = new Graphic(img, pos, opt);
-        this.items.push(img);
-    }
-}
-
-
 labelOrigin = false;
 
-$(function() {
-    init("coll2d");
-});
+$(function() {init("coll2d")});
 
 function unit(p) {
     p.items.push(new Text("kN·s", [-29.8, -0.2], {align:TOPLEFT, font:"22px sans-serif"}));
@@ -49,22 +35,35 @@ function unit(p) {
 function vector1() {
     let p = vector1.plot = vectorDiagram("#ex1", [-30, 1, -1], 16, {grid:5, dp:0});
     p.labels({
-        "pAi":[-2, 14, {frames:2}],
-        "pBi": [-12.5, 29, {frames:3}],
-        "p": [-14, 12.5, {frames:4}],
+        "pAi":[-2, 14, {frames:6}],
+        "pBi": [-12.5, 29, {frames:7}],
+        "p": [-14, 12.5, {frames:8}],
+        "θ": [-1, 3, {frames:8}],
     });
-    return vectorSum(unit(p), [[0, 1.5*18], [-1.2*20, 0]], {frame:2});
+    let pa = vec(0, 1.5*18);
+    let pb = vec(-1.2*20, 0);
+    p.tipToTail([pa, pb], Vector.style0, [6, 7]);
+    let pab = Object.assign(vec(pa, pb), {drawMode:0});
+    pab.opt.frames = 8;
+    p.items.push(pab);
+    return unit(p);
 }
 
 function vector2() {
     let p = vector2.plot = vectorDiagram("#ex2", [-30, 1, -1], 16, {grid:5, dp:0});
     p.labels({
-        "pAi":[-2, 14, {frames:7}],
-        "pBi": [-11, 19.5, {frames:8}],
-        "p": [-10, 3.5, {frames:9}],
+        "pAi":[-2, 14, {frames:2}],
+        "pBi": [-10, 19, {frames:3}],
+        "p": [-13, 7, {frames:4}],
+        "θ": [-1.5, 2.5, {frames:4}],
     });
-    let p2x = -1.2 * 20 / Math.sqrt(2);
-    return vectorSum(unit(p), [[0, 1.5*18], [p2x, p2x]], {frame:7});
+    let pa = vec(0, 1.5*18);
+    let pb = Vector.polar(24, 210 * DEG);
+    p.tipToTail([pa, pb], Vector.style0, [2, 3]);
+    let pab = Object.assign(vec(pa, pb), {drawMode:0});
+    pab.opt.frames = 4;
+    p.items.push(pab);
+    return unit(p);
 }
 
 latexPreload.onload = function() {
@@ -73,14 +72,15 @@ latexPreload.onload = function() {
 };
 
 slide.actions = {
-    vector: function(m) {
-        if (m < 5) vector1.plot.draw(m);
-        else if (m > 5) vector2.plot.draw(m);
-    },
+    vector1: function(m) {vector1.plot.draw(m)},
+    vector2: function(m) {vector2.plot.draw(m)},
 }
 
 </script>
-<style>
+<style type="text/css">
+
+th {color:black; font-style:italic}
+table.Normal tbody td {padding:0.25em}
 
 </style>
 </head>
@@ -104,12 +104,47 @@ slide.actions = {
     <p data-t="5+">...we need to remember that in 2D or 3D situations, vector addition and subtraction is different than adding and subtracting scalar quantities.</p>
 </section>
 
-<section class="Slide" data-markers="10" data-action="vector">
-<h1>Vector Addition</h1>
-    <p data-t="0,4">Example: A 1500 kg car moving at 18.0 m/s [north] and a 1200 kg car moving at 20.0 m/s [west] collide in an intersection. What is the total momentum of the system?</p>
-    <p data-t="1,4"><canvas id="ex1" class="Wide" width="640" height="640"></canvas></p>
-    <p data-t="5+">Example: A 1500 kg car moving at 18.0 m/s [north] and a 1200 kg car moving at 20.0 m/s [southwest] collide in an intersection. What is the total momentum of the system?</p>
-    <p data-t="6+"><canvas id="ex2" class="Wide" width="640" height="640"></canvas></p>
+<section class="Slide" data-markers="13" data-action="vector1">
+<h1>Example 1</h1>
+    <p data-t="0,3">A 1500 kg car moving at 18.0 m/s [north] and a 1200 kg car moving at 20.0 m/s [west] collide in an intersection. What is the total momentum of the system? Calculate the final velocity of the cars if they stick together after the collision.</p>
+    <div class="Blue">
+    <p data-t="1,3">First calculate the initial momenta:</p>
+    <p data-t="2,3">$${\vec{\mathbf p}}_{Ai} = m_A {\vec{\mathbf v}}_{Ai}\\= {\mathrm{1500\ kg\cdot 18.0\ m/s\ [north]\\= 27000\ N\cdot s\ [north]}}$$</p>
+    <p data-t="3">$${\vec{\mathbf p}}_{Bi} = m_B {\vec{\mathbf v}}_{Bi}\\= {\mathrm{1200\ kg\cdot 20.0\ m/s\ [west]\\= 24000\ N\cdot s\ [west]}}$$</p>
+    <p data-t="4,7">To add the 2D vectors, draw them <em class="Defn">tip-to-tail</em> starting at the origin.</p>
+    <p data-t="8">The resultant vector goes from the origin to the tip of the last vector.</p>
+    <p data-t="5+"><canvas id="ex1" class="Wide" width="640" height="640"></canvas></p>
+    <p data-t="9">Because the triangle contains a right angle, we can solve for the missing sides and/or angles using trigonometry.</p>
+    <p data-t="10">$$|\Sigma{\vec{\mathbf p}}| = \sqrt{27000^2 + 24000^2}\ {\mathrm{N\cdot s}} = {\mathrm{36125\ N\cdot s}}$$</p>
+    <p data-t="11">$$v_f = {\mathrm{36125\ N\cdot s\over 2700\ kg}} = {\mathrm{13.4\ m/s}}$$</p>
+    <p data-t="12">$$\theta = \tan^{-1}\left({\mathrm{24000\ N\cdot s\over 27000\ N\cdot s}}\right) = 41.6°$$</p>
+    </div>
+</section>
+
+<section class="Slide" data-markers="10" data-action="vector2">
+<h1>Example 2</h1>
+    <p data-t="0,4">A 1500 kg car moving at 18.0 m/s [north] and a 1200 kg car moving at 20.0 m/s [30.0° south of west] collide in an intersection. Calculate the final velocity of the cars if they stick together after the collision.</p>
+    <p data-t="1,5"><canvas id="ex2" class="Wide" width="640" height="640"></canvas></p>
+    <div class="Blue">
+    <p data-t="5">Because the triangle does <b>not</b> contain a right angle, we must use components to add the vectors.</p>
+    <table class="Normal" data-t="6+">
+        <thead><tr><th></th><th>x</th><th>y</th></tr></thead>
+        <tbody>
+            <tr class="Red"><td>$${\vec{\mathbf p}}_{Ai}$$</td><td>$${\mathrm{27000\ \cos(90.0°)\\ = 0}}$$</td><td>$${\mathrm{27000\ \sin(90.0°)\\ = 27000}}$$</td></tr>
+            <tr class="Red"><td>$${\vec{\mathbf p}}_{Bi}$$</td><td>$${\mathrm{24000\ \cos(210.0°)\\ = -20785}}$$</td><td>$${\mathrm{24000\ \sin(210.0°)\\ = -12000}}$$</td></tr>
+            <tr><td>$$\Sigma{\vec{\mathbf p}}$$</td><td>$${\mathrm{-20785}}$$</td><td>$${\mathrm{15000}}$$</td></tr>
+        </tbody>
+    </table>
+    <p data-t="6" class="Center">All momentum measurements shown in \(\mathrm{N\cdot s}\)</p>
+    <p data-t="7">$$|\Sigma{\vec{\mathbf p}}| = \sqrt{20785^2 + 15000^2}\ {\mathrm{N\cdot s}} = {\mathrm{25632\ N\cdot s}}$$</p>
+    <p data-t="8">$$v_f = {\mathrm{25632\ N\cdot s\over 2700\ kg}} = {\mathrm{9.49\ m/s}}$$</p>
+    <p data-t="9">$$\theta = \tan^{-1}\left({\mathrm{15000\ N\cdot s\over -20785\ N\cdot s}}\right) + 180° = 125.8°$$</p>
+    </div>
+</section>
+
+<section class="Slide">
+<h1>Example 3</h1>
+    <p>During a biliards game, the 170-gram cue ball moving at 2.50 m/s collides with a stationary ball of mass 150 grams. After the collision, the cue ball moves at an angle of +35.0° to its original direction, while the second ball moves at &minus;55.0°. Find the final speeds of the two billiard balls.</p>
 </section>
 
 </article>

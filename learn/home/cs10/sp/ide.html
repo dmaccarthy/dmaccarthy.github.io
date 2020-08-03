@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Integrated Development Environments</title>
+<meta name="description" pageContent=""/>
+<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../lesson.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="../../../script/tree.js"></script>
+<script type="text/javascript" src="../../../script/touch.js"></script>
+<script type="text/javascript" src="../../lesson.js"></script>
+<script type="text/javascript" src="../cs10.js"></script>
+<script type="text/javascript">
+
+let pageContent = {};
+
+$(function() {renderPage("ide")});
+
+</script>
+</head>
+<body><article>
+
+<p>To write your own programs, you will need several “developer tools”:
+<ul>
+    <li>A <em class="Defn">text editor</em> to create and modify your programs.</li>
+    <li>A <em class="Defn">compiler</em> or <em class="Defn">interpreter</em> for the programming language you are using, to translate your programs into machine language.</li>
+    <li>A <em class="Defn">console</em> or <em class="Defn">desktop</em> to run the program in.</li>
+    <li>A <em class="Defn">debugger</em> to track down errors.</li>
+</ul></p>
+<p>An <em class="Defn">Integrated Development Environment</em> (IDE) is a program that collects all of these tools in a single place, to make your work as a programmer more productive. There are many different IDE’s <a href="https://wiki.python.org/moin/IntegratedDevelopmentEnvironments">available for Python</a>, including...
+<!--ul>
+    <li><a href="https://thonny.org">Thonny</a>: An easy to use IDE that is specially designed for beginners.</li>
+    <li><a href="https://eclipse.org">Eclipse</a>: A more advacned IDE that works with many different programming and markup languages.</li>
+    <li><a href="https://repl.it">repl.it</a>: An online IDE for Python and other languages.</li>
+</ul-->
+</p>
+
+<h4 class="Collapse" data-collapse="thonny"><em class="material-icons">expand_more</em>Thonny</h4>
+<div class="Hidden" id="thonny">
+<p>Thonny is a Python IDE designed for students who are new to programming. To use Thonny at home or on your own laptop, download and run the installer from the <a href="https:thonny.org" target="thonny">Thonny website</a>. A Python interpreter is included with Thonny.</p>
+<p>After Thonny is installed, you will need to install the graphics and robotics software for this course. Go to Thonny’s “Tools” menu and select “Manage packages...” </p>
+<p class="Center"><img src="img/thonny.png" alt="Thonny"/></p>
+<p>Paste the following URL into the input area and press Enter:</p>
+<pre class="Code">https://github.com/dmaccarthy/sc8pr/archive/master.zip</pre>
+<p>If an error occurs while trying to install the packages, exit Thonny and re-open it <i>as an administrator</i>.</p>
+</div>
+
+<h4 class="Collapse" data-collapse="repl"><em class="material-icons">expand_more</em>repl.it</h4>
+<div class="Hidden" id="repl">
+<p><a href="https://repl.it" target="repl">repl.it</a> is a cloud-based IDE. Your files are saved in the cloud and you can access them from any computer using a web browser (<a href="https://www.google.com/chrome/" target="Browser">Google Chrome</a> or <a href="https://www.mozilla.org/en-CA/firefox/" target="Browser">Mozilla Firefox</a> recommended). You do not need to install any software on your computer to write programs using repl.it.</p>
+<p>You will need to create an account the first time you use repl.it. I recommend that you use your school Google account to login to repl.it. Be sure to protect your privacy by not providing any information about yourself that you do not want to become public.</p>
+<p>For programs that do not use any graphics, choose “Python” as the programming language when you create your project. If graphics are required, choose “Pygame” instead.</p>
+</div>
+
+<h4 class="Collapse" data-collapse="eclipse"><em class="material-icons">expand_more</em>Eclipse</h4>
+<div class="Hidden" id="eclipse">
+<p><a href="https://www.eclipse.org" target="ecl">Eclipse</a> is an IDE that runs on your local computer. Software must be installed and configured before you can use it so it is not recommended for home use by beginners.</p>
+<p>The files you create in Eclipse will be saved on the local computer or network. They will not be available on other computers unless you sync them using a cloud service like Google Drive or Microsoft OneDrive.</p>
+<p>Eclipse is already installed on all computers in the Computing Science Room. You will need to configure it the first time you use it.</p>
+<ol>
+	<li><b>Workspace</b>: When Eclipse launches, you will be asked to choose a workspace. This is a
+		folder where Eclipse will keep your files. Enter <span class="Code">Z:\CS</span> for your
+		workspace location. Do not use a folder on the <span class="Code">C:</span> drive for your
+		workspace as this drive is not connected to the network! Use the same workspace every class.
+		If you start Eclipse and your work seems to be missing, you have probably chosen the wrong
+		workspace folder.</li>
+	<li><b>Welcome</b>: When Eclipse has finished loading, you can close the Welcome tab.</li>
+	<li><b>Perspective</b>: By default, Eclipse opens in the “Java” perspective. Java is a
+		programming language that we will use in CS 30. For CS 10 and 20, most of our assignments
+		will be done using the Python language. At the upper right of the Eclipse window, click the
+		+ icon beside the Java button. Select “PyDev” (Python Development) from the list.
+		<p class="Center"><img class="Wide" alt="Image" src="img/perspective.png"/></p>
+	</li>
+	<li><b>Project</b>: To create a project, click the small triangle near the left end of the toolbar.
+		Choose “PyDev Project” from the list.
+		<p class="Center"><img class="Wide" alt="Image" src="img/newproject.png"/></p>
+	</li>
+	<li><b>Configure PyDev</b>: Enter <span class="Code">CS10</span> (or
+		<span class="Code">CS20</span> or <span class="Code">CS30</span>) for the project name.
+		Change the “Grammar Version” to the highest available choice, and then click the link labelled
+		“Please configure an interpreter before proceeding.” When asked how you want to proceed, choose
+		“Manual Config”.
+		<p class="Center"><img class="Wide" alt="Image" src="img/pydev_prj.png"/></p>
+	</li>
+	<li><b>Locate Python</b>: The list of available interpreters should be empty. Click the “New”
+		button and type “Python 3.8” or “Python 3.7” for the interpreter name (whichever is installed). Click “Browse” and then locate the
+		file <span class="Code">python.exe</span>. Click “OK” or “Finish” to close
+		all of the dialog windows.
+		<p class="Center"><img class="Wide" alt="Image" src="img/python37.png"/></p>
+	</li>
+	<li><b>Encoding</b>: Open Eclipse’s “Window” menu and choose “Preferences”. Under “General”, find
+		“Workspace” and change the “Text File Encoding” to UTF-8.
+		<p class="Center"><img class="Wide" alt="Image" src="img/utf8.png"/></p>
+	</li>
+	<li><b>New File</b>: Right-click on your project and choose “New | File”. Type a file name
+		such as “test.py”. The file name must end in “.py” to be recognized as a Python file. Do
+		not use spaces or punctuation marks in your file name.
+		<p class="Center"><img class="Wide" alt="Image" src="img/newfile.png"/></p>
+	</li>
+	<li><b>Write a Program</b>: In the editor, type a short program. You can copy and paste the examples below. Click the green and white “Run” button on the toolbar and select “Python Run”.</li>
+</ol>
+</div>
+
+<h4>Example Programs</h4>
+<p>Test that your IDE is working properly by running the following Python 3.x programs as examples. Here is an example of a simple console program (no graphics)...</p>
+<pre class="Code">print(5 * 2)</pre>
+
+<p>Here is an example of a program that uses graphics...</p>
+<pre class="Code">from sc8pr.examples.asterShield import play
+
+play()</pre>
+
+
+</article></body>
+</html>

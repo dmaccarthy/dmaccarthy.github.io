@@ -170,7 +170,8 @@ function _ticks(x0, x1, dx) {
 		var n1 = Math.ceil(x1/ dx);
 		var x = [];
 		while (n0 <= n1) {
-            if (labelOrigin || n0) x.push(dx * n0);
+            let xi = dx * n0;
+            if (xi >= x0 && xi <= x1 && (labelOrigin || n0)) x.push(xi);
             n0++;
         }
 		return x;
@@ -226,12 +227,14 @@ Plot.prototype.grid = function(args) {
 	if (args.xLabel) {
 		s = args.xLabel;
 		f = s.length < 5 ? Plot.fixed : s[4];
-		for (i=0;i<xs.length;i++) this.text(f(xs[i], s[3]), [xs[i], s[2][1] * px[1]], s[1], s[0], s[2][0]);
+		for (i=0;i<xs.length;i++)
+            this.text(f(xs[i], s[3]), [xs[i], s[2][1] * px[1]], s[1], s[0], s[2][0]);
 	}
 	if (args.yLabel) {
 		s = args.yLabel;
 		f = s.length < 5 ? Plot.fixed : s[4];
-		for (i=0;i<ys.length;i++) this.text(f(ys[i], s[3]), [s[2][1] * px[0], ys[i]], s[1], s[0], s[2][0]);
+		for (i=0;i<ys.length;i++)
+            this.text(f(ys[i], s[3]), [s[2][1] * px[0], ys[i]], s[1], s[0], s[2][0]);
 	}
 	if (args.alpha) cx.restore();
 }

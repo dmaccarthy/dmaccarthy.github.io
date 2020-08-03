@@ -3,65 +3,154 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>LaTeX Render</title>
+<title>LaTeX Renderer</title>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-<script type="text/javascript" src="script/latexCanvas.js"></script>
 <script type="text/javascript">
 
-function asCanvas(selector, callback) {
-    html2canvas($(selector)[0], {onrendered:callback});
+function asCanvas(callback) {
+    e = $("#MJax > div.MathJax_Display > span").css({padding:asCanvas.pad + "em"});
+    html2canvas($(e)[0], {onrendered:callback});
 }
+
+asCanvas.pad = 0.6;
 
 function mjEndMath() {
 // Run when MathJax is done typesetting
-    if (mjEndMath.init) asCanvas("#MJax", function(canvas) {
-        $("#Canvas").html(canvas);
+    if (mjEndMath.init) asCanvas(function(canvas) {
         img = new Image();
         img.src = canvas.toDataURL();
-        $("#Image").html(img);
-    });
-    else mjEndMath.init = true;
+        img = $("#Image").html($(img).click(clickImage));
+        let white = ["white", "#ffffff"];
+        if (white.indexOf(img.attr("data-color")) > -1)
+            img.find("img").css("background-color", "grey");
+        if (render.callback) render.callback();
+    })
+    else {
+        mjEndMath.init = true;
+        render();
+    }
 }
 
 mjEndMath.init = false;
 
-function render() {
+function process_latex() {
+    let latex = $("#Latex").val().trim();
+    if (latex.charAt(0) == "#") {
+        let i = latex.search(":");
+        if (i == -1) {
+            latex = saved_eq[latex.slice(1).trim()];
+            $("#Latex").val(latex);
+        }
+        else {
+            let name = latex.slice(1, i).trim();
+            latex = latex.slice(i + 1).trim();
+            saved_eq[name] = latex;
+            $("#Changes").show();
+        }
+    }
+    return latex;
+}
+
+function render(c, latex) {
 // Render the LaTeX using MathJax
-    let latex = $("#Latex").val();
-    let f = $("#Font").html();
-    let w = $("#w").html();
-    $("#MJax").css({fontSize:f, width:w}).html("$$" + latex + "$$");
+    if (typeof(c) != "string") c = $(c).attr("data-color");
+    if (!c) c = "black";
+    if (!latex) latex = process_latex();
+    $("#MJax").css({color:c});
+    $("#Image").attr("data-color", c.toLowerCase());
+    let f = $("#Font").html().split(",");
+    asCanvas.pad = parseFloat(f[1]);
+    if (isNaN(asCanvas.pad)) asCanvas.pad = 0.6;
+    f = parseFloat(f[0]) + "em";
+    $("#MJax").css({fontSize:f}).html("$$" + latex + "$$");
     MathJax.Hub.Typeset();
 }
 
 MathJax.Hub.Register.MessageHook("End Math", mjEndMath);
 
+$(function() {
+    let c = ["black", "red", "blue", "white", "darkviolet", "green", "grey"];
+    for (let i=0;i<c.length;i++) newColor(c[i]);
+    if (location.search.slice(1) == "advanced=1") $("#Advanced").show();
+})
+
+function newColor(c) {
+    if (!c) {
+        c = prompt("New color?");
+        if (!c) return;
+    }
+    let td = $("<td>").click(function() {
+        render(this);
+    }).dblclick(function(ev) {
+        ev.preventDefault();
+    });
+    td.attr({"data-color": c, title: "Render in this color"});
+    $("#Colors").append(td.css("background-color", c));
+}
+
+function imgUrl() {return $("#Image img")[0].src}
+
+function save_url() {
+    console.log("data:text/json," + encodeURIComponent(JSON.stringify(saved_eq)));
+    $("#Changes").hide();
+}
+
+let saved_eq = {}
+
+function loadFile(input) {
+    let reader = new FileReader();
+    reader.onload = function() {
+        let data = JSON.parse(reader.result);
+        Object.assign(saved_eq, data)
+        let keys = Object.keys(saved_eq);
+        keys.sort();
+        console.log(`${keys.length} Equations...`);
+        for (let i=0;i<keys.length;i++) console.log(keys[i]);
+    }
+    reader.readAsText(input.files[0]);
+}
+
+function clickImage() {
+    $(this).css("background-color", "grey");
+}
+
 </script>
 <style type="text/css">
 
-textarea {width:calc(100% - 14px);height:6em;color:blue}
-table {border-collapse:collapse}
+body {text-align:center}
+table {border-collapse:collapse; margin-bottom:1em; margin-top:1em}
+td {width:16px;height:16px;text-align:center}
+td[onclick], td[data-color] {cursor:pointer}
 td, textarea {padding:6px; border:1px solid black}
-td {text-align:center}
-td[contenteditable] {color:blue;font-family:monospace}
-input[type='text'] {width:4em}
-canvas, img {border:1px solid black; padding:2px}
+textarea {width:calc(100% - 14px);height:6em;color:blue}
+img {border:1px solid black; padding:2px}
+#Font, td.Mono {font-family:monospace;color:blue}
+#Font {font-weight:normal;width:6em}
+#Advanced {display:none;text-align:right}
+#Changes {display:none}
 
 </style>
 </head>
 <body>
-    <h3>CSS</h3>
+    <h1>LaTeX Renderer</h1>
+    <p>
+        &copy; 2019-2020 by D. G. MacCarthy<br/>
+        Credits: <a href="https://www.mathjax.org/">MathJax</a>,
+            <a href="https://html2canvas.hertzen.com/">html2canvas</a><br/>
+    </p>
+    <textarea id="Latex" type="text">\Delta \vec{\mathbf d} = \vec{\mathbf v}_{avg} \Delta t</textarea>
+    <p id="Advanced">
+        <input type="file" onchange="loadFile(this)"/>
+        <button id="Changes" onclick="save_url()">Download Changes</button>
+    </p>
     <table>
-        <tr><td>Font Size</td><td contenteditable="true" id="Font">1.5em</td></tr>
-        <tr><td>Image Width</td><td contenteditable="true" id="w">5em</td></tr>
+        <tr id="Colors">
+            <td contenteditable="true" id="Font">2.25, 0.6</td>
+            <td class="Mono" onclick="newColor()" title="Add Color">+</td>
+        </tr>
     </table>
-    <h3>LaTeX</h3>
-    <textarea id="Latex" type="text">V={4\pi\over 3} r^3</textarea>
-    <p><input type="button" value="Render" onclick="render()"/></p>
-    <h3>MathJax</h3><div id="MJax"></div>
-    <h3>Canvas</h3><div id="Canvas"></div>
-    <h3>Image</h3><div id="Image"></div>
+    <div id="Image"></div><div id="MJax"></div>
 </body>
 </html>

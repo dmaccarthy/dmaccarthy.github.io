@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mr. Mac’s Home</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="home/lesson.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script-->
+<script type="text/javascript" src="script/tree.js"></script>
+<script type="text/javascript" src="script/touch.js"></script>
+<script type="text/javascript" src="home/lesson.js"></script>
+<script type="text/javascript">
+
+// let pageContent = {};
+let pageContent = {buttons:[
+    {text:"E-Mail Mr. MacCarthy", icon:"#email", href:"mailto:david.maccarthy@eips.ca"},
+    {text:"Salisbury Composite", icon:"#sal", href: "https://salcomp.ca"},
+    {text:"PowerSchool", icon:"https://powerschool.eips.ca/favicon-196x196.png", href: "https://powerschool.eips.ca/public/"},
+]}
+
+let home = {title:"Mr. Mac’s Home", id:"home", menu:[
+    {title:"Computing Science 10", id:"cs10"},
+    {title:"Science 10", id:"s10"},
+    {title:"Physics 20", id:"p20"},
+    // {title:"Physics 30", id:"p30"},
+]};
+
+makeUrl.home = "./";
+
+$(function() {renderPage("home")});
+
+</script>
+</head>
+<body><article>
+    <div id="ControlsContainer"></div>
+<p>Please choose your course:</p>
+<ul data-topics="all"></ul>
+</article></body>
+</html>

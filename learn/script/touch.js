@@ -1,10 +1,10 @@
 function touchscreen() {
     let n = navigator;
     if (n.maxTouchPoints) return true;
-    if (n.userAgent.toLowerCase().search("safari") >= 0) {
-        n = n.platform.toLowerCase();
-        if (["iphone", "ipad"].indexOf(n) > -1) return true;
-    }
+    let p = n.platform.toLowerCase();
+    if (["iphone", "ipad"].indexOf(p) > -1) return true;
+    n = n.userAgent.toLowerCase();
+    if (n.search("android") > -1) return true;
     return false;
 }
 

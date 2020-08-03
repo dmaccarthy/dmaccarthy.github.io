@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mr. Mac’s Website</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="./media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="script/tree.js"></script>
+<style>
+
+:root {
+    --menuMargin:288px;
+    --small:8px;
+    --icon:32px;
+}
+
+body {
+    font-family:Oxygen;
+}
+
+body.Normal.MenuMin, body.Narrow {
+    margin-right:calc(var(--icon) + var(--small));
+}
+
+body.Normal:not(.MenuMin) {
+    margin-right:calc(var(--menuMargin) + var(--small));
+}
+
+nav {
+    width:var(--menuMargin);
+    max-width:85vw;
+    overflow:auto;
+    height:calc(100vh - 0px);
+    position:fixed;
+    top:0;
+    right:0;
+    background-color:#f0f0f0;
+}
+
+body.MenuMin #Menu tr.NoIcon {
+    display:none;
+}
+
+#Menu table {
+    border-collapse:collapse;
+}
+
+#Menu tr {
+    height:var(--icon);
+}
+
+#Menu tr:hover {
+    background-color:blue;
+    color:white;
+    cursor:pointer;
+}
+
+#Menu tr > td {
+    padding:calc(var(--small) / 2);
+    vertical-align:middle;
+}
+
+#Menu tr > td.Icon {
+    width:var(--icon);
+    text-align:center;
+}
+
+#Menu tr > td.Icon > img {
+    height:calc(var(--icon) - 1.5 * var(--small));
+    width:auto;
+    margin:0;
+    padding:0;
+}
+
+#Menu tr > td:not(.Icon) {
+    width:calc(var(--menuMargin) - var(--icon));
+}
+
+#Menu tr > td.Icon > em {
+    vertical-align:middle;
+}
+
+#Menu tr.Current > td:not(.Icon) {
+    font-weight:bold;
+}
+
+#Menu tr.Menu:not(:hover) {
+    color:blue;
+}
+
+</style>
+<script type="text/javascript">
+
+let mediaFolder = "https://learn.davidmaccarthy.repl.co/media/";
+
+let home = {title:"Mr. Mac's Website", icon:"$home", menu:[
+    {title:"Computing Science 10", id:"cs10", icon:"#laptop", menu:[
+        {title:"Structured Programming", id:"sp", icon:"https://www.python.org/static/favicon.ico"},
+        {title:"Robotics Programming", id:"robo", icon:"#robot"},
+    ]},
+    {title:"Physics 20", id:"p20", menu:[
+        {title:"Energy & Work", id:"p21", menu:[
+            {title:"Mechanical Energy", id:"Emech", icon:"$"},
+            {title:"Energy Conservation"},
+            {title:"Work-Energy Theorem"},
+            {title:"Assignment Booklet", icon:"https://www.gstatic.com/images/icons/material/product/1x/drive_64dp.png"},
+        ]},
+        {title:"Kinematics", id:"p22"},
+        {title:"Dynamics", id:"p23"},
+    ]},
+]}
+
+linkParents(home);
+
+function drawNode(node, e) {
+    if (typeof(node) == "string") node = findNode(home, node);
+    if (node) {
+        e = $(e ? e : "#Menu").html("");
+        e = $("<table>").appendTo(e);
+        let p = path(node);
+        drawNode.items(e, [{title:"Menu", icon:"$menu"}], "Path");
+        let item = drawNode.items(e, p, "Path").addClass("Current");
+        p = node.menu;
+        if (p) drawNode.items(e, p, "Menu");
+        else item.addClass("NoMenu");
+        return e.find("tr").click(drawNode.click);
+    }
+}
+
+function iconHTML(icon) {
+    if (icon == "$") icon = "$slideshow";
+    if (icon) {
+        let c = icon.charAt(0);
+        if (c == "$") return $("<em>").addClass("material-icons").html(icon.slice(1));
+        else if (c == "#") icon = mediaFolder + icon.slice(1) + ".png";
+        return $("<img>").attr({src:icon});
+    }
+    return "";
+}
+
+drawNode.items = function(e, p, cls) {
+    let item;
+    for (let i=0;i<p.length;i++) {
+        let pi = p[i];
+        item = $("<tr>").addClass(cls).attr({title:pi.title}).append($("<td>").html(pi.title));
+        let icon = pi.icon;
+        if (!icon && pi.menu) icon = "$folder" + (cls == "Path" ? "_open" : "");
+        item.prepend($("<td>").addClass("Icon").html(iconHTML(icon)));
+        if (icon == "") item.addClass("NoIcon");
+        item[0].node = pi;
+        e.append(item);
+    }
+    return item;
+}
+
+drawNode.click = function() {
+    let node = this.node;
+    if (node.icon == "menu") {
+        let nav = $("#Menu");
+        let b = $("body").toggleClass("MenuMin");
+        nav.animate({right: (b.hasClass("MenuMin") ? 40 - nav.outerWidth() : 0)});
+    }
+    if (node.menu) drawNode(node, "#Menu");
+    else console.log(node);
+}
+
+$(function() {
+    drawNode("Emech");
+    window.onresize();
+    slide(0, 0);
+})
+
+window.onresize = function() {
+    let cls = ["Normal", "Narrow"];
+    let i = $(window).width() < 600 ? 1 : 0;
+    $("body").removeClass(cls[1-i]).addClass(cls[i]);
+}
+
+
+function slide(s, t) {
+// Go to specified slide and time marker
+    let items = $($(".Slide").hide()[s]).show().find("[data-t]").show();
+    for (let i=0;i<items.length;i++) {
+        let item = $(items[i]);
+        let data_t = item.attr("data-t");
+        let vis = false;
+        if (t != null) {
+            let n = data_t.length - 1;
+            if (data_t.charAt(n) == "+")
+                vis = t >= eval(data_t.slice(0, n));
+            else if (data_t.indexOf(",") > -1) {
+                data_t = eval("[" + data_t + "]");
+                vis = t >= data_t[0] && t <= data_t[1];
+            }
+            else vis = t == eval(data_t);
+            if (!vis) $(item).hide();
+        }
+    }
+    slide.current = {s:s, t:t};
+}
+
+function allSlides() {
+// Show all slides
+    $(".Slide").show().find("[data-t]").show();
+    delete slide.current;
+}
+
+function countMarkers(s) {
+    let n = $($(".Slide")[s]).attr("data-markers");
+    return n ? parseInt(n) : 1;
+}
+
+function advance(dt) {
+// Go to next or previous marker
+    let s = slide.current;
+    let t = s.t;
+    s = s.s;
+    if (s == null) {s = t = 0}
+    else if (t == null) t = 0;
+    else {
+        t += dt == null ? 1 : dt;
+        if (t >= countMarkers(s)) {s += 1; t = 0}
+        else if (t < 0) {s -= 1; t = countMarkers(s) - 1}
+        if (s < 0) {s = t = 0}
+        if (s >= $(".Slide").length) alert("End!");
+        else slide(s, t);
+    }
+}
+
+</script>
+</head>
+<body><nav id="Menu"></nav>
+
+<h2 style="text-align:center">Title</h2>
+
+<section class="Slide" data-markers="3">
+    <p data-t="0">0</p>
+    <p data-t="0+">0+</p>
+    <p data-t="1">1</p>
+    <p data-t="0,1">0,1</p>
+    <p data-t="2">2</p>
+</section>
+
+<section class="Slide">
+<p>Ipso lorem.</p>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mechanical Forms of Energy</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" href="../../script20/drawNode.css"/>
+<link rel="stylesheet" href="../../script20/slide.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script type="text/javascript" src="../../script/image.js"></script>
+<script type="text/javascript" src="../../script/plot.js"></script>
+<script type="text/javascript" src="../../script/plotItems.js"></script>
+<script type="text/javascript" src="../../webData/webData.js"></script>
+<script type="text/javascript" src="../../script/tree.js"></script>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../script20/drawNode.js"></script>
+<script type="text/javascript" src="../../script20/slide.js"></script>
+<script type="text/javascript" src="../../script20/remote.js"></script>
+<script type="text/javascript" src="../x20.js"></script>
+
+<script type="text/javascript">
+
+$(function() {init("Emech")});
+
+preload("#/p20/energy/img/stone_red.png", "#/p20/energy/img/stone_blue.png");
+
+function curling() {
+// Create curling rock animation
+    let p = new Plot("#Curling", [-10, 4, -0.5], 1);
+    let s = [2, 204/128];
+    p.items = [
+        new Graphic(preload.get("stone_red"), [-9, 0.03], {anchor:BOTTOM, size:s}),
+        new Graphic(preload.get("stone_blue"), [1, 0.03], {anchor:BOTTOM, size:s}),
+        new Grid({x:1, axisStyle:["black", 2]}),
+    ];
+    curling.plot = p;
+    p.animationFrames = 720;
+    p.ondraw = function() {
+        let n = this.frameCount;
+        let red = this.items[0];
+        let x = red.pos[0];
+        if (n < 161) red.pos[0] = x + 0.05;
+        else {
+            red.pos[0] = x + 0.012 * Math.exp((160 - n) / 120);
+            let blue = this.items[1];
+            blue.pos[0] += 0.028;
+        }
+    }
+    curling.run(0);
+    zoom(true);
+}
+
+curling.run = function(m) {
+        if (m == 0) {
+            let p = curling.plot;
+            p.items[0].pos = [-9, 0.03];
+            p.items[1].pos = [1, 0.03];
+            p.animate(30);
+        }
+}
+
+latexPreload.onload = curling;
+
+function barGraph(m) {
+// Draw a bar graph
+    if (!m) return;
+    let g = 9.81, x = 0.65, v = 24.0, m1 = 0.25;
+    let data = [[
+        ["Eg", m1 * g * 9.25],
+        ["Ek", m1 / 2 * v * v],
+    ], [
+        ["Ee", 100 * x * x],
+        ["Eg", 0.055 * g * 1.6],
+    ]][m - 1];
+    let scale = [8, 5][m - 1];
+    energyBarGraph("#BarGraph", data, scale, 1, " J").draw();
+}
+
+slide.actions = {
+    barGraph: barGraph,
+    curling: curling.run,
+}
+
+</script>
+<style>
+
+table.Normal tr {height:2em}
+
+body.Print img.Right {
+    max-height:288px;
+}
+
+
+</style>
+</head>
+<body>
+<article class="SlideShow">
+
+<section class="Slide">
+<h1>Mechanical Forms of Energy</h1>
+<p class="Swipe"></p>
+</section>
+
+<section class="Slide" data-markers="5">
+<h2 data-t="0+">Energy</h2>
+<p data-t="0+"><em class="Defn">Energy</em> is the ability to produces <em>changes</em> in motion, temperature, or other physical or chemical properties.</p>
+<ul data-t="1+">
+    <li>Energy comes in many different forms.</li> 
+    <li data-t="2+">Energy is a <em>scalar</em> quantity; it has no direction.</li>
+    <li data-t="3+">Energy is a <em>conserved</em> quantity.</li>
+    <li data-t="4">The SI unit of energy is called the <em>joule</em>. A joule can be expressed in terms of simpler units:$$\mathrm {J = N\cdot m = kg \cdot {m^2\over s^2}}$$</li>
+</ul>
+</section>
+
+<section class="Slide" data-markers="3" data-action="curling">
+<h2>Kinetic Energy</h2>
+<p><canvas id="Curling" class="Wide" width="720" height="128"></canvas></p>
+<p>Motion is itself a form of energy, which we call the <em class="Defn">kinetic energy</em>:$$E_k = {1 \over 2} mv^2$$</p>
+<ul data-t="1+">
+    <li>In this equation, \(m\) is the <em>mass</em> of the object in kilograms.</li>
+    <li data-t="2+">The symbol \(v\) is the <em>speed</em> of the object in metres per second (m/s).</li>
+</ul>
+</section>
+
+<section class="Slide" data-markers="4">
+<h2>Rotational Energy</h2>
+<p data-t="0+">An object that is spinning in place has energy. We call this <em>rotational energy</em>.</p>
+<ul data-t="1+">
+    <li>We can use rotational energy to pull or lift an object (e.g. a winch) or to create electricity (e.g. a generator).</li> 
+    <li data-t="2+">The equation for rotational energy depends on the shape of the object and whether it is solid or hollow.</li>
+    <li data-t="3+">A ball rolling down a ramp has <em>both</em> kinetic and rotational energy.</li>
+</ul>
+</section>
+
+<section class="Slide" data-markers="6">
+<h2>Gravitational Potential Energy</h2><!-- https://freesvg.org/img/mountainclimbing.png -->
+<img src="https://freesvg.org/img/basketballWolf.png" class="Right" alt="Image"/>
+<p data-t="0+">When an object is elevated above the ground, it has energy because gravity will cause the object to move when it is released.</p>
+<p data-t="1+">This type of energy is called <em class="Defn">gravitational potential energy</em>:$$E_g = mgh$$</p>
+<ul data-t="2+">
+    <li>In this equation, \(g\) is the <em>gravitational field strength</em>. Close to Earth’s surface, \(g = 9.81\ {\mathrm{m/s^2}}\).</li>
+    <li data-t="3+">The symbol \(h\) is the <em>height</em> of the object relative to the origin (usually the ground).</li>
+    <li data-t="4+">As with kinetic energy, \(m\) is the mass in kilograms.</li>
+    <li data-t="5+">This formula is only valid when the gravitational field is constant and uniform.</li>
+</ul>
+</section>
+
+<section class="Slide" data-markers="5"><!-- https://openclipart.org/image/320px/297992-->
+<h2>Elastic Potential Energy</h2>
+<img data-t="1+" src="https://freesvg.org/img/publicdomainq-archer2.png" class="FlipX Right" alt="Image"/>
+<p data-t="0,1"><em class="Defn">Elasticity</em> is a property of objects that return to their original shape when they are stretched or compressed.</p>
+<ul data-t="1">
+    <li>Elastic objects include springs, rubber bands, bungees, and archery bows.</li>
+</ul>
+<p data-t="2+">The energy stored in a stretched or compressed elastic is called <em class="Defn">elastic potential energy</em>:$$E_{elas} = {1\over 2}k \left({\Delta L}\right)^2$$</p>
+<ul data-t="3+">
+    <li>The variable \(k\) is called the <em class="Defn">elastic constant</em>. It measures the strength of the elastic object in newtons per metre (N/m).</li>
+    <li data-t="4+">The variable \(\Delta L\) is the distance the elastic is stretched or compressed from its equilibrium shape.</li>
+</ul>
+</section>
+
+<section class="Slide" data-markers="6">
+<h2>Mechanical Forms of Energy</h2>
+<p>Types of energy that are related to the objects’ motion are called <em class="Defn">mechanical</em> forms of energy. Mechanical energy includes:</p>
+<table data-t="1+" class="Normal">
+    <tr><td style="width:14em">Kinetic Energy</td><td style="width:10em">\(E_k = {1 \over 2} mv^2\)</td></tr>
+    <tr data-t="2+"><td>Gravitational Potential Energy</td><td>\(E_g = mgh\)</td></tr>
+    <tr data-t="3+"><td>Elastic Potential Energy</td><td>\(E_{elas} = {1\over 2}k \left({\Delta L}\right)^2\)</td></tr>
+    <tr data-t="4+"><td>Rotational Energy</td><td>Depends on object</td></tr>
+</table>
+<p data-t="5">Scientists use the term “mechanical energy” to mean the <em>total</em> of <em>all</em> mechanical forms of energy present in a system at a particular instant in time.</p>
+</section>
+
+<section class="Slide NoPrint" data-markers="3"  data-action="barGraph">
+<h2>Examples</h2>
+<p data-t="0">Complete the Examples in the lesson handout.</p>
+<p class="Center" data-t="1+"><canvas class="Wide" id="BarGraph" width="720" height="680"></canvas></p>
+</section>
+
+<section class="Slide" data-markers="7">
+<h2>Non-Mechanical Forms of Energy</h2>
+<p data-t="0+">There are many different forms of energy that are related to properties other than motion (e.g. temperature or chemical composition).</p>
+<p data-t="1+">Some non-mechanical forms of energy include:</p>
+<ul data-t="1+">
+    <li>Thermal energy</li>
+    <li data-t="2+">Sound energy</li>
+    <li data-t="3+">Electrical energy</li>
+    <li data-t="4+">Chemical energy</li>
+    <li data-t="5+">Nuclear energy</li>
+    <li data-t="6+">Light and other electromagnetic energy</li>
+</ul>
+</section>
+
+</article>
+<div id="LaTeX-Preload">
+    <div data-key="Ee">$$E_{elas}$$</div>
+    <div data-key="Eg">$$E_g$$</div>
+    <div data-key="Ek">$$E_k$$</div>
+</div>
+</body>
+</html>

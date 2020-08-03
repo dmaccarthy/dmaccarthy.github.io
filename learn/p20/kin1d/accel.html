@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Acceleration</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/slides.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script-->
+<script type="text/javascript" src="../../webData/webData.js"></script>
+<script type="text/javascript" src="../../script/tree.js"></script>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../script/slides.js"></script>
+<!--script type="text/javascript" src="../../script/image.js"></script>
+<script type="text/javascript" src="../../script/plot.js"></script>
+<script type="text/javascript" src="../../script/plotItems.js"></script-->
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript">
+
+// var supplement = "soln/$.html";
+
+$(function() {init("accel"); zoom(true)});
+
+// latexPreload.onload = function() {}
+// slide.actions = {}
+
+</script>
+</head>
+<body><article class="SlideShow">
+
+<section class="Slide">
+<p id="Crumbs" class="NoPrint"></p>
+<h1>2.3 – Acceleration</h1>
+<p id="StartLesson"></p>
+</section>
+
+<section class="Slide" data-markers="9">
+<h1>Accelerated Motion</h1>
+<p data-t="0">Complete questions 1-3 of the assignment handout.</p>
+<p data-t="1,7"><em class="Defn">Uniform motion</em> means that an object’s instantaneous velocity is constant.</p>
+<ul data-t="2,7">
+    <li>A \({\vec{\mathbf d}}\)-\(t\) graph for uniform motion will be a straight line (constant slope).</li>
+    <li data-t="3+">A \({\vec{\mathbf v}}\)-\(t\) graph for uniform motion will be a <em>horizontal</em> line.</li>
+</ul>
+<p data-t="4,7"><em class="Defn">Accelerated motion</em> means that the object’s instantaneous velocity is <u>not</u> constant.</p>
+<ul data-t="5,7">
+    <li>A \({\vec{\mathbf d}}\)-\(t\) graph for 1D accelerated motion will be a curve (changing slope).</li>
+    <li data-t="6+">If the force causing the acceleration is constant, the \({\vec{\mathbf d}}\)-\(t\) graph will be a <em>parabola</em> and the \({\vec{\mathbf v}}\)-\(t\) graph will be a sloped line.</li>
+    <li data-t="7">Otherwise both graphs will be curves. The exact shape of the curves will depend on the force.</li>
+</ul>
+<table data-t="8" class="Normal">
+	<tr><th rowspan="2">Type of Motion</th><th colspan="2">Shape of Graph</th></tr>
+	<tr><th>\(\vec{\mathbf d}\)-\(t\)</th><th>\(\vec{\mathbf v}\)-\(t\)</th></tr>
+	<tr><td style="width:50%">Uniform<br/>(Constant \({\vec{\mathbf v}}\))</td><td style="width:25%">Linear</td><td style="width:25%">Horizontal</td></tr>
+	<tr><td>Uniform Accelerated<br/>(Constant \({\vec{\mathbf a}}\))</td><td>Parabolic</td><td>Linear</td></tr>
+	<tr><td>Non-Uniform Accelerated<br/>(Neither Constant)</td><td>Curved</td><td>Curved</td></tr>
+</table>
+</section>
+
+<section class="Slide" data-markers="5">
+<h1>Acceleration</h1>
+<p data-t="0+"><em class="Defn">Acceleration</em> is defined as the rate at which the instantaneous velocity is changing:$${\vec{\mathbf a}} = {\Delta{\vec{\mathbf v}}\over\Delta t} = {{\vec{\mathbf v}}_f - {\vec{\mathbf v}}_i \over\Delta t}$$</p>
+<ul data-t="1+">
+    <li>Acceleration is the <em>slope</em> of the \({\vec{\mathbf v}}\)-\(t\) graph.</li>
+    <li data-t="2+">The SI unit of acceleration is (m/s)/s, or m/s<sup>2</sup>.</li>
+    <li data-t="3+">An acceleration of +3.0 m/s<sup>2</sup> means the velocity is increasing by 3.0 m/s every second.</li>
+    <li data-t="4+">Near Earth’s surface, gravity produces an acceleration of 9.81 m/s<sup>2</sup> [down] when there is no air resistance and no other forces acting on the object.</li>
+</ul>
+</section>
+
+<section class="Slide" data-markers="4">
+<h1>Displacement</h1>
+<p data-t="0+">The displacement of an object can be calculated as:$$\Delta{\vec{\mathbf d}} = {\vec{\mathbf v}}_{avg}\Delta t$$</p>
+<ul data-t="1+">
+    <li>If the acceleration is constant (\({\vec{\mathbf v}}\)-\(t\) graph is a straight line), we can use a simple average between the initial and final velocities.</li>
+    <li data-t="2+">In general, the displacement will equal the <em>area</em> under the \({\vec{\mathbf v}}\)-\(t\) graph.</li>
+</ul>
+<p data-t="3">Complete questions 4-5 of the assignment handout.</p>
+</section>
+
+</article>
+</body>
+</html>
