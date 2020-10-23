@@ -9,12 +9,14 @@ let buttonLabel = {
     "youtube": "Video Lesson",
     "cal": "Class Calendar",
     "gcr": "Google Classroom",
+    "bs": "Brightspace Page",
 }
 
 let icons = {
     "#youtube": "https://s.ytimg.com/yts/img/favicon_144-vfliLAfaB.png",
     "#gcr": "https://ssl.gstatic.com/classroom/favicon.png",
     "#cal": `https://calendar.google.com/googlecalendar/images/favicon_v2014_${new Date().getDate()}.ico`,
+    "#bs": "https://s.brightspace.com/lib/favicon/2.0.0/favicon.ico",
 }
 
 function uc() {alert("This link is currently unavailable!")}
@@ -28,7 +30,7 @@ function makeUrl(url) {
 
 makeUrl.home = "../../../";
 
-let current;
+let current, slides = "https://slides.davidmaccarthy.repl.co/";
 
 function qsArgs(key) {
     let qs = location.search.slice(1).split("&");
@@ -93,6 +95,10 @@ function topicsAsUL() {
                 let url = makeHref(item.href);
                 a = $("<a>").attr({href: url});                
             }
+            else if (item.slide) {
+                let url = item.slide;
+                a = $("<a>").attr({href: `${slides}${url}.html`});                
+            }
             else {
                 a = $("<span>").addClass("Link").click(function() {
                     nodeAction(this.node);
@@ -100,7 +106,8 @@ function topicsAsUL() {
                 });
                 a[0].node = item;
             }
-            uli.append($("<li>").html(a.html(item.title)));
+            let li = $("<li>").html(a.html(item.title)).appendTo(uli);
+            if (item.separator) li.addClass("Separator");
             // i++;
         }
     }
@@ -143,8 +150,32 @@ function renderPage(id) {
 
     // Miscellaneous actions
     $("[data-collapse]").click(toggleCollapse).attr({title:"Expand or Collapse Section"});
+    if (location.search) collapse(location.search.slice(1));
     topicsAsUL();
     keepAspect();
+    $("pre.Code").click(function(ev) {
+        console.log(ev);
+        if (ev.shiftKey || ev.altKey) clipCopy(ev.currentTarget, ev.altKey);
+    }).attr({title: "Shift+Click to Copy Text. Alt+Click for Data URL."});
+}
+
+function clipCopy(e, asURL) {
+    e = $(e);
+    let text = e.text();
+    if (asURL) text = dataURL(text, e.attr("data-mime"));
+    e = $("<textarea>").html(text).appendTo($("body"));
+    e.select();
+    document.execCommand("copy");
+    e.remove();
+}
+
+function dataURL(text, mime) {
+    if (!mime) mime = "text/plain";
+    if (mime.split("/")[0] == "text" && mime.search(";") == -1)
+        mime += ";charset=utf-8";
+    text = encodeURIComponent(text);
+    let url = `data:${mime},${text}`;
+    return url;
 }
 
 function youtubeFrame(a, info) {
@@ -259,7 +290,7 @@ function nodeUrl(node) {
 }
 
 function nextUrl(prev) {
-    let node = prev ? prevNode(current) : nextNode(current);
+    let node = prev ? prevNode(current, "id") : nextNode(current, "id");
     return node ? nodeUrl(node) : null;
 }
 
@@ -271,10 +302,21 @@ function toggleCollapse(e) {
     e.find("em.material-icons").html("expand_" + icon);
 }
 
+function collapse(id) {
+    let e = $("[data-collapse]");
+    for (let i=0;i<e.length;i++) {
+        let s = $(e[i]).attr("data-collapse");
+        let ei = $("#" + s);
+        if (s == id) ei.show();
+        else ei.hide();
+    }
+}
+
 touch.swipe = function(data) {
     if (data.r > 100) {
         let u, swipe = ["left", "right"].indexOf(data.swipe);
         if (swipe > -1) u = nextUrl(swipe == 1);
+        console.log(u);
         if (u) location.href = u;
     }
 }

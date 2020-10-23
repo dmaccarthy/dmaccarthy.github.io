@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf-8" />
+<title>Text-to-Speech</title>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+console.log(`load(url);\ndialog(0, 2);\nstop();\n\nAudacity: 11025 Hz, 32-bit float; VBR Quality 2 Fast = 4 min / MB`);
+
+speechSynthesis.onvoiceschanged = function() {
+    if (voiceList.length == 0) {
+        voiceList = speechSynthesis.getVoices();
+        getCast();
+        for (let i=0;i<voiceList.length;i++) {
+            let v = voiceList[i];
+            let s = $("<span>").html(v.name).click(selectVoice);
+            s[0].voice = v;
+            $("body").append($("<p>").html(s));
+        }
+    }
+}
+
+let voiceList = speechSynthesis.getVoices();
+let cast = {};
+
+function selectVoice() {
+    let name = prompt("Voice nickname?");
+    if (name) {
+        cast[name] = this.voice;
+        let c = {};
+        for (name in cast) {
+            c[name] = cast[name].name;
+        }
+        localStorage.setItem("voice_cast", JSON.stringify(c));
+    }
+}
+
+function getVoice(name) {
+    name = name.toLowerCase();
+    for (let i=0;i<voiceList.length;i++) {
+        if (voiceList[i].name.toLowerCase() == name)
+            return voiceList[i];
+    }
+}
+
+function getCast() {
+    let c = localStorage.getItem("voice_cast");
+    if (c) {
+        c = JSON.parse(c);
+        let name, i, names = [];
+        for (name in c) names.push(name);
+        for (i=0;i<names.length;i++) {
+            let v = getVoice(c[names[i]]);
+            if (v) {
+                cast[names[i]] = v;
+            }
+        }
+    }
+    console.log(cast);
+}
+
+function load(url) {
+    $.ajax({url:url, success:scriptLoaded,
+        error:function(e) {console.log(e)}});
+	return "Loading..";
+}
+
+function scriptLoaded(e) {
+    e = e.split("\n");
+	let data = [];
+	scriptLoaded.scenes = [];
+	let v;
+    for (let i=0;i<e.length;i++) {
+        let txt = e[i].trim();
+        if (txt.length) {
+			if (txt.charAt(0) == "$") scriptLoaded.scenes.push(data.length);
+			else if (txt.charAt(0) == "@") {
+				v = txt.slice(1).split("@");
+				if (v.length > 1) v[1] = JSON.parse(v[1]);
+			}
+			else {
+				txt = txt.split("~");
+				if (txt.length > 1) txt[1] = parseInt(txt[1]);
+				data.push([txt, v]);
+			}
+		}
+    }
+    scriptLoaded.data = scriptLoaded.current = data;
+	console.log("Ready");
+//	speak(0);
+    stop();
+}
+
+function scene(i) {
+	if (i == null) scriptLoaded.current = scriptLoaded.data;
+	else {
+		let s = scriptLoaded.scenes[i];
+		let e = scriptLoaded.scenes[i+1];
+		scriptLoaded.current = scriptLoaded.data.slice(s, e);
+	}
+    speak(0);
+	return i == null ? "All scenes" : "Scene " + i;
+}
+
+function speak(n) {
+    if (n == null) n = speak.n + 1;
+    speak.n = n;
+    let data = scriptLoaded.current[n];
+    if (data) {
+        delete speak.stopped;
+		let txt = data[0], v = data[1];
+        let u = new SpeechSynthesisUtterance(txt[0]);
+        u.lang = "en-CA";
+        let t = txt.length > 1 ? txt[1] : speak.pause;
+        speak.voice = u.voice = cast[v[0]];
+
+        let key = speak.voice.name;
+        let opt = v.length > 1 ? v[1] : speak.options[key];
+        if (opt) {
+            speak.options[key] = opt;
+            Object.assign(u, opt);
+        }
+		u.onend = function() {
+            if (!speak.stopped) speak.queue = setTimeout(speak, t);
+        }
+        speechSynthesis.speak(u);
+		console.log(`${v[0]}: ${u.text}`);
+    }
+}
+
+speak.pause = 1000;
+speak.options = {};
+
+function stop() {
+    clearTimeout(speak.queue);
+    speechSynthesis.cancel();
+    speak.stopped = true;
+}
+
+</script>
+</head>
+
+<body></body>
+</html>

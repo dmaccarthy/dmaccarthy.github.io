@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Intro to Robotics</title>
+<meta name="description" pageContent=""/>
+<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../lesson.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="../../../script/tree.js"></script>
+<script type="text/javascript" src="../../../script/touch.js"></script>
+<script type="text/javascript" src="../../lesson.js"></script>
+<script type="text/javascript" src="../cs10.js"></script>
+<script type="text/javascript">
+
+let pageContent = {buttons:[
+    {icon:"#next", href:"turn.html"},
+]}
+
+$(function() {renderPage("robo_intro")});
+
+</script>
+</head>
+<body><article>
+
+<h4 class="Collapse" data-collapse="robo"><em class="material-icons">expand_less</em>Robotics</h4>
+<div id="robo">
+<p>A <em class="Defn">robot</em> is an electromechanical system that is capable of doing the following:</p>
+<ul>
+    <li><b>Sensing</b>: A robot is typically equipped with <em class="Defn">sensors</em> that allow it to experience its surroundings. Sensors may include a camera or light detector; microphone or sound detector; gyroscope, compass or GPS; infrared proximity detector; or many others.</li>
+    <li><b>Planning</b>: Using its sensor data, robots can make decisions as to what actions it needs to perform in order to accomplish its goals.</li>
+    <li><b>Acting</b>: Robots are often equipped with <em class="Defn">actuators</em> (e.g. motors and servos; speakers; light or radio transmitters) that allow it to move itself or other objects and to act in other ways.</li>
+</ul>
+<p>These are known as <em class="Defn">primitives</em>, or primitive behaviours, of robots. The Sense-Plan-Act paradigm for robotics is analogous to the Input-Processing-Output approach to computer programming. The robot’s sensors provide its input and its actuators provide its output.</p>
+</div>
+
+<h4 class="Collapse" data-collapse="sc8pr"><em class="material-icons">expand_more</em>sc8pr Robotics</h4>
+<div class="Hidden" id="sc8pr">
+<p>We will be using a simulated robot that is part of the <a href="https://dmaccarthy.github.io/sc8pr">sc8pr</a>
+    package for Python 3. This package is not part of the Python standard library; it has to be
+    installed separately from Python itself. If you are using a computer that does not already
+    have <code>sc8pr</code>, installation may depend on the IDE you are using.</p>
+<p>If you are using Thonny, go to the “Tools” menu and select “Manage packages...”</p>
+<!--pre class="Code Black">https://github.com/dmaccarthy/sc8pr/archive/master.zip</pre-->
+<img src="../sp/img/thonny.png" alt="Thonny"/>
+<ol>
+    <li>Type the name of the software package, <code>sc8pr</code>.</li>
+    <li>Click the button to search the Python Package Index (PyPI).</li>
+    <li>Click the three dots.</li>
+    <li>Select the desired version. This course uses <code>sc8pr 2.2a0</code>.</li>
+    <li>Check “Upgrade Dependencies” and then click the Install button.</li>
+</ol>
+</div>
+
+<h4 class="Collapse" data-collapse="rcf"><em class="material-icons">expand_more</em>Robot Control Function</h4>
+<div class="Hidden" id="rcf">
+<p>Your job will be to program the robot to complete the challenges that you are given. To program the
+    robot, you create its “brain”. A robot brain is also called a <em class="Defn">robot control function</em>. As
+    the name implies, it is a Python function that tells the robot what to do. Robots that are programmed
+    to collect sensory data, plan actions directed toward a goal, and carry out those actions, are said
+    to have agency; they can act autonomously (under their own control) rather than under the control
+    of an operator (like a remote control device).</p>
+<p>Here is an example of a robotics simulation...</p>
+
+<pre class="Code"><span class="Comment"># Save this program as 'r01_ex1.py'</span>
+
+from sc8pr.examples.robotSim import Arena
+
+def brain(robot):
+    <span class="Docstring">"This function controls the robot"</span>
+    robot.pen = "red", 3
+    robot.motors = 1
+
+Arena.run(brain)    <span class="Comment"># Run the simulation</span></pre>
+
+<p>We have used built-in functions (e.g. <code>print</code>, <code>input</code>) and imported functions
+    (e.g. <code>randint</code>, <code>sqrt</code>) in our previous courses. Using Python’s <code>def</code>
+    statement, we can define our own functions to perform tasks like controlling the robot. The first line
+    of the function, <code>def brain(robot)</code>, creates a function named <code>brain</code> and also
+    creates a variable name <code>robot</code> that we can use to control the robot. As with <code>if</code>
+    and <code>while</code> statements, the <code>def</code> statement ends with a colon and the subsequent
+    lines that form the function body are indented by four spaces.<p>
+
+<p>Like the program itself, any function that we define can (and should!) have its own docstring
+    describing what the function does. The docstring should appear on the first line of the function
+    immediately after the <code>def</code> statement. Single quotes can be used if the docstring fits on
+    a single line. Use triple quotation marks (<code>"""</code>) to create a multi-line docstring.</p>
+<p>In the example above, the robot brain does not do any sensing or planning. It just acts using its
+    “pen” and “motors” actuators. The pen actuator causes the robot to trace a line of the specified
+    color and thickness as it moves. The robot moves itself using two motors to turn its left and right
+    wheels. Setting the <code>robot.motors</code> property to <code>1</code> turns <em>both</em> motors
+    on at full power forward. We could use <code>0.5</code> for half power forward, or <code>–0.5</code>
+    for half power backward.</p>
+<p>To make the robot turn, we could set the left and right motors to different power values. In the
+    example below, the left wheel (<code>0.7</code>) will be moving faster than the right one
+    (<code>0.3</code>), so the robot will turn clockwise while moving forward.
+
+<pre class="Code"><span class="Comment"># Save this program as 'r01_ex2.py'</span>
+
+from sc8pr.examples.robotSim import Arena
+
+def brain(robot):
+    <span class="Docstring">"Move the robot clockwise"</span>
+    robot.pen = "red", 3
+    robot.motors = 0.7, 0.3
+
+Arena.run(brain)    <span class="Comment"># Run the simulation</span></pre>
+
+<p>Setting the motors to the same power but opposite directions will cause the robot to spin in place.</p>
+
+<pre class="Code"><span class="Comment"># Save this program as 'r01_ex3.py'</span>
+
+from sc8pr.examples.robotSim import Arena
+
+def brain(robot):
+    <span class="Docstring">"Spin the robot clockwise"</span>
+    robot.pen = "red", 3
+    robot.motors = 0.7, -0.7
+
+Arena.run(brain)    <span class="Comment"># Run the simulation</span></pre>
+
+<p>In all of these examples, the simulation continues running even after the <code>brain</code> is
+    done. If the motors were on when the <code>brain</code> finished, they will continue to run
+    indefinitely. The robot has its own “sleep timer” that pauses its <code>brain</code> for a specified amount
+    of time. For example, to run both motors on full power for 2.5 seconds and then stop them,
+    you could use the following function.</p>
+
+<pre class="Code"><span class="Comment"># Save this program as 'r01_ex4.py'</span>
+
+from sc8pr.examples.robotSim import Arena
+
+def brain(robot):
+    <span class="Docstring">"Go forward for 2.5 seconds"</span>
+    robot.pen = "red", 3
+    robot.motors = 1      <span class="Comment"># Start both motors</span>
+    robot.sleep(2.5)      <span class="Comment"># Sleep for 2.5 seconds</span>
+    robot.motors = 0      <span class="Comment"># Stop both motors</span>
+
+Arena.run(brain)    <span class="Comment"># Run the simulation</span></pre>
+</div>
+
+<h4 class="Collapse Blue" data-collapse="assign"><em class="material-icons">expand_more</em>Assignment</h4>
+<ol class="Assign Hidden" id="assign">
+<li>Back in Structured Programming, you used “turtle graphics” to make the turtle draw the letter “Q”
+    on the screen. Making the robot follow a pattern is a bit harder, because the robot only controls
+    its motors; it has no direct control over the distance it moves and the angle it turns. Complete the
+    program below to make the robot draw a letter on the floor of the arena.
+<pre class="Code"><span class="Comment"># Save this program as 'r01_letter.py'</span>
+
+from sc8pr.examples.robotSim import Arena
+
+def brain(robot):
+    <span class="Docstring">"Draw a letter"</span>
+
+Arena.run(brain)    <span class="Comment"># Run the simulation</span></pre></li>
+<li>Make a copy of this <a target="Doc" href="https://docs.google.com/document/d/1atUJmBx4xREUgPNyZFZAakpMF7EKNmnZA554aSeCLBA">Google
+    Doc</a> in the <code>CS10</code> folder of your EIPS Google Drive. Follow the instructions in the document.</li>
+</ol>
+</article></body>
+</html>

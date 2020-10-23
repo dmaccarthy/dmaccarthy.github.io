@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf8"/>
+<title>Form</title>
+<style>
+
+input[name=assign] {
+    display:none;
+}
+
+</style>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(function() {
+    let assign = qs("assign");
+    $("input[name=assign]").val(assign);
+    assign = assign.split(".");
+    let title = `CSE ${assign[0]}: Assignment ${assign[1]}`;
+    document.title = title;
+    $("h1").html(title);
+
+    let mode = parseInt(qs("mode"));
+    if (!(mode & 1)) $("#Text").remove();
+    if (!(mode & 2)) $("#Files").remove();
+
+});
+
+function qs(key) {
+    key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&");
+    var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+    return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+}
+
+</script>
+</head>
+<body>
+<h1></h1>
+<form action="https://webapp.davidmaccarthy.repl.co/formecho" method="post" enctype="multipart/form-data">
+    <input type="text" name="assign"/>
+	<p>Student Number: <input type="text" name="user" /> &nbsp;
+		Password: <input type="password" name="pw" /></p>
+	<p id="Text">Enter your text or URL here:<br/>
+		<textarea cols="80" rows="8" name="text"></textarea></p>
+	<p id="Files">Application Form: <input type="file" name="file" multiple/></p>
+	<p><input type="submit"/></p>
+</form>
+</body>
+</html>

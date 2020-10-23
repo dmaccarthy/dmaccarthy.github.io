@@ -14,7 +14,9 @@
 <script type="text/javascript" src="../cs10.js"></script>
 <script type="text/javascript">
 
-let pageContent = {};
+let pageContent = {buttons:[
+    {icon:"#next", href:"ide.html"},
+]}
 
 $(function() {renderPage("intro")});
 
@@ -22,7 +24,23 @@ $(function() {renderPage("intro")});
 </head>
 <body><article>
 
-<!--h2 id="Title">Intro to Programming</h2-->
+<h4 class="Collapse Blue" data-collapse="onedrive"><em class="material-icons">expand_less</em>Cloud Folder Setup</h4>
+<ol class="Assign" id="onedrive">
+<li>Using the school computers, open Windows Explorer and go to your OneDrive folder.
+    Create a folder named <code>CS10</code> and share the folder with your teacher (<code>david.maccarthy@eips.ca</code>).
+    Click the “Allow Editing” button so your teacher can add files to your folder. Use this folder for all of your programming assignments.
+    Copy the files from the <a href="https://eipsca-my.sharepoint.com/personal/david_maccarthy_eips_ca/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdavid%5Fmaccarthy%5Feips%5Fca%2FDocuments%2Fpublic&originalPath=aHR0cHM6Ly9laXBzY2EtbXkuc2hhcmVwb2ludC5jb20vOmY6L2cvcGVyc29uYWwvZGF2aWRfbWFjY2FydGh5X2VpcHNfY2EvRW1Yb1VGa3gxUnRHdk14dVdDZEJLZGtCUUpRLW5MUmVwcnRWZzN6VFdLS2l2QT9ydGltZT1ER1dZSGpwTTJFZw">public folder</a> into your own OneDrive folder.</li>
+<li>Open Google Chrome and sign in using your EIPS account. Open <a target="Drive" href="https://drive.google.com">Google Drive</a> and
+    create a folder named <code>CS10</code>. Again, share this folder with your teacher as an “Editor”.
+    Use this folder for all assignments requiring a Google Doc.</li>
+<li><b>HOMEWORK</b>: Install Microsoft OneDrive on your home computer (unless it’s already installed) and
+    set it up to use with your EIPS account. Following the <a target="MS" href="https://support.microsoft.com/en-ca/office/sync-with-onedrive-bb89981b-e382-4969-b8fd-d413a90b6db3?ui=en-CA&rs=en-CA&ad=CA">instructions</a>
+    for your system. Once successful, you should be able to see the <code>CS10</code> folder you
+    created at school from your home computer.</li>
+</ol>
+
+<h4 class="Collapse" data-collapse="prog"><em class="material-icons">expand_more</em>Programming Languages</h4>
+<div class="Hidden" id="prog">
 
 <p>A computer is an electronic device that encodes and manipulates information as electronic signals.
 	A <em class="Defn">program</em> is a set of instructions telling the computer what we want it to do.
@@ -54,6 +72,14 @@ $(function() {renderPage("intro")});
 	advantage of being easier for programmers to use and make programming quicker. Python and Java
 	are both high-level programming languages. Low-level languages are closer to machine language and
 	have the advantage of running more efficiently.</p>
+</div>
+
+<h4 class="Collapse Blue" data-collapse="assign"><em class="material-icons">expand_more</em>Assignment</h4>
+<ol class="Assign Hidden" start="4" id="assign">
+<li>Open this <a target="Docs" href="https://docs.google.com/document/d/1rxni4gOE3bzEWIwze7ECS9dDheYGvKSaRuuAmeB-o7E">Google
+    Doc</a> and “Make a copy” (under the “File” menu). Save the copy into your Google Drive <code>CS10</code> folder.
+    Answer the questions in the document. When finished, click the Share button and copy the link. Submit the link using Brightspace.</li>
+</ol>
 
 </article></body>
 </html>

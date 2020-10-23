@@ -6,7 +6,17 @@
 <link rel="shortcut icon" type="image/x-icon" href="media/favicon.ico"/>
 <script type="text/javascript">
 
-location.href = "home.html";
+let urls = {
+    "mscope": "https://docs.google.com/presentation/d/1wKI1blXJukMRBUC7b1B4PhBrgXfBZs7KKx_DVFRf-9M/",
+    "cell": "https://docs.google.com/presentation/d/1yg_Q804TGQauW9EzNnbmJZlHkK8nR0qiIp5iaESYRBA/",
+    "organelle": "https://slides.davidmaccarthy.repl.co/s10/bio/organelle.html",
+    "memb": "https://slides.davidmaccarthy.repl.co/s10/bio/memb.html",
+    "transport": "https://docs.google.com/presentation/d/1qJYqVyhLdOpIwEF8qv0EsbnYO6dRbofZvqICN0g568g/",
+};
+
+let id = location.search.slice(1);
+let url = urls[id];
+location.href = url ? url : "home.html";
 
 </script>
 </head>

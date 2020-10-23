@@ -14,12 +14,21 @@ body {
 
 .Hidden {display:none}
 .Center {text-align:center}
+.Black {color:black}
+.Blue {color:blue}
+.Red {color:red}
+.Gold {color:gold}
+.Green, .Docstring {color:green}
+.Comment {color:#b0b0b0}
 #Cover iframe {position:fixed}
 em.Defn {text-decoration:underline}
 /* em.Defn {font-weight:bold; font-style:normal} */
 
-em.material-icons {
-    vertical-align:middle;
+em.material-icons {vertical-align:middle}
+
+img.Wide {
+    max-width:98%;
+    height:auto;
 }
 
 code, .Code {
@@ -27,9 +36,11 @@ code, .Code {
     font-weight:bold;
 }
 
+code:not(.Black), .Code:not(.Black), .Purple {color:purple}
+
 pre.Code {
     text-align:left;
-    background-color:#e0e0e0;
+    background-color:#f0f0f0;
     width:calc(100% - 2em - 16px);
     overflow:auto;
     padding:8px;
@@ -64,6 +75,7 @@ article p, article ul, article ol {
 }
 
 li {padding:3px}
+li.Separator {margin-top:1em}
 .Wide {max-width:calc(100% - 12px)}
 
 .Link {
@@ -106,12 +118,27 @@ p.FinePrint {
     font-size:0.75em;
 }
 
-h3, h4 {
-    text-align:left;
-}
+h3, h4 {text-align:left}
 
 h4.Collapse {
     /* color:blue; */
     border-bottom:1px solid black;
     cursor:pointer;
 }
+
+.Assign {
+    color:blue;
+    border-left:2px solid blue;
+}
+
+table {
+    border-collapse:collapse;
+    margin:1em auto;
+}
+
+table.Border td, table.Border th {
+    border:1px solid black;
+    padding:4px;
+}
+
+.Auto {margin:auto}

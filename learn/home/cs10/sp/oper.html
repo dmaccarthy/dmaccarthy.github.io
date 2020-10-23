@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Operators</title>
+<meta name="description" pageContent=""/>
+<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../lesson.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="../../../script/tree.js"></script>
+<script type="text/javascript" src="../../../script/touch.js"></script>
+<script type="text/javascript" src="../../lesson.js"></script>
+<script type="text/javascript" src="../cs10.js"></script>
+<script type="text/javascript">
+
+let pageContent = {buttons:[
+    {icon:"#next", href:"bool.html"},
+]}
+
+$(function() {renderPage("oper")});
+
+</script>
+</head>
+<body><article>
+
+<h4 class="Collapse" data-collapse="oper"><em class="material-icons">expand_less</em>Operators</h4>
+<div id="oper">
+<p><em class="Defn">Operators</em> are symbols that Python uses to represent operations that can be performed on
+	your program’s data. For example, we can use the <code>+</code> symbol to represent addition in a more concise
+	and readable way than using a function. The two expressions below both produce 8 as a result, but the first
+	line (using the <code>+</code>  operator) is easier to understand the using the <code>sum</code> function.</p>
+
+<pre class="Code">
+<span class="Comment"># Save this program as 's09_ex1.py'</span>
+
+x = 2 + 6         <span class="Comment"># Good!</span>
+y = sum([2, 6])   <span class="Comment"># Not so good</span>
+print(x, y)</pre>
+</div>
+
+<h4 class="Collapse" data-collapse="order"><em class="material-icons">expand_more</em>Order of Operations</h4>
+<div class="Hidden" id="order">
+<p>Just like in Math, Python follows an order of operations when evaluating expressions that use operators.</p>
+
+<pre class="Code"><span class="Comment"># Save this program as 's09_ex2.py'</span>
+
+print(5 + 3 * 2)      <span class="Comment"># 11</span>
+print((5 + 3) * 2)    <span class="Comment"># 16</span></pre>
+
+<p>As the two statements above demonstrate, multiplication has a higher precedence than addition, and therefore
+	the multiplication is performed first. Parentheses can be used to alter the order of operations; operations
+	within the parentheses are always performed before those outside the brackets. When there are multiple pairs
+	of brackets, Python evaluates the innermost ones first and then works outwards.</p>
+
+<pre class="Code"><span class="Comment"># Save this program as 's09_ex3.py'</span>
+
+print((6 - (5 + 3)) * 2)  <span class="Comment"># -4</span></pre>
+
+<p>The order of precedence for Python operators, from highest precedence to lowest, is shown below. We will
+	learn about categories 3 and 4 in the next lesson.</p>
+<ol>
+	<li>Parentheses</li>
+	<li>Arithmetic<ol style="list-style-type:lower-alpha">
+		<li>Exponents (<code>**</code>)</li>
+		<li>Unary Positive & Negative (<code>+</code>, <code>-</code>)</li>
+		<li>Multiplication, Division, Remainder (<code>*</code>, <code>/</code>, <code>//</code>, <code>%</code>)</li>
+		<li>Addition, Subtraction (<code>+</code>, <code>-</code>)</li>
+	</ol></li>
+	<li>Comparison & Membership (<code>==</code>, <code>!=</code>, <code>&lt;=</code>, <code>&gt;=</code>,
+		<code>&lt;</code>, <code>&gt;</code>, <code>is</code>, <code>is not</code>, <code>in</code>,
+		<code>not in</code>)</li>
+	<li>Boolean</code><ol style="list-style-type:lower-alpha">
+		<li><code>not</code></li>
+		<li><code>and</code></li>
+		<li><code>or</code></li>
+	</ol></li>
+</ol>
+</div>
+
+<h4 class="Collapse" data-collapse="div"><em class="material-icons">expand_more</em>Division</h4>
+<div class="Hidden" id="div">
+<p>Python provides two separate division operators. The “true division” operator is a single slash character.
+	True division produces a result that is a <code>float</code>. The “floor division” operator is a double slash.
+	Floor division is used when you want the result to be an integer. If the result of the division is not an
+	exact integer, Python rounds the answer <em>down</em> to the next lowest integer; if you want to round to the
+	<em>closest</em> integer, you should use the <code>round</code> built-in function instead.</p>
+
+<pre class="Code"><span class="Comment"># Save this program as 's09_ex4.py'</span>
+
+print(7 / 4)         <span class="Comment"># 1.75</span>
+print(7 // 4)        <span class="Comment"># 1</span>
+print(round(7 / 4))  <span class="Comment"># 2</span></pre>
+
+<p>The “modulo” operator (<code>%</code>) calculates remainders. When you first learned about division in
+	elementary school, your teacher probably talked about “grouping”. We can think of 7 ÷ 4 as meaning “arrange 7
+	donuts into groups of 4”. We only have enough donuts to make 1 complete group, but we have 3 donuts left over.
+	The number of complete groups is called the <em class="Defn">quotient</em> (1) and the number left over is
+	called the <em class="Defn">remainder</em> (3). The floor division and modulo operators perform these
+	calculations.</p>
+
+<pre class="Code"><span class="Comment"># Save this program as 's09_ex5.py'</span>
+
+print(7 // 4)   <span class="Comment"># Quotient = 1</span>
+print(7 % 4)    <span class="Comment"># Remainder = 3</span></pre>
+
+<p>One important use of the modulo operator is to check if one number is a multiple of another. The remainder
+	will always be zero when you divide a number by one of its factors.</p>
+
+<pre class="Code"><span class="Comment"># Save this program as 's09_ex6.py'</span>
+
+print(7 % 4)    <span class="Comment"># 3 ... 7 is NOT a multiple of 4</span>
+print(8 % 4)    <span class="Comment"># 0 ... 8 IS a multiple of 4</span></pre>
+
+<p>If you attempt to use these operators on floating point numberss, the answers will also be floats.</p>
+
+<pre class="Code"><span class="Comment"># Save this program as 's09_ex7.py'</span>
+
+print(7.2 // 4)   <span class="Comment"># 1.0</span>
+print(7.2 % 4.0)  <span class="Comment"># 3.2</span></pre>
+
+</div>
+
+<h4 class="Collapse Blue" data-collapse="assign"><em class="material-icons">expand_more</em>Assignment</h4>
+<ol class="Assign Hidden" id="assign">
+<li>Make a copy of this <a target="Doc" href="https://docs.google.com/document/d/1l3PXZR63vIB22SFeoZu59MDaPCjyLZIfMJeQsNQmTq0">Google Doc</a> in the <code>CS10</code> folder of your EIPS Google Drive.
+    Answer the questions in the document.</li>
+</ol>
+</article></body>
+</html>

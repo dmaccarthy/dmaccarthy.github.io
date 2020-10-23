@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf-8" />
+<title>Text-to-Speech</title>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="tts.js"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico"/>
+<style type="text/css">
+
+#Hide {display:none}
+#Cast b {color:blue}
+#Cast p span {cursor:pointer}
+input, select {margin:0.5em}
+
+</style>
+</head>
+<body>
+	<input type="button" value="Reset" onclick="reset()"/>
+	<input type="file" id="file" onchange="loadFile()" />
+	<span id="Hide">
+		<select>
+			<option>All</option>
+		</select>
+		<input type="button" value="Play" onclick="scene()"/>
+		<input type="button" value="Stop" onclick="stop()"/>
+	</span>
+	<hr/><div id="Cast"></div>
+</body>
+</html>

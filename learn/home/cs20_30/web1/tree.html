@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Data Trees</title>
+<meta name="description" pageContent=""/>
+<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../lesson.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="../../../script/tree.js"></script>
+<script type="text/javascript" src="../../../script/touch.js"></script>
+<script type="text/javascript" src="../../lesson.js"></script>
+<script type="text/javascript" src="../cs20_30.js"></script>
+<script type="text/javascript">
+
+let pageContent = {buttons:[
+    {icon:"#next", href:"xml.html"},
+]}
+
+$(function() {renderPage("tree")});
+
+</script>
+
+</head>
+<body><article>
+
+<h4 class="Collapse" data-collapse="note"><em class="material-icons">expand_less</em>Notes</h4>
+<div id="note" class="Center">
+<p>Data that can be represented in the form of a tree is called <em class="Defn">hierarchical data</em>.
+	One example could be a database of Canadian government jurisdictions. Only a small portion of the data tree
+	is shown below as the complete database would be huge!</p>
+<p class="Center"><img class="Wide" src="img/canada_tree.png" alt="Tree"/></p>
+
+<p>As the example shows, the country consists of several provinces (or territories), each of which may be
+	divided into numerous cities, counties, towns, and districts. These municipalities may each contain several
+	communities.</p>
+<ul>
+<li>Each item within the data tree (i.e. each box in the diagram above) is called a <em class="Defn">node</em>.</li>
+<li>Nodes that are connected directly to each other have a parent-child relationship. The “higher” level node
+	is called the <em class="Defn">parent</em> and the “lower” level node is the <em class="Defn">child</em>.</li>
+<li>For example, the <code>Municipality</code> nodes representing Edmonton and Strathcona County are children
+	of the <code>Province</code> node representing Alberta. The <code>Province</code> node is the parent of
+	the <code>Municipality</code> nodes.</li>
+<li>Any node may have many children; however, a node can only have one parent. In fact, every node has exactly
+	one parent, except for the very top level node (<code>Country</code> in this example) which does not have
+	a parent at all. This top level node is called the <em class="Defn">root</em> node of the data tree.</li>
+<li>Nodes that have the same parent are <em class="Defn">siblings</em>. For example, the <code>Municipality</code>
+	nodes for Edmonton and Strathcona County are siblings because they both have the Alberta <code>Province</code>
+	node as their parent.</li>
+<li>The node representing London, Ontario is not a sibling to Edmonton or Strathcona County since it has a
+	different parent. (Although London would be siblings with other municipalities in Ontario, like Toronto or
+	Niagara Falls.)</li>
+<li>The node names (<code>Country</code>, <code>Province</code>, <code>Municipality</code>,
+	<code>Community</code>) are general descriptions of the type of information they represent.</li>
+<li>Each node may have several pieces of data attached to it. Each piece of data is called an
+	<em class="Defn">attribute</em> of the node. For example, each <code>Province</code> node has a
+	<code>name</code> attribute and a <code>capital</code> attribute. For the <code>Province</code> node
+	representing Alberta, the capital attribute has the value “Edmonton”.</li>
+</ul>
+</div>
+
+<h4 class="Collapse Blue" data-collapse="assign"><em class="material-icons">expand_more</em>Assignment</h4>
+<div class="Assign Hidden" id="assign">
+<p>Make a copy of this <a target="Doc" href="https://docs.google.com/document/d/1Qa8PdgI-cISquYGZlziu_Gr3SPxffAc8yFzD1ePHGps">Google
+    Doc</a> in your <code>Web Scripting</code> folder in your EIPS Google Drive. Answer all questions.</p>
+</div>
+</article></body></html>
