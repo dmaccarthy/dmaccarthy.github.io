@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Efficiency</title>
+<meta name="description" pageContent=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/notes.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="contents.js"></script>
+<script type="text/javascript" src="../../script/notes.js"></script>
+<script type="text/javascript" src="../../script/bigMouse.js"></script>
+<script type="text/javascript">
+
+$(initPage);
+
+</script>
+</head>
+<body>
+
+<section id="Title" data-markers="1" class="Center">
+    <p><span class="Link" onclick="goLink('s10')">Science 10</span> (Physics Lesson <span id="LessonNumber"></span>)</p>
+    <p class="NoPrint" id="MaterialIcons" onclick=""></p>
+</section>
+
+<section id="law1" data-markers="4">
+    <h1>First Law of Thermodynamics</h1>
+    <ul>
+        <li data-t="1">Energy is a conserved quantity.</li>
+        <li data-t="2">Energy cannot be created or destroyed.</li>
+        <li data-t="3">Energy can be transformed from one form to another or transferred from one object to another.</li>
+    </ul>
+</section>
+
+<section id="law2" data-markers="5">
+    <h1>Second Law of Thermodynamics</h1>
+    <p>There are several different ways of describing the Second Law.</p>
+    <ul>
+        <li data-t="1">It is not possible to extract all of the thermal energy from a system.</li>
+        <li data-t="2">The efficiency of any energy transformation will always be less than 100%.</li>
+        <li data-t="3">Heat flows naturally from higher to lower temperatures.</li>
+        <li data-t="4">To force heat to flow in the wrong direction (as in a refrigerator or air conditioner) requires adding work to the system.</li>
+    </ul>
+</section>
+
+<section id="eff" data-markers="6">
+    <h1>Efficiency</h1>
+    <p><em class="Defn">Efficiency</em> describes how much useful energy is produced by an energy transformation compared to the input energy:
+        $$\epsilon = \left|{\Delta E_{useful} \over \Delta E_{input}}\right|$$</p>
+    <ul>
+        <li data-t="1" data-n="4">The type(s) of energy that are considered “useful” depends on the purpose of the energy transformation.</li>
+        <li data-t="2" data-n="3">For example, the purpose of a car engine is to move the car, so kinetic energy would be considered “useful” energy.</li>
+        <li data-t="3" data-n="2">Any sound or thermal energy produced by the engine would be considered “wasted” energy.</li>
+        <li data-t="4" data-n="1">The input would be the chemical energy of the gasoline, propane, diesel fuel, or battery.</li>
+        <li data-t="5">Efficiency is often expressed as a percentage; multiply by 100% to convert a decimal to a percentage and divide by 100% for the opposite conversion.</li>
+    </ul>
+</section>
+
+<section id="ex1" data-markers="6">
+    <h1>Example</h1>
+    <p class="Blue">A 50.0 kg skier starts from the top of a 10.0 m tall hill.
+        At the bottom if the hill, her speed is 12.0 m/s. What is the efficiency of the energy transformation?</p>
+    <ul>
+        <li data-t="1" data-n="2">Input is gravitational potential energy:$$E_g = mgh = \mathrm{50.0\ kg\cdot 9.81\ m/s^2\cdot 10.0\ m = 4905\ J}$$</li>
+        <li data-t="2" data-n="1">Useful output is kinetic energy:$$E_k = {1\over 2}mv^2 = \mathrm{{1\over 2}(50.0\ kg) (12.0\ m/s)^2 = 3600\ J}$$</li>
+        <li data-t="3">Efficiency is:$$\epsilon = \left|{\Delta E_{useful} \over \Delta E_{input}}\right| = \mathrm{3600\ J\over 4905\ J} = 0.734$$</p>
+        <li data-t="4">73.4% of the energy input (\(E_g\)) gets transformed into useful energy (\(E_k\)).</li>
+        <li data-t="5">26.6% of the energy input (\(E_g\)) gets transformed into waste (sound or thermal energy).</li>
+    </ul>
+</section>
+
+<!--
+    Project Link: https://docs.google.com/document/d/1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18/edit?usp=sharing
+-->
+
+</body></html>

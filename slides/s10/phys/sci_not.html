@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Scientific Notation</title>
+<meta name="description" pageContent=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/notes.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="contents.js"></script>
+<script type="text/javascript" src="../../script/notes.js"></script>
+<script type="text/javascript" src="../../script/bigMouse.js"></script>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+
+$(initPage);
+
+</script>
+</head>
+<body>
+
+<section id="Title" data-markers="1" class="Center">
+    <p><span class="Link" onclick="goLink('s10')">Science 10</span> (Physics Lesson <span id="LessonNumber"></span>)</p>
+    <p class="NoPrint" id="MaterialIcons" onclick=""></p>
+</section>
+
+<section id="big" data-markers="7">
+    <h1>Big Numbers</h1>
+    <p>The radius of Earth’s orbit around the Sun is about</p>
+    <p data-t="0" data-n="3" class="NoPrint">$$\mathrm{149\,600\,000\,000\ m}$$</p>
+    <p data-t="3" class="Center"><img src="img/scinot1.png" width="156" alt="Number"/></p>
+    <ul data-t="1" data-n="3">
+        <li>We can avoid writing the zeroes by using powers of 10.</li>
+        <li data-t="2">Each time we multiply (or divide) by 10, we move the decimal point in the number.</li>
+    </ul>
+    <p data-t="3">$$\mathrm{1.496\times 10^{11}\ m}$$</p>
+    <ul>
+        <li data-t="4">The exponent tells us that the decimal place has been moved by 11 positions.</li>
+        <li data-t="5">In <em class="Defn">scientific notation</em>, the decimal point is always placed after the first non-zero digit.</li>
+        <li data-t="6">The normal way of writing numbers (without powers of 10) is called <em class="Defn">decimal notation</em>.</li>
+    </ul>
+</section>
+
+<section id="small" data-markers="3">
+    <h1>Small Numbers</h1>
+    <p>The electric charge of an electron is</p>
+    <p data-t="0" data-n="1" class="NoPrint">$$\mathrm{0.000\,000\,000\,000\,000\,000\,1602\ C}$$</p>
+    <p data-t="1" class="Center"><img src="img/scinot2.png" width="280" alt="Number"/></p>
+    <ul data-t="1">
+        <li>Because the number is very small, we have to move the decimal point in the opposite direction.</li>
+        <li data-t="2">For small numbers, the power will have a <em>negative</em> exponent in scientific notation.</li>
+    </ul>
+    <p data-t="2">$$\mathrm{1.602\times 10^{-19}\ C}$$</p>
+</section>
+
+<section id="arith" data-markers="5">
+    <h1>Calculator Arithmetic</h1>
+    <p>When using a scientific calculator or computer to perform arithmetic on numbers in scientific notation, there is an abbreviation usually represented by a button labelled <code class="Blue">EE</code>.</p>
+    <p data-t="1" class="Center">\(1.496\times 10^{11}\) → \(1.496{\small\mathrm E}11\)</p>
+    <ul>
+        <li data-t="2">Using the abbreviated notation can prevent “order of operations” mistakes.</li>
+        <li data-t="3">If typing the power out in full, you will often need brackets for the correct order of operations.</li>
+        <li data-t="4">Always use full scientific notation in written work.</li>
+    </ul>
+</section>
+
+<section id="ex" data-markers="3">
+    <h1>Example</h1>
+    <p data-t="0" data-n="2" class="NoPrint">$$3.00\times 10^8 \over 6.33\times 10^{-7}$$</p>
+    <p data-t="2">$${3.00\times 10^8 \over 6.33\times 10^{-7}} = 4.74\times 10^{14}$$</p>
+    <p data-t="1" class="Center"><img class="Dragable" src="img/ti.jpg" alt="TI-83+" width="140"/></p>
+</section>
+
+</body></html>

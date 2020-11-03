@@ -12,13 +12,26 @@ let urls = {
     "organelle": "https://slides.davidmaccarthy.repl.co/s10/bio/organelle.html",
     "memb": "https://slides.davidmaccarthy.repl.co/s10/bio/memb.html",
     "transport": "https://docs.google.com/presentation/d/1qJYqVyhLdOpIwEF8qv0EsbnYO6dRbofZvqICN0g568g/",
+    "cellspec": "https://docs.google.com/presentation/d/11zl5GF0VgrNojVPIWGbLGaerb42djfIATyvtBpJHvZI/",
+    "gas":   "https://docs.google.com/presentation/d/1A1nqaSPSjbQia9YlNB74RixvCHGjlDiR63lBZTI7QiE/",
+    "water": "https://docs.google.com/presentation/d/1T9swb7XJxenjxa-MA_6nOoZTwtLmYIalZnjREZ3_4Ss/",
+    "tropism": "https://docs.google.com/presentation/d/1NxKWWQRXaY2yZxrAL3EYZUzBpLXKTDoEeGHjIxlN32g/",
+    "stem": "https://www.youtube.com/watch?v=xPlorOSEZMA",
 };
+
+urls.photosyn = urls.cellspec;
 
 let id = location.search.slice(1);
 let url = urls[id];
-location.href = url ? url : "home.html";
+// if (url) 
+    location.href = url ? url : "home.html";
 
 </script>
 </head>
-<body></body>
+<body>
+    <ul>
+        <li><a href="https://sci.davidmaccarthy.repl.co/s10">Science 10</a></li>
+        <li><a href="https://sci.davidmaccarthy.repl.co/p20">Physics 20</a></li>
+    </ul>
+</body>
 </html>

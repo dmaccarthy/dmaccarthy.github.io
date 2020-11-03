@@ -1,0 +1,114 @@
+<article id="Helio" class="Center">
+<!-- Animation of heliocentric model / retrograde motion of Mars -->
+
+<style type="text/css">
+
+#Helio canvas {
+    background-color:black;
+    max-width:98%;
+    height:auto;
+}
+
+#Helio input {vertical-align:middle}
+
+</style>
+<p><canvas width="600" height="600"></canvas></p>
+<p>
+    <input data-id="Speed" type="range" min="0" max="100"/> &nbsp;
+    <span class="NoBreak"><input data-id="Arrow" type="checkbox"/> Earth → Mars</span> &nbsp;
+    <span class="NoBreak"><input data-id="South" type="checkbox"/> South View</span>
+</p>
+<script type="text/javascript">
+
+Helio = {status:0, delta:0.005, t:0, ready: function() {
+// Call Helio.init when plot.js is loaded
+    if (window.Plot) Helio.init();
+    else setTimeout(Helio.ready, 400);
+}};
+
+Helio.Planet = function(color, r, orbit) {
+// Constructor for a Planet instance
+    this.style = {fill:color};
+    this.r = r;
+    this.orbit = orbit;
+    this.angle = 2 * Math.PI * Math.random();
+    this.change = 2 * Math.PI * Helio.delta / Math.pow(orbit, 1.5);
+}
+
+Helio.Planet.prototype.draw = function(plot, noChange) {
+// Draw the planet and return its position
+    let a = this.angle * (Helio.south ? -1 : 1);
+    let pos = [this.orbit * Math.cos(a), this.orbit * Math.sin(a)];
+    if (!noChange) this.angle += Helio.speed * this.change;
+    plot.circle(pos, this.r, this.style);
+    return pos;
+}
+
+Helio.init = function() {
+// Initialize the applet
+    Helio.plot = new Plot($("#Helio canvas")[0], [-1.6, 1.6, -1.6, 1.6]);
+    Helio.planets = [
+        new Helio.Planet("#8080ff", 0.04, 1),
+        new Helio.Planet("#ff8080", 0.025, 1.5373),
+        new Helio.Planet("grey", 0.015, 0.3871),
+        new Helio.Planet("#ffffe0", 0.035, 0.7233)
+    ];
+    Helio.planets[0].angle = 0;
+    Helio.draw(1);
+}
+
+Helio.draw = function(status) {
+    if (status != null) Helio.status = status;
+
+// Get drawing parameters
+    let plot = Helio.plot;
+    Helio.speed = Math.pow(parseFloat($("#Helio [data-id=Speed]").val()) / 100, 2);
+    Helio.south = $("#Helio [data-id=South]")[0].checked;
+    let arrow = $("#Helio [data-id=Arrow]")[0].checked;
+
+// Draw the Sun
+    plot.clear();
+    plot.circle([0, 0], 0.07, {fill:"yellow"});
+
+// Draw the planets
+    let p = Helio.planets, pos = [];
+    for (let i=0;i<p.length;i++)
+        pos.push(p[i].draw(plot, i == 1 && arrow));
+
+// Draw time
+    let t =(Math.floor(Math.abs(100 * Helio.t)) / 100).toFixed(2);
+    plot.text(t + " yr", [1.56, 1.56], "32px monospace", "white", 2);
+
+// Draw arrow
+    if (arrow) {
+        let x = pos[0][0], y = pos[0][1];
+        let dx = pos[1][0] - x;
+        let dy = pos[1][1] - y;
+        let r = Math.sqrt(dx*dx + dy*dy);
+        dx /= r; dy /= r;
+        let a = 0.06, b = 4;
+        let pts = [[x + a * dx, y + a * dy], [x + b * dx, y + b * dy]];
+        // plot.arrow([x + dx, y + dy], [x + b * dx, y + b * dy], {fill:"red"});
+        plot.connect(pts, null, "white", 2);
+        p[1].draw(plot);
+    }
+
+// Next frame
+    Helio.t += Helio.speed * Helio.delta;
+    if (Helio.status == 1) setTimeout(Helio.draw, 20);
+}
+
+Helio.show = function() {
+    if (Helio.status == -1) Helio.draw(1);
+}
+
+Helio.hide = function() {
+    Helio.status = -1;
+}
+
+articleScript.map.Helio = Helio;
+
+Helio.ready();
+
+</script>
+</article>

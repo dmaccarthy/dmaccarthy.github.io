@@ -1,0 +1,68 @@
+<article id="_BarChart" class="Center">
+<!-- Template for animated and static bar charts -->
+
+<p><canvas class="Applet" width="600" height="600"></canvas></p>
+<script type="text/javascript">
+
+_BarChart = {status:0, plot: new Plot(
+    $("#_BarChart canvas")[0],   // Canvas element
+    [-0.5, 2.5, 0, 85],          // Coordinate system
+    [80, 0, 60, 0]               // Margins
+)}
+
+_BarChart.plot.loadImages({      // Preload required images
+    "vid": "../media/video.png",
+    "mail": "../media/mail.png",
+});
+
+_BarChart.imgAttr = {width:32, height:32};
+_BarChart.data = [51, 7, 70];
+
+_BarChart.draw = function() {
+    let plot = _BarChart.plot;
+    let imgs = plot.images;
+    plot.clear().barchart(
+        _BarChart.data,                  // Data
+        [imgs.vid, "E_k", imgs.mail],    // Labels (x)
+        ["green", "blue", "red"],        // Bar colors
+        {grid:[0, 81, 10],               // Other options
+            labelPos:[-0.54, -2],
+            label: function(y) {return `${y}`}
+        }
+    );
+    _BarChart.data[0] *= 0.999;
+    if (_BarChart.status == 1)           // Animation playing?
+        setTimeout(_BarChart.draw, 25);
+}
+
+/* Uncomment for animation...
+
+_BarChart.show = function() {
+// Resume animation
+    if (_BarChart.status == -1) {
+        _BarChart.status = 1;
+        _BarChart.draw();
+    }
+}
+
+_BarChart.hide = function() {
+// Pause animation
+    _BarChart.status = -1;
+}
+
+// Add applet to script map
+articleScript.map._BarChart = _BarChart;
+
+*/
+
+// Draw first frame after images are loaded and sized
+_BarChart.plot.waitForImages(function(plot) {
+    let imgs = plot.images;
+    for (let k in imgs)
+        $(imgs[k]).attr(_BarChart.imgAttr);
+    _BarChart.status = -1;    // +1 for animation
+    _BarChart.draw();
+});
+
+</script>
+</article>

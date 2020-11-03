@@ -1,0 +1,110 @@
+body {
+    font-family: Oxygen, sans-serif;
+    margin:0.4em;
+}
+
+body.Print .NoPrint, #Swipe {display:none}
+
+html:not(.Mouse) * {cursor:none}
+html.Mouse #MouseImage {display:none}
+
+#BaseDiv {
+	width:100vw;
+	height:100vh;
+	z-index:-999;
+	position:fixed;
+	top:0; left:0;
+}
+
+#MaterialIcons {
+    margin-top:2em;
+    margin-bottom:2em;
+}
+
+#MaterialIcons em {
+    color:blue;
+    font-size:2em;
+}
+
+html.Mouse #MaterialIcons em {
+    cursor:pointer;
+}
+
+body:not(.Print) #Title, body:not(.Print) .Top20 {margin-top:20vh}
+
+input {
+    font-size:1em;
+}
+
+h1, p, li {
+    margin:0.5em 0;
+}
+
+ul, ol {
+    margin:0.5em 1em;
+    padding:0 0.5em;
+}
+
+ul > div.MathJax_Display, ol > div.MathJax_Display {
+    padding-left:-0.5em;
+}
+
+h1, .Blue {color:blue}
+body:not(.Print) h1, .Center, .Display {text-align:center}
+.Left {text-align:left}
+body:not(.Print) img.Right, a.Right {float:right}
+.Right:not(img) {text-align:right}
+
+body.Print img.Right {
+    display: block;
+    margin:auto;
+}
+
+body:not(.Print) img.LeftHalf {
+    float:left;
+    max-width:50%;
+}
+
+body.Print img.LeftHalf {
+    display:block;
+    margin:auto;
+}
+
+.Display {
+    margin-top:0.75em;
+    margin-bottom:0.75em;
+}
+
+a, .Link {
+    color:blue;
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+.Defn, .Red {color:red}
+.Wide {max-width:calc(100% - 8px)}
+
+.Dragable {
+    position:relative;
+    user-select:none;
+    left:0;
+    right:0;
+	cursor:move;
+}
+
+table {
+    border-collapse:collapse;
+    margin:auto;
+}
+
+td, th {
+    padding:0.2em;
+    border:1px solid black;
+}
+
+.NoBorder {border:none}
+
+code {
+    font-family:Consolas, "Source Code Pro", "Lucida Console", monospace;
+    font-weight:bold;
+}

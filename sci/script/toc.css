@@ -1,0 +1,121 @@
+:root {
+    --blue:blue;
+    --grey:#f5f5ff;
+    /* --angle:90deg; */
+}
+
+#IconToC {
+    position:fixed;
+    top:4px; right:4px;
+    z-index:999;
+    height:2.5em;
+    width:auto;
+    cursor:pointer;
+}
+
+body {
+	font-family:Oxygen, sans-serif;
+    margin:0;
+}
+
+body:not(.Narrow):not(.HideToC) {
+    margin-right:calc(var(--toc) + 1em);
+}
+
+ul.Tree  {
+    font-family:Oxygen, sans-serif;
+    /* font-weight:300; */
+    background-color:var(--grey);
+	list-style-type:none;
+    padding:0.5em;
+    margin:0;
+    overflow:auto;
+}
+
+ul.Tree li {white-space:nowrap}
+body.Narrow > ul.Tree  {width:calc(100% - 1em)}
+
+body:not(.Narrow) > ul.Tree  {
+    width:var(--toc);
+    height:100vh;
+    position:fixed;
+    top:0;
+    right:0;
+}
+
+body.Narrow *.Narrow0, body:not(.Narrow) *.Narrow1 {display:none}
+
+ul.Tree ul  {
+	list-style-type:none;
+	padding-left:1.5em;
+}
+
+ul.Tree li > span::before {
+	content:"";  /*"➔■❯⯈➤\25B6";*/
+	display:inline-block;
+	margin-right:6px;
+}
+
+ul.Tree li:not(.Expand) > span::before {
+	color:transparent;
+}
+
+ul.Tree li.Expand.Collapsed ul {
+	display:none;
+}
+
+/* ul.Tree li.Expand:not(.Collapsed) > span::before {
+	-ms-transform: rotate(var(--angle));
+	-webkit-transform: rotate(var(--angle));
+	transform: rotate(var(--angle));  
+} */
+
+span.Action {cursor:pointer}
+span.Action:hover {text-decoration:underline}
+.Hidden {display:none}
+.Center, .FinePrint, #Title, #Toolbar {text-align:center}
+#Toolbar {margin-bottom:0em}
+.FinePrint {font-size:85%; margin-top:2em}
+li.Current > span.Action {font-weight:bold}
+li.Current span.Action {color:var(--blue)}
+.NoBreak {display:inline-block}
+
+nav button.Icon {
+    width:6.5em;
+    margin:0 0.5em;
+    padding:0.5em 2px;
+    color:var(--blue);
+    font-size:70%;
+    background:none;
+    border-radius:4px;
+    vertical-align:top;
+    border:1px solid #ffffff00;
+    box-shadow:none;
+}
+
+nav button.Icon:hover {
+    border:1px solid blue;
+    cursor:pointer;
+}
+
+nav button.Icon > img {
+    width:3em;
+    height:3em;
+    padding-bottom:0.2em;
+}
+
+article {
+    max-width:960px;
+    width:calc(100% - 2em);
+    margin:0em auto;
+    padding:0.5em;
+}
+
+.HD, .Wide, canvas.Applet {max-width:calc(100% - 1em)}
+.Red {color:red}
+.Blue {color:var(--blue)}
+
+canvas.Applet {
+    height:auto;
+    border:1px solid transparent;
+}
