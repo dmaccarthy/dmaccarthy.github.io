@@ -13,13 +13,22 @@ $(function() {
 
 function toggleToC(ev) {
     if (ev.ctrlKey) {
-        let node = $("li.Current")[0].node;
-        let url = location.href.split("?")[0];
-        if (node != home) {
-            let id = node.id;
-            url += "?page=" + encodeURIComponent(id ? id : node.title);
+        if (ev.shiftKey) {
+            $("body").addClass("Slideshow HideToC");
+            zoomImages();
+            slideshow(0);
+            mousePointer();
+            return false;
         }
-        window.open(url);        
+        else {
+            let node = $("li.Current")[0].node;
+            let url = location.href.split("?")[0];
+            if (node != home) {
+                let id = node.id;
+                url += "?page=" + encodeURIComponent(id ? id : node.title);
+            }
+            window.open(url);
+        }
     }
     else {
         let u = $("ul.Tree");
@@ -100,6 +109,7 @@ function action(node) {
     if (node.video) showVideo(node.video);
     if (node.ajax) ajaxArticle(node.ajax);
     if (node.gdrv) window.open("https://drive.google.com/file/d/" + node.gdrv);
+    else if (node.gdrv == "") alert("Requested document is currently unavailable!");
     if (node.url) window.open(node.url);
     if (node.mail) window.open(node.mail);
     if (node.js) eval(node.js);
@@ -126,7 +136,7 @@ function iconImg(node) {
         src = "link";
         let imgs = ["video", "mail", "url", "gdrv"];
         for (let i=0;i<imgs.length;i++)
-            if (node[imgs[i]]) src = imgs[i];
+            if (node[imgs[i]] != null) src = imgs[i];
     }
     let u = iconImg.urls[src];
     if (u) src = u;
@@ -149,7 +159,7 @@ function showVideo(vid) {
         width:720, frameborder:0, allowfullscreen: 1,
         allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
     }).attr({src:src}).addClass("HD");
-    showArticle("#Main").html($("<p>").addClass("Center").html(vid));
+    showArticle("#VideoContainer").html($("<p>").addClass("Center").html(vid));
 }
 
 function narrowScreen() {
@@ -181,6 +191,12 @@ window.addEventListener("keydown", function(ev) {
     if (ev.ctrlKey) {
         if (ev.key == "ArrowRight") action(nextNode());
         else if (ev.key == "ArrowLeft") action(nextNode(-1));
+        else if (ev.key == "x") {
+            zoomImages(1 / zoomImages.default);
+            $("body").removeClass("Slideshow HideToC BigMouse");
+            narrowScreen();
+            $("#MouseImage").remove();
+        }
     }
     // console.log(ev);
 });
@@ -191,3 +207,66 @@ touch.swipe = function(data) {
         else if (data.swipe == "right") action(nextNode(-1));
     }
 }
+
+function scrollBottom() {
+    let e = $("html");
+    e.scrollTop(e[0].scrollHeight);
+}
+
+function slideshow(n) {
+    if (!$("body").hasClass("Slideshow")) return;
+    if (n == null) n = slideshow.n + 1;
+    slideshow.n = n = Math.max(0, n);
+    let e = $("[data-slide]");
+    for (let i=0;i<e.length;i++) {
+        let ei = $(e[i]);
+        let s1, s0 = eval(ei.attr("data-slide"));
+        if (typeof(s0) != "number") {
+            s1 = s0[1];
+            s0 = s0[0];
+        }
+        if (s0 <= n && (s1 == null || n <= s1)) ei.show();
+        else ei.hide();
+    }
+    scrollBottom();
+}
+
+function advance(n) {slideshow(slideshow.n + n)}
+
+window.addEventListener("click", function(ev) {
+    let e = ev.target;
+    // Use $.is?
+    let tags = ["input", "textarea", "iframe", "a"];
+    if (tags.indexOf(e.tagName.toLowerCase()) == -1 && ! $(e).hasClass("NoClick"))
+        advance(ev.shiftKey ? -1 : 1);
+});
+
+function mousePointer(src) {
+	if (!src) src = "../media/mouse.png";
+	let img = $("<img>").attr({src:src, alt:"Mouse", id:"MouseImage"}).appendTo($("body").addClass("BigMouse"));
+	img.attr({style:"position:fixed;top:0;left:0;z-index:999;"});
+	window.addEventListener("mousemove", function(ev) {
+		$("#MouseImage").css({left:(ev.clientX + 2) + "px", top:ev.clientY + "px"});		
+	});
+}
+
+mousePointer.button = function(ev) {
+    let src = ["mouseAlt", "mouse"];
+    if ($("#MouseImage").length) {
+        let i = ["mousedown", "mouseup"].indexOf(ev.type);
+        let m = $("#MouseImage").attr({src:`../media/${src[i]}.png`});
+    }
+}
+
+window.addEventListener("mousedown", mousePointer.button);
+window.addEventListener("mouseup", mousePointer.button);
+
+function zoomImages(z) {
+    let imgs = $(".Zoom");
+    for (let i=0;i<imgs.length;i++) {
+        let img = $(imgs[i]);
+        img.width((z ? z : zoomImages.default) * img.width());
+    }
+}
+
+zoomImages.default = 1.5;

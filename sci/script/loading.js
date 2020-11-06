@@ -7,7 +7,7 @@ Loading.draw = function(s) {
     let plot = Loading.plot;
     let n = Loading.colors.length;
     let a = Loading.angle;
-    plot.clear().text("Loading...", [0, 0], "12px sans-serif", "grey", CENTER);
+    plot.clear().text("Loading...", [0, 0], "18px sans-serif", "grey", CENTER);
     plot.circle([Math.sin(a), Math.cos(a)], 0.25, {fill:Loading.colors[randint(n)]});
     if (Loading.status == 1)
         setTimeout(Loading.draw, Loading.time);

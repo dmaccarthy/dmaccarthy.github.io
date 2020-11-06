@@ -105,11 +105,12 @@ nav button.Icon > img {
 }
 
 article {
-    max-width:960px;
     width:calc(100% - 2em);
     margin:0em auto;
     padding:0.5em;
 }
+
+body:not(.Slideshow) article {max-width:960px}
 
 .HD, .Wide, canvas.Applet {max-width:calc(100% - 1em)}
 .Red {color:red}
@@ -119,3 +120,11 @@ canvas.Applet {
     height:auto;
     border:1px solid transparent;
 }
+
+body.Slideshow {font-size:2.25em}
+body.Slideshow ul.Tree, body.Slideshow #Toolbar, body.Slideshow #IconToC {display:none}
+body.Slideshow article p:first-child {margin-top:0}
+/* body.Slideshow img:not(#MouseImage) {transform:scale(1.5)} */
+body.Slideshow .NoSlide {display:none}
+#MouseImage {width:2.25em}
+body.BigMouse, body.BigMouse * {cursor:none}

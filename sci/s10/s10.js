@@ -9,18 +9,27 @@ let s10 = {title:"Science 10", article:"Home", links:[
 ], nodes:[
 	{title:"Unit 1: Chemistry", id:"chem", ajax:"chem/matter.htm#Chem", nodes:[
 		{title:"Matter", ajax:"chem/matter.htm#Matter", links:[
-            {title:"Google Drive", url:"https://drive.google.com", icon:"gdrv"},
-            {title:"Google Drive Link", url:"https://database.davidmaccarthy.repl.co/cloud.html?crs=Science%2010"},
-    		{title:"Assignment Booklet", gdrv:"1lTmBaRuHLrszMlnP76dc-b6xTKs_b7NQ"},
-            {title:"WHMIS 2015", icon:"https://www.ccohs.ca/assets/favicon.ico", url:"https://www.ccohs.ca/oshanswers/chemicals/whmis_ghs/pictograms.html#wb-auto-5"},
-            {title:"WHMIS 1988", icon:"https://www.ccohs.ca/assets/favicon.ico", url:"https://www.ccohs.ca/oshanswers/legisl/msds_lab.html#wb-auto-15"},
+    		{title:"Assignment Booklet", gdrv:"1VpaQvs63Zo9fR_LkpNCsnUdYQDBNmyIH"},
         ], nodes:[
+            {title:"Lab Safety", links:[
+                {title:"Google Drive", url:"https://drive.google.com", icon:"gdrv"},
+                {title:"Google Drive Link", url:"https://database.davidmaccarthy.repl.co/cloud.html?crs=Science%2010"},
+                {title:"WHMIS 2015", icon:"https://www.ccohs.ca/assets/favicon.ico", url:"https://www.ccohs.ca/oshanswers/chemicals/whmis_ghs/pictograms.html#wb-auto-5"},
+                {title:"WHMIS 1988", icon:"https://www.ccohs.ca/assets/favicon.ico", url:"https://www.ccohs.ca/oshanswers/legisl/msds_lab.html#wb-auto-15"},
+                {title:"Lesson Notes", icon:"lesson", url:"https://slides.davidmaccarthy.repl.co/s10/chem/safety.html"},
+            ]},
+            {title:"Classifying Matter", links:[
+                {title:"Lesson Notes", icon:"lesson", url:"https://slides.davidmaccarthy.repl.co/s10/chem/matter.html"},                
+            ]},
         ]},
 		// {title:"Compounds", ajax:"chem/compound.htm#Comp", nodes:[]},
 		// {title:"Chemical Reactions", ajax:"chem/rxn.htm#Rxn", nodes:[]},
 	]},
 	{title:"Unit 2: Physics", id:"phys", ajax:"phys/motion.htm#Phys", nodes:[
-		{title:"Motion", ajax:"phys/motion.htm#Motion", nodes:[
+		{title:"Motion", ajax:"phys/motion.htm#Motion", links:[
+    		{title:"Assignment Booklet", gdrv:""},
+    		{title:"Lab Booklet", gdrv:""},   
+        ], nodes:[
         ]},
 		// {title:"Energy", ajax:"phys/energy.htm#Energy", nodes:[
         //     {title:"Mechanical Energy", nodes:[]},
