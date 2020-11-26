@@ -1,10 +1,7 @@
-const PI = Math.PI, DEG = PI/180, RAD = 180/PI, TWO_PI = 2*PI;
-
-Array.prototype.extend = function(a) {this.push.apply(this, a)}
+var PI = Math.PI, DEG = PI/180, RAD = 180/PI, TWO_PI = 2*PI;
 
 function Plot(cv, coordSys, margin) {
 // Create a Plot instance associated with a canvas element...
-	if (typeof(cv) == "string") cv = $(cv)[0];
 
 // Margin around plot area...
 	if (margin == null) margin = 0;
@@ -44,13 +41,12 @@ function Plot(cv, coordSys, margin) {
 	this.cv = cv;
 	this.size = [w, h];
 	this.coeff = [xscale, margin[0] - xscale * xmin, yscale, margin[3] - yscale * ymax];
-    this.ratio = this.coeff[0] / this.coeff[2];
 	this.ccw = this.coeff[0] * this.coeff[2] < 0;
 	this.limit = [xmin, xmax, ymin, ymax];
 	var clip = false;
 	for (var i=0;i<4;i++) if (margin[i]) clip = true;
 	this.clip = clip ? [margin[0], margin[3], w - (margin[0] + margin[1]), h - (margin[2] + margin[3])] : false;
-	this.resetTime();
+	// this.resetTime();
 }
 
 // Coordinates of canvas edges...
@@ -59,11 +55,6 @@ Plot.prototype.right = function() {return this.limit[1]}
 Plot.prototype.bottom = function() {return this.limit[2]}
 Plot.prototype.top = function() {return this.limit[3]}
 
-Plot.prototype.center = function() {
-	return [(this.limit[0] + this.limit[1]) / 2,
-		(this.limit[2] + this.limit[3]) / 2]
-}
-
 Plot.prototype.corner = function(n) {
 	var x = n == 1 || n == 4 ? 0 : 1;
 	var y = n < 2 ? 3 : 2;
@@ -71,8 +62,8 @@ Plot.prototype.corner = function(n) {
 }
 
 // Timer methods...
-Plot.prototype.resetTime = function() {this._time = (new Date()).getTime()}
-Plot.prototype.time = function() {return (new Date() - this._time) / 1000}
+// Plot.prototype.resetTime = function() {this._time = (new Date()).getTime()}
+// Plot.prototype.time = function() {return (new Date() - this._time) / 1000}
 
 Plot.prototype.native = function() {
 // Return a Plot instance using native (pixel) coordinates...
@@ -96,19 +87,6 @@ Plot.prototype.coords = function(xy, invert) {
 	var b = a[1], c = a[2], d = a[3];
 	a = a[0];
 	return invert ? [(xy[0] - b) / a, (xy[1] - d) / c] : [a * xy[0] + b, c * xy[1] + d];
-}
-
-Plot.prototype.manyCoords = function(xy, invert) {
-// Convert between Plot and canvas coordinates for several points...
-	var a = this.coeff;
-	var b = a[1], c = a[2], d = a[3];
-	a = a[0];
-    let pts = [];
-    for (let i=0;i<xy.length;i++) {
-        let pt = xy[i];
-        pts.push(invert ? [(pt[0] - b) / a, (pt[1] - d) / c] : [a * pt[0] + b, c * pt[1] + d]);
-    }
-	return pts;
 }
 
 Plot.prototype.cxBegin = function(alpha, clip) {
@@ -163,20 +141,14 @@ Plot.prototype.connect = function(pts, fill, stroke, lineWidth, closed, alpha, c
 	cx.restore();
 }
 
-Plot.font = "24px monospace";
-
-function _ticks(x0, x1, dx, omitOrigin) {
+function _ticks(x0, x1, dx) {
 // Return a list of evenly spaced tick/grid line values...
 	if (!dx || dx == true && typeof(dx) == "boolean") return [];
 	else {
 		var n0 = Math.floor(x0/ dx);
 		var n1 = Math.ceil(x1/ dx);
 		var x = [];
-		while (n0 <= n1) {
-            let xi = dx * n0;
-            if (xi >= x0 && xi <= x1 && (!omitOrigin || n0)) x.push(xi);
-            n0++;
-        }
+		while (n0 <= n1) x.push(dx * (n0++));
 		return x;
 	}
 }
@@ -226,25 +198,18 @@ Plot.prototype.grid = function(args) {
 		this._gridSegments(xs, offset * px[0], above * px[0], false, color, width);
 		this._gridSegments(ys, offset * px[1], above * px[1], true, color, width);
 	}
-	if (args.xLabel) this._label(args.xLabel, xs, px[1]);
-	if (args.yLabel) this._label(args.yLabel, ys, px[0], true);
+	var i, s, f;
+	if (args.xLabel) {
+		s = args.xLabel;
+		f = s.length < 5 ? Plot.fixed : s[4];
+		for (i=0;i<xs.length;i++) this.text(f(xs[i], s[3]), [xs[i], s[2][1] * px[1]], s[1], s[0], s[2][0]);
+	}
+	if (args.yLabel) {
+		s = args.yLabel;
+		f = s.length < 5 ? Plot.fixed : s[4];
+		for (i=0;i<ys.length;i++) this.text(f(ys[i], s[3]), [s[2][1] * px[0], ys[i]], s[1], s[0], s[2][0]);
+	}
 	if (args.alpha) cx.restore();
-}
-
-Plot.prototype._label = function(s, xs, px, yaxis) {
-    let omit0 = s.omit0;
-    let font = s.font ? s.font : Plot.font;
-    let fill = s.fill ? s.fill : "black";
-    let anchor = s.anchor == null ? CENTER : s.anchor;
-    let offset = s.offset ? s.offset : 0;
-    if (s.format == null) s.format = 1;
-    if (typeof(s.format) == "number") f = function(x) {return x.toFixed(s.format)};
-    else f = s.format;
-    for (let i=0;i<xs.length;i++) {
-        let x = xs[i], y = px * offset;
-        if (x || !omit0)
-            this.text(f(xs[i]), yaxis ? [y,x] : [x,y], font, fill, anchor);
-    }
 }
 
 function _gridRound(x) {
@@ -279,14 +244,24 @@ Plot.optimalLabel = function(x, n) {
 
 Plot.prototype.plot = function(pts, args) {
 // Plot a sequence of points with lines and/or markers...
-    let stroke = args.stroke ? args.stroke : "black";
-    if (args.lineWidth) this.connect(pts, null, stroke, args.lineWidth, false);
-    if (args.fill) {
-        let style = {stroke:stroke, fill:args.fill, lineWidth:1};
-        let r = args.size;
-        if (!r) r = this.pixels(args.pixels ? args.pixels : 6, true);
-        for (let i=0;i<pts.length;i++) this.circle(pts[i], r, style);
-    }
+	var fill = args.fill, stroke = args.stroke, marker = args.marker;
+	var a = args.alpha;
+	if (fill || stroke) this.connect(pts, fill, stroke, args.lineWidth, args.closed, a);
+	if (marker)
+		for (var i=0;i<pts.length;i++)
+			this.blit(marker, pts[i], {anchor:CENTER, size:args.markerSize, rotate:args.markerRotate, alpha:a, clip:args.clip});
+}
+
+Plot.prototype.locus = function(pCurve, style, args, coeff) {
+// Draw points as defined by a parameterized curve function...
+	if (args == null) args = {}
+	var t0 = args.start == null ? this.left() : args.start;
+	var t1 = args.end == null? this.right() : args.end;
+	var n = args.steps ? args.steps : Math.max(1, Math.round(Math.abs(this.coeff[0] * (t1-t0))));
+	var dt = (t1 - t0) / n;
+	var pts = new Array(n + 1);
+	for (var i=0;i<=n;i++) pts[i] = pCurve(t0 + i *dt, coeff);
+	this.plot(pts, style);
 }
 
 Plot.prototype.blit = function(img, posn, args) {
@@ -323,27 +298,26 @@ Plot.prototype.arrow = function(tail, tip, style, args) {
 // Draw an arrow...
 	if (args == null) args = {}
 	var pts = arrow(this.coords(tail), this.coords(tip), args.tailWidth, args.headLength, args.flatness);
-	this.native().connect(pts, style.fill, style.stroke,
-        style.lineWidth, true, style.alpha, style.clip);
+	this.native().plot(pts, style);
 }
 
-Plot.prototype.fill = function(color, pt, size) {
-// Fill a rectangle with uniform color...
-	var cv = this.cv;
-	var cx = cv.getContext("2d");
+Plot.prototype.clear = function(pt, size) {
+// Clear the canvas or a rectangle...
 	pt = pt ? this.coords(pt) : [0, 0];
-	size = size ? this.pixels(size) : [cv.width, cv.height];
-    if (color) {
-        cx.fillStyle = color;
-        cx.fillRect(pt[0], pt[1], size[0], size[1]);
-    }
-    else cx.clearRect(pt[0], pt[1], size[0], size[1]);
+	size = size ? this.pixels(size) : [this.cv.width, this.cv.height];
+	this.cv.getContext("2d").clearRect(pt[0], pt[1], size[0], size[1]);
     return this;
 }
 
-Plot.prototype.clear = function(pt, size) {return this.fill(null, pt, size)}
+Plot.prototype.fill = function(color) {
+// Fill the entire canvas with uniform color...
+	var cv = this.cv;
+	var cx = cv.getContext("2d");
+	cx.fillStyle = color;
+	cx.fillRect(0, 0, cv.width, cv.height);
+}
 
-Plot.prototype.text = function(text, posn, font, fill, align, alpha, clip, angle) {
+Plot.prototype.text = function(text, posn, font, fill, align, alpha, clip) {
 // Draw some text...
 	var cx = this.cxBegin(alpha, clip);
 	cx.font = font;
@@ -352,13 +326,8 @@ Plot.prototype.text = function(text, posn, font, fill, align, alpha, clip, angle
 		cx.textAlign = ["left", "center", "right"][align & 3];
 		cx.textBaseline = ["top", "middle", "alphanumeric"][(align & 12) / 4];
 	}
-    angle = DEG * (angle ? angle : 0);
 	posn = this.coords(posn);
-    cx.translate(posn[0], posn[1]);
-    cx.rotate(-angle);
-	cx.fillText(text, 0, 0);
-    cx.rotate(angle);
-    cx.translate(-posn[0], -posn[1]);
+	cx.fillText(text, posn[0], posn[1]);
 	cx.restore();
 }
 
@@ -373,11 +342,45 @@ Plot.prototype.eventCoords = function(ev, pixels) {
 	return pixels ? [x, y] : this.coords([x, y], true);
 }
 
-var TOPLEFT = 0, TOP = 1, TOPRIGHT = 2, LEFT = 4, CENTER = 5,
-	RIGHT = 6, BOTTOMLEFT = 8, BOTTOM = 9, BOTTOMRIGHT = 10;
+Plot.image = function (draw, size, coordSys, margin) {
+// Draw a graphic as an Image instance...
+	var cv = document.createElement("canvas");
+	cv.width = size[0];
+	cv.height = size[1];
+	draw(new Plot(cv, coordSys, margin));
+	img = new Image(cv.width, cv.height);
+	img.src = cv.toDataURL("image/png");
+	return img;
+}
+
+Plot.renderText = function (text, font, fill, alpha) {
+// Render text as an Image...
+	var cv = document.createElement("canvas");
+	var cx = cv.getContext("2d");
+	cx.font = font;
+	var m = cx.measureText(text);
+	text += "  jM";
+	var h = _textHeight(text, font);
+	return Plot.image(function(p) {
+		p.native().text(text, [0,0], font, fill, NW, alpha);
+	}, [parseInt(m.width) + 1, h]);
+}
+
+function _textHeight(text, font) {
+// Determine height of text...
+	var d = document.createElement("span");
+	d.setAttribute("style", "font:"+font);
+	d.textContent = text;
+	document.body.appendChild(d);
+	var h = d.offsetHeight;
+	document.body.removeChild(d);
+	return h;
+}
+
+var NW = 0, NORTH = 1, NE = 2, WEST = 4, CENTER = 5, EAST = 6, SW = 8, SOUTH = 9, SE = 10;
 
 function _anchor(pt, size, anchor) {
-// Calculate absolute (TOPLEFT) coordinates from anchored coordinates...
+// Calculate absolute (NW) coordinates from anchored coordinates...
 	var dx = anchor & 3, dy = anchor & 12;
 	pt = [pt[0] - dx * size[0] / 2, pt[1] - dy * size[1] / 8];
 	return pt;
@@ -400,7 +403,7 @@ function arrow(tail, tip, tailWidth, headLength, flatness) {
 function _arrow(length, tailWidth, headLength, flatness) {
 // Calculate a set of points outlining an arrow shape from (0,0) to (length, 0)...
 	if (tailWidth == null) tailWidth = length / 10;
-	if (headLength == null) headLength = 2.0 * tailWidth;
+	if (headLength == null) headLength = 1.5 * tailWidth;
 	if (flatness == null) flatness = 1;
 	var x = length - headLength;
 	var y0 = tailWidth / 2;
@@ -441,7 +444,6 @@ function _fillStroke(cx, f, s, w) {
 	}
 }
 
-/*
 Plot.prototype.barchart = function(data, labels, colors, opt) {
     let a = {width:0.5, font:"24px monospace", labelPos:[0,0],
         grid:[0, 10.5, 1], label:function(y) {return y.toFixed(1)}};
@@ -451,7 +453,7 @@ Plot.prototype.barchart = function(data, labels, colors, opt) {
     let x0 = a.labelPos[0];
     for (let y=a.grid[0];y<a.grid[1];y+=a.grid[2]) {
         this.connect([[this.left(), y], [this.right(), y]], null, "grey", 1);
-        this.text(a.label(y), [x0, y], a.font, "black", RIGHT);
+        this.text(a.label(y), [x0, y], a.font, "black", EAST);
     }
 
 // Draw bars and labels
@@ -463,19 +465,37 @@ Plot.prototype.barchart = function(data, labels, colors, opt) {
         this.connect([[x1, 0], [x1, y], [x2, y], [x2, 0]], c, a.stroke, a.lineWidth, true);
         let lbl = labels[x];
         if (typeof(lbl) == "string")
-            this.text(lbl, [x, y0], a.font, c, TOP);
+            this.text(lbl, [x, y0], a.font, c, NORTH);
         else
-            this.blit(lbl, [x, y0], {anchor:TOP});
+            this.blit(lbl, [x, y0], {anchor:NORTH});
     }
 
 // Draw axis
     this.connect([[this.left(), 0], [this.right(), 0]], null, "black", 2);
 }
-*/
 
-Plot.loadImages = function(imgs) {
-    Object.assign(Plot.images, imgs);
-    imgs = Plot.images;
+// Plot.loadImages = function(imgs, cb) {
+//     let requests = [], n = imgs.length;
+//     for (let i=0;i<n;i++) {
+//         let img = new Image();
+//         img.onload = function() {
+//             requests.push(this);
+//         }
+//         img.src = imgs[i];
+//     }
+//     Plot._wait(requests, n, cb);
+// }
+
+// Plot._wait = function(r, n, cb) {
+//     if (r.length == n) cb(r);
+//     else setTimeout(function() {Plot._wait(r, n, cb)}, 200);
+// }
+
+/* ImagePreload and Marker deleted */
+
+Plot.prototype.loadImages = function(imgs) {
+    Object.assign(this.images, imgs);
+    imgs = this.images;
     for (let k in imgs) {
         let img = imgs[k];
         if (typeof(img) == "string") {
@@ -485,10 +505,9 @@ Plot.loadImages = function(imgs) {
     }
 }
 
-Plot.images = {};
-
-Plot.waitForImages = function(cb) {
-    imgs = Plot.images;
+Plot.prototype.waitForImages = function(cb) {
+    let p = this;
+    imgs = this.images;
     let complete = true;
     for (let k in imgs) {
         if (!imgs[k].complete) {
@@ -497,7 +516,7 @@ Plot.waitForImages = function(cb) {
         }
     }
     if (!complete) setTimeout(function() {
-        Plot.waitForImages(cb);
+        p.waitForImages(cb);
     }, 100);
-    else if (cb) cb();
+    else if (cb) cb(this);
 }

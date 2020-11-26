@@ -1,27 +1,28 @@
-<article id="_BarChart" class="Center">
-<!-- Template for animated and static bar charts -->
+function BarChart(sel, lrbt, marg, imgs) {
+    let p = this.plot = new Plot($(sel)[0], lrbt, marg);
+    p.loadImages(imgs ? imgs : BarChart.energy);
+}
 
-<p><canvas class="Applet" width="600" height="600"></canvas></p><!-- style="border:1px solid blue" -->
-<!--table class="w6">
-    <tr><td>Coordinates</td><td id="Coord" contenteditable="true">-0.5, 2.5, 0, 85</td></tr>
-    <tr><td>Margin</td><td id="Margin" contenteditable="true">48, 4, 60, 4</td></tr>
-    <tr><td>Labels</td><td id="Label" contenteditable="true">Ek, Eg</td></tr>
-    <tr><td>Colours</td><td id="Color" contenteditable="true">blue</td></tr>
-    <tr><td>Data</td><td id="Data" contenteditable="true">50, 30</td></tr>
-<table-->
-<script type="text/javascript">
+BarChart.energy = {
+    "W": "../media/latex/red/Eplus.png",
+    "Ek": "../media/latex/blue/Ek.png",
+    "Eg": "../media/latex/blue/Eg.png",
+}
+
+BarChart.prototype.draw = function(data, labels, colors, opt) {
+    let p = this.plot;
+    p.clear().barchart(data, labels, colors, opt);
+    this.ondraw();
+}
+
+BarChart.prototype.ondraw = function() {}
+
 
 _BarChart = {status:0, plot: new Plot(
     $("#_BarChart canvas")[0],   // Canvas element
     [-0.5, 2.5, 0, 85],          // Coordinate system
     [48, 4, 60, 4]               // Margins
 )}
-
-_BarChart.plot.loadImages({      // Preload required images
-    "W": "../media/latex/red/Eplus.png",
-    "Ek": "../media/latex/blue/Ek.png",
-    "Eg": "../media/latex/blue/Eg.png",
-});
 
 _BarChart.imgAttr = {
     "_all_": {},
@@ -79,6 +80,3 @@ _BarChart.plot.waitForImages(function(plot) {
     _BarChart.status = -1;    // +1 for animation
     _BarChart.draw();
 });
-
-</script>
-</article>

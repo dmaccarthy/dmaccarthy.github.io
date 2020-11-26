@@ -1,58 +1,94 @@
-let s10 = {title:"Science 10", article:"Home", links:[
-    {title:"Calendar", url:"https://calendar.google.com/calendar/embed?src=eips.ca_classroom24128d37%40group.calendar.google.com&ctz=America%2FEdmonton", icon:"cal"},
+let s10 = {title:"Science 10", id:"s10", article:"Home", links:[
+    // {title:"Calendar", url:"https://calendar.google.com/calendar/embed?src=eips.ca_classroom24128d37%40group.calendar.google.com&ctz=America%2FEdmonton", icon:"cal"},
+    {title:"Brightspace / Calendar", articlx:"BS", url:"https://eips.brightspace.com/d2l/home/26288", icon:"bs"},
+    {title:"Google Meet", icon:"https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-512dp/logo_meet_2020q4_color_1x_web_512dp.png", url:"https://meet.google.com/hpu-wwks-xfr"},
     {title:"Data Booklet", gdrv:"1i3wbmTM3sWiUoSb3q4y1B44EXwhP79M6"},
-    {title:"Brightspace", articlx:"BS", url:"https://eips.brightspace.com/d2l/home/26288", icon:"bs"},
     {title:"PowerSchool", url:"https://powerschool.eips.ca/public/home.html", icon:"https://powerschool.eips.ca/favicon.ico"},
     {title:"Sal Comp", url:"https://salcomp.ca", icon:"https://www.salcomp.ca/uploads/263/Salisbury%20S_red-grey/1452114178-250w_Salisbury%20S_red-grey.jpg"},
     {title:"Course Outline", url:"https://scienceoutlines.davidmaccarthy.repl.co/?s10", icon:"flask"},
     {title:"Program of Studies", url:"https://education.alberta.ca/science-10-12/programs-of-study/?searchMode=3", icon:"https://www.alberta.ca/build/20201029/favicons/favicon-192.png"},
 ], nodes:[
-	{title:"Unit 1: Chemistry", id:"chem", ajax:"chem/matter.htm#Chem", nodes:[
+	{title:"Unit A: Chemistry", id:"chem", ajax:"chem/matter.htm#Chem", links:[
+    	{title:"Lab Booklet", gdrv:"1z0Q_C5StUJFBZfuLjdmhQINjH6fQgI1x"},      
+    ], nodes:[
 		{title:"Matter", ajax:"chem/matter.htm#Matter", links:[
     		{title:"Assignment Booklet", gdrv:"1VpaQvs63Zo9fR_LkpNCsnUdYQDBNmyIH"},
         ], nodes:[
-            {title:"Lab Safety", links:[
-                {title:"Google Drive", url:"https://drive.google.com", icon:"gdrv"},
-                {title:"Google Drive Link", url:"https://database.davidmaccarthy.repl.co/cloud.html?crs=Science%2010"},
+            {title:"Lab Safety", video:"MEIXRLcC6RA", links:[
+                // {title:"Google Drive", url:"https://drive.google.com", icon:"gdrv"},
+                // {title:"Google Drive Link", url:"https://database.davidmaccarthy.repl.co/cloud.html?crs=Science%2010"},
                 {title:"WHMIS 2015", icon:"https://www.ccohs.ca/assets/favicon.ico", url:"https://www.ccohs.ca/oshanswers/chemicals/whmis_ghs/pictograms.html#wb-auto-5"},
                 {title:"WHMIS 1988", icon:"https://www.ccohs.ca/assets/favicon.ico", url:"https://www.ccohs.ca/oshanswers/legisl/msds_lab.html#wb-auto-15"},
                 {title:"Lesson Notes", icon:"lesson", url:"https://slides.davidmaccarthy.repl.co/s10/chem/safety.html"},
             ]},
-            {title:"Classifying Matter", links:[
-                {title:"Lesson Notes", icon:"lesson", url:"https://slides.davidmaccarthy.repl.co/s10/chem/matter.html"},                
+            {title:"Classifying Matter", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/chem/matter.html"},
+            {title:"Atomic Theory", links:[
+                {title:"Bill Nye", video:"ogPNZ_MXksM"},
+                {title:"Early Atomic Theory", video:"UDIprICe9kg"},
+                {title:"Lesson Notes", icon:"lesson", url:"https://slides.davidmaccarthy.repl.co/s10/chem/atomic.html"},
             ]},
+            {title:"Isotopes & Ions", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/chem/isotope.html"},
+            {title:"Bohr Model (Energy Levels)", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/chem/bohr.html"},
+            {title:"Periodic Table & Dot Diagrams", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/chem/dot.html"},
         ]},
-		// {title:"Compounds", ajax:"chem/compound.htm#Comp", nodes:[]},
-		// {title:"Chemical Reactions", ajax:"chem/rxn.htm#Rxn", nodes:[]},
+		// {title:"Compounds", ajax:"chem/molec.htm#Comp", links:[
+    	// 	{title:"Assignment Booklet", gdrv:"1hQ0ogBPmS1Q0XQvbN1QvK75dXOzsvLUe"},
+        // ], nodes:[
+        //     {title:"Molecular Compounds", id:"molec", ajax:"chem/molec.htm#Molec"},
+        //     {title:"Binary Ionic Compounds", id:"ionic", ajax:"chem/ionic.htm#Ionic"},
+        //     {title:"", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/chem/.html"},
+        //     {title:"", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/chem/.html"},
+        // ]},
+		// {title:"Chemical Reactions", ajax:"chem/rxn.htm#Rxn", nodes:[
+
+        // ]},
 	]},
-	{title:"Unit 2: Physics", id:"phys", ajax:"phys/motion.htm#Phys", nodes:[
+	{title:"Unit B: Physics", id:"phys", ajax:"phys/motion.htm#Phys", links:[
+    	{title:"Lab Booklet", gdrv:"1OPceA63nJfQ8PLbmUzg1ZRbdJapCIDqy"},      
+    ], nodes:[
 		{title:"Motion", ajax:"phys/motion.htm#Motion", links:[
-    		{title:"Assignment Booklet", gdrv:""},
-    		{title:"Lab Booklet", gdrv:""},   
+    		{title:"Assignment Booklet", gdrv:"1GPDHxXN53d9-CIoep1kiadbW57lAJzs0"},
         ], nodes:[
+            {title:"Scientific Notation", id:"sciNot", ajax:"phys/skill/sciNot.htm#SciNot"},
+            {title:"SI Units", id:"si", ajax:"phys/skill/SI.htm#SI"},
+            {title:"Scientific Method", id:"expDes", ajax:"phys/skill/expDes.htm#ExpDes", links:[
+                {title:"Video", video:"nzfDvfoBv_g"},
+            ]},
+            {title:"Graphing Data", id:"scatter", ajax:"phys/skill/scatter.htm#Scatter"},
+            {title:"Position & Displacement", article:"Tab", id:"displ", url:"https://slides.davidmaccarthy.repl.co/s10/phys/displ.html"},
+            {title:"Velocity", article:"Tab", id:"vel", url:"https://slides.davidmaccarthy.repl.co/s10/phys/vel.html"},
+            {title:"Acceleration", article:"Tab", id:"accel", url:"https://slides.davidmaccarthy.repl.co/s10/phys/accel.html"},
         ]},
-		// {title:"Energy", ajax:"phys/energy.htm#Energy", nodes:[
-        //     {title:"Mechanical Energy", nodes:[]},
-        //     {title:"Work"},
-        // ]},
-		// {title:"Heat", ajax:"phys/heat.htm#Heat", nodes:[
-        //     {title:"Theories of Heat", links:[]},
-        //     {title:"Efficiency"},
+		{title:"Energy", ajax:"phys/energy.htm#Energy", links:[
+    		{title:"Assignment Booklet", gdrv:"16bG3m7hDfrJIt27qTXtnOlnP8psb9wje"},
+    		{title:"Unit Project", icon:"gdrv", url:"https://docs.google.com/document/d/1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18"},
+        ], nodes:[
+            {title:"Mechanical Energy", article:"Tab", id:"mech", url:"https://slides.davidmaccarthy.repl.co/s10/phys/mech.html"},
+            {title:"Energy Transformations", article:"Tab", id:"Etran", url:"https://slides.davidmaccarthy.repl.co/s10/phys/transform.html"},
+            {title:"Work & Energy", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/phys/work.html"},
+            {title:"Heat", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/phys/heat.html"},
+            {title:"Efficiency", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/phys/effic.html"},
+        ]},
+	]},
+	{title:"Unit C: Biology", id:"bio", links:[
+    	{title:"Assignment Booklet", gdrv:"1FJAIV5ZcYVq97d0yU5NPUbW-pApN2sVI"},
+    	{title:"Lab Booklet", gdrv:"1vwczNk166SFFxYEoC82FDI4Ck2D_edap"},      
+    ], nodes:[
+		{title:"Cells", ajax:"bio/cell.htm#Cell", nodes:[
+    		{title:"Compound Light Microscope", article:"Tab", url:"https://docs.google.com/presentation/d/1wKI1blXJukMRBUC7b1B4PhBrgXfBZs7KKx_DVFRf-9M"},
+        ]},
+		// {title:"Membranes & Transport", ajax:"bio/membrane.htm#Memb", nodes:[]},
+		// {title:"Plant Systems", ajax:"bio/plant.htm#Plant", nodes:[
+        //     {title:"Photosynthesis", ajax:"bio/plant.htm#Photo", links:[
+        //         {title:"Amoeba Sisters", video:"uixA8ZXx0KU"},
+        //         {title:"Playlist", video:"#PLpVmtCaB-lykC3KWCNWfsOFWwLVtPHwhN"},
+        //     ]},
         // ]},
 	]},
-	// {title:"Unit 3: Biology", id:"bio", article:"Choose", nodes:[
-	// 	{title:"Cells", ajax:"bio/cell.htm#Cell", nodes:[]},
-	// 	{title:"Membranes & Transport", ajax:"bio/membrane.htm#Memb", nodes:[]},
-	// 	{title:"Plant Systems", ajax:"bio/plant.htm#Plant", nodes:[
-    //         {title:"Photosynthesis", ajax:"bio/plant.htm#Photo", links:[
-    //             {title:"Amoeba Sisters", video:"uixA8ZXx0KU"},
-    //             {title:"Playlist", video:"#PLpVmtCaB-lykC3KWCNWfsOFWwLVtPHwhN"},
-    //         ]},
-    //     ]},
-	// ]},
-	// {title:"Unit 4: Climate", id:"clim", article:"Choose", nodes:[
-	// 	{title:"A. Climate Science", nodes:[]},
-	// 	{title:"B. Biomes", nodes:[]},
+	// {title:"Unit D: Climate", id:"clim", article:"Choose", nodes:[
+	// 	{title:"Climate Science", nodes:[]},
+	// 	{title:"Biomes", nodes:[]},
+	// 	{title:"Climate Change", nodes:[]},
 	// ]},
 ]}
 

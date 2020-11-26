@@ -71,6 +71,7 @@ function ajaxComplete(ev, id, success) {
         else {
             $("body").append(ev);
             showArticle(id);
+            if (window.MathJax) MathJax.Hub.Typeset();
         }
     }
 }
@@ -78,7 +79,6 @@ function ajaxComplete(ev, id, success) {
 function articleScript(id, key) {
     if (id.charAt(0) == "#") id = id.slice(1);
     let fn = articleScript.map[id];
-    // console.log(id, key, fn);
     if (fn && fn[key]) fn[key]();
 }
 
@@ -147,6 +147,7 @@ function iconImg(node) {
 }
 
 iconImg.urls = {
+    "favicon": "https://sci.davidmaccarthy.repl.co/media/favicon.ico",
     "bs": "https://s.brightspace.com/lib/favicon/2.0.0/favicon.ico",
     "cal": `https://calendar.google.com/googlecalendar/images/favicon_v2014_${new Date().getDate()}.ico`,
 };
@@ -188,21 +189,29 @@ function qsArgs(key) {
 window.addEventListener("resize", narrowScreen);
 
 window.addEventListener("keydown", function(ev) {
+    let i = ["x", "ArrowRight", "ArrowLeft"].indexOf(ev.key);
     if (ev.ctrlKey) {
-        if (ev.key == "ArrowRight") action(nextNode());
-        else if (ev.key == "ArrowLeft") action(nextNode(-1));
-        else if (ev.key == "x") {
-            zoomImages(1 / zoomImages.default);
-            $("body").removeClass("Slideshow HideToC BigMouse");
-            narrowScreen();
-            $("#MouseImage").remove();
+        if (i >= 0) {
+            stopSlideshow();
+            if (i) action(nextNode(i == 2 ? -1 : 1))
         }
     }
+    else if (i > 0 && $("body").hasClass("Slideshow"))
+        advance(i == 2 ? -1 : 1);
     // console.log(ev);
 });
 
-touch.swipe = function(data) {
-    if (data.r > 100) {
+function stopSlideshow() {
+    zoomImages(false);
+    $("body").removeClass("Slideshow HideToC BigMouse");
+    $("[data-slide]:not(.SlideOnly)").show();
+    narrowScreen();
+    $("#MouseImage").remove();
+}
+
+touch.swipe = function(data, ev) {
+    let mj = $(ev.target).closest("div.MathJax_Display").length;
+    if (data.r > 100 && mj == 0) {
         if (data.swipe == "left") action(nextNode());
         else if (data.swipe == "right") action(nextNode(-1));
     }
@@ -210,13 +219,22 @@ touch.swipe = function(data) {
 
 function scrollBottom() {
     let e = $("html");
-    e.scrollTop(e[0].scrollHeight);
+    // e.scrollTop(e[0].scrollHeight);
+    e.animate({scrollTop: e[0].scrollHeight}, 500);
 }
 
 function slideshow(n) {
-    if (!$("body").hasClass("Slideshow")) return;
+    if (!$("body").hasClass("Slideshow") || isNaN(n)) return;
     if (n == null) n = slideshow.n + 1;
-    slideshow.n = n = Math.max(0, n);
+    let c = slideshow.count();
+    if (c && n > c) {
+        if (confirm("End of Slideshow! Exit?"))
+            return stopSlideshow();
+        n = c;
+    }
+    else n = Math.max(0, n);
+    slideshow.n = n;
+    console.log(`Marker ${n}`);
     let e = $("[data-slide]");
     for (let i=0;i<e.length;i++) {
         let ei = $(e[i]);
@@ -231,15 +249,32 @@ function slideshow(n) {
     scrollBottom();
 }
 
+slideshow.count = function() {
+    let c = $("article[data-last]:visible").attr("data-last");
+    return c ? parseInt(c) : 0;
+}
+
 function advance(n) {slideshow(slideshow.n + n)}
 
 window.addEventListener("click", function(ev) {
-    let e = ev.target;
-    // Use $.is?
-    let tags = ["input", "textarea", "iframe", "a"];
-    if (tags.indexOf(e.tagName.toLowerCase()) == -1 && ! $(e).hasClass("NoClick"))
-        advance(ev.shiftKey ? -1 : 1);
+    if (clickAction(ev) && $("body").hasClass("Slideshow")) {
+        if (ev.ctrlKey) {
+            let c = slideshow.count();
+            if (!c) c = "?";
+            slideshow(parseInt(prompt(`Marker [${c}]?`, slideshow.n)));
+        }
+        else advance(ev.shiftKey ? -1 : 1);
+    }
 });
+
+function clickAction(ev, sel) {
+    let e = $(ev.target);
+    if (!sel) sel = ["input", "textarea", "iframe", "a", "[onclick]", ".NoClick"];
+    for (let i=0;i<sel.length;i++) {
+        if (e.is(sel[i]) || e.closest(sel[i]).length) return false;
+    }
+    return true;
+}
 
 function mousePointer(src) {
 	if (!src) src = "../media/mouse.png";
@@ -262,11 +297,33 @@ window.addEventListener("mousedown", mousePointer.button);
 window.addEventListener("mouseup", mousePointer.button);
 
 function zoomImages(z) {
-    let imgs = $(".Zoom");
+    let imgs = $(".Zoom, .ZoomFull");
     for (let i=0;i<imgs.length;i++) {
         let img = $(imgs[i]);
-        img.width((z ? z : zoomImages.default) * img.width());
+        if (z == false) img.width(img.attr("width"));
+        else img.width((z ? z : zoomImages.auto(img)) * img.width());
     }
 }
 
-zoomImages.default = 1.5;
+zoomImages.auto = function(img) {
+    return img.hasClass("ZoomFull") ? 2.25 : 1.5;
+}
+
+function nextImage(img, ev, n) {
+    let src = img.src.split("-");
+    let ext = src[1].split(".");
+    let i = parseInt(ext[0]) + (ev.shiftKey ? -1 : 1);
+    if (i == -1) i = n - 1;
+    img.src = `${src[0]}-${i%n}.${ext[1]}`;
+}
+
+console.log(`Ctrl →             Next Topic
+Ctrl ←             Prev Topic
+Ctrl [ToC]         New Tab
+Shift Ctrl [ToC]   Slide Mode
+
+Slide Mode:
+→ or [Click]       Next Marker
+← or Shift [Click] Prev Marker
+Ctrl [Click]       Go to Marker
+Ctrl x             Normal Mode`);

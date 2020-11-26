@@ -30,6 +30,10 @@ function findNode(root, crit) {
 	} 
 }
 
+function currentNode() {
+    return $("li.Current")[0].node;
+}
+
 function toggle(e) {
 	let li = $(this).parent().toggleClass("Collapsed");
 }
