@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<title>Bar Chart</title>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../script/toc.css"/>
+<script type="text/javascript" src="../../script/plot.js"></script>
+<script type="text/javascript" src="../../script/plotItems.js"></script>
+<script type="text/javascript">
+
+console.log('draw({data:[], labels:[""]...})');
+
+Plot.loadImages({
+    "Eg": "../../media/latex/blue/Eg.png",
+    "Ek": "../../media/latex/blue/Ek.png",
+    "Er": "../../media/latex/blue/Erotn.png",
+    "Ee": "../../media/latex/blue/Eelas.png",
+    "-W": "../../media/latex/red/Wloss.png",
+    "+W": "../../media/latex/red/Wgain.png",
+});
+
+function draw(opt) {
+    Object.assign(options, opt);
+    Plot.font = options.font;
+    for (k in options) console.log(`${k} = ${options[k]}`);
+    let n = options.data.length;
+    let p = new Plot($("canvas")[0], [0, n, 0, options.yMax], options.margin);
+    p.items = [
+        new Grid({y:options.grid, gridStyle:["grey", 0.5], yLabel:{anchor:RIGHT, offset:-options.left_px, format:options.format}}),
+    ];
+    p.items.extend(Segments.bars(options.data));
+    for (let i=0;i<n;i++) {
+        let w = ["+W", "-W"].indexOf(options.labels[i]);
+        p.items[i+1].opt.fill = w == -1 ? "blue" : "red";
+    }
+    p.items.extend([
+        new Grid({x:1, axisStyle:["black", 2]}),
+        new Text(options.title, p.coords([2, p.cv.height/2],true), {align:TOP, angle:90}),
+    ]);
+    p.barLabels(options.labels, -options.down_pct / 100 * options.yMax);
+    draw.plot = p.draw();
+    return p;
+}
+
+let options = {
+    format: 0,
+    font: "28px Arial",
+    title: "Energy / J",
+    grid: 2,
+    yMax: 10,
+    margin: [72, 6, 54, 24],
+    left_px: 5,
+    down_pct: 2.5,
+    data: [7, 2, 3],
+    labels: ["Eg", "Ek", "-W"],
+};
+
+Plot.waitForImages(function() {
+    let opt = {}, err;
+    try {
+        opt = JSON.parse(decodeURIComponent(location.search.slice(1)));
+    }
+    catch(err) {};
+    draw(opt);
+});
+
+</script>
+<style type="text/css">
+
+canvas {background-color:#f4f4f4}
+
+</style>
+</head>
+<body><p class="Center"><canvas width="640" height="480"></canvas></p></body>
+</html>

@@ -1,69 +1,4 @@
-<article id="Econs" data-last="24">
-<script type="text/javascript">
-
-Plot.loadImages({
-    "Eg": "../media/latex/blue/Eg.png",
-    "Ek": "../media/latex/blue/Ek.png",
-    "Er": "../media/latex/blue/Erotn.png",
-});
-
-let Econs = {status:0, frame:0, rotn:2/7, font:"28px Arial"}
-
-Plot.waitForImages(function() {
-    Econs.bar0();
-    Econs.bar1(0);
-})
-
-Econs.bar0 = function() {
-    let p = new Plot($("#Econs canvas")[0], [0, 3, 0, 10], [72, 6, 54, 18]);
-    p.items = [
-        new Grid({y:1, gridStyle:["grey", 0.5]}),
-        new Grid({y:2, yLabel:{font:Econs.font, anchor:RIGHT, offset:-5, format:0}}),
-    ];
-    p.items.extend(Segments.bars([8.7, 0, 0]));
-    p.items.extend([
-        new Grid({x:1, axisStyle:["black", 2]}),
-        new Text("Energy / J", [-0.25, p.top()], {align:BOTTOMRIGHT, font:Econs.font, angle:90}),
-    ]);
-    p.barLabels(["Eg", "Ek", "Er"], -0.25);
-    p.ondraw = function() {
-        let p = this;
-        let f = p.frame + 1;
-        if (f > 100) {
-            p.playing = false;
-            p.frame = 0;
-        }
-        let t = f / 100;
-        let E = 8.7 * t * t;
-        let r = Econs.rotn;
-        p.barsData([8.7 - E, (1 - r) * E, r * E]);
-        if (p.playing) p._nextFrame = setTimeout(function() {p.draw(f)}, 25);
-    }
-    p.playing = false;
-    Econs.bar0.plot = p.draw();
-}
-
-Econs.bar1 = function(i) {
-    i = i % 3;
-    let E = 0.2 * 9.81 * 1.2;
-    let data = [[E, 0], [0, E], [E*5/12, E*7/12]][i];
-    let p = new Plot($("#Econs canvas")[1], [0, 2, 0, 2.5], [72, 6, 54, 18]);
-    p.items = [
-        new Grid({y:0.25, gridStyle:["grey", 0.5]}),
-        new Grid({y:1, yLabel:{font:Econs.font, anchor:RIGHT, offset:-5, format:0}}),
-    ];
-    p.items.extend(Segments.bars(data));
-    p.items.extend([
-        new Grid({x:1, axisStyle:["black", 2]}),
-        new Text("Energy / J", [-0.15, p.top()], {align:BOTTOMRIGHT, font:Econs.font, angle:90}),
-    ]);
-    p.barLabels(["Eg", "Ek"], -0.05);
-    Econs.bar1.status = i;
-    p.draw();
-}
-
-</script>
-
+<article id="Econs" data-last="25">
 <section>
 <h1>Energy Conservation</h1>
     <p>The <em class="Defn">Law of Energy Conservation</em> is one of the most important laws in all of Science.</p>
@@ -117,4 +52,68 @@ Econs.bar1 = function(i) {
 <p data-slide="25">$$v = \sqrt{2 E_k \over m} = \mathrm{\sqrt{2\cdot 1.3734\ J \over 0.200\ kg} = 3.71 \ m/s}$$</p>
 </section>
 
+<script type="text/javascript">
+
+Plot.loadImages({
+    "Eg": "../media/latex/blue/Eg.png",
+    "Ek": "../media/latex/blue/Ek.png",
+    "Er": "../media/latex/blue/Erotn.png",
+});
+
+let Econs = {status:0, frame:0, rotn:2/7, font:"28px Arial"}
+
+Econs.bar0 = function() {
+    let p = new Plot($("#Econs canvas")[0], [0, 3, 0, 10], [72, 6, 54, 18]);
+    p.items = [
+        new Grid({y:1, gridStyle:["grey", 0.5]}),
+        new Grid({y:2, yLabel:{font:Econs.font, anchor:RIGHT, offset:-5, format:0}}),
+    ];
+    p.items.extend(Segments.bars([8.7, 0, 0]));
+    p.items.extend([
+        new Grid({x:1, axisStyle:["black", 2]}),
+        new Text("Energy / J", [-0.25, p.top()], {align:BOTTOMRIGHT, font:Econs.font, angle:90}),
+    ]);
+    p.barLabels(["Eg", "Ek", "Er"], -0.25);
+    p.ondraw = function() {
+        let p = this;
+        let f = p.frame + 1;
+        if (f > 100) {
+            p.playing = false;
+            p.frame = 0;
+        }
+        let t = f / 100;
+        let E = 8.7 * t * t;
+        let r = Econs.rotn;
+        p.barsData([8.7 - E, (1 - r) * E, r * E]);
+        if (p.playing) p._nextFrame = setTimeout(function() {p.draw(f)}, 25);
+    }
+    p.playing = false;
+    Econs.bar0.plot = p.draw();
+}
+
+Econs.bar1 = function(i) {
+    i = i % 3;
+    let E = 0.2 * 9.81 * 1.2;
+    let data = [[E, 0], [0, E], [E*5/12, E*7/12]][i];
+    let p = new Plot($("#Econs canvas")[1], [0, 2, 0, 2.5], [72, 6, 54, 18]);
+    p.items = [
+        new Grid({y:0.25, gridStyle:["grey", 0.5]}),
+        new Grid({y:1, yLabel:{font:Econs.font, anchor:RIGHT, offset:-5, format:0}}),
+    ];
+    p.items.extend(Segments.bars(data));
+    p.items.extend([
+        new Grid({x:1, axisStyle:["black", 2]}),
+        new Text("Energy / J", [-0.15, p.top()], {align:BOTTOMRIGHT, font:Econs.font, angle:90}),
+    ]);
+    p.barLabels(["Eg", "Ek"], -0.05);
+    Econs.bar1.status = i;
+    p.draw();
+}
+
+Plot.waitForImages(function() {
+    Econs.bar0();
+    Econs.bar1(0);
+})
+
+</script>
 </article>

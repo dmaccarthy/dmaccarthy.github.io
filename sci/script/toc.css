@@ -4,6 +4,17 @@
     /* --angle:90deg; */
 }
 
+#Sched table ul {
+    margin:0.25em;
+    padding:0 1em;
+}
+
+#Sched table li {text-align:left}
+
+#Sched table td:nth-child(2) {
+    width:24em;
+}
+
 #IconToC {
     position:fixed;
     top:4px; right:4px;

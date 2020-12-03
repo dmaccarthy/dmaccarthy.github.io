@@ -1,42 +1,4 @@
-<article id="NonIso" data-last="11">
-<script type="text/javascript">
-
-Plot.loadImages({
-    "Eg": "../media/latex/blue/Eg.png",
-    "Ek": "../media/latex/blue/Ek.png",
-    "-W": "../media/latex/red/Wloss.png",
-    "+W": "../media/latex/red/Wgain.png",
-});
-
-let NonIso = {status:0, frame:0, rotn:2/7, font:"28px Arial"}
-
-Plot.waitForImages(function() {
-    NonIso.bar(0);
-})
-
-NonIso.bar = function(i) {
-    let p = new Plot($("#NonIso canvas")[0], [0, 3, 0, 10], [72, 6, 54, 18]);
-    p.items = [
-        new Grid({y:1, gridStyle:["grey", 0.5]}),
-        new Grid({y:2, yLabel:{font:NonIso.font, anchor:RIGHT, offset:-5, format:0}}),
-    ];
-    let data = [[9.81, 0, 0], [0, 6.25, 3.26]][i];
-    p.items.extend(Segments.bars(data));
-    p.items.extend([
-        new Grid({x:1, axisStyle:["black", 2]}),
-        new Text("Energy / J", [-0.25, p.top()], {align:BOTTOMRIGHT, font:NonIso.font, angle:90}),
-    ]);
-    p.items[4].opt.fill = "red";
-    p.barLabels(["Eg", "Ek", i ? "-W" : "+W"], -0.25);
-    NonIso.graphNumber = i;
-    p.draw();
-}
-
-NonIso.toggle = function() {
-    NonIso.bar(1 - NonIso.graphNumber);
-}
-
-</script>
+<article id="NonIso" data-last="14">
 
 <section>
 <h1>Type of Systems</h1>
@@ -64,4 +26,50 @@ NonIso.toggle = function() {
         <li data-slide="10">This energy is the sound and thermal energy produced by the air resistance force.</li>
     </ul>
     <p class="Center" data-slide="11"><canvas class="Zoom SD" width="600" height="600" onclick="NonIso.toggle()"></canvas></p>
+    <p data-slide="12">An <em class="Defn">energy flow diagram</em> (also called a Sankey diagram) illustrates the energy transformations.</p>
+    <p data-slide="12" class="Center"><img src="energy/img/flow0.png" alt="Flow" class="Zoom" width="400"/></p>
+    <ul data-slide="13">
+        <li>The circle represents the boundary between the system and the environment.</li>
+        <li data-slide="14">Mechanical energy transformations should always involve kinetic energy.</li>
+    </ul>
 </section>
+
+<script type="text/javascript">
+
+Plot.loadImages({
+    "Eg": "../media/latex/blue/Eg.png",
+    "Ek": "../media/latex/blue/Ek.png",
+    "-W": "../media/latex/red/Wloss.png",
+    "+W": "../media/latex/red/Wgain.png",
+});
+
+let NonIso = {status:0, frame:0, rotn:2/7, font:"28px Arial"}
+
+NonIso.bar = function(i) {
+    let p = new Plot($("#NonIso canvas")[0], [0, 3, 0, 10], [72, 6, 54, 18]);
+    p.items = [
+        new Grid({y:1, gridStyle:["grey", 0.5]}),
+        new Grid({y:2, yLabel:{font:NonIso.font, anchor:RIGHT, offset:-5, format:0}}),
+    ];
+    let data = [[9.81, 0, 0], [0, 6.25, 3.26]][i];
+    p.items.extend(Segments.bars(data));
+    p.items.extend([
+        new Grid({x:1, axisStyle:["black", 2]}),
+        new Text("Energy / J", [-0.25, p.top()], {align:BOTTOMRIGHT, font:NonIso.font, angle:90}),
+    ]);
+    p.items[4].opt.fill = "red";
+    p.barLabels(["Eg", "Ek", i ? "-W" : "+W"], -0.25);
+    NonIso.graphNumber = i;
+    p.draw();
+}
+
+NonIso.toggle = function() {
+    NonIso.bar(1 - NonIso.graphNumber);
+}
+
+Plot.waitForImages(function() {
+    NonIso.bar(0);
+})
+
+</script>
+</article>

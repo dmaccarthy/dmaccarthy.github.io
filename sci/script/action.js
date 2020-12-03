@@ -39,6 +39,7 @@ function toggleToC(ev) {
 }
 
 function showArticle(a) {
+    delete ajaxArticle.pending;
     let h = $("article:visible").hide();
     a = $(a).show();
     let id = a.length ? a[0].id : null;
@@ -55,8 +56,8 @@ function ajaxArticle(data) {
     let id = "#" + data[1];
     if ($(id).length) showArticle(id);
     else {
-        ajaxArticle.pending = id;
         showArticle("#Loading");
+        ajaxArticle.pending = id;
         $.ajax({url:data[0],
             success:function(ev) {ajaxComplete(ev, id, true)},
             error:function(ev) {ajaxComplete(ev, id)},
@@ -66,7 +67,7 @@ function ajaxArticle(data) {
 
 function ajaxComplete(ev, id, success) {
     if (id == ajaxArticle.pending) {
-        delete ajaxArticle.pending;
+        // delete ajaxArticle.pending;
         if (!success) showArticle("#Error");
         else {
             $("body").append(ev);
