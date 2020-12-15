@@ -19,7 +19,7 @@ body {
 canvas {
     position:absolute;
     top:36px;
-    left:36px;
+    left:0;
 }
 
 button {
@@ -71,15 +71,18 @@ function draw(start, end) {
 
 window.onmouseup = window.ontouchend = function() {pos = null; sync()}
 
+
+// $("canvas")[0].getBoundingClientRect();
+
+let dy = -36;
+
 function setPos(ev) {
-    let r = $("canvas")[0].getBoundingClientRect();
-    pos = [ev.clientX - r.x, ev.clientY - r.y];
+    pos = [ev.clientX + window.scrollX, ev.clientY + dy];
 }
 
 function move(ev) {
     if (pos) {
-        let r = $("canvas")[0].getBoundingClientRect();
-        let newPos = [ev.clientX - r.x, ev.clientY - r.y];
+        let newPos = [ev.clientX + window.scrollX, ev.clientY + dy];
         draw(pos, newPos);
         pos = newPos;
     }
@@ -90,8 +93,7 @@ function touch(ev) {
     ev.preventDefault();
     ev = ev.originalEvent.touches[0];
     if (!pos) {
-        let r = $("canvas")[0].getBoundingClientRect();
-        pos = [ev.clientX - r.x, ev.clientY - r.y];
+        pos = [ev.clientX + window.scrollX, ev.clientY + dy];
         if (c) dot();
     }
     else move(ev);
@@ -125,9 +127,14 @@ function image() {
             h = args[2];
         }
         else {
+            // let c = Math.abs(Math.cos(opt.rotate));
+            // let s = Math.abs(Math.sin(opt.rotate));
+            // let w1 = w * c + h * s;
+            // let h1 = h * c + w * s;
             let r = Math.abs(args[0]);
             r = r == 90 || r == 270;
             let f = Math.min((r?h:w) / this.width, (r?w:h) / this.height);
+            // console.log(f, [w,h], [this.width,this.height]);
             w = Math.round(f * this.width);
             h = Math.round(f * this.height);
         }
@@ -138,10 +145,8 @@ function image() {
 }
 
 $(function() {
-    let w = $(window), size = {};
-    if (w.height() > w.width()) size = {width:405, height:720};
-    // let size = {width:w.width() - 36, height:w.height() - 36};
-    // let size = {};
+    let w = $(window);
+    let size = {width:w.width()-2, height:w.height() - 48};
     if (qsArgs("w")) size.width = parseInt(qsArgs("w"));
     if (qsArgs("h")) size.height = parseInt(qsArgs("h"));
     let cv = $("canvas").attr(size)
@@ -215,7 +220,7 @@ function qsArgs(key) {
 </script>
 </head>
 <body>
-    <canvas width="720" height="405"></canvas>
+    <canvas width="128" height="128"></canvas>
     <table><tr>
         <td onclick="color('red')" class="red"> </td>
         <td onclick="color('blue')" class="blue"> </td>

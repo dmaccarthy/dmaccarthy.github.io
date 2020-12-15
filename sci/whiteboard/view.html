@@ -9,17 +9,24 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
 <style>
 
-p {text-align:center}
-input {width:2em}
-
-img {
-    max-width:99%;
-    height:auto;
-    border:1px solid black;
-    margin:0.25em;
+body {
+    text-align:center;
+    margin:0;
 }
 
-nav span {cursor:pointer}
+body.Paused {
+    background-color:#f0f0ff;
+}
+
+img {
+    max-width:98%;
+    height:calc(99vh - 2em);
+    width:auto;
+    /* border:1px solid black; */
+    /* position:fixed;
+    top:4px;
+    right:4px; */
+}
 
 </style>
 <script type="text/javascript">
@@ -28,44 +35,37 @@ function update() {
     $.ajax(update.url, {type:"POST", data:{access: update.access}, dataType:"text/plain", complete:function(a) {
         a = a.responseText;
         if (a) $("#Live").attr("src", a);
-        update.timeout = setTimeout(update, 250);
+        if (update.paused) delete update.timeout;
+        else {
+            update.timeout = setTimeout(update, 250);
+        }
     }});
 }
 
-update.url = "https://synctext.davidmaccarthy.repl.co";
+/*
+function pause() {
+    clearTimeout(update.timeout);
+    delete update.timeout;
+    update.paused = true;
+    $("body").addClass("Paused");
+}*/
+
+function toggle() {
+    update.paused = !update.paused;
+    if (update.paused) $("body").addClass("Paused");
+    else $("body").removeClass("Paused");
+    if (!(update.paused || update.timeout)) update();
+}
+
+update.paused = false;
+update.url = "https://png-mirror.davidmaccarthy.repl.co";
 update.access = localStorage.getItem("sync-access");
-
-function rotate(x) {
-    if (x == null) x = parseFloat(prompt("Angle?"));
-    if (!isNaN(x)) $("#Live").css("transform", `rotate(${x}deg)`);
-}
-
-function copy() {
-    let cv = $("#Live");
-    let src = cv.attr("src");
-    let img = $("<img>").attr({src:src}).click(deletePage);
-    cv.closest("p").prepend(img);
-    img.css("transform", cv.css("transform"))
-}
-
-function deletePage(ev) {
-    if (ev.ctrlKey) $(this).remove();
-}
 
 $(update);
 
 </script>
 </head>
-<body>
-    <nav>
-        <span onclick="rotate(0)">↑</span>
-        <span onclick="rotate(90)">→</span>
-        <span onclick="rotate(180)">↓</span>
-        <span onclick="rotate(270)">←</span>
-        <span onclick="rotate()">↻</span>
-        <button onclick="copy()">Copy</button>
-    </nav>
-    <p><img id="Live" src=""/></p>
+<body><p><img id="Live" src="" onclick="toggle()"/></p>
 </body>
 </html>
  

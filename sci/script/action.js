@@ -42,6 +42,22 @@ function showArticle(a) {
     delete ajaxArticle.pending;
     let h = $("article:visible").hide();
     a = $(a).show();
+
+    let m = a.find("[data-slide]"), n = 0;
+    for (let i=0;i<m.length;i++) {
+        let mi = $(m[i]);
+        let ds = mi.attr("data-slide");
+        let j = ["same", "next"].indexOf(ds);
+        if (j >= 0) {
+            n += j;
+            mi.attr("data-slide", n);
+        }
+        else {
+            n = eval(ds);
+            if (n instanceof Array) n = n[0];
+        }
+    }
+
     let id = a.length ? a[0].id : null;
     for (let i=0;i<h.length;i++) {
         let idh = h[i].id;
@@ -298,9 +314,11 @@ window.addEventListener("mousedown", mousePointer.button);
 window.addEventListener("mouseup", mousePointer.button);
 
 function zoomImages(z) {
+    console.log("Zoom", z);
     let imgs = $(".Zoom, .ZoomFull");
     for (let i=0;i<imgs.length;i++) {
         let img = $(imgs[i]);
+        console.log(img[0]);
         if (z == false) img.width(img.attr("width"));
         else img.width((z ? z : zoomImages.auto(img)) * img.width());
     }

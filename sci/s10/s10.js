@@ -66,13 +66,16 @@ let s10 = {title:"Science 10", id:"s10", article:"Home", links:[
             {title:"Mechanical Energy", article:"Tab", id:"mech", url:"https://slides.davidmaccarthy.repl.co/s10/phys/mech.html"},
             {title:"Energy Transformations", article:"Tab", id:"Etran", url:"https://slides.davidmaccarthy.repl.co/s10/phys/transform.html"},
             {title:"Work & Energy", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/phys/work.html"},
-            {title:"Heat", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/phys/heat.html"},
+            {title:"Theories of Heat", links:[
+                {title:"Lesson Notes", icon:"link", url:"https://slides.davidmaccarthy.repl.co/s10/phys/heat.html"},
+                {title:"Video", video:"zPesZfF20hA"},
+            ]},
             {title:"Efficiency", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/phys/effic.html"},
         ]},
 	]},
 	{title:"Unit C: Biology", id:"bio", ajax:"bio/cell.htm#Bio", links:[
     	{title:"Assignment Booklet", gdrv:"1FJAIV5ZcYVq97d0yU5NPUbW-pApN2sVI"},
-    	{title:"Lab Booklet", gdrv:"1vwczNk166SFFxYEoC82FDI4Ck2D_edap"},      
+    	{title:"Lab Booklet", gdrv:"1vwczNk166SFFxYEoC82FDI4Ck2D_edap"},
     ], nodes:[
 		{title:"Part 1: Cells", ajax:"bio/cell.htm#Cell", nodes:[
     		{title:"Compound Light Microscope", article:"Tab", url:"https://docs.google.com/presentation/d/1wKI1blXJukMRBUC7b1B4PhBrgXfBZs7KKx_DVFRf-9M"},
@@ -80,20 +83,39 @@ let s10 = {title:"Science 10", id:"s10", article:"Home", links:[
     		{title:"Organelles", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/bio/organelle.html"},
         ]},
 		{title:"Part 2: Membranes & Transport", id:"membrane", ajax:"bio/membrane.htm#Memb", nodes:[
-    		{title:"Membranes", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/bio/memb.html"},
-    		{title:"Active & Passive Transport", article:"Tab", url:"https://docs.google.com/presentation/d/1qJYqVyhLdOpIwEF8qv0EsbnYO6dRbofZvqICN0g568g"},
-
+    		// {title:"Membranes", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/bio/memb.html"},
+            {title:"Membranes", video:"#PLpVmtCaB-lykC3KWCNWfsOFWwLVtPHwhN"},
+    		{title:"Active & Passive Transport", links:[
+                {title:"Lesson Notes", icon:"link", url:"https://docs.google.com/presentation/d/1qJYqVyhLdOpIwEF8qv0EsbnYO6dRbofZvqICN0g568g"},
+            	{title:"Dialysis Tubing Demo", gdrv:"1IJZ7DFf0rVeupxjE9QQ3CKddNGEMAutJ"},
+                {title:"Amoeba Sisters", video:"Ptmlvtei8hw"},
+            ]},
         ]},
 		{title:"Part 3: Plant Systems", id:"plants", ajax:"bio/plant.htm#Plant", nodes:[
-            {title:"Photosynthesis", ajax:"bio/plant.htm#Photo", links:[
-                // {title:"Amoeba Sisters", video:"uixA8ZXx0KU"},
-                // {title:"Playlist", video:"#PLpVmtCaB-lykC3KWCNWfsOFWwLVtPHwhN"},
+            {title:"Photosynthesis & Cell Specialization", id:"ph_syn", links:[
+                {title:"Lesson Notes", icon:"link", url:"https://docs.google.com/presentation/d/11zl5GF0VgrNojVPIWGbLGaerb42djfIATyvtBpJHvZI"},
+                {title:"Amoeba Sisters", video:"uixA8ZXx0KU"},
             ]},
-    		// {title:"", article:"Tab", url:""},
-    		// {title:"", article:"Tab", url:""},
+    		{title:"Gas Exchange", article:"Tab", url:"https://docs.google.com/presentation/d/1A1nqaSPSjbQia9YlNB74RixvCHGjlDiR63lBZTI7QiE"},
+    		{title:"Water Transport", id:"water_tr", links:[
+                {title:"Lesson Notes", icon:"link", url:"https://docs.google.com/presentation/d/1T9swb7XJxenjxa-MA_6nOoZTwtLmYIalZnjREZ3_4Ss"},
+                {title:"Crash Course", video:"h9oDTMXM7M8"},
+            ]},
+    		{title:"Tropisms", links:[
+                {title:"Lesson Notes", icon:"link", url:"https://docs.google.com/presentation/d/1NxKWWQRXaY2yZxrAL3EYZUzBpLXKTDoEeGHjIxlN32g"},
+                {title:"Carnivorous Plants", video:"ktIGVtKdgwo"},
+            ]},
         ]},
 	]},
-	{title:"Unit D: Climate", id:"clim", article:"Unavail", nodes:[
+	{title:"Unit D: Climate", id:"clim", links:[
+    	{title:"Assignment Booklet", gdrv:"1vszkjJjTOd5jdcDu-oRrKX8v1zmVujVh"},
+    ], nodes:[
+    	{title:"Heat Capacity", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/clim/heatcap.html"},
+        {title:"Molar Mass", id:"mole", links:[
+            {title:"Lesson Notes", icon:"link", url:"https://slides.davidmaccarthy.repl.co/s10/chem/mole.html"},
+            {title:"Assignment", gdrv:"1_B3B1suYvLNU9R5O6nxnn5PfP5FVJWze"},
+        ]},
+    	{title:"Latent Heat", article:"Tab", url:"https://slides.davidmaccarthy.repl.co/s10/clim/latent.html"},
 		// {title:"Climate Science", nodes:[]},
 		// {title:"Biomes", nodes:[]},
 		// {title:"Climate Change", nodes:[]},

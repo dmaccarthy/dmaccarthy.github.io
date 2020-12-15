@@ -1,13 +1,50 @@
-let ch3 = {title:"Chapter 3: Dynamics", id:"dyn", links:[
-    {title:"Assignment Booklet", gdrv:"1c9HSP3IG2iXg84DFFJYiW_8jlpJ7mH2I"},
-    {title:"Lab Booklet", gdrv:"1Z05e3AIQpijSqzOmC3UOk74t9PFo1ErC"},
+let ch7 = {title:"Chapter 7: Oscillations", id:"osc", links:[
+    {title:"Assignment Booklet", gdrv:"1UdEqtPTv_m5MAeLmIGXG0xZuaQhiDls8"},
+    {title:"Lab Booklet", gdrv:"19LS74nlYyIulH-JawStu4nrXfA17Pr6w"},
+    {title:"Pendulum Motion", icon:"video", url:"shm/img/Pendulum Motion.mp4"},
 ], nodes:[
-    {title:"Inertia & Force", id:"force", ajax:"dyn/force.htm#Force"},
-    // {title:"Newton’s 3<sup>rd</sup> Law", id:"N3", ajax:"dyn/n3.htm#N3"},
-    // {title:"", ajax:"", links:[]},
+    {title:"Equilibrium & Oscillations", id:"eqm", ajax:"shm/eqm.htm#Eqm", links:[
+        {title:"Answer Key", url:"https://docs.google.com/document/d/1hYFX1MvbaVO8K-psaF189gWVsRHPRSIw_FUXNYLTRN4"},
+    ]},
+    {title:"Simple Harmonic Motion", id:"shm", ajax:"shm/shm.htm#SHM", links:[
+        {title:"Answer Key", url:"https://docs.google.com/document/d/1rioTx98SvQHei_l4f8jXOQwxPKtS17-fUKBDLDLD_z4"},
+    ]},
+    {title:"Period of SHM", id:"period", ajax:"shm/period.htm#T", links:[
+        {title:"Answer Key", url:"https://docs.google.com/document/d/1o5KvYsGQOVMT10Ce0e5fB9U2p8_VlyH3mdSeh0qW7Q4"},
+    ]},
+    {title:"Energy of SHM", id:"shmE", ajax:"shm/energy.htm#shmE", links:[
+        // {title:"Answer Key", url:"https://docs.google.com/document/d/1lKmGWUFPgX6N19YKXzMrpxdo4ebAs8v88Y1r9BLiFfI"},
+    ]},
 ]};
 
-let ch6 = {title:"Chapter 6: Energy", id:"energy", links:[
+let ch3 = {title:"✓ Chapter 3: Dynamics", id:"dyn", links:[
+    {title:"Assignment Booklet", gdrv:"1c9HSP3IG2iXg84DFFJYiW_8jlpJ7mH2I"},
+    {title:"Lab Booklet", gdrv:"1Z05e3AIQpijSqzOmC3UOk74t9PFo1ErC"},
+    {title:"Formative Review", gdrv:"1TiNwMjrtIl6RJVIgNz19w6QuQq10a_nz"},
+    {title:"Formative Review Key", gdrv:"1T5c2ZSLEZBJBHwAHhEMvp_Fts37hsvoG"},
+], nodes:[
+    {title:"Inertia & Force", id:"force", ajax:"dyn/force.htm#Force", links:[
+        {title:"Answer Key", url:"https://docs.google.com/document/d/1aMbFTmo1sNi91ULonApGutTAqpGIc7o3xE0NcVQ0GfQ"},
+    ]},
+    {title:"Newton’s 3rd Law", id:"N3", ajax:"dyn/n3.htm#N3", links:[
+        {title:"Answer Key", url:"https://docs.google.com/document/d/1zUzJTyrdwsWblAz1StqF0sNn3lclQigmLoTT4R1mfkc"},
+    ]},
+    {title:"Free Body Diagrams", id:"fbd", ajax:"dyn/fbd.htm#FBD", links:[
+        {title:"Answer Key", url:"https://docs.google.com/document/d/1ecVJbHXRGtCmoCOmTXco-DHDAvSjWlqaO-to-DjEEQ4"},
+    ]},
+    {title:"Mass & Weight", id:"wt", ajax:"dyn/weight.htm#Wt", links:[
+        {title:"<i>Apollo</i> Video", video:"KDp1tiUsZw8"},
+        {title:"<i>Pennies</i> Video", gdrv:"1iJ9iZ2QLj3fwcki75mKcb9XR18yFSCvl"},
+        {title:"Pennies Lab", gdrv:"1Z05e3AIQpijSqzOmC3UOk74t9PFo1ErC"},
+        {title:"Answer Key", url:"https://docs.google.com/document/d/1wtfhYaqUeBUotX8nm4PHM0UjLZdUNLgdibdyFQcjjXo"},
+    ]},
+    {title:"Contact Forces", id:"fric", ajax:"dyn/fric.htm#Fric", links:[
+        // {title:"Friction Simulation", url:"https://applets.davidmaccarthy.repl.co/pulley/", icon:"html5"},
+        {title:"Answer Key", url:"https://docs.google.com/document/d/1jAoNeyNDfi1DPFyhi-Qf4AdesX2-Wfasv-Dsj0fYV0c"},
+    ]},
+]};
+
+let ch6 = {title:"✓ Chapter 6: Energy", id:"energy", links:[
     {title:"Assignment Booklet", gdrv:"1wCOMOf5tN1rQ_qsfpKTL7aRsLCYtCyr2"},
     {title:"Lab Booklet", gdrv:"19_P_AtqF6yGA4481h0gH6ZPV4BeqSv8A"},
 ], nodes:[
@@ -27,7 +64,7 @@ let ch6 = {title:"Chapter 6: Energy", id:"energy", links:[
         {title:"Answer Key", url:"https://docs.google.com/document/d/1Xk85LGlNrOTX4Ckg672gfp5T6L9IZOTdKxAu7lKPGLM"},
     ]},
     {title:"Power & Efficiency", id:"power", ajax:"energy/power.htm#Power", links:[
-        // {title:"Answer Key", url:"https://docs.google.com/document/d/1PHRVmr9tMgm8ncSCnykQ1zYYznPADaJZV1KcrYZAWmQ"},
+        {title:"Answer Key", url:"https://docs.google.com/document/d/1PHRVmr9tMgm8ncSCnykQ1zYYznPADaJZV1KcrYZAWmQ"},
     ]},
 ]};
 
@@ -56,7 +93,7 @@ let p20 = {title:"Physics 20", id:"p20", article:"Home", links:[
         ]},
 		// {title:"Non-Linear Data Analysis", id:"nonLin", ajaxx:"", links:[]},
     ]},
-	{title:"Chapter 1: Kinematics (1D)", id:"kin1d", ajax:"kin1d/displ.htm#KinDyn", links:[
+	{title:"✓ Chapter 1: Kinematics (1D)", id:"kin1d", ajax:"kin1d/displ.htm#KinDyn", links:[
         {title:"Assignment Booklet", gdrv:"1BIjjYrWHCArAF0qcKrkqdnfCEg41jWuF"},
         {title:"Lab Booklet", gdrv:"1hh8Owger30gOqlBOclDT-kJnPmL3w-XR"},
     ], nodes:[
@@ -65,13 +102,16 @@ let p20 = {title:"Physics 20", id:"p20", article:"Home", links:[
 		{title:"Motion Graphs", id:"dtGraph", ajax:"kin1d/graph.htm#dtGraph"},
 		{title:"Acceleration", id:"accel", ajax:"kin1d/accel.htm#Accel"},
 		{title:"Uniform Accelerated Motion", id:"uam", ajax:"kin1d/uam.htm#UAM"},
-    ]}, ch6, ch3,
+    ]}, ch6, ch3, ch7,
+	{title:"Chapter 8: Mechanical Waves", id:"wave", links:[
+        {title:"Assignment Booklet", gdrv:"1NC0Pk5VyhNKR8sGuTNhgHNQpG5ZiJyv9"},
+    ], nodes:[
+
+    ]},
 	{title:"Chapter 5: Circular & Orbital Motion", id:"circ", article:"Unavail", links:[
-        // {title:"Heliocentric Model", ajax:"circ/helio.htm#Helio", icon:"html5"},
+        {title:"Heliocentric Model", ajax:"circ/helio.htm#Helio", icon:"html5"},
     ], nodes:[]},
 	{title:"Chapter 4: Universal Gravitation", id:"grav", article:"Unavail", nodes:[]},
-	{title:"Chapter 7: Oscillations", id:"osc", article:"Unavail", nodes:[]},
-	{title:"Chapter 8: Mechanical Waves", id:"wave", article:"Unavail", nodes:[]},
 	{title:"Chapter 2: 2D Vectors", id:"vec2d", article:"Unavail", nodes:[]},
 ]}
 
