@@ -291,7 +291,8 @@ Plot.prototype.plot = function(pts, args) {
 
 Plot.prototype.blit = function(img, posn, args) {
 // Draw an image...
-	if (args == null) args = {}
+	if (args == null) args = {};
+    if (typeof(img) == "string") img = Plot.images[img];
 	var size = args.size ? this.pixels(args.size) : [img.width, img.height];
 	if (typeof(size) == "number") {
 		var f = size / Math.sqrt(Math.abs(img.width * img.height));

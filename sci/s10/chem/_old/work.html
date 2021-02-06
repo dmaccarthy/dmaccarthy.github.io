@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Work</title>
+<meta name="description" pageContent=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/notes.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="contents.js"></script>
+<script type="text/javascript" src="../../script/notes.js"></script>
+<script type="text/javascript" src="../../script/bigMouse.js"></script>
+<script type="text/javascript">
+
+$(initPage);
+
+</script>
+</head>
+<body>
+
+<section id="Title" data-markers="1" class="Center">
+    <p><span class="Link" onclick="goLink('s10')">Science 10</span> (Physics Lesson <span id="LessonNumber"></span>)</p>
+    <p class="NoPrint" id="MaterialIcons" onclick=""></p>
+</section>
+
+<section id="W-E" data-markers="5">
+    <h1>Work-Energy Theorem</h1>
+    <p data-t="0" data-n="2">We saw in the last lesson that the amount of mechanical energy that a force transforms is called the <em class="Defn">work</em> done.</p>
+    <p data-t="1" data-n="1">An important Physics concepts is the <em class="Defn">Work-Energy Theorem</em>, which allows us to calculate work using this equation:</p>
+    <p data-t="1">$$W=\Delta E_k=\vec{\mathbf{F}}\cdot\Delta\vec{\mathbf{d}}$$</p>
+    <ul data-t="2">
+        <li>If you were to push an object 2.0 metres by applying a force of 10 newtons in the same direction that it is moving, you would be doing 20 joules of work.</li>
+        <li data-t="3">If this happened in deep space where there were no other forces acting, the object would gain 20 joules of kinetic energy.</li>
+        <li data-t="4">On Earth, we would need to account for the work being done by gravity, friction, and any other forces before we could say how much kinetic energy was gained.</li>
+    </ul>
+</section>
+
+<section id="ex1" data-markers="5">
+    <h1>Example</h1>
+    <p class="Blue">The kinetic energy of a wagon increases from 10 J to 25 J as a student pulls it 3.0 metres. How much force is the student applying?</p>
+    <p data-t="1" data-n="2">Calculate how much work was done:$$W=\Delta E_k= \mathrm{25\ J - 10\ J = 15\ J}$$</p>
+    <p data-t="2" data-n="1">Rearrange the equation to find force:
+        $$W = \vec{\mathbf{F}}\cdot\Delta\vec{\mathbf{d}}$$</p>
+    <p data-t="2">$$\vec{\mathbf F} = {W \over \Delta\vec{\mathbf d}} = \mathrm{{15\ J\over 3.0\ m} = 5.0\ N}$$</p>
+    <ul data-t="3">
+        <li>This answer assumes that there are no other forces affecting the energy.</li>
+        <li data-t="4">If the wagon is on a hill, or if there is friction or air resistance, the answer would be different.</li>
+    </ul>
+</section>
+
+<section id="area" data-markers="3">
+    <h1>Force Not Constant?</h1>
+    <p>Using the work-energy equation requires a <em>constant</em> amount of force:$$W = \vec{\mathbf{F}}\cdot\Delta\vec{\mathbf{d}}$$</p>
+    <ul data-t="1">
+        <li>If the force is <em>not</em> constant, we can calculate work as the <u>area under a graph</u> of \(\vec{\mathbf F}\) vs \(\vec{\mathbf d}\).</li>
+        <li data-t="2">This calculation effectively averages the force. (Examples p155-156.)</li>
+    </ul>
+</section>
+
+<section id="ex2" data-markers="1">
+    <h1>Example</h1>
+    <p class="Blue">When a tennis racket hits a ball, the force increases as the racket strings stretch, and then decreases as the unstretch. How much work does the racket do on the ball?</p>
+    <p class="Center"><img class="Wide" width="288" data-src="img/tennis##.png" data-seq="9" data-n="0" alt="Graph"/></p>
+</section>
+
+</body></html>

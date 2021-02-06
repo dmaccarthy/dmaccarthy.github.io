@@ -106,7 +106,11 @@ function action(node) {
     let tree = node.parent || node == home;
     let nav = $("#Toolbar");
     if (tree) {
-        $("#Title").html(node.title ? node.title : document.title);
+        let title = node.title;
+        if (!title) title = home.title;
+        document.title = title;
+        $("#Title").html(title);
+        // $("#Title").html(node.title ? node.title : document.title);
         setCurrent(node.li);
         if( action.autoCollapse) expandOnly(node.li);
         nav.html("");
@@ -192,16 +196,6 @@ function narrowScreen() {
 }
 
 narrowScreen.size = 680;
-
-function qsArgs(key) {
-    let qs = location.search.slice(1).split("&");
-    args = {}
-    for (let i=0;i<qs.length;i++) {
-        let a = qs[i].split("=");
-        args[a[0]] = decodeURIComponent(a[1]);
-    }
-    return key ? args[key] : args;
-}
 
 window.addEventListener("resize", narrowScreen);
 

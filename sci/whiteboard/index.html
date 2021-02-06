@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Whiteboard</title>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="../script/util.js"></script>
 <script type="text/javascript" src="../script/plot.js"></script>
 <script type="text/javascript" src="../script/touch.js"></script>
 <link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico"/>
@@ -159,6 +160,7 @@ $(function() {
 function color(c) {
     if (!c) c = prompt("Line style?", "black");
     cx.fillStyle = c;
+    cx.lineWidth = c == "white" ? 16 : 2;
 }
 
 function setWidth() {
@@ -201,16 +203,6 @@ function sync() {
 
 sync.status = 0;
 sync.url = "https://png-mirror.davidmaccarthy.repl.co/submit";
-
-function qsArgs(key) {
-    let qs = location.search.slice(1).split("&");
-    args = {}
-    for (let i=0;i<qs.length;i++) {
-        let a = qs[i].split("=");
-        args[a[0]] = decodeURIComponent(a[1]);
-    }
-    return key ? args[key] : args;
-}
 
 </script>
 </head>

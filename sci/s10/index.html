@@ -1,95 +1,170 @@
 <!DOCTYPE html>
 <html lang="en-ca">
 <head>
-<title>Science 10</title>
 <meta charset="utf8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Science 10</title>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
 <link rel="shortcut icon" type="image/x-icon" href="../media/flask.png"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
-<!--link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/-->
-<link rel="stylesheet" type="text/css" href="../script/toc.css"/>
-<script type="text/javascript" src="../script/math.js"></script>
-<script type="text/javascript" src="../script/touch.js"></script>
-<script type="text/javascript" src="../script/toc.js"></script>
-<script type="text/javascript" src="../script/action.js"></script>
-<script type="text/javascript" src="s10.js"></script>
-<script type="text/javascript" src="../script/plot.js"></script>
-<script type="text/javascript" src="../script/loading.js"></script>
-<script type="text/javascript">
-
-</script>
+<link rel="stylesheet" type="text/css" href="../2021/slides.css"/>
 <style type="text/css">
 
-:root {
-    --toc:20em;
+article {max-width:800px; margin:auto}
+
+body > article > section > h3:first-child {
+    text-decoration:underline;
+    cursor:pointer;
+    margin:8px auto;
 }
 
+body {text-align:center}
+
+body:not(.Present) > article > section:not(:first-child) {
+    max-width:calc(100% - 16px);
+	margin-top:0em;
+    padding:8px;
+}
+
+section.Active {
+    background-color:#f0f0ff;
+    border-radius:8px;
+    border:1px solid blue;
+}
+
+h3.SectionTitle, ul {text-align:left}
+
 </style>
+<script type="text/javascript">
+
+$(function() {
+    let items = $("li > a");
+    let lessons = ["."];
+    for (let i=0;i<items.length;i++) lessons.push($(items[i]).attr("href"));
+    console.log(JSON.stringify(lessons));
+
+    $("div.Icons > button").click(function() {
+        let a = $(this).attr("data-action");
+        if (a) window.open(a);
+    });
+
+    $("section > h3:first-child").click(active);
+    hideSections();
+})
+
+function hideSections() {
+    $("section:not(#Title)").removeClass("Active").find(":not(h3:first-child)").hide();
+}
+
+function active(e) {
+    e = $(e.currentTarget).closest("section");
+    let a = e.hasClass("Active");
+    hideSections();
+    if (!a) {
+        e.addClass("Active");
+        e.find(":not(h3:first-child)").show();
+    }
+}
+
+</script>
 </head>
-<body><img id="IconToC" src="../media/toc.png" alt="Contents" title="Show/Hide Contents"/>
-    <ul class="Tree"></ul><h2 id="Title" class="NoSlide"></h2><nav id="Toolbar"></nav>
-    <article id="VideoContainer"></article>
-    <article id="Loading" class="Center">
-        <p><canvas class="Zoom" width="192" height="192" style="width:128px"></canvas></p>
-    </article>
-    <article id="Error">
-        <p class="Center Red"><b>Error! Unable to display requested content.</b></p>
-    </article>
-    <article id="Choose">
-        <p class="Center Red"><b>Please choose a link from the Table of Contents.</b></p>
-    </article>
+<body>
+<article>
+<section id="Title" class="Center">
+<p class="Title">Science 10</p>
+<p class="Small">Teacher: <a href="mailto:david.maccarthy@eips.ca">D.G. MacCarthy</a></p>
+<p><a href="https://www.gutmicrobiotaforhealth.com/milestones-in-gut-microbiome-science-in-2019/" target="_" title="Image Source"><img class="w800" src="https://www.gutmicrobiotaforhealth.com/wp-content/uploads/2019/12/RP_Gut_microbiota_science_2019.png"/></a></p>
+</section>
 
-<article id="Home">
-    <!--p class="Center"><b>30 Nov 2020</b></p>
-    <table class="w6">
-        <tr><td class="Red">8:45</td><td><ul>
-            <li>[Physics] <i><a href="https://slides.davidmaccarthy.repl.co/s10/phys/accel.html">Acceleration</a></i> Lesson</li>
-        </ul></td></tr>
-        <tr><td>9:15</td><td><ul>
-            <li>[Physics] Complete <i>Acceleration</i> (Hand in Tomorrow @ 8:45)</li>
-        </ul></td></tr>
-        <tr><td>10:10</td><td><ul>
-            <li>[Biology] <i>Cell Theory</i> Reading</li>
-        </ul></td></tr>
-        <tr><td class="Red">10:30</td><td><ul>
-            <li>[Biology] <i><a href="https://docs.google.com/presentation/d/1yg_Q804TGQauW9EzNnbmJZlHkK8nR0qiIp5iaESYRBA">Cell Theory</a></i> Lesson</li>
-        </ul></td></tr>
-        <tr><td>10:45</td><td><ul>
-            <li>[Biology] Complete <i>Cell Theory</i> (Hand in Tomorrow @ 8:45)</li>
-        </ul></td></tr>
-        <tr><td class="Red">11:10</td><td><ul>
-            <li>Google Meet Wrap-up</li>
-        </ul></td></tr>
-    </table-->
-    <p>Welcome to Science 10! For the best browsing experience, please use the latest version of
-            <a target="_F" href="https://www.mozilla.org/en-CA/firefox">Firefox</a>
-            or <a target="_C" href="https://www.google.ca/chrome/">Chrome</a>.</p>
-    <p>This site is updated regularly. If your browser appears to be showing outdated content, please reload the page.</p>
-    <p>The icons above link to some common resources for this course, such as the course calendar and data booklet.
-        Use the Table of Contents to locate resources for a specific unit or topic, such as handouts, videos, etc.</p>
-    <p class="Narrow1">You can also swipe left or right to go to the next or previous topic rather than using the Table of Contents.</p>
-    <p class="Narrow0">Alternatively, you can also use the left or right arrow keys, while holding down the Control key, to go to the next or previous topic.</p>
-    <div class="FinePrint">
-        <p>&copy; 2020 by <a href="mailto:david.maccarthy@eips.ca">D.G. MacCarthy</a></p>
-        <p><a target="License" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a></p>
-    </div>
-</article>
+<section><h3>Course Links</h3>
+<div class="Icons">
+    <button data-action="https://eips.brightspace.com/d2l/home/26468"><img alt="Icon" src="https://s.brightspace.com/lib/favicon/2.0.0/favicon.ico"><br>Brightspace (AM Block)</button>
+    <button data-action="https://eips.brightspace.com/d2l/home/26469"><img alt="Icon" src="https://s.brightspace.com/lib/favicon/2.0.0/favicon.ico"><br>Brightspace (PM Block)</button>
+    <button data-action="https://drive.google.com/file/d/1i3wbmTM3sWiUoSb3q4y1B44EXwhP79M6"><img alt="Icon" src="../media/gdrv.png"><br>Data Booklet</button>
+    <button data-action="https://drive.google.com/file/d/1tiA8XrfPUxsZ2d-HDPP-8KMeRMngHalE"><img alt="Icon" src="../media/gdrv.png"><br>Graph Paper</button>
+    <button data-action="https://powerschool.eips.ca/public/"><img alt="Icon" src="https://powerschool.eips.ca/favicon.ico"><br>PowerSchool</button>
+    <button data-action="https://salcomp.ca"><img alt="Icon" src="../media/sal.png"><br>Sal Comp</button>
+    <button data-action=""><img alt="Icon" src="../media/flask.png"><br>Course Outline</button>
+</div>
+</section>
 
-    <article id="Unavail">
-        <p class="Center Red"><b>The requested content is not currently available. Please check back later.</b></p>
-    </article>
-    <article id="Tab">
-        <p class="Center Red"><b>This content will open in a new tab or window.</b></p>
-    </article>
+<section id="chem"><h3>Unit A: Chemistry</h3>
+<div class="Icons">
+    <button data-action="https://drive.google.com/file/d/1BH_QKnH_--Nkm69sG9joeWm-ZqM3lQGW"><img alt="Icon" src="../media/gdrv.png"><br/>Chemistry Assignments</button>
+</div>
+<h3 class="SectionTitle">Chapter 1: Matter</h3>
+<ul>
+    <li><a href="chem/whmis.html">Lab Safety / WHMIS</a></li>
+    <li><a href="chem/matter.html">Classifying Matter</a></li>
+    <li><a href="chem/atom.html">Atomic Theory</a></li>
+    <li><a href="chem/isotope.html">Isotopes &amp; Ions</a></li>
+    <li><a href="chem/bohr.html">Bohr Model (Energy Levels)</a></li>
+    <li><a href="chem/dot.html">Periodic Table &amp; Dot Diagrams</a></li>
+</ul>
+<h3 class="SectionTitle">Chapter 2: Compounds</h3>
+<ul>
+    <li><a href="chem/molec.html">Molecular Compounds</a></li>
+    <li><a href="chem/ionic.html">Binary Ionic Compounds</a></li>
+    <li><a href="chem/poly.html">Polyatomic Ions &amp; Solubility</a></li>
+    <!-- <li><a href="chem/acid.html">Acids &amp; Bases</a></li> -->
+    <!-- <li><a href="chem/water.html">Properties of Water</a></li> -->
+</ul>
+<h3 class="SectionTitle">Chapter 3: Chemical Reactions</h3>
+<ul>
+    <!-- <li><a href="chem/rxn1.html">Chemical Reactions</a></li> -->
+    <!-- <li><a href="chem/rxn2.html">Types of Chemical Reactions</a></li> -->
+    <!-- <li><a href="chem/mole.html">Molar Mass</a></li> -->
+</ul>
+</section>
 
-    <!--article id="BS">
-        <p>Please choose your section...</p>
-        <ul>
-            <li>Mr. MacCarthy</li>
-            <li>Mrs. Wyman</li>
-        </ul>
-    </article-->
+<section id="phys"><h3>Unit B: Physics</h3>
+<div class="Icons">
+    <button data-action="https://drive.google.com/file/d/1ZtDX2wBhOW46IMOWVAeoW3-Y-B1nJw5-"><img alt="Icon" src="../media/gdrv.png"><br/>Physics Assignments</button>
+</div>
+<h3 class="SectionTitle">Science Skills</h3>
+<ul>
+    <li><a href="phys/sciNot.html">Scientific Notation</a></li>
+    <li><a href="phys/si.html">SI Units</a></li>
+    <li><a href="phys/sciMeth.html">Scientific Method</a></li>
+    <li><a href="phys/scatter.html">Graphing Data</a></li>
+</ul>
+<h3 class="SectionTitle">Chapter 5.1: Motion</h3>
+<ul>
+    <li><a href="phys/displ.html">Displacement</a></li>
+    <li><a href="phys/vel.html">Velocity</a></li>
+    <li><a href="phys/accel.html">Acceleration</a></li>
+</ul>
+<h3 class="SectionTitle">Chapter 5.2–5.3: Energy & Work</h3>
+<ul>
+    <!-- <li><a href="phys/mech.html">Mechanical Energy</a></li> -->
+    <!-- <li><a href="phys/.html"></a></li> -->
+</ul>
+<h3 class="SectionTitle">Chapter 4 &amp; 6: Thermodynamics</h3>
+<ul>
+    <!-- <li><a href="phys/.html"></a></li> -->
+</ul>
+</section>
+
+<section id="phys"><h3>Unit C: Biology</h3>
+<!-- <div class="Icons">
+    <button data-action=""><img alt="Icon" src="../media/gdrv.png"><br/>Biology Assignments</button>
+</div> -->
+<h3 class="SectionTitle">Chapter 7: Cell Theory</h3>
+<ul>
+    <!-- <li><a href="phys/.html"></a></li> -->
+</ul>
+<h3 class="SectionTitle">Chapter 8: Membranes &amp; Transport</h3>
+<h3 class="SectionTitle">Chapter 9: Plant Systems</h3>
+</section>
+
+<section id="phys"><h3>Unit D: Climate</h3>
+<!-- <div class="Icons">
+    <button data-action=""><img alt="Icon" src="../media/gdrv.png"><br/>Climate Assignments</button>
+</div> -->
+<h3 class="SectionTitle">Chapter 10: Climate Science</h3>
+<h3 class="SectionTitle">Chapter 11: Biomes</h3>
+<h3 class="SectionTitle">Chapter 12: Climate Change</h3>
+</section>
+
 </body>
 </html>

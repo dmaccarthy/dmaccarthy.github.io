@@ -1,0 +1,14 @@
+[
+{"cmd":"coords","lrbt":[0,2,-5,5],"margin":4,"resize":"16/9"},
+{"cmd":"grid","dx":0.25,"dy":1,"stroke":"lightgrey"},
+{"cmd":"axis","axis":3,"stroke":"black","lineWidth":2},
+{"lineWidth":1},
+{"cmd":"points","points":"2.5*Math.sin(TWO_PI*(x-cmd.x0))","x0":0,"domain":1,"stroke":"red","frame":[0,0]},
+{"cmd":"points","points":"4*Math.cos(TWO_PI*(x-cmd.x0))","x0":0,"domain":1,"stroke":"blue","frame":[1,1]},
+{"cmd":"points","points":"-3*Math.sin(TWO_PI*(x-cmd.x0))","x0":0,"domain":1,"stroke":"green","frame":[2,2]},
+{"points":[[0.02,4.8]],"font":"22px Merriweather Sans, Verdana, sans-serif"},
+{"cmd":"points","format":"Position","fill":"red","align":0,"frame":[0,0]},
+{"cmd":"points","format":"Velocity","fill":"blue","align":0,"frame":[1,1]},
+{"cmd":"points","format":"Acceleration","fill":"green","align":0,"frame":[2,2]},
+{"cmd":"points","format":"Time","points":[[1.98,-0.2]],"fill":"black","align":2}
+]
