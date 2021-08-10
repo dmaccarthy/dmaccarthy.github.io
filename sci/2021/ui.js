@@ -5,12 +5,15 @@ function makeIcon(node) {
         let i = makeIcon.urls[icon];
         if (i) icon = i;
         else if (icon.search("/") == -1)
-            icon = `../media/${icon}.png`;
+            icon = `${makeIcon.media}${icon}.png`;
         icon = $("<img>").attr({src:icon}).addClass("Icon");
     }
     else icon = "&nbsp;";
     return icon;
 }
+
+//makeIcon.media = "../media/";
+makeIcon.media = "/sci/media/";
 
 makeIcon.urls = {
     "bs": "https://s.brightspace.com/lib/favicon/2.0.0/favicon.ico",
