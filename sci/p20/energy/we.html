@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Work-Energy Theorem</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/arrow.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript" src="../../2021/tree.js"></script>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+
+<article>
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 20</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="we" data-last="?"><h3>Work-Energy Theorem</h3>
+<p>Reminders:</p>
+    <ul>
+        <li><em>Forces</em> cause objects to gain or lose kinetic energy.</li>
+        <li data-mark="+">The amount of kinetic energy gained is called the <em>work</em> done by the force.</li>
+        <li data-mark="+">A negative work means that kinetic energy is being lost.</li>
+        <li data-mark="+">When more than one force does work on an object, the change in kinetic energy equals the <em>total</em> work done by all forces.</li>
+    </ul>
+    <p data-mark="+">The amount of work that a force does is determined by three factors:</p>
+    <ul data-mark="=">
+        <li>How strong the force is.</li>
+        <li data-mark="+">The direction of the force relative to the object’s motion.</li>
+        <li data-mark="+">How far the object moves while the force is acting.</li>
+    </ul>
+    <p data-mark="+">The relationship between these variables is called the <em class="Defn">work-energy theorem</em>.</p>
+    <ul data-mark="+">
+        <li>For 1D motion, when the force can only act in the forward or backward directions:$$W = {\vec {\mathbf F}}\cdot{\Delta\vec {\mathbf d}}$$</li>
+        <li data-mark="+">In 2D or 3D, the force can act at an angle \(\Delta\theta\) to the motion:$$W = F \Delta d \cos(\Delta\theta)$$</li>
+    </ul>
+</section>
+
+<!--div class="Blue">
+<p data-mark="+10">Example: A student pushes a 15.0-kilogram crate from rest with a force of 50.0 newtons
+for 1.25 seconds. The crate moves 1.50 metres while the student is pushing.</p>
+<p data-mark="+10">a) How much work did the student (applied force) do?</p>
+<p data-mark="+10">b) Calculate the final velocity of the crate when there is no friction.</p>
+</div>
+
+<p data-mark="+11">$$W_a = \Delta E_k= {\vec {\mathbf F}}\cdot{\Delta\vec {\mathbf d}} = \mathrm{50.0\ N \cdot 1.50\ m = 75.0\ J}$$</p>
+<p data-mark="+12">$$E_k = {1\over 2}mv^2$$</p>
+<p data-mark="+13">$${2 E_k\over m} = v^2$$</p>
+<p data-mark="+14">$$v = \sqrt{2 E_k\over m} = \mathrm{\sqrt{2\cdot 75.0\ J\over 15.0\ kg} = 2.24\ m/s}$$</p>
+
+<p class="Blue" data-mark="+15">c) Suppose there is a friction force of 20.0 N opposing the motion. Calculate the work done by the friction force. How would the final velocity change?</p>
+<p data-mark="+16">$$W_f = \mathrm{-20.0\ N\cdot 1.50\ m = -30.0\ J}$$</p>
+<p data-mark="+17">The <em>total</em> work done by both forces would be 45.0 joules (75.0 &minus; 30.0).</p>
+-->
+
+<section id="ex1" data-last="?"><h3>Example 1</h3>
+<p class="Blue" data-mark="+">A 12.0-kilogram robot uses an electric motor to propel itself with 18.0 newtons of force. If the robot moves 3.00 metres in 2.00 seconds, starting from rest...</p>
+<p class="Blue" data-mark="=">a) How much work did the motor do?</p>
+<p class="Blue" data-mark="=">b) Calculate the final speed of the robot if there is no friction or air resistance.</p>
+
+
+<p data-mark="+">$$W_a = \Delta E_k= {\vec {\mathbf F}}\cdot{\Delta\vec {\mathbf d}} = \mathrm{18.0\ N \cdot 3.00\ m = 54.0\ J}$$</p>
+<p data-mark="+">$$E_k = {1\over 2}mv^2$$</p>
+<p data-mark="+">$${2 E_k\over m} = v^2$$</p>
+<p data-mark="+">$$v = \sqrt{2 E_k\over m} = \mathrm{\sqrt{2\cdot 54.0\ J\over 12.0\ kg} = 3.00\ m/s}$$</p>
+
+<p class="Blue" data-mark="+">c) Suppose there is a friction force of 8.00 N opposing the motion. Calculate the work done by the friction force. How would the final velocity change?</p>
+<p data-mark="+">$$W_f = \mathrm{-8.00\ N\cdot 3.00\ m = -24.0\ J}$$</p>
+<p data-mark="+">The <em>total</em> work done by both forces would be:$$\Sigma W = W_a+W_f = \mathrm{54.0\ J + (-24.0\ J) = 30.0\ J}$$</p>
+</section>
+
+<section id="ex2" data-last="?"><h3>Example 2</h3>
+
+<p class="Blue">A 20.0 kg mass accelerates from 2.00 m/s to 5.00 m/s while moving 2.00 m. Calculate the force acting on the mass.</p>
+<p data-mark="+">Calculate work as the change in kinetic energy...</p>
+<p data-mark="+">$$E_{ki} = {1\over 2}mv_i^2 = \mathrm{{1\over 2} 20.0\ kg\cdot (2.00\ m/s)^2 = 40.0\ J}$$</p>
+<p data-mark="+">$$E_{kf} = {1\over 2}mv_f^2 = \mathrm{{1\over 2} 20.0\ kg\cdot (5.00\ m/s)^2 = 250\ J}$$</p>
+<p data-mark="+">$$W = \Delta E_k = \mathrm{250\ J - 40.0\ J = 210\ J}$$</p>
+<p data-mark="+">Now use the Work-Energy Theorem to find the force...
+    $$\vec{\mathbf F} = {W\over \Delta \vec{\mathbf d}} = \mathrm{{210\ J \over 2.00\ m} = 105\ N}$$</p>
+</section>
+
+<section id="ncf" data-last="?"><h3>Non-Constant Force</h3>
+    <p>When a force is not constant, we must use the <em>average</em> force to calculate the work.</p>
+    <ul data-mark="+">
+        <li>One way of doing this is to calculate the area under a graph of the force versus the position.</li>
+    </ul>
+    <p class="Blue" data-mark="+">Example 3: A 100 kg cyclist experiences a force as illustrated. How much work is done and what would the cyclist’s speed be if they started from rest?</p>
+    <p data-mark="=" class="Center"><img src="img/force-0.png" onclick="imageCycle(event, this, 5)" alt="Cyclist" class="Zoom" width="548"/></p>
+    <p data-mark="+">$$W = \Delta E_k = \mathrm{3000\ J}$$</p>
+    <p data-mark="+">$$v = \sqrt{2 E_k\over m} = \mathrm{\sqrt{2\cdot 3000\ J\over 100\ kg} = 7.75\ m/s}$$</p>
+</section>
+
+<!-- data-mark data-last -->
+
+</body>
+</html>

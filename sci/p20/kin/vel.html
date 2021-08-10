@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Velocity &amp; Speed</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/train.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript" src="../../2021/tree.js"></script>
+</head>
+<body>
+<article>
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 20</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="vel" data-last="?"><h3>Velocity</h3>
+    <p>We learned in the last lesson that <em>displacement</em> measures the <em>change</em> in an object’s <em>position</em>.</p>
+    <p data-mark="+"><em class="Defn">Velocity</em> measures how quickly the position changes, or the <em>rate</em> of displacement:</p>
+    <p data-mark="=">$$\vec{\mathbf v} = {\Delta\vec{\mathbf d}\over \Delta t}$$</p>
+    <ul>
+        <li data-mark="+">Velocity, like displacement, is a vector.</li>
+        <li data-mark="+">The SI unit of velocity is metres per second.</li>
+        <li data-mark="+">The conversion factor to or from km/h is$$\mathrm{1\ m/s = 3.6\ km/h}$$</li>
+    </ul>
+</section>
+
+<section id="slope" data-last="?"><h3>Motion Graph</h3>
+    <p class="Center"><img src="../../s10/phys/img/bike_dt.png" alt="Graph" class="w800"/></p>
+    <p class="Present">$$\vec{\mathbf v} = {\Delta\vec{\mathbf d}\over \Delta t}$$</p>
+    <p data-mark="+">$$\vec{\mathbf v} = \mathrm{(+7.0\ m) - (-5.0\ m)\over 4.0\ s - 0.0\ s}$$</p>
+    <p data-mark="+">$$\begin{align}&= \mathrm{{+12.0\ m \over 4.0\ s}}\\ &= \mathrm{+3.0\ m/s}\end{align}$$</p>
+	<ul>
+        <li data-mark="+">Since \(\Delta\vec{\mathbf d}\) is the “rise” of the graph and \(\Delta t\) is the “run”, velocity is the <em>slope</em> of the line.</li>
+    </ul>
+	<p data-mark="+">When the graph is a straight line, the motion is classified as <em class="Defn">uniform motion</em>.</p>
+    <ul>
+        <li data-mark="+">The graph has a constant slope.</li>
+        <li data-mark="+">The velocity is constant.</li>
+        <li data-mark="+">The position changes by the same amount in equal amounts of time.</li>
+    </ul>
+	<p data-mark="+">When the graph is curved, the motion is classified as <em class="Defn">accelerated motion</em>.</p>
+    <ul>
+        <li data-mark="+">The slope of the graph is not constant.</li>
+        <li data-mark="+">The velocity is changing.</li>
+        <li data-mark="+">The position changes by the different amounts in equal amounts of time.</li>
+    </ul>
+</section>
+
+<section id="speed" data-last="?"><h3>Speed</h3>
+    <p><em class="Defn">Speed</em> is the rate of <em>distance</em> travelled:$$v = {\Delta d\over \Delta t}$$</p>
+    <ul>
+        <li data-mark="+">Remember that distance is measured along the path of the motion, while displacement is measured in a straight line.</li>
+        <li data-mark="+">Speed is a <em>scalar</em> (no direction) while velocity is a vector.</li>
+    </ul>
+</section>
+
+<section id="ex1" data-last="?"><h3>Example 1</h3>
+    <p class="Blue">What will be the displacement of a cyclist who rides with a velocity of 27.0 km/h [south] for one minute?</p>
+    <p data-mark="+">Identify the variables and convert to standard SI units if necessary:</p>
+    <ul data-mark="+">
+        <li>\(\vec{\mathbf v} = \mathrm{27.0\ km/h\ [S] = 7.50\ m/s\ [S]}\)</li>
+        <li data-mark="+">\(\Delta t =\ \mathrm{1.00\ min = 60.0\ s}\)</li>
+        <li data-mark="+" class="Red">\(\Delta\vec{\mathbf d} =\ ?\)</li>
+    </ul>
+    <p data-mark="+">Select the relevant relationship (equation):</p>
+    <p data-mark="=">$$\vec{\mathbf v} = {\Delta \vec{\mathbf d}\over \Delta t}$$</p>
+    <p data-mark="+">Rearrange the equation to isolate the unknown:</p>
+    <p data-mark="+">$$\vec{\mathbf v}\color{red}{\Delta t} = {\Delta \vec{\mathbf d}\over \Delta t} \color{red}{\Delta t}$$</p>
+    <p data-mark="+">$$\vec{\mathbf v}\Delta t = \Delta \vec{\mathbf d}$$</p>
+    <p data-mark="+">Evaluate, including units:</p>
+    <p data-mark="=">$$\Delta \vec{\mathbf d} = \mathrm{{7.50\ m/s\ [S] \cdot  60.0\ s} = 450\ m\ [S]}$$</p>
+    <ul>
+        <li data-mark="+">Is the answer reasonable?</li>
+    </ul>
+</section>
+
+<section id="ex2" data-last="?"><h3>Example 2</h3>
+    <p class="Blue">An athlete can maintain an average speed of 7.80 m/s during an 800-metre race. How long will it take the runner to finish the race?</p>
+    <p data-mark="+">Identify the variables:</p>
+    <ul data-mark="+">
+        <li>\(v = \mathrm{7.80\ m/s}\)</li>
+        <li data-mark="+">\(\Delta d = \mathrm{800\ m}\)</li>
+        <li data-mark="+" class="Red">\(\Delta t =\ ?\)</li>
+    </ul>
+    <p data-mark="+">Select the relevant relationship (equation):</p>
+    <p data-mark="=">$$v = {\Delta d\over \Delta t}$$</p>
+    <p data-mark="+">Rearrange the equation to isolate the unknown:</p>
+    <p data-mark="+">$$v\color{red}{\Delta t} = {\Delta d\over \Delta t} \color{red}{\Delta t}$$</p>
+    <p data-mark="+">$$v\Delta t = \Delta d$$</p>
+    <p data-mark="+">$${v\Delta t \over \color{red}{v}} = {\Delta d \over \color{red}{v}}$$</p>
+    <p data-mark="+">$$\Delta t = {\Delta d \over v}$$</p>
+    <p data-mark="+">Evaluate, including units:</p>
+    <p data-mark="=">$$\Delta t = \mathrm{{800\ m \over 7.80\ m/s} = 103\ s}$$</p>
+    <ul>
+        <li data-mark="+">Always use standard SI units (except when the units cancel).</li>
+        <li data-mark="+">Is the answer reasonable?</li>
+    </ul>
+</section>
+
+</body>
+</html>

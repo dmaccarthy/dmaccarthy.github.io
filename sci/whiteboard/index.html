@@ -4,7 +4,8 @@
 <meta charset="utf8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Whiteboard</title>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 <script type="text/javascript" src="../script/util.js"></script>
 <script type="text/javascript" src="../script/plot.js"></script>
 <script type="text/javascript" src="../script/touch.js"></script>
@@ -140,9 +141,7 @@ function image() {
 
 $(function() {
     let w = $(window), size = {};
-    if (w.height() > w.width()) size = {width:405, height:720};
-    // let size = {width:w.width() - 36, height:w.height() - 36};
-    // let size = {};
+    if (w.height() > w.width()) size = {width:288, height:720};
     if (qsArgs("w")) size.width = parseInt(qsArgs("w"));
     if (qsArgs("h")) size.height = parseInt(qsArgs("h"));
     let cv = $("canvas").attr(size)
@@ -207,7 +206,7 @@ sync.url = "https://png-mirror.davidmaccarthy.repl.co/submit";
 </script>
 </head>
 <body>
-    <canvas width="720" height="405"></canvas>
+    <canvas width="720" height="288"></canvas>
     <table><tr>
         <td onclick="color('red')" class="red"> </td>
         <td onclick="color('blue')" class="blue"> </td>

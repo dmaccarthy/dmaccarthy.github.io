@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Non-Isolated Systems</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/arrow.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/plot.js"></script>
+<script type="text/javascript" src="../../script/plotItems.js"></script>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript" src="../../2021/tree.js"></script>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+
+Plot.loadImages({
+    "Eg": "../../media/latex/blue/Eg.png",
+    "Ek": "../../media/latex/blue/Ek.png",
+    "-W": "../../media/latex/red/Wloss.png",
+    "+W": "../../media/latex/red/Wgain.png",
+});
+
+let NonIso = {status:0, frame:0, rotn:2/7, font:"28px Arial"}
+
+NonIso.bar = function(i) {
+    let p = new Plot($("canvas")[0], [0, 3, 0, 10], [72, 6, 54, 18]);
+    p.items = [
+        new Grid({y:1, gridStyle:["grey", 0.5]}),
+        new Grid({y:2, yLabel:{font:NonIso.font, anchor:RIGHT, offset:-5, format:0}}),
+    ];
+    let data = [[9.81, 0, 0], [0, 6.25, 3.26]][i];
+    p.items.extend(Segments.bars(data));
+    p.items.extend([
+        new Grid({x:1, axisStyle:["black", 2]}),
+        new Text("Energy / J", [-0.25, p.top()], {align:BOTTOMRIGHT, font:NonIso.font, angle:90}),
+    ]);
+    p.items[4].opt.fill = "red";
+    p.barLabels(["Eg", "Ek", i ? "-W" : "+W"], -0.25);
+    NonIso.graphNumber = i;
+    p.draw();
+}
+
+NonIso.toggle = function() {
+    NonIso.bar(1 - NonIso.graphNumber);
+}
+
+Plot.waitForImages(function() {
+    NonIso.bar(0);
+})
+
+
+</script>
+</head>
+<body>
+
+<article>
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 20</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="sys" data-last="?"><h3>Type of Systems</h3>
+    <p><b>Isolated System</b>: A system that does not exchange either matter or energy with its environment.</p>
+    <p data-mark="+"><b>Closed System</b>: A system that can exchange energy but not matter with its environment.</p>
+    <p data-mark="+"><b>Open System</b>: A system that can exchange both energy and matter with its environment.</p>
+</section>
+
+<section id="cons" data-last="?"><h3>Energy Conservation</h3>
+    <p>To apply the Law of Energy Conservation, we must account for any energy added or removed from the system.</p>
+    <ul data-mark="+">
+        <li>Energy that will be <em>added</em> to the system is included with the <em>initial</em> energy.</li>
+        <li data-mark="+">Energy that has been <em>removed</em> from the system is included with the <em>final</em> energy.</li>
+    </ul>
+</section>
+
+<section id="ex" data-last="?"><h3>Example</h3>
+    <p class="Blue">A 500-gram ball is dropped from a height of 2.00 metres. When the ball reaches the ground, its speed is measured to be 5.00 m/s.</p>
+    <p data-mark="+">$$E_{gi} = mgh_i = {\mathrm{0.500\ kg\cdot 9.81\ m/s^2\cdot 2.00\ m = 9.81\ J}}$$</p>
+    <p data-mark="+">$$E_{kf} = {1\over 2}mv_f^2 = {\mathrm{{1\over 2}0.500\ kg\cdot (5.00\ m/s)^2 = 6.25\ J}}$$</p>
+    <ul data-mark="+">
+        <li>The “missing” 3.56 joules is the energy that leaves the system.</li>
+        <li data-mark="+">This energy is the sound and thermal energy produced by the air resistance force.</li>
+    </ul>
+    <p class="Center" data-mark="+"><canvas width="600" height="600" onclick="NonIso.toggle()"></canvas></p>
+    <p data-mark="+">An <em class="Defn">energy flow diagram</em> (also called a Sankey diagram) illustrates the energy transformations.</p>
+    <p data-mark="=" class="Center"><img src="img/flow0.png" alt="Flow" class="w16"/></p>
+    <ul data-mark="+">
+        <li>The circle represents the boundary between the system and the environment.</li>
+        <li data-mark="+">Mechanical energy transformations should always involve kinetic energy.</li>
+    </ul>
+</section>
+
+</body>
+</html>

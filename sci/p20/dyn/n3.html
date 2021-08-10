@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Newton’s Third Law</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/rocket.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript" src="../../2021/tree.js"></script>
+</head>
+<body>
+
+<article>
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 20</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="F" data-last="?"><h3>Force</h3>
+<p>A force is an <em>interaction</em> between two objects.</p>
+<ul data-mark="+">
+	<li>When you push on an object (action), the object pushes back on you (reaction).</li>
+</ul>
+	<p data-mark="+">Newton observed that:</p>
+    <ul>
+        <li data-mark="=">the action and reaction always occur together,</li>
+        <li data-mark="+">they are equal in magnitude,</li>
+        <li data-mark="+">they act in opposite directions.</li>
+    </ul>
+</ul>
+<p data-mark="+"><em class="Defn">Newton’s 3<sup>rd</sup> Law</em>: For every action (force), there is an equal and opposite reaction force:$${\vec{\mathbf F}}_{AB} = -{\vec{\mathbf F}}_{BA}$$</p>
+<ul data-mark="+">
+	<li>When you walk or run, you make the ground push you forward by push backward against the ground.</li>
+</ul>
+<p class="Center" data-mark="="><img class="w20" src="img/n3.png"/></p>
+<ul data-mark="+">
+	<li>When you climb a rope, you cause the rope to exert an upward force on you by exerting a downward force on the rope.</li>
+	<li data-mark="+">Jet and rocket propulsion work by forcing gas out the “back” of the engine, causing the gas to propel the vessel forward.</li>
+</ul>
+<p class="Center" data-mark="="><img class="w4" src="img/rocket.png"/></p>
+<ul data-mark="+">
+    <li>Since Earth exerts a gravitational force on you, you must exert an equal gravitational force on the Earth!</li>
+</ul>
+</section>
+
+<section id="ex" data-last="?"><h3>Example</h3>
+<p class="Blue">In a game of billiards, a cue ball with a mass of 300 grams is moving at 5.00 m/s when it collides head on with a stationary ball of mass 250 g. The balls are in contact with each other for 0.200 seconds, after which the cue ball’s velocity is 2.00 m/s.</p>
+<p class="Blue">a) How much force did the cue ball experience?</p>
+<p class="Center" data-mark="+"><img class="w16" src="img/pool.png"/></p>
+<p data-mark="+">$$\vec{\mathbf a} = {\vec{\mathbf v}_f - \vec{\mathbf v}_i \over \Delta t} = \mathrm{{2.00\ m/s - 5.00\ m/s \over 0.200\ s} = -15.0\ m/s^2}$$</p>
+<p data-mark="+">$$\vec{\mathbf F} = m\vec{\mathbf a} = \mathrm{0.300\ kg\cdot (-15.0\ m/s) = -4.50\ N}$$</p>
+<p class="Blue" data-mark="+">b) What was the second ball’s velocity after the collision?</p>
+<p data-mark="+">According to Newton’s 3<sup>rd</sup> Law, the second ball experienced a force of +4.50 newtons...</p>
+<p data-mark="+">$$\vec{\mathbf a} = \vec{\mathbf F} / m = \mathrm{{+4.50\ N\over 0.250\ kg} = +18.0\ m/s^2}$$</p>
+<p data-mark="+">To find the final velocity, solve one of the uniform accelerated motion equations...</p>
+<p data-mark="+">$$\begin{align}\vec{\mathbf v}_f &= \vec{\mathbf a}\Delta t + \vec{\mathbf v}_i\\ &= \mathrm{{+18.0\ m/s^2\cdot 0.200\ s + 0.00\ m/s}}\\ &= \mathrm{+3.60\ m/s}\end{align}$$</p>
+</section>
+
+</body>
+</html>

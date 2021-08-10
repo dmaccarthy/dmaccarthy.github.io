@@ -125,11 +125,26 @@ JPlot.prototype.pause = function() {
 
 JPlot.prototype.play = function(fps, frame) {
     clearTimeout(this._animation);
+    let t = new Date().getTime();
+    console.log(t);
+    let s = 1000 / fps;
     if (frame == null) frame = this.frame;
     this.draw(frame);
+    // let dt = Math.max(0, t - (this._drawTime ? this._drawTime : 0) - s);
+    // this._drawTime = t;
     let j = this;
     if (frame != null) frame++;
-    this._animation = setTimeout(function() {j.play(fps, frame)}, 1000/fps);
+    this._animation = setTimeout(function() {j.play(fps, frame)}, s);
+    if (this.onframe) this.onframe(frame);
+}
+
+JPlot.prototype.playing = function() {
+    return this._animation ? true : false;
+}
+
+JPlot.prototype.toggle = function(fps) {
+    if (this._animation) this.pause();
+    else this.play(fps);
 }
 
 JPlot.prototype.cmd = function(cmd) {

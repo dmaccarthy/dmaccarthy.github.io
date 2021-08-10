@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Model Equations (Linear)</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/flask.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript" src="../../2021/tree.js"></script>
+<style type="text/css">
+
+td {
+    width:6em;
+    text-align:center;
+}
+
+</style>
+</head>
+<body>
+
+<article>
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 20</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="lin" data-last="?"><h3>Linear Relations</h3>
+<p>As you learned in Math 10, all <em>linear</em> functions can be written in the form:$$y=kx+b$$</p>
+<ul data-mark="+">
+    <li>\(x\) refers to the <em>manipulated</em> variable.</li>
+    <li data-mark="+">\(y\) refers to the <em>responding</em> variable.</li>
+    <li data-mark="+">\(k\) refers to the <em>slope</em> of the relationship.</li>
+    <li data-mark="+">\(b\) refers to the <em>\(y\)-intercept</em>.</li>
+</ul>
+</section>
+
+<section id="k" data-last="?"><h3>Slope</h3>
+<p>Slope can be calculated as “rise” divided by “run”:$$k = {y_2 - y_1 \over x_2 - x_1}$$</p>
+<p data-mark="+" class="Center"><img src="img/scatter-5.png" alt="Scatter Plot" class="w800"/></p>
+<ul data-mark="+">
+    <li>In principle, \((x_1, y_1)\) and \((x_2, y_2)\) can be any two points on the best-fit line.</li>
+    <li data-mark="+">Do <b>not</b> use data points that are above or below the line!</li>
+    <li data-mark="+">In practice, your calculation will be most accurate if you choose points that are as far apart as possible.</li>
+</ul>
+<table data-mark="+">
+    <tr><th>Current<br><i>I</i> / Amperes</th><th>Voltage<br><i>V</i> / Volts</th></tr>
+    <tr><td>0.0</td><td>11.4</td></tr>
+    <tr><td>5.0</td><td>2.0</td></tr>
+</table>
+<p data-mark="+">$$k = \mathrm{{(2.0 - 11.4) V \over (5.0 - 0.0) A} = -1.9 V/A}$$</p>
+</section>
+
+<section id="b" data-last="?"><h3><i>y</i>-Intercept</h3>
+<p>The <em class="Defn">\(y\)-intercept</em> is the value where the line crosses the \(y\)-axis.</p>
+<p class="Center Present"><img src="img/scatter-5.png" alt="Scatter Plot" class="w800"/></p>
+<ul data-mark="+">
+    <li>In this example, we can see from the graph that the intercept is 11.4 volts.</li>
+    <li data-mark="+">Sometimes, the intercept may not be visible on the graph.</li>
+    <li data-mark="+">You can <em>calculate</em> the intercept (\(b\)) by rearranging the equation:</li>
+</ul>
+<p data-mark="=">$$y = kx + b$$</p>
+<p data-mark="+">$$y - kx = b$$</p>
+<p data-mark="+">$$b = \mathrm{2.0\ V - (-1.88\ V/A) 5.0\ A = 11.4\ V}$$</p>
+</section>
+
+<section id="eq" data-last="?"><h3>Model Equation</h3>
+<p>Once you know the slope and the \(y\)-intercept, you can write the equation in the form: \(y = kx+b\).</p>
+<ul data-mark="+">
+    <li>Replace \(x\) and \(y\) by the actual variable names or symbols.</li>
+    <li data-mark="+">Replace \(k\) and \(b\) by the calculated values, including units.</li>
+</ul>
+<p data-mark="+">$$V = \mathrm{(-1.9\ V/A)} I + \mathrm{11.4\ V}$$</p>
+<p data-mark="+">We can use the equation to make <em>predictions</em> about the data.</p>
+</section>
+
+<section id="ex1" data-last="?"><h3>Example 1</h3>
+<p class="Blue">Predict the voltage when the current is 3.5 A.</p>
+<p data-mark="+">$$V = \mathrm{(-1.9\ V/A)} I + \mathrm{11.4\ V}$$</p>
+<p data-mark="+">$$V = \mathrm{(-1.9\ V/A)\ \color{red}{3.5\ A} + 11.4\ V = 4.8\ V}$$</p>
+<ul data-mark="+"><li>A prediction <em>within</em> the range of data is called <em class="Defn">interpolation</em>.</li></ul>
+</section>
+
+<section id="ex2" data-last="?"><h3>Example 2</h3>
+<p class="Blue">What current would be needed for the voltage to reach zero?</p>
+<p data-mark="+">$$V = \mathrm{(-1.9\ V/A)} I + \mathrm{11.4\ V}$$</p>
+<p data-mark="+">$$V - \mathrm{11.4\ V} = \mathrm{(-1.9\ V/A)} I$$</p>
+<p data-mark="+">$${V - \mathrm{11.4\ V} \over \mathrm{-1.9\ V/A}} = I$$</p>
+<p data-mark="+">$$I = {\color{red}{\mathrm{0.0\ V}} - \mathrm{11.4\ V} \over \mathrm{-1.9\ V/A}} = \mathrm{6.0\ A}$$</p>
+<ul data-mark="+"><li>A prediction <em>outside</em> the range of data is called <em class="Defn">extrapolation</em>.</li></ul>
+</section>
+
+</body>
+</html>

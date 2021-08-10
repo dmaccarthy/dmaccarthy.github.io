@@ -11,13 +11,16 @@ em.Defn {color:blue; text-decoration:none}
 .Small {font-size:75%}
 .Center {text-align:center}
 .Red {color:red}
+.Blue {color:blue}
 .w4 {width:4em}
 .w6 {width:6em}
 .w8 {width:8em}
 .w10 {width:10em}
 .w12 {width:12em}
+.w14 {width:14em}
 .w16 {width:16em}
 .w20 {width:20em}
+.w24 {width:24em}
 .w800 {width:800px}
 h3.SectionTitle {font-size:100%; font-weight:bold}
 
@@ -32,7 +35,7 @@ table td, table th {
 }
 
 body {
-    font-family: Oxygen, sans-serif;
+    font-family: Oxygen, "Segoe UI", sans-serif;
 	font-size:125%;
 	margin:var(--pad);
 }
@@ -81,13 +84,12 @@ body > article img, body > article iframe {max-width:100%}
 
 #Title p:not(.Small):not(.Course) {font-size:125%}
 
-.Title {
+.Caption, .Title {
     font-weight:bold;
     text-align:center;
-    color:blue;
-    /* margin-bottom:1em; */
 }
 
+.Title {color:blue}
 body > nav > p.Title {color:white}
 body:not(.Present) > article > section:not(:first-child) {margin-top:1.25em}
 

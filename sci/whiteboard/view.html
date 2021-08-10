@@ -4,7 +4,8 @@
 <meta charset="utf8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Whiteboard Monitor</title>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 <link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
 <style>
@@ -19,25 +20,24 @@ body.Paused {
 }
 
 img {
-    max-width:98%;
-    height:calc(99vh - 2em);
-    width:auto;
-    /* border:1px solid black; */
-    /* position:fixed;
-    top:4px;
-    right:4px; */
+    max-width:100%;
+    /* height:calc(99vh - 2em);
+    width:auto; */
 }
 
 </style>
 <script type="text/javascript">
 
 function update() {
-    $.ajax(update.url, {type:"POST", data:{access: update.access}, dataType:"text/plain", complete:function(a) {
+    $.ajax(update.url, {type:"POST", data:{access: update.access, rev:update.revision}, dataType:"text/plain", complete:function(a) {
         a = a.responseText;
-        if (a) $("#Live").attr("src", a);
+        if (a) {
+            update.revision = parseInt(a.substr(0, 16), 16);
+            $("#Live").attr("src", a.slice(16));
+        }
         if (update.paused) delete update.timeout;
         else {
-            update.timeout = setTimeout(update, 250);
+            update.timeout = setTimeout(update, 2000);
         }
     }});
 }
@@ -48,7 +48,7 @@ function pause() {
     delete update.timeout;
     update.paused = true;
     $("body").addClass("Paused");
-}*/
+}
 
 function toggle() {
     update.paused = !update.paused;
@@ -58,14 +58,29 @@ function toggle() {
 }
 
 update.paused = false;
-update.url = "https://png-mirror.davidmaccarthy.repl.co";
-update.access = localStorage.getItem("sync-access");
 
+*/
+
+function imgClick(ev, img) {
+    if (ev.ctrlKey) {
+        let ins = $("<img>").attr({src:img.src, alt:"Image"}).click(function(ev) {
+            if (ev.ctrlKey && ev.shiftKey) {
+                $(this).closest("p").remove();
+            }
+        });
+        let p = $("<p>").html(ins);
+        p.insertBefore($(img).closest("p"));
+    }
+}
+
+update.revision = -1;
+update.url = "https://png-mirror.davidmaccarthy.repl.co";
+update.access = location.search.slice(1)
 $(update);
 
 </script>
 </head>
-<body><p><img id="Live" src="" onclick="toggle()"/></p>
+<body><p><img id="Live" src="" onclick="imgClick(event, this)"/></p>
 </body>
 </html>
  

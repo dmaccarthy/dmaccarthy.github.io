@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projectile Motion</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/crane.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript" src="../../2021/tree.js"></script>
+<script type="text/javascript">
+
+function tdClick(td) {$(td).find("span").toggle()}
+
+</script>
+<style type="text/css">
+
+td {
+    min-width:6em;
+    text-align:center;
+}
+
+</style>
+</head>
+<body><article>
+
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 20</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="pr" data-last="?"><h3>Projectile Motion</h3>
+<p><em class="Defn">Projectile motion</em> is the 2D version of uniformly accelerated motion.</p>
+<ul data-mark="+">
+    <li>This type of motion typically occurs when gravity causes a <em>constant acceleration</em> (if we ignore air resistance) in the \(–y\) direction while the object’s velocity has both \(x\)- and \(y\)-components.</li>
+    <li data-mark="+">The shape of a projectile’s trajectory is a <em>parabola</em>.</li>
+    <li data-mark="+">We know this because the relationship between the \(x\)- and \(y\)-components of the displacement is quadratic.</li>
+    <li data-mark="+">(You will study quadratic functions in Math 20.)</li>
+    <li data-mark="+">For a typical projectile problem, you will express all four of your kinematic vectors (acceleration, initial and final velocity, displacement) in <b><u>Cartesian</u></b> form.</li>
+    <!-- <li data-mark="+">The fifth variable, time, is a scalar so it does not have separate \(x\)- and \(y\)-values.</li>
+    <li data-mark="+">Also, because there is no \(x\)-acceleration (gravity acts only in the \(y\)-direction), the initial and final \(x\)-velocities are the same.</li> -->
+    <li data-mark="+">To solve for any unknowns, treat the \(x\) and \(y\)-parts of the motions as two separate problems to be solved independently.</li>
+    <!-- <li data-mark="+">The only mathematical connection between the components is that they occur over the same amount of time.</li> -->
+</ul>
+</section>
+
+<section id="ex1" data-last="?"><h3>Example</h3>
+<p class="Blue">A golfer imparts an initial velocity of 40.0 m/s [52.0°] to a ball. The ball lands on the green 3.00 metres lower than the tee area. Calculate the “hang time” and “range” of the ball.</p>
+<ul data-mark="+">
+    <li><em class="Defn">Hang time</em> means the time the projectile is in motion before it contacts the ground.</li>
+    <li data-mark="+"><em class="Defn">Range</em> means the horizontal displacement of the projectile before it hits the ground.</li>
+    <li data-mark="+">Since there is no acceleration in the \(x\)-direction, the intial and final velocities are the same.</li>
+    <li data-mark="+">Since time is a scalar, it does not have separate \(x\)- and \(y\)-components.</li>
+</ul>
+<table data-mark="+">
+    <tr><td>&nbsp;</td><td>\(x\)</td><td>\(y\)</td></tr>
+    <tr><td>\(\vec{\mathbf a}\) / \((\mathrm{m/s^2})\)</td><td>0</td><td>–9.81</td></tr>
+    <tr><td>\(\vec{\mathbf v}_i\) / \((\mathrm{m/s})\)</td><td rowspan="2">24.6</td><td>31.5</td></tr>
+    <tr><td>\(\vec{\mathbf v}_f\) / \((\mathrm{m/s})\)</td><td onclick="tdClick(this)"><span class="Red Hidden">–32.4</span></td></tr>
+    <tr><td>\(\Delta\vec{\mathbf d}\) / \((\mathrm{m})\)</td><td onclick="tdClick(this)"><span class="Red Hidden">161</span></td><td>–3.00</td></tr>
+    <tr><td>\(\Delta t\) / \((\mathrm{s})\)</td><td colspan="2" onclick="tdClick(this)"><span class="Red Hidden">6.52</span></td></tr>
+</table>
+<p data-mark="+">Solve the \(y\)-motion as uniform accelerated motion. First find the final velocity...</p>
+<p data-mark="+">$$v_f^2 = v_i^2 + 2\vec{\mathbf a}\cdot\Delta\vec{\mathbf d}$$</p>
+<p data-mark="+">$$v_f = \sqrt{v_i^2 + 2\vec{\mathbf a}\cdot\Delta\vec{\mathbf d}}$$</p>
+<p data-mark="+">$$v_f = \sqrt{\mathrm{(31.5\ m/s)^2 + 2(-9.81\ m/s^2)(-3.00\ m)}}$$</p>
+<p data-mark="+">$$\vec{\mathbf v}_f = \mathrm{-32.4\ m/s}$$</p>
+
+<p data-mark="+">Next find the time...</p>
+<p data-mark="+">$$\vec{\mathbf a} = {\vec{\mathbf v}_f - \vec{\mathbf v}_i \over \Delta t}$$</p>
+<p data-mark="+">$$\Delta t = {\vec{\mathbf v}_f - \vec{\mathbf v}_i \over \vec{\mathbf a}}$$</p>
+<p data-mark="+">$$\Delta t = \mathrm{{-32.4\ m/s - 31.5\ m/s \over -9.81\ m/s^2} = 6.52\ s}$$</p>
+
+<p data-mark="+">Now solve the \(x\)-motion as uniform motion...</p>
+<p data-mark="+">$$\Delta\vec{\mathbf d} = \vec{\mathbf v}\Delta t = \mathrm{24.6\ m/s\cdot 6.52\ s = 161\ m}$$</p>
+
+<!-- <p data-mark="+">$${\vec{\mathbf{F}}}_x=\left|\vec{\mathbf{F}}\right|\cos{\theta}=-47.0\ \mathrm{N}$$</p>
+<p data-mark="+">$${\vec{\mathbf{F}}}_y=\left|\vec{\mathbf{F}}\right|\sin{\theta=+17.1\ \mathrm{N}}$$</p> -->
+</section>
+
+</article></body>
+</html>

@@ -16,3 +16,13 @@ function objectInList(data, key, val) {
         if (val != null && v == val || val == null && v != null) return data[i];
     }
 }
+
+function aspect() {
+    let e = $("[data-aspect]");
+    for (let i=0;i<e.length;i++) {
+        let ei = $(e[i]);
+        let a = eval(ei.attr("data-aspect"));
+        let h = Math.round(ei.width() / a);
+        e.css({height:h});
+    }
+}

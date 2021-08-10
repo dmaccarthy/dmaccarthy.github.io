@@ -3,24 +3,28 @@
 <head>
 <meta charset="utf8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Mr. Mac’s Science Page</title>
-<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script-->
-<link rel="shortcut icon" type="image/x-icon" href="media/flask.png"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
-<link rel="stylesheet" type="text/css" href="script/toc.css"/>
+<title>Mr. Mac’s Website</title>
+<link rel="shortcut icon" type="image/x-icon" href="media/rocket.png" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700" />
+<link rel="stylesheet" href="2021/ui.css" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="script/util.js"></script>
 <script type="text/javascript">
 
-location.href = "s10";
+// location.href = "p20";
+
+let home = {title:"Mr. Mac’s Website", html:"<p>Please select a course...</p>", menu:[
+    {title:"Computing Science", href:"cs", icon:"laptop"},
+    {title:"Science 10H", href:"s10", icon:"flask"},
+    {title:"Physics 20", href:"p20", icon:"rocket"},
+]}
 
 </script>
+<script type="text/javascript" src="2021/ui.js"></script>
+<script type="text/javascript" src="2021/tree.js"></script>
 </head>
-<body>
-<!-- <section>
-    <p>Please select your course:</p>
-    <ul>
-        <li><a href="s10">Science 10</a></li>
-        <li><a href="p20">Physics 20</a></li>
-    </ul>
-</section> -->
-</body>
+<body><article>
+<p id="Crumbs"></p>
+<div id="Content"></div>
+</article></body>
 </html>

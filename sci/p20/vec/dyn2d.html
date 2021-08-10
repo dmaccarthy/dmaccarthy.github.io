@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dynamics in 2D</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/crane.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript" src="../../2021/tree.js"></script>
+<style type="text/css">
+
+td {
+    min-width:6em;
+    text-align:center;
+}
+
+</style>
+<script type="text/javascript">
+
+function tdClick(td) {$(td).find("span").toggle()}
+
+</script>
+</head>
+<body>
+
+<!-- <p class="Center" data-video="#PLpVmtCaB-lymgmGIEvph0whN7Fh1WA2SA" data-width="720" data-aspect="16/9"></p> -->
+
+<article>
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 20</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="ex1" data-last="?"><h3>Example 1</h3>
+<p class="Blue">A student pushes a 2.00 kg box from rest, 2.00 metres up an 8.00° frictionless incline, using an applied force of 10.0 newtons parallel to the ramp.
+    Calculate the work done by both the student and gravity, and determine the speed of the box at the top of the ramp and its acceleration.</p>
+<p class="Center"><img src="img/ramp.png" alt="Ramp" class="w16"/></p>
+<p data-mark="+">$$W_a = \vec{\mathbf F}_a \cdot \Delta\vec{\mathbf d} = \mathrm{10.0\ N\cdot 2.00\ m = 20.0\ J}$$</p>
+<p data-mark="+">$$\begin{align}W_g &= |\vec{\mathbf F}_g| \cdot |\Delta\vec{\mathbf d}| \cos(\Delta\theta) \\&= \mathrm{19.6\ N\cdot 2.00\ m\cdot \cos(98.0^\circ)} \\&= \mathrm{-5.46\ J}\end{align}$$</p>
+<p data-mark="+">$$\Delta E_k = W_a + W_g = \mathrm{14.5\ J}$$</p>
+<p data-mark="+">$$v_f = \sqrt{2E_k\over m} = \mathrm{\sqrt{2(14.5\ J)\over 2.00\ kg} = 3.81\ m/s}$$</p>
+<p data-mark="+">$$\vec{\mathbf a} = {v_f^2 - v_i^2\over 2\Delta\vec{\mathbf d}} = \mathrm{{(3.81\ m/s)^2 \over 2\cdot 2.00\ m} = 3.64\ m/s^2}$$</p>
+<ul data-mark="+">
+    <li>The normal force is not relevant to the solution because it acts perpendicular to the motion and does no work.</li>
+</ul>
+</section>
+
+<section id="ex2" data-last="?"><h3>Example 2</h3>
+<p class="Blue">Calculate the normal force and the acceleration of the box using Newton’s 2nd Law.</p>
+<p class="Center"><img src="img/ramp.png" alt="Ramp" class="Present w16"/></p>
+<ul data-mark="+">
+    <li>Use the direction parallel to the ramp as \(x\) and the perpendicular direction as \(y\).</li>
+    <li data-mark="+">Convert the gravity force to Cartesian form:
+        $$\vec{\mathbf F}_{gx} = \mathrm{19.6\ N\cdot \cos(262^\circ) = -2.73\ N}$$
+        $$\vec{\mathbf F}_{gy} = \mathrm{19.6\ N\cdot \sin(262^\circ) = -19.4\ N}$$
+    </li>
+</ul>
+<table data-mark="+">
+    <tr><td>&nbsp;</td><td>∥ [\(x\)]</td><td>⟂ [\(y\)]</td></tr>
+    <tr><td>\(\vec{\mathbf F}_a\)</td><td>10.0</td><td>0.00</td></tr>
+    <tr><td>\(\vec{\mathbf F}_g\)</td><td>–2.73</td><td>–19.4</td></tr>
+    <tr><td>\(\vec{\mathbf F}_n\)</td><td>0.00</td><td onclick="tdClick(this)"><span class="Red Hidden">+19.4</span></td></tr>
+    <tr><td>\(\vec{\mathbf F}_{net}\)</td><td onclick="tdClick(this)"><span class="Red Hidden">+7.27</span></td><td>0.00</td></tr>
+</table>
+<ul data-mark="=">
+    <li>The normal force acts only in the perpendicular (\(y\)) direction.</li>
+    <li data-mark="+">We can determine the normal force because the net force acts parallel to the ramp; the \(y\)-component is zero.</li>
+    <li data-mark="+">The normal force balances the <em>perpendicular component</em> of gravity.</li>
+</ul>
+<p data-mark="+">$$\vec{\mathbf a}_x = {\vec{\mathbf F}_{net}\over m} = \mathrm{{+7.27\ N\over 2.00\ kg} = +3.64\ m/s^2}$$</p>
+</section>
+
+<section id="ex3" data-last="?"><h3>Example 3</h3>
+<p class="Blue">Calculate the speed and acceleration of the box when the coefficient of kinetic friction is 0.200.</p>
+<ul data-mark="+">
+    <li>The normal force is relevant now, because it determines how strong the friction force is.</li>
+</ul>
+<p data-mark="=">$$F_f = \mu F_n = \mathrm{0.200\cdot 19.4\ N = 3.89\ N}$$</p>
+<ul data-mark="+">
+    <li>The friction force acts only in the negative, parallel (\(x\)) direction.</li>
+</ul>
+<table data-mark="+">
+    <tr><td>&nbsp;</td><td>∥ [\(x\)]</td><td>⟂ [\(y\)]</td></tr>
+    <tr><td>\(\vec{\mathbf F}_a\)</td><td>10.0</td><td>0.00</td></tr>
+    <tr><td>\(\vec{\mathbf F}_g\)</td><td>–2.73</td><td>–19.4</td></tr>
+    <tr><td>\(\vec{\mathbf F}_n\)</td><td>0.00</td><td>+19.4</td></tr>
+    <tr><td>\(\vec{\mathbf F}_f\)</td><td>–3.89</td><td>0.00</td></tr>
+    <tr><td>\(\vec{\mathbf F}_{net}\)</td><td onclick="tdClick(this)"><span class="Red Hidden">+3.38</span></td><td>0.00</td></tr>
+</table>
+<p data-mark="+">$$\vec{\mathbf a}_x = {\vec{\mathbf F}_{net}\over m} = \mathrm{{+3.38\ N\over 2.00\ kg} = +1.69\ m/s^2}$$</p>
+<p data-mark="+">$$v_f = \sqrt{v_i^2 + 2\vec{\mathbf a}\cdot\Delta\vec{\mathbf d}} = \mathrm{\sqrt{2\cdot 1.69\ m/s^2 \cdot 2.00\ m} = 2.60\ m/s}$$</p>
+<p data-mark="+">$$E_k = {1\over 2}mv^2 = \mathrm {{1\over 2} 2.00\ kg (2.60\ m/s)^2 = 6.76\ J}$$</p>
+<p data-mark="+">$$W_f = \mathrm{-3.89\ J\cdot 2.00\ m = -7.78\ J}$$</p>
+</section>
+
+</article></body>
+</html>

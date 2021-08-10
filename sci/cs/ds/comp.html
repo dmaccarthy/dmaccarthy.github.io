@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>List Comprehensions</title>
+<link rel="shortcut icon" type="image/x-icon" href="../../../media/html5.png"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../../2021/cs.js"></script>
+<script type="text/javascript">
+
+let course = "ds";
+
+</script>
+</head>
+<body><article>
+
+<h3>List Comprehensions</h3><div class="Note">
+<p>Python includes a feature for making lists by performing the same operation on a sequence of objects. Suppose that we have a sequence of ordered pairs representing points on a drawing (e.g. the alien spacecraft locations in a space invaders type game).  We need to calculate the distance between each point and some other point (e.g. the player’s ship).  We might write the following...</p>
+<pre class="Code" contenteditable="true" data-mime="text/plain">
+<span class="Comment"># Example 1...</span>
+
+from math import hypot
+
+def distance(p1, p2):
+    <span class="Comment">"""Calculate the distance between two points,
+    rounded to the nearest whole number"""</span>
+    x = p1[0] - p2[0]
+    y = p1[1] - p2[1]
+    return round(hypot(x, y))
+
+def main():
+    invaders = (5, 100), (30, 150), (55, 200), (80, 150), (105, 200)
+    player = (300, 620)
+    distanceList = []
+    for ship in invaders:
+        distanceList.append(distance(ship, player))
+    print(distanceList)      <span class="Comment"># [598, 542, 486, 519, 463]</span>
+
+main()</pre>
+
+<p>In the <code>main</code> procedure above, we created an empty list, <code>distanceList</code>, and then used a <code>for</code> loop to iterate through the sequence of invader ships, appending each result to the list.
+    Below is an abbreviated version of the procedure that uses a list comprehension (shown in blue)...</p>
+<pre class="Code" contenteditable="true" data-mime="text/plain">
+<span class="Comment"># Example 2...</span>
+
+def main():
+    invaders = (5,100), (30, 150), (55, 200), (80, 150), (105, 200)
+    player = (300, 620)
+    distanceList = <span class="Blue">[distance(ship, player) for ship in invaders]</span>
+    print(distanceList)      <span class="Comment"># [598, 542, 486, 519, 463]</span></pre>
+
+<p>The list comprehension shortens the <code>for</code> loop into a single statement, while automatically assembling the results into a list. We do not need to initialize the list or append items explicitly.  The syntax for a list comprehension is...</p>
+<pre class="IO">[&lt;Expression&gt; for &lt;Item&gt; in &lt;Sequence&gt;]</pre>
+<p>...where <code>&lt;Sequence&gt;</code> is any <code>list</code>, <code>tuple</code>, string, or other iterable object;
+    <code>&lt;Item&gt;</code> is the local variable name you want to use for the items in the sequence;
+    and <code>&lt;Expression&gt;</code> is the expression to be evaluated and appended to the <code>list</code> for each item.</p>
+</div>
+
+<h3>Conditional Comprehensions</h3><div class="Note">
+<p>Suppose in the previous example, we wanted to obtain a <code>list</code> of invaders that were within
+    a certain distance of the player’s ship. We could do this with a <em>conditional</em> list comprehension.</p>
+<pre class="Code" contenteditable="true" data-mime="text/plain">
+<span class="Comment"># Example 3...</span>
+
+def main():
+    invaders = (5,100), (30, 150), (55, 200), (80, 150), (105, 200)
+    player = (300, 620)
+    nearby = [ship for ship in invaders <span class="Blue">if distance(ship, player) < 500</span>]
+    print(nearby)      <span class="Comment"># [(55, 200), (105, 200)]</span></pre>
+
+<p>The <code>if</code> condition at the end of the comprehension specifies which items are to be included in the <code>list</code>.
+    In this example, the sequence (<code>invaders</code>) contains five items, but only two of those items
+    satisfy the condition <code>distance(ship, player) < 500</code>. The result of this comprehension will be a <code>list</code>
+    containing the two invader ships that are within 500 pixels of the player’s ship.</p>
+<p>The general syntax for a conditional list comprehension is...</p>
+<pre class="IO">[&lt;Expression&gt; for &lt;Item&gt; in &lt;Sequence&gt; if &lt;Condition&gt;]</pre>
+</div>
+
+<h3>Nested Comprehensions</h3><div class="Note">
+<p>Python also supports nested <code>for...in</code> clauses within list comprehensions...</p>
+<pre class="Code" contenteditable="true" data-mime="text/plain">
+<span class="Comment"># Example 4...</span>
+
+suits = "Hearts", "Diamonds", "Clubs", "Spades"
+values = list(range(2, 11)) + ["Jack", "Queen", "King", "Ace"]
+deck = [(suit, val) <span class="Blue">for suit in suits for val in values</span>]
+for card in deck: print(card)</pre>
+</div>
+
+<h3>Assignment</h3><ol class="Assign">
+<li>Suppose we want to apply a formula or calculation to many different data points. For example, we might start with a list of numbers and want to calculate the square root of each number and collect the results in a list. The data might be [1.0, 25.0, 6.25, 16.0], and the results would be [1.0, 5.0, 2.5, 4.0]. Complete the program <code>d05_sqrt.py</code> to perform this calculation using a list comprehension.</li>
+<li>Complete the program <code>d05_noVowel.py</code> to use a list comprehension to remove all of the vowels* from a string.  (*Assume ‘y’ is not a vowel.) The input "Toronto Blue Jays!" should produce output "Trnt Bl Jys!".</li>
+<li>Complete the program <code>d05_numsOnly.py</code> to use a list comprehension to collect a <code>list</code> of numbers (data that has either <code>int</code> or <code>float</code> as its type) from a <code>list</code> that may contain other types of data.</li>
+
+</ol>
+</article></body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Doppler Effect</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/crane.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript" src="../../2021/tree.js"></script>
+</head>
+<body><article>
+
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 20</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="de" data-last="?"><h3>Doppler Effect</h3>
+<p>The <em class="Defn">Doppler Effect</em> (also called the Doppler Shift) refers to an apparent change in the frequency of a wave when the source of the waves is moving relative to the observer of the waves.</p>
+<ul data-mark="+">
+    <li>An everyday example is an ambulance siren: the frequency (pitch) sounds higher when the ambulance (source) is coming towards you (observer) and lower when it is going away.</li>
+    <li data-mark="+">If the source of the waves is stationary and the waves travel at the same speed in all directions, then the crests (or compressions) will form concentric circular or spherical “wavefronts”.</li>
+</ul>
+<p class="Center" data-mark="="><b>Stationary Source</b><br/>
+    <img class="w12" src="img/dopp0.png" alt="Stationary"/>
+</p>
+<p data-mark="+">When the source of the waves is moving, the circular wavefronts will no longer be concentric.</p>
+<p class="Center" data-mark="="><b>Moving Source</b><br/>
+    <img class="w12" src="img/dopp1.png" alt="Stationary"/>
+    <br/><a target="Applet" href="https://www.geogebra.org/m/pkraakb4">Animation</a>
+</p>
+<ul data-mark="+">
+    <li>The larger (older) wavefronts will be centred on where the source was when it emitted those waves, while the smaller (newer) wavefronts will be centred closer to where the source is now.</li>
+    <li data-mark="+">The result is that the waves will be closer together (smaller \(\lambda\), higher \(f\)) in front of the source, and farther apart (larger \(\lambda\), lower \(f\)) behind the source.</li>
+</ul>
+</section>
+
+<section id="eq" data-last="?"><h3>Doppler Equation</h3>
+<p>If the observer is in motion, the apparent frequency will be affected as well.</p>
+<ul data-mark="+">
+    <li>When the observer moves toward the waves, the time between waves will be shortened (higher \(f\)) and if the observer is moving away, the time will be increased (lower \(f\)).</li>
+    <li data-mark="+">The relation between the actual source frequency (\(f_s\)) and the observed frequency (\(f_o\)), accounting for motion of both the source (\(v_s\)) and the observer (\(v_o\)) is: $$f_o=\frac{v-v_o}{v-v_s}f_s$$</li>
+    <li data-mark="+">The symbol \(v\) is the speed of the waves.</li>
+    <li data-mark="+">For sound waves travelling through air at normal temperature and pressure, the speed of sound will be about 343 m/s.</li>
+    <li data-mark="+">This equation is only valid when the source and observer are moving in line (1D) with each other.</li>
+    <li data-mark="+">A more complicated equation is needed when the motion is 2D or 3D.</li>
+    <li data-mark="+">Although the Doppler Effect does occur with light waves, the equation is different due to relativistic effects. (Einstein tells us that time behaves weirdly at extreme speeds!)</li>
+</ul>
+</section>
+
+<section id="der" data-last="?"><h3>Derivation</h3>
+    <p>Imagine an observer directly in front of the source as the wavefronts approach.</p>
+    <p data-mark="+">The <em>observed</em> wavelength is the distance the wavefronts move each period (\(vT\)) minus the distance the source moves in the same time (\(v_s T\)): $$\lambda_o = vT - v_s T$$</p>
+    <p data-mark="+">The <em>observed</em> period is this distance, divided by the speed of the waves <em>relative to the observer</em>: $$T_o = {\lambda_o \over v - v_o}$$</p>
+    <p data-mark="+">We can combine these equations by substituting for \(\lambda_o\): $$T_o = { vT - v_s T \over v - v_o} = {v - v_s \over v - v_o} T$$</p>
+    <p data-mark="+">Finally, take the reciprocal to express the relation in terms of frequency instead of period : $$f_o = { v - v_o \over v - v_s} f_s$$</p>
+</section>
+
+<section id="ex1" data-last="?"><h3>Example 1</h3>
+<p class="Blue">A fire truck siren emits sound waves at 850 Hz. When the fire truck is moving at +20.0 m/s, what frequency will a pedestrian in front of the fire trick hear if the pedestrian is (i) at rest, (ii) moving at 3.00 m/s away from the fire truck, and (iii) moving toward the fire truck.</p>
+</section>
+
+<section id="ex2" data-last="?"><h3>Example 2</h3>
+<p class="Blue">Repeat Example 1 for a pedestrian who is behind the fire truck.</p>
+</section>
+
+<section id="ex3" data-last="?"><h3>Example 3</h3>
+<p class="Blue">How fast is an ambulance moving if a stationary observer hears is 1000 Hz siren at 990 Hz. Is the observer in front of or behind the ambulance?</p>
+</section>
+
+<section id="app" data-last="?"><h3>Applications</h3>
+<p>Doppler radar is used to determine the speed of a moving object by bouncing radio waves off the object.</p>
+<ul data-mark="+">
+    <li>Because of the Doppler Effect, the frequency of the reflected waves will be different than the original waves.</li>
+    <li data-mark="+">The greater the difference in frequency, the faster the object is moving.</li>
+    <li data-mark="+">This technology is used by law enforcement to determine the speed of vehicles, by air traffic control to determine the velocity of planes, and by meteorologists to determine the velocity of storm cloud formations.</li>
+    <li data-mark="+">Astronomers also use the Doppler Effect to determine the speed of astronomical objects, such as the rotation of the Sun and the motion of distant galaxies.</li>
+    <li data-mark="+">When astrophysicists tell us that the universe is expanding, they are basing this statement on Doppler Shift measurements that show distant galaxies are moving away from us at increasing speeds.</li>
+</ul>
+</section>
+
+</article></body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Vector Arithmetic</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/crane.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript" src="../../2021/tree.js"></script>
+<style type="text/css">
+
+th {min-width:4em}
+td {text-align:center}
+
+</style>
+</head>
+<body><article>
+    
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 20</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="diag" data-last="?"><h3>Vector Diagram</h3>
+<p>A <em class="Defn">vector diagram</em> is a <u>tip-to-tail</u> illustration of two or more vectors being added.</p>
+<p class="Blue" data-mark="+">Example: Illustrate the displacement of an object that moves 50 m [60°] and then 40 m [340°].
+<!-- <p>To <em class="Defn">add 2D vectors</em>, imagine an object undergoing two successive displacements as illustrated in the vector diagram below.</p> -->
+<p class="Center" data-mark="="><img src="img/arith.png" alt="VecDiag" class="w16"/><br/>
+    1 square = 5 metres</p>
+<ul data-mark="+">
+    <li>We can take the original starting point as the origin.</li>
+    <li data-mark="+">The object moves from the origin to “A” and then continues to “B”.</li>
+    <li data-mark="+">Note that the second part of the displacement begins from the point (“A”) where the first displacement ends.</li>
+    <!-- <li data-mark="+">As a result, the two displacement vectors must be drawn <em class="Defn">tip-to-tail</em>.</li> -->
+    <li data-mark="+">The object’s <em class="Defn">total displacement</em> is from its original starting point (origin) to its final end point (“B”).</li>
+    <li data-mark="+">This vector, representing the <em>sum</em> of the two vectors, is called the <em class="Defn">resultant vector</em>.</li>
+    <li data-mark="+">Because \(\Delta{\vec{\mathbf{d}}}_1\) and \(\Delta{\vec{\mathbf{d}}}_2\) have different directions, the magnitude of the resultant vector will <b>not</b> equal the magnitudes of the two vectors added together.</li>
+    <li data-mark="+">The <em>distance</em> travelled may be 90 m, but the magnitude of the displacement will be smaller.</li>
+    <li data-mark="+">If we draw the vector diagram carefully using a protractor, ruler, and graph paper, we can measure the resultant vector from the diagram.</li>
+    <li data-mark="+">This is called the <em class="Defn">graphical method</em> of vector addition.</li>
+    <li data-mark="+">The accuracy of this method is limitted by how precisely we can draw and measure.</li>
+</ul>
+</section>
+
+<section id="comp" data-last="?"><h3>Component Method</h3>
+<p>A more accurate and reliable method of vector addition is the <em class="Defn">component method</em>.</p>
+<p class="Center Present"><img src="img/arith.png" alt="VecDiag" class="w16"/><br/>
+<ul data-mark="+">
+    <li>Convert each vector to Cartesian form:</li>
+</ul>
+<p data-mark="+">$$\Delta{\vec{\mathbf d}}_{1x} = 50\ {\mathrm m}\cdot\cos(60^\circ) = 25\ {\mathrm m}$$</p>
+<p data-mark="=">$$\Delta{\vec{\mathbf d}}_{1y} = 50\ {\mathrm m}\cdot\sin(60^\circ) = 43\ {\mathrm m}$$</p>
+<p data-mark="+">$$\Delta{\vec{\mathbf d}}_{2x} = 40\ {\mathrm m}\cdot\cos(340^\circ) = 38\ {\mathrm m}$$</p>
+<p data-mark="=">$$\Delta{\vec{\mathbf d}}_{2y} = 40\ {\mathrm m}\cdot\sin(340^\circ) = -14\ {\mathrm m}$$</p>
+<ul data-mark="+">
+    <li>Now total the \(x\)- and \(y\)-components independently:</li>
+</ul>
+<p data-mark="+">$$\Delta{\vec{\mathbf d}}_x = \mathrm{25\ m + 38\ m = 63\ m}$$</p>
+<p data-mark="=">$$\Delta{\vec{\mathbf d}}_y = \mathrm{43\ m + (-14\ m) = 30\ m}$$</p>
+<ul data-mark="+">
+    <li>You can convert the answer back to polar form if necessary.</li>
+</ul>
+</section>
+
+<section id="trig" data-last="?"><h3>Trigonometry Method</h3>
+<p>You could also find the resultant vector by solving the triangle using trigonometry.</p>
+<p class="Center Present"><img src="img/arith.png" alt="VecDiag" class="w16"/></p>
+<ul data-mark="+">
+    <li>Because the triangle does not contain a right angle, you must use the Law of Cosines and Law of Sines.</li>
+    <li data-mark="+">This method is never required; you can always use the component method.</li>
+    <li data-mark="+">For some problems the trigonometry method may be easier, especially when the triangle <em>does</em> contain a right angle.</li>
+</ul>
+<!-- <p data-mark="+">$$|\Delta\vec{\mathbf d}| = \sqrt{|\Delta\vec{\mathbf d}_1|^2 + |\Delta\vec{\mathbf d}_2|^2 - 2\cdot |\Delta\vec{\mathbf d}_1| \cdot |\Delta\vec{\mathbf d}_2| \cos(100^\circ)}$$</p>
+<p data-mark="+">$$= \sqrt{\mathrm{(50\ m)^2 + (40\ m)^2 - 2\cdot 50\ m \cdot 40\ m \cdot\cos(100^\circ)}} = 69\ {\mathrm m}$$</p>
+<p data-mark="+">$$\sin \theta_O = {\sin\theta_A \over |\Delta\vec{\mathbf d}|} |\Delta\vec{\mathbf d}_2|$$</p> -->
+</section>
+
+<section id="sum" data-last="?"><h3>Summary</h3>
+<p>The procedures for adding vectors and drawing vector diagrams (“tip-to-tail”) are not just for displacement vectors but for any kind of vector, including velocity, acceleration, and force.</p>
+<p data-mark="+">To <em class="Defn">subtract</em> a vector, add its negative.</p>
+<ul data-mark="+">
+    <li>In Cartesian form, reverse the sign of both components.</li>
+    <li data-mark="+">In polar form, add or subtract 180º to the direction.</li>
+</ul>
+</section>
+
+<section id="ex1" data-last="?"><h3>Example</h3>
+<p class="Blue">Calculate the acceleration of a 10.0-kilogram mass that experiences a normal force of 96.6 N [80.0°] and a friction force of 8.00 N [170°] in addition to gravity.</p>
+<p class="Center" data-mark="="><img src="img/ex1.png" alt="VecDiag" class="w16"/><br/>
+<table class="Normal" data-mark="+">
+    <tr><th>Force</th><th>\(|\vec{\mathbf F}|\) / N</th><th>\(\theta\)</th><th>\(\vec{\mathbf F}_x = |\vec{\mathbf F}|\cos\theta\)</th><th>\(\vec{\mathbf F}_y = |\vec{\mathbf F}|\sin\theta\)</th></tr>
+    <tr><td>Gravity</td><td>98.1</td><td>270°</td><td>0</td><td>–98.1</td></tr>
+    <tr><td>Normal</td><td>96.6</td><td>80.0°</td><td><span data-mark="+" class="Red">16.8</span></td><td><span data-mark="=" class="Red">95.1</span></td></tr>
+    <tr><td>Friction</td><td>8.00</td><td>170°</td><td><span data-mark="+" class="Red">–7.88</span></td><td><span data-mark="=" class="Red">1.39</span></td></tr>
+    <tr><td>Net</td><td><span data-mark="5" class="Red">9.04</span></td><td><span data-mark="6" class="Red">350°</span></td><td><span data-mark="4" class="Red">8.90</span></td><td><span data-mark="4" class="Red">–1.57</span></td></tr>
+</table>
+<p data-mark="+">Now use Newton’s 2nd Law: $$\vec{\mathbf a} = {\vec{\mathbf F}_{net} \over m}$$</p>
+<p data-mark="+">The acceleration is 0.904 m/s<sup>2</sup> [350°] in polar form, or (0.890, –0.157) m/s<sup>2</sup> in Cartesian form.</p>
+</section>
+
+</article></body>
+</html>

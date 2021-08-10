@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Polar &amp; Cartesian Form</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/crane.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript" src="../../2021/tree.js"></script>
+</head>
+<body><article>
+
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 20</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="comp" data-last="?"><h3>Components</h3>
+<p>Imagine an object undergoing a displacement from an initial position \({\vec{\mathbf{d}}}_i = (−2.0,\ +3.0)\ \mathrm{m}\) to a final position \({\vec{\mathbf{d}}}_f = (+3.0,\ +15.0)\ \mathrm{m}\).</p>
+<p class="Center" data-mark="="><img src="img/components.png" alt="Comp" class="w16"/></p>
+<ul data-mark="+">
+    <li>The displacement can be calculated — just like for 1D — as the change in position:
+$$\begin{align}\Delta\vec{\mathbf{d}} &={\vec{\mathbf{d}}}_f-{\vec{\mathbf{d}}}_i
+\\&= (+3.0, +15.0)\ \mathrm{m} − (−2.0, +3.0)\ \mathrm{m}\end{align}$$</li>
+    <li data-mark="+">Because the motion is 2D, the positions are ordered pairs with \(x\) and \(y\) coordinates.</li>
+    <li data-mark="+">Arithmetic is performed on the components separately...</li>
+    <li data-mark="+">In the \(x\) direction the motion from −2.0 to +3.0 m gives a displacement of +5.0 m.</li>
+    <li data-mark="+">In the \(y\) direction the motion from +3.0 to +15.0 m gives a displacement of +12.0 m.</li>
+</ul>
+<p data-mark="+">$$\Delta\vec{\mathbf{d}}= (+5.0, +12.0)\ \mathrm{m}$$</p>
+<ul data-mark="+">
+    <li>When we use the \(x\) and \(y\) components to describe a vector, this is called the <em class="Defn">Cartesian form</em> of the vector (named after French mathematician Rene Descartes.)</li>
+    <li data-mark="+">In the vector diagram above, the displacement vector is drawn as a blue arrow from \({\vec{\mathbf{d}}}_i\) to \({\vec{\mathbf{d}}}_f\) and is labelled \(\Delta\vec{\mathbf{d}}\).</li>
+    <li data-mark="+">The \(x\) and \(y\) components are drawn tip-to-tail as red arrows and are labelled \(\Delta{\vec{\mathbf{d}}}_x\) and \(\Delta{\vec{\mathbf{d}}}_y\).</li>
+    <li data-mark="+">For a vector diagram to be accurate, we must always use the same scale for both the \(x\)- and \(y\)-axis.</li>
+</ul>
+</section>
+
+<section id="cp" data-last="?"><h3>Cartesian → Polar Conversion</h3>
+<p>As the vector diagram shows, a vector and its components form a right-angle triangle.</p>
+<p class="Center Present" data-mark="="><img src="img/components.png" alt="Comp" class="w16"/></p>
+<ul data-mark="+">
+    <li>The \(x\) component will be the ‘Adjacent’ side, the \(y\) component will be the ‘Opposite’ side, and the resultant displacement will be ‘Hypotenuse’.</li>
+    <li data-mark="+">We can use trigonometry to calculate the magnitude and direction (<em class="Defn">polar form</em>) of the vector:
+        $$\left|\Delta\vec{\mathbf{d}}\right|=\sqrt{\Delta{\vec{\mathbf{d}}}_x^2+\Delta{\vec{\mathbf{d}}}_y^2}$$
+        $$\tan{\theta}=\frac{\Delta{\vec{\mathbf{d}}}_y}{\Delta{\vec{\mathbf{d}}}_x}$$</li>
+    <li data-mark="+">Substituting the values +5.0 m and +12.0 m for the \(x\) and \(y\) components gives us the polar form of the vector:$$\Delta\vec{\mathbf{d}} = 13.0\ \mathrm{m}\ [67.4°]$$</li>
+    <li data-mark="+">When calculating the direction using the tan<sup>−1</sup> operation, it is important to know that your calculator will give the correct answer only when the \(x\) component is positive.</li>
+    <li data-mark="+">For cases where the \(x\) component is negative, you must add 180° to the angle your calculator gives!</li>
+</ul>
+</section>
+
+<section id="ex1" data-last="?"><h3>Example 1</h3>
+<p class="Blue">The velocity of a bird is (–2.0, 4.0) m/s. Express this is polar form.</p>
+<p data-mark="+">$$\left|\vec{\mathbf{v}}\right|=\sqrt{{\vec{\mathbf{v}}}_x^2+{\vec{\mathbf{v}}}_y^2}$$</p>
+<p data-mark="+">$$\left|\vec{\mathbf{v}}\right|=\mathrm{\sqrt{(–2.0\ m/s)^2 + (4.0\ m/s)^2} = 4.5\ m}$$</p>
+<p data-mark="+">$$\tan{\theta}=\frac{{\vec{\mathbf{v}}}_y}{{\vec{\mathbf{v}}}_x} = {4.0\over -2.0} = -2.0$$</p>
+<p data-mark="+">$$\theta=\tan^{-1}(-2.0) + 180^\circ = 117^\circ$$</p>
+</section>
+
+<section id="pc" data-last="?"><h3>Polar → Cartesian Conversion</h3>
+<p data-mark="+">When a vector is known in polar form and we want to convert it to Cartesian form, we can use the other trigonometry relations: sine and cosine.</p>
+<ul data-mark="+">
+    <li>The trigonometry relations apply not just to displacement vectors but to any vector, including velocity, acceleration, and force.</li>
+</ul>
+</section>
+
+<section id="ex2" data-last="?"><h3>Example 2</h3>
+<p class="Blue">Suppose a force of 50.0 newtons is applied with a direction of 160° to push an object up an incline. Calculate the Cartesian components.</p>
+<p data-mark="+">$${\vec{\mathbf{F}}}_x=\left|\vec{\mathbf{F}}\right|\cos{\theta}=-47.0\ \mathrm{N}$$</p>
+<p data-mark="+">$${\vec{\mathbf{F}}}_y=\left|\vec{\mathbf{F}}\right|\sin{\theta=+17.1\ \mathrm{N}}$$</p>
+</section>
+
+</article></body>
+</html>

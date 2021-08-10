@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Uniform Accelerated Motion</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/train.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+<script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript" src="../../2021/tree.js"></script>
+<script type="text/javascript" src="../../script/plot.js"></script>
+<script type="text/javascript" src="../../script/plotItems.js"></script>
+<style type="text/css">
+
+td {
+    width:6em;
+    text-align:center;
+}
+
+table.Eqn td {width:9em}
+td.Reveal {color:white}
+
+</style>
+<script type="text/javascript">
+
+let UAM = {status:0, font:"24px Arial"};
+
+UAM.canvas0 = function() {
+    let p = new Plot($("canvas")[0], [0, 5, 0, 21], [60, 24, 36, 12]);
+    let data = [[0, 12], [5, 20]];
+    let shade = data.concat([[5, 0], [0,0]]);
+    p.items = [
+        new Grid({x:1, y:3,
+            axisStyle:["black", 2], gridStyle:["grey", 0.5],
+            xLabel:{font:UAM.font, anchor:TOP, offset:-5, format:0},
+            yLabel:{font:UAM.font, anchor:RIGHT, offset:-5, format:0, omit0:true},
+        }),
+        new Segments(shade, {fill:"#e0e0ff80", stroke:0, closed:true}),
+        new Segments(data, {stroke:"blue", lineWidth:2}),
+        new Text("Time / s", [p.right(), 0.2], {align:BOTTOMRIGHT, font:UAM.font}),
+        new Text("Velocity / (m/s)", [-0.4, p.top()], {align:BOTTOMRIGHT, font:UAM.font, angle:90}),
+    ];
+    p.draw();
+}
+
+UAM.canvas1 = function() {
+    let p = new Plot($("canvas")[1], [0, 2.1, -10, 10], [60, 24, 24, 24]);
+    let data = [[0, 10], [2.04, -10]];
+    let shade = data.concat([[2.04, 0], [0,0]]);
+    p.items = [
+        new Grid({y:2, gridStyle:["grey", 0.5]}),
+        new Grid({x:0.5, gridStyle:["grey", 0.5]}),
+        new Grid({x:1, y:2,
+            axisStyle:["black", 2],
+            yLabel:{font:UAM.font, anchor:RIGHT, offset:-5, format:0},
+        }),
+        new Segments(shade, {fill:"#e0e0ff80", stroke:0, closed:true}),
+        new Segments(data, {stroke:"blue", lineWidth:2}),
+        new Grid({x:1, xLabel:{font:UAM.font, anchor:TOP, offset:-5, format:0, omit0:true}}),
+        new Text("Time / s", [p.right(), 0.2], {align:BOTTOMRIGHT, font:UAM.font}),
+        new Text("Velocity / (m/s)", [-0.15, p.top()], {align:BOTTOMRIGHT, font:UAM.font, angle:90}),
+    ];
+    let items = [1, 3, 5];
+    for (let i=0;i<items.length;i++) p.items[items[i]].opt.frames = 1;
+    UAM.canvas1.plot = p.draw();
+}
+
+UAM.canvas2 = function() {
+    let p = new Plot($("canvas")[2], [0, 5, -9.5, 6.5], [60, 24, 12, 12]);
+    let data = [[0, 0], [2, -9], [3, 6], [5, -5]];
+    p.items = [
+        new Grid({x:1, y:3, gridStyle:["grey", 0.5]}),
+        new Grid({x:1, y:3,
+            axisStyle:["black", 2],
+            yLabel:{font:UAM.font, anchor:RIGHT, offset:-5, format:0},
+            xLabel:{font:UAM.font, anchor:TOP, format:0, omit0:true},
+        }),
+        new Text("Time / s", [p.right(), 0.2], {align:BOTTOMRIGHT, font:UAM.font}),
+        new Text("Velocity / (m/s)", [-0.3, p.top()], {align:BOTTOMRIGHT, font:UAM.font, angle:90}),
+        new Segments(data, {stroke:"blue", lineWidth:2}),
+    ];
+    p.draw();
+}
+
+$(function() {
+    $("td.Reveal").click(
+        function() {$(this).removeClass("Reveal").addClass("Red")}
+    );
+    UAM.canvas0();
+    UAM.canvas1();
+    UAM.canvas2();
+});
+
+</script>
+</head>
+<body>
+
+<article>
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 20</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="type" data-last="?"><h3>Types of Motion</h3>
+<table>
+	<tr><th rowspan="2">Type of Motion</th><th colspan="2">Shape of Graph</th></tr>
+	<tr><th>\(\vec{\mathbf d}\)-\(t\)</th><th>\(\vec{\mathbf v}\)-\(t\)</th></tr>
+	<tr><td style="width:50%">Uniform<br/>(Constant \({\vec{\mathbf v}}\))</td><td style="width:25%">Linear</td><td style="width:25%">Horizontal</td></tr>
+	<tr><td>Uniform Accelerated<br/>(Constant \({\vec{\mathbf a}}\))</td><td>Parabolic</td><td>Linear</td></tr>
+	<tr><td>Non-Uniform Accelerated<br/>(Neither Constant)</td><td>Curved</td><td>Curved</td></tr>
+</table>
+</section>
+
+<section id="uam" data-last="?"><h3>Uniform Accelerated Motion</h3>
+<p>The definition of acceleration is:</p>
+<p>$${\vec{\mathbf a}} = {{{\vec{\mathbf v}}_f - {\vec{\mathbf v}}_i}\over\Delta t}$$</p>
+<ul data-mark="+">
+    <li>For <em class="Defn">uniform accelerated motion</em>, the acceleration is <em>constant</em>.</li>
+</ul>
+<p data-mark="+">A graph of \({\vec{\mathbf v}}\)-\(t\) is <em>linear</em> for UAM.</p>
+<p class="Center" data-mark="="><canvas width="600" height="480"></canvas>
+</p>
+<ul data-mark="+">
+    <li>The slope of the graph equals the acceleration.</li>
+    <li data-mark="+">The area under the graph equals the displacement.</li>
+    <li data-mark="+">Areas above the axis represent displacement in the positive direction. Areas below the axis are negative displacements.</li>
+</ul>
+<p data-mark="+">The displacement is just the <em>average</em> speed multiplied by the time:</p>
+<p data-mark="=">$$\Delta{\vec{\mathbf d}} = {{{\vec{\mathbf v}}_i + {\vec{\mathbf v}}_f}\over 2}\Delta t$$</p>
+<ul data-mark="+">
+    <li>Because the graph is linear, the average velocity is the midpoint (arithmetic average) of \({\vec{\mathbf v}}_i\) and \({\vec{\mathbf v}}_f\).</li>
+    <li data-mark="+">You cannot use this equation if the acceleration is not constant, since the average velocity would be incorrect.</li>
+</ul>
+</section>
+
+<section id="var" data-last="?"><h3>Kinematic Variables</h3>
+<table class="Eqn"><tr>
+    <td>$${\vec{\mathbf a}} = {{{\vec{\mathbf v}}_f - {\vec{\mathbf v}}_i}\over\Delta t}$$</td>
+    <td>$$\Delta{\vec{\mathbf d}} = {{{\vec{\mathbf v}}_i + {\vec{\mathbf v}}_f}\over 2}\Delta t$$</td>
+</tr></table>
+<p data-mark="+">These equations contain <em>five</em> variables...</p>
+<table data-mark="=">
+    <tr><td>\(\vec{\mathbf a}\)</td><td class="Reveal">1.60</td><td>\({\mathrm{m/s^2}}\)</td></tr>
+    <tr><td>\({\vec{\mathbf v}}_i\)</td><td>12.0</td><td>\({\mathrm{m/s}}\)</td></tr>
+    <tr><td>\({\vec{\mathbf v}}_f\)</td><td>20.0</td><td>\({\mathrm{m/s}}\)</td></tr>
+    <tr><td>\(\Delta\vec{\mathbf d}\)</td><td class="Reveal">80.0</td><td>\({\mathrm{m}}\)</td></tr>
+    <tr><td>\(\Delta t\)</td><td>5.00</td><td>\({\mathrm{s}}\)</td></tr>
+</table>
+<ul data-mark="+">
+    <li>We can solve for <em>two</em> unknowns using the two equations, but we must start with <em>three</em> “givens”.</li>
+    <li data-mark="+">Choose an equation to find the first unknown.</li>
+    <li data-mark="+">Then repeat for the other unknown.</li>
+</ul>
+</section>
+
+<section id="eq" data-last="?"><h3>UAM Equations</h3>
+<p>Sometimes, <em>both</em> unknowns will appear in <em>both</em> equations...</p>
+<table>
+    <tr><td>\(\vec{\mathbf a}\)</td><td>−9.81</td><td>\({\mathrm{m/s^2}}\)</td></tr>
+    <tr><td>\({\vec{\mathbf v}}_i\)</td><td>+10.0</td><td>\({\mathrm{m/s}}\)</td></tr>
+    <tr><td>\({\vec{\mathbf v}}_f\)</td><td class="Reveal">−10.0</td><td>\({\mathrm{m/s}}\)</td></tr>
+    <tr><td>\(\Delta\vec{\mathbf d}\)</td><td>0.00</td><td>\({\mathrm{m}}\)</td></tr>
+    <tr><td>\(\Delta t\)</td><td class="Reveal">2.04</td><td>\({\mathrm{s}}\)</td></tr>
+</table>
+
+<p class="Center" data-mark="+"><canvas width="600" height="480" onclick="UAM.canvas1.plot.draw(1-UAM.canvas1.plot.frame)"></canvas></p>
+
+<p data-mark="+">These equations can be combined algebraically in three different ways, to eliminate either \(\Delta t\), \({\vec{\mathbf v}}_f\), or \({\vec{\mathbf v}}_i\)...</p>
+<p data-mark="+">$${v_f}^2 = {v_i}^2 + 2{\vec{\mathbf a}}\cdot{\Delta\vec{\mathbf d}}$$</p>
+<p data-mark="+">$${\Delta\vec{\mathbf d}} = {\vec{\mathbf v}}_i\Delta t + {1\over 2}{\vec{\mathbf a}}\left(\Delta t\right)^2$$</p>
+<p data-mark="+">$${\Delta\vec{\mathbf d}} = {\vec{\mathbf v}}_f\Delta t - {1\over 2}{\vec{\mathbf a}}\left(\Delta t\right)^2$$</p>
+
+<p data-mark="+">Go through the list of equations <em>in order</em> until you find an equation that has only <em>one unknown</em>:
+    $${v_f}^2 = {v_i}^2 + 2{\vec{\mathbf a}}\cdot{\Delta\vec{\mathbf d}}$$</p>
+<p data-mark="+">$${v_f}^2 = {\mathrm{(10.0\ m/s)^2 + 2\ (-9.81\ m/s^2)\cdot(0.00\ m) = 100\ m^2/s^2 }}$$</p>
+<p data-mark="+">$${\vec{\mathbf v}}_f = \pm 10.0\ {\mathrm{m/s}}$$</p>
+<ul data-mark="+">
+    <li>Note that when square rooting, the answer can be either positive or negative.</li>
+    <li data-mark="+">In this example, a negative acceleration means the final velocity must be <em>less</em> than the initial velocity, so the answer must be negative:$${\vec{\mathbf v}}_f = -10.0\ {\mathrm{m/s}}$$</li>
+</ul>
+<p data-mark="+">Now go back to the list of equations and choose the first one that hasn’t already been used:$${\vec{\mathbf a}} = {{{\vec{\mathbf v}}_f - {\vec{\mathbf v}}_i}\over\Delta t}$$</p>
+<p data-mark="+">$${\vec{\mathbf a}}\Delta t = {{{\vec{\mathbf v}}_f - {\vec{\mathbf v}}_i}}$$</p>
+<p data-mark="=">$$\Delta t = {{{\vec{\mathbf v}}_f - {\vec{\mathbf v}}_i}\over{\vec{\mathbf a}}} = {\mathrm{{-10.0\ m/s - (+10.0\ m/s)\over -9.81\ m/s^2} = 2.04\ s}}$$</p>
+</section>
+
+<section id="hint" data-last="?"><h3>Problem Solving Hints</h3>
+<p>For scenarios where the object’s acceleration changes, we must solve each section of the motion as a separate problem!</p>
+<p class="Center"><canvas width="600" height="480"></canvas></p>
+<p data-mark="+">Remember that we always need at least three “givens” before we can solve a UAM problem.</p>
+<p data-mark="+">Sometimes, it may appear that the problem does not provide enough information...</p>
+<ul data-mark="+">
+    <li>If the object begins or ends at rest, this means one of the velocities is zero.</li>
+    <li data-mark="+">If the object returns to its starting position, this means the displacement is zero.</li>
+    <li data-mark="+">For <em class="Defn">projectiles</em> (gravity is the only force), we can assume the acceleration is &minus;9.81 m/s<sup>2</sup> if the problem takes place near Earth’s surface.</li>
+    <li data-mark="+">Also for projectiles, the <em>highest</em> point is where the velocity changes from positive to negative; the instantaneous velocity will be zero.</li>
+</ul>
+</section>
+
+<!-- data-mark data-last -->
+
+</body>
+</html>

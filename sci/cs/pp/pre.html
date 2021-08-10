@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pre- &amp; Post-Conditions</title>
+<link rel="shortcut icon" type="image/x-icon" href="../../../media/html5.png"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../../2021/cs.js"></script>
+<script type="text/javascript">
+
+let course = "pp";
+
+</script>
+</head>
+<body><article>
+
+<h3>Preconditions</h3>
+<div class="Note">
+
+<p>The <code>resource.wholeNum</code> module contains a function <code>isPrime</code> that tests whether a number is prime or not. A prime number is a number that has no factors other than 1 and itself.</p>
+<pre class="Code" contenteditable="true" data-mime="text/plain"><span class="Comment"># Example 1...</span>
+
+from resource.wholeNum import isPrime
+
+print(isPrime(6))     </span># False</span>
+print(isPrime(7))     <span class="Comment"># True</span>
+print(isPrime(-7))    <span class="Comment"># False</span>
+print(isPrime("Hi"))  <span class="Comment"># TypeError</span></pre>
+
+<p>The <code>isPrime</code> function <em>assumes</em> that its argument is a positive whole number, since the idea of being “prime” does not make sense for negative numbers, strings, and other non-integers.
+    Assumptions that a function makes about its arguments (or any other aspect of the computer’s or program’s state) are called <b class="Red">preconditions</b>.  When a function’s preconditions are violated, this can cause the program to crash or to behave unpredictably.</p>
+</div>
+
+<h3>The <code>assert</code> Statement</h3>
+<div class="Note">
+<p>One of the preconditions for almost any function that accepts arguments is that the classes (data types) of the arguments are suitable for the task the function performs.
+    For example, our <code>isPrime</code> function only makes sense with instances of the <code>int</code> class.</p>
+<p>In <u>statically typed</u> programming languages such as Java or C/C++, this is not an issue since the class of each argument must be declared and the compiler or interpreter only permits arguments of the correct class.
+    In <u>dynamically typed</u> languages like Python, it is possible to pass a non-integer object to a function that is expecting an integer.</p>
+<p>Python has an <code>assert</code> statement that can be used for type checking. The function defined below will only accept <code>int</code> instances as an argument and will raise an <code>AssertionError</code> exception if any other class of object is passed...</p>
+<pre class="Code" contenteditable="true" data-mime="text/plain"><span class="Comment"># Example 2...</span>
+
+def intOnly(num):
+    assert type(num) is int, "Argument must be an integer"
+
+intOnly("Bad data")</pre>
+
+<p>The error message provided at the end of the <code>assert</code> statement is optional.</p>
+<p>The <code>assert</code> statement can be used to check any precondition that can be expressed as a Boolean (<code>True</code> or <code>False</code>) expression, not just that the arguments have the correct class.
+    For example, a function may require not only that an argument is an integer but that it is within a specific range of values...</p>
+<pre class="Code" contenteditable="true" data-mime="text/plain"><span class="Comment"># Example 3...</span>
+
+def recentYear(year):
+    assert type(year) is int, "Argument must be an integer"
+    assert year >= 2015 and year <= 2019, "Invalid year!"
+    print("{} is a good year.".format(year))
+
+recentYear(2018)
+recentYear(1996)</pre>
+
+<p>The <code>assert</code> statement serves to help document your preconditions and to help debug your program by making it easier to identify errors resulting from arguments (and other circumstances) that violate those preconditions.
+    It is expected that once you have finished debugging your program and are ready to deploy it, the <code>assert</code> statements will actually have no effect on your program;
+    i.e. all of the circumstances leading to an <code>AssertionError</code> will have been eliminated during the debugging process.
+    For this reason, the Python interpreter can run programs in optimization mode. In this mode, the interpreter ignores all of the <code>assert</code> statements to allow your program to run more efficiently.</p>
+</div>
+
+<h3>Postconditions</h3>
+<div class="Note">
+<p><b class="Red">Postconditions</b> are statements about what is guaranteed to be true at the end of a function, provided that the function’s preconditions were satisfied.
+    In Python programs, the <code>assert</code> statement is used to declare postconditions as well as preconditions.</p>
+<pre class="Code" contenteditable="true" data-mime="text/plain"><span class="Comment"># Example 4...</span>
+
+def sortThree(num1, num2, num3):
+    <span class="Comment">"Sort three numbers from lowest to highest"</span>
+
+    <span class="Comment"># Preconditions...</span>
+    errorMsg = "All arguments must be integers or floats"
+    assert type(num1) in (int,float), errorMsg
+    assert type(num2) in (int,float), errorMsg
+    assert type(num3) in (int,float), errorMsg
+
+    <span class="Comment"># Sort the numbers...</span>
+    lowest = min(num1, num2, num3)
+    highest = max(num1, num2, num3)
+    total = num1 + num2 + num3
+    middle = total - lowest - highest
+
+    <span class="Comment"># Postcondition...</span>
+    assert lowest <= middle and middle <= highest
+
+    return lowest, middle, highest
+
+
+<span class="Comment"># Main program</span>
+print(sortThree(3, 1, -2.5))
+print(sortThree(3, 1, False))</pre>
+
+<p>Conditions that are true at both the beginning and the end of a function are called <b class="Red">invariants</b>.</p>
+<p>Preconditions, postconditions, and invariants can be used with loops (<code>while</code> and <code>for</code>) and conditional blocks (<code>if-elif-else</code>) as well as with functions.</p>
+</div>
+
+<h3>Assignment</h3>
+<ol class="Assign">
+<li>The program <code>p04_salesTax.py</code> asks the user to enter the price of an item and the sales tax rate, and then calculates the amount of sales tax and the total cost including the tax.
+    Complete the program by writing the <code>alesTax</code> function. Use the <code>assert</code> statement to include pre- and post-conditions for your function. Test that calling a function with bad data raises an <code>AssertionError</code>.</li>
+<li>The module <code>resource/wholeNum.py</code> defines several functions for working with whole numbers:
+    <ul>
+        <li><code>smallestFactor(n)</code> calculates the smallest whole number that is a factor of <code>n</code>.</li>
+        <li><code>isPrime(n)</code> tests whether n is a prime number.</li>
+        <li><code>factor(n)</code> calculates the prime factors of <code>n</code>.</li>
+        <li><code>primes(n)</code> calculates the first <code>n</code> prime numbers.</li>
+    </ul>
+    <p>Edit the file to add pre- and/or post-conditions as appropriate using the <code>assert</code> statement.</p>
+    <p>The <code>p04_wholeNumTest.py</code> program is provided to test these functions. Modify the tests to check that all four functions work as intended with good data and raise an <code>AssertionError</code> with bad data. No other exceptions should occur.</p>
+</li>
+<li>Copy your completed program <code>p01_pythag.py</code> as <code>p04_pythag.py</code>.
+    Add <code>assert</code> statements to document the pre- and post-conditions for each function.
+    (For postconditions, you can verify that the hypotenuse is longer than the other sides, but shorter than the <em>sum</em> of the two other sides.) Test that calling a function with bad data raises an <code>AssertionError</code>.</li>
+</ol>
+</article></body>
+</html>

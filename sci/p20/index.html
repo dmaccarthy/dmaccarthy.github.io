@@ -4,137 +4,21 @@
 <meta charset="utf8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Physics 20</title>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../media/rocket.png" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../script/util.js"></script>
-<script type="text/javascript" src="../script/touch.js"></script>
-<script type="text/javascript" src="../2021/script.js"></script>
+<script type="text/javascript" src="../2021/ui.js"></script>
 <script type="text/javascript" src="p20.js"></script>
-<link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
-<link rel="stylesheet" href="../2021/script.css"/>
-<script type="text/javascript">
-
-</script>
-<style type="text/css"></style>
+<script type="text/javascript" src="../2021/tree.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700" />
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" /> -->
+<link rel="stylesheet" href="../2021/ui.css" />
 </head>
-
-<body><p class="Center"><select id="Main" onchange="showArticle(this.selectedIndex)"
-    title="Select Chapter">
-    <option value="Home">Physics 20</option>
-    <option value="Kin">Kinematics (1D Motion)</option>
-    <option value="Energy">Energy &amp; Work</option>
-    <option value="Dyn">Dynamics (Newton’s Laws)</option>
-    <option value="Osc">Oscillations</option>
-    <option value="Wave">Mechanical Waves</option>
-    <option value="Circ">Circular &amp; Orbital Motion</option>
-    <option value="Grav">Universal Gravitation</option>
-    <option value="Vec">Two-Dimensional Motion</option>
-</select></p>
-
-<article id="Home">
-<p>Navigation Tips:</p>
-<ul>
-    <li>Click the blue “Physics 20” link at the top of the page to choose a chapter.</li>
-    <li>Hold the Control key and use the left or right arrows to move to the next or previous chapter.</li>
-    <li>If using a touch screen, swipe left or right to go to the next or previous chapter.</li>
-    <li>Use the link icon (🔗) to show or hide the links (assignments, lesson notes, videos, etc.) for each topic.</li>
-</ul>
+<body>
+<article>
+<!-- <p class="Title" title="Up one level" onclick="up(this)"><span id="Back"><em class="material-icons">west</em></span> <span id="Title"></span></p> -->
+<p id="Crumbs"></p>
+<div id="Content"></div>
 </article>
-
-<article id="Kin">
-    Kin
-</article>
-
-<article id="Energy">
-    Energy
-</article>
-
-<article id="Dyn">
-    Dyn
-</article>
-
-<article id="Osc">
-<section id="eqm"><h3>Equilibrium</h3>
-<p>An <em class="Defn">equilibrium</em> is a position where the forces acting on an object balance, so that the acceleration would be zero.</p>
-<p>An equilibrium is <em class="Defn">stable</em> when an object <em>close to</em> equilibrium experiences a <em class="Defn">restoring force</em> causing it to accelerate toward the equilibrium position.</p>
-<p>Objects <em>close to</em> a stable equilibrium will <em class="Defn">oscillate</em>: move back and forth across the equilibrium.</p>
-<p>The time for one complete oscillation, before the motion begins to repeat, is called the <em class="Defn">period</em>, (\(T\)).</p>
-<p>The <em>reciprocal</em> of the period is called the <em class="Defn">frequency</em> and is measured in <em>hertz</em> (Hz, oscillations per second): $$f = {1\over T}$$</p>
-</section>
-
-<section id="shm"><h3>Simple Harmonic Motion</h3>
-<p>Simple harmonic motion (SHM) is a type of oscillation that occurs when the restoring force is <em>directly proportional</em> to the object’s displacement from equilibrium, \(\vec{\mathbf x}\):
-    $$\vec{\mathbf F}_{net} = -k\vec{\mathbf x}$$</p>
-<p>When this is the case, graphs of the object’s position, velocity, and acceleration (all versus time) will all be shaped like a sine or cosine function.</p>
-<p class="Center"><img src="../p20/shm/img/shm-0.png" onclick="nextImage(this, event, 3)" alt="SHM"/></p>
-<p>All three graphs have the same period.</p>
-<p>The starting points (y-intercepts) of the graphs are shifted...</p>
-<ul>
-    <li>\(\vec{\mathbf v}\) is one-quarter period “out of phase” with \(\vec{\mathbf x}\) because the kinetic energy must be at its maximum when potential energy is at its minimum (and vice versa).</li>
-    <li>\(\vec{\mathbf a}\) is one-quarter period out of phase with \(\vec{\mathbf v}\), and one-half period out of phase with \(\vec{\mathbf x}\).</li>
-</ul>
-<p>The vertical scales of the graphs are all different, but are related:
-    $$v_{max} = {2\pi A\over T}$$
-    $$a_{max} = {v_{max}^2 \over A} = {4\pi^2 A\over T^2} = {2\pi v_{max}\over T}$$
-</p>
-<ul>
-    <li>The symbol \(A\) is called the <em class="Defn">amplitude</em> and it represents \(x_{max}\), the maximum distance the object moves from its equilibrium.</li>
-</ul>
-</section>
-
-<section id="shmT"><h3>Period of SHM / Hooke’s Law</h3>
-<p>By substituting the above formulas into Newton’s 2nd Law, we can obtain an equation for the period:
-    $$T = 2\pi\sqrt{m\over k}$$</p>
-<p>Hooke’s Law states that the elastic force exerted by a stretch or compressed object will follow the equation below, <em>within a range</em> of \(\Delta L\) values:
-    $$\vec{\mathbf F}_{elas} = -k\Delta L$$</p>
-<p>If the elastic force is the only force, or it combines with a constant force such as gravity, the conditions for SHM will be met as long as the elastic remains within its <em>elastic limit</em>.</p>
-</section>
-
-<section id="shmE"><h3>Energy of SHM</h3>
-</section>
-
-<section id="pend"><h3>Simple Pendulum</h3>
-</section>
-
-<section id="mRes"><h3>Mechanical Resoance</h3>
-</section>
-</article>
-
-<article id="Circ">
-<section id="ucm"><h3>Uniform Circular Motion</h3>
-<p><em class="Defn">Uniform circular motion</em> means motion with <u>constant speed</u> along a circular path.</p>
-<p>The time for one complete “orbit” is called the <em class="Defn">period</em>, \(T\). Period is related to the speed and radius of the motion:</p>
-$$v = {2\pi r \over T}$$
-<p>The reciprocal of the period is called the <em class="Defn">frequency</em>. Frequency is measured in hertz (Hz):</p>
-$$f = {1\over T}$$
-<p>The velocity for UCM is in the <em class="Defn">tangential</em> direction (along the circumference of the circle). Velocity is <b>not</b> constant because its <u>direction</u> is constantly changing.</p>
-</section>
-
-<section><h3>Centripetal Acceleration</h3>
-<p>Changing direction requires a force (and therefore an acceleration) according to Newton’s Laws.</p>
-<p>For the <u>speed</u> to remain constant, the work done by the force must be exactly zero and the force must be perpendicular to the velocity.</p>
-<p>The net force for UCM is directed exactly toward the centre of the circle. This is called the <em class="Defn">centrieptal</em> direction and the acceleration and net force are often called the <em class="Defn">centripetal acceleration</em> and <em class="Defn">centripetal force</em>.</p>
-<p>Centripetal acceleration can be calculated as follows:</p>
-$$a_c = {v^2 \over r} = {4\pi^2 r\over T^2}$$
-</section>
-
-<section><h3>Apparent Weight</h3>
-</section>
-
-<section><h3>Planetary Motion</h3>
-<p>Copernicus developed the <em class="Defn">heliocentric model</em> of the Solar System (circular orbits centred around the Sun) to better explain observations like the <em class="Defn">retrograde motion</em> of Mars.</p>
-<p>Using Brahe’s extensive data, Kepler concluded that planetary orbits are actually <u>elliptical</u>. <em class="Defn">Kepler's Laws of Planetary Motion</em> are:</p>
-<ol>
-    <li>Orbits are ellipse-shaped with the Sun located at the <u>focus</u> (an off-centre point on the major-axis).</li>
-    <li>The areas formed by the Sun and the orbit will always be equal in equal amounts of time.</li>
-    <li>There is a mathematical relationship between the mean orbital radius (semi-major axis) and oribtal period:
-        $$T^2 = kr^3$$
-        $$\left({T_2\over T_1}\right)^2 = \left({r_2\over r_1}\right)^3$$
-    </li>
-</ol>
-</section>
-</article>
-
 </body>
 </html>

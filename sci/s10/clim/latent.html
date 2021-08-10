@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Latent Heat</title>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/flask.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+<script type="text/javascript" src="../s10.js"></script>
+</head>
+<body>
+
+<article>
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Science 10</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="energy" data-last="?"><h3>Heat</h3>
+    <p>Adding heat to a substance can cause...</p>
+    <ul data-mark="1">
+        <li>an increase in the average kinetic energy of the particles (temperature)</li>
+        <li data-mark="2">an increase in the potential energy associated with the intermolecular bonds</li>
+    </ul>
+</section>
+
+<section id="phase" data-last="?"><h3>Phase Changes</h3>
+    <p class="Center"><img class="w24" src="img/latent.png"/></p>
+    <p data-mark="1">When a <em class="Defn">phase change</em> occurs (e.g. solid to liquid) the heat goes <em>entirely</em> into potential energy.</p>
+    <ul data-mark="2">
+        <li data-mark="2">The temperature remains constant while the phase change is occuring.</li>
+        <li data-mark="3">At 0.00 °C, ice begins to melt as more heat is added.</li>
+        <li data-mark="4">The temperature remains at 0.00 °C until the water is completely liquid.</li>
+        <li data-mark="5">Only after the ice is completely melted does the temperature begin to rise again.</li>
+    </ul>
+</section>
+
+<section id="dQ" data-last="?"><h3>Latent Heat</h3>
+    <p>The amount of heat needed to cause a phase change is called the <em class="Defn">latent heat</em>.</p>
+    <ul data-mark="1">
+        <li>Latent heat of <em class="Defn">fusion</em> refers to a solid-to-liquid phase change.</li>
+        <li data-mark="2">Latent heat of <em class="Defn">vapourization</em> refers to a liquid-to-gas phase change.</li>
+        <li data-mark="3">Some substances chage directly from solid to gas; this is called <em class="Defn">sublimation</em>.</li>
+    </ul>
+</section>
+
+<section id="dQ2" data-last="?"><h3>Water</h3>
+    <p>The latent heat of fusion for water is:$$H_f = \mathrm{6.01\ kJ/mol}$$</p>
+    <ul data-mark="1">
+        <li>This means that it takes 6010 joules of heat to completely melt one mole of ice.</li>
+        <li data-mark="2">If the amount of ice is more or less than one mole, we need to multiply by the number of moles:$$Q = nH$$</li>
+        <li data-mark="3">The latent heat of <em>vapourization</em> for water is different than for fusion:$$H_v = \mathrm{40.65\ kJ/mol}$$</li>
+    </ul>
+</section>
+
+<section id="ex1" data-last="?"><h3>Example 1</h3>
+    <p class="Blue">How much heat does it take to melt 3.00 moles of ice?</p>
+    <ul data-mark="1">
+        <li>\(n = \mathrm{3.00\ mol}\)</li>
+        <li>\(H_f = 6.01\ \mathrm{kJ/mol}\)</li>
+    </ul>
+    <p data-mark="2">$$\begin{align}Q &= nH_f\\ &= \mathrm{3.00\ mol\cdot 6.01\ kJ/mol}\\ &= \mathrm{18.0 \ kJ}\end{align}$$</p>
+</section>
+
+<section id="ex2" data-last="?"><h3>Example 2</h3>
+    <p class="Blue">How much water can be converted to steam in one minute by a heater that produces 600 J/s?</p>
+    <ul data-mark="1">
+        <li>\(H_v = \mathrm{40.65\ kJ/mol} = \mathrm{4.065\times 10^4\ J/mol}\)</li>
+        <li>\(Q = \mathrm{600\ J/s\cdot 60.0\ s = 3.60\times 10^4\ J}\)</li>
+    </ul>
+    <p data-mark="2">$$Q = nH_v$$</p>
+    <p data-mark="3">$$n = {Q\over H_v} = \mathrm{3.60\times 10^4\ J\over 4.065\times 10^4\ J/mol} = \mathrm{0.886\ mol}$$</p>
+</section>
+
+<section id="ex3" data-last="?"><h3>Example 3</h3>
+    <p class="Blue">How much heat is needed to convert 100 grams of ice at 0.00 °C to water at 37.0 °C?</p>
+    <p data-mark="1">We need to convert grams to moles to use the latent heat equation...</p>
+    <p data-mark="2">$$M = (2\times 1.01 + 16.00)\ \mathrm{g/mol}= 18.02\ \mathrm{g/mol}$$</p>
+    <p data-mark="3">$$n = {m \over M} = \mathrm{100\ g\over 18.02\ g/mol} = 5.55\ \mathrm{mol}$$</p>
+    <p data-mark="4">$$Q = nH_f = \mathrm{5.55\ mol \cdot 6.01\ kJ/mol} = \mathrm{33.4\ kJ}$$</p>
+    <p data-mark="5">This is the energy to melt the ice. The temperature is still 0.00 °C.</p>
+    <p data-mark="6">To heat the water further...</p>
+    <p data-mark="7">$$\begin{align}Q &= mc\Delta T\\ &= \mathrm{100\ g \cdot 4.19\ J/(g\cdot C) \cdot 37.0° C}\\ &= \mathrm{15.5\ kJ}\end{align}$$</p>
+    <p data-mark="8">The total heat needed is 33.4 kJ + 15.5 kJ = 48.9 kJ</p>
+</section>
+
+</body>
+</html>

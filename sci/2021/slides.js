@@ -27,8 +27,6 @@ function video(e, id) {
     return e.html(iframe.attr("data-aspect", a));
 }
 
-video.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
-
 function aspect() {
     let e = $("[data-aspect]");
     for (let i=0;i<e.length;i++) {
@@ -38,6 +36,8 @@ function aspect() {
         e.css({height:h});
     }
 }
+
+video.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
 
 function bodyMargin(w) {
     let b = $("body");
@@ -79,6 +79,7 @@ function showSection(id, ctrlKey, n) {
 function showNext() {
     let p = $("body > nav > p[data-section]:hidden");
 	if (p.length) {
+        console.log(p);
 		p = $(p[0]).fadeIn();
 		showSection(p.attr("data-section"));
 		p = $("body > nav");
@@ -109,6 +110,7 @@ function goMarker(i) {
 		if (!i) i = 0;
 		else while (i < 0) i += n + 1;
 		s.attr("data-mark", i);
+        console.log(i);
 		let e = s.find("[data-mark]");
 		for (let j=0;j<e.length;j++) {
 			let ej = $(e[j]);
@@ -226,7 +228,7 @@ $(function() {
         return;
     }
 
-	$("body, html").addClass("Present");
+	$("body, html").addClass("Present NoPanel");
     $("body > article > section").hide();
 	setMarks();
     let p = $("body > nav > p[data-section]").click(function(ev) {
@@ -236,13 +238,16 @@ $(function() {
     $(window).on("keydown", arrows);
     if (mousePointer) mousePointer();
 
-    console.log("Ctrl + Left  = Toggle Panel\nCtrl + Right = Go to End\nCtrl + Shift + Enter = Presentation Mode");
+    console.log("Ctrl + Shift + Enter = Presentation Mode");
+    console.log("Ctrl + Left  = Toggle Panel\nCtrl + Right = Go to End");
+    console.log(" Alt + Left  = Previous Lesson\n Alt + Right = Next Lesson");
 });
 
 if (!window.touch) touch = {};
 
 touch.swipe = function(data, ev) {
     let mj = $(ev.target).closest("div.MathJax_Display").length;
+    // alert(`${data.swipe}, ${data.r}, ${mj}`);
     if (data.r > 100 && mj == 0) {
         if (data.swipe == "left") goNext(1);
         else if (data.swipe == "right") goNext(-1);

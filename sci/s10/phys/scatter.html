@@ -4,8 +4,8 @@
 <meta charset="utf8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Graphing Data</title>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
 <link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
 <link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
@@ -70,26 +70,29 @@ td, th {
         <li data-mark="7,">Data points must be drawn accurately and must not be connected.</li>
         <li data-mark="8,">Only if the data shows a linear trend, you should add a best-fit line.</li>
         <li data-mark="9,">A good best-fit line illustrates the trend of the data with equal numbers of data points above and below the line. The average distance between the data points and the best-fit line should be minimized.</li>
+        <li data-mark="10,"><em class="Defn">Interpolation</em> means using the best-line (or equation) to make predictions within the range of data.</li>
+        <li data-mark="11,"><em class="Defn">Extrapolation</em> means using the best-line (or equation) to make predictions beyond the range of data.</li>
     </ul>
 </section>
 
 <section id="slope" data-last="?"><h3>Slope</h3>
-    <p data-mark="0" class="Center"><img class="w800" src="img/scatter-5.png" alt="Scatter Plot"/></p>
-    <p data-mark="0"><em class="Defn">Slope</em> is a measure of the <em>steepness</em> of your best-fit line.</p>
-    <p data-mark="1">To calculate the slope, record the coordinates of the two visible endpoints of your best-fit line.
-    <table class="Center" data-mark="1">
+    <p class="Center"><img class="w800" src="img/scatter-5.png" alt="Scatter Plot"/></p>
+    <p><em class="Defn">Slope</em> is a measure of the <em>steepness</em> of your best-fit line.</p>
+    <p data-mark="+">To calculate the slope, record the coordinates of the two visible endpoints of your best-fit line.
+    <table class="Center" data-mark="=">
         <tr><th>Current<br><i>I</i> / Amperes</th><th>Voltage<br><i>V</i> / Volts</th></tr>
         <tr><td>0.0</td><td>11.4</td></tr>
         <tr><td>5.0</td><td>2.0</td></tr>
     </table>
     <ul>
-	    <li data-mark="2">Calculate the <em class="Defn">rise</em> by subtracting the <i>y</i>-coordinates (the responding variable):
+	    <li data-mark="+">Calculate the <em class="Defn">rise</em> by subtracting the <i>y</i>-coordinates (the responding variable):
             $$\Delta V = V_2 - V_1 =\mathrm{2.0\ V - 11.4\ V = -9.4\ V}$$</li>
-	    <li data-mark="3">Calculate the <em class="Defn">run</em> by subtracting the <i>x</i>-coordinates (the manipulated variable):
+        <li data-mark="+">The symbol \(\Delta\) is the Greek letter “delta”. It is used in Science and Math to mean “difference”.</li>
+	    <li data-mark="+">Calculate the <em class="Defn">run</em> by subtracting the <i>x</i>-coordinates (the manipulated variable):
             $$\Delta I = I_2 - I_1 = \mathrm{5.0\ A - 0.0\ A = 5.0\ A}$$</li>
-	    <li data-mark="4">Calculate the slope by dividing:$$k = {\Delta V\over \Delta I} = \mathrm{{-9.4\ V\over 5.0\ A} = -1.9\ V/A}$$</li>
-        <li data-mark="5">Slope represents the rate at which the responding variable changes relative to the manipulated variable.</li>
-	    <li data-mark="6">The battery’s voltage drops about 1.9 volts for each ampere of current it produces.</li>
+	    <li data-mark="+">Calculate the slope by dividing:$$k = {\Delta V\over \Delta I} = \mathrm{{-9.4\ V\over 5.0\ A} = -1.9\ V/A}$$</li>
+        <li data-mark="+">Slope represents the rate at which the responding variable changes relative to the manipulated variable.</li>
+	    <li data-mark="+">The battery’s voltage drops about 1.9 volts for each ampere of current it produces.</li>
     </ul>
 </section>
 
