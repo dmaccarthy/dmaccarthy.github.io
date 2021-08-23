@@ -34,17 +34,23 @@ let iter = {title:"Iterative Algorithms", id:"iter", icon:"py", menu:[
 // let iter30 = deep(iter);
 // iter30.id = "iter30";
 
+let repl_html = "<p>Login to your <a href='https://repl.it' target='repl'>repl.it</a> account first. Then create a “fork” of each of the repl’s below and share it with your teacher.</p>";
+
 let home = {title:"Computing Science", htmx:"<p class='Right'>Teacher: <a href='mailto:david.maccarthy@eips.ca'>D.G. MacCarthy</a></p>", menu:[
     link,
-    {title:"Computing Science 10", id:"cs10", icon:"robot", menu:[
-        link10, 
-        {title:"Structured Programming", id:"sp", icon:"py", menu:[]},
-        {title:"Computing Science", id:"cs1", icon:"laptop", menu:[]},
-        {title:"Robotics Programming", id:"robo", icon:"robot", menu:[]},
-    ]},
+    {title:"Computing Science 10", id:"cs10", icon:"robot", href:"https://learn.davidmaccarthy.repl.co/home/cs10.html"},
+    // {title:"Computing Science 10", id:"cs10", icon:"robot", menu:[
+    //     {title:"repl.it Online IDE", icon:"repl", html:repl_html, menu:[
+    //         {title:"CS10 repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS10"},
+    //     ]},
+    //     link10, 
+    //     {title:"Structured Programming", id:"sp", icon:"py", menu:[]},
+    //     {title:"Computing Science", id:"cs1", icon:"laptop", menu:[]},
+    //     {title:"Robotics Programming", id:"robo", icon:"robot", menu:[]},
+    // ]},
     {title:"Computing Science 20", id:"cs20", icon:"py", menu:[
         // link20,
-        {title:"repl.it Online IDE", icon:"repl", html:"<p>Login to your <a href='https://repl.it' target='repl'>repl.it</a> account first. Then create a “fork” of each of the repl’s below and share it with your teacher.</p>", menu:[
+        {title:"repl.it Online IDE", icon:"repl", html:repl_html, menu:[
             {title:"Web Programming", icon:"repl", open:"https://replit.com/@DavidMacCarthy/Web1"},
             {title:"Python Programming", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS20"},
         ]},
@@ -95,7 +101,9 @@ let home = {title:"Computing Science", htmx:"<p class='Right'>Teacher: <a href='
         // ]},
     ]},
     {title:"Computing Science 30", id:"cs30", icon:"py", menu:[
-        {title:"CS30 repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS30"},
+        {title:"repl.it Online IDE", icon:"repl", html:repl_html, menu:[
+            {title:"CS30 repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS30"},
+        ]},
         // link30,
         // iter30,
         {title:"Object-Oriented Programming 1", id:"oop1", icon:"py", menu:[
@@ -103,10 +111,17 @@ let home = {title:"Computing Science", htmx:"<p class='Right'>Teacher: <a href='
             {title:"Modifiers & Accessors", icon:"py", href:"oop1/mod.html"},
             {title:"Special Methods", icon:"py", href:"oop1/spec.html"},
             {title:"Inheritance", icon:"py", href:"oop1/inher.html"},
-            // {title:"", icon:"py", href:"oop1/.html"},
-            // {title:"", icon:"py", href:"oop1/.html"},
         ]},
-        // {title:"Recursive Algorithms", id:"rec", icon:"py", menu:[]},
-        // {title:"Dynamics Data Structures", id:"dds", icon:"py", menu:[]},
+        // {title:"Recursive Algorithms", id:"rec", icon:"py", menu:[
+        //     {title:"", icon:"py", href:"rec/.html"},
+        //     {title:"", icon:"py", href:"rec/.html"},
+        //     {title:"", icon:"py", href:"rec/.html"},
+        //     {title:"", icon:"py", href:"rec/.html"},
+        // ]},
+        // {title:"Dynamics Data Structures", id:"dds", icon:"py", menu:[
+        //     {title:"", icon:"py", href:"dds/.html"},
+        //     {title:"", icon:"py", href:"dds/.html"},
+        //     {title:"", icon:"py", href:"dds/.html"},
+        // ]},
     ]},
 ]}

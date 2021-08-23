@@ -10,6 +10,7 @@ let buttonLabel = {
     "cal": "Class Calendar",
     "gcr": "Google Classroom",
     "bs": "Brightspace Page",
+    "repl": "repl.it IDE",
 }
 
 let icons = {
@@ -17,6 +18,8 @@ let icons = {
     "#gcr": "https://ssl.gstatic.com/classroom/favicon.png",
     "#cal": `https://calendar.google.com/googlecalendar/images/favicon_v2014_${new Date().getDate()}.ico`,
     "#bs": "https://s.brightspace.com/lib/favicon/2.0.0/favicon.ico",
+    "#repl":"https://replit.com/public/icons/favicon-196.png",
+    "#py":"https://www.python.org/static/favicon.ico",
 }
 
 function uc() {alert("This link is currently unavailable!")}

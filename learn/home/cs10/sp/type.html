@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 <link rel="stylesheet" type="text/css" href="../../lesson.css"/>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../../../script/tree.js"></script>
 <script type="text/javascript" src="../../../script/touch.js"></script>
 <script type="text/javascript" src="../../lesson.js"></script>
@@ -28,7 +28,8 @@ $(function() {renderPage("type")});
 <div id="type">
 <p>We saw in the last assignment that the program below did not produce the expected output!</p>
 
-<pre class="Code">
+<pre class="Code"><span class="Comment"># Program 's06_number.py'</span>
+
 num = input("What is your favourite number? ")
 print(2 * num)
 print(2 + num)</pre>
@@ -42,8 +43,7 @@ print(2 + num)</pre>
 	text. When your program multiplies text by a number, it repeats the text the specified
 	number of times...</p>
 
-<pre class="Code">
-<span class="Comment"># Save this program as 's07_ex1.py'</span>
+<pre class="Code"><span class="Comment"># Program 's07_ex1.py'</span>
 
 print(2 * "Hi")   <span class="Comment"># HiHi</span>
 print(2 * 5)      <span class="Comment"># 10</span>
@@ -68,8 +68,7 @@ print(2 * "5")    <span class="Comment"># 55</span></pre>
 	as shown in blue below. Python also has a function called <code>type</code> that lets
 	you find out the class of any data or expression...</p>
 
-<pre class="Code">
-<span class="Comment"># Save this program as 's07_ex2.py'</span>
+<pre class="Code"><span class="Comment"># Program 's07_ex2.py'</span>
 
 fiveText = "5"
 fiveNum = <span class="Blue">float</span>(fiveText)
@@ -91,8 +90,7 @@ print(type(fiveInt))    <span class="Comment"># &lt;class 'int'&gt;</span></pre>
 	work as expected, as long as you provide input that can be converted to an integer.
 	If you provided invalid input, the program will crash...</p>
 
-<pre class="Code">
-<span class="Comment"># Save this program as 's07_ex3.py'</span>
+<pre class="Code"><span class="Comment"># Program 's07_ex3.py'</span>
 
 num = int(input("What is your favourite number? "))
 print(2 * num)
@@ -112,7 +110,7 @@ The average is 5.5</pre></li>
 
 <li>The program below calculates the sales tax and total price for an item that costs $4.99 when the sales tax rate is 5%. Modify the program so that user can input the tax rate and price from the keyboard.</li>
 
-<pre class="Code"><span class="Comment"># Save this program as 's07_tax.py'
+<pre class="Code"><span class="Comment"># Program 's07_tax.py'
 
 # Input</span>
 taxRate = 0.05
@@ -127,7 +125,7 @@ msg = "The sales tax is ${} and the total is ${}."
 print(msg.format(tax, total))</pre>
 
 <li>Make a copy of this <a target="Doc" href="https://docs.google.com/document/d/1AFw9km_FdFE9XM_94prllrsY5OSxcYQ3SLh_IJ9P98M">Google Doc</a> in the <code>CS10</code> of your EIPS Google Drive.
-    Answer the questions in the document.</li>
+    Answer the questions in the document. Use the program <code>s07_test.py</code> to test your answers for question 3 in the document.</li>
 </ol>
 
 </article></body>

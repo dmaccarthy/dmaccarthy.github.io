@@ -35,7 +35,7 @@ $(function() {renderPage("for")});
 	<em class="Defn">iterate</em> through a <em class="Defn">sequence</em>. One type of sequence is a string; Python
 	treats each string value as a sequence of individual characters.</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's14_ex1.py'</span>
+<pre class="Code"><span class="Comment"># Program 's14_ex1.py'</span>
 
 word = "Salisbury Composite High School"
 for letter in word:
@@ -52,7 +52,7 @@ for letter in word:
 	statement within a <code>for</code> loop, for example. The program below will print each of the
 	lower case letters and punctutation marks on its own line, but will ignore any upper case letters.</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's14_ex2.py'</span>
+<pre class="Code"><span class="Comment"># Program 's14_ex2.py'</span>
 
 word = "Salisbury Composite High School"
 for letter in word:
@@ -65,7 +65,7 @@ for letter in word:
 
 <p>Besides strings, other types of sequences that you can iterate through include files	and lists of numbers or other data.</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's14_ex3.py'</span>
+<pre class="Code"><span class="Comment"># Program 's14_ex3.py'</span>
 
 data = 0, 1, 1, 2, 3, 5, 8
 for num in data:
@@ -81,7 +81,7 @@ for num in data:
 	you an alternate way to loop with a counter. The following example runs the loop ten times, with the
 	variable <code>count</code> keeping track of how many times the loop has run.</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's14_ex4.py'</span>
+<pre class="Code"><span class="Comment"># Program 's14_ex4.py'</span>
 
 for count in range(10):
     print(count)</pre>
@@ -92,7 +92,7 @@ for count in range(10):
 <p>You can pass more arguments to the <code>range</code> function to create other sequences of
     numbers. For example, if you want to count by twos, starting at 10 and ending at (but not
     including!) 20...</p>
-<pre class="Code"><span class="Comment"># Save this program as 's14_ex5.py'</span>
+<pre class="Code"><span class="Comment"># Program 's14_ex5.py'</span>
 
 for count in range(10, 20, 2):
     print(count)</pre>
@@ -100,8 +100,8 @@ for count in range(10, 20, 2):
 
 <h4 class="Collapse Blue" data-collapse="assign"><em class="material-icons">expand_more</em>Assignment</h4>
 <ol class="Assign Hidden" id="assign">
-<li>Duplicate the Fibonacci Sequence example from the last lesson, <code>s13_ex2.py</code>, 
-    as <code>s14_fib.py</code>. Modify the program so that it uses a <code>for</code> loop with the
+<li>The Fibonacci Sequence example from the last lesson (<code>s13_ex2.py</code>) has been duplicated as 
+    <code>s14_fib.py</code>. Modify the program so that it uses a <code>for</code> loop with the
     <code>range</code> function, instead of a <code>while</code> loop. Let the user enter the number of
     terms to print.</li>
 
@@ -116,7 +116,7 @@ for count in range(10, 20, 2):
     display only the letters that have already been guessed, as well as spaces and punctuation marks.
     Letters that have not yet been guessed would be shown as a blank or placeholder character such as
     a star.
-<pre class="Code"><span class="Comment"># Save this program as 's14_hangman.py'</span>
+<pre class="Code"><span class="Comment"># A portion of program 's14_hangman.py'</span>
 
 answer = "STAR WARS"
 guesses = "AESD"</pre>
@@ -137,10 +137,10 @@ S</pre></li>
 <li>One important application of iteration is to <em class="Defn">search</em> through a set of data
     to see if any of it matches the criteria we are looking for. For example, we might be looking for
     a particular student in the school’s database or for students who did not get a passing mark. Modify
-    the program below so that only prints out the student numbers and marks of students who earned marks
-    below 50. Save your program as <code>s14_fail.py</code>.
+    the program <code>s14_fail.py</code> so that only prints out the student numbers and marks of students who earned marks
+    below 50.
 
-<pre class="Code">from random import randint
+<!--pre class="Code">from random import randint
 
 <span class="Comment"># This will generate a random class set of student marks.
 # You haven't learned how to do this yet; don't worry if it doesn't make sense.</span>
@@ -150,12 +150,12 @@ student_marks = zip(range(1, class_size + 1),
 
 <span class="Comment"># Output the marks by student number</span>
 for student, mark in student_marks:
-    print(student, mark)</pre>
+    print(student, mark)</pre-->
 
 </li>
 
-<li>Create a duplicate of the previous example and save it as <code>s14_highest.py</code>. Modify the
-    program so that it searches for the student who earned the highest mark in the class.</li>
+<li>Duplicate your previous program (<code>s14_fail.py</code>) into the file <code>s14_highest.py</code>. Modify the
+    program so that it searches and prints out the student who earned the highest mark in the class.</li>
 </ol>
 </article></body>
 </html>

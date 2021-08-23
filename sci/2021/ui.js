@@ -12,8 +12,8 @@ function makeIcon(node) {
     return icon;
 }
 
-//makeIcon.media = "../media/";
-makeIcon.media = "/sci/media/";
+makeIcon.media = "../media/";
+// makeIcon.media = "/sci/media/";
 
 makeIcon.urls = {
     "bs": "https://s.brightspace.com/lib/favicon/2.0.0/favicon.ico",

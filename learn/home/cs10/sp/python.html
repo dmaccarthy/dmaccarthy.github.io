@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 <link rel="stylesheet" type="text/css" href="../../lesson.css"/>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../../../script/tree.js"></script>
 <script type="text/javascript" src="../../../script/touch.js"></script>
 <script type="text/javascript" src="../../lesson.js"></script>
@@ -25,11 +25,13 @@ $(function() {renderPage("python")});
 <body><article>
 
 <p>Python is a widely used programming language that is popular as a first language because it is easy to learn.<p>
-<ol class="Assign"><li>Use your IDE (e.g. Thonny, Eclipse, or repl.it) to create a new file in your <code>CS10</code> folder called <code>s03_turtle.py</code>. Copy and paste the following program into the file. Try to predict what the program will do. Run the program to see if you were right.
+<ol class="Assign">
+    <li>Use your IDE (i.e. repl.it) to create (copy and paste!) the following program as <code>s03_turtle.py</code>.
+    Try to predict what the program will do. Run the program to see if you were right.
 
-<pre class="Code"><span class="Comment"># Save this program in your CS10 folder as 's03_turtle.py'</span>
+<pre class="Code"><span class="Comment"># Example 1...</span>
 
-from turtle import *
+from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
 
 setup(600, 480)
 speed(1)
@@ -72,24 +74,24 @@ exitonclick()</pre>
 <p>Python keeps the definitions for many of its functions in separate files called
 	<em class="Defn">modules</em>. Before your program can use a function, you need to tell Python
 	to <code>import</code> (load) the function definition. The first line of the program above tells
-	Python to import all functions and data located in the <code>turtle</code> module. If you try to
+	Python to import several functions located in the <code>turtle</code> module. If you try to
 	call a function that you haven’t imported, an error will occur. (Try running the program after
 	deleting the first line.)</p>
-<pre class="Code">from turtle import *</pre>
+<pre class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick</pre>
 
-<p>The asterix at the end of the <code>import</code> statement tells Python to import everything
+<!--p>The asterix at the end of the <code>import</code> statement tells Python to import everything
 	that it finds in the <code>turtle</code> module. Importing functions and data that your program
 	doesn’t need wastes computer memory and processing power. If you only need to use a few of the
 	features of a module, you should import only what you need...</p>
-<pre class="Code">from turtle import forward, backward, left, right</pre>
+<pre class="Code">from turtle import forward, backward, left, right</pre-->
 
 <p>There are a few functions that are so important or so common that Python loads them automatically; you do not need to import them. These functions are called <em class="Defn">built-ins</em>. One built in function that we used in the last lesson is <code>print</code>.</p>
 
-<ol class="Assign" start="2"><li>Create a new Python file in your <code>CS10</code> folder called <code>s03_letter.py</code>. You can copy and paste the example program as a starting point.
+<ol class="Assign" start="2"><li>Create a new Python file called <code>s03_letter.py</code>. You can copy and paste the example program as a starting point.
     Modify the program so that it makes the turtle trace out the letter “Q” in your favourite colour.
 	You can refer to the <a href="https://docs.python.org/3/library/turtle.html#overview-of-available-turtle-and-screen-methods"
 	target="ref">documentation for the <code>turtle</code> module</a> to see what functions are
-	available for controlling the turtle, in addition to the functins used in the example.</li></ol>
+	available for controlling the turtle, in addition to the functions used in the example.</li></ol>
 
 </article></body>
 </html>

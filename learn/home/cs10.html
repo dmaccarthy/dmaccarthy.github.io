@@ -16,15 +16,21 @@
 <script type="text/javascript">
 
 let pageContent = {buttons:[
-    {icon:"#bs", href:"https://eips.brightspace.com/d2l/home/26542"},
-    {icon:"#link", text:"Documents & Links", href:"cs10/link_cs10.html"},
+    {icon:"#py", text:"Python repl", open:"https://replit.com/@DavidMacCarthy/CS10"},
+    {icon:"#robot", text:"Robotics repl", open:"https://replit.com/@DavidMacCarthy/Robo"},
+    // {icon:"#bs", href:"https://eips.brightspace.com/d2l/home/26542"},
+    // {icon:"#link", text:"Documents & Links", href:"cs10/link_cs10.html"},
     // {icon:"#link", text:"OneDrive Folder", href:"https://eipsca-my.sharepoint.com/personal/david_maccarthy_eips_ca/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdavid%5Fmaccarthy%5Feips%5Fca%2FDocuments%2Fpublic&originalPath=aHR0cHM6Ly9laXBzY2EtbXkuc2hhcmVwb2ludC5jb20vOmY6L2cvcGVyc29uYWwvZGF2aWRfbWFjY2FydGh5X2VpcHNfY2EvRW1Yb1VGa3gxUnRHdk14dVdDZEJLZGtCUUpRLW5MUmVwcnRWZzN6VFdLS2l2QT9ydGltZT1PclA0T281TDJFZw"},
     // {icon:"#gcr"},
 ]}
 
 makeUrl.home = "../";
 
-$(function() {renderPage("cs10")});
+$(function() {
+    renderPage("cs10");
+    let s = $("<a>").html("Home").attr({href:"https://sci.davidmaccarthy.repl.co/cs/?id=cs10"});
+    $("#BreadCrumbs").html(s);
+});
 
 </script>
 </head>

@@ -51,18 +51,18 @@ function example(n) {
 
 function flow() {
     let p = flow.plot = new Plot("#Flow", [-2, 1, -1], 1), f = 11;
-    let opt = {font: "bold 36px monospace", fill:"blue"};
+    let opt = {font: "bold 36px monospace", fill:"red"}; // blue
     p.items = [
-        new Circle([0,0], 1, {stroke:"red", lineWidth:3}),
+        new Circle([0,0], 1, {stroke:"blue", lineWidth:3}),
         new Graphic("$Ek", [-0.5, 0]),
         new Graphic("$Eg", [0.5, 0]),
         new Text("Food", [-1.5, 0.75], opt),
         new Text("Waste", [-1.5, -0.75], opt),
-        new Arrow([-0.9, 0.375], {angle:-45, length:0.6}, {stroke:"blue", fill:"white"}, {frames:f}),
+        new Arrow([-0.9, 0.375], {angle:-45, length:0.6}, {stroke:"red", fill:"white"}, {frames:f}),
         new Graphic("$Wa", [-0.75, 0.525], {rotate:-45*DEG, frames:f}),
-        new Arrow([0, 0], {angle:0, length:0.6}, {stroke:"red"}, {frames:f+1}),
+        new Arrow([0, 0], {angle:0, length:0.6}, {stroke:"blue"}, {frames:f+1}),
         new Graphic("$Wg", [0, 0.1], {anchor:BOTTOM, frames:f+1}),
-        new Arrow([-0.9, -0.375], {angle:225, length:0.6}, {stroke:"blue", fill:"white"}, {frames:f+2}),
+        new Arrow([-0.9, -0.375], {angle:225, length:0.6}, {stroke:"red", fill:"white"}, {frames:f+2}),
         new Graphic("$Wf", [-0.75, -0.525], {rotate:45*DEG, frames:f+2}),
     ];
     p.draw(99);

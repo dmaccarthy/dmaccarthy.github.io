@@ -44,8 +44,7 @@ th, td {
 <p>One way to produce a Boolean result is to use one of Python’s comparison operators. <em class="Defn">Comparison
 	operators</em> are operators that compare two values for equality or inequality.</p>
 
-<pre class="Code">
-<span class="Comment"># Save this program as 's10_ex1.py'</span>
+<pre class="Code"><span class="Comment"># Program 's10_ex1.py'</span>
 
 a = 3
 b = 5
@@ -71,8 +70,7 @@ print(type(a_is_smaller)) <span class="Comment"># &lt;class 'bool'&gt;</span></p
 	These operators can be used to check if a string contains a particular letter or substring, and whether a
 	sequence of numbers (e.g a color code) contains a specific value.</p>
 
-<pre class="Code">
-<span class="Comment"># Save this program as 's10_ex2.py'</span>
+<pre class="Code"><span class="Comment"># Program 's10_ex2.py'</span>
 
 word = "Computing Science"
 print("i" in word)         <span class="Comment"># True</span>
@@ -93,8 +91,7 @@ print(255 in red)          <span class="Comment"># True</span></pre>
 <p>We often need to combine two or more Boolean values or expressions to create a “final” result. For example,
 	if we wanted to know if a number was between 1 and 100, we would have to check two conditions.</p>
 
-<pre class="Code">
-<span class="Comment"># Save this program as 's10_ex3.py'</span>
+<pre class="Code"><span class="Comment"># Program 's10_ex3.py'</span>
 
 a = 57
 print(a >= 1)                <span class="Comment"># True</span>
@@ -125,8 +122,7 @@ print(a >= 1 or a <= 100)    <span class="Comment"># True</span></pre>
 <p>The third Boolean operator is <code>not</code>. The <code>not</code> operator reverses <code>True</code> to
 	<code>False</code> and <code>False</code> to <code>True</code>.</p>
 
-<pre class="Code">
-<span class="Comment"># Save this program as 's10_ex4.py'</span>
+<pre class="Code"><span class="Comment"># Program 's10_ex4.py'</span>
 
 a = 3 < 5
 b = "her" in "Sherwood Park"
@@ -134,6 +130,7 @@ b = "her" in "Sherwood Park"
 print(a)            <span class="Comment"># True</span>
 print(not a)        <span class="Comment"># False</span>
 print(not a or b)   <span class="Comment"># True</span>
+print(not (a or b)) <span class="Comment"># False</span>
 print(a and not b)  <span class="Comment"># False</span></pre>
 
 <p>For Boolean operators, the order of operations is <code>not</code> first, then <code>and</code>, and

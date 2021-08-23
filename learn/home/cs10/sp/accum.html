@@ -37,12 +37,9 @@ $(function() {renderPage("accum")});
 <li>total of all the individual student marks (<code><span class="Green">total_marks</span></code>)</li>
 </ul>
 
-<pre class="Code"><span class="Comment"># Save this program as 's16_ex1.py'</span>
+<pre class="Code"><span class="Comment"># Program 's16_ex1.py'</span>
 
-from random import randint
-
-<span class="Comment"># Generate a class set of random marks</span>
-class_marks = [randint(40, 100) for s in range(randint(15, 36))]
+from resource import marks_list
 
 <span class="Comment"># Initialize accumulators</span>
 <span class="Blue">student = 0</span>
@@ -51,20 +48,20 @@ class_marks = [randint(40, 100) for s in range(randint(15, 36))]
 
 <span class="Comment"># Iterate</span>
 template = "Student {} earned a mark of {}."
-for mark in class_marks:
+for mark in marks_list:
     <span class="Blue">student += 1</span>         <span class="Comment"># Count students</span>
     <span class="Red">if mark >= 80:</span>       <span class="Comment"># Count students with an 'A'</span>
         <span class="Red">grade_A += 1</span>
     <span class="Green">total_marks += mark</span>  <span class="Comment"># Total marks</span>
     print(template.format(student, mark))
 
-<span class="Comment"># Output</span>
+<span class="Comment"># Output totals</span>
 print("\nStudents =", student)
 print("Total =", total_marks)
 print("Average =", total_marks / student)
 print("Students with an A =", grade_A)</pre>
 
-<p>Each total is performed using an accumulator variable, which have been colour-coded in the example above.
+<p>Each total is performed using an <em class="Defn">accumulator</em> variable, which have been colour-coded in the example above.
     Before the loop begins, each accumulator is initialized to a value of <code>0</code>. As we iterate
     through the data, examining each student’s mark one at a time, we count the number of students in the
     class by adding <code>1</code> to the <code><span class="Blue">student</span></code> variable
@@ -84,7 +81,7 @@ print("Students with an A =", grade_A)</pre>
     to an empty string, <code>""</code>. As you iterate through the original message, one letter at
     a time, you would add the encrypted letter to the cypher string.</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's16_ex2.py'</span>
+<pre class="Code"><span class="Comment"># Program 's16_ex2.py'</span>
 
 <span class="Comment"># Input</span>
 plain = "This is a secret message!"
@@ -106,8 +103,9 @@ print(cypher)</pre>
 
 <h4 class="Collapse Blue" data-collapse="assign"><em class="material-icons">expand_more</em>Assignment</h4>
 <ol class="Assign Hidden" id="assign">
-<li>Copy the example program <code>s16_ex1.py</code> as <code>s16_grades1.py</code>. Modify the program so that it also
-accumulates the number of students with grades of B (65-79), C (50-64) and F (0-49).</li>
+<li>The example program <code>s16_ex1.py</code> has been copied as <code>s16_grades1.py</code>. Modify the program so that it also
+accumulates and prints the number of students with grades of B (65-79), C (50-64) and F (0-49). Note that you do not need an accumulator for the F’s;
+you can just subtract the A’s, B’s, and C’s from the total number of students in the class.</li>
 
 <li>Copy <code>s16_grades1.py</code> as <code>s16_grades2.py</code> and modify it further to
     determine the highest and lowest marks in the class.</li>

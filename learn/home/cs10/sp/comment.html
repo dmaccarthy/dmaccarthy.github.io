@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 <link rel="stylesheet" type="text/css" href="../../lesson.css"/>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../../../script/tree.js"></script>
 <script type="text/javascript" src="../../../script/touch.js"></script>
 <script type="text/javascript" src="../../lesson.js"></script>
@@ -34,7 +34,7 @@ $(function() {renderPage("comment")});
 <p>Here is an example from the previous lesson with four comment lines added to	explain what
     the program is doing.</p>
 
-<pre class="Code">from turtle import *
+<pre class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
 
 <span class="Comment"># Set the canvas size, turtle speed, and pen color</span>
 setup(600, 480)
@@ -58,8 +58,7 @@ exitonclick()</pre>
 	out the <code>penup()</code> instruction, we could add a <code>#</code> character to
 	the beginning of the line. This is commonly called “commenting out” the instruction.</p>
 
-<pre class="Code">
-from turtle import *
+<pre class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
 
 <span class="Comment"># Set the canvas size, turtle speed, and pen color</span>
 setup(600, 480)
@@ -98,7 +97,7 @@ Author: D. MacCarthy &lt;david.maccarthy@eips.ca&gt;
 
 """</span>
     
-from turtle import *
+from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
 
 <span class="Comment"># Set the canvas size, turtle speed, and pen color</span>
 setup(600, 480)
@@ -122,10 +121,10 @@ exitonclick()</pre>
 </div>
 
 <h4 class="Collapse Blue" data-collapse="assign"><em class="material-icons">expand_more</em>Assignment</h4>
-<ol class="Assign Hidden" id="assign"><li>Create a new file <code>s04_letter.py</code> in your <code>CS10</code>
-    folder. Copy your program from the previous assignment that draws the letter “Q”. Add a
-    docstring to the program and add comments to describe each group of instructions, such as
-    “move the turtle into position”, “draw the circle”, “draw the 'tail' of the Q”.</li></ol>
+<ol class="Assign Hidden" id="assign"><li>Create a new file <code>s04_letter.py</code>. Copy your program from the previous
+    assignment that draws the letter “Q”. Add a suitable docstring to the program and add comments to describe each group
+    of instructions, such as “move the turtle into position”, “draw the circle”, “draw the 'tail' of the Q”.</li>
+</ol>
 
 </article></body>
 </html>

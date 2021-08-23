@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 <link rel="stylesheet" type="text/css" href="../../lesson.css"/>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../../../script/tree.js"></script>
 <script type="text/javascript" src="../../../script/touch.js"></script>
 <script type="text/javascript" src="../../lesson.js"></script>
@@ -37,9 +37,9 @@ $(function() {renderPage("io")});
 	that Python always loads it automatically. Unlike most functions, built-ins do not need to be imported.</p>
 
 <p>Each <code>print</code> statement prints its data on a separate line. If the argument is an expression, Python
-	evaluates it before printing. In the example below, the second line will print <code>10</code>.</p>
+	<em class="Defn">evaluates</em> it before printing. In the example below, the second line will print <code>10</code>.</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's06_ex1.py'</span>
+<pre class="Code"><span class="Comment"># Program 's06_ex1.py'</span>
 
 print("Hello!")
 print(5 * 2)</pre>
@@ -47,14 +47,14 @@ print(5 * 2)</pre>
 <p>You can print several pieces of data on a single line by passing multiple arguments to the same
 	<code>print</code> call...</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's06_ex2.py'</span>
+<pre class="Code"><span class="Comment"># Program 's06_ex2.py'</span>
 
 print("Hello!", 5 * 2)</pre>
 
 <p>Python adds a space character between the data being printed. If you want to specify a separator other than
 	a space, you can specify the separator as the final argument...</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's06_ex3.py'</span>
+<pre class="Code"><span class="Comment"># Program 's06_ex3.py'</span>
 
 pi = 3.14
 print("Hello!", pi, 5 * 2, <span class="Blue">sep=</span>" ;-) ")</pre>
@@ -76,7 +76,7 @@ print("Hello!", pi, 5 * 2, <span class="Blue">sep=</span>" ;-) ")</pre>
 	data will be saved in the computer’s memory. Your program will need to assign a variable name to the data if
 	it wants to use it later...</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's06_ex4.py'</span>
+<pre class="Code"><span class="Comment"># Program 's06_ex4.py'</span>
 
 user_name = input("Please tell me your name? ")
 print("Hello, ", user_name, "!", sep="")</pre>
@@ -92,9 +92,9 @@ print("Hello, ", user_name, "!", sep="")</pre>
 	function <code>textinput</code> (which has to be imported from <code>turtle</code>) instead of
 	<code>input</code>...</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's06_ex5.py'</span>
+<pre class="Code"><span class="Comment"># Program 's06_ex5.py'</span>
 
-from turtle import *
+from turtle import textinput, setup, speed, penup, pendown, pencolor, left, forward, exitonclick
 
 <span class="Comment"># Ask for color</span>
 color = textinput("Color", "What color triangle do you want?")
@@ -154,17 +154,7 @@ Grade: 10</pre></li>
 <li>Save the program below as <code>s06_number.py</code>. The program does not behave the way its programmer intended! Read the program to figure out what it is <em>supposed</em> to do. Then run the program to see what it actually does. Describe what the program is supposed to do and actually does in the comments at the end of the file.</li>
 <pre class="Code">num = input("What is your favourite number? ")
 print(2 * num)
-print(2 + num)
-
-<span class="Comment"># What is the program supposed to do?
-# 
-# 
-# 
-
-# What does the program actually do?
-# 
-# 
-#</span></pre>
+print(2 + num)</pre>
 
 </ol>
 </article></body>

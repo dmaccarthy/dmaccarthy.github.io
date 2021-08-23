@@ -31,7 +31,7 @@ $(function() {renderPage("while")});
 	repeatedly. Here is a program that keeps printing random numbers until it gets a number greater
 	than 99.</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's12_ex1.py'</span>
+<pre class="Code"><span class="Comment"># Program 's12_ex1.py'</span>
 
 from random import uniform
 
@@ -54,7 +54,7 @@ print(num)                  <span class="Comment"># Print the last number</span>
 <p>In Python, <em class="Defn">indentation</em> is used to structure loops just as it is for <code>if-elif-else</code> blocks. Only the two indented statements in the example are repeated. The final statement in the program is unindented to show that it is not part of the loop. It will only run once, after the loop is finished.</p>
 <p>Python allows you to have <em class="Defn">nested</em> indented blocks, for example an <code>if</code> statement inside a <code>while </code> loop:</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's12_ex2.py'</span>
+<pre class="Code"><span class="Comment"># Program 's12_ex2.py'</span>
 
 from random import randint
 
@@ -98,16 +98,16 @@ while sides:
 
 <h4 class="Collapse Blue" data-collapse="assign"><em class="material-icons">expand_more</em>Assignment</h4>
 <ol class="Assign Hidden" id="assign">
-<li>The program below presents the player with four choices and asks them to
+<li>The program <code>s12_choice.py</code> presents the player with four choices and asks them to
     select one by typing a number between 1 and 4. If the user types a number outside of this range,
     the program needs to ask again, until it receives valid input. Modify the program so that it rejects
     any number that is not between 1 and 4 and asks the user to try again until valid data is received.
     (Do not worry about dealing with input that cannot be converted to an integer at all.)
-<pre class="Code"><span class="Comment"># Save this program as 's12_choice.py'</span>
+<!--pre class="Code"><span class="Comment"># Program 's12_choice.py'</span>
 
 options = "Options:\n1. Attack\n2. Defend\n3. Run\n4. Quit\n"
 choice = int(input(options))
-print("You selected:", choice)</pre></li>
+print("You selected:", choice)</pre--></li>
 
 <li>Write a Python program <code>s12_grade.py</code> to ask the user to enter their grade. Use
     a <code>while</code> loop so that if the user enters a number that is not between 10 and 12, the

@@ -30,8 +30,9 @@ $(function() {renderPage("if")});
 <p>Algorithms often involve “branching”, where the answer to a True/False decision determines which
 	instructions will be executed.  Python uses an <code>if-elif-else</code> structure to achieve branching.</p>
 
-<pre class="Code">
-<span class="Comment"># Save this program as 's11_ex1.py'</span>
+<pre class="Code"><span class="Comment"># Program 's11_ex1.py'</span>
+
+from math import sqrt
 
 num = float(input("Please enter a number: "))
 <span class="Blue">if num >= 0:</span>
@@ -54,8 +55,9 @@ num = float(input("Please enter a number: "))
 <p>The <code>if</code> block can be followed by an <code>else</code> block to specify instructions that
 	are executed when the condition is <code>False</code>.</p>
 
-<pre class="Code">
-<span class="Comment"># Save this program as 's11_ex2.py'</span>
+<pre class="Code"><span class="Comment"># Program 's11_ex2.py'</span>
+
+from math import sqrt
 
 num = float(input("Please enter a number: "))
 <span class="Blue">if num >= 0:</span>
@@ -67,8 +69,7 @@ num = float(input("Please enter a number: "))
 <p>When there are more than two possible conditions, you can use the <code>elif</code> (“else if”)
 	keyword to specify additional tests.</p>
 
-<pre class="Code">
-<span class="Comment"># Save this program as 's11_ex3.py'</span>
+<pre class="Code"><span class="Comment"># Program 's11_ex3.py'</span>
 
 age = float(input("Please enter your age: "))
 <span class="Blue">if age < 12:</span>
@@ -99,10 +100,10 @@ Your payment is not enough!</pre></li>
     <li>Scissors beats Paper</li>
     <li>Paper beats Rock</li>
 </ul>
-The Python program below uses the <code>randint</code> function to choose a number between 1 and 3
-for each player. The three numbers correspond to the three choices Rock, Paper, or Scissors.
+The Python program <code>s11_rock.py</code> uses the <code>randint</code> function to choose a number between 1 and 3
+for each player. The three numbers correspond to the three choices Rock (1), Paper (2), or Scissors (3).
 
-<pre class="Code"><span class="Comment"># Save this program as 's11_rock.py'</span>
+<!--pre class="Code"><span class="Comment"># Program 's11_rock.py'</span>
 
 <span class="Docstring">"Rock-Paper-Scissors"</span>
 
@@ -121,7 +122,7 @@ player2 = randint(1, 3)
 
 
 # Output</span>
-</pre>
+</pre-->
 
 Complete the program so that it displays each player’s choices as a string (i.e. it should print
 the word “Rock” and not the number 1). It should also determine which player wins (or if it is a

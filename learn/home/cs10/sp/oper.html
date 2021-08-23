@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 <link rel="stylesheet" type="text/css" href="../../lesson.css"/>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../../../script/tree.js"></script>
 <script type="text/javascript" src="../../../script/touch.js"></script>
 <script type="text/javascript" src="../../lesson.js"></script>
@@ -31,8 +31,7 @@ $(function() {renderPage("oper")});
 	and readable way than using a function. The two expressions below both produce 8 as a result, but the first
 	line (using the <code>+</code>  operator) is easier to understand the using the <code>sum</code> function.</p>
 
-<pre class="Code">
-<span class="Comment"># Save this program as 's09_ex1.py'</span>
+<pre class="Code"><span class="Comment"># Program 's09_ex1.py'</span>
 
 x = 2 + 6         <span class="Comment"># Good!</span>
 y = sum([2, 6])   <span class="Comment"># Not so good</span>
@@ -43,7 +42,7 @@ print(x, y)</pre>
 <div class="Hidden" id="order">
 <p>Just like in Math, Python follows an order of operations when evaluating expressions that use operators.</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's09_ex2.py'</span>
+<pre class="Code"><span class="Comment"># Program 's09_ex2.py'</span>
 
 print(5 + 3 * 2)      <span class="Comment"># 11</span>
 print((5 + 3) * 2)    <span class="Comment"># 16</span></pre>
@@ -53,7 +52,7 @@ print((5 + 3) * 2)    <span class="Comment"># 16</span></pre>
 	within the parentheses are always performed before those outside the brackets. When there are multiple pairs
 	of brackets, Python evaluates the innermost ones first and then works outwards.</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's09_ex3.py'</span>
+<pre class="Code"><span class="Comment"># Program 's09_ex3.py'</span>
 
 print((6 - (5 + 3)) * 2)  <span class="Comment"># -4</span></pre>
 
@@ -86,7 +85,7 @@ print((6 - (5 + 3)) * 2)  <span class="Comment"># -4</span></pre>
 	exact integer, Python rounds the answer <em>down</em> to the next lowest integer; if you want to round to the
 	<em>closest</em> integer, you should use the <code>round</code> built-in function instead.</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's09_ex4.py'</span>
+<pre class="Code"><span class="Comment"># Program 's09_ex4.py'</span>
 
 print(7 / 4)         <span class="Comment"># 1.75</span>
 print(7 // 4)        <span class="Comment"># 1</span>
@@ -99,7 +98,7 @@ print(round(7 / 4))  <span class="Comment"># 2</span></pre>
 	called the <em class="Defn">remainder</em> (3). The floor division and modulo operators perform these
 	calculations.</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's09_ex5.py'</span>
+<pre class="Code"><span class="Comment"># Program 's09_ex5.py'</span>
 
 print(7 // 4)   <span class="Comment"># Quotient = 1</span>
 print(7 % 4)    <span class="Comment"># Remainder = 3</span></pre>
@@ -107,14 +106,14 @@ print(7 % 4)    <span class="Comment"># Remainder = 3</span></pre>
 <p>One important use of the modulo operator is to check if one number is a multiple of another. The remainder
 	will always be zero when you divide a number by one of its factors.</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's09_ex6.py'</span>
+<pre class="Code"><span class="Comment"># Program 's09_ex6.py'</span>
 
 print(7 % 4)    <span class="Comment"># 3 ... 7 is NOT a multiple of 4</span>
 print(8 % 4)    <span class="Comment"># 0 ... 8 IS a multiple of 4</span></pre>
 
 <p>If you attempt to use these operators on floating point numberss, the answers will also be floats.</p>
 
-<pre class="Code"><span class="Comment"># Save this program as 's09_ex7.py'</span>
+<pre class="Code"><span class="Comment"># Program 's09_ex7.py'</span>
 
 print(7.2 // 4)   <span class="Comment"># 1.0</span>
 print(7.2 % 4.0)  <span class="Comment"># 3.2</span></pre>
@@ -124,7 +123,7 @@ print(7.2 % 4.0)  <span class="Comment"># 3.2</span></pre>
 <h4 class="Collapse Blue" data-collapse="assign"><em class="material-icons">expand_more</em>Assignment</h4>
 <ol class="Assign Hidden" id="assign">
 <li>Make a copy of this <a target="Doc" href="https://docs.google.com/document/d/1l3PXZR63vIB22SFeoZu59MDaPCjyLZIfMJeQsNQmTq0">Google Doc</a> in the <code>CS10</code> folder of your EIPS Google Drive.
-    Answer the questions in the document.</li>
+    Answer the questions in the document. Use the program <code>s09_test.py</code> to test/check your answers to all questions.</li>
 </ol>
 </article></body>
 </html>

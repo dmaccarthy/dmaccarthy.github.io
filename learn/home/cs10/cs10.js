@@ -1,5 +1,5 @@
 let cs = {title:"Computing Science 10", id:"cs10", grc:"u/0/w/NTQ2MzI2ODA1ODRa", menu:[
-    {title:"Structured Programming", id:"sp", menu:[
+    {title:"Structured Programming 1 & 2", id:"sp", menu:[
         {title:"Intro to Programming", id:"intro"},
         {title:"Integrated Development Environments", id:"ide"},
         {title:"Programming in Python", id:"python"},
@@ -18,15 +18,6 @@ let cs = {title:"Computing Science 10", id:"cs10", grc:"u/0/w/NTQ2MzI2ODA1ODRa",
         {title:"Accumulation", id:"accum"},
         {title:"String Methods", id:"str"},
     ]},
-    {title:"Robotics Programming", id:"robo", menu:[
-        {title:"Intro to Robotics", id:"robo_intro"},
-        {title:"Turning the Robot", id:"turn"},
-        {title:"Functions & Arguments", id:"func"},
-        {title:"Colours & Sensors", id:"colour"},
-        {title:"Soccer Challenge", id:"soccer"},
-        {title:"Lists", id:"list"},
-        {title:"Parking Lot Challenge", id:"park"}
-    ]},
     {title:"Computer Science 1", id:"cs1", menu:[
         {title:"Binary Encoding", open:"https://drive.google.com/open?id=1uD73FDAhv1AiH5rVPLIsZn-acMjGY09gNxLbEozjDA4"},
         {title:"Text Encoding", open:"https://drive.google.com/open?id=1wGMBQAUTTSNcbZPeNOf8BO6yVw7p2yHcHxeQ-acCbyM"},
@@ -34,6 +25,15 @@ let cs = {title:"Computing Science 10", id:"cs10", grc:"u/0/w/NTQ2MzI2ODA1ODRa",
         {title:"Computing Science", open:"https://drive.google.com/open?id=13cPWZNfIyKYM6DPi_IxaVgUSj0b8II1kCzZVfvLZyOc"},
         {title:"Algorithms", open:"https://drive.google.com/open?id=1Gha5Y-KxghYX_1blLUVHf5DWXEipkk0AVWZMW-ZxVzw"},
         // {title:"Summative Assessment", href:""},
+    ]},
+    {title:"Robotics Programming 1 & 2", id:"robo", menu:[
+        {title:"Intro to Robotics", id:"robo_intro"},
+        {title:"Turning the Robot", id:"turn"},
+        {title:"Functions & Arguments", id:"func"},
+        {title:"Colours & Sensors", id:"colour"},
+        {title:"Soccer Challenge", id:"soccer"},
+        {title:"Lists", id:"list"},
+        {title:"Parking Lot Challenge", id:"park"}
     ]},
     {title:"Documents & Links", id:"link_cs10", menu:[
         {title:"Course Outline", open:"https://docs.google.com/document/d/1ElD-IF84gr2epoYlVpRtMFDyBv3EEbhGF0moBBoObSE/edit#heading=h.gjdgxs"},

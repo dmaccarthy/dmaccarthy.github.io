@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 <link rel="stylesheet" type="text/css" href="../../lesson.css"/>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../../../script/tree.js"></script>
 <script type="text/javascript" src="../../../script/touch.js"></script>
 <script type="text/javascript" src="../../lesson.js"></script>
@@ -37,9 +37,24 @@ $(function() {renderPage("ide")});
 
 </div>
 
+<h4 class="Collapse" data-collapse="repl"><em class="material-icons">expand_more</em>repl.it</h4>
+<div class="Hidden" id="repl">
+<p><a href="https://repl.it" target="repl">repl.it</a> is a cloud-based IDE. Your files are saved in the cloud and
+    you can access them from any computer using a web browser (<a href="https://www.google.com/chrome/" target="Browser">Google Chrome</a> or <a href="https://www.mozilla.org/en-CA/firefox/" target="Browser">Mozilla Firefox</a> recommended).
+    You do not need to install any software on your computer to write programs using repl.it.</p>
+<p>You will need to create an account the first time you use repl.it. I recommend that you use your EIPS Google
+    account to login to repl.it. Be sure to protect your privacy by not providing any information about yourself
+    that you do not want to become public.</p>
+<p>Once you have created an account, you can create your own coding projects (called “repls”) or create your own
+    “fork” (copy) of any public projects. This IDE supports many different programming and markup languages.</p>
+</div>
+
 <h4 class="Collapse" data-collapse="thonny"><em class="material-icons">expand_more</em>Thonny</h4>
 <div class="Hidden" id="thonny">
-<p>Thonny is a Python IDE designed for students who are new to programming. To use Thonny at home or on your own laptop, download and run the installer from the <a href="https://thonny.org" target="thonny">Thonny website</a>. A Python interpreter is included with Thonny so you do not need to install it separately.</p>
+<p>Thonny is a Python IDE designed for students who are new to programming. You may want to use Thonny instead of repl.it when
+    writing programs that use graphics, since graphics-based programs tend to run slowly over the cloud. Any changes that you make
+    to your project using Thonny will need to be uploaded to repl.it since Thonny does not sync files to the cloud automatically.</p>
+<p>To use Thonny at home or on your own laptop, download and run the installer from the <a href="https://thonny.org" target="thonny">Thonny website</a>. A Python interpreter is included with Thonny so you do not need to install it separately.</p>
 <p>After Thonny is installed, you will need to install the graphics and robotics software for this course. Go to Thonny’s “Tools” menu and select “Manage packages...” </p>
 <p class="Center"><img src="img/thonny.png" alt="Thonny"/></p>
 <ol>
@@ -52,25 +67,16 @@ $(function() {renderPage("ide")});
 <p>If an error occurs while trying to install the packages, exit Thonny and re-open it <i>as an administrator</i>.</p>
 </div>
 
-<h4 class="Collapse" data-collapse="repl"><em class="material-icons">expand_more</em>repl.it</h4>
-<div class="Hidden" id="repl">
-<p><a href="https://repl.it" target="repl">repl.it</a> is a cloud-based IDE. Your files are saved in the cloud and you can access them from any computer using a web browser (<a href="https://www.google.com/chrome/" target="Browser">Google Chrome</a> or <a href="https://www.mozilla.org/en-CA/firefox/" target="Browser">Mozilla Firefox</a> recommended). You do not need to install any software on your computer to write programs using repl.it.</p>
-<p>You will need to create an account the first time you use repl.it. I recommend that you use your school Google account to login to repl.it. Be sure to protect your privacy by not providing any information about yourself that you do not want to become public.</p>
-<p>For programs that do not use any graphics, choose “Python” as the programming language when you create your project. If graphics are required, choose “Pygame” instead.
-    You may need to edit the file <code>pyproject.toml</code> to ensure the correct version of <code>sc8pr</code> is used:</p>
-<pre class="Code">sc8pr = "^2.2.a0"</pre>
-</div>
-
 <h4 class="Collapse" data-collapse="eclipse"><em class="material-icons">expand_more</em>Eclipse</h4>
 <div class="Hidden" id="eclipse">
 <p><a href="https://www.eclipse.org" target="ecl">Eclipse</a> is an IDE that runs on your local computer. Software must be installed and configured before you can use it so it is not recommended for home use by beginners.</p>
-<p>The files you create in Eclipse will be saved on the local computer or network. They will not be available on other computers unless you sync them using a cloud service like Google Drive or Microsoft OneDrive.</p>
+<p>Like Thonny, the files you create or modify in Eclipse will be saved on the local computer or network. They will not be available on other computers unless you sync them yourself.</p>
 <p>If you install Eclipse on your own computer, you will need to install <a href="https://python.org">Python</a> first.
     You will also need to install additional packages by running the following command (after installing Python but before configuring Eclipse) in your terminal program:</p>
 <pre class="Code">pip3 install -U pip setuptools sc8pr==2.2a0</pre>
 <p>On Windows, if the system does not recognize <code>pip3</code>, try typing the command as:</p>
 <pre class="Code">py -3 -m pip install -U pip setuptools sc8pr==2.2a0</pre>
-<p>Eclipse is already installed on all computers in the Computing Science Room. You will need to configure it the first time you use it.</p>
+<p>Eclipse may already be installed on computers in the Computing Science Lab. You will need to configure it the first time you use it.</p>
 <ol>
 	<li><b>Workspace</b>: When Eclipse launches, you will be asked to choose a workspace. This is a
 		folder where Eclipse will keep your files. Use the <span class="Code">CS10</span> folder in your
@@ -115,20 +121,27 @@ $(function() {renderPage("ide")});
 
 <h4 class="Collapse Blue" data-collapse="assign"><em class="material-icons">expand_more</em>Assignment</h4>
 <ol class="Assign Hidden" id="assign">
-<li>Test that your IDE is working properly by running the following Python 3.x programs as examples. Here is an example of a simple console program (no graphics)...
-<pre class="Code"><span class="Comment"># Save this program in your EIPS OneDrive 'CS10' folder as 's02_print.py'</span>
+<li>Test that your IDE is working properly by running the following Python 3 programs as examples. Here is an example of a simple console program (no graphics)...
+<pre class="Code"><span class="Comment"># Program 's02_print.py'</span>
 
 print(5 * 2)</pre>
 
-Here is an example of a program that uses graphics...
-<pre class="Code"><span class="Comment"># Save this program in your CS10 folder as 's02_aster.py'</span>
+Here is an example that accepts input from the keyboard...
+<pre class="Code"><span class="Comment"># Program 's02_name.py'</span>
+
+user = input("Please enter your name: ")
+print("Hello, {}!".format(user))</pre>
+
+<!--Here is an example of a program that uses graphics...
+<pre class="Code"><span class="Comment"># Save this program as 's02_aster.py'</span>
 
 from sc8pr.examples.asterShield import play
 
-play()</pre></li>
-<li><b>HOMEWORK</b>: Install Thonny on your computer at home and run the example programs.
+play()</pre--></li>
+
+<!--li><b>HOMEWORK</b>: Install Thonny on your computer at home and run the example programs.
     If OneDrive is syncing properly, you should not have to create the files again;
-    the files you created at school should appear in your OneDrive folder at home too.</li>
+    the files you created at school should appear in your OneDrive folder at home too.</li-->
 </ol>
 
 </article></body>
