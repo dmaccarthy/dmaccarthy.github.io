@@ -38,7 +38,7 @@ let repl_html = "<p>Login to your <a href='https://repl.it' target='repl'>repl.i
 
 let home = {title:"Computing Science", htmx:"<p class='Right'>Teacher: <a href='mailto:david.maccarthy@eips.ca'>D.G. MacCarthy</a></p>", menu:[
     link,
-    {title:"Computing Science 10", id:"cs10", icon:"robot", href:"https://learn.davidmaccarthy.repl.co/home/cs10.html"},
+    {title:"Computing Science 10", id:"cs10", icon:"robot", href:"https://dmaccarthy.github.io/learn/home/cs10.html"},
     // {title:"Computing Science 10", id:"cs10", icon:"robot", menu:[
     //     {title:"repl.it Online IDE", icon:"repl", html:repl_html, menu:[
     //         {title:"CS10 repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS10"},
