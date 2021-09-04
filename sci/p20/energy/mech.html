@@ -9,15 +9,55 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../media/arrow.png"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
 <link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/plot.js"></script>
+<script type="text/javascript" src="../../script/plotItems.js"></script>
 <script type="text/javascript" src="../../script/touch.js"></script>
 <script type="text/javascript" src="../../2021/bigMouse.js"></script>
 <script type="text/javascript" src="../../2021/slides.js"></script>
 <script type="text/javascript" src="../p20.js"></script>
 <script type="text/javascript" src="../../2021/tree.js"></script>
-<style type="text/css">
-
-</style>
 <script type="text/javascript">
+
+Plot.loadImages({
+    "Eg": "../../media/latex/blue/Eg.png",
+    "Ek": "../../media/latex/blue/Ek.png",
+    "Er": "../../media/latex/blue/Erotn.png",
+});
+
+let Econs = {status:0, frame:0, rotn:2/7, font:"28px Arial"}
+
+Econs.bar0 = function() {
+    let p = new Plot($("#Ramp")[0], [0, 3, 0, 10], [72, 6, 54, 18]);
+    p.items = [
+        new Grid({y:1, gridStyle:["grey", 0.5]}),
+        new Grid({y:2, yLabel:{font:Econs.font, anchor:RIGHT, offset:-5, format:0}}),
+    ];
+    p.items.extend(Segments.bars([8.7, 0, 0]));
+    p.items.extend([
+        new Grid({x:1, axisStyle:["black", 2]}),
+        new Text("Energy / J", [-0.25, p.top()], {align:BOTTOMRIGHT, font:Econs.font, angle:90}),
+    ]);
+    p.barLabels(["Eg", "Ek", "Er"], -0.25);
+    p.ondraw = function() {
+        let p = this;
+        let f = p.frame + 1;
+        if (f > 100) {
+            p.playing = false;
+            p.frame = 0;
+        }
+        let t = f / 100;
+        let E = 8.7 * t * t;
+        let r = Econs.rotn;
+        p.barsData([8.7 - E, (1 - r) * E, r * E]);
+        if (p.playing) p._nextFrame = setTimeout(function() {p.draw(f)}, 25);
+    }
+    p.playing = false;
+    Econs.bar0.plot = p.draw();
+}
+
+Plot.waitForImages(function() {
+    Econs.bar0();
+})
 
 </script>
 </head>
@@ -100,6 +140,17 @@
         <li data-mark="+">Chemical energy</li>
         <li data-mark="+">Nuclear energy</li>
         <li data-mark="+">Light and other electromagnetic energy</li>
+    </ul>
+</section>
+
+<section id="bar" data-last="?"><h3>Energy Bar Chart</h3>
+    <p class="Center"><canvas id="Ramp" width="600" height="600" onclick="Econs.bar0.plot.toggle()"></canvas></p>
+    <p>An <em class="Defn">energy bar chart</em> is a way to keep track of how much of each form of energy is present in a system.</p>
+    <ul data-mark="+">
+        <li data-mark="=">This graph is for a ball that rolls down a ramp. Initially, it has not started moving, so it only has gravitational potential energy (8.7 joules).</li> 
+        <li data-mark="+">As the ball rolls down the ramp, energy is transformed and the height of each bar changes.</li>
+        <!--li data-mark="+">The total energy must remain constant; the total of the bars is always 8.7 joules in this example.</li>
+        <li data-mark="+">At the bottom of the ramp, the 8.7 joules of energy has been completely transformed into kinetic and rotational energy.</li-->
     </ul>
 </section>
 

@@ -1,6 +1,8 @@
-let courses = {web1: "Web Programming 1", web2: "Web Programming 2",
+let courses = {sp1:"Structured Programming 1", sp2:"Structured Programming 2",
+    web1: "Web Programming 1", web2: "Web Programming 2",
     pp: "Procedural Programming", game: "Video Game Project", ds: "Data Structures",
-    iter:"Iterative Algorithms", oop1:"Object-Oriented Programming 1"};
+    iter:"Iterative Algorithms", oop1:"Object-Oriented Programming 1", rec:"Recursive Programming",
+    dds1:"Dynamic Data Structures 1", robo:"Robotics Programming", ct1:"Computing Theory 1"};
 
 function loadVid() {
     let vids = $("[data-video]");
@@ -40,6 +42,26 @@ $(window).on("resize", function() {
     }
 })
 
+
+function sequence(article) {
+    let p = location.pathname.split("/");
+    let fn = p[p.length - 1];
+    let href = [], current;
+    for (let i=0;i<sequence.map.length;i++) {
+        let split = sequence.map[i].split("/");
+        if (split[0] == course) {
+            href.push(split[1]);
+            if (fn == split[1]) current = href.length;
+        }
+    }
+    if (current != null) if (current < href.length) {
+        let a = $("<a>").html("Next Lesson").attr({href:href[current]});
+        $("<p>").addClass("Next").html(a).appendTo(article);
+    }
+}
+
+sequence.map = ["sp1/intro.html","sp1/ide.html","sp1/python.html","sp1/comment.html","sp1/var.html","sp1/io.html","sp1/type.html","sp1/mod.html","sp1/oper.html","ct1/algo.html","sp2/bool.html","sp2/if.html","sp2/loop.html","sp2/flag.html","sp2/iter.html","sp2/format.html","sp2/accum.html","sp2/str.html","robo/intro.html","robo/turn.html","robo/func.html","robo/colour.html","robo/soccer.html","robo/list.html","robo/park.html","web1/internet.html","web1/tree.html","web1/xml.html","web1/text.html","web1/entity.html","web1/html5.html","web1/char.html","web1/image.html","web1/list.html","web2/form.html","web2/style.html","web2/ext.html","web2/div.html","web2/js.html","pp/func.html","pp/scope.html","pp/top.html","pp/pre.html","pp/except.html","game/sketch.html","game/custom.html","game/text.html","game/key.html","game/mouse.html","ds/list.html","ds/iter.html","ds/dict.html","ds/args.html","ds/comp.html","ds/gen.html","ds/array.html","iter/search.html","iter/bsearch.html","iter/bubble.html","iter/insert.html","iter/sel.html","iter/merge.html","oop1/obj.html","oop1/mod.html","oop1/spec.html","oop1/inher.html","rec/rec.html","rec/sort.html","dds1/linkedList.html","dds1/mod.html","dds1/sort.html"];
+
 $(function() {
     loadVid();
     let b = $("body > article");
@@ -48,5 +70,6 @@ $(function() {
     a.attr({href:"../?id=" + course});
     $("<p>").html(a).prependTo(b);
     pre_data();
+    sequence(b);
     $(window).trigger("resize");
 });

@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en-ca">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Computer Colours</title>
+<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="shortcut icon" href="wheel.png" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="rgb.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--script type="text/javascript" src="../jslib/general.js"> </script-->
+<script type="text/javascript" src="hsv.js"> </script>
+<script type="text/javascript" src="rgb.js"> </script>
+</head>
+<body>
+<h2>Computer Colours</h2>
+<p id="Controls"><input type="checkbox" checked="true" onchange="showControls('RGB', this.checked)" />RGB &nbsp;
+	<input type="checkbox" onchange="showControls('HS', this.checked)" />HS &nbsp;
+	<input type="checkbox" checked="true" onchange="showControls('V', this.checked)" />V</p>
+
+<table><tr style="vertical-align:middle">
+
+	<td class="Nested"><table>
+		<tr class="RGB"><td>Red</td><td class="Param"><input id="R" type="text"/></td></tr>
+		<tr class="RGB"><td colspan="2" id="Red" class="Slider"></tr>
+		<tr class="RGB"><td>Green</td><td class="Param"><input id="G" type="text"/></td></tr>
+		<tr class="RGB"><td colspan="2" id="Green" class="Slider"></tr>
+		<tr class="RGB"><td>Blue</td><td class="Param"><input id="B" type="text"/></td></tr>
+		<tr class="RGB"><td colspan="2" id="Blue" class="Slider"></tr>
+		<tr class="HS"><td>Hue [°]</td><td class="Param"><input id="H" type="text"/></td></tr>
+		<tr class="HS"><td>Saturation [%]</td><td class="Param"><input id="S" type="text"/></td></tr>
+		<tr class="V"><td>Value (Brightness) [%]</td><td class="Param"><input id="V" type="text"/></td></tr>
+		<tr class="V"><td colspan="2" id="Value" class="Slider"></tr>
+	</table></td>
+
+	<td class="Nested"><table><tr>
+		<td class="Center">
+			<p>
+				<input type="radio" name="mode" checked="true" onchange="setMode(false)" />Wheel &nbsp;
+				<input id="rgbMode" type="radio" name="mode" onchange="setMode(true)" />Spotlights
+			</p>
+			<p id="Wheel"><img src="wheel.png" alt="HS" onclick="wheel(event)" onmousemove="wheel(event)" onmouseout="mouseout()"/></p>
+			<p id="Canvas"><canvas width="257" height="257"/></p>
+		</td>
+	</tr></table></td>
+
+</tr></table>
+
+<!--ul>
+	<li>Slide your mouse along the <em>Red</em>, <em>Green</em>, <em>Blue</em>, or <em>Brightness</em> areas to preview a colour.  Click to lock that colour.</li>
+	<li>Enter numerical values in the RGB or HSV input areas to set a specific colour.</li>
+	<li>Click the <em>Wheel</em> radio button to select a colour by Hue and Saturation.</li>
+</ul-->
+</body>
+</html>

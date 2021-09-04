@@ -38,4 +38,38 @@ function nodePath(node) {
     return path;
 }
 
+function nextSib(node) {
+    if (node.parent) {
+        let menu = node.parent.menu;
+        let i = menu.indexOf(node) + 1;
+        if (i < menu.length) return menu[i];
+    }
+}
+function nextNode(node) {
+    if (node.menu) return node.menu[0];
+    if (node.parent) {
+        let sib = nextSib(node);
+        if (sib) return sib;
+        while (node.parent) {
+            sib = nextSib(node.parent);
+            if (sib) return sib;
+            node = node.parent;
+        }
+    }
+}
+
+function* allNodes(node) {
+    while (node) {
+        yield node;
+        node = nextNode(node);
+    }
+}
+
+function sitemap() {
+    let nodes = [];
+    for (let node of allNodes(home))
+        nodes.push(node);
+    return nodes;
+}
+
 linkMenus(home);

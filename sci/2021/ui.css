@@ -6,15 +6,28 @@ body {
     margin:0;
 }
 
+.Black {color:black}
+
 article {
     max-width:800px;
     margin:auto;
+    padding-bottom:1em;
 }
 
-#Crumbs {margin-bottom:0}
+#Content {color:black}
+#Crumbs {margin-bottom:0; border-bottom:1px solid blue}
 #Crumbs, #Content {padding:8px}
-#Crumbs > span {cursor:pointer}
-#Crumbs > span:last-child {font-weight:bold}
+#Crumbs > span {padding:4px; white-space: nowrap}
+#Crumbs > span:last-child, code {font-weight:bold}
+
+code {
+    font-family: "source Code Pro", "Lucida Console", Consolas, monospace;
+}
+
+#Crumbs > span:not(:last-child) {
+    cursor:pointer;
+    border-radius:4px;
+}
 
 /* p.Title {
     font-weight:bold;
@@ -43,7 +56,10 @@ p.Video iframe {max-width:100%}
     width:calc(100% - 2.5em - 8px);
 }
 
-#Links tr:hover {background-color:#a0a0ff}
+#Links tr:hover, #Crumbs > span:hover:not(:last-child) {
+    /* text-decoration:underline; */
+    background-color:#a0a0ff;
+}
 #Links td:not(:first-child) {padding-left:1em}
 #Links tr:nth-child(odd):not(:hover) {background-color:#e0e0ff}
 #Links tr:nth-child(even):not(:hover) {background-color:#f0f0f0}

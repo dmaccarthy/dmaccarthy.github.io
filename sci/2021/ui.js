@@ -1,3 +1,7 @@
+let uc = "<p class='Center'>Under Construction! Please check back later.</p>";
+
+function unavail() {alert("This action is currently unavailable!")}
+
 function makeIcon(node) {
     let icon = node.icon;
     if (!icon) icon = node.lesson;
@@ -50,9 +54,14 @@ function breadCrumbs(node) {
     let p = nodePath(node), e = $("#Crumbs").html("");
     for (let i=0;i<p.length;i++) {
         if (i) e.append(" / ");
-        let s = $("<span>").html(p[i].title);
+        let s = $("<span>").html(p[i].title.replace(/\[.*\]/g, ""));
         s[0].node = p[i];
-        s.click(function() {drawNode(this.node)});
+        s.click(function() {
+            let node = this.node;
+            // console.log(this.node);
+            if (node == home && node.href) location.href = node.href;
+            else drawNode(node);
+        });
         e.append(s);
         if (i < p.length-1) s.attr({title:"Open this Folder"})
     }
@@ -65,12 +74,14 @@ function drawNode(node) {
     $("#Content").html("");
     breadCrumbs(node);
     let tbl = $("<table>").attr({id:"Links"});
-    if (node.menu) for (let i=0;i<node.menu.length;i++) {
-    let mi = node.menu[i];
+    let menu = node.menu;
+    if (menu) for (let i=0;i<menu.length;i++) {
+    let mi = menu[i];
     let tr = $("<tr>").appendTo(tbl);
     let img = mi.icon ? "Icon" : "&nbsp;"
     tr.append($("<td>").html(makeIcon(mi))).append($("<td>").html(mi.title));
     tr.click(function() {
+        if (mi.js) eval(mi.js);
         if (mi.open) window.open(mi.open);
         if (mi.menu) drawNode(mi);
         else if (mi.href) location.href = mi.href;
@@ -94,8 +105,25 @@ function drawContent(node, e) {
 
 window.onresize = aspect;
 
+function addHome(obj) {
+    return {title:"Mr. Mac’s Website", start:0, menu:[obj], href:"../"};
+}
+
+function logSitemap() {
+    let nodes = sitemap();
+    let hrefs = [];
+    for (let i=1;i<nodes.length;i++) {
+        let href = nodes[i].href;
+        let m = nodes[i].map;
+        if (href && (m || m == null)) hrefs.push(href);
+    }
+    console.log(JSON.stringify(hrefs));
+}
+
 $(function() {
     let node = qsArgs("id");
-    if (node) node = findNode(node, true); 
-    drawNode(node ? node : home);
+    if (node) node = findNode(node, true);
+    let n = home.start;
+    drawNode(node ? node : (n == null ? home : home.menu[n]));
+    // logSitemap();
 })

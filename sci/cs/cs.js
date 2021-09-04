@@ -1,26 +1,27 @@
-// let uc = "<p class='Center'>Under Construction! Please check back later.</p>"
-
-let sp = [
-    // {title:"Assignment Booklet", icon:"gdrv", open:""},
-    {title:"Intro to Programming", lesson:"lesson", open:""},
-    // {title:"", lesson:"lesson", menu:[
-    //     {title:"Lesson Notes", lesson:"lesson", openx:"skill/nonLin.html"},
-    // ]},
-];
+// let sp = [
+//     // {title:"Assignment Booklet", icon:"gdrv", open:""},
+//     {title:"Intro to Programming", lesson:"lesson", open:""},
+//     // {title:"", lesson:"lesson", menu:[
+//     //     {title:"Lesson Notes", lesson:"lesson", openx:"skill/nonLin.html"},
+//     // ]},
+// ];
 
 let link = {title:"General Links", icon:"link", menu:[
     {title:"Email Mr. MacCarthy", icon:"mail", open:"mailto:david.maccarthy@eips.ca"},
+    {title:"Python Tutorial", icon:"py", open:"https://docs.python.org/3.8/tutorial/"},
     {title:"Thonny (Python IDE)", icon:"thonny", open:"https://thonny.org/"},
+    // {title:"thonny.bat", icon:"gdrv", open:"https://drive.google.com/file/d/1dfiWkR-wXMEl5VgBkebt6Dlfj59TeaGT"},
+    {title:"thonny.bat", icon:"link", open:"https://eipsca-my.sharepoint.com/:u:/r/personal/david_maccarthy_eips_ca/Documents/public/thonny.bat?csf=1&web=1&e=7wTBkW"},
     {title:"PowerSchool", icon:"ps", open:"https://powerschool.eips.ca/public/"},
     {title:"Salisbury Composite", icon:"sal", open:"https://salcomp.ca"},
     {title:"Program of Studies", icon:"ab", open:"https://education.alberta.ca/career-and-technology-studies/bit-cluster-businessadminfinanceit/?searchMode=3"},
     {title:"Course Outline", icon:"link", open:"https://docs.google.com/document/d/1ElD-IF84gr2epoYlVpRtMFDyBv3EEbhGF0moBBoObSE"},
 ]};
 
-let link10 = {title:"Course Links", icon:"link", menu:[
-    {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/26894"},
-    {title:"repl.it Template", icon:"py", open:"https://replit.com/@DavidMacCarthy/CS10"},
-]};
+// let link10 = {title:"Course Links", icon:"link", menu:[
+//     {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/26894"},
+//     {title:"repl.it Template", icon:"py", open:"https://replit.com/@DavidMacCarthy/CS10"},
+// ]};
 
 let iter = {title:"Iterative Algorithms", id:"iter", icon:"py", menu:[
     {title:"Linear Search", icon:"py", href:"iter/search.html"},
@@ -36,24 +37,74 @@ let iter = {title:"Iterative Algorithms", id:"iter", icon:"py", menu:[
 
 let repl_html = "<p>Login to your <a href='https://repl.it' target='repl'>repl.it</a> account first. Then create a “fork” of each of the repl’s below and share it with your teacher.</p>";
 
-let home = {title:"Computing Science", htmx:"<p class='Right'>Teacher: <a href='mailto:david.maccarthy@eips.ca'>D.G. MacCarthy</a></p>", menu:[
+// <p>These assignments, and the summative assessment, comprise CSE 1010.</p>
+
+let cs1_html = `<section>
+    <p>For each topic, open the link and save a copy of the document in your Google Docs <code>CS10</code> folder.
+        Watch the lesson video or read the notes, and then answer the questions. After completing all assignments, contact the teacher to schedule the summative assessment.</p>
+    </section>`;
+
+let home = addHome({title:"Computing Science", htmx:"<p class='Right'>Teacher: <a href='mailto:david.maccarthy@eips.ca'>D.G. MacCarthy</a></p>", menu:[
     link,
-    {title:"Computing Science 10", id:"cs10", icon:"robot", href:"https://dmaccarthy.github.io/learn/home/cs10.html"},
-    // {title:"Computing Science 10", id:"cs10", icon:"robot", menu:[
-    //     {title:"repl.it Online IDE", icon:"repl", html:repl_html, menu:[
-    //         {title:"CS10 repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS10"},
-    //     ]},
-    //     link10, 
-    //     {title:"Structured Programming", id:"sp", icon:"py", menu:[]},
-    //     {title:"Computing Science", id:"cs1", icon:"laptop", menu:[]},
-    //     {title:"Robotics Programming", id:"robo", icon:"robot", menu:[]},
-    // ]},
-    {title:"Computing Science 20", id:"cs20", icon:"py", menu:[
-        // link20,
-        {title:"repl.it Online IDE", icon:"repl", html:repl_html, menu:[
-            {title:"Web Programming", icon:"repl", open:"https://replit.com/@DavidMacCarthy/Web1"},
-            {title:"Python Programming", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS20"},
+    {title:"Computing Science 10", id:"cs10", icon:"robot", menu:[
+        {title:"repl.it", icon:"repl", open:"https://replit.com"},
+        {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/40003"},
+        // {title:"repl.it Online IDE", icon:"repl", html:repl_html, menu:[
+        //     {title:"Python repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS10"},
+        // ]},
+        {title:"Structured Programming 1", id:"sp1", icon:"py", menu:[
+            {title:"Intro to Programming", icon:"py", href:"sp1/intro.html"},
+            {title:"Integrated Development Environments", icon:"py", href:"sp1/ide.html"},
+            {title:"Programming in Python", icon:"py", href:"sp1/python.html"},
+            {title:"Comments & Docstrings", icon:"py", href:"sp1/comment.html"},
+            {title:"Variables", icon:"py", href:"sp1/var.html"},
+            {title:"Input & Output", icon:"py", href:"sp1/io.html"},
+            {title:"Data Types (Classes)", icon:"py", href:"sp1/type.html"},
+            {title:"Modules & Packages", icon:"py", href:"sp1/mod.html"},
+            {title:"Operators", icon:"py", href:"sp1/oper.html"},
         ]},
+        {title:"Computing Theory 1", icon:"laptop", id:"ct1", html:cs1_html, menu:[
+            {title:"Binary Encoding", icon:"laptop", vid:"#PLpVmtCaB-lykMzpjcg79la6effekhfsJq", menu:[
+                {title:"Assignment", icon:"gdrv", open:"https://docs.google.com/document/d/1uD73FDAhv1AiH5rVPLIsZn-acMjGY09gNxLbEozjDA4"},
+            ]},
+            {title:"Text Encoding", icon:"laptop", vid:"MijmeoH9LT4", menu:[
+                {title:"Assignment", icon:"gdrv", open:"https://docs.google.com/document/d/1wGMBQAUTTSNcbZPeNOf8BO6yVw7p2yHcHxeQ-acCbyM"},
+            ]},
+            {title:"Von Neumann Architecture", icon:"laptop", vid:"HEjPop-aK_w", menu:[
+                {title:"Assignment", icon:"gdrv", open:"https://docs.google.com/document/d/1dQAlZuVoWrzjZT-19dEB5gvnysCwPRGYu_AkQPQooMg"},
+            ]},
+            {title:"Computing Science", icon:"gdrv", open:"https://docs.google.com/document/d/13cPWZNfIyKYM6DPi_IxaVgUSj0b8II1kCzZVfvLZyOc"},
+            {title:"Algorithms", icon:"laptop", href:"ct1/algo.html"},
+        ]},
+        {title:"Structured Programming 2", id:"sp2", icon:"py", menu:[
+            {title:"Boolean Values & Operators", icon:"py", href:"sp2/bool.html"},
+            {title:"Conditional Statements", icon:"py", href:"sp2/if.html"},
+            {title:"Loops", icon:"py", href:"sp2/loop.html"},
+            {title:"Flags & Counters", icon:"py", href:"sp2/flag.html"},
+            {title:"Iteration & Searching", icon:"py", href:"sp2/iter.html"},
+            {title:"Formatted Output", icon:"py", href:"sp2/format.html"},
+            {title:"Accumulation", icon:"py", href:"sp2/accum.html"},
+            {title:"String Methods", icon:"py", href:"sp2/str.html"},
+        ]},
+        {title:"Robotics Programming", id:"robo", icon:"robot", menu:[
+            {title:"Robotics repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/Robo"},
+            {title:"Intro to Robotics Programming", icon:"robot", href:"robo/intro.html"},
+            {title:"Turning the Robot", icon:"robot", href:"robo/turn.html"},
+            {title:"Functions & Arguments", icon:"robot", href:"robo/func.html"},
+            {title:"Colours & Sensors", icon:"robot", href:"robo/colour.html"},
+            {title:"Soccer Challenge", icon:"robot", href:"robo/soccer.html"},
+            {title:"Lists", icon:"robot", href:"robo/list.html"},
+            {title:"Parking Lot Challenge", icon:"robot", href:"robo/park.html"},
+        ]},
+    ]},
+    {title:"Computing Science 20", id:"cs20", icon:"py", menu:[
+        {title:"repl.it", icon:"repl", open:"https://replit.com"},
+        {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/42228"},
+        // link20,
+        // {title:"repl.it Online IDE", icon:"repl", html:repl_html, menu:[
+        //     {title:"Web Programming", icon:"repl", open:"https://replit.com/@DavidMacCarthy/Web1"},
+        //     {title:"Python Programming", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS20"},
+        // ]},
         {title:"Web Programming 1", id:"web1", icon:"html5", menu:[
             {title:"Internet & World Wide Web", icon:"html5", href:"web1/internet.html"},
             {title:"Data Trees", icon:"html5", href:"web1/tree.html"},
@@ -100,10 +151,13 @@ let home = {title:"Computing Science", htmx:"<p class='Right'>Teacher: <a href='
         //     {title:"", icon:"py", href:"fs/.html"},
         // ]},
     ]},
-    {title:"Computing Science 30", id:"cs30", icon:"py", menu:[
-        {title:"repl.it Online IDE", icon:"repl", html:repl_html, menu:[
-            {title:"CS30 repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS30"},
-        ]},
+    {title:"Computing Science 30", id:"cs30", icon:"py", html:"After completing the first three courses, please consult with your teacher regarding your remaining credits.", menu:[
+        {title:"repl.it", icon:"repl", open:"https://replit.com"},
+        {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/42232"},
+        // {title:"repl.it Online IDE", icon:"repl", html:repl_html, menu:[
+        //     {title:"Python repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS30"},
+        //     {title:"Java repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/Java"},
+        // ]},
         // link30,
         // iter30,
         {title:"Object-Oriented Programming 1", id:"oop1", icon:"py", menu:[
@@ -112,16 +166,15 @@ let home = {title:"Computing Science", htmx:"<p class='Right'>Teacher: <a href='
             {title:"Special Methods", icon:"py", href:"oop1/spec.html"},
             {title:"Inheritance", icon:"py", href:"oop1/inher.html"},
         ]},
-        // {title:"Recursive Algorithms", id:"rec", icon:"py", menu:[
-        //     {title:"", icon:"py", href:"rec/.html"},
-        //     {title:"", icon:"py", href:"rec/.html"},
-        //     {title:"", icon:"py", href:"rec/.html"},
-        //     {title:"", icon:"py", href:"rec/.html"},
-        // ]},
-        // {title:"Dynamics Data Structures", id:"dds", icon:"py", menu:[
-        //     {title:"", icon:"py", href:"dds/.html"},
-        //     {title:"", icon:"py", href:"dds/.html"},
-        //     {title:"", icon:"py", href:"dds/.html"},
-        // ]},
+        {title:"Recursive Algorithms", id:"rec", icon:"py", menu:[
+            {title:"Recursion", icon:"py", href:"rec/rec.html"},
+            {title:"Sorting Algorithms", icon:"py", href:"rec/sort.html"},
+            {title:"Recursion Issues", icon:"gdrv", map:0, href:"https://docs.google.com/document/d/1x_i3tMBMnfTQDwjg5qAS0xAcxHh-_-g22NdZ9J4eQAo"},
+        ]},
+        {title:"Dynamics Data Structures", id:"dds1", icon:"py", menu:[
+            {title:"Linked Lists", icon:"py", href:"dds1/linkedList.html"},
+            {title:"Modifying Linked Lists", icon:"py", href:"dds1/mod.html"},
+            {title:"Searching & Sorting", icon:"py", href:"dds1/sort.html"},
+        ]},
     ]},
-]}
+]});

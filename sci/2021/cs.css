@@ -18,6 +18,7 @@ img, iframe {max-width:98%}
 .Comment {color:#808080}
 
 p.Caption {text-align:center; font-weight:bold} 
+p.Next {text-align:center; font-size:75%} 
 
 pre.IO, .Code, code {
     font-family: "source Code Pro", "Lucida Console", Consolas, monospace;
