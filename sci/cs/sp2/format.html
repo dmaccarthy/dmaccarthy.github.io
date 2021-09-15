@@ -41,8 +41,11 @@ The square root of 6.0 is 2.449489742783178 .</pre>
 <p>To make this output cleaner, we might want to round the answer to a smaller number of decimal places,
     and to remove the unnecessary space before the period. To do this, we create a <b class="Red">template</b>
     string that shows what we want the output to like like, using curly brackets <code>{}</code> as
-    placeholders to show where the data will be inserted. We can type an option <b class="Red">format
-    specifier</b> inside the brackets. In the example below, <code>.2f</code> is a format code that tells
+    placeholders to show where the data will be inserted.</p>
+<pre class="Code">template = "The square root of {} is {}."</span></pre>
+
+<p>You can use any variable name you want; you don’t have to call it <code>template</code>.</p>
+<p>We can type an optional <b class="Red">format specifier</b> inside the braces. In the example below, <code>.2f</code> is a format code that tells
     Python we want to insert data as a floating point number with two decimal places. Python requires a semi-colon
     immediately before the format specifier.</p>
 
@@ -109,6 +112,31 @@ for team, won, lost in standings:
 
 <p>For more information on Python’s format function, see the <a target="Py3"
 	href="https://docs.python.org/3/library/stdtypes.html?#str.format">documentation</a>.</p>
+
+</div>
+
+<h3>Formatted String Literals</h3><div class="Note">
+<p>Starting with version 3.6 of Python, there is a new feature called <b class="Red">formatted string literals</b> or f-strings.
+    This is basically an abbreviated syntax for formatting strings. The example below does the same as <code>s15_ex2.py</code> above,
+    but uses an f-string (shown in <span class="Blue">blue</span>) rather than an explicit call to the <code>format</code> method.
+    Note the <code>f</code> before the opening quotation mark of the f-string!</p>
+<pre class="Code"><span class="Comment"># Program 's15_ex4.py'</span>
+
+from math import sqrt
+
+num = float(input("What is your favourite number? "))
+root = sqrt(num)
+print(<span class="Blue">f"The square root of {num:.2f} is {root:.2f}."</span>)</pre>
+
+<p>The f-string is evaluated immediately when it is created.
+    If you want to evaluate a formatted string repeatedly with different data,
+    you should still create a template and call the <code>format</code> method
+    for each data record, as you learned in the previous sections of this lesson.</p>
+<p>F-strings also allow you to include an <em>expression</em> rather than just a single variable name...</p>
+<pre class="Code"><span class="Comment"># Program 's15_ex4.py' (continued)</span>
+
+<span class="Comment"># This also works!</span>
+print(f"The square root of {num:.2f} is {<span class="Blue">sqrt(num)</span>:.2f}.")</pre>
 
 </div>
 

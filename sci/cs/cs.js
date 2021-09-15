@@ -1,11 +1,3 @@
-// let sp = [
-//     // {title:"Assignment Booklet", icon:"gdrv", open:""},
-//     {title:"Intro to Programming", lesson:"lesson", open:""},
-//     // {title:"", lesson:"lesson", menu:[
-//     //     {title:"Lesson Notes", lesson:"lesson", openx:"skill/nonLin.html"},
-//     // ]},
-// ];
-
 let link = {title:"General Links", icon:"link", menu:[
     {title:"Email Mr. MacCarthy", icon:"mail", open:"mailto:david.maccarthy@eips.ca"},
     {title:"Python Tutorial", icon:"py", open:"https://docs.python.org/3.8/tutorial/"},

@@ -16,7 +16,6 @@ function makeIcon(node) {
     return icon;
 }
 
-// makeIcon.media = "../media/";
 makeIcon.media = "/sci/media/";
 
 makeIcon.urls = {
