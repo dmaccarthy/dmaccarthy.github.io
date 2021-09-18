@@ -3,8 +3,20 @@ let uc = "<p class='Center'>Under Construction! Please check back later.</p>";
 function unavail() {alert("This action is currently unavailable!")}
 
 function makeIcon(node) {
+    if (node.gdrv || node.gdoc) {
+        node.icon = "gdrv";
+        if (node.gdoc) {
+            node.open = "https://docs.google.com/document/d/" + node.gdoc;
+            delete node.gdrv;
+        }
+        else {
+            node.open = "https://drive.google.com/file/d/" + node.gdrv;
+            delete node.gdrv;
+        }
+    }
     let icon = node.icon;
-    if (!icon) icon = node.lesson;
+    if (icon == 1) icon = node.parent.icon;
+    else if (!icon) icon = node.menu ? "folder" : "lesson";
     if (icon) {
         let i = makeIcon.urls[icon];
         if (i) icon = i;
@@ -16,7 +28,7 @@ function makeIcon(node) {
     return icon;
 }
 
-makeIcon.media = "/sci/media/";
+makeIcon.media = (location.hostname.split(".")[1] == "github" ? "/sci" : "") + "/media/";
 
 makeIcon.urls = {
     "bs": "https://s.brightspace.com/lib/favicon/2.0.0/favicon.ico",
