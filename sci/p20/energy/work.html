@@ -14,8 +14,8 @@
 <script type="text/javascript" src="../../script/touch.js"></script>
 <script type="text/javascript" src="../../2021/bigMouse.js"></script>
 <script type="text/javascript" src="../../2021/slides.js"></script>
-<script type="text/javascript" src="../p20.js"></script>
-<script type="text/javascript" src="../../2021/tree.js"></script>
+<!-- <script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript" src="../../2021/tree.js"></script> -->
 <style type="text/css">
 
 td {text-align:center}
@@ -118,11 +118,10 @@ Plot.waitForImages(function() {
         Draw energy bar charts for the bottom and top of the ramp, and an energy flow diagram.
     </p>
     <p class="Center" data-mark="+">
-        <canvas width="600" height="600" onclick="Work.bar(Work.bar.status+1)"></canvas>
+        <canvas data-aspect="1" width="600" height="600" onclick="Work.bar(Work.bar.status+1)"></canvas>
     </p>
     <p data-mark="+">An <em class="Defn">energy flow diagram</em> illustrates the energy transformations that have occured...</p>
     <p data-mark="+" class="Center"><img src="img/flow1-0.png" onclick="imageCycle(event, this, 4)" alt="Flow" class="w20"/></p>
-    <!-- <p class="Center" data-mark="+28"><canvas class="Zoom SD" width="640" height="512" onclick=""></canvas></p> -->
     <ul data-mark="+">
         <li>The circle represents the boundary between the system and its environment.</li>
         <li data-mark="+">The arrows represent the energy transformed (work done) by each of the three forces.</li>

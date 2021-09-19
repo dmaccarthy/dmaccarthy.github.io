@@ -4,7 +4,7 @@ function unavail() {alert("This action is currently unavailable!")}
 
 function makeIcon(node) {
     if (node.gdrv || node.gdoc) {
-        node.icon = "gdrv";
+        if (!node.icon) node.icon = "gdrv";
         if (node.gdoc) {
             node.open = "https://docs.google.com/document/d/" + node.gdoc;
             delete node.gdrv;
@@ -16,7 +16,7 @@ function makeIcon(node) {
     }
     let icon = node.icon;
     if (icon == 1) icon = node.parent.icon;
-    else if (!icon) icon = node.menu ? "folder" : "lesson";
+    else if (icon == null) icon = node.menu ? "folder" : "lesson";
     if (icon) {
         let i = makeIcon.urls[icon];
         if (i) icon = i;

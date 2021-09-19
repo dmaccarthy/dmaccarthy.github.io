@@ -14,8 +14,8 @@
 <script type="text/javascript" src="../../script/touch.js"></script>
 <script type="text/javascript" src="../../2021/bigMouse.js"></script>
 <script type="text/javascript" src="../../2021/slides.js"></script>
-<script type="text/javascript" src="../p20.js"></script>
-<script type="text/javascript" src="../../2021/tree.js"></script>
+<!-- <script type="text/javascript" src="../p20.js"></script>
+<script type="text/javascript" src="../../2021/tree.js"></script> -->
 <script type="text/javascript">
 
 Plot.loadImages({
@@ -144,7 +144,7 @@ Plot.waitForImages(function() {
 </section>
 
 <section id="bar" data-last="?"><h3>Energy Bar Chart</h3>
-    <p class="Center"><canvas id="Ramp" width="600" height="600" onclick="Econs.bar0.plot.toggle()"></canvas></p>
+    <p class="Center"><canvas id="Ramp" data-aspect="1" width="600" height="600" onclick="Econs.bar0.plot.toggle()"></canvas></p>
     <p>An <em class="Defn">energy bar chart</em> is a way to keep track of how much of each form of energy is present in a system.</p>
     <ul data-mark="+">
         <li data-mark="=">This graph is for a ball that rolls down a ramp. Initially, it has not started moving, so it only has gravitational potential energy (8.7 joules).</li> 

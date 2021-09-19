@@ -33,27 +33,27 @@ let kin1d = [
 ];
 
 let vec2d = [
-    {title:"Assignment Booklet", icon:"gdrv", open:"https://drive.google.com/file/d/1qG81lRprAmdtcidfph_w-1kyF1VJUFrd"},
+    // {title:"Assignment Booklet", gdrv:"1qG81lRprAmdtcidfph_w-1kyF1VJUFrd"},
     {title:"2D Vectors Applet", icon:"html5", open:"https://applets.davidmaccarthy.repl.co/vec2d"},
-    {title:"Magnitude & Direction", menu:[
+    {title:"Magnitude & Direction", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/mag.html"},
-        {title:"Practice Solutions", icon:"gdrv", open:"https://docs.google.com/document/d/14vQp9XvGS1yPjDoLDfFNE2u5MAnIqKgcXTgIAwVCRQQ"},
+        {title:"Practice Solutions", icon:0, js:"unavail()", drv:"14vQp9XvGS1yPjDoLDfFNE2u5MAnIqKgcXTgIAwVCRQQ"},
     ]},
-    {title:"Polar & Cartesian Form", menu:[
+    {title:"Polar & Cartesian Form", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/polar.html"},
-        {title:"Practice Solutions", icon:"gdrv", open:"https://docs.google.com/document/d/14-CgdDFUiCwpJfPlghKpw1iMRfC8J3NJBwrNP20fois"},
+        {title:"Practice Solutions", icon:0, js:"unavail()", drv:"14-CgdDFUiCwpJfPlghKpw1iMRfC8J3NJBwrNP20fois"},
     ]},
-    {title:"Vector Arithmetic", menu:[
+    {title:"Vector Arithmetic", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/arith.html"},
-        {title:"Practice Solutions", icon:"gdrv", open:"https://docs.google.com/document/d/1960E_v1vFacD-7sbtFqrE3Xzqjr32rO4H435r4aT3WM"},
+        {title:"Practice Solutions", icon:0, js:"unavail()", drv:"1960E_v1vFacD-7sbtFqrE3Xzqjr32rO4H435r4aT3WM"},
     ]},
-    {title:"Projectile Motion", menu:[
+    {title:"Projectile Motion", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/proj.html"},
-        {title:"Practice Solutions", icon:"gdrv", open:"https://docs.google.com/document/d/14uVxnRHjWAdOALpevl9sJq1ZgGIU9Hw82uaAilHrFF4"},
+        {title:"Practice Solutions", icon:0, js:"unavail()", drv:"14uVxnRHjWAdOALpevl9sJq1ZgGIU9Hw82uaAilHrFF4"},
     ]},
-    {title:"Dynamics in 2D", menu:[
+    {title:"Dynamics in 2D", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/dyn2d.html"},
-        {title:"Practice Solutions", icon:"gdrv", open:"https://docs.google.com/document/d/1MjKlJw8OCjrWGCBtXqNXEejSlZmHXaJFUexb0HpmDUY"},
+        {title:"Practice Solutions", icon:0, js:"unavail()", drv:"1MjKlJw8OCjrWGCBtXqNXEejSlZmHXaJFUexb0HpmDUY"},
     ]},
 ];
 
@@ -265,7 +265,7 @@ let home = addHome({title:"Physics 20", htmx:"<p class='Right'>Teacher: <a href=
     // {title:"Experiment Design & Analysis", id:"exp", icon:"flask", menu:expDes},
     {title:"Chapter 6: Energy & Work", id:"energy", icon:"arrow", menu:energy},
     {title:"Chapter 1: Kinematics", id:"kin", icon:"train", menu:kin1d},
-    {title:"Chapter 2: 2D Vectors", id:"vec2d", icon:"soccer", js:"unavail()", menx:vec2d},
+    {title:"Chapter 2: 2D Vectors", id:"vec2d", icon:"soccer", menu:vec2d},
     {title:"Chapter 3: Dynamics", id:"dyn", icon:"rocket", js:"unavail()", menx:dyn},
     {title:"Chapter 5: Uniform Circular Motion", id:"circ", js:"unavail()", icon:"midway", menx:circ},
     {title:"Chapter 4: Universal Gravitation", id:"grav", js:"unavail()", icon:"earth", menx:grav},

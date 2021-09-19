@@ -80,7 +80,7 @@ body:not(.NoPanel) > nav {left:0}
 body.NoPanel > nav {left:101vw}
 body > nav > p.Selected[data-section] {font-weight:bold}
 body:not(.Present) > nav > p[data-section] {cursor:pointer}
-body > article img, body > article iframe {max-width:100%}
+.Wide, body > article img, body > article iframe, body > article canvas {max-width:100%}
 
 #Title p:not(.Small):not(.Course) {font-size:125%}
 

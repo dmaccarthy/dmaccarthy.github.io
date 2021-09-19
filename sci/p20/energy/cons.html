@@ -142,7 +142,7 @@ Plot.waitForImages(function() {
 </section>
 
 <section id="bar" data-last="?"><h3>Energy Bar Chart</h3>
-    <p class="Center"><canvas id="Ramp" width="600" height="600" onclick="Econs.bar0.plot.toggle()"></canvas></p>
+    <p class="Center"><canvas id="Ramp" data-aspect="1" width="600" height="600" onclick="Econs.bar0.plot.toggle()"></canvas></p>
     <p>An <em class="Defn">energy bar chart</em> is a way to keep track of how much of each form of energy is present in a system.</p>
     <ul data-mark="+">
         <li data-mark="=">This graph is for a ball that rolls down a ramp. Initially, it has not started moving, so it only has gravitational potential energy (8.7 joules).</li> 
@@ -155,7 +155,7 @@ Plot.waitForImages(function() {
 <section id="ex1" data-last="?"><h3>Example 1</h3>
 <p class="Blue">A 200 gram book slides from rest down a frictionless ramp that is 1.20 metres high. Calculate the speed of the book when it reaches the bottom of the ramp.</p>
 <p data-mark="+">$$E_g = mgh = \mathrm{0.200\ kg \cdot 9.81\ m/s^2 \cdot 1.20\ m = 2.35\ J}$$</p>
-<p data-mark="=" class="Center"><canvas id="Ex1" width="600" height="600" onclick="Econs.bar1(Econs.bar1['#Ex1']+1)"></canvas></p>
+<p data-mark="=" class="Center"><canvas id="Ex1" data-aspect="1" width="600" height="600" onclick="Econs.bar1(Econs.bar1['#Ex1']+1)"></canvas></p>
 <p data-mark="+">$$E_k = {1\over 2}mv^2$$</p>
 <p data-mark="+">$${2 E_k \over m} = v^2$$</p>
 <p data-mark="+">$$v = \sqrt{2 E_k \over m} = \mathrm{\sqrt{2\cdot 2.3544\ J \over 0.200\ kg} = 4.85 \ m/s}$$</p>
@@ -163,7 +163,7 @@ Plot.waitForImages(function() {
 
 <section id="ex2" data-last="?"><h3>Example 2</h3>
 <p data-mark="=" class="Blue">Calculate the speed of the book when it is at a height of 50.0 cm.</p>
-<p data-mark="=" class="Center"><canvas id="Ex2" width="600" height="600" onclick="Econs.bar1(Econs.bar1['#Ex2']+1, '#Ex2')"></canvas></p>
+<p data-mark="=" class="Center"><canvas id="Ex2" data-aspect="1" width="600" height="600" onclick="Econs.bar1(Econs.bar1['#Ex2']+1, '#Ex2')"></canvas></p>
 <p data-mark="+">$$E_g = mgh = \mathrm{0.200\ kg \cdot 9.81\ m/s^2 \cdot 0.500\ m = 0.981\ J}$$</p>
 <p data-mark="+">$$E_k = E_{total} - E_g = \mathrm{2.3544\ J - 0.981\ J = 1.3734\ J}$$</p>
 <p data-mark="+">$$v = \sqrt{2 E_k \over m} = \mathrm{\sqrt{2\cdot 1.3734\ J \over 0.200\ kg} = 3.71 \ m/s}$$</p>
@@ -171,7 +171,7 @@ Plot.waitForImages(function() {
 
 <section id="ex3" data-last="?"><h3>Example 3</h3>
 <p data-mark="=" class="Blue">A compressed spring is used to launch a (solid) ball up an incline. Sketch the initial and final energy bar charts and express the conservation of energy as an equation.</p>
-<p data-mark="+" class="Center"><canvas id="Ex3" width="600" height="600" onclick="Econs.bar2(1 - Econs.bar2.id)"></canvas></p>
+<p data-mark="+" class="Center"><canvas id="Ex3" data-aspect="1" width="600" height="600" onclick="Econs.bar2(1 - Econs.bar2.id)"></canvas></p>
 <p data-mark="+">$${1\over 2} k(\Delta L)^2 = mgh_f + {1\over 2}mv_f^2 + {1\over 5}mv_f^2$$</p>
 </section>
 
