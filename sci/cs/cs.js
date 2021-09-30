@@ -36,7 +36,7 @@ let cs1_html = `<section>
         Watch the lesson video or read the notes, and then answer the questions. After completing all assignments, contact the teacher to schedule the summative assessment.</p>
     </section>`;
 
-let home = addHome({title:"Computing Science", htmx:"<p class='Right'>Teacher: <a href='mailto:david.maccarthy@eips.ca'>D.G. MacCarthy</a></p>", menu:[
+let home = addHome({title:"Computing Science", id:"home", htmx:"<p class='Right'>Teacher: <a href='mailto:david.maccarthy@eips.ca'>D.G. MacCarthy</a></p>", menu:[
     link,
     {title:"Computing Science 10", id:"cs10", icon:"robot", menu:[
         {title:"repl.it", icon:"repl", open:"https://replit.com"},

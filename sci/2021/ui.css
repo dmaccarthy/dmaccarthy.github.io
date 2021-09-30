@@ -7,6 +7,7 @@ body {
 }
 
 .Black {color:black}
+.Red {color:red}
 
 article {
     max-width:800px;
@@ -74,4 +75,9 @@ img.Icon {
     width:2.5em;
     height:2.5em;
     vertical-align:middle;
+}
+
+table.Auto {
+    margin:auto;
+    border-collapse:collapse;
 }

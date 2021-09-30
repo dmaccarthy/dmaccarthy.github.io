@@ -67,7 +67,7 @@ $(function() {
     let b = $("body > article");
     $("<h1>").attr({id:"Title"}).html(document.title).prependTo(b);
     let a = $("<a>").html(courses[course]);
-    a.attr({href:"../?id=" + course});
+    a.attr({href:"../#" + course});
     $("<p>").html(a).prependTo(b);
     pre_data();
     sequence(b);

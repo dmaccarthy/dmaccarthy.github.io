@@ -19,6 +19,7 @@ function linkMenus(node) {
     }
     if (node.menu) {
         linkMenus.all.push(node);
+        if (window.onMenuLink) onMenuLink(node);
         for (let i=0;i<node.menu.length;i++) {
             let n = node.menu[i];
             n.parent = node;

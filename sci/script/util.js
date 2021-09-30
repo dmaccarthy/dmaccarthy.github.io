@@ -1,13 +1,30 @@
 Array.prototype.extend = function(a) {this.push.apply(this, a)}
 
-function qsArgs(key) {
-    let qs = location.search.slice(1).split("&");
+function qsArgs(key, str) {
+    if (str == null) str = location.search;
+    let qs = str.split("?")[1];
+    if (qs == null) return key ? null : {};
+    qs = qs.split("&");
     args = {}
     for (let i=0;i<qs.length;i++) {
         let a = qs[i].split("=");
         args[a[0]] = decodeURIComponent(a[1]);
     }
     return key ? args[key] : args;
+}
+
+function makeURL(path, search, hash) {
+    if (path == true) path = location.pathname;
+    if (search == null) search = {};
+    else if (search == true) search = qsArgs();
+    let s = "";
+    for (let k in search) {
+        if (s.length) s += "&";
+        else s = "?";
+        s += `${encodeURIComponent(k)}=${encodeURIComponent(search[k])}`;
+    }
+    hash = hash === true ? location.hash : (hash ? "#" + hash : "");
+    return `${path}/${s}${hash}`.replace("//", "/");
 }
 
 function objectInList(data, key, val) {
