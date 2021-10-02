@@ -49,7 +49,8 @@
 	<td><code>onclick</code></td>
 	<td><code>gr, ev</code></td>
 	<td>All Graphics</td>
-	<td>Called when a mouse button is pressed while the mouse pointer is positioned on a graphics object.</td>
+	<td>As of <b class="Comment">v2.2</b>, this handler is called after <code>onmousedown</code> and <code>onmouseup</code> when they happen on the same target.
+		In earlier versions, <code>onmousedown</code> was not supported and <code>onclick</code> was called instead when the mouse button was pressed.</td>
 </tr>
 <tr>
 	<td><code>oncollide</code></td>
@@ -79,7 +80,7 @@
 	<td><code>onfocus</code></td>
 	<td><code>gr, ev</code></td>
 	<td>Focusable Graphics</td>
-	<td>Called before <code>onclick</code> when a graphic acquires focus. <b class="Comment">[Experimental v2.2.dev]</b></td>
+	<td>Called before <code>onmousedown</code> when a graphic acquires focus. <b class="Comment">[Experimental in v2.2.dev]</b></td>
 </tr>
 <tr>
 	<td><code>onhandled</code></td>
@@ -98,6 +99,12 @@
 	<td><code>gr, ev</code></td>
 	<td>Focusable Graphics</td>
 	<td>Called when a key is released.</td>
+</tr>
+<tr>
+	<td><code>onmousedown</code></td>
+	<td><code>gr, ev</code></td>
+	<td>All Graphics</td>
+	<td>Called when a mouse button is pressed while the mouse pointer is positioned on a graphics object. <b class="Comment">[Added in v2.2]</b</td>
 </tr>
 <tr>
 	<td><code>onmousemotion</code></td>
