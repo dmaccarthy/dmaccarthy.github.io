@@ -1,4 +1,4 @@
-# Copyright 2017-2020 D.G. MacCarthy <http://dmaccarthy.github.io>
+# Copyright 2017-2021 D.G. MacCarthy <http://dmaccarthy.github.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,9 +24,9 @@ from sc8pr.gui.slider import Slider
 from sc8pr.gui.button import Button
 from sc8pr.gui.menu import Menu, R_TRIANGLE
 
-try:    # v2.2.dev
+try:    # v2.2
     from sc8pr.gui.textinput import TextInputCanvas
-except: #v2.0-2.1
+except: # v2.0-2.1
     TextInputCanvas = None
 
 
