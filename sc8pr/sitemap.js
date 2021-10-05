@@ -31,14 +31,15 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 		{title:"sc8pr.geom", link:"geom"},
 		{title:"sc8pr.gui.*", link:"gui", pages:[
 			{title:"class Button", link:"button_class"},
+			{title:"class Dialog", link:"dialog"},
 			{title:"class Menu", link:"menu_class"},
 			{title:"class MessageBox", link:"msgbox"},
 			{title:"class NumInputBox", link:"msgbox"},
 			{title:"class Options", link:"options"},
 			{title:"class Radio", link:"radio"},
 			{title:"class Slider", link:"slider"},
-			{title:"class TextInput", link:"ti_class"}
-//			{title:"class TextInputCanvas", link:""}
+			{title:"class TextInput", link:"ti_class"},
+			{title:"class TextInputCanvas", link:"ti_canvas"},
 		]},
 		{title:"sc8pr.misc.*", link:"misc", pages:[
 			{title:".effect", link:"effect"},
@@ -66,6 +67,7 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 		]},
 		{title:"sc8pr.sprite", link:"sprite", pages:[
 			{title:"class Sprite", link:"sprite_class"},
+			{title:"class CostumeImage", link:"sprite_class"},
 			{title:"class Collisions", link:"collisions"}
 		]},
 		{title:"sc8pr.text", link:"text", pages:[

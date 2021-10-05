@@ -26,7 +26,7 @@ td.Class:hover {
 
 </style>
 
-<p>Below is the <code>Graphic</code> “class hierarchy”. Classes shown in <span class="Comment">red</span> are “abstract” and should not be used to create graphics instances directly. Classes shown in <span class="Hilite">blue</span> are also subclasses of <code>BaseSprite</code>. An asterisk(*) denotes a new class that may be included in v2.2 and which may not be included in the documentation yet.</p>
+<p>Below is the <code>Graphic</code> “class hierarchy”. Classes shown in <span class="Comment">red</span> are “abstract” and should not be used to create graphics instances directly. Classes shown in <span class="Hilite">blue</span> are also subclasses of <code>BaseSprite</code>. An asterisk(*) denotes a new or experimental class that may be included in a future release and which may not be fully documented yet.</p>
 
 <table id="ClassHierarchy">
 <tr><td class="Class Comment" rowspan="25">Graphic</td><td class="Empty">→</td><td class="Class">Image</td><td class="Empty">→</td><td class="Class">*PImage</td></tr>
@@ -36,11 +36,11 @@ td.Class:hover {
 <tr><td class="Empty">→</td><td class="Class" link="menu_class">Menu</td></tr>
 <tr><td class="Empty">→</td><td class="Class">Options</td><td class="Empty">→</td><td class="Class">Radio</td></tr>
 <tr><td class="Empty">→</td><td class="Class">Slider</td></tr>
-<tr><td class="Empty">→</td><td class="Class">*Dialog</td><td class="Empty">→</td><td class="Class" link="msgbox">MessageBox</td></tr>
+<tr><td class="Empty">→</td><td class="Class">Dialog</td><td class="Empty">→</td><td class="Class" link="msgbox">MessageBox</td><td class="Empty">→</td><td class="Class" link="msgbox">NumInputBox</td></tr>
 <tr><td class="Empty">→</td><td class="Class" link="progress">ProgressBar</td></tr>
-<tr><td class="Empty">→</td><td class="Class" link="gui">*TextInputCanvas</td></tr>
+<tr><td class="Empty">→</td><td class="Class" link="ti_canvas">*TextInputCanvas</td></tr>
 <tr><td class="Empty" rowspan="1">→</td><td class="Class Comment" rowspan="1" link="base">BaseSprite</td><td class="Empty" rowspan="1">→</td><td class="Class" rowspan="2" link="sprite_class">Sprite</td><td class="Empty">→</td><td class="Class" link="robot_class">Robot</td></tr>
-<tr><td class="Empty">→</td><td class="Class">*CostumeImage</td><td class="Empty">→</td>
+<tr><td class="Empty">→</td><td class="Class" link="sprite_class">CostumeImage</td><td class="Empty">→</td>
 <td class="Empty">→</td><td class="Class" link="video_class">Video</td></tr>
 <tr><td class="Empty" rowspan="7">→</td><td class="Class Comment" rowspan="7" link="render">Renderable</td><td class="Empty" rowspan="3">→</td><td class="Class" rowspan="3" link="text_class">Text</td><td class="Empty">→</td><td class="Class">*PText</td></tr>
 <tr><td class="Empty">→</td><td class="Class Hilite" link="text">TextSprite</td></tr>
