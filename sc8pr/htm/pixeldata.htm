@@ -1,14 +1,14 @@
 ﻿<article><h1><code>sc8pr.PixelData</code> Class</h1>
 <p><span class="Comment"><b>Added in v2.1</b>.</span></p>
 
-<p><code>PixelData</code> is a class for storing bitmap images as raw binary data. It can be used to compress the binary data and to convert between raw, <code>pygame</code>, and <code>Pillow</code> formats.</p>
+<p><code>PixelData</code> is a class for storing and compressing bitmap images as raw binary data. It can be used to convert between <code>bytes</code> (raw data), <code>pygame.Surface</code> / <code>sc8pr.Image</code>, and <code>PIL.Image.Image</code> formats.</p>
 
-<p>Since <code>sc8pr.Image</code> uses the <code>pygame.Surface</code> format, you would not normally use <code>PixelData</code> to convert between these formats. You can pass a surface to the <a class="Code" href="javascript:goNode('image')">Image</a> constructor, or access the <code>Image</code> instance’s <code>original</code> or <code>image</code> properties. These operations do not copy the pixel data; you can call <code>Image.copy</code> if you require a copy of the pixel data.</p>
+<!--p>Since <code>sc8pr.Image</code> uses the <code>pygame.Surface</code> format, you would not normally use <code>PixelData</code> to convert between these formats. You can pass a surface to the <a class="Code" href="javascript:goNode('image')">Image</a> constructor, or access the <code>Image</code> instance’s <code>original</code> or <code>image</code> properties. These operations do not copy the pixel data; you can call <code>Image.copy</code> if you require a copy of the pixel data.</p-->
 
 <h4>Constructor</h4><div class="Indent">
 	<p><code><span class="Hilite">PixelData</span>(img, compress=False, codec=zlib)</code></p>
 		<div class="Indent">
-		<p><code class="Hilite">img</code>: An <code>Image</code> or <code>pygame.Surface</code> instance; a Pillow image; a <code>Graphic</code> instance that can be converted to pixel data using the <code>image</code> property or <code>snapshot</code> method; or raw binary data as returned by the <code>__bytes__</code> or <code>raw</code> methods described below.</p>
+		<p><code class="Hilite">img</code>: An <code>Image</code>, <code>pygame.Surface</code> or <code>PixelData</code> instance; a Pillow image; a <code>Graphic</code> instance that can be converted to pixel data using the <code>image</code> property or <code>snapshot</code> method; or raw binary data as returned by the <code>__bytes__</code> or <code>raw</code> methods described below.</p>
 		<p><code class="Hilite">compress</code>: A <code>bool</code> specifying whether the binary data is to be compressed.</p>
 		<p><code class="Hilite">codec</code>: An object that contains the <code>compress</code> and <code>decompress</code> functions for data compression.</p>
 		</div>
@@ -19,7 +19,7 @@
 	<p><code class="Hilite">compressed</code>: A <code>bool</code> indicating whether the binary data is stored in compressed form.</p>
 	<p><code class="Hilite">img</code>: The image as a <code>sc8pr.Image</code> instance; pixel data is copied each time this property is accessed.</p>
 	<p><code class="Hilite">mode</code>: <code>"RGB"</code> or <code>"RGBA"</code>.</p>
-	<p><code class="Hilite">size</code>: The size of the image as a 2-tuple.</p>
+ 	<p><code class="Hilite">size</code>: The size of the image as a 2-tuple.</p>
 	<p><code class="Hilite">srf</code>: The image as a <code>pygame.Surface</code> instance; pixel data is copied each time this property is accessed.</p>
 </div>
 
@@ -28,9 +28,9 @@
 	<p><code><span class="Hilite">__eq__</span>(other)</code> → <code>bool</code>: Test equality by comparing the tuples returned by the <code>raw</code> method.</p>
 	<p><code><span class="Hilite">compress</span>()</code> → <code>self</code>: Compress the binary data.</p>
 	<p><code><span class="Hilite">decompress</span>()</code> → <code>self</code>: Decompress the binary data.</p>
-	<p><code><span class="Hilite">pil</span>(pil)</code> → Pillow image: Convert the image to Pillow format.</p>
+	<p><code><span class="Hilite">pil</span>(frombytes)</code> → Pillow image: Convert the image to Pillow format. <b class="Comment">[Added in v2.2]</b></p>
 		<div class="Indent">
-		<p><code class="Hilite">pil</code>: A reference to the PIL package.</p>
+		<p><code class="Hilite">frombytes</code>: A reference to the <code>PIL.Image.frombytes</code> function.</p>
 		</div>
 	<p><code><span class="Hilite">raw</span>()</code> → <code>(bytes, bytes)</code>: Similar to the <code>__bytes__</code> method except returns the data and the size/mode structure as separate objects.</p>
 	<p><code><span class="Hilite">writeTo</span>(f)</code> → <code>self</code>: Write the data to an open binary file, <code>BytesIO</code>, or other object using its <code>write</code> method.</p>
