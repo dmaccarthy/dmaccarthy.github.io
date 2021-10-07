@@ -51,8 +51,10 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 			]},	
 			{title:".progress", link:"progress"},
 			{title:".video", link:"video", pages:[
-				{title:"class Grabber", link:"grabber"},
 				{title:"class Video", link:"video_class"},
+			]},
+			{title:".media", link:"media", pages:[
+				{title:"class Grabber", link:"grabber"},
 			]},
 			{title:".webcache", link:"webcache", pages:[
 				{title:"class WebCache", link:"wc"},
