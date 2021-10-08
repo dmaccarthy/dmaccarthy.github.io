@@ -3,27 +3,30 @@
 <p><span class="Comment"><b>Added in v2.1</b> in the <code>sc8pr.misc.video</code> module and moved to <code>sc8pr.misc.media</code> in v2.2. The <code>Grabber</code> class in v2.0 was experimental and does not conform to this API!</span></p>
 
 <p>This class performs screen captures on Windows or MacOS using the <a class="Code" href="http://python-pillow.org/">Pillow</a> package. The example below captures a portion of the screen starting at coordinates (100, 100), converts it to a <code>sc8pr.Image</code> instance, and adds the image to the sketch...</p>
-<pre class="Code"><span class="Comment"># Code in blue is required in v2.2 and should be omitted in v2.1.</span>
+<pre class="Code"><span class="Comment"># Code in blue is required in sc8pr 2.2 and should be omitted in v2.1.</span>
 
-<span class="Hilite">from PIL.ImageGrab import grab</span>
 from sc8pr.misc.media import Grabber
-from sc8pr import Sketch
+from sc8pr import Sketch, <span class="Hilite">helper_modules
+import PIL.ImageGrab
+
+helper_modules(PIL.ImageGrab)</span>
 
 def setup(sk):
     w, h = sk.size
-    sk += Grabber(<span class="Hilite">grab,</span> [100, 100, w, h]).img.config(pos=sk.center)
+    sk += Grabber([100, 100, w, h]).img.config(pos=sk.center)
 
 Sketch().play()</pre>
 
+<p>As of v2.2, <code>sc8pr</code> no longer imports any non-essential modules such as <code>PIL.ImageGrab</code> directly. To use the <code>Grabber</code> class, your program must import <code>PIL.ImageGrab</code> itself and then register the module as a “helper” by calling <code>helper_modules</code> as in the example above.</p>
+
 <h4>Constructor</h4><div class="Indent">
-	<p><code><span class="Hilite">Grabber</span>(grab, rect=None)</code></p><div class="Indent">
-		<p><code class="Hilite">grab</code>: A reference to <code>PIL.ImageGrab.grab</code>. <b class="Comment">Added in v2.2</b>; in v2.1, PIL was imported automatically while starting with v2.2, your program must import PIL and pass a reference to the <code>grab</code> function.</p>
+	<p><code><span class="Hilite">Grabber</span>(rect=None)</code></p><div class="Indent">
 		<p><code class="Hilite">rect</code>: The region of the screen to capture. Can be <code>None</code> to capture the entire screen, a 2-tuple or 2-list specifying the size of the rectangle to capture from the upper left, or a 4-list or 4-tuple giving both the upper left coordinates and the size.</p>
 </div></div>
 
 <h4>Read-only Property</h4><div class="Indent">
 	<p><code class="Hilite">img</code>: The current contents of the specified rectangle as an <a class="Code" href="javascript:goNode('image')">Image</a> instance. This is the slowest format for screen captures since it requires the most processing. If speed is an issue, use the <code>pil</code> format and convert later using the <a class="Code" href="javascript:goNode('pixeldata')">PixelData</a> class.</p>
-	<p><code class="Hilite">pil</code>: The current contents of the specified rectangle as a Pillow image. This is the quickest format for screen captures.</p>
+	<p><code class="Hilite">pil</code>: The current contents of the specified rectangle as a <code>PIL.Image.Image</code> instance. This is the quickest format for screen captures.</p>
 	<p><code class="Hilite">pix</code>: The current contents of the specified rectangle as a <a class="Code" href="javascript:goNode('pixeldata')">PixelData</a> instance. Images captured in Pillow format can be converted later by calling the <code>PixelData</code> constructor.</p>
 </div>
 </article>

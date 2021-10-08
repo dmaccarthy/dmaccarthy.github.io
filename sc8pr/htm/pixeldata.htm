@@ -21,6 +21,7 @@
 	<p><code class="Hilite">mode</code>: <code>"RGB"</code> or <code>"RGBA"</code>.</p>
  	<p><code class="Hilite">size</code>: The size of the image as a 2-tuple.</p>
 	<p><code class="Hilite">srf</code>: The image as a <code>pygame.Surface</code> instance; pixel data is copied each time this property is accessed.</p>
+	<p><code class="Hilite">pil</code>: The image as a <code>PIL.Image.Image</code> instance. To use this property, your program must first import the <code>PIL.Image</code> module and pass it to the <code>helper_modules</code> function. <b class="Comment">[Added in v2.2]</b></p></p>
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
@@ -28,10 +29,6 @@
 	<p><code><span class="Hilite">__eq__</span>(other)</code> → <code>bool</code>: Test equality by comparing the tuples returned by the <code>raw</code> method.</p>
 	<p><code><span class="Hilite">compress</span>()</code> → <code>self</code>: Compress the binary data.</p>
 	<p><code><span class="Hilite">decompress</span>()</code> → <code>self</code>: Decompress the binary data.</p>
-	<p><code><span class="Hilite">pil</span>(frombytes)</code> → Pillow image: Convert the image to Pillow format. <b class="Comment">[Added in v2.2]</b></p>
-		<div class="Indent">
-		<p><code class="Hilite">frombytes</code>: A reference to the <code>PIL.Image.frombytes</code> function.</p>
-		</div>
 	<p><code><span class="Hilite">raw</span>()</code> → <code>(bytes, bytes)</code>: Similar to the <code>__bytes__</code> method except returns the data and the size/mode structure as separate objects.</p>
 	<p><code><span class="Hilite">writeTo</span>(f)</code> → <code>self</code>: Write the data to an open binary file, <code>BytesIO</code>, or other object using its <code>write</code> method.</p>
 </div>
