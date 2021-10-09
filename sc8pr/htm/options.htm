@@ -2,7 +2,7 @@
 <p><span class="Comment"><b>Added in v2.1</b>. The <code>radio</code> module in v2.0 was experimental and does not conform to this API!</span></p>
 
 <p><code>Options</code> is a <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> subclass for creating an options menu comprising check buttons and text. Check boxes are added to the canvas first, followed by the text labels. For example, if an <code>Options</code> instance has three items, the check boxes will have <code>layer</code> values <code>0</code> through <code>2</code> and the labels <code>3</code> through <code>5</code>.</p>
-<p>The <code>Options</code> class only defines a constructor; all other attributes are inherited from <code>Canvas</code>. You can bind an <code>onaction</code> event handler to detect clicks on enabled check boxes.</p>
+<p>The <code>Options</code> class only defines a constructor; all other attributes are inherited from <code>Canvas</code>. Enabled check box buttons handle CLICK events and trigger ACTION events. You can bind an <code>onaction</code> event handler to detect clicks on enabled check boxes.</p>
 
 <p>Usage example:</p>
 <pre class="Code">from sc8pr import Sketch
@@ -16,13 +16,13 @@ def onaction(cv, ev):
     btn = ev.target
     option = btn.layer
     label = cv[option + len(cv) // 2]
-    print(option, btn.selected, label.data)
+    print("Action:", option, btn.selected, label.data)
 
 def onclick(cv, ev):
-    try:    # Click text
-        print(ev.target.data)
-    except: # Click background
-        print(cv)
+    try:    <span class="Comment"># Click text</span>
+        print("Click:", ev.target.data)
+    except: <span class="Comment"># Click background</span>
+        print("Click:", cv)
 
 Sketch().play()</pre>
 

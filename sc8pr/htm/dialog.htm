@@ -3,19 +3,19 @@
 
 <!--p>This module adds three <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> subclasses that are useful for interacting with the user via dialog boxes.</p-->
 
-<p>The <code>Dialog</code> class extends the <code>Canvas</code> class by adding three instance methods that may be useful in composing dialog boxes for interacting withthe user. In v2.1, these methods were defined in the <a class="Hilite Code" href="javascript:goNode('msgbox')">MessageBox</a> class (which became a subclass of <code>Dialog</code> in v2.2.)</p>
+<p>The <code>Dialog</code> class extends the <code>Canvas</code> class by adding three instance methods that may be useful in composing dialog boxes for interacting with the user. In v2.1, these methods were defined in the <a class="Hilite Code" href="javascript:goNode('msgbox')">MessageBox</a> class (which became a subclass of <code>Dialog</code> in v2.2.)</p>
 
 <p>In addition to the attributes it inherits from <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a>, the <code>Dialog</code> class defines the following...</p>
 
 <h4>Instance Methods</h4><div class="Indent">
-	<p><code><span class="Hilite">resize</span>()</code> → <code>None</code>: Overrides <code>Canvas.resize</code> so that the dialog is not resized along with the sketch. If you want the dialog to resize with the sketch, call <code>mb.bind(resize=Canvas.resize)</code> where <code>mb</code> refers to the message box, or create a subclass defining the <code>resize</code> attribute as <code>Canvas.resize</code>.</p>
+	<p><code><span class="Hilite">resize</span>()</code> → <code>None</code>: Overrides <code>Canvas.resize</code> so that the dialog is not resized along with the sketch. If you want the dialog to resize with the sketch, call <code>dlg.bind(resize=Canvas.resize)</code> where <code>dlg</code> refers to the <code>Dialog</code> instance, or create a subclass defining the <code>resize</code> attribute as <code>Canvas.resize</code>.</p>
 	<p><code><span class="Hilite">title</span>(title, padding=4, **kwargs)</code> → <code>self</code>: You can add a title bar manually be calling this method rather than passing a title to the constructor. This is useful if you want to add custom content to the dialog.</p>
 		<div class="Indent">
 		<p><code class="Hilite">title</code>: The title as a string.</p>
 		<p><code class="Hilite">padding</code>: The number of pixels of space to be added around the title bar.</p>
 		<p><code class="Hilite">kwargs</code>: Additional arguments such as <code>font</code> or <code>fontSize</code> that will be used to configure the <a class="Hilite Code" href="javascript:goNode('text_class')">Text</a> and <code>TextInput</code> items.</p>
 		</div>
-	<p><code><span class="Hilite">insertTop</span>(gr, padding=12, name=None)</code> → <code>self</code>: Inserts a graphic into the top of the message box.</p>
+	<p><code><span class="Hilite">insertTop</span>(gr, padding=12, name=None)</code> → <code>self</code>: Inserts a graphic into the top of the dialog and shifts all existing content down accordingly.</p>
 		<div class="Indent">
 		<p><code class="Hilite">gr</code>: The graphic to insert.</p>
 		<p><code class="Hilite">padding</code>: Additional vertical space to insert, in pixels.</p>

@@ -1,0 +1,57 @@
+﻿<article><h1><code>sc8pr.misc.media.ImageIO</code> Class</h1>
+<p><span class="Comment"><b>Added in v2.2</b>.</span></p>
+
+<p><code>ImageIO</code> is a static class used for encoding and decoding video using <a href="https://ffmpeg.org/" target="ff">FFmpeg</a>. You must install the <code>imageio</code> and <code>imageio-ffmpeg</code> packages and import <code>imageio</code>, <code>numpy</code>, and <code>PIL.Image</code> into your program before using the <code>ImageIO</code> class.</p>
+
+<p>In the example below, the first 80 frames of “movie.mp4” are decoded into two video clips of 40 frames each. These clips are saved as “movie00.s8v” and “movie01.s8v” and the clips are then rejoined as a <code>sc8pr.misc.video.Video</code> instance.</p>
+
+<pre class="Code" id="Ex1">import imageio, numpy, PIL.Image
+from sc8pr import Sketch
+from sc8pr.misc.media import ImageIO
+
+ImageIO.ffmpeg("C:/Program Files/ffmpeg/bin/ffmpeg.exe")
+
+def setup(sk):
+    vid1, vid2 = ImageIO.decode("movie.mp4", (0,40), (40,80), save="movie{:02d}.s8v", progress=print)
+    vid1 += vid2
+    sk += vid1.config(costumeTime=1, width=sk.width, pos=sk.center)
+
+Sketch().play()</pre>
+
+<p>Here is an example where a <code>sc8pr</code> format video is encoded to “movie.mp4” with a frame rate of 12 frames per second.</p>
+
+<pre class="Code" id="Ex2">import imageio, numpy, PIL.Image
+from sc8pr.misc.video import Video
+from sc8pr.misc.media import ImageIO
+
+ImageIO.ffmpeg("C:/Program Files/ffmpeg/bin/ffmpeg.exe")
+
+vid = Video("movie00.s8v")
+vid.meta["frameRate"] = 12
+ImageIO.encode(vid, "movie.mp4", progress=print)</pre>
+
+<h4>Static Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">decode</span>(src, *args, save=None, purge=False, progress=None)</code> → <code>Video</code> or <code>list</code>: Decodes the video identified by <code>src</code>; returns a <code>Video</code> instance or, if the video is split into more than one clip, a <code>list</code> of such instances.</p>
+		<div class="Indent">
+		<p><code class="Hilite">src</code>: The path to the media file being decoded.</p>
+		<p><code class="Hilite">args</code>: Optional ordered pairs identifying clips to be decoded; frames must not overlap and must be passed in order.</p>
+		<p><code class="Hilite">save</code>: Optional path to save the decoded video in S8V format. If decoding multiple clips, the path should be a string format template (e.g. <code>"movie{:02d}.s8v"</code>) into which the clip number will be inserted. Must be passed as a keyword argument.</p>
+		<p><code class="Hilite">purge</code>: A <code>bool</code> that specifies whether to remove the decoded <code>Video</code> from memory after saving it. If <code>True</code>, a <code>Video</code> of length zero or a <code>list</code> of such videos will be returned. Must be passed as a keyword argument.</p>
+		<p><code class="Hilite">progress</code>: A callback function that informs the program of the decoding progress. This function must accept two integer arguments indicating the number of frames encoded and the total number of frames. Must be passed as a keyword argument.</p>
+		</div>
+
+	<p><code><span class="Hilite">encode</span>(vid, save="movie.mp4", progress=None)</code> → <code>None</code>: Encode a video using FFmpeg.</p>
+		<div class="Indent">
+		<p><code class="Hilite">vid</code>: A <code>sc8pr.misc.video.Video</code> instance to be encoded or a string containing the path to an S8V file.</p>
+		<p><code class="Hilite">save</code>: The path to the output file.</p>
+		<p><code class="Hilite">progress</code>: A callback function that informs the program of the decoding progress. This function must accept an integer argument indicating the number of frames decoded.</p>
+		</div>
+
+	<p><code><span class="Hilite">ffmpeg</span>(ff)</code> → <code>None</code>: Specifies the location of FFmpeg; must be called unless the system recognizes ‘ffmpeg’ as a valid command.</p>
+		<div class="Indent">
+		<p><code class="Hilite">ff</code>: The path to the FFmpeg executable.</p>
+		</div>
+</div>
+
+</article></body>
+</html>

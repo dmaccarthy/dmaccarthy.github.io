@@ -8,7 +8,7 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 		]},
 		{title:"Event Handling", link:"ev", pages:[
 			{title:"<code>ondraw</code> Handlers", link:"draw"},
-			{title:"<code>onclick</code> Handlers", link:"click"},
+			{title:"Mouse Events", link:"click"},
 			{title:"Supported Events", link:"evList"}
 		]},
 		{title:"Object-Oriented Style", link:"oop"},
@@ -34,7 +34,7 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 			{title:"class Dialog", link:"dialog"},
 			{title:"class Menu", link:"menu_class"},
 			{title:"class MessageBox", link:"msgbox"},
-			{title:"class NumInputBox", link:"msgbox"},
+//			{title:"class NumInputBox", link:"msgbox"},
 			{title:"class Options", link:"options"},
 			{title:"class Radio", link:"radio"},
 			{title:"class Slider", link:"slider"},
@@ -55,7 +55,9 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 			]},
 			{title:".media", link:"media", pages:[
 				{title:"class Grabber", link:"grabber"},
+				{title:"class ImageIO", link:"imageio"},
 			]},
+			{title:".table", link:"table"},
 			{title:".webcache", link:"webcache", pages:[
 				{title:"class WebCache", link:"wc"},
 			]},

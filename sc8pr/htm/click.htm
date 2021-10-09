@@ -1,6 +1,9 @@
-﻿<article><h1><code>onclick</code> Handlers</h1>
+﻿<article><h1>Mouse Events</h1>
 
-<p>A “click” event is triggered whenever the user clicks one of the mouse buttons. (Technically, “click” occurs when the mouse button is pressed, and a second event, “mouseup”, occurs when it is released.) We can write functions to handle click events as in the example below.</p>
+<p>Mouse events occur whenever the mouse or pointing device is moved or clicked. Mouse events include MOUSEMOTION, MOUSEDOWN*, MOUSEUP, CLICK*, MOUSEOVER, MOUSEOUT, DRAG and RELEASE. We can write functions to handle mouse events as in the example below. The default name for each handler is the word <code>on</code> followed by the event name in lower case: <code>onclick</code>, <code>onmousedown</code>, etc.</p>
+
+<p>(*Prior to <code>sc8pr</code> version 2.2, the CLICK event was triggered whenever a mouse button was pressed and MOUSEDOWN was not supported. As of v2.2, pressing a mouse button triggers MOUSEDOWN; the CLICK event is triggered after a MOUSEDOWN and MOUSEUP event occur on the same graphics object.)
+</p>
 
 <pre class="Code Scroll" id="Ex1">from sc8pr import Sketch, Image, BOTH
 from sc8pr.sprite import Sprite
@@ -23,11 +26,11 @@ def setup(sk):
 
 Sketch((512,362)).<span class="Hilite">bind(onclick=miss)</span>.play()</pre>
 
-<p>Notice that we have written two <em>onclick</em> handlers: the <code>hit</code> function handles click events when the mouse is pointing to the alien sprite, and the <code>miss</code> function handles clicks anywhere else in the sketch.</p>
+<p>Notice that we have written two <code>onclick</code> handlers. The <code>hit</code> function handles CLICK events when the mouse is pointing to the alien sprite, because we have passed the <code>hit</code> function to the sprite’s <code>bind</code> method (as highlighted in <span class="Hilite">blue</span>.) The <code>miss</code> function handles clicks anywhere else in the sketch.</p>
 
-<p>The first argument passed to the event handlers is a reference to the object (either the alien sprite or the sketch) where the event occurred. The second argument is a description of the event. For click events, the event object includes the mouse position (<code>ev.pos</code>) and the button that was clicked (<code>ev.button</code>). The position always gives the coordinates relative to the sketch window. As shown in the example in <span class="Hilite1">purple</span>, we can use the <code>relXY</code> method to calculate coordinates relative to a particular object such as a sprite. This adjusts for the sprite’s position and orientation, allowing us to determine if the alien was clicked on the head, body, or feet.</p>
+<p>The first argument passed to the event handlers is a reference to the object (either the alien sprite or the sketch) where the event occurred and the second argument is a description of the event. For CLICK events, the event object includes the mouse position (<code>ev.pos</code>) and the button that was clicked (<code>ev.button</code>). The position always gives the coordinates relative to the sketch window. As shown in the example in <span class="Hilite1">purple</span>, we can use the <code>relXY</code> method to calculate coordinates relative to a particular object such as a sprite. This adjusts for the sprite’s position and orientation, allowing us to determine if the alien was clicked on the head, body, or feet.</p>
 
-<p>Clicking on a sprite or other graphics object that does not have its own <em>onclick</em> handler will cause the click event to be sent to the sketch’s <em>onclick</em> handler (if any) instead. The event argument has an attribute, <code>ev.target</code> that refers to the graphics object that was actually clicked...</p>
+<p>Clicking on a sprite or other graphics object that does not have its own <code>onclick</code> handler will cause the click event to be sent to the sketch’s <code>onclick</code> handler (if any) instead. The event argument has an attribute, <code>ev.target</code> that refers to the graphics object that was actually clicked...</p>
 
 <pre class="Code" id="Ex2">from sc8pr import Sketch, Image, BOTH
 from sc8pr.sprite import Sprite

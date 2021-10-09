@@ -1,5 +1,5 @@
 ﻿<article><h1><code>sc8pr</code> Reference</h1>
-<p><span class="Comment">This reference covers <a href="https://github.com/dmaccarthy/sc8pr/releases"><code>sc8pr</code> versions 2.0 and 2.1</a> and the current <a href="https://github.com/dmaccarthy/sc8pr">development master</a>. Development version may be subject to change prior to its release.</span></p>
+<p><span class="Comment">This reference covers <a href="https://github.com/dmaccarthy/sc8pr/releases"><code>sc8pr</code> versions 2.0 and 2.1</a> and the current <a href="https://github.com/dmaccarthy/sc8pr">development version 2.2</a>. Development version may be subject to change prior to its release.</span></p>
 
 <h4>Essentials</h4><ul>
 <li>The <a class="Code" href="javascript:goNode('init')">sc8pr</a> module defines essential classes such as <a class="Code" href="javascript:goNode('sketch')">Sketch</a>, <a class="Code" href="javascript:goNode('image')">Image</a>, and <a class="Code" href="javascript:goNode('canvas')">Canvas</a>.</li>
@@ -11,11 +11,12 @@
 <li>The <a href="javascript:goNode('sprite')"><code>sc8pr.sprite</code></a> module defines the <a class="Code" href="javascript:goNode('sprite_class')">Sprite</a> class for creating interactive, animated graphics.</li>
 <li>The <a href="javascript:goNode('shape')"><code>sc8pr.shape</code></a> module defines the <a class="Code" href="javascript:goNode('line')">Line</a>, <a class="Code" href="javascript:goNode('circle')">Circle</a>, <a class="Code" href="javascript:goNode('polygon')">Polygon</a>, and <a class="Code" href="javascript:goNode('arrow')">Arrow</a> classes and their corresponding sprites.</li>
 <li>The <a class="Code" href="javascript:goNode('text')">sc8pr.text</a> module defines the <a class="Code" href="javascript:goNode('text_class')">Text</a> and <a class="Code" href="javascript:goNode('font')">Font</a> classes for adding text to your sketch.</li>
-<li>The <a class="Code" href="javascript:goNode('robot_class')">sc8pr.robot</a> module defines features for creating robotics simulations.</li>
+<li>The <a class="Code" href="javascript:goNode('robot_class')">sc8pr.robot</a> module defines features for creating robotics simulations. In <b class="Comment">v2.2</b> <code>sc8pr.robot</code> becomes a package containing several additional modules.</li>
 <li>The <a class="Code" href="javascript:goNode('gui')">sc8pr.gui</a> package defines additional graphics classes for creating Graphical User Interface controls.</li></ul>
 
 <h4>Extras</h4>
 <ul><li>The <a href="javascript:goNode('misc')"><code>sc8pr.misc</code></a> package defines additional features such as video effects and the <a class="Code" href="javascript:goNode('video_class')">Video</a>, <a class="Code" href="javascript:goNode('plot_class')">Plot</a>, and <a class="Code" href="javascript:goNode('locus')">Locus</a> graphics classes. This package also includes experimental features that may be included in future versions of <code>sc8pr</code>.</li>
-<li>The <a href="javascript:goNode('examples')"><code>sc8pr.examples</code></a> package includes example programs that make use of <code>sc8pr</code>. Some of these examples may have additional dependencies (such as <code>Pillow</code> or <code>imageio</code>) and some make use of experimental <code>sc8pr</code> features.</li></ul>
+<li>The <a href="javascript:goNode('misc')"><code>sc8pr.plot</code></a> package (<b class="Comment">experimental in v2.2</b>) allows sketches and canvases to use coordinate systems other than native pixel coordinates and includes additional functionality such as scroll bars.</li>
+<li>The <a href="javascript:goNode('examples')"><code>sc8pr.examples</code></a> package includes example programs that make use of <code>sc8pr</code>. Some of these examples may have additional dependencies (such as <code>Pillow</code> or <code>imageio</code>) and some make use of experimental <code>sc8pr</code> features. <b class="Comment">This package is deprecated in v2.2!</b> The robotics simulations from the examples have been moved to the <code>sc8pr.robot</code> package and the remaining examples are being moved online rather than including them with <code>sc8pr</code> itself.</li></ul>
 
 </article>
