@@ -22,7 +22,7 @@ let course = "robo";
 <p>A better method is to rely on the robot’s <b class="Red">sensors</b> to decide when to stop the motors. The <code>sc8pr</code> robot simulation has a sensor called <code>gyro</code> (gyroscope) that indicates the direction the robot is pointing.</p>
 <pre class="Code"><span class="Comment"># Program 'r02_ex1.py'</span>
 
-from sc8pr.examples.robotSim import Arena
+from sc8pr.robot.arena import Arena
 from sc8pr.geom import angleDifference
 
 def brain(robot):

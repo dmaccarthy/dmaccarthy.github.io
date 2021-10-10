@@ -39,7 +39,7 @@ let course = "robo";
     <li>Type the name of the software package, <code>sc8pr</code>.</li>
     <li>Click the button to search the Python Package Index (PyPI).</li>
     <li>Click the three dots.</li>
-    <li>Select the desired version. This course uses <code>sc8pr 2.2a0</code>.</li>
+    <li>Select the desired version. This course uses <code>sc8pr 2.2a3</code>.</li>
     <li>Check “Upgrade Dependencies” and then click the Install button.</li>
 </ol>
 </div>
@@ -55,7 +55,7 @@ let course = "robo";
 
 <pre class="Code"><span class="Comment"># Program 'r01_ex1.py'...</span>
 
-from sc8pr.examples.robotSim import Arena
+from sc8pr.robot.arena import Arena
 
 def brain(robot):
     <span class="Comment">"This function controls the robot"</span>
@@ -89,7 +89,7 @@ Arena.run(brain)</pre>
 
 <pre class="Code"><span class="Comment"># Program 'r01_ex2.py'...</span>
 
-from sc8pr.examples.robotSim import Arena
+from sc8pr.robot.arena import Arena
 
 def brain(robot):
     <span class="Comment">"Move the robot clockwise"</span>
@@ -103,7 +103,7 @@ Arena.run(brain)</pre>
 
 <pre class="Code"><span class="Comment"># Program 'r01_ex3.py'...</span>
 
-from sc8pr.examples.robotSim import Arena
+from sc8pr.robot.arena import Arena
 
 def brain(robot):
     <span class="Comment">"Spin the robot clockwise"</span>
@@ -121,7 +121,7 @@ Arena.run(brain)</pre>
 
 <pre class="Code"><span class="Comment"># Program 'r01_ex4.py'...</span>
 
-from sc8pr.examples.robotSim import Arena
+from sc8pr.robot.arena import Arena
 
 def brain(robot):
     <span class="Comment">"Go forward for 2.5 seconds"</span>
@@ -141,7 +141,7 @@ Arena.run(brain)</pre>
     program <code>r01_letter.py</code>  to make the robot draw a different letter on the floor of the arena.
 <!--pre class="Code"><span class="Comment"># Program 'r01_letter.py'...</span>
 
-from sc8pr.examples.robotSim import Arena
+from sc8pr.robot.arena import Arena
 
 def brain(robot):
     <span class="Comment">"Draw a letter"</span>

@@ -4,7 +4,7 @@ let phys = {title:"Unit B: Physics", id:"phys", icon:"rocket", menu:[
     {title:"Assignment Booklet", gdrv:"1dKbreMxOXUs2u_TwsgtoqFPgQIS9PVAM"},
     // {title:"Science Skills", icon:"flask", menu:[]},
     {title:"Part 1: Science Skills & Motion", icon:"rocket", menu:[
-        {title:"Significant Digits", unavail:1, icon:1, open:"phys/sigdig.html"},
+        // {title:"Significant Digits", unavail:1, icon:1, open:"phys/sigdig.html"},
         {title:"Scientific Notation", icon:1, open:"phys/sciNot.html"},
         {title:"SI Units", icon:1, open:"phys/si.html"},
         // {title:"Scientific Method", icon:1, open:"phys/sciMeth.html"},

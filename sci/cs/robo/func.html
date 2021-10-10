@@ -41,7 +41,7 @@ let course = "robo";
 
 <pre class="Code"><span class="Comment"># Program 'r03_ex1.py'</span>
 
-from sc8pr.examples.robotSim import Arena
+from sc8pr.robot.arena import Arena
 
 def move(robot, time, motors=1):
     <span class="Comment">"Move the robot for the specified amount of time"</span>
@@ -103,7 +103,7 @@ robot.motors = 0            <span class="Comment"># Turn motors off</span></pre>
 
 <pre class="Code"><span class="Comment"># Program 'r03_turn.py'</span>
 
-from sc8pr.examples.robotSim import Arena
+from sc8pr.robot.arena import Arena
 
 def turnTo(robot, angle, motors=(0.1, -0.1), accuracy=0.5):
     <span class="Comment">"Turn the robot until it faces the specified angle"</span>
@@ -120,7 +120,7 @@ Arena.run(brain)</pre></li>
     Complete the program below by copying your <code>turnTo</code> function.
 <pre class="Code"><span class="Comment"># Program 'r03_figure8.py'</span>
 
-from sc8pr.examples.robotSim import Arena
+from sc8pr.robot.arena import Arena
 
 def circle(robot, motors):
     <span class="Comment">"Draw a circle"</span>
@@ -141,7 +141,7 @@ Arena.run(brain)</pre></li>
     This will be easiest if you use your <code>turnTo</code> function and the <code>move</code> function from the example.
 <pre class="Code"><span class="Comment"># Program 'r03_square.py'</span>
 
-from sc8pr.examples.robotSim import Arena
+from sc8pr.robot.arena import Arena
 
 def square(robot, time_per_side, motors=1):
     <span class="Comment">"Move around a square"</span>

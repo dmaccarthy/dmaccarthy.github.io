@@ -26,7 +26,7 @@ let course = "robo";
     bluish-white, which will have the same H and V values as ordinary blue, but a smaller S value.
 <pre class="Code"><span class="Comment"># Program 'r07_line1.py'</span>
 
-from sc8pr.examples.robotSim import ParkingLot
+from sc8pr.robot.park import ParkingLot
 
 def followLine(robot):
     <span class="Comment">"Follow the blue line"</span>
@@ -50,7 +50,7 @@ ParkingLot.run(brain)</pre>
     and by a much larger amount when it turns around at the end.
 <pre class="Code"><span class="Comment"># Program 'r07_ex1.py'</span>
 
-from sc8pr.examples.robotSim import ParkingLot
+from sc8pr.robot.park import ParkingLot
 
 def brain(robot):
     robot.gyroSample(3)

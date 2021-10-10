@@ -24,12 +24,12 @@ let course = "robo";
 
 <span class="Comment">"Robot soccer simulation"</span>
 
-from sc8pr.examples.soccer import main
+from sc8pr.robot.soccer import play
 
 def brain(robot):
     <span class="Comment">"Soccer robot brain"</span>
 
-main(brain)</pre>
+play(brain)</pre>
 
 <p>The robot’s front sensor will detect blue when pointed at the boards, yellow (different shades) when pointed at the opposing player or net, and red when pointed at its own net. Since the ball is half black and half white, it will register as grey on the colour sensor.</p>
 <p>The downward sensor will detect yellow or red in the goal creases and green on the turf.</p>

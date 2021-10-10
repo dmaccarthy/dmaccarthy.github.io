@@ -1,54 +1,20 @@
-let kin1d = [
-    // {title:"Assignment Booklet", gdrv:"16_BYOnwY0FuwW7wXeVVwQ88IoC7tZ2gb"},
-    {title:"Position & Displacement", icon:1, vid:"V8hJhTE3bUk", menu:[
-        {title:"Lesson Notes", open:"kin/displ.html"},
-        {title:"Assignment Handout", gdrv:"13YDvlb2IifPhmuuTyGMwO65T82H77bzL"},
-        {title:"Practice Solutions", gdoc:"1EkZMELpyV191px9oqb_zru74Xaf01eEAZsmLG4c3-jw"},
-    ]},
-    {title:"Velocity & Speed", icon:1, menu:[
-        {title:"Lesson Notes", open:"kin/vel.html"},
-        {title:"Assignment Handout", gdrv:"1P3ebOhTWW83ybxkfQxX2ASKBcCrnHz90"},
-        {title:"Practice Solutions", gdoc:"1eRjia_G9Zny7pNvpGp282N-XVMRCjJh9MWwRlNCW36A"},
-    ]},
-    {title:"Lab: Motion of a Rolling Ball", gdrv:"1W92quSuyMqFEnT1QdJlm0Y4poPIvDTGI"},
-    {title:"Motion Graphs", icon:1, menu:[
-        {title:"Lesson Notes", open:"kin/graph.html"},
-        {title:"Assignment Handout", gdrv:"1AIEupND1GX2W-yd5QZ0CaDh97KE7mM8n"},
-        {title:"Practice Solutions", gdoc:"12uwMmaCWOsEemtR8fj6jujP-FjGihNef3Wn08nHmCOY"},
-    ]},
-    {title:"Acceleration", icon:1, menu:[
-        {title:"Lesson Notes", open:"kin/accel.html"},
-        {title:"Assignment Handout", gdrv:"1Cy9IOAlj7GwufjHM6vHXMa2UgCaH539S"},
-        {title:"Practice Solutions", gdoc:"1RVLIxYzDym_sqjgL8SYdxtLIts9mJ0BAcoEG0FCZfvo"},
-    ]},
-    {title:"Lab: Motion of a Bouncing Ball", icon:"ball", menu:[
-        {title:"Handout", gdrv:"10Huo142Lt2-qn3suDdfvbK3wp6Cg2TeA"},
-        {title:"Simulation", icon:1, open:"../applet/bounce.html"},
-    ]},
-    {title:"Uniform Accelerated Motion", icon:1, menu:[
-        {title:"Lesson Notes", open:"kin/uam.html"},
-        {title:"Assignment Handout", gdrv:"1FkSyKa-Sd_jvq5MhwjypL0p1MtL__jMv"},
-        {title:"Practice Solutions", gdoc:"14GrA1jhjfFNOpCzbr0xraPt_mwPBfb3PHOFu7G6e6XQ"},
-    ]}
-];
-
 let vec2d = [
     // {title:"Assignment Booklet", gdrv:"1qG81lRprAmdtcidfph_w-1kyF1VJUFrd"},
     {title:"2D Vectors Applet", icon:"html5", open:"https://applets.davidmaccarthy.repl.co/vec2d"},
     {title:"Magnitude & Direction", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/mag.html"},
-        {title:"Assignment Handout", unavail:1, gdrv:""},
-        {title:"Practice Solutions", unavail:1, gdoc:"14vQp9XvGS1yPjDoLDfFNE2u5MAnIqKgcXTgIAwVCRQQ"},
+        {title:"Assignment Handout", gdrv:"1vim1oj76fW9OQc6tCA_mwlSIH4ejfbbk"},
+        {title:"Practice Solutions", gdoc:"14vQp9XvGS1yPjDoLDfFNE2u5MAnIqKgcXTgIAwVCRQQ"},
     ]},
     {title:"Polar & Cartesian Form", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/polar.html"},
-        {title:"Assignment Handout", unavail:1, gdrv:""},
-        {title:"Practice Solutions", unavail:1, gdoc:"14-CgdDFUiCwpJfPlghKpw1iMRfC8J3NJBwrNP20fois"},
+        {title:"Assignment Handout", gdrv:"1GzdkoyY60Nn2LaQ93qSoy8WUVFdeLBt-"},
+        {title:"Practice Solutions", gdoc:"14-CgdDFUiCwpJfPlghKpw1iMRfC8J3NJBwrNP20fois"},
     ]},
     {title:"Vector Arithmetic", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/arith.html"},
-        {title:"Assignment Handout", unavail:1, gdrv:""},
-        {title:"Practice Solutions", unavail:1, gdoc:"1960E_v1vFacD-7sbtFqrE3Xzqjr32rO4H435r4aT3WM"},
+        {title:"Assignment Handout", gdrv:"15xe5uJ67N0FNz4171ZUIm2y0sT7tL_xM"},
+        {title:"Practice Solutions", gdoc:"1960E_v1vFacD-7sbtFqrE3Xzqjr32rO4H435r4aT3WM"},
     ]},
     {title:"Projectile Motion", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/proj.html"},
@@ -137,6 +103,40 @@ let energy = [
         {title:"Practice Solutions", gdoc:"1PHRVmr9tMgm8ncSCnykQ1zYYznPADaJZV1KcrYZAWmQ"},
     ]},
     {title:"Chapter Review", icon:"lesson", ajax:"energy/summary.htm", menu:[]},
+];
+
+let kin1d = [
+    // {title:"Assignment Booklet", gdrv:"16_BYOnwY0FuwW7wXeVVwQ88IoC7tZ2gb"},
+    {title:"Position & Displacement", icon:1, vid:"V8hJhTE3bUk", menu:[
+        {title:"Lesson Notes", open:"kin/displ.html"},
+        {title:"Assignment Handout", gdrv:"13YDvlb2IifPhmuuTyGMwO65T82H77bzL"},
+        {title:"Practice Solutions", gdoc:"1EkZMELpyV191px9oqb_zru74Xaf01eEAZsmLG4c3-jw"},
+    ]},
+    {title:"Velocity & Speed", icon:1, menu:[
+        {title:"Lesson Notes", open:"kin/vel.html"},
+        {title:"Assignment Handout", gdrv:"1P3ebOhTWW83ybxkfQxX2ASKBcCrnHz90"},
+        {title:"Practice Solutions", gdoc:"1eRjia_G9Zny7pNvpGp282N-XVMRCjJh9MWwRlNCW36A"},
+    ]},
+    {title:"Lab: Motion of a Rolling Ball", gdrv:"1W92quSuyMqFEnT1QdJlm0Y4poPIvDTGI"},
+    {title:"Motion Graphs", icon:1, menu:[
+        {title:"Lesson Notes", open:"kin/graph.html"},
+        {title:"Assignment Handout", gdrv:"1AIEupND1GX2W-yd5QZ0CaDh97KE7mM8n"},
+        {title:"Practice Solutions", gdoc:"12uwMmaCWOsEemtR8fj6jujP-FjGihNef3Wn08nHmCOY"},
+    ]},
+    {title:"Acceleration", icon:1, menu:[
+        {title:"Lesson Notes", open:"kin/accel.html"},
+        {title:"Assignment Handout", gdrv:"1Cy9IOAlj7GwufjHM6vHXMa2UgCaH539S"},
+        {title:"Practice Solutions", gdoc:"1RVLIxYzDym_sqjgL8SYdxtLIts9mJ0BAcoEG0FCZfvo"},
+    ]},
+    {title:"Lab: Motion of a Bouncing Ball", icon:"ball", menu:[
+        {title:"Handout", gdrv:"10Huo142Lt2-qn3suDdfvbK3wp6Cg2TeA"},
+        {title:"Simulation", icon:1, open:"../applet/bounce.html"},
+    ]},
+    {title:"Uniform Accelerated Motion", icon:1, menu:[
+        {title:"Lesson Notes", open:"kin/uam.html"},
+        {title:"Assignment Handout", gdrv:"1FkSyKa-Sd_jvq5MhwjypL0p1MtL__jMv"},
+        {title:"Practice Solutions", gdoc:"14GrA1jhjfFNOpCzbr0xraPt_mwPBfb3PHOFu7G6e6XQ"},
+    ]}
 ];
 
 /*
