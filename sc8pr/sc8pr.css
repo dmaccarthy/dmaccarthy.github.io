@@ -30,6 +30,11 @@ nav.Wide {
 	top:0; left:0;
 }
 
+nav:not(.Wide) {
+	max-height:35vh;
+	overflow-y:scroll;
+}
+
 nav ul {
 	padding-left:0;
 	color:blue;

@@ -67,12 +67,16 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 	<p><code><span class="Hilite">__len__</span>()</code> → <code>int</code>: Enables the <code>len</code> function to determine the number of graphic instances currently added to the canvas.</p>
 	<p><code><span class="Hilite">__setitem__</span>(key, gr)</code> → <code>None</code>: Adds a graphic instance to the canvas with the specified key (name). <b class="Comment">As of v2.2</b>, this function will accept an <code>int</code> in place of a key, to insert the item into the canvas with a specific <code>layer</code> value. The key cannot be a <code>slice</code>, or a non-hashable type. A <code>KeyError</code> will be raised if an invalid type is used (including an <code>int</code> in versions earlier than 2.2), or if the key is already in use by an instance other than <code>gr</code>.</p>
 	<!--p><code><span class="Hilite">__setitem__</span>(key, gr)</code> → <code>None</code>: Adds a graphic instance to the canvas with the specified key (name). The key cannot be an <code>int</code>, a <code>slice</code>, or a non-hashable type. A <code>KeyError</code> will be raised if an invalid type is used, or if the key is already in use by an instance other than <code>gr</code>.</p-->
-	<p><code><span class="Hilite">cover</span>()</code> → <code>Image</code>: Creates a semi-transparent image that can cover the canvas. This is useful for blocking mouse events, for example when running a dialog on top of the canvas. <b class="Comment">[To be added in v2.2]</b></p>
+	<p><code><span class="Hilite">cover</span>()</code> → <code>Image</code>: Creates a semi-transparent image that can cover the canvas. This is useful for blocking mouse events, for example when running a dialog on top of the canvas. <b class="Comment">[Added in v2.2]</b></p>
 	<p><code><span class="Hilite">everything</span>()</code> → <code>generator</code>: Yields a sequence of contained graphics recursively; i.e. includes graphics contained by nested canvases.</p>
 	<p><code><span class="Hilite">find</span>(criteria, recursive=False)</code> → <code>generator</code>: Yields a sequence of contained graphics that meet the specified criteria.</p>
 		<div class="Indent">
 		<p><code class="Hilite">criteria(gr)</code>: A function that accepts a <code>Graphics</code> instance argument and returns a <code>bool</code> indicating whether the instance is a match.</p>
 		<p><code class="Hilite">recursive</code>: A <code>bool</code> specifying whether to search in contained canvases.</p>
+		</div>
+	<p><code><span class="Hilite">flatten</span>(keep)</code> → <code>self</code>: Draws the <code>Graphic</code> instances currently in the canvas onto the background image and then removes each item from the canvas. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">keep</code>: An item or sequence of items to exclude from the flatten operation.</p>
 		</div>
 	<p><code><span class="Hilite">instOf</span>(cls)</code> → <code>generator</code>: Yields a sequence of contained graphics (non-recursive) that are instances of the specified class.</p>
 	<p><code><span class="Hilite">objectAt</span>(pos, includeAll=False)</code> → <code>Graphic</code>: Returns the contained graphic instance located at the specified position. If more than one graphic is located at the position, the graphic with the highest layer is returned. If no contained graphics are at the position, the method will return <code>self</code>.</p>
