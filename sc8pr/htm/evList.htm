@@ -49,7 +49,7 @@
 	<td><code>onclick</code></td>
 	<td><code>gr, ev</code></td>
 	<td>All Graphics</td>
-	<td>As of <b class="Comment">v2.2</b>, this handler is called after <code>onmousedown</code> and <code>onmouseup</code> when they happen on the same target.
+	<td><b class="Comment">As of v2.2</b>, this handler is called after <code>onmousedown</code> and <code>onmouseup</code> when they happen on the same target.
 		In earlier versions, <code>onmousedown</code> was not supported and <code>onclick</code> was called instead when the mouse button was pressed.</td>
 </tr>
 <tr>
@@ -62,7 +62,7 @@
 	<td><code>ondrag</code></td>
 	<td><code>gr, ev</code></td>
 	<td>All Graphics*</td>
-	<td>Called when an object is being dragged by the mouse. There is a generic function <code>ondrag</code> that can be imported from the <code>sc8pr.util</code> module which re-positions the object as it is dragged. *The DRAG event applies to the sketch itself starting in v2.2; in prior versions it only applied to non-sketch graphics objects.</td>
+	<td>Called when an object is being dragged by the mouse. There is a generic function <code>ondrag</code> that can be imported from the <code>sc8pr.util</code> module which re-positions the object as it is dragged. *The DRAG event applies to the sketch itself <b class="Comment">starting in v2.2</b>; in prior versions it only applied to non-sketch graphics objects.</td>
 </tr>
 <tr>
 	<td><code>ondraw</code></td>
@@ -104,7 +104,7 @@
 	<td><code>onmousedown</code></td>
 	<td><code>gr, ev</code></td>
 	<td>All Graphics</td>
-	<td>Called when a mouse button is pressed while the mouse pointer is positioned on a graphics object. <b class="Comment">[Added in v2.2]</b</td>
+	<td>Called when a mouse button is pressed while the mouse pointer is positioned on a graphics object. <b class="Comment">[Added in v2.2]</b></td>
 </tr>
 <tr>
 	<td><code>onmousemotion</code></td>
@@ -140,13 +140,13 @@
 	<td><code>onrelease</code></td>
 	<td><code>gr, ev</code></td>
 	<td>All Graphics*</td>
-	<td>Called when a DRAG action is completed by releasing the mouse button. *The RELEASE event applies to the sketch itself starting in v2.2; in prior versions it only applied to non-sketch graphics objects.</td>
+	<td>Called when a DRAG action is completed by releasing the mouse button. *The RELEASE event applies to the sketch itself <b class="Comment">starting in v2.2</b>; in prior versions it only applied to non-sketch graphics objects.</td>
 </tr>
 <tr>
 	<td><code>onreset</code></td>
 	<td><code>gr</code></td>
 	<td>Sprites</td>
-	<td>Called by <code>Sprite.ondraw</code> when the <code>costumeNumber</code> resets to <code>0</code>.</td>
+	<td>Called by <code>Sprite.ondraw</code> when the <code>costumeNumber</code> resets to <code>0</code>. <b class="Comment">[Added in v2.2]</b></td>
 </tr>
 <tr>
 	<td><code>onresize</code></td>
