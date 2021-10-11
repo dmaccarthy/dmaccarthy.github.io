@@ -32,7 +32,6 @@ nav.Wide {
 
 nav:not(.Wide) {
 	max-height:35vh;
-	overflow-y:scroll;
 }
 
 nav ul {
