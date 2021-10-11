@@ -82,7 +82,7 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 	<p><code><span class="Hilite">objectAt</span>(pos, includeAll=False)</code> → <code>Graphic</code>: Returns the contained graphic instance located at the specified position. If more than one graphic is located at the position, the graphic with the highest layer is returned. If no contained graphics are at the position, the method will return <code>self</code>.</p>
 		<div class="Indent">
 		<p><code class="Hilite">pos</code>: The canvas coordinates to be checked.</p>
-		<p><code class="Hilite">includeAll</code>: A <code>bool</code> that specifies whether to include non-hoverable graphics in the search. <b class="Comment">[To be added in v2.2]</b></p>
+		<p><code class="Hilite">includeAll</code>: A <code>bool</code> that specifies whether to include non-hoverable graphics in the search. <b class="Comment">[Added in v2.2]</b></p>
 		</div>
 	<p><code><span class="Hilite">purge</span>(recursive=False)</code> → <code>None</code>: Remove all <code>Graphic</code> instances from the canvas.</p>
 		<div class="Indent">
@@ -104,7 +104,7 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 </div>
 
 <h4>Static Method</h4><div class="Indent">
-	<p><code><span class="Hilite">grid</span>(*args, cols=None, size=None)</code> → <code>Canvas</code>: Arranges image files or other graphics into a grid where each “tile” has the same size. This method can be called to make a spritesheet from individual costumes. <b class="Comment">[Added in v2.1]</b></p>
+	<p><code><span class="Hilite">grid</span>(*args, cols=None, size=None)</code> → <code>Canvas</code>: Arranges image files or other graphics into a grid where each “tile” has the same size. This method can be called to make a spritesheet from individual costumes. <b class="Comment">In v2.2</b>, this method was moved from <code>Canvas</code> into the new subclass, <code><a class="Hilite" href="javascript:goNode('table')">Table</a></code>. <b class="Comment">[Added in v2.1]</b></p>
 		<div class="Indent">
 		<p><code class="Hilite">args</code>: A sequence of <code>Graphic</code> instances or image file names.</p>
 		<p><code class="Hilite">cols</code>: The number of columns in the grid. If omitted, the images will be arranged into a single row.</p>
