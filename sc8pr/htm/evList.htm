@@ -61,8 +61,8 @@
 <tr>
 	<td><code>ondrag</code></td>
 	<td><code>gr, ev</code></td>
-	<td>All Graphics except Sketch</td>
-	<td>Called when an object is being dragged by the mouse. There is a generic function <code>ondrag</code> that can be imported from the <code>sc8pr.util</code> module which re-positions the object as it is dragged.</td>
+	<td>All Graphics*</td>
+	<td>Called when an object is being dragged by the mouse. There is a generic function <code>ondrag</code> that can be imported from the <code>sc8pr.util</code> module which re-positions the object as it is dragged. *The DRAG event applies to the sketch itself starting in v2.2; in prior versions it only applied to non-sketch graphics objects.</td>
 </tr>
 <tr>
 	<td><code>ondraw</code></td>
@@ -139,8 +139,14 @@
 <tr>
 	<td><code>onrelease</code></td>
 	<td><code>gr, ev</code></td>
-	<td>All Graphics except Sketch</td>
-	<td>Called when a drag action is completed by releasing the mouse button.</td>
+	<td>All Graphics*</td>
+	<td>Called when a DRAG action is completed by releasing the mouse button. *The RELEASE event applies to the sketch itself starting in v2.2; in prior versions it only applied to non-sketch graphics objects.</td>
+</tr>
+<tr>
+	<td><code>onreset</code></td>
+	<td><code>gr</code></td>
+	<td>Sprites</td>
+	<td>Called by <code>Sprite.ondraw</code> when the <code>costumeNumber</code> resets to <code>0</code>.</td>
 </tr>
 <tr>
 	<td><code>onresize</code></td>
