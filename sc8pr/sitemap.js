@@ -54,8 +54,9 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 				{title:"class Video", link:"video_class"},
 			]},
 			{title:".media", link:"media", pages:[
+				{title:"class FFReader", link:"ffr"},
+				{title:"class FFWriter", link:"ffw"},
 				{title:"class Grabber", link:"grabber"},
-//				{title:"class ImageIO", link:"imageio"},
 			]},
 			{title:".table", link:"table"},
 			{title:".webcache", link:"webcache", pages:[

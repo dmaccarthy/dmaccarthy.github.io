@@ -1,0 +1,35 @@
+﻿<article>
+<h1><code>sc8pr.misc.media.FFWriter</code> Class</h1>
+<p><span class="Comment"><b>Experimental! Added in v2.2</b>.</span></p>
+
+<p><code>FFWriter</code> is used to encode media files. This class uses the <code>imageio</code> and <code>imageio-ffmpeg</code> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>). You must also have the FFmpeg program itself available on the user’s system.</p>
+
+<!--p>In the example below...</p>
+
+<pre class="Code" id="Ex1"></pre-->
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">FFWriter</span>(fn, fps=30)</code>: Create an instance to write the specified media file.</p>
+		<div class="Indent">
+		<p><code class="Hilite">fn</code>: The path to an FFmpeg-compatible media file to be encoded.</p>
+		<p><code class="Hilite">fps</code>: The frame rate in frames-per-second.</p>
+		</div>
+</div>
+
+<h4>Static Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">ffmpeg</span>(ff)</code> → <code>None</code>: Specifies the location of FFmpeg for the <code>imageio</code> package; must be called unless the system recognizes ‘ffmpeg’ as a valid command.</p>
+		<div class="Indent">
+		<p><code class="Hilite">ff</code>: The path to the FFmpeg executable.</p>
+		</div>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">encode</span>(vid)</code> → <code>self</code>: Encode the specified <code>Video</code> instance to the movie file.</p>
+	<p><code><span class="Hilite">write</span>(img)</code> → <code>self</code>: Write a single frame to the movie from from the provided image.</p>
+		<div class="Indent">
+		<p><code class="Hilite">img</code>: An <code>Image</code> instance; or any object that has an <code>image</code> attribute containing a <code>pygame.Surface</code>, or that can be passed to the <code>Image</code> constructor.</p>
+		</div>
+</div>
+
+</article></body>
+</html>

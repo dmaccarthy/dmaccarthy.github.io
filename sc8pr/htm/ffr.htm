@@ -1,0 +1,32 @@
+﻿<article>
+<h1><code>sc8pr.misc.media.FFReader</code> Class</h1>
+<p><span class="Comment"><b>Experimental! Added in v2.2</b>.</span></p>
+
+<p><code>FFReader</code> is used to decode media files into <code>Video</code> instances that can be used with your <code>sc8pr</code> sketches. This class uses the <code>imageio</code> and <code>imageio-ffmpeg</code> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>). You must also have the FFmpeg program itself available on the user’s system.</p>
+
+<!--p>In the example below...</p>
+
+<pre class="Code" id="Ex1"></pre-->
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">FFReader</span>(fn)</code>: Create an instance to read the specified media file.</p>
+		<div class="Indent">
+		<p><code class="Hilite">fn</code>: The path to an FFmpeg-compatible media file to be decoded.</p>
+		</div>
+</div>
+
+<h4>Static Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">ffmpeg</span>(ff)</code> → <code>None</code>: Specifies the location of FFmpeg for the <code>imageio</code> package; must be called unless the system recognizes ‘ffmpeg’ as a valid command.</p>
+		<div class="Indent">
+		<p><code class="Hilite">ff</code>: The path to the FFmpeg executable.</p>
+		</div>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">__iter__</span>()</code> → <code>generator</code>: Iterates through the frames of the movie yielding a sequence of uncompressed <code>PixelData</code> instances.</p>
+	<p><code><span class="Hilite">read</span>(n=None)</code> → <code>Video</code>: Read the next <code>n</code> frames of the movie and convert them to a <code>Video</code> instance.</p>
+	<p><code><span class="Hilite">skip</span>(n)</code> → <code>self</code>: Read and discard the next <code>n</code> frames of the movie.</p>
+</div>
+
+</article></body>
+</html>
