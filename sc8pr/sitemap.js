@@ -55,7 +55,7 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 			]},
 			{title:".media", link:"media", pages:[
 				{title:"class Grabber", link:"grabber"},
-				{title:"class ImageIO", link:"imageio"},
+//				{title:"class ImageIO", link:"imageio"},
 			]},
 			{title:".table", link:"table"},
 			{title:".webcache", link:"webcache", pages:[
