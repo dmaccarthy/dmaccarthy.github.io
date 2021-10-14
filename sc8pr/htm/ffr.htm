@@ -44,18 +44,19 @@ FFReader.convert("movie.mp4", print)</pre>
 		<div class="Indent">
 		<p><code class="Hilite">ff</code>: The path to the FFmpeg executable.</p>
 		</div>
+	<p><code><span class="Hilite">convert</span>(fn, progress=None)</code> → <code>str</code>: Converts the named movie file and saves it as an S8V file.</p>
+		<div class="Indent">
+		<p><code class="Hilite">fn</code>: The path to the movie file to convert.</p>
+		<p><code class="Hilite">progress(i, n)</code>: A function called after each frame is converted and saved.</p>
+		</div>
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">__iter__</span>()</code> → <code>generator</code>: Iterates through the frames of the movie yielding a sequence of uncompressed <code>PixelData</code> instances.</p>
+	<p><code><span class="Hilite">estimateFrames</span>()</code> → <code>int</code> or <code>None</code>: Use the movie metadata to estimate the number of frames without actually reading them.</p>
 	<p><code><span class="Hilite">read</span>(n=None)</code> → <code>Video</code>: Read the next <code>n</code> frames of the movie and convert them to a <code>Video</code> instance.</p>
-	<p><code><span class="Hilite">saveS8V</span>(fn)</code> → <code>self</code>: Transcode the media file to S8V format.</p>
-		<div class="Indent">
-		<p><code class="Hilite">fn</code>: The name of the S8V file to be saved.</p>
-		</div>
-
 	<p><code><span class="Hilite">skip</span>(n)</code> → <code>self</code>: Read and discard the next <code>n</code> frames of the movie.</p>
 </div>
-
+	 
 </article></body>
 </html>
