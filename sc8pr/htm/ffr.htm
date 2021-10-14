@@ -26,8 +26,7 @@ Sketch().play()</pre>
 import imageio, numpy, PIL.Image
 
 FFReader.ffmpeg("C:/Program Files/ffmpeg/bin/ffmpeg.exe")
-with FFReader("movie.mp4") as ffr:
-    ffr.saveS8V("movie.s8v")</pre>
+FFReader.convert("movie.mp4", print)</pre>
 
 <h4>Constructor</h4><div class="Indent">
 	<p><code><span class="Hilite">FFReader</span>(fn)</code>: Create an instance to read the specified media file.</p>
