@@ -2,17 +2,37 @@
 <h1><code>sc8pr.misc.media.FFReader</code> Class</h1>
 <p><span class="Comment"><b>Experimental! Added in v2.2</b>.</span></p>
 
-<p><code>FFReader</code> is used to decode media files into <code>Video</code> instances that can be used with your <code>sc8pr</code> sketches. This class uses the <code>imageio</code> and <code>imageio-ffmpeg</code> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>). You must also have the FFmpeg program itself available on the user’s system.</p>
+<p><code>FFReader</code> is used to decode media files into <code>Video</code> instances that can be used with your <code>sc8pr</code> sketches. This class uses the <a href="https://imageio.readthedocs.io/en/stable/" target="im"><code>imageio</code></a> and <code>imageio-ffmpeg</code> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>). You must also have the <a href="https://ffmpeg.org/" target="ff">FFmpeg</a> program itself available on the user’s system.</p>
 
-<!--p>In the example below...</p>
+<p>The <code>FFReader</code> class uses Python’s <code>with...as</code> structure. 
 
-<pre class="Code" id="Ex1"></pre-->
+
+Note that <code>sc8pr</code> does not import any packages other than <code>pygame</code>; your program must import the three modules needed for <code>FFReader</code> to work.</p>
+
+
+<p>In the example below, <code>FFReader</code> loads the video from an MP4 file into a <code>Video</code> instance.</p>
+
+<pre class="Code" id="Ex1">from sc8pr import Sketch
+from sc8pr.misc.media import FFReader
+import imageio, numpy, PIL.Image
+
+def setup(sk):
+    with FFReader("movie.mp4") as ffr:
+        print(ffr.meta)
+        sk += ffr.read().config(pos=sk.center, costumeTime=2)
+
+FFReader.ffmpeg("C:/Program Files/ffmpeg/bin/ffmpeg.exe")
+Sketch().play()</pre>
 
 <h4>Constructor</h4><div class="Indent">
 	<p><code><span class="Hilite">FFReader</span>(fn)</code>: Create an instance to read the specified media file.</p>
 		<div class="Indent">
 		<p><code class="Hilite">fn</code>: The path to an FFmpeg-compatible media file to be decoded.</p>
 		</div>
+</div>
+
+<h4>Read-Only Property</h4><div class="Indent"><p></p>
+	<p><code class="Hilite">meta</code>: A dictionary of metadata read from the movie file.</p>
 </div>
 
 <h4>Static Methods</h4><div class="Indent">

@@ -2,11 +2,30 @@
 <h1><code>sc8pr.misc.media.FFWriter</code> Class</h1>
 <p><span class="Comment"><b>Experimental! Added in v2.2</b>.</span></p>
 
-<p><code>FFWriter</code> is used to encode media files. This class uses the <code>imageio</code> and <code>imageio-ffmpeg</code> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>). You must also have the FFmpeg program itself available on the user’s system.</p>
+<p><code>FFWriter</code> is used to encode media files. This class uses the <a href="https://imageio.readthedocs.io/en/stable/" target="im"><code>imageio</code></a> and <code>imageio-ffmpeg</code> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>). You must also have the <a href="https://ffmpeg.org/" target="ff">FFmpeg</a> program itself available on the user’s system.</p>
 
-<!--p>In the example below...</p>
+<p>The <code>FFWriter</code> class uses Python’s <code>with...as</code> structure. Here is an example showing how to encode a <code>Video</code> instance as an MP4 file at 20 frames per second. Note that <code>sc8pr</code> does not import any packages other than <code>pygame</code>; your program must import the three modules needed for <code>FFWriter</code> to work.</p>
+<pre class="Code" id="Ex1">from sc8pr.misc.media import FFWriter
+<span class="Hilite">import imageio, numpy, PIL.Image</span>
 
-<pre class="Code" id="Ex1"></pre-->
+FFWriter.ffmpeg("C:/Program Files/ffmpeg/bin/ffmpeg.exe")
+with FFWriter("movie.mp4", 20) as ffw:
+    ffw.encode("video.s8v")</pre>
+
+<p>You can also use <code>FFWriter</code> to record your sketch directly to an MP4 file...</p>
+<pre class="Code" id="Ex2">from sc8pr import Sketch
+from sc8pr.misc.media import FFWriter
+import imageio, numpy, PIL.Image
+
+def ondraw(sk):
+    <span class="Comment">"Write odd-numbered frames to the MP4 file"</span>
+    if sk.frameCount % 2:
+        sk.ffw.write(sk)
+
+<span class="Comment"># Main program</span>
+FFWriter.ffmpeg("C:/Program Files/ffmpeg/bin/ffmpeg.exe")
+with FFWriter("movie.mp4") as ffw:
+    Sketch().config(ffw=ffw).bind(ondraw).play()</pre>
 
 <h4>Constructor</h4><div class="Indent">
 	<p><code><span class="Hilite">FFWriter</span>(fn, fps=30)</code>: Create an instance to write the specified media file.</p>
@@ -25,6 +44,10 @@
 
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">encode</span>(vid)</code> → <code>self</code>: Encode the specified <code>Video</code> instance to the movie file.</p>
+		<div class="Indent">
+		<p><code class="Hilite">vid</code>: A <code>Video</code> instance or the path to an S8V file.</p>
+		</div>
+
 	<p><code><span class="Hilite">write</span>(img)</code> → <code>self</code>: Write a single frame to the movie from from the provided image.</p>
 		<div class="Indent">
 		<p><code class="Hilite">img</code>: An <code>Image</code> instance; or any object that has an <code>image</code> attribute containing a <code>pygame.Surface</code>, or that can be passed to the <code>Image</code> constructor.</p>
