@@ -6,15 +6,12 @@
 
 <p>The <code>FFReader</code> class uses Python’s <code>with...as</code> structure. 
 
-
 Note that <code>sc8pr</code> does not import any packages other than <code>pygame</code>; your program must import the three modules needed for <code>FFReader</code> to work.</p>
 
-
 <p>In the example below, <code>FFReader</code> loads the video from an MP4 file into a <code>Video</code> instance.</p>
-
 <pre class="Code" id="Ex1">from sc8pr import Sketch
 from sc8pr.misc.media import FFReader
-import imageio, numpy, PIL.Image
+<span class="Hilite">import imageio, numpy, PIL.Image</span>
 
 def setup(sk):
     with FFReader("movie.mp4") as ffr:
@@ -23,6 +20,14 @@ def setup(sk):
 
 FFReader.ffmpeg("C:/Program Files/ffmpeg/bin/ffmpeg.exe")
 Sketch().play()</pre>
+
+<p>You can also convert a movie to an S8V file without loading the entire video into memory...</p>
+<pre class="Code" id="Ex2">from sc8pr.misc.media import FFReader
+import imageio, numpy, PIL.Image
+
+FFReader.ffmpeg("C:/Program Files/ffmpeg/bin/ffmpeg.exe")
+with FFReader("movie.mp4") as ffr:
+    ffr.saveS8V("movie.s8v")</pre>
 
 <h4>Constructor</h4><div class="Indent">
 	<p><code><span class="Hilite">FFReader</span>(fn)</code>: Create an instance to read the specified media file.</p>
@@ -45,6 +50,11 @@ Sketch().play()</pre>
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">__iter__</span>()</code> → <code>generator</code>: Iterates through the frames of the movie yielding a sequence of uncompressed <code>PixelData</code> instances.</p>
 	<p><code><span class="Hilite">read</span>(n=None)</code> → <code>Video</code>: Read the next <code>n</code> frames of the movie and convert them to a <code>Video</code> instance.</p>
+	<p><code><span class="Hilite">saveS8V</span>(fn)</code> → <code>self</code>: Transcode the media file to S8V format.</p>
+		<div class="Indent">
+		<p><code class="Hilite">fn</code>: The name of the S8V file to be saved.</p>
+		</div>
+
 	<p><code><span class="Hilite">skip</span>(n)</code> → <code>self</code>: Read and discard the next <code>n</code> frames of the movie.</p>
 </div>
 
