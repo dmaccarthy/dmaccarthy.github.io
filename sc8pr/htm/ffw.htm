@@ -4,15 +4,14 @@
 
 <p><code>FFWriter</code> is used to encode media files. This class uses the <a href="https://imageio.readthedocs.io/en/stable/" target="im"><code>imageio</code></a> and <code>imageio-ffmpeg</code> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>). You must also have the <a href="https://ffmpeg.org/" target="ff">FFmpeg</a> program itself available on the user’s system.</p>
 
-<p>The <code>FFWriter</code> class uses Python’s <code>with...as</code> structure. Here is an example showing how to encode a <code>Video</code> instance as an MP4 file at 20 frames per second. Note that <code>sc8pr</code> does not import any packages other than <code>pygame</code>; your program must import the three modules needed for <code>FFWriter</code> to work.</p>
+<p>Here is an example showing how to encode an S8V file or <code>Video</code> instance as an MP4 file at 20 frames per second. Note that <code>sc8pr</code> does not import any packages other than <code>pygame</code>; your program must import the three modules needed for <code>FFWriter</code> to work.</p>
 <pre class="Code" id="Ex1">from sc8pr.misc.media import FFWriter
 <span class="Hilite">import imageio, numpy, PIL.Image</span>
 
 FFWriter.ffmpeg("C:/Program Files/ffmpeg/bin/ffmpeg.exe")
-with FFWriter("movie.mp4", 20) as ffw:
-    ffw.encode("video.s8v")</pre>
+FFWriter.encode("video.s8v", "movie.mp4", 20)</pre>
 
-<p>You can also use <code>FFWriter</code> to record your sketch directly to an MP4 file...</p>
+<p>You can also use <code>FFWriter</code> to record your sketch directly to an MP4 file by opening an <code>FFWriter</code> instance before running your sketch, and calling its <code>write</code> method when you want to save a frame...</p>
 <pre class="Code" id="Ex2">from sc8pr import Sketch
 from sc8pr.misc.media import FFWriter
 import imageio, numpy, PIL.Image
@@ -36,6 +35,13 @@ with FFWriter("movie.mp4") as ffw:
 </div>
 
 <h4>Static Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">encode</span>(vid, dest=None, fps=None)</code> → <code>None</code>: Encode the specified video using FFmpeg.</p>
+		<div class="Indent">
+		<p><code class="Hilite">vid</code>: A <code>Video</code> instance or the path to an S8V file.</p>
+		<p><code class="Hilite">dest</code>: The path to destination file; will be overwritten if it already exists.</p>
+		<p><code class="Hilite">fps</code>: The movie frame rate in frames per second.</p>
+		</div>
+
 	<p><code><span class="Hilite">ffmpeg</span>(ff)</code> → <code>None</code>: Specifies the location of FFmpeg for the <code>imageio</code> package; must be called unless the system recognizes ‘ffmpeg’ as a valid command.</p>
 		<div class="Indent">
 		<p><code class="Hilite">ff</code>: The path to the FFmpeg executable.</p>
@@ -43,10 +49,6 @@ with FFWriter("movie.mp4") as ffw:
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
-	<p><code><span class="Hilite">encode</span>(vid)</code> → <code>self</code>: Encode the specified <code>Video</code> instance to the movie file.</p>
-		<div class="Indent">
-		<p><code class="Hilite">vid</code>: A <code>Video</code> instance or the path to an S8V file.</p>
-		</div>
 
 	<p><code><span class="Hilite">write</span>(img)</code> → <code>self</code>: Write a single frame to the movie from from the provided image.</p>
 		<div class="Indent">

@@ -4,11 +4,10 @@
 
 <p><code>FFReader</code> is used to decode media files into <code>Video</code> instances that can be used with your <code>sc8pr</code> sketches. This class uses the <a href="https://imageio.readthedocs.io/en/stable/" target="im"><code>imageio</code></a> and <code>imageio-ffmpeg</code> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>). You must also have the <a href="https://ffmpeg.org/" target="ff">FFmpeg</a> program itself available on the user’s system.</p>
 
-<p>The <code>FFReader</code> class uses Python’s <code>with...as</code> structure. 
-
+<p><!--The <code>FFReader</code> class uses Python’s <code>with...as</code> structure. -->
 Note that <code>sc8pr</code> does not import any packages other than <code>pygame</code>; your program must import the three modules needed for <code>FFReader</code> to work.</p>
 
-<p>In the example below, <code>FFReader</code> loads the video from an MP4 file into a <code>Video</code> instance.</p>
+<p>In the example below, <code>FFReader</code> loads the video from an MP4 file into a <code>Video</code> instance. The program will raise an exception is the movie file or the FFmpeg executable are not found at the specified paths.</p>
 <pre class="Code" id="Ex1">from sc8pr import Sketch
 from sc8pr.misc.media import FFReader
 <span class="Hilite">import imageio, numpy, PIL.Image</span>
