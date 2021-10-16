@@ -74,7 +74,7 @@
 	<td><code>onevent</code></td>
 	<td><code>sk, ev</code></td>
 	<td>Sketch only</td>
-	<td>Called for all <code>pygame</code> events (except <code>VIDEORESIZE</code>) before dispatching the event to a specific handler. If it returns <code>True</code>, the event is considered to have been handled and no other handlers will be called.</td>
+	<td>Called for all <code>pygame</code> events (except <code>VIDEORESIZE</code> and <code>WINDOWSIZECHANGED</code>) before dispatching the event to a specific handler. If it returns <code>True</code>, the event is considered to have been handled and no other handlers will be called.</td>
 </tr>
 <tr>
 	<td><code>onfocus</code></td>
@@ -86,7 +86,7 @@
 	<td><code>onhandled</code></td>
 	<td><code>sk, ev</code></td>
 	<td>Sketch only</td>
-	<td>Called for <code>pygame</code> events (except <code>VIDEORESIZE</code>) after all other handlers have finished.</td>
+	<td>Called for <code>pygame</code> events (except <code>VIDEORESIZE</code> and <code>WINDOWSIZECHANGED</code>) after all other handlers have finished.</td>
 </tr>
 <tr>
 	<td><code>onkeydown</code></td>
