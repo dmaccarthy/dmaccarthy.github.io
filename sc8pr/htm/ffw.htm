@@ -2,16 +2,17 @@
 <h1><code>sc8pr.misc.media.FFWriter</code> Class</h1>
 <p><span class="Comment"><b>Experimental! Added in v2.2</b>.</span></p>
 
-<p><code>FFWriter</code> is used to encode media files. This class uses the <a href="https://imageio.readthedocs.io/en/stable/" target="im"><code>imageio</code></a> and <code>imageio-ffmpeg</code> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>). You must also have the <a href="https://ffmpeg.org/" target="ff">FFmpeg</a> program itself available on the user’s system.</p>
+<p><code>FFWriter</code> is used to encode media files using <a href="https://ffmpeg.org" target="ff">FFmpeg</a>. This class uses the <a href="https://imageio.readthedocs.io/en/stable/" target="im"><code>imageio</code></a> and <a href="https://imageio.readthedocs.io/en/stable/format_ffmpeg.html" target="im"><code>imageio-ffmpeg</code></a> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>).</p>
 
-<p>Here is an example showing how to encode an S8V file or <code>Video</code> instance as an MP4 file at 20 frames per second. Note that <code>sc8pr</code> does not import any packages other than <code>pygame</code>; your program must import the three modules needed for <code>FFWriter</code> to work.</p>
+<p>Here is an example showing how to encode an S8V file or <code>Video</code> instance as an MP4 file at 20 frames per second. Note that <code>sc8pr</code> does not import any packages other than <code>pygame</code>; your program must import the three modules needed for <code>FFWriter</code> to work as shown in <span class="Hilite">blue</span>.</p>
+<p>If the installed <code>imageio-ffmpeg</code> package does not include an FFmpeg executable, you may need to call the <code>FFWriter.ffpeg</code> function to specify the path to FFmpeg.</p>
+
 <pre class="Code" id="Ex1">from sc8pr.misc.media import FFWriter
 <span class="Hilite">import imageio, numpy, PIL.Image</span>
 
-FFWriter.ffmpeg("C:/Program Files/ffmpeg/bin/ffmpeg.exe")
 FFWriter.encode("video.s8v", "movie.mp4", 20)</pre>
 
-<p>You can also use <code>FFWriter</code> to record your sketch directly to an MP4 file by opening an <code>FFWriter</code> instance before running your sketch, and calling its <code>write</code> method when you want to save a frame...</p>
+<p>You can also use <code>FFWriter</code> to write movie frames one at a time. The example below records the sketch directly to an MP4 file...</p>
 <pre class="Code" id="Ex2">from sc8pr import Sketch
 from sc8pr.misc.media import FFWriter
 import imageio, numpy, PIL.Image
@@ -22,7 +23,6 @@ def ondraw(sk):
         sk.ffw.write(sk)
 
 <span class="Comment"># Main program</span>
-FFWriter.ffmpeg("C:/Program Files/ffmpeg/bin/ffmpeg.exe")
 with FFWriter("movie.mp4") as ffw:
     Sketch().config(ffw=ffw).bind(ondraw).play()</pre>
 
@@ -41,8 +41,7 @@ with FFWriter("movie.mp4") as ffw:
 		<p><code class="Hilite">dest</code>: The path to destination file; will be overwritten if it already exists.</p>
 		<p><code class="Hilite">fps</code>: The movie frame rate in frames per second.</p>
 		</div>
-
-	<p><code><span class="Hilite">ffmpeg</span>(ff)</code> → <code>None</code>: Specifies the location of FFmpeg for the <code>imageio</code> package; must be called unless the system recognizes ‘ffmpeg’ as a valid command.</p>
+	<p><code><span class="Hilite">ffmpeg</span>(ff)</code> → <code>None</code>: Specifies the location of the FFmpeg executable if not included as part of the <code>imageio-ffmpeg</code> package.</p>
 		<div class="Indent">
 		<p><code class="Hilite">ff</code>: The path to the FFmpeg executable.</p>
 		</div>
@@ -50,10 +49,12 @@ with FFWriter("movie.mp4") as ffw:
 
 <h4>Instance Methods</h4><div class="Indent">
 
-	<p><code><span class="Hilite">write</span>(img)</code> → <code>self</code>: Write a single frame to the movie from from the provided image.</p>
+	<p><code><span class="Hilite">write</span>(srf)</code> → <code>self</code>: Write a single frame to the movie from from the provided image.</p>
 		<div class="Indent">
-		<p><code class="Hilite">img</code>: An <code>Image</code> instance; or any object that has an <code>image</code> attribute containing a <code>pygame.Surface</code>, or that can be passed to the <code>Image</code> constructor.</p>
+		<p><code class="Hilite">srf</code>: A <code>pygame.Surface</code> or <code>Image</code> instance; or any object that has an <code>image</code> attribute containing a <code>pygame.Surface</code>, or that can be passed to the <code>Image</code> constructor.</p>
 		</div>
+	<p><code><span class="Hilite">writePIL</span>(pil)</code> → <code>self</code>: Write a <code>PIL.Image.Image</code> instance. This is faster than using <code>write</code> since it involves less format conversion. The image must be the same size as any previously written frames.</p>
+	<p><code><span class="Hilite">writePixelData</span>(pix)</code> → <code>self</code>: Write the data from a <code>PixelData</code> instance. The image must be the same size as any previously written frames.</p>
 </div>
 
 </article></body>
