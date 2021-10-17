@@ -13,7 +13,7 @@
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">among</span>(group=None)</code> → <code>dict</code>: Test for collisions within a group of sprites. Returns a dictionary with colliding sprites as keys and the dictionary returned by the <code>involving</code> method as values.</p>
 		<div class="Indent">
-		<p><code class="Hilite">group</code>: The sprites to check. If <code>None</code>, all <code>BaseSprite</code> instances currently in the sketch are included.</p>
+		<p><code class="Hilite">group</code>: The sprites to check. If <code>None</code>, all <code>BaseSprite</code> instances currently in the sketch are included. Sprites without a <code>rect</code> attribute (e.g. sprites that have been added but not yet drawn) are omitted for this and for the methods listed below.</p>
 		</div>
 
 	<p><code><span class="Hilite">between</span>(group1, group2=None)</code> → <code>[list, list]</code>: Test whether there are current collisions between two groups of sprites. Returns lists of sprites from each group as a 2-list.</p>

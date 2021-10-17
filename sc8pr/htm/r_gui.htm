@@ -1,0 +1,27 @@
+﻿<article><h1><code>sc8pr.robot.gui.Robot</code> Class</h1>
+
+<p>The <code>sc8pr.robot.gui</code> module defines a <a class="Hilite Code" href="javascript:goNode('robot_class')">Robot</a> class that adds additional methods to the <code>sc8pr.robot.Robot</code> class, to allow the robot to communicate with its user via synchronous dialogs.</p>
+
+<p>In addition to the attributes it inherits from <a class="Hilite Code" href="javascript:goNode('robot_class')">sc8pr.robot.Robot</a>, the <code>sc8pr.robot.gui.Robot</code> class defines the following...</p>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">confirm</span>(prompt, title=None, response=True)</code> → <code>bool</code>: Runs a message box and returns a <code>bool</code> indicating which button was used to dismiss the dialog; <code>True</code> for Okay and <code>False</code> for Cancel.</p>
+		<div class="Indent">
+		<p><code class="Hilite">prompt</code>: A message to display.</p>
+		<p><code class="Hilite">title</code>: The message box title.</p>
+		<p><code class="Hilite">response</code>: Specifies whether a response (Okay/Cancel) is required.</p>
+		</div>
+
+	<p><code><span class="Hilite">textinput</span>(prompt, title=None, allowCancel=False, num=False)</code> → <code>str</code>, <code>float</code>, or <code>bool</code>: Prompt the user for some input. Returns the user response as a <code>str</code> or <code>float</code> (depending on whether numerical input was required), or <code>False</code> if the dialog is cancelled by the user.</p>
+		<div class="Indent">
+		<p><code class="Hilite">prompt</code>: A message to display.</p>
+		<p><code class="Hilite">title</code>: The message box title.</p>
+		<p><code class="Hilite">allowCancel</code>: A <code>bool</code> indicating whether the user can cancel the dialog.</p>
+		<p><code class="Hilite">num</code>: Specifies whether a numerical response is required.</p>
+		</div>
+
+	<p><code><span class="Hilite">numinput</span>(prompt, title=None, allowCancel=False)</code> → <code>float</code> or <code>bool</code>: Calls <code>textinput</code> with the <code>num</code> argument set to <code>True</code>.</p>
+</div>
+
+</div>
+</article>

@@ -9,7 +9,6 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 		{title:"Event Handling", link:"ev", pages:[
 			{title:"<code>ondraw</code> Handlers", link:"draw"},
 			{title:"Mouse Events", link:"click"},
-			{title:"Supported Events", link:"evList"}
 		]},
 		{title:"Object-Oriented Style", link:"oop"},
 		{title:"Sprite Animations", link:"spriteAnim", pages:[
@@ -19,6 +18,7 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 	]},
 	{title:"Reference", link:"ref", pages:[
 		{title:"Graphic Class Hierarchy", link:"hierarchy22"},
+		{title:"Event Model", link:"evList"},
 		{title:"sc8pr", link:"init", pages:[
 			{title:"class Graphic", link:"graphic"},
 			{title:"class Image", link:"image"},
@@ -63,7 +63,9 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 				{title:"class WebCache", link:"wc"},
 			]},
 		]},
-		{title:"sc8pr.robot", link:"robot_class"},
+		{title:"sc8pr.robot.*", link:"robot_class", pages:[
+			{title:".gui", link:"r_gui"},
+		]},
 		{title:"sc8pr.shape", link:"shape", pages:[
 			{title:"class Line", link:"line"},
 			{title:"class Circle", link:"circle"},

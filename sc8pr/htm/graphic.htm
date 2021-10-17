@@ -77,7 +77,11 @@
 		<div class="Indent">
 		<p><code>pos</code>: Coordinates of a point relative to the sketch.</p>
 		</div>
-	<p><code><span class="Hilite">remove</span>()</code> → <code>self</code>: Remove the instance from its current canvas (if applicable). The canvas’s <code>-=</code> operator performs the same task; <code>cv -= gr</code> is effectively the same as <code>gr.remove()</code>, where <code>gr</code> is the <code>Graphic</code> instance and <code>cv</code> is the <code>Canvas</code>. This method deletes the graphic’s <code>name</code> property but leaves the <code>canvas</code> property unchanged, so that it still has a reference to the canvas after removal.</p>
+	<p><code><span class="Hilite">remove</span>(deleteRect=False)</code> → <code>self</code>: Remove the instance from its current canvas (if applicable). The canvas’s <code>-=</code> operator performs the same task; <code>cv -= gr</code> is effectively the same as <code>gr.remove()</code>, where <code>gr</code> is the <code>Graphic</code> instance and <code>cv</code> is the <code>Canvas</code>. This method deletes the graphic’s <code>name</code> property but leaves the <code>canvas</code> property unchanged, so that it still has a reference to the canvas after removal.</p>
+		<div class="Indent">
+		<p><code>deleteRect</code>: Specifies whether the <code>Graphic</code> instance’s <code>rect</code> attribute should be deleted. <b class="Comment">[Added in v2.2.]</b></p>
+		</div>
+
 	<p><code><span class="Hilite">resize</span>(size)</code> → <code>None</code>: Resize the graphic; called when the canvas is resized or when a new value is assigned to the <code>size</code>, <code>width</code>, or <code>height</code> properties.</p>
 		<div class="Indent">
 		<p><code>size</code>: A 2-tuple describing the new width and height.</p>
@@ -86,6 +90,11 @@
 		<div class="Indent">
 		<p><code>fn</code>: The name of the file to save. The format (e.g. PNG or JPEG) is determined by the file extension.</p>
 		<p><code>**kwargs</code>: Arguments to be passed to <code>sc8pr.util.style</code> after drawing the image.</p>
+		</div>
+	<p><code><span class="Hilite">scale</span>(sx, sy=None)</code> → <code>None</code>: Scales the size of the object by the specified factor(s). <b class="Comment">[Added in v2.2.]</b></p>
+		<div class="Indent">
+		<p><code>sx</code>: The factor by which to adjust the width.</p>
+		<p><code>sy</code>: The factor by which to adjust the height; is <code>None</code>, <code>sx</code> will be used for both dimensions.</p>
 		</div>
 	<p><code><span class="Hilite">scaleVectors</span>(fx, fy, attr=("pos", "vel", "acc"))</code> → <code>None</code>: Scales the specified vector attributes by the given factors; called when the canvas is resized.</p>
 		<div class="Indent">
