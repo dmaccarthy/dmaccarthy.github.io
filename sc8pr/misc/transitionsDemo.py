@@ -1,4 +1,4 @@
-# Copyright 2018 D.G. MacCarthy <http://dmaccarthy.github.io>
+# Copyright 2018-2021 D.G. MacCarthy <http://dmaccarthy.github.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,14 +18,12 @@
 from sc8pr import Sketch, RIGHT, BOTTOM
 from sc8pr.sprite import Sprite
 from sc8pr.misc.effect import Remove, Tint, PaintDrops, Wipe, \
-    WipeSlope, Squash, Dissolve, MathEffect, ClockHand, Assemble
+    WipeSlope, Squash, FastDissolve, MathEffect, ClockHand, Assemble
 from sc8pr.text import Text, Font
-#from sc8pr.misc.video import Video
 
 
 def setup(sk):
     sk.frameRate = 30
-#    sk.capture = Video().config(interval=1)
     alien = Sprite("aliens.png", 2, 2).config(
         pos = sk.center,
         height = sk.height / 2,
@@ -51,7 +49,7 @@ def setEffect(alien, n=0, f=0):
         WipeSlope(-0.2).time(f+240, f+150)  # Transition out
     ], [ # n = 3
         Squash(BOTTOM).time(f, f+90),       # Transition in
-        Dissolve().time(f+240, f+150)       # Transition out
+        FastDissolve().time(f+240, f+150)       # Transition out
     ], [ # n = 4
         MathEffect().time(f, f+90),         # Transition in
         ClockHand().time(f+240, f+150),     # Transition out
@@ -74,9 +72,11 @@ def textDraw(text):
     caption = {90:"", 150:"Tint('red')", 270:"Tint()", 360:"Assemble()",
         450:"", 510:"PaintDrops(-8)", 600:"Wipe(RIGHT)", 690:"",
         750:"WipeSlope(-0.2)", 840:"Squash(BOTTOM)", 930:"",
-        990:"Dissolve()", 1080:"MathEffect()", 1170:"", 1230:"ClockHand()",
+        990:"FastDissolve()", 1080:"MathEffect()", 1170:"", 1230:"ClockHand()",
         1320:""}
     f = text.sketch.frameCount
     if f in caption: text.config(data=caption[f])
 
-Sketch((640,360)).play("Transitions Demo")#.capture.save("demo.s8v")
+def play(): Sketch((640,360)).play("Transitions Demo")
+
+if __name__ == "__main__": play()
