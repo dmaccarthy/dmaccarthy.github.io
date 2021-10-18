@@ -76,10 +76,10 @@ Sketch().play()</pre>
 		<p><code class="Hilite">drops</code>: The number of paint drops. Make this value negative to draw the image pixels below the replacement color.</p>
 		<p><code class="Hilite">fill</code>: The replacement color.</p>
 		</div>
-	<p><code><span class="Hilite">Remove</span>(gr, complete=False)</code>: Remove a graphic completely, or remove its <code>effects</code> lists. This will speed up drawing the sketch. <b class="Comment">[Added in v2.1]</b></p>
+	<p><code><span class="Hilite">Remove</span>(gr, complete=False)</code>: Remove a graphic completely, or remove its <code>effects</code> lists. This will speed up drawing the sketch once all of the transitions have been completed. <b class="Comment">[Added in v2.1]</b></p>
 		<div class="Indent">
 		<p><code class="Hilite">gr</code>: The graphic to be modified. The <code>Remove</code> effect instance must appear in the effects list of the graphic being removed.</p>
-		<p><code class="Hilite">complete</code>: When set to <code>False</code> the graphic will remain in its canvas and set the <code>effects</code> property to <code>None</code>. When <code>True</code> the graphic will be removed completely from its canvas.</p>
+		<p><code class="Hilite">complete</code>: When set to <code>False</code> the graphic will remain in its canvas and its <code>effects</code> property will be reset to <code>None</code>. When <code>True</code> the graphic will be removed completely from its canvas.</p>
 		</div>
 	<p><code><span class="Hilite">ReplaceColor</span>(color, replace=(0,0,0,0), dist=0.0)</code>: Replace one color with another.</p>
 		<div class="Indent">

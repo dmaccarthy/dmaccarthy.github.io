@@ -2,7 +2,7 @@
 <p><span class="Comment"><b>Added in v2.1</b>. The <code>plot</code> module in v2.0 was experimental and does not conform to this API!</span></p>
 
 <h4>Classes</h4>
-<p>Starting in <b class="Comment">v2.2</b> a new package <code><a class="Hilite" href="javascript:goNode('plot_pkg')">sc8pr.plot</a></code> will be added that provides simpler and more flexible plotting features. It is recommended that the new plotting package be used rather than the classes below...</p>
+<!--p>Starting in <b class="Comment">v2.2</b> a new package <code><a class="Hilite" href="javascript:goNode('plot_pkg')">sc8pr.plot</a></code> will be added that provides simpler and more flexible plotting features. It is recommended that the new plotting package be used rather than the classes below...</p-->
 <div class="Indent"><p><code><a class="Hilite" href="javascript:goNode('locus')">Locus</a> (<a class="Hilite" href="javascript:goNode('shape')">Shape</a>)</code>: Class for drawing functions or parameterized paths directly onto a canvas.</p>
 <p><code><a class="Hilite" href="javascript:goNode('plot_class')">Plot</a> (<a class="Hilite" href="javascript:goNode('plot_class')">Renderable</a>)</code>: Class for plotting series of data and/or equations, with optional axes and using an arbitrary coordinate system.</p>
 <p><code><span class="Hilite">PlotSprite</span> (Plot, <a class="Hilite" href="javascript:goNode('base')">BaseSprite</a>)</code>: Does not define any additional attributes.</p>
@@ -13,7 +13,7 @@
 	<div class="Indent">
 		<p><code class="Hilite">lrbt</code>: A 4-tuple or 4-list specifying the coordinates corresponding to the <i>left</i>, <i>right</i>, <i>bottom</i>, and <i>top</i> edges of the canvas.
 		<p><code class="Hilite">size</code>: A 2-tuple or 2-list specifying the canvas size in pixels.</p>
-		<p><code class="Hilite">invert</code>: If <code>True</code>, returns the inverse transformation. <b class="Comment">[To be added in v2.2]</b></p>
+		<p><code class="Hilite">invert</code>: If <code>True</code>, returns the inverse transformation. <b class="Comment">[Added in v2.2]</b></p>
 	</div>
 	<p><code><span class="Hilite">expon</span>(x, y)</code> → <code>(lambda, (float, float))</code>: Performs a least squares fit for an exponential model. Arguments and return value are the same as for the <code>leastSq</code> function.</p>
 	<p><code><span class="Hilite">leastSq</span>(x, y)</code> → <code>(lambda, (float, float))</code>: Performs a least squares fit on the data provided. Returns the linear model equation as a lambda, and the fit coefficients as a 2-tuple.</p>

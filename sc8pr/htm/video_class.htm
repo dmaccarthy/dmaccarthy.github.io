@@ -23,7 +23,7 @@
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
-	<p><code><span class="Hilite">__getitem__</span>(n)</code> → <code>Image</code>: Extract the specified frame number as an <code>Image</code> instance.</p>
+	<p><code><span class="Hilite">__getitem__</span>(n)</code> → <code>Image</code> (or <code>Video</code> <b class="Comment">as of v2.2</b>): Extract the specified frame number as an <code>Image</code> instance. <b class="Comment">As of v2.2</b> <code>n</code> can also be a slice object, in which case the clip will be returned as a new <code>Video</code> instance and the pixel data will not be copied.</p>
 	<p><code><span class="Hilite">__iadd__</span>(img)</code> → <code>self</code>: Append an image as a new frame at the end of the video. <b class="Comment">As of v2.2</b>, the argument can also be a <code>Video</code> instance to be concatenated in place.</p>
 		<div class="Indent">
 		<p><code class="Hilite">img</code>: The image to be appended. It can be an <code>Image</code> instance (or any <code>Graphic</code> subclass that implements the <code>image</code> property) or a <code>pygame.Surface</code> instance. <b class="Comment">As of v2.1</b>, any object that can be decoded by the <a class="Code" href="javascript:goNode('pixeldata')">PixelData</a> constructor, such as raw <code>bytes</code> or a <a class="Code" href="http://python-pillow.org/">Pillow</a> image, is acceptable.</p>
@@ -37,7 +37,7 @@
 	<p><code><span class="Hilite">capture</span>(sk)</code>: Capture the sketch window and append it to the video as a new frame. Called automatically by the sketch on its <code>capture</code> property.</p>
 	<p><code><span class="Hilite">clip</span>(start=0, end=None)</code> → <code>Video</code>: Extracts a sequence of frames as a new <code>Video</code> instance; does not copy the frame pixel data.</p>
 		<div class="Indent">
-		<p><code class="Hilite">start</code>: The first frame to include in the extracted clip, or a sequence of frame numbers.</p>
+		<p><code class="Hilite">start</code>: The first frame to include in the extracted clip, or a sequence of frame numbers. <b class="Comment">As of v2.2</b> negative values are accepted to represent frames counting from the last frame of the video.</p>
 		<p><code class="Hilite">end</code>: The frame at which to stop extracting; the end frame itself is not included. This argument is ignored when a sequence is passed for the first argument.</p>
 		</div>
 	<p><code><span class="Hilite">costumeSequence</span>(seq)</code>: Will raise a <code>NotImplementedError</code>.</p>

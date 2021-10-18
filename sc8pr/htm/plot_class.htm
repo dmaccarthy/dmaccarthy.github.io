@@ -8,13 +8,18 @@
 <h4>Constructor</h4><div class="Indent">
 	<p><code><span class="Hilite">Plot</span>(size, lrbt)</code></p>
 		<div class="Indent">
-		<p><code class="Hilite">size</code>: A 2-tuple or 2-list specifying the plot size in pixels.</p>
+		<p><code class="Hilite">size</code>: A 2-tuple or 2-list specifying the plot size in pixels; or an object that contains such data as its <code>size</code> attribute.</p>
 		<p><code class="Hilite">lrbt</code>: A list or tuple specifying the coordinates corresponding to the <i>left</i>, <i>right</i>, <i>bottom</i>, and <i>top</i> edges of the plot area. If <i>top</i> is not specified, it will be calculated so that the <i>y</i>-axis has the same scale as the <i>x</i>-axis. If <i>top</i> and <i>bottom</i> are both omitted, the axes will have the same scales and the <i>x</i>-axis will be positioned in the middle of the plot.</p>
 		</div>
 </div>
 
 <h4>Assignable Property</h4><div class="Indent">
 	<p><code><span class="Hilite">coords</span></code>: A 4-list specifying the <code>lrbt</code> coordinates set by the constructor (or later modified). When assigning new coordinates, the final two items of the list can be omitted as decribed for the constructor’s <code>lrbt</code> argument.</p>
+</div>
+
+<h4>Read-Only Properties</h4><div class="Indent">
+	<p><code><span class="Hilite">clockwise</span></code>: A <code>bool</code> indicating whether the coordinate system’s <i>y</i>-axis is 90° clockwise or counter-clockwise from the <i>x</i>-axis.</p>
+	<p><code><span class="Hilite">units</span></code>: A 2-<code>tuple</code> indicating how many pixels comprise one coordinate system unit in the <i>x</i> and <i>y</i> directions.</p>
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
