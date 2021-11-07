@@ -7,6 +7,12 @@
 		<div class="Indent">
 		<p><code class="Hilite">a2</code>, <code class="Hilite">a1</code>: Angles in degrees.</p>
 		</div>
+		
+	<p><code><span class="Hilite">circle_intersect</span>(c1, r1, c2, r2)</code> → <code>list</code>: Find the intersection points(s) of two circles. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">c1</code>, <code class="Hilite">c2</code>: Ordered pairs specifying the centres of the two circles.</p>
+		<p><code class="Hilite">r1</code>, <code class="Hilite">r2</code>: Radii of the circles.</p>
+		</div>
 	<p><code><span class="Hilite">delta</span>(v2, v1=None, mag=None)</code> → <code>tuple</code>: Calculate the difference between two vectors, <code>v2-v1</code>, and optionally adjust the magnitude of the result.</p>
 		<div class="Indent">
 		<p><code class="Hilite">v2</code>, <code class="Hilite">v1</code>: The vectors to subtract as 2-tuples or 2-lists; <code>v1</code> can be omitted, allowing the function to adjust the magnitude of <code>v2</code>.</p>
@@ -30,7 +36,14 @@
 		<p><code class="Hilite">w</code>, <code class="Hilite">h</code>: Dimensions of the original rectangle.</p>
 		<p><code class="Hilite">angle</code>: Rotation angle in degrees.</p>
 		</div>
+	<p><code><span class="Hilite">shiftAlongNormal</span>(x, y, deriv, dr)</code> → <code>tuple</code>: Translate a point normal to a curve. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">x</code>, <code class="Hilite">y</code>: The point to translate.</p>
+		<p><code class="Hilite">deriv(x,y)</code>: A function that calculates the slope of the curve at <code>(x, y)</code>.</p>
+		<p><code class="Hilite">dr</code>:The distance along the normal to translate the point.</p>
+		</div>
 	<p><code><span class="Hilite">sigma</span>(*args)</code> → <code>tuple</code>: Calculate the sum of one or more vectors. <b class="Comment">[Added in v2.1]</b></p>
+	<p><code><span class="Hilite">smallAngle</span>(a)</code> → <code>float</code>: Express an angle as a value between -180 and 180. <b class="Comment">[Added in v2.2]</b></p>
 	<p><code><span class="Hilite">sprod</span>(v1, v2)</code> → <code>float</code>: Calculate the scalar product of two vectors.</p>
 		<div class="Indent">
 		<p><code class="Hilite">v1</code>, <code class="Hilite">v2</code>: Vectors as 2-tuples or 2-lists.</p>

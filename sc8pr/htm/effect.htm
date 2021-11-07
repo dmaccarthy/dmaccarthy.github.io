@@ -66,7 +66,7 @@ Sketch().play()</pre>
 		<p><code class="Hilite">alpha</code>: When the <code>colors</code> argument is an <code>int</code>, this should be a <code>bool</code> indicating whether the random palette colours should include transparency.</p>
 		</div>
 	<p><code><span class="Hilite">FastDissolve</span>()</code>: Dissolve to transparency. This effect uses <code>pygame.surfarray.pixels_alpha</code> which is faster than the <code>Dissolve</code> effect but depends on <code>numpy</code>. If this is not available, <code>FastDissolve</code> will be a pseudonym for <code>Dissolve</code>. <b class="Comment">[Added in v2.2]</b></p>
-	<p><code><span class="Hilite">MathEffect</span>(noise=0.15, fill=(0,0,0,0))</code>: Apply a potentially non-linear “wipe” transition described by a mathematical relation. The default effect is a “noisy” vertical wipe. You can create similar effects by defining a subclass with an <code>eqn</code> method. This method takes an <i>x</i> coordinate as its argument, and returns a <code>(float, bool)</code> 2-tuple specifying the boundary <i>y</i> value and whether to replace pixels above or below the boundary.</p>
+	<p><code><span class="Hilite">MathEffect</span>(noise=0.15, fill=(0,0,0,0))</code>: Apply a potentially non-linear “wipe” transition described by a mathematical relation. The default effect is a “noisy” vertical wipe. You can create similar effects by defining a subclass with an <code>eqn</code> method. This method takes an <i>x</i> coordinate as its first argument, and returns a <code>(float, bool)</code> 2-tuple specifying the boundary <i>y</i> value and whether to replace pixels above or below the boundary. Additional parameters to the <code>eqn</code> method are <code>n</code> (a number between 0.0 and 1.0 specifying the extent of the effect) and <code>size</code> (the size of the image).</p>
 		<div class="Indent">
 		<p><code class="Hilite">noise</code>: The amplitude of the noise as a value between -1.0 and 1.0. Positive values will draw the image above the replacement color and negative values will have the replacement color on top.</p>
 		<p><code class="Hilite">fill</code>: The replacement color.</p>
@@ -75,6 +75,11 @@ Sketch().play()</pre>
 		<div class="Indent">
 		<p><code class="Hilite">drops</code>: The number of paint drops. Make this value negative to draw the image pixels below the replacement color.</p>
 		<p><code class="Hilite">fill</code>: The replacement color.</p>
+		</div>
+	<p><code><span class="Hilite">Pixelate</span>(size, linear=True)</code>: Pixelate the image. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">size</code>: The size of the sqaures in the pixelated image.</p>
+		<p><code class="Hilite">linear</code>: When <code>True</code> the square size at the midpoint of the transition will be half of the full effect size; when <code>False</code> the midpoint square size will be the square root of the full effect size.</p>
 		</div>
 	<p><code><span class="Hilite">Remove</span>(gr, complete=False)</code>: Remove a graphic completely, or remove its <code>effects</code> lists. This will speed up drawing the sketch once all of the transitions have been completed. <b class="Comment">[Added in v2.1]</b></p>
 		<div class="Indent">

@@ -18,11 +18,12 @@
 </div>
 
 <h4>Assignable Properties</h4><div class="Indent">
-	<p><code class="Hilite">frameTimes</code>: Set this to an empty list to record the capture times for each frame. This must occur before any frames are added to the video. Call the <code>sync</code> method after recrding to ensure the video can be saved and replayed with the correct frame rate. Default is <code>None</code>. <b class="Comment">[To be added in v2.2]</b></p>
+	<p><code class="Hilite">frameTimes</code>: Set this to an empty list to record the capture times for each frame. This must occur before any frames are added to the video. Call the <code>sync</code> method after recrding to ensure the video can be saved and replayed with the correct frame rate. Default is <code>None</code>. <b class="Comment">[Added in v2.2]</b></p>
 	<p><code class="Hilite">meta</code>: A dictionary of metadata to be saved with the video. Data must be convertible into JSON format.</p>
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">__add__</span>(other)</code> → <code>Video</code>: Create a new <code>Video</code> instance by concatenating <code>other</code> to the current video. <b class="Comment">[Added in v2.2]</b></p>
 	<p><code><span class="Hilite">__getitem__</span>(n)</code> → <code>Image</code> (or <code>Video</code> <b class="Comment">as of v2.2</b>): Extract the specified frame number as an <code>Image</code> instance. <b class="Comment">As of v2.2</b> <code>n</code> can also be a slice object, in which case the clip will be returned as a new <code>Video</code> instance and the pixel data will not be copied.</p>
 	<p><code><span class="Hilite">__iadd__</span>(img)</code> → <code>self</code>: Append an image as a new frame at the end of the video. <b class="Comment">As of v2.2</b>, the argument can also be a <code>Video</code> instance to be concatenated in place.</p>
 		<div class="Indent">
@@ -34,22 +35,38 @@
 		<p><code class="Hilite">fn</code>: The s8v file name.</p>
 		<p><code class="Hilite">size</code>: The number of stored frames at which the autosave operation is to occur.</p>
 		</div>
-	<p><code><span class="Hilite">capture</span>(sk)</code>: Capture the sketch window and append it to the video as a new frame. Called automatically by the sketch on its <code>capture</code> property.</p>
+	<p><code><span class="Hilite">capture</span>(sk)</code> → <code>None</code>: Capture the sketch window and append it to the video as a new frame. Called automatically by the sketch on its <code>capture</code> property.</p>
 	<p><code><span class="Hilite">clip</span>(start=0, end=None)</code> → <code>Video</code>: Extracts a sequence of frames as a new <code>Video</code> instance; does not copy the frame pixel data.</p>
 		<div class="Indent">
 		<p><code class="Hilite">start</code>: The first frame to include in the extracted clip, or a sequence of frame numbers. <b class="Comment">As of v2.2</b> negative values are accepted to represent frames counting from the last frame of the video.</p>
 		<p><code class="Hilite">end</code>: The frame at which to stop extracting; the end frame itself is not included. This argument is ignored when a sequence is passed for the first argument.</p>
 		</div>
 	<p><code><span class="Hilite">costumeSequence</span>(seq)</code>: Will raise a <code>NotImplementedError</code>.</p>
-	<p><code><span class="Hilite">convert_alpha</span>()</code>: Converts all costume images so that they support transparency.</p>
+	<p><code><span class="Hilite">convert_alpha</span>()</code> → <code>self</code>: Converts all costume images so that they support transparency. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code><span class="Hilite">effect</span>(effect, out=False)</code> → <code>Video</code>: Create a new <code>Video</code> instance by applying an effect to an existing video. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">effect</code>: An instance of <code>sc8pr.misc.effect.Effect</code> that defines the effect to be applied.</p>
+		<p><code class="Hilite">out</code>: A <code>bool</code> specifying whether the effect should transition in or out.</p>
+		</div>
+	<p><code><span class="Hilite">effectInPlace</span>(effect, start=0, end=None, out=False)</code> → <code>self</code>: Apply an effect to (part of) an existing video. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">effect</code>: An instance of <code>sc8pr.misc.effect.Effect</code> that defines the effect to be applied.</p>
+		<p><code class="Hilite">start</code>: The frame number at which the effect begins.</p>
+		<p><code class="Hilite">end</code>: The frame number at which the effect ends.</p>
+		<p><code class="Hilite">out</code>: A <code>bool</code> specifying whether the effect should transition in or out.</p>
+		</div>
 	<p><code><span class="Hilite">extend</span>(imgs)</code> → <code>self</code>: Append multiple images as new frames at the end of the video.</p>
 		<div class="Indent">
 		<p><code class="Hilite">imgs</code>: An iterable sequence of images in any format that can be passed to <code>__iadd__</code>.</p>
 		</div>
 	<p><code><span class="Hilite">frame</span>(n)</code> → <code>PixelData</code>: Extract the specified frame number as a <code>PixelData</code> instance.</p>
 	<p><code><span class="Hilite">frames</span>()</code> → <code>generator</code>: Generate the sequence of frames as <code>PixelData</code> instances. You can iterate through the <code>Video</code> instance itself to obtain a sequence of frames as <code>Image</code> instances.</p>
+	<p><code><span class="Hilite">play</span>(t=None)</code> → <code>self</code>: Pause or resume playback. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">t</code>: A value to set as <code>costumeTime</code> when resuming playback.</p>
+		</div>
 	<p><code><span class="Hilite">purge</span>()</code> → <code>self</code>: Remove all frames of the video. <b class="Comment">[Added in v2.1]</b></p>
-	<p><code><span class="Hilite">removeGaps</span>(gap, repl)</code> → <code>self</code>: Modifies the <code>frameTimes</code> data to remove large time gaps. <b class="Comment">[To be added in v2.2]</b></p>
+	<p><code><span class="Hilite">removeGaps</span>(gap, repl)</code> → <code>self</code>: Modifies the <code>frameTimes</code> data to remove large time gaps. <b class="Comment">[Added in v2.2]</b></p>
 		<div class="Indent">
 		<p><code class="Hilite">gap</code>: The minimum sive of the gap to remove.</p>
 		<p><code class="Hilite">repl</code>: The replacement gap.</p>
@@ -64,8 +81,19 @@
 		<div class="Indent">
 		<p><code class="Hilite">size</code>: The output size. If omitted, the <code>size</code> property of the video will be used.</p>
 		<p><code class="Hilite">inPlace</code>: Specifies whether to adjust the data in place, or create a new <code>Video</code> instance.</p>
-		</div>		
-	<p><code><span class="Hilite">sync</span>(fps=30, original=None)</code> → <code>self</code>: Creates a copy of the video changing the frame rate from <code>original</code> to <code>fps</code>. If <code>original</code> is <code>None</code>, frames will be synced using the recording time data in the <code>frameTimes</code> attribute or the value in <code>meta["frameRate"]</code>. <b class="Comment">[To be added in v2.2]</b></p>
+		</div>
+
+	<p><code><span class="Hilite">splice</span>(i, n=0, vid=None)</code> → <code>self</code>: Insert and/or delete frames from a video. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">i</code>: The index (frame number) where frames are to be inserted / deleted.</p>
+		<p><code class="Hilite">n</code>: The number of frames to delete.</p>
+		<p><code class="Hilite">vid</code>: The clip to be inserted.</p>
+		</div>
+
+:
+        "Insert and/or remove a clip"
+
+	<p><code><span class="Hilite">sync</span>(fps=30, original=None)</code> → <code>self</code>: Creates a copy of the video changing the frame rate from <code>original</code> to <code>fps</code>. If <code>original</code> is <code>None</code>, frames will be synced using the recording time data in the <code>frameTimes</code> attribute or the value in <code>meta["frameRate"]</code>. <b class="Comment">[Added in v2.2]</b></p>
 </div>
 
 </article>
