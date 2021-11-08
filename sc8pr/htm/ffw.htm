@@ -12,19 +12,16 @@
 
 FFWriter.encode("video.s8v", "movie.mp4", 20)</pre>
 
-<p>You can also use <code>FFWriter</code> to write movie frames one at a time. The example below records the sketch directly to an MP4 file...</p>
+<p>You can assign an <code>FFWriter</code> instance as the sketch’s <code>capture</code> attribute to record the sketch. The program below will record every second frame to produce a 30 frames per second movie when the sketch runs at 60 frames per second...</p>
 <pre class="Code" id="Ex2">from sc8pr import Sketch
 from sc8pr.misc.media import FFWriter
 import imageio, numpy, PIL.Image
 
-def ondraw(sk):
-    <span class="Comment">"Write odd-numbered frames to the MP4 file"</span>
-    if sk.frameCount % 2:
-        sk.ffw.write(sk)
+with FFWriter("movie.mp4", 30) as ffw:
+    ffw.interval = 2
+    Sketch().config(capture=ffw).play()</pre>
 
-<span class="Comment"># Main program</span>
-with FFWriter("movie.mp4") as ffw:
-    Sketch().config(ffw=ffw).bind(ondraw).play()</pre>
+<p>Call the <code>FFWriter</code> instance’s <code>write</code> method to write an individual frame to the movie file.</p>
 
 <h4>Constructor</h4><div class="Indent">
 	<p><code><span class="Hilite">FFWriter</span>(fn, fps=30)</code>: Create an instance to write the specified media file.</p>
@@ -48,7 +45,7 @@ with FFWriter("movie.mp4") as ffw:
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
-
+	<p><code><span class="Hilite">capture</span>(sk)</code> → <code>None</code>: Capture the sketch window and write it as a new frame. Called automatically by the sketch on its <code>capture</code> property.</p>
 	<p><code><span class="Hilite">write</span>(srf)</code> → <code>self</code>: Write a single frame to the movie from from the provided image.</p>
 		<div class="Indent">
 		<p><code class="Hilite">srf</code>: A <code>pygame.Surface</code> or <code>Image</code> instance; or any object that has an <code>image</code> attribute containing a <code>pygame.Surface</code>, or that can be passed to the <code>Image</code> constructor.</p>

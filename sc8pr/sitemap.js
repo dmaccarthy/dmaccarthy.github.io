@@ -49,16 +49,16 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 				{title:"class Plot", link:"plot_class"},
 				{title:"class Series", link:"series"}
 			]},	
-			{title:".progress", link:"progress"},
-			{title:".video", link:"video", pages:[
-				{title:"class Video", link:"video_class"},
-			]},
 			{title:".media", link:"media", pages:[
 				{title:"class FFReader", link:"ffr"},
 				{title:"class FFWriter", link:"ffw"},
 				{title:"class Grabber", link:"grabber"},
 			]},
+			{title:".progress", link:"progress"},
 			{title:".table", link:"table"},
+			{title:".video", link:"video", pages:[
+				{title:"class Video", link:"video_class"},
+			]},
 			{title:".webcache", link:"webcache", pages:[
 				{title:"class WebCache", link:"wc"},
 			]},
