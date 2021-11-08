@@ -87,12 +87,8 @@
 		<div class="Indent">
 		<p><code class="Hilite">i</code>: The index (frame number) where frames are to be inserted / deleted.</p>
 		<p><code class="Hilite">n</code>: The number of frames to delete.</p>
-		<p><code class="Hilite">vid</code>: The clip to be inserted.</p>
+		<p><code class="Hilite">vid</code>: A <code>Video</code> clip or a sequence of images to be inserted.</p>
 		</div>
-
-:
-        "Insert and/or remove a clip"
-
 	<p><code><span class="Hilite">sync</span>(fps=30, original=None)</code> → <code>self</code>: Creates a copy of the video changing the frame rate from <code>original</code> to <code>fps</code>. If <code>original</code> is <code>None</code>, frames will be synced using the recording time data in the <code>frameTimes</code> attribute or the value in <code>meta["frameRate"]</code>. <b class="Comment">[Added in v2.2]</b></p>
 </div>
 
