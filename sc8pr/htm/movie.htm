@@ -31,7 +31,7 @@ Sketch().play()</pre>
 </div>
 
 <h4>Read-Only Property</h4><div class="Indent"><p></p>
-	<p><code class="Hilite">reader</code>: An <a class="Hilite Code" href="javascript:goNode('ffr')">FFReader</a> instance created to read the media file. When the movie is played to the end of the file, the reader closes and the <code>reader</code> attribute will be set to <code>None</code>. If the movie is removed from the sketch before playback is finished, you must call the reader’s <code>close</code> method.</p>
+	<p><code class="Hilite">reader</code>: An <a class="Hilite Code" href="javascript:goNode('ffr')">FFReader</a> instance created to read the media file. When the movie is played to the end of the file, the reader closes and the <code>reader</code> attribute will be set to <code>None</code>. If the movie is removed from the sketch before playback is finished, you must call the reader’s <code>close</code> method. The image of the final frame will remain.</p>
 </div>
 
 <h4>Assignable Properties</h4><div class="Indent"><p></p>
@@ -39,5 +39,9 @@ Sketch().play()</pre>
 	<p><code class="Hilite">paused</code>: A <code>bool</code> specifying whether playback is paused; default <code>False</code>.</p>
 </div>
  
+ <h4>Instance Method</h4><div class="Indent">
+	<p><code><span class="Hilite">restart</span>()</code> → <code>self</code>: Restarts the movie by closing the reader and creating a new <code>FFReader</code> instance using the same arguments as the original one; sets the <code>paused</code> attribute back to <code>False</code>.</p>
+</div>
+
 </article></body>
 </html>
