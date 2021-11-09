@@ -53,6 +53,7 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 				{title:"class FFReader", link:"ffr"},
 				{title:"class FFWriter", link:"ffw"},
 				{title:"class Grabber", link:"grabber"},
+				{title:"class Movie", link:"movie"},
 			]},
 			{title:".progress", link:"progress"},
 			{title:".table", link:"table"},
