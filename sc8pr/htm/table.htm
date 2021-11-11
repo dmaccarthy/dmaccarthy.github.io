@@ -13,8 +13,7 @@ from sc8pr.text import Text, Font
 def setup(sk):
     <span class="Comment"># Create a 3x5 grid of 100x48 cells with red borders</span>
     grid = Table(3*[100], 5*[48], padding=2).config(pos=sk.center) 
-    grid.box(True, weight=1, stroke="red")
-    sk += grid
+    sk += grid.box(True, weight=1, stroke="red")
 
     <span class="Comment"># Draw a green background over 4 of the cells</span>
     grid.box((0,2), (2,4), weight=2, stroke="black", fill="green")
@@ -44,13 +43,18 @@ Sketch().play()</pre>
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
-	<!--p><code><span class="Hilite">bottomBoxes</span>()</code> → <code>self</code>: Move all <code>Polygon</code> instances in the table to the lowest layers below the non-polygon content.</p-->
 	<p><code><span class="Hilite">box</span>(c=None, r=None, **kwargs)</code> → <code>self</code>: Add a <code>Polygon</code> instance to the canvas to draw a border and/or fill the background of a cell or groups of cells.</p>
 		<div class="Indent">
 		<p><code class="Hilite">c</code>: A column number, or a 2-tuple or 2-list identifying a group of consecutive columns. Setting this to <code>True</code> will draw polygons for every cell.</p>
 		<p><code class="Hilite">r</code>: A row number, or a 2-tuple or 2-list identifying a group of consecutive rows.</p>
 		<p><code class="Hilite">kwargs</code>: A dictionary describing the <code>Polygon</code> attributes such as <code>weight</code>, <code>stroke</code>, and <code>fill</code>.</p>
 		</div>
+	<p><code><span class="Hilite">cell</span>(c, r)</code> → <code>pygame.Rect</code>: Return a rectangle describing the location of a cell or range of cells within the canvas.</p>
+		<div class="Indent">
+		<p><code class="Hilite">c</code>: A column number, or a 2-tuple or 2-list identifying a group of consecutive columns.</p>
+		<p><code class="Hilite">r</code>: A row number, or a 2-tuple or 2-list identifying a group of consecutive rows.</p>
+		</div>
+	<p><code><span class="Hilite">lowerBoxes</span>()</code> → <code>self</code>: Move all <code>Polygon</code> instances in the table to the lowest layers below the non-polygon content.</p>
 </div>
 
 <h4>Static Method</h4><div class="Indent">

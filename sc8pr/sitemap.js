@@ -34,7 +34,7 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 			{title:"class Dialog", link:"dialog"},
 			{title:"class Menu", link:"menu_class"},
 			{title:"class MessageBox", link:"msgbox"},
-//			{title:"class NumInputBox", link:"msgbox"},
+			{title:"class NumInputBox", link:"msgbox"},
 			{title:"class Options", link:"options"},
 			{title:"class Radio", link:"radio"},
 			{title:"class Slider", link:"slider"},

@@ -118,4 +118,18 @@ Sketch().play()</pre>
 		</div>
 </div>
 
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">apply</span>(img, n=0)</code> → <code>pygame.Surface</code>: Apply an effect.</p>
+		<div class="Indent">
+		<p><code class="Hilite">img</code>: The original image as an <code>Image</code> or <code>pygame.Surface</code> instance, or an object that can contains a surface as its <code>image</code> attribute.</p>
+		<p><code class="Hilite">n</code>: The extent of the effect as a number between 0 (full effect) and 1 (original image).</p>
+		</div>
+	<p><code><span class="Hilite">time</span>(fullEffect, noEffect=0)</code> → <code>self</code>: Specifying the timing for applying the effect as a transition.</p>
+		<div class="Indent">
+		<p><code class="Hilite">fullEffect</code>: The frame number at which the effect is fully applied.</p>
+		<p><code class="Hilite">noEffect</code>: The frame number at which the effect is complete and the original image is to be used.</p>
+		</div>
+</div>
+
 </article>

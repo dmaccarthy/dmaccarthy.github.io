@@ -9,7 +9,7 @@
 	<p><code class="Hilite">effects</code>: A list of <code><a href="javascript:goNode('effect')">sc8pr.misc.effect</a>.Effect</code> instances to be applied before drawing the graphic; can be set to <code>None</code> (default) if no effects are to be applied.</p>
 	<p><code class="Hilite">focusable</code>: A <code>bool</code> value indicating whether the graphic can gain focus when clicked; defaults to <code>False</code> unless overridden in the subclass definition.</p>
 	<p><code class="Hilite">height</code>: The height of the graphic, not accounting for rotation. When a new value is assigned, the width is also adjusted to maintain a constant aspect ratio.</p>
-	<p><code class="Hilite">hoverable</code>: A <code>bool</code> value indicating whether the graphic can respond to mouse events; defaults to <code>True</code>. <b class="Comment">[Experimental in v2.2.dev]</b></p>
+	<p><code class="Hilite">hoverable</code>: A <code>bool</code> value indicating whether the graphic can respond to mouse events; defaults to <code>True</code>. <b class="Comment">[Added in v2.2]</b></p>
 	<p><code class="Hilite">layer</code>: An index (<code>int</code>) specifying the drawing order of the graphic relative to all other graphics in the canvas. Layers are numbered from bottom (<code>layer = 0</code>) to top. Graphic instances can be assigned a negative layer value to specify a position relative to the top (<code>layer = -1</code>). The <code>layer</code> property can only be used while the graphic is contained by a canvas.</p>
 	<p><code class="Hilite">pos</code>: A 2-tuple describing the position of the graphic relative to its canvas.</p>
 	<p><code class="Hilite">radiusFactor</code>: A factor used to calculate the graphics <code>radius</code> property from its <code>width</code> and <code>height</code>; default <code>0.25</code>.</p>
@@ -21,7 +21,7 @@
 	<p><code class="Hilite">aspectRatio</code>: The ratio of the graphic’s width to height.</p>
 	<p><code class="Hilite">avgColor</code>: The average color of the graphic as an RGBA 4-tuple.</p>
 	<p><code class="Hilite">canvas</code>: The <code>Canvas</code> instance to which the graphic belongs, or <code>None</code>.</p>
-	<p><code class="Hilite">center</code>: A 2-tuple calculated as half of the graphic’s width and height.</p>
+	<p><code class="Hilite">center</code>: A 2-tuple describing the coordinates of the item’s centre.</p>
 	<p><code class="Hilite">dialog</code>: The top canvas (one level below the sketch) in which the graphic is located. Will return the graphic itself if added directly to the sketch. An exception will occur if called on the sketch itself or on a graphic that has been removed from or not added to the sketch.</p>
 	<p><code class="Hilite">focussed</code>: A <code>bool</code> indicating whether the graphic is currently focussed.</p>
 	<p><code class="Hilite">name</code>: The key with which the graphic was added to its canvas, or <code>None</code> if added anonymously.</p>
@@ -29,7 +29,7 @@
 	<p><code class="Hilite">radius</code>: The approximate radius of the graphic based on its unrotated width and height and its <code>radiusFactor</code> property.</p>
 	<p><code class="Hilite">rect</code>: A <code>pygame.Rect</code> instance describing the graphic’s location in the sketch. This property is updated each frame when the graphics are drawn. An <code>AttributeError</code> exception may be raised if you try to access this property for a graphic that is not currently in the sketch, or one that has just been added but not yet drawn.</p>
 	<p><code class="Hilite">sketch</code>: A reference to the sketch object if the graphic has been added to the sketch or to a canvas that has been added to the sketch; otherwise <code>None</code>.</p>
-	<p><code class="Hilite">surfaceEffect</code>: A rendering of the graphic as a surface, to which all of the graphic’s <code>effects</code> have been applied. Subclasses must have an <code>image</code> property to which the effects can be applied.</p>
+	<p><code class="Hilite">surfaceEffect</code>: A rendering of the graphic as a <code>pygame.Surface</code>, to which all of the graphic’s <code>effects</code> have been applied. Subclasses must have an <code>image</code> property to which the effects can be applied.</p>
 	<!--p><code class="Hilite">timeFactor</code>: .</p-->
 </div>
 
@@ -50,7 +50,7 @@
 	<p><code><span class="Hilite">blur</span>()</code> → <code>self</code>: Force the instance to relinquish focus. This method does <i>not</i> call the <code>onblur</code> event handler or the sketch’s <code>onfocus</code> handler.</p>
 	<p><code><span class="Hilite">bubble</span>(eventName, ev)</code> → <code>None</code>: Call the instance’s event handler to process an event. If no event handler exists for the specified event, the call will “bubble” to the instance’s canvas.</p>
 		<div class="Indent">
-		<p><code>eventName</code>: A string describing the event handler (e.g. <code>"onclick"</code>).</p>
+		<p><code>eventName</code>: A string containing the default handler name (e.g. <code>"onclick"</code>).</p>
 		<p><code>ev</code>: A description of the event as a <code>pygame.event.EventType</code> instance.</p>
 		</div>
 	<p><code><span class="Hilite">calcBlitRect</span>(blitSize)</code> → <code>pygame.Rect</code>: Calculates the rectangle where the graphic will be drawn in the sketch, based on the graphic’s position, anchor, and canvas. This method is called when the graphic is drawn; applications would not normally call this method directly.</p>
@@ -69,9 +69,6 @@
 	<p><code><span class="Hilite">pathTo</span>(cv)</code> → <code>list</code>: A list containing the graphic and all canvases that contain it, in order, up to the specified argument. <b class="Comment">[Added in v2.1]</b></p>
 		<div class="Indent">
 		<p><code>cv</code>: A <code>Canvas</code> instance at which to terminate the list.</p>
-		</div>
-		<div class="Indent">
-		<p><code>compress</code>: Set this to <code>zlib.compress</code> to compress the binary data.</p>
 		</div>
 	<p><code><span class="Hilite">relXY</span>(pos)</code> → <code>tuple</code>: Calculate the coordinates of a point relative to the graphics instance by accounting for the instance’s <code>rect</code> and <code>angle</code> properties.</p>
 		<div class="Indent">

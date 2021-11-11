@@ -65,7 +65,6 @@ def setup(sk):
     # Add Buttons
     y += down(cv)
     cv["Button Box"] = buttons(cfg).config(anchor=TOP, pos=(x,y))
-    print(y, cv[-1].height)
 
     # Modify canvas and sketch size based on content
     cv.resize((cv.width, y + down(cv)), False)
