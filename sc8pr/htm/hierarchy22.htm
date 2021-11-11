@@ -13,7 +13,7 @@ li span {cursor:pointer}
 
 </style>
 
-<p>Below is the <code>Graphic</code> “class hierarchy”. Classes shown in <span class="Comment">red</span> are “abstract” and should not be used to create graphics instances directly. Classes shown in <span class="Hilite">blue</span> are also subclasses of <code>BaseSprite</code>.</p>
+<p>Below is the <code>Graphic</code> “class hierarchy”. Classes shown in <span class="Comment">red</span> are “abstract” and should not be used to create graphics instances directly. Each class shown in  <span class="Blue">blue</span> also has a subclass of the same name suffixed with “Sprite” (such as <code>TextSprite</code>, <code>CircleSprite</code>, etc.) These subclasses are also subclasses of <code>BaseSprite</code>.</p>
 
 <ul id="Hierarchy">
 <li class="Red">Graphic</span></li>
@@ -21,8 +21,7 @@ li span {cursor:pointer}
 	<li class="Red" link="base">BaseSprite</li>
 	<li>Image</li>
 	<ul>
-		<li>Movie</li>
-		<ul><li class="Blue" link="media">MovieSprite</li></ul>
+		<li class="Blue">Movie</li>
 	</ul>
 	<li>Canvas</li>
 	<ul>
@@ -43,7 +42,7 @@ li span {cursor:pointer}
 	</ul>
 	<li link="sprite_class">CostumeImage</li>
 	<ul>
-		<li link="sprite_class" class="Blue">Sprite</li>
+		<li link="sprite_class">Sprite</li>
 		<ul>
 			<li link="robot_class">Robot</li>
 			<li link="video_class">Video</li>
@@ -51,27 +50,24 @@ li span {cursor:pointer}
 	</ul>
 	<li link="render" class="Red">Renderable</li>
 	<ul>
-		<li>Text</li>
+		<li class="Blue">Text</li>
 		<ul>
 			<li link="ti_class">TextInput</li>
-			<li link="text" class="Blue">TextSprite</li>
 		</ul>
 		<li link="plot_class">Plot</li>
 		<li>HSV</li>
 	</ul>
 	<li class="Red">Shape</li>
 	<ul>
-		<li>Circle</li>
-		<ul><li link="shape" class="Blue">CircleSprite</li></ul>
-		<!--li>*Ellipse</li>
-		<ul><li>*Arc</li></ul-->
+		<li link="circle">QCircle</li>
+			<ul><li class="Blue">Circle</li></ul>
+		<li>Ellipse</li>
+			<ul><li>Arc</li></ul>
 		<li>Line</li>
 		<li>Locus</li>
-		<li>Polygon</li>
+		<li class="Blue">Polygon</li>
 		<ul>
-			<li>Arrow</li>
-			<ul><li link="shape" class="Blue">ArrowSprite</li></ul>
-			<li link="shape" class="Blue">PolygonSprite</li>
+			<li class="Blue">Arrow</li>
 		</ul>
 	</ul>
 </ul>

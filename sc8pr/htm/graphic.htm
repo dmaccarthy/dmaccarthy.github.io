@@ -47,7 +47,10 @@
 		<p><code>offset</code>: A position offset based on the canvas’s position.</p>
 		<p><code>blitSize</code>: The size of the graphic adjusted for rotation.</p>
 		</div>
-	<p><code><span class="Hilite">blur</span>()</code> → <code>self</code>: Force the instance to relinquish focus. This method does <i>not</i> call the <code>onblur</code> event handler or the sketch’s <code>onfocus</code> handler.</p>
+	<p><code><span class="Hilite">blur</span>(trigger=False)</code> → <code>self</code>: Force the instance to relinquish focus. This method does <i>not</i> call the <code>onblur</code> event handler.</p>
+		<div class="Indent">
+		<p><code>trigger</code>: A <code>bool</code> indicating whether the sketch’s <code>onfocus</code> handler is to be called. <b class="Comment">[Added in v2.2]</b></p>
+		</div>
 	<p><code><span class="Hilite">bubble</span>(eventName, ev)</code> → <code>None</code>: Call the instance’s event handler to process an event. If no event handler exists for the specified event, the call will “bubble” to the instance’s canvas.</p>
 		<div class="Indent">
 		<p><code>eventName</code>: A string containing the default handler name (e.g. <code>"onclick"</code>).</p>
@@ -65,6 +68,10 @@
 	<p><code><span class="Hilite">draw</span>(srf)</code> → <code>pygame.Rect</code>: Draw the graphic onto a surface and return a description of the rectangle occupied on the surface by the graphic. Subclasses must provide a <code>image</code> property that refers to a properly sized and rotated surface. The <code>draw</code> method will apply any effects as indicated by the graphic’s <code>effects</code> property.</p>
 		<div class="Indent">
 		<p><code>srf</code>: The surface being drawn upon. The surface clipping region will indicate the canvas rectangle.</p>
+		</div>
+	<p><code><span class="Hilite">focus</span>(trigger=False)</code> → <code>self</code>: Give focus to the specified graphic. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code>trigger</code>: A <code>bool</code> indicating whether to call the <code>onblur</code> handler of the currently focussed object and the <code>onfocus</code> handler of the newly focussed object.</p>
 		</div>
 	<p><code><span class="Hilite">pathTo</span>(cv)</code> → <code>list</code>: A list containing the graphic and all canvases that contain it, in order, up to the specified argument. <b class="Comment">[Added in v2.1]</b></p>
 		<div class="Indent">

@@ -70,7 +70,10 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 		]},
 		{title:"sc8pr.shape", link:"shape", pages:[
 			{title:"class Line", link:"line"},
+			{title:"class QCircle", link:"circle"},
 			{title:"class Circle", link:"circle"},
+			{title:"class Ellipse", link:"ellipse"},
+			{title:"class Arc", link:"arc"},
 			{title:"class Polygon", link:"polygon"},
 			{title:"class Arrow", link:"arrow"},
 		]},

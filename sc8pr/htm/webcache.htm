@@ -35,8 +35,17 @@ for img in wc.flush():
 <p><code class="Hilite">CacheRequest</code>: A <code>WebRequest</code> subclass for retreiving cached data. A <code>CacheRequest</code> instance is created when <code>WebCache.get</code> determines that a requested resource is available in the cache. Attributes are the same as for <code>WebRequest</code> except that <code>response</code> will always be <code>None</code>.</p>
 </div>
 
+LATEX_URL = "https://latex.codecogs.com/png.latex?{}"
+
+
+<h4>Constants</h4>
+<div class="Indent">
+	<p><code><span class="Code Hilite">LATEX_URL</span></code>: URL template for LaTeX requests; default <code>"https://latex.codecogs.com/png.latex?{}"</code>. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code><span class="Code Hilite">LATEX_FMT</span></code>: Image format for LaTeX requests; default <code>"png"</code>. <b class="Comment">[Added in v2.2]</b></p>
+</div>
+
 <h4>Functions</h4>
-<div class="Indent"><p><code><span class=" Code Hilite">pref</span>(latex, val, key="dpi")</code> → <code>str</code>: Prefixes some LaTeX markup with a modifier (such as <code>\dpi{256}</code>).</p>
+<div class="Indent"><p><code><span class="Code Hilite">pref</span>(latex, val, key="dpi")</code> → <code>str</code>: Prefixes some LaTeX markup with a modifier (such as <code>\dpi{256}</code>).</p>
 	<div class="Indent">
 	<p><code class="Hilite">latex</code>: The LaTeX markup to be modified.</p>
 	<p><code class="Hilite">val</code>: The modifier value.</p>
