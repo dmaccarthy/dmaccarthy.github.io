@@ -15,7 +15,7 @@ with S8Vfile("movie.s8v", "w", frameRate=30) as mov:
 </pre>
 
 <h4>Constructor</h4><div class="Indent">
-	<p><code><span class="Hilite">S8Vfile</span>(fn, mode="r" , **meta)</code>: Create an instance to read or write the specified S8V file.</p>
+	<p><code><span class="Hilite">S8Vfile</span>(fn, mode="r", **meta)</code>: Create an instance to read or write the specified S8V file.</p>
 		<div class="Indent">
 		<p><code class="Hilite">fn</code>: The path to the S8V file.</p>
 		<p><code class="Hilite">mode</code>: The mode parameter to open the file using <a href="https://docs.python.org/3/library/zipfile.html?highlight=zipfile#zipfile.ZipFile">ZipFile</a>.</p>
@@ -23,12 +23,16 @@ with S8Vfile("movie.s8v", "w", frameRate=30) as mov:
 		</div>
 </div>
 
+<h4>Read-Only Property</h4><div class="Indent">
+	<p><code><span class="Hilite">meta</span></code>: A dictionary of metadata such as the frame rate.</p>
+</div>
+
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">append</span>(data)</code> → <code>None</code>: Append a frame to the S8V file.</p>
 		<div class="Indent">
 		<p><code class="Hilite">data</code>: A <a class="Hilite Code" href="javascript:goNode('pixeldata')">PixelData</a> instance or an object that can be passed to the <code>PixelData</code> constructor.</p>
 		</div>
-	<p><code><span class="Hilite">capture</span></code> → <code>None</code>: A pseudonym for <code>append</code>, allowing the <code>S8Vfile</code> to record the sketch.</p>
+	<p><code><span class="Hilite">capture</span></code>: A pseudonym for <code>append</code>, allowing the <code>S8Vfile</code> to record the sketch.</p>
 	<p><code><span class="Hilite">clip</span>(start=0, end=None)</code> → <code>generator</code>: Generate a sequence of <code>PixelData</code> instances representing the frames of the video.</p>
 		<div class="Indent">
 		<p><code class="Hilite">start</code>: The first frame index in the sequence.</p>
@@ -42,6 +46,14 @@ with S8Vfile("movie.s8v", "w", frameRate=30) as mov:
 		<p><code class="Hilite">compress</code>: Specifies whether the pixel data should be returned as compressed or raw data.</p>
 		</div>
 </div>
+
+<h4>Static Method</h4><div class="Indent">
+	<p><code><span class="Hilite">info</span>(fn)</code> → <code>dict</code>: Return the metadata.</p>
+		<div class="Indent">
+		<p><code class="Hilite">fn</code>: Path to the S8V file.</p>
+		</div>
+</div>
+
 
 </article></body>
 </html>

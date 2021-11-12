@@ -45,7 +45,7 @@ with FFWriter("movie.mp4", 30) as ffw:
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
-	<p><code><span class="Hilite">capture</span>(sk)</code> → <code>None</code>: Capture the sketch window and write it as a new frame. Called automatically by the sketch on its <code>capture</code> property.</p>
+	<p><code><span class="Hilite">capture</span></code>: A pseudonym for <code>write</code>; allows the <code>FFWriter</code> to record the sketch.</p>
 	<p><code><span class="Hilite">write</span>(srf)</code> → <code>self</code>: Write a single frame to the movie from from the provided image.</p>
 		<div class="Indent">
 		<p><code class="Hilite">srf</code>: A <code>pygame.Surface</code> or <code>Image</code> instance; or any object that has an <code>image</code> attribute containing a <code>pygame.Surface</code>, or that can be passed to the <code>Image</code> constructor.</p>
