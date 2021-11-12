@@ -1,11 +1,10 @@
 ﻿<article>
 <h1><code>sc8pr.misc.media.FFReader</code> Class</h1>
-<p><span class="Comment"><b>Experimental! Added in v2.2</b>.</span></p>
+<p><span class="Comment"><b>Added in v2.2</b>.</span></p>
 
-<p><code>FFReader</code> is used to decode media files into <code>Video</code> instances that can be used with your <code>sc8pr</code> sketches. This class uses the <a href="https://imageio.readthedocs.io/en/stable/" target="im"><code>imageio</code></a> and <a href="https://imageio.readthedocs.io/en/stable/format_ffmpeg.html" target="im"><code>imageio-ffmpeg</code></a> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>).</p>
+<p><code>FFReader</code> is used to decode media files into <code>Video</code> or <code>Movie</code> instances that can be used with your <code>sc8pr</code> sketches. This class uses the <a href="https://imageio.readthedocs.io/en/stable/" target="im"><code>imageio</code></a> and <a href="https://imageio.readthedocs.io/en/stable/format_ffmpeg.html" target="im"><code>imageio-ffmpeg</code></a> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>).</p>
 
-<p><!--The <code>FFReader</code> class uses Python’s <code>with...as</code> structure. -->
-Note that <code>sc8pr</code> does not import any packages other than <code>pygame</code>; your program must import the three modules needed for <code>FFReader</code> to work as shown in <span class="Hilite">blue</span> in the first example below.</p>
+<p>Note that <code>sc8pr</code> does not import any packages other than <code>pygame</code>; your program must import the three modules needed for <code>FFReader</code> to work as shown in <span class="Hilite">blue</span> in the first example below.</p>
 
 <p>In the example below, <code>FFReader</code> loads the video from an MP4 file into a <code>Video</code> instance. If the installed <code>imageio-ffmpeg</code> package does not include an FFmpeg executable, you may need to call the <code>FFReader.ffpeg</code> function to specify the path to FFmpeg.</p>
 <pre class="Code" id="Ex1">from sc8pr.misc.media import FFReader
@@ -14,6 +13,8 @@ Note that <code>sc8pr</code> does not import any packages other than <code>pygam
 with FFReader("movie.mp4") as ffr:
     vid = ffr.read()
 print(vid, len(vid))</pre>
+
+<p>Loading the entire video can use a lot of memory, depending on the size and length of the video. It may be preferable to use the <a class="Hilite Code" href="javascript:goNode('movie')">Movie</a> class to play movies.</p>
 
 <p>You can also convert a movie to an S8V file without loading the entire video into memory...</p>
 <pre class="Code" id="Ex2">from sc8pr.misc.media import FFReader
