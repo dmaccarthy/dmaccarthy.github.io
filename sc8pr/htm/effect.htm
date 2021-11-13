@@ -33,7 +33,7 @@ def setup(sk):
     img.effects = [
         PaintDrops().time(60, 180), <span class="Comment"># Transition in (frames 60-180)</span>
         Dissolve().time(420, 300),  <span class="Comment"># Transition out (frames 300-420)</span>
-        Remove(img).time(420, True) <span class="Comment"># Remove image after final transition</span>
+        Remove(img, True).time(420) <span class="Comment"># Remove image after final transition</span>
     ]
     sk += img.config(pos=sk.center)
 
