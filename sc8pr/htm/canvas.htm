@@ -44,15 +44,18 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 </div>
 
 <h4>Assignable Properties</h4><div class="Indent">
-	<p><code class="Hilite">bg</code>: A color or <code><a class="Hilite" href="javascript:goNode('image')">Image</a></code> instance specifying the canvas background. If the background image has a different aspect ratio than the canvas, the image will be scaled.</p>
+	<p><code class="Hilite">bg</code>: A color or <a class="Hilite Code" href="javascript:goNode('image')">Image</a> instance specifying the canvas background. If the background image has a different aspect ratio than the canvas, the image will be scaled.</p>
 	<p><code class="Hilite">border</code>: The color of the border to be drawn around the canvas; default is black.</p>
-	<p><code class="Hilite">clipArea</code>: A rectangle specifying the drawing clip area.</p>
+	<p><code class="Hilite">clipArea</code>: A rectangle specifying the drawing clip area. <b class="Comment">[Added in v2.2]</b></p>
 	<p><code class="Hilite">resizeContent</code>: A <code>bool</code> specifying whether or not to resize the content of the canvas when the canvas itself is resized; default <code>True</code>.</p>
 	<p><code class="Hilite">weight</code>: The thickness in pixels of the canvas border; default is <code>0</code> (no border).</p>
 </div>
 
 <h4>Read-Only Properties</h4><div class="Indent">
 	<p><code class="Hilite">angle</code>: Canvases do not allow rotation so the <code>angle</code> property is fixed as <code>0</code>.</p>
+	<p><code class="Hilite">clockwise</code>: A <code>bool</code> specifying whether the attached coordinate system (see the <code>attachCS</code> method below) has its <i>y</i> axis clockwise from the <i>x</i> axis. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code class="Hilite">units</code>: A 2-tuple describing the number of pixels equal to 1 coordinate system unit in the <i>x</i> and <i>y</i> directions (see the <code>attachCS</code> method below). <b class="Comment">[Added in v2.2]</b></p>
+	<p><code class="Hilite">unit</code>: An “average” of the <i>x</i> and <i>y</i> values returned by the <code>units</code> property. <b class="Comment">[Added in v2.2]</b></p>
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
@@ -69,7 +72,21 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 	<p><code><span class="Hilite">__len__</span>()</code> → <code>int</code>: Enables the <code>len</code> function to determine the number of graphic instances currently added to the canvas.</p>
 	<p><code><span class="Hilite">__setitem__</span>(key, gr)</code> → <code>None</code>: Adds a graphic instance to the canvas with the specified key (name). <b class="Comment">As of v2.2</b>, this function will accept an <code>int</code> in place of a key, to insert the item into the canvas with a specific <code>layer</code> value. The key cannot be a <code>slice</code>, or a non-hashable type. A <code>KeyError</code> will be raised if an invalid type is used (including an <code>int</code> in versions earlier than 2.2), or if the key is already in use by an instance other than <code>gr</code>.</p>
 	<!--p><code><span class="Hilite">__setitem__</span>(key, gr)</code> → <code>None</code>: Adds a graphic instance to the canvas with the specified key (name). The key cannot be an <code>int</code>, a <code>slice</code>, or a non-hashable type. A <code>KeyError</code> will be raised if an invalid type is used, or if the key is already in use by an instance other than <code>gr</code>.</p-->
+	<p><code><span class="Hilite">attachCS</span>(lrbt, margin=0, size=None)</code> → <code>self</code>: Attach a coordinate system to the canvas; coordinate transformations can then be performed using the <code>px</code> method (from coordinate system to pixels) or <code>cs</code> method (from pixels to the coordinate system). <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">lrbt</code>: A list or tuple containing coordinates corresponding to the left, right, bottom, and top of the canvas. If the top or the top and bottom values are omitted, they will be calculated so that the scale is the same on both axes.</p>
+		<p><code class="Hilite">margin</code>: A number or a 4-list or 4-tuple of numbers specifying the number of pixels to be considered as a margin around the edges of the canvas.</p>
+		<p><code class="Hilite">size</code>: The viewport size to use for the coordinate transformation; if omitted the canvas size (or scroll size for instances of <a class="Hilite Code" href="javascript:goNode('scroll')">ScrollCanvas</a>) will be used.</p>
+		</div>
 	<p><code><span class="Hilite">cover</span>()</code> → <code>Image</code>: Creates a semi-transparent image that can cover the canvas. This is useful for blocking mouse events, for example when running a dialog on top of the canvas. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code><span class="Hilite">cs</span>(*pt)</code> → <code>tuple</code>: Calculate the coordinates of a point in the attached coordinate system (see <code>attachCS</code> above) from its pixel coordinates. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">pt</code>: The pixel coordinates of the point to be transformed.</p>
+		</div>
+	<p><code><span class="Hilite">cs_list</span>(*args)</code> → <code>list</code>: Perform a coordinate transformation using the <code>cs</code> method for multiple points. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">args</code>: A sequence of points as pixel coordinates.</p>
+		</div>
 	<p><code><span class="Hilite">everything</span>()</code> → <code>generator</code>: Yields a sequence of contained graphics recursively; i.e. includes graphics contained by nested canvases.</p>
 	<p><code><span class="Hilite">find</span>(criteria, recursive=False)</code> → <code>generator</code>: Yields a sequence of contained graphics that meet the specified criteria.</p>
 		<div class="Indent">
@@ -89,6 +106,14 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 	<p><code><span class="Hilite">purge</span>(recursive=False)</code> → <code>None</code>: Remove all <code>Graphic</code> instances from the canvas.</p>
 		<div class="Indent">
 		<p><code class="Hilite">recursive</code>: Specifies whether to purge any contained canvases.</p>
+		</div>
+	<p><code><span class="Hilite">px</span>(*pt)</code> → <code>tuple</code>: Calculate the pixel coordinates of a point from its coordinates in the attached cordinate system (see <code>attachCS</code> above). <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">pt</code>: The coordinates of the point to be transformed.</p>
+		</div>
+	<p><code><span class="Hilite">px_list</span>(*args)</code> → <code>list</code>: Perform a coordinate transformation using the <code>px</code> method for multiple points. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">args</code>: A sequence of points in the attached coordinate system.</p>
 		</div>
 	<p><code><span class="Hilite">removeItems</span>(*args)</code> → <code>self</code>: Remove each of the items from the canvas; does not raise an exception if the item is not found. <b class="Comment">[Added in v2.2]</b></p>
 	<p><code><span class="Hilite">resize</span>(size, resizeContent=True)</code> → <code>None</code>: Resize the canvas; called automatically when a new <code>size</code>, <code>width</code> or <code>height</code> property is assigned.</p>

@@ -1,7 +1,7 @@
 ﻿<article><h1><code>sc8pr.gui.slider.Slider</code> Class</h1>
 <p><span class="Comment"><b>Added in v2.1</b>. The <code>Slider</code> class in v2.0 was experimental and does not conform to this API!</span></p>
 
-<p>The <code>Slider</code> class is used to create slider GUI controls. This class implements event handlers for <code>onclick</code> and <code>onkeydown</code>, and triggers <code>onchange</code>. When <code>onchange</code> is called, the event argument will have a <code>method</code> property which specifies how the slider value was changed. This property will equal one of the constants <code>CLICK</code>, <code>SCROLL</code>, <code>DRAG</code>, or <code>KEY</code>, defined in <code>sc8pr.gui.slider</code>.</p>
+<p>The <code>Slider</code> class is used to create slider GUI controls. This class implements event handlers for <code>onkeydown</code> and either <code>onmousedown</code> (v2.2) or <code>onclick</code> (v2.1), and triggers <code>onchange</code>. When <code>onchange</code> is called, the event argument will have a <code>method</code> property which specifies how the slider value was changed. This property will equal one of the constants <code>CLICK</code>, <code>SCROLL</code>, <code>DRAG</code>, or <code>KEY</code>, defined in <code>sc8pr.gui.slider</code>.</p>
 <p>In addition to the attributes it inherits from <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a>, the <code>Slider</code> class defines the following...</p>
 
 <h4>Constructor</h4><div class="Indent">

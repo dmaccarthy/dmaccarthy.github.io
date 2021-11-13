@@ -1,0 +1,25 @@
+﻿<article><h1><code>sc8pr.gui.scroll</code> Module</h1>
+<p><span class="Comment"><b>Experimental in v2.2</b>.</span></p>
+
+<p>This module defines the <code>ScrollCanvas</code> and <code>ScrollSketch</code> classes which display a viewport to a virtual canvas and provide scroll bars to move the viewport. In addition to the attributes they inherit from <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> and <a class="Hilite Code" href="javascript:goNode('sketch')">Sketch</a> respectively, these classes define the following...</p>
+
+<h4>Constructors</h4><div class="Indent">
+	<p><code><span class="Hilite">ScrollCanvas</span>(size, scrollSize=None, bg=None)</code></p>
+	<p><code><span class="Hilite">ScrollSketch</span>(size=(512, 288), scrollSize=None)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">size</code>: The actual size of the canvas or sketch.</p>
+		<p><code class="Hilite">scrollSize</code>: The “virtual” or scrollable size of the canvas; if omitted the actual canvas size will be used.</p>
+		<p><code class="Hilite">bg</code>: The canvas background color or image.</p>
+		</div>
+</div>
+
+<h4>Assignable Properties</h4>
+<div class="Indent">
+	<p><code class="Hilite">resizeScroll</code>: A <code>bool</code> specifying whether to scale the <code>scrollSize</code> automatically when the canvas is resized; default <code>False</code>.</p>
+	<p><code class="Hilite">scrollSize</code>: A 2-tuple containing the “virtual” or scrollable size of the canvas.</p>
+</div>
+
+<h4>Instance Method</h4><div class="Indent">
+	<p><code><span class="Hilite">scrollSnapshot</span>()</code> → <code>Image</code>: Renders an image of the entire “virtual” canvas.</p>
+</div>
+</article>

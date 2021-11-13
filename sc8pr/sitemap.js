@@ -30,6 +30,7 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 		]},
 		{title:"sc8pr.geom", link:"geom"},
 		{title:"sc8pr.gui.*", link:"gui", pages:[
+			{title:".scroll", link:"scroll"},
 			{title:"class Button", link:"button_class"},
 			{title:"class Dialog", link:"dialog"},
 			{title:"class Menu", link:"menu_class"},
