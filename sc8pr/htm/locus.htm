@@ -35,7 +35,7 @@ Sketch().play("Locus Demo")</pre>
 	<p><code><span class="Hilite">Locus</span>(data, lrbt, param)</code></p>
 		<div class="Indent">
 		<p><code class="Hilite">data</code>: A list or tuple of points, or a function from which points can be generated. The function may be of the form <i>f: x → y</i> if it is a function in the mathematical sense, or <i>f: t → (x, y)</i> for a parameterized curve.</p>
-		<p><code class="Hilite">lrbt</code>: A list or tuple specifying the coordinates corresponding to the <i>left</i>, <i>right</i>, <i>bottom</i>, and <i>top</i> edges of the plot area. If <i>top</i> is not specified, it will be calculated so that the <i>y</i>-axis has the same scale as the <i>x</i>-axis. If <i>top</i> and <i>bottom</i> are both omitted, the axes will have the same scales and the <i>x</i>-axis will be positioned in the middle of the plot.</p>
+		<p><code class="Hilite">lrbt</code>: A list or tuple specifying the coordinates corresponding to the <i>left</i>, <i>right</i>, <i>bottom</i>, and <i>top</i> edges of the containg canvas. If <i>top</i> is not specified, it will be calculated so that the <i>y</i>-axis has the same scale as the <i>x</i>-axis. If <i>top</i> and <i>bottom</i> are both omitted, the axes will have the same scales and the <i>x</i>-axis will be positioned in the middle of the plot. <b class="Comment">As of v2.2</b>, this argument can be set to <code>True</code> to use the canvas’s attached coordinate system.</p>
 		<p><code class="Hilite">param</code>: A 3-list or 3-tuple specifying the starting and ending values of the parameter, and the number of steps. This is used to generate the data points when a function is provided as <code>data</code>. The <code>param</code> argument is ignored if <code>data</code> is a sequence of points. In the example above, the <code>sinWave</code> function is graphed from <i>x</i> = −1 to +1 by drawing 500 segments.
 		</div>
 </div>
@@ -46,7 +46,10 @@ Sketch().play("Locus Demo")</pre>
 </div>
 
 <h4>Read-Only Properties</h4><div class="Indent">
+	<p><code class="Hilite">anchor</code>: <b class="Comment">As of v2.2</b> this property is fixed as <code>TOPLEFT</code>.</p>
 	<p><code class="Hilite">pointList</code>: A list of data points.</p>
+	<p><code class="Hilite">pos</code>: <b class="Comment">As of v2.2</b> this property is fixed as <code>(0, 0)</code>.</p>
+	<p><code class="Hilite">scrollable</code>: <b class="Comment">As of v2.2</b> this property is fixed as <code>False</code>.</p>
 	<p><code class="Hilite">snapshot</code>: This attribute is set to <code>None</code> to disable the <code>snapshot</code> method. To convert a locus into an <code>Image</code>, add the locus to a <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> instance and then take a snapshot of the canvas.</p>
 </div>
 
