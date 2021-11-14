@@ -1,4 +1,4 @@
-# Copyright 2018-2019 D.G. MacCarthy <http://dmaccarthy.github.io>
+# Copyright 2018-2021 D.G. MacCarthy <http://dmaccarthy.github.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

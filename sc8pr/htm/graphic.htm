@@ -6,7 +6,7 @@
 	<p><code class="Hilite">anchor</code>: One of the anchor constants (e.g. <code>TOPLEFT</code> or <code>CENTER</code>) indicating how the <code>pos</code> property is interpreted.</p>
 	<p><code class="Hilite">angle</code>: The number of degrees to rotate the graphic when drawing to its canvas. Positive values represent clockwise rotations and negative are counter-clockwise. Rotation is not supported by all subclasses.</p>
 	<p><code class="Hilite">autoPositionOnResize</code>: A <code>bool</code> indicating whether the <code>resize</code> method should call <code>scaleVectors</code>; default is <code>True</code> unless overridden by subclass.</p>
-	<p><code class="Hilite">effects</code>: A list of <code><a href="javascript:goNode('effect')">sc8pr.misc.effect</a>.Effect</code> instances to be applied before drawing the graphic; can be set to <code>None</code> (default) if no effects are to be applied.</p>
+	<p><code class="Hilite">effects</code>: A list of <code><a href="javascript:goNode('effect')">Effect</a></code> instances to be applied before drawing the graphic; can be set to <code>None</code> (default) if no effects are to be applied.</p>
 	<p><code class="Hilite">focusable</code>: A <code>bool</code> value indicating whether the graphic can gain focus when clicked; defaults to <code>False</code> unless overridden in the subclass definition.</p>
 	<p><code class="Hilite">height</code>: The height of the graphic, not accounting for rotation. When a new value is assigned, the width is also adjusted to maintain a constant aspect ratio.</p>
 	<p><code class="Hilite">hoverable</code>: A <code>bool</code> value indicating whether the graphic can respond to mouse events; defaults to <code>True</code>. <b class="Comment">[Added in v2.2]</b></p>
@@ -22,7 +22,7 @@
 	<p><code class="Hilite">aspectRatio</code>: The ratio of the graphic’s width to height.</p>
 	<p><code class="Hilite">avgColor</code>: The average color of the graphic as an RGBA 4-tuple.</p>
 	<p><code class="Hilite">canvas</code>: The <code>Canvas</code> instance to which the graphic belongs, or <code>None</code>.</p>
-	<p><code class="Hilite">center</code>: A 2-tuple describing the coordinates of the item’s centre.</p>
+	<p><code class="Hilite">center</code>: A 2-tuple describing the coordinates of the item’s centre relative to its upper left corner, not accounting for rotation; used by the <code>relXY</code> method.</p>
 	<p><code class="Hilite">dialog</code>: The top canvas (one level below the sketch) in which the graphic is located. Will return the graphic itself if added directly to the sketch. An exception will occur if called on the sketch itself or on a graphic that has been removed from or not added to the sketch.</p>
 	<p><code class="Hilite">focussed</code>: A <code>bool</code> indicating whether the graphic is currently focussed.</p>
 	<p><code class="Hilite">name</code>: The key with which the graphic was added to its canvas, or <code>None</code> if added anonymously.</p>
