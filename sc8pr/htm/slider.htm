@@ -5,10 +5,10 @@
 <p>In addition to the attributes it inherits from <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a>, the <code>Slider</code> class defines the following...</p>
 
 <h4>Constructor</h4><div class="Indent">
-	<p><code><span class="Hilite">Slider</span>(size=(128,16), knob="grey", lower=0, upper=1, steps=0)</code></p>
+	<p><code><span class="Hilite">Slider</span>(size=(128,16), knob=None, lower=0, upper=1, steps=0)</code></p>
 		<div class="Indent">
 		<p><code class="Hilite">size</code>: The size of the slider canvas as a 2-tuple or 2-list.</p>
-		<p><code class="Hilite">knob</code>: A color or <code>Graphic</code> instance to use as the slider’s knob.</p>
+		<p><code class="Hilite">knob</code>: A color or <code>Graphic</code> instance to use as the slider’s knob; defaults to <code>"grey"</code> in v2.1. <b class="Comment">In v2.2</b>, if omitted the knob will be created using the colors specified by the 2-tuple <code>Knob.colors</code>.</p>
 		<p><code class="Hilite">lower</code>: The slider value when the knob is in the lowest position.</p>
 		<p><code class="Hilite">upper</code>: The slider value when the knob is in the highest position.</p>
 		<p><code class="Hilite">steps</code>: The number of increments in which to move the slider; if <code>0</code>, the arrow keys will adjust the slider value by 0.01 of the total range, and the mouse will allow the slider knob to be positioned to the nearest pixel.</p>
