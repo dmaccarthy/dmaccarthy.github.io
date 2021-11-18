@@ -1,11 +1,9 @@
 ﻿<article>
-<h1><code>sc8pr.shape.QCircle</code> Class</h1>
 <h1><code>sc8pr.shape.Circle</code> Class</h1>
 
-<p>The <code>QCircle</code> and <code>Circle</code> classes are used to draw and perform calculations related to circles. The only difference between the two is that <code>QCircle</code> draws more quickly but <code>Circle</code> draws with higher quality. In addition to attributes inherited from <a class="Hilite Code" href="javascript:goNode('shape')">Shape</a> and <a class="Hilite Code" href="javascript:goNode('graphic')">Graphic</a> these classes define the following...</p>
+<p>The <code>Circle</code> class is used to draw and perform calculations related to circles. In addition to attributes inherited from <a class="Hilite Code" href="javascript:goNode('shape')">Shape</a> and <a class="Hilite Code" href="javascript:goNode('graphic')">Graphic</a> this class defines the following...</p>
 
 <h4>Constructor</h4><div class="Indent">
-	<p><code><span class="Hilite">QCircle</span>(r)</code></p>
 	<p><code><span class="Hilite">Circle</span>(r)</code></p>
 		<div class="Indent">
 		<p><code class="Hilite">r</code>: The initial radius of the circle.</p>
@@ -13,7 +11,8 @@
 </div>
 
 <h4>Assignable Property</h4><div class="Indent">
-	<p><code><span class="Hilite">radius</span></code>: The radius of the circle.</p>
+	<p><code><span class="Hilite">r</span></code>: The radius of the circle in the canvas’s attached coordinate system (see <code><a class="Hilite" href="javascript:goNode('canvas')">Canvas</a>.attachCS</code>). If no coordinate system is attached, this will be the same as the <code>radius</code> property.  <b class="Comment">[Added in v2.2]</b></p>
+	<p><code><span class="Hilite">radius</span></code>: The radius of the circle in pixels.</p>
 </div>
 
 <h4>Read-Only Property</h4><div class="Indent">
@@ -21,7 +20,7 @@
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
-	<p><code><span class="Hilite">containsPoint</span>(pos)</code> → <code>bool</code>: Determines whether the given point, <code>pos</code>, is located within the circle. This method does <b>not</b> account for the offset of the circle’s canvas in the sketch; use the <code>contains</code> method for this.</p>
+	<p><code><span class="Hilite">containsPoint</span>(xy)</code> → <code>bool</code>: Determines whether the given point, <code>xy</code> in the canvas’s attached coordinate system, is located within the circle; the argument <code>xy</code> was <b class="Comment">renamed in v2.2</b> from <code>pos</code>.</p>
 	<p><code><span class="Hilite">intersect</span>(other)</code> → <code>list</code>: Calculates the points of intersection between the circles <code>self</code> and <code>other</code>.</p>
 
 </div>

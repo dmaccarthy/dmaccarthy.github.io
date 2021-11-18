@@ -83,6 +83,7 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 		<div class="Indent">
 		<p><code class="Hilite">pt</code>: The pixel coordinates of the point to be transformed.</p>
 		</div>
+	<p><code><span class="Hilite">cs_delta</span>(dx=0, dy=0)</code> → <code>tuple</code>: Calculate the change in coordinate system change corresponding to the given change in pixel values. <b class="Comment">[Added in v2.2]</b></p>
 	<p><code><span class="Hilite">cs_list</span>(*args)</code> → <code>list</code>: Perform a coordinate transformation using the <code>cs</code> method for multiple points. <b class="Comment">[Added in v2.2]</b></p>
 		<div class="Indent">
 		<p><code class="Hilite">args</code>: A sequence of points as pixel coordinates.</p>
@@ -111,14 +112,20 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 		<div class="Indent">
 		<p><code class="Hilite">pt</code>: The coordinates of the point to be transformed.</p>
 		</div>
+	<p><code><span class="Hilite">px_delta</span>(dx=0, dy=0)</code> → <code>tuple</code>: Calculate the change in pixel coordinates corresponding to the given change in coordinate system values. <b class="Comment">[Added in v2.2]</b></p>
 	<p><code><span class="Hilite">px_list</span>(*args)</code> → <code>list</code>: Perform a coordinate transformation using the <code>px</code> method for multiple points. <b class="Comment">[Added in v2.2]</b></p>
 		<div class="Indent">
 		<p><code class="Hilite">args</code>: A sequence of points in the attached coordinate system.</p>
 		</div>
 	<p><code><span class="Hilite">removeItems</span>(*args)</code> → <code>self</code>: Remove each of the items from the canvas; does not raise an exception if the item is not found. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code><span class="Hilite">resetCS</span>()</code> → <code>tuple</code> or <code>None</code>: Reset the canvas coordinate system to pixels; returns a 2-tuple representing the removed coordinate transformations or <code>None</code> if there is no attached coordinate system. <b class="Comment">[Added in v2.2]</b></p>
 	<p><code><span class="Hilite">resize</span>(size, resizeContent=True)</code> → <code>None</code>: Resize the canvas; called automatically when a new <code>size</code>, <code>width</code> or <code>height</code> property is assigned.</p>
 		<div class="Indent">
 		<p><code class="Hilite">resizeContent</code>: Specifies whether to resize and reposition the contents of the canvas.</p>
+		</div>
+	<p><code><span class="Hilite">restoreCS</span>(cs)</code> → <code>tuple</code> or <code>None</code>: Restore a previously removed coordinate system; returns a 2-tuple representing the removed coordinate transformations or <code>None</code> if there is no attached coordinate system. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">cs</code>: A 2-tuple returned by a previous call to <code>restoreCS</code> or <code>resetCS</code>.</p>
 		</div>
 	<p><code><span class="Hilite">shiftContents</span>(offset, *args, resize=True)</code> → <code>self</code>: Shift all of the content in the canvas by a fixed amount. This method may be useful for compsing GUI dialogs.</p>
 		<div class="Indent">
