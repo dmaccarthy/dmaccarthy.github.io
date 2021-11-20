@@ -78,6 +78,10 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 		<p><code class="Hilite">margin</code>: A number or a 4-list or 4-tuple of numbers specifying the number of pixels to be considered as a margin around the edges of the canvas.</p>
 		<p><code class="Hilite">size</code>: The viewport size to use for the coordinate transformation; if omitted the canvas size (or scroll size for instances of <a class="Hilite Code" href="javascript:goNode('scroll')">ScrollCanvas</a>) will be used.</p>
 		</div>
+	<p><code><span class="Hilite">attr_get</span>(*args)</code> → <code>dict</code>: Creates a dictionary of current attribute values for items currently added to the canvas. The graphic instances are used as dictionary keys. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">args</code>: The names of the attributes to save.</p>
+		</div>
 	<p><code><span class="Hilite">cover</span>()</code> → <code>Image</code>: Creates a semi-transparent image that can cover the canvas. This is useful for blocking mouse events, for example when running a dialog on top of the canvas. <b class="Comment">[Added in v2.2]</b></p>
 	<p><code><span class="Hilite">cs</span>(*pt)</code> → <code>tuple</code>: Calculate the coordinates of a point in the attached coordinate system (see <code>attachCS</code> above) from its pixel coordinates. <b class="Comment">[Added in v2.2]</b></p>
 		<div class="Indent">
@@ -138,7 +142,11 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 
 </div>
 
-<h4>Static Method</h4><div class="Indent">
+<h4>Static Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">attr_set</span>(data)</code> → <code>None</code>: Sets attributes of <code>Graphic</code> instances; ignores any exceptions that occur for attributes that cannot be set. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">data</code>: A dictionary describing the attributes to be set; this dictionary can be obtained from a previous call to the <code>attr_get</code> method.</p>
+		</div>
 	<p><code><span class="Hilite">grid</span>(*args, cols=None, size=None)</code> → <code>Canvas</code>: Arranges image files or other graphics into a grid where each “tile” has the same size. This method can be called to make a spritesheet from individual costumes. <b class="Comment">In v2.2</b>, this method was moved from <code>Canvas</code> into the new subclass, <code><a class="Hilite" href="javascript:goNode('table')">Table</a></code>. <b class="Comment">[Added in v2.1]</b></p>
 		<div class="Indent">
 		<p><code class="Hilite">args</code>: A sequence of <code>Graphic</code> instances or image file names.</p>
