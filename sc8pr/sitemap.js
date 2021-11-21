@@ -21,12 +21,12 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 		{title:"Event Model", link:"evList"},
 		{title:"sc8pr", link:"init", pages:[
 			{title:"class Graphic", link:"graphic"},
-			{title:"class Image", link:"image"},
-			{title:"class Canvas", link:"canvas"},
-			{title:"class Sketch", link:"sketch"},
 			{title:"class BaseSprite", link:"base"},
+			{title:"class Canvas", link:"canvas"},
+			{title:"class Image", link:"image"},
+			{title:"class PixelData", link:"pixeldata"},
 			{title:"class Renderable", link:"render"},
-			{title:"class PixelData", link:"pixeldata"}
+			{title:"class Sketch", link:"sketch"},
 		]},
 		{title:"sc8pr.geom", link:"geom"},
 		{title:"sc8pr.gui.*", link:"gui", pages:[
@@ -48,7 +48,7 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 			{title:".plot", link:"plot", pages:[
 				{title:"class Locus", link:"locus"},
 				{title:"class Plot", link:"plot_class"},
-				{title:"class Series", link:"series"}
+				{title:"class Series", link:"series"},
 			]},	
 			{title:".media", link:"media", pages:[
 				{title:"class FFReader", link:"ffr"},
@@ -66,21 +66,25 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 				{title:"class WebCache", link:"wc"},
 			]},
 		]},
+		{title:"sc8pr.plot", link:"plot_pkg"},
+/*		{title:"sc8pr.plot.*", link:"plot_pkg", pages:[
+			{title:".regression", link:"regression"},
+		]},*/
 		{title:"sc8pr.robot.*", link:"robot_class", pages:[
 			{title:".gui", link:"r_gui"},
 		]},
 		{title:"sc8pr.shape", link:"shape", pages:[
-			{title:"class Line", link:"line"},
+			{title:"class Arc", link:"arc"},
+			{title:"class Arrow", link:"arrow"},
 			{title:"class Circle", link:"circle"},
 			{title:"class Ellipse", link:"ellipse"},
-			{title:"class Arc", link:"arc"},
+			{title:"class Line", link:"line"},
 			{title:"class Polygon", link:"polygon"},
-			{title:"class Arrow", link:"arrow"},
 		]},
 		{title:"sc8pr.sprite", link:"sprite", pages:[
-			{title:"class Sprite", link:"sprite_class"},
 			{title:"class CostumeImage", link:"sprite_class"},
-			{title:"class Collisions", link:"collisions"}
+			{title:"class Sprite", link:"sprite_class"},
+			{title:"class Collisions", link:"collisions"},
 		]},
 		{title:"sc8pr.text", link:"text", pages:[
 			{title:"class Font", link:"font"},

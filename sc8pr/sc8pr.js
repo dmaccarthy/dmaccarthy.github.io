@@ -21,7 +21,9 @@ function nextSib(node) {
 function next(node) {
 	var pg = node.pages;
 	if (pg) if (pg.length) return pg[0];
-	return nextSib(node);
+	link = node.link;
+	while (node && node.link == link) node = nextSib(node);
+	return node;
 }
 
 function find(link, node) {
@@ -39,7 +41,10 @@ function find(link, node) {
 var current, pop, init = true;
 
 function goNode(node) {
-	if (!node) node = sitemap;
+	if (!node) {
+		alert("End of Documentation!");
+		node = sitemap;
+	}
 	else if (typeof(node) == "string") node = find(node);
 	if (!node) {
 		if (current == null) goNode();

@@ -9,8 +9,41 @@
 <p>For the robot to be able to interact with other sprites as physical objects capable of colliding, you must assign a <code>mass</code> property to each sprite (including the robot) and you must call the <code><a class="Hilite" href="javascript:goNode('sprite')">sc8pr.sprite</a>.physics</code> function, usually from your sketch’s <code>ondraw</code> event handler.</p>
 
 <p>You can provide your robot with a <code>shutdown</code> method to define operations to be performed after the robot control function is complete but before the thread shuts down.</p>
-
 <p>The <code>Robot</code> class implements event handlers <code>ondraw</code>, <code>onbounce</code> and <code>oncollide</code>. If you override these methods, you will usually need to call the overridden handler to ensure the robot behaves correctly.</p>
+
+<p>The <code>sc8pr.robot</code> package includes a number of example simulations for which you only need to write a robot brain. (The simulations were located in <code>sc8pr.examples</code> prior to v2.2.) If you run the simulations without providing a brain, the robot can be controlled with the arrow keys and space bar.</p>
+
+<p><code>sc8pr.robot.arena</code> simulates an empty arena for the robot to move in. The second argument to the <code>run</code> method is an image, an image file, or a function that returns an image to be drawn on the arena floor.</p>
+<pre class="Code">from sc8pr.robot.arena import Arena, curve
+
+def brain(robot):
+    robot.motors = 0.3, -0.3
+
+Arena.run(brain, curve)</pre>
+
+<p><code>sc8pr.robot.soccer</code> simulates a soccer game between two robots. You can pass a single brain function to control the red robot, or two brains to control both players.</p>
+<pre class="Code">from sc8pr.robot.soccer import play
+
+def brain(robot):
+    robot.motors = 0.3, -0.3
+
+play(brain)</pre>
+
+<p><code>sc8pr.robot.park</code> simulates a parking lot where the robot has to park itself without colliding with any obstacles.</p>
+<pre class="Code">from sc8pr.robot.park import ParkingLot
+
+def brain(robot):
+    robot.motors = 0.3, -0.3
+
+ParkingLot.run(brain)</pre>
+
+<p><code>sc8pr.robot.party</code> simulates a party where the robot can mingle and meet other robots. Whenever another robot bumps into your robot, it will introduce itself by assigning its name as your robot’s <code>greet</code> property.</p>
+<pre class="Code">from sc8pr.robot.party import Party
+
+def brain(robot):
+    robot.motors = 0.3, -0.3
+
+Party.run(brain)</pre>
 
 <p>In addition to the attributes it inherits from <a class="Hilite Code" href="javascript:goNode('sprite')">Sprite</a>, the <code>Robot</code> class defines the following...</p>
 

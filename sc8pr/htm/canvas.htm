@@ -80,7 +80,7 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 		</div>
 	<p><code><span class="Hilite">attr_get</span>(*args)</code> → <code>dict</code>: Creates a dictionary of current attribute values for items currently added to the canvas. The graphic instances are used as dictionary keys. <b class="Comment">[Added in v2.2]</b></p>
 		<div class="Indent">
-		<p><code class="Hilite">args</code>: The names of the attributes to save.</p>
+		<p><code class="Hilite">args</code>: The names of the attributes to save. If none are provided, the attributes needed to restore each graphic after a change in coordinate system will be recorded.</p>
 		</div>
 	<p><code><span class="Hilite">cover</span>()</code> → <code>Image</code>: Creates a semi-transparent image that can cover the canvas. This is useful for blocking mouse events, for example when running a dialog on top of the canvas. <b class="Comment">[Added in v2.2]</b></p>
 	<p><code><span class="Hilite">cs</span>(*pt)</code> → <code>tuple</code>: Calculate the coordinates of a point in the attached coordinate system (see <code>attachCS</code> above) from its pixel coordinates. <b class="Comment">[Added in v2.2]</b></p>

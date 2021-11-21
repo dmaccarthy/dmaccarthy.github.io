@@ -54,13 +54,14 @@ Sketch().play()</pre>
 		<p><code class="Hilite">c</code>: A column number, or a 2-tuple or 2-list identifying a group of consecutive columns.</p>
 		<p><code class="Hilite">r</code>: A row number, or a 2-tuple or 2-list identifying a group of consecutive rows.</p>
 		</div>
+	<p><code><span class="Hilite">corner</span>(c, r)</code> → <code>tuple</code>: Pixel coordinates of the top left corner of the specified cell; this is equivalent to the <code>topleft</code> property of the rectangle returned by the <code>cell</code> method but requires less computation. Arguments are the same as for <code>cell</code>.</p>
 	<p><code><span class="Hilite">lowerBoxes</span>()</code> → <code>self</code>: Move all <code>Polygon</code> instances in the table to the lowest layers below the non-polygon content.</p>
 </div>
 
 <h4>Static Method</h4><div class="Indent">
 	<p><code><span class="Hilite">grid</span>(*args, cols=None, size=None, fit=True)</code> → <code>Table</code>: Arrange items in a grid of cells with the same size.</p>
 		<div class="Indent">
-		<p><code class="Hilite">args</code>: A sequence of <code>Graphics</code> items to be arrange in a table/grid.</p>
+		<p><code class="Hilite">args</code>: A sequence of <code>Graphics</code> items to be arranged in a table/grid. Arguments can also be a <code>str</code> containing the path to an image file.</p>
 		<p><code class="Hilite">cols</code>: The number of columns in the grid; the number of rows will be calculated automatically. If omitted, all items will be arranged in a single row.</p>
 		<p><code class="Hilite">size</code>: The size of each cell; if not specified, the size of the <em>first</em> item will be used as the cell size.</p>
 		<p><code class="Hilite">fit</code>: A <code>bool</code> specifying whether to scale large items to fit with their cells.</p>
