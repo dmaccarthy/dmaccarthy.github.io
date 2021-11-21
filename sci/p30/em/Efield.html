@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Electric Fields</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/slides.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script-->
+<script type="text/javascript" src="../../webData/webData.js"></script>
+<script type="text/javascript" src="../../script/tree.js"></script>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../script/slides.js"></script>
+<!--script type="text/javascript" src="../../script/image.js"></script>
+<script type="text/javascript" src="../../script/plot.js"></script>
+<script type="text/javascript" src="../../script/plotItems.js"></script-->
+<script type="text/javascript" src="../p30.js"></script>
+<script type="text/javascript">
+
+// var supplement = "soln/x$.html";
+
+$(function() {init("Efield"); zoom(true)});
+
+</script>
+<style type="text/css">
+
+img.EField {
+    float:right;
+    max-width:40vw;
+}
+
+</style>
+</head>
+<body><article class="SlideShow">
+
+<section class="Slide">
+<p id="Crumbs" class="NoPrint"></p>
+<h1>2.3 – Electric Fields</h1>
+<p id="StartLesson"></p>
+</section>
+
+<section class="Slide NoPrint">
+<h1>Visualizing an Electric Field</h1>
+<p>
+    <a target="PhET" href="https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields_en.html">PhET Simulation</a>
+</p>
+</section>
+
+<section class="Slide" data-markers="8">
+<h1>Electric Field Diagrams</h1>
+<img data-t="0,5" class="EField" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/VFPt_dipole_electric.svg/768px-VFPt_dipole_electric.svg.png"/>    
+<p data-t="0,3">An electric field diagram illustrates the electric field produced by one or more <em class="Defn">source</em> charges “everywhere”.</p>
+<ul data-t="1,5">
+	<li data-t="1,3">The direction of the field line at any point indicates the direction of the electric force acting on a small <em>positive</em> <em class="Defn">test charge</em> placed at that point.</li>
+	<li data-t="2,3">Negative test charges would experience a force in the <em>opposite</em> direction.</li>
+	<li data-t="3">Electric field diagrams are always drawn assuming a <em>positive</em> test charge.</li>
+	<li data-t="4+">The <em>density</em> of field lines indicates the strength of the field; the field lines get closer together where the field is stronger.</li>
+	<li data-t="5">Field lines always <em class="Defn">diverge</em> (point away) from <em>positive</em> sources (which repel the positive test charges) and <em class="Defn">converge</em> at <em>negative</em> sources (which attract the positive test charges.)</li>
+</ul>
+<p data-t="6+">When sketching the electric field without the help of a computer, it is best to start by drawing any lines of <em class="Defn">symmetry</em>.</p>
+<ul data-t="7+">
+	<li>A <em class="Defn">crossing point</em> (a point where half of the field lines converge and half diverge) is an <em class="Defn">equilibrium</em>: a point where the net electric force on a test charge will be zero.</li>
+</ul>
+</section>
+
+<section class="Slide" data-markers="6">
+<h1>Field as Mediator</h1>
+<p data-t="0+">The idea of a <em class="Defn">field</em> (electric, gravitational, or magnetic) is an alternative to <em class="Defn">action at a distance</em>.</p>
+<ul data-t="1+">
+	<li>With action at a distance, two charges (or masses) need to “reach out” over possibly large distances to exert force on each other.</li>
+	<li data-t="2+">With field theory, each charge affects the “field” around it, and each charge experiences a force due to the field of all other sources. The electric field <em>mediates</em> the electric force.</li>
+	<li data-t="3+">The object <em>experiencing</em> a field is called a <em class="Defn">test charge</em>.</li>
+	<li data-t="4+">The objects producing the field are called <em class="Defn">sources</em>.</li>
+	<li data-t="5">One physical difference between action at a distance and field theory is that changes to the field propoagate at finite speed.</li>
+</ul>
+</section>
+
+<section class="Slide" data-markers="11">
+<h1>Mathematics of Electric Field</h1>
+<p data-t="0,1">The Coulomb force between a source \(Q\) and test charge \(q\) is:$$|{\vec{\mathbf F}_e}| = \left|{kQq\over r^2}\right|$$</p>
+<p data-t="1">We can rearrange this as:</p>
+<p data-t="1,5">$$\left|{\vec{\mathbf F}_e\over q}\right| = \left|{kQ\over r^2}\right|$$</p>
+<p data-t="2,4">The left side of this equation is taken as the mathematical definition of electric field:</p>
+<p data-t="2,9">$${\vec{\mathbf E}} = {{\vec{\mathbf F}_e}\over q}$$</p>
+<p data-t="3,4">This is analogous to our defintion of the gravitational field:$${\vec{\mathbf g}} = {{\vec{\mathbf F}}_g\over m}$$</p>
+<ul data-t="4"><li>The reason we define the field this way is that it gives the same value regardless of the test charge or mass.</li></ul>
+<p data-t="5">The right side tells us the contribution that the source \(Q\) makes to the electric field:</p>
+<p data-t="5,9">$$|{\vec{\mathbf E}}| = {k|Q|\over r^2}$$</p>
+<ul data-t="6,9">
+	<li>The SI unit of electric field is newtons per coluomb (N/C).</li>
+	<li data-t="7+">The electric force has the same direction as \({\vec{\mathbf E}}\) when the test charge (\(q\)) is positive and the opposite direction when the test charge is negative.</li>
+	<li data-t="8+">The direction of \({\vec{\mathbf E}}\) is directly toward a negative source or away from a positive source.</li>
+	<li data-t="9">When more than one source is present, \({\vec{\mathbf E}}\) is the vector sum of each source’s contribution.</li>
+</ul>
+<p data-t="10">Example: Sources of +5.00 nC and &minus;3.00 nC are separated by 12.0 cm. Calculate the electric field at: (a) the midpoint, and (b) a point 6.00 cm from the positive charge in a <em>perpendicular</em> direction.</p>
+</section>
+
+<section class="Slide" data-markers="5">
+<h1>Applications of Electric Fields</h1>
+<p data-t="0+">A <em class="Defn">parallel plate capacitor</em> is used to generate a (nearly) uniform electric field.</p>
+<ul data-t="1+">
+    <li>The field is non-uniform near the edeges (“edge effects”).</li>
+</ul>
+<p data-t="2+">An <em class="Defn">electrical discharge</em> (e.g. lightning) occurs when the field becomes strong enough to ionize air molecules.</p>
+<p data-t="3+">A conductor placed in an electric field will become polarized in such a way that the net electric field inside the conductor will be zero.</p>
+<ul data-t="4+">
+    <li>This effect is called <em class="Defn">shielding</em>.</li>
+</ul>
+</section>
+
+</article>
+</body>
+</html>

@@ -1,56 +1,72 @@
-let vec2d = [
-    // {title:"Assignment Booklet", gdrv:"1qG81lRprAmdtcidfph_w-1kyF1VJUFrd"},
-    {title:"2D Vectors Applet", icon:"html5", open:"https://applets.davidmaccarthy.repl.co/vec2d"},
-    {title:"Magnitude & Direction", icon:1, menu:[
-        {title:"Lesson Notes", open:"vec/mag.html"},
-        {title:"Assignment Handout", gdrv:"1vim1oj76fW9OQc6tCA_mwlSIH4ejfbbk"},
-        {title:"Practice Solutions", gdoc:"14vQp9XvGS1yPjDoLDfFNE2u5MAnIqKgcXTgIAwVCRQQ"},
+let circ = [
+    {title:"Assignment Booklet", gdrv:"1wmnIhIc2yAJFbkAeUi5XUe3ijVRjXi6j"},
+    {title:"Model Equations [Skills]", icon:1, menu:[
+        {title:"Lesson Notes", open:"skill/eqn.html"},
+        {title:"Practice Solutions", gdoc:"1q0L17HIG8W3RzaCKDaSEK5itlcRwmnzU-zkxxiI-_E0"},
     ]},
-    {title:"Polar & Cartesian Form", icon:1, menu:[
-        {title:"Lesson Notes", open:"vec/polar.html"},
-        {title:"Assignment Handout", gdrv:"1GzdkoyY60Nn2LaQ93qSoy8WUVFdeLBt-"},
-        {title:"Practice Solutions", gdoc:"14-CgdDFUiCwpJfPlghKpw1iMRfC8J3NJBwrNP20fois"},
+    {title:"Regression Analysis [Skills]", icon:1, menu:[
+        {title:"Lesson Notes", open:"skill/reg.html"},
+        {title:"TI-83+ Data Analysis", gdrv:"0B_gX0kaqRFXTenBOOTNNNkczZ3M"},
+        {title:"Practice Solutions", gdoc:"1EjnS2SHuKCvv4D8MGSvVv2_L8Sy8nRiwfpSnIXGCcE0"},
     ]},
-    {title:"Vector Arithmetic", icon:1, menu:[
-        {title:"Lesson Notes", open:"vec/arith.html"},
-        {title:"Assignment Handout", gdrv:"15xe5uJ67N0FNz4171ZUIm2y0sT7tL_xM"},
-        {title:"Practice Solutions", gdoc:"1960E_v1vFacD-7sbtFqrE3Xzqjr32rO4H435r4aT3WM"},
+    {title:"Transforming Power Data [Skills]", icon:1, menu:[
+        // {title:"Lesson Notes", open:"skill/nonLin.html"},
+        {title:"Practice Solutions", gdoc:"11JzR1EpOw7ATi7wZuzIyklMmeYtxv-yrJLxkm40_OFc"},
     ]},
-    {title:"Projectile Motion", icon:1, menu:[
-        {title:"Lesson Notes", open:"vec/proj.html"},
-        {title:"Assignment Handout", unavail:1, gdrv:""},
-        {title:"Practice Solutions", unavail:1, gdoc:"14uVxnRHjWAdOALpevl9sJq1ZgGIU9Hw82uaAilHrFF4"},
+    {title:"Uniform Circular Motion", icon:1, menu:[
+        {title:"Lesson Notes", open:"circ/ucm.html"},
+        {title:"Practice Solutions", gdoc:"1EC7Lao0wjSZNWTopkRewQ_FCvGUeE_dFdyLeNtUNnTI"},
+    ]},
+    {title:"Centripetal Acceleration", icon:1, menu:[
+        {title:"Lesson Notes", open:"circ/ac.html"},
+        {title:"Practice Solutions", gdoc:"1N9tQLEzRIabBf_Bs6p2ZYHnV_FKh5pTX4bKdHsTTfys"},
+    ]},
+    {title:"Apparent Weight", icon:1, menu:[
+        {title:"Lesson Notes", open:"circ/appWt.html"},
+        {title:"Practice Solutions", gdoc:"1tI4TBQUCDj-xNb97iy9EUIVc2SuUbmeDHg0xFbS6GQ0"},
+    ]},
+    {title:"Planetary Motion (Kepler’s Laws)", icon:1, vid:"1E3vlf-Esqk", menu:[
+        {title:"Planetary Data", icon:"link", open:"https://nssdc.gsfc.nasa.gov/planetary/factsheet/"},
+        {title:"Heliocentric Animation", icon:"html5", open:"../applet/helio.html"},
+        {title:"Lesson Notes", open:"circ/kepler.html"},
+        {title:"Practice Solutions", gdoc:"1psk6s2R8sf2ctXisySewke-TVosxjW2g8UduRfX2yT0"},
     ]},
 ];
 
 let dyn = [
     // {title:"Assignment Booklet", gdrv:"14A2Kygg8Hq3FY226r6eqXj0CrA0c43R4"},
-    {title:"Force & Inertia", menu:[
+    {title:"Force & Inertia", icon:1, menu:[
         {title:"Lesson Notes", open:"dyn/inert.html"},
+        {title:"Assignment Handout", gdrv:"1hq2o2RPw2asyprTawK9cua8wZnla2eW0"},
         {title:"Practice Solutions", gdoc:"1aMbFTmo1sNi91ULonApGutTAqpGIc7o3xE0NcVQ0GfQ"},
     ]},
-    {title:"Free Body Diagrams", menu:[
+    {title:"Free Body Diagrams", icon:1, menu:[
         {title:"Lesson Notes", open:"dyn/fbd.html"},
+        {title:"Assignment Handout", gdrv:"1z9s8I2fI8QJDcn8ATOhuU2m4V4VjgZ_V"},
         {title:"Practice Solutions", gdoc:"1ecVJbHXRGtCmoCOmTXco-DHDAvSjWlqaO-to-DjEEQ4"},
     ]},
-    {title:"Newton’s Third Law", menu:[
+    {title:"Newton’s Third Law", icon:1, menu:[
         {title:"Lesson Notes", open:"dyn/n3.html"},
+        {title:"Assignment Handout", gdrv:"1Z1YWrihzFPATKZV6UbzzDy8_we5izZ-M"},
         {title:"Practice Solutions", gdoc:"1zUzJTyrdwsWblAz1StqF0sNn3lclQigmLoTT4R1mfkc"},
     ]},
-    {title:"Mass & Weight", vid:"KDp1tiUsZw8", menu:[
-        {title:"Pennies Lab Video", gdrv:"1iJ9iZ2QLj3fwcki75mKcb9XR18yFSCvl"},
+    {title:"Mass & Weight", icon:1, vid:"KDp1tiUsZw8", menu:[
+        // {title:"Pennies Lab Video", gdrv:"1iJ9iZ2QLj3fwcki75mKcb9XR18yFSCvl"},
+        // {title:"Experiment Handout", gdrv:"1Z05e3AIQpijSqzOmC3UOk74t9PFo1ErC"},
         {title:"Lesson Notes", open:"dyn/weight.html"},
+        {title:"Assignment Handout", gdrv:"1ZDDkWGCVypkt1q48kxkSwuebTx_k3EYr"},
         {title:"Practice Solutions", gdoc:"1wtfhYaqUeBUotX8nm4PHM0UjLZdUNLgdibdyFQcjjXo"},
     ]},
-    {title:"Contact Forces", menu:[
+    {title:"Contact Forces", icon:1, menu:[
         {title:"Lesson Notes", open:"dyn/fric.html"},
+        {title:"Assignment Handout", gdrv:"1hDszAFVnw969ETypsUQLBNTFwhgs3Q9A"},
         {title:"Practice Solutions", gdoc:"1jAoNeyNDfi1DPFyhi-Qf4AdesX2-Wfasv-Dsj0fYV0c"},
         {title:"Friction Simulation", icon:"html5", open:"https://applets.davidmaccarthy.repl.co/pulley"},
     ]},
     {title:"Dynamics in 2D", icon:1, menu:[
-        {title:"Lesson Notes", open:"vec/dyn2d.html"},
-        {title:"Assignment Handout", unavail:1, gdrv:""},
-        {title:"Practice Solutions", unavail:1, gdoc:"1MjKlJw8OCjrWGCBtXqNXEejSlZmHXaJFUexb0HpmDUY"},
+        {title:"Examples", open:"vec/dyn2d.html"},
+        {title:"Assignment Handout", gdrv:"1reAudq1wnv_4utbooHhFlKaTP8qCEHBj"},
+        {title:"Practice Solutions", unavail:0, gdoc:"1cPXcnazyRT1zQ9xmbCXz7gkMr6YHswAZT1lvA1bsU_w"},
     ]},
 ];
 
@@ -139,29 +155,30 @@ let kin1d = [
     ]}
 ];
 
-/*
-let expDes = [
-    // {title:"Scientific Notation [Science 10]", open:"../s10/phys/sciNot.html"},
-    // {title:"SI Units [Science 10]", open:"../s10/phys/si.html"},
-    {title:"Scientific Method [Science 10]", open:"../s10/phys/sciMeth.html"},
-    // {title:"Scatter Plots", menu:[
-    //     {title:"Lesson Notes", open:"skill/scatter.html"},
-    //     {title:"Practice Solutions", gdoc:"1gfrttglGFggu4xvrl1yv4a5w_Q9yYydEWVLdnuwF6MA"},
-    // ]},
-    {title:"Model Equations (Linear)", menu:[
-        {title:"Lesson Notes", open:"skill/eqn.html"},
-        {title:"Practice Solutions", gdoc:"1q0L17HIG8W3RzaCKDaSEK5itlcRwmnzU-zkxxiI-_E0"},
+let vec2d = [
+    // {title:"Assignment Booklet", gdrv:"1qG81lRprAmdtcidfph_w-1kyF1VJUFrd"},
+    {title:"2D Vectors Applet", icon:"html5", open:"https://applets.davidmaccarthy.repl.co/vec2dnew"},
+    {title:"Magnitude & Direction", icon:1, menu:[
+        {title:"Lesson Notes", open:"vec/mag.html"},
+        {title:"Assignment Handout", gdrv:"1vim1oj76fW9OQc6tCA_mwlSIH4ejfbbk"},
+        {title:"Practice Solutions", gdoc:"14vQp9XvGS1yPjDoLDfFNE2u5MAnIqKgcXTgIAwVCRQQ"},
     ]},
-    {title:"Regression Analysis", menu:[
-        {title:"Lesson Notes", open:"skill/reg.html"},
-        {title:"Practice Solutions", gdoc:"1EjnS2SHuKCvv4D8MGSvVv2_L8Sy8nRiwfpSnIXGCcE0"},
+    {title:"Polar & Cartesian Form", icon:1, menu:[
+        {title:"Lesson Notes", open:"vec/polar.html"},
+        {title:"Assignment Handout", gdrv:"1GzdkoyY60Nn2LaQ93qSoy8WUVFdeLBt-"},
+        {title:"Practice Solutions", gdoc:"14-CgdDFUiCwpJfPlghKpw1iMRfC8J3NJBwrNP20fois"},
     ]},
-    {title:"Transforming Non-Linear Data", menu:[
-        // {title:"Lesson Notes", open:"skill/nonLin.html"},
-        {title:"Practice Solutions", gdoc:"11JzR1EpOw7ATi7wZuzIyklMmeYtxv-yrJLxkm40_OFc"},
+    {title:"Vector Arithmetic", icon:1, menu:[
+        {title:"Lesson Notes", open:"vec/arith.html"},
+        {title:"Assignment Handout", gdrv:"15xe5uJ67N0FNz4171ZUIm2y0sT7tL_xM"},
+        {title:"Practice Solutions", gdoc:"1960E_v1vFacD-7sbtFqrE3Xzqjr32rO4H435r4aT3WM"},
+    ]},
+    {title:"Projectile Motion", icon:1, menu:[
+        {title:"Lesson Notes", open:"vec/proj.html"},
+        {title:"Assignment Handout", gdrv:"1Yr_n1cdCHWBwhPOHaKn1Zn5WO-scFqtU"},
+        {title:"Practice Solutions", gdoc:"14uVxnRHjWAdOALpevl9sJq1ZgGIU9Hw82uaAilHrFF4"},
     ]},
 ];
-*/
 
 let grav = [
     {title:"Assignment Booklet", gdrv:"1bO__6Lv6zze146IVAseuX-yyxRFBgkSp"},
@@ -183,30 +200,6 @@ let grav = [
         {title:"Lesson Notes", open:"grav/field.html"},
         {title:"Practice Solutions", gdoc:"1ha6uk0RSF4bZKS_Q5CjW-4LlNtbGDihVfGdcGW-4YTA"},
     ]},
-
-];
-
-let circ = [
-    {title:"Assignment Booklet", gdrv:"1-JdPcpl03PcbI8Q5BquDJ3YdngZF645J"},
-    {title:"Uniform Circular Motion", menu:[
-        {title:"Lesson Notes", open:"circ/ucm.html"},
-        {title:"Practice Solutions", gdoc:"1EC7Lao0wjSZNWTopkRewQ_FCvGUeE_dFdyLeNtUNnTI"},
-    ]},
-    {title:"Centripetal Acceleration", menu:[
-        {title:"Lesson Notes", open:"circ/ac.html"},
-        {title:"Practice Solutions", gdoc:"1N9tQLEzRIabBf_Bs6p2ZYHnV_FKh5pTX4bKdHsTTfys"},
-    ]},
-    {title:"Apparent Weight", menu:[
-        {title:"Lesson Notes", open:"circ/appWt.html"},
-        {title:"Practice Solutions", gdoc:"1tI4TBQUCDj-xNb97iy9EUIVc2SuUbmeDHg0xFbS6GQ0"},
-    ]},
-    {title:"Planetary Motion (Kepler’s Laws)", vid:"1E3vlf-Esqk", menu:[
-        {title:"Planetary Data", icon:"link", open:"https://nssdc.gsfc.nasa.gov/planetary/factsheet/"},
-        {title:"Heliocentric Animation", icon:"html5", open:"../applet/helio.html"},
-        {title:"Lesson Notes", open:"circ/kepler.html"},
-        {title:"Practice Solutions", gdoc:"1psk6s2R8sf2ctXisySewke-TVosxjW2g8UduRfX2yT0"},
-    ]},
-
 ];
 
 let wave = [
@@ -274,8 +267,13 @@ let home = addHome({title:"Physics 20", id:"home", htmx:"<p class='Right'>Teache
     {title:"Chapter 6: Energy & Work", id:"energy", icon:"arrow", menu:energy},
     {title:"Chapter 1: Kinematics", id:"kin", icon:"train", menu:kin1d},
     {title:"Chapter 2: 2D Vectors", id:"vec2d", icon:"soccer", menu:vec2d},
-    {title:"Chapter 3: Dynamics", id:"dyn", icon:"rocket", unavail:1, menu:dyn},
-    {title:"Chapter 5: Uniform Circular Motion", id:"circ", unavail:1, icon:"midway", menu:circ},
+    // {title:"Review #1", id:"rev1", icon:"soccer", menu:[
+    //     {title:"Chapter 6 Key", gdoc:"1_Sq9ttAcK0mEfo8PsAsA_AGD36C5yYDhtqSEjsgEKkw"},
+    //     {title:"Chapter 1 Key", gdoc:"1RIc3AgdQrE3c4kxT1IzoMCzDjAvof5NyL57kCmW7kpU"},
+    //     {title:"Chapter 2 Key", gdoc:"1bZelxmufKP0ghnwg92MBghKJelgb34xCRtehd4_OugQ"},
+    // ]},
+    {title:"Chapter 3: Dynamics", id:"dyn", icon:"rocket", menu:dyn},
+    {title:"Chapter 5: Uniform Circular Motion", id:"circ", unavail:0, icon:"midway", menu:circ},
     {title:"Chapter 4: Universal Gravitation", id:"grav", unavail:1, icon:"earth", menu:grav},
     {title:"Chapter 7: Oscillations (SHM)", id:"shm", unavail:1, icon:"crane", menu:shm},
     {title:"Chapter 8: Mechanical Waves", id:"wave", unavail:1, icon:"speaker", menu:wave},

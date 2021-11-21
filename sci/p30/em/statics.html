@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Electrostatics</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" type="text/css" href="../../script/slides.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script-->
+<script type="text/javascript" src="../../webData/webData.js"></script>
+<script type="text/javascript" src="../../script/tree.js"></script>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../script/slides.js"></script>
+<!--script type="text/javascript" src="../../script/image.js"></script>
+<script type="text/javascript" src="../../script/plot.js"></script>
+<script type="text/javascript" src="../../script/plotItems.js"></script-->
+<script type="text/javascript" src="../p30.js"></script>
+<script type="text/javascript">
+
+// var supplement = "soln/x$.html";
+
+$(function() {init("statics"); zoom(true)});
+
+</script>
+<style>
+
+</style>
+</head>
+<body><article class="SlideShow">
+
+<section class="Slide">
+<p id="Crumbs" class="NoPrint"></p>
+<h1>2.1 – Electrostatics</h1>
+<p id="StartLesson"></p>
+</section>
+
+<section class="Slide" data-markers="17">
+<h1>Electric Charge</h1>
+<p data-t="0,8">Matter is made up of protons, neutrons, and electrons.</p>
+<ul data-t="1,8">
+    <li>Protons have a <em>positive charge</em>.</li>
+    <li data-t="2+">Electrons have a <em>negative charge</em>.</li>
+    <li data-t="3+">Neutrons have no charge.</li>
+    <li data-t="4+">Objects that contain <em>equal</em> numbers of protons and electrons are <em class="Defn">neutral</em>.</li>
+    <li data-t="5+">Objects that have an excess of electrons are <em class="Defn">negatively charged</em>.</li>
+    <li data-t="6+">Objects that have a defecit of electrons (i.e. more protons) are <em class="Defn">positively charged</em>.</li>
+</ul>
+<p data-t="7,8">For everyday charged objects, the difference between the protons and electrons is relatively small.</p>
+<ul data-t="8">
+    <li>An excess of a single electron for every <em>billion</em> protons can produce a very large net charge!</li>
+</ul>
+<p data-t="9,13">The SI unit of electric charge is the coulomb (C).</p>
+<ul data-t="10,13">
+    <li>A coulomb is defined as the amount of charge carried by a 1-ampere current in 1 second.</li>
+    <li data-t="11+">The charge of a single proton or electron is called the <em>elementary charge</em> unit (<i>e</i>).</li>
+    <li data-t="12+">The conversion factor is:$$1\ e = 1.60\times 10^{-19}\ {\mathrm C}$$</li>
+    <li data-t="13">A coulomb is a very large amount of charge; we often use <em>micro</em>coulombs (μC) or even <em>nano</em>coulombs (nC).</li>
+</ul>
+<p data-t="14+">Objects with opposite sign charges attract; objects with the same sign charge repel.</p>
+<p data-t="15+">Like energy and momentum, charge is a conserved quantity.</p>
+<ul data-t="16">
+    <li>Complete the Application section of the assignment handout.</li>
+</ul></section>
+
+<section class="Slide" data-markers="4">
+<h1>Charging Methods</h1>
+<p data-t="0+">There are three common methods for creating charged objects:</p>
+<ul data-t="1+">
+    <li><em class="Defn">Friction</em>: Two different materials are rubbed against each other. The material with the greater affinity for electrons becomes negative and the other becomes positive.</li>
+    <li data-t="2+"><em class="Defn">Conduction</em>: A neutral object is placed in contact with a charged object so that the net charge is shared. Both objects end up with the same sign charge.</li>
+    <li data-t="3+"><em class="Defn">Induction</em>: A charged object is used to attract the opposite sign charge onto a neutral object from a third object (which is often the Earth.)</li>
+</ul>
+<p class="Center" data-t="3"><img class="Wide" src="img/induct.png" alt="Diagram"/></p>
+</section>
+
+<section class="Slide" data-markers="3">
+<h1>Conduction</h1>
+<p>Objects that permit the movement of charge easily are known as <em class="Defn">conductors</em>.</p>
+<p data-t="1+">Objects that prevent the movement of charge are known as <em class="Defn">insulators</em>.</p>
+<p data-t="2+">Objects that allow the movement of charge with significant loss of energy are known as <em class="Defn">resistors</em>.</p>
+</section>
+
+<section class="Slide" data-markers="6">
+<h1>Polarization</h1>
+<p data-t="0+">When a neutral object is placed near a charged object, electrons may move within the object to form two <em class="Defn">poles</em>.</p>
+<p class="Center"><img class="Wide" src="img/pole.png" alt="Diagram"/></p>
+<ul data-t="1+">
+    <li>The negative pole will be the region where electrons are attracted to.</li>
+    <li data-t="2+">The positive pole will be the region where electrons are repeled from.</li>
+    <li data-t="3+">The pole closest to the charged object will be the one that has the opposite sign.</li>
+    <li data-t="4+">A <em class="Defn">polarized</em> object will attract to charges of either sign.</li>
+    <li data-t="5">Some substances, including water, methanol, and ethanol, have a permanent polarization due to their molecular structure.</li>
+</ul>
+</section>
+
+<section class="Slide" data-markers="8">
+<h1>Electroscope</h1>
+<p data-t="0,3">A <em class="Defn">metal-leaf electroscope</em> is a device for detecting charge.</p>
+<p data-t="0,3" class="Center"><img class="Wide" src="img/electroscope.png" alt="Diagram"/></p>
+<ul data-t="1,3">
+    <li>A charged object brough close to the top of the electroscope will polarize it.</li>
+    <li data-t="2+">The ball will have the opposite sign as the charge, and the leaves will have the same sign.</li>
+    <li data-t="3">The leaves will repel each other due to having the same sign.</li>
+</ul>
+<p data-t="4+">If the electroscope is given a net charge, the ball and leaves will all have the same sign as the charge spreads out as much as it can due to repulsion.</p>
+<ul data-t="5+">
+    <li>If the same sign charge is brought near the top, the leaves will become more charged and spread farther apart.</li>
+    <li data-t="6+">If the opposite sign charge is brought near the top, the leaves will become less charged and will become less separated.</li>
+    <li data-t="7">The leaves will never have opposite signs, and therefore will never attract past vertical.</li>
+</ul>
+</section>
+
+</article>
+</body>
+</html>

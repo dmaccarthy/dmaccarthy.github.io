@@ -1,9 +1,10 @@
 let link = {title:"General Links", icon:"link", menu:[
     {title:"Email Mr. MacCarthy", icon:"mail", open:"mailto:david.maccarthy@eips.ca"},
     {title:"Python Tutorial", icon:"py", open:"https://docs.python.org/3.8/tutorial/"},
+    {title:"Python Text", icon:"py", open:"https://codehs.com/textbook/intropython_textbook/"},
     {title:"Thonny (Python IDE)", icon:"thonny", open:"https://thonny.org/"},
     // {title:"thonny.bat", icon:"", gdrv:"1dfiWkR-wXMEl5VgBkebt6Dlfj59TeaGT"},
-    {title:"thonny.bat", icon:"link", open:"https://eipsca-my.sharepoint.com/:u:/r/personal/david_maccarthy_eips_ca/Documents/public/thonny.bat?csf=1&web=1&e=7wTBkW"},
+    {title:"thonny.bat", icon:"link", open:"thonny.bat"},
     {title:"PowerSchool", icon:"ps", open:"https://powerschool.eips.ca/public/"},
     {title:"Salisbury Composite", icon:"sal", open:"https://salcomp.ca"},
     {title:"Program of Studies", icon:"ab", open:"https://education.alberta.ca/career-and-technology-studies/bit-cluster-businessadminfinanceit/?searchMode=3"},
