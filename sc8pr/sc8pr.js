@@ -41,11 +41,12 @@ function find(link, node) {
 var current, pop, init = true;
 
 function goNode(node) {
-	if (!node) {
-		alert("End of Documentation!");
+/*	if (!node) {
+		if (!init) alert("End of Documentation!");
 		node = sitemap;
 	}
-	else if (typeof(node) == "string") node = find(node);
+	else */
+	if (typeof(node) == "string") node = find(node);
 	if (!node) {
 		if (current == null) goNode();
 		alert("Page not found. This could be a bad URL or a page still under construction!");
