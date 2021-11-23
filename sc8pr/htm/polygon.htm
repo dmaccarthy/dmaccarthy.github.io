@@ -3,15 +3,16 @@
 <p>The <code>Polygon</code> class is used to draw and perform calculations related to polygons. In addition to attributes inherited from <a class="Hilite Code" href="javascript:goNode('shape')">Shape</a> and <a class="Hilite Code" href="javascript:goNode('graphic')">Graphic</a> it defines the following...</p>
 
 <h4>Constructor</h4><div class="Indent">
-	<p><code><span class="Hilite">Polygon</span>(pts, pos=None)</code></p>
+	<p><code><span class="Hilite">Polygon</span>(pts, anchor=None)</code></p>
 		<div class="Indent">
 		<p><code class="Hilite">pts</code>: A sequence of points representing the vertices of the polygon.</p>
-		<p><code class="Hilite">pos</code>: The polygon’s <code>pos</code> property is used as the centre for translation, rotation and scaling. Polygons do not use an <code>anchor</code> property in the way that most other graphics classes do. If no <code>pos</code> argument is provided, the constructor will use the centre of the polygon’s containing rectangle. Alternatively, you can provide a 2-tuple or 2-list to specify a specific point, or an <code>int</code> for the index of a vertex to use as the centre.</p>
+		<p><code class="Hilite">anchor</code>: Polygons do not use an <code>anchor</code> property in the way that most other graphics classes do; the polygon’s <code>anchor</code> property is used as the centre for translation, rotation and scaling. If no <code>anchor</code> argument is provided, the constructor will use the centre of the polygon’s containing rectangle. Alternatively, you can provide a 2-tuple or 2-list to specify a specific point, or an <code>int</code> for the index of a vertex to use as the centre. <b class="Comment">Renamed in v2.2</b> from <code>pos</code>.</p>
 		</div>
 </div>
 
 <h4>Assignable Properties</h4><div class="Indent">
-	<p><code><span class="Hilite">anchor</span></code>: Returns the polygon’s <code>pos</code> property which represents the centre of rotation. When assigning new values, use <code>pos</code> to translate the polygon, and <code>anchor</code> to change the centre of rotation without translating.</p>
+	<p><code><span class="Hilite">anchor</span></code>: Returns the polygon’s centre of rotation. When assigning new values, use <code>pos</code> or <code>xy</code> to translate the polygon, and <code>anchor</code> to change the centre of rotation without translating.</p>
+	<p><code><span class="Hilite">vertices</span></code>: Redefine the polygon with new vertices. Use the <code>setPoints</code> method instead if you also want to change the <code>anchor</code>. This property was read-only <b class="Comment">prior to v2.2</b>.</p>
 </div>
 
 <h4>Read-Only Properties</h4><div class="Indent">
@@ -19,13 +20,12 @@
 	<p><code><span class="Hilite">image</span></code>: A <code>pygame.Surface</code> containing the current rendering of the shape.</p>
 	<p><code><span class="Hilite">segments</span></code>: A list of <code>Line</code> instances representing the sides of the polygon.</p>
 	<p><code><span class="Hilite">size</span></code>: The size of the polygon as the width and height of a containing rectangle.</p>
-	<p><code><span class="Hilite">vertices</span></code>: A list of points describing the vertices of the polygon.</p>
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">containsPoint</span>(pos)</code> → <code>bool</code>: Determines whether the given point, <code>pos</code>, is located within the polygon. This method does <b>not</b> account for the offset of the polygon’s canvas in the sketch; use the <code>contains</code> method for this.</p>
 	<p><code><span class="Hilite">intersect</span>(other)</code> → <code>list</code>: Calculates the points of intersection between the polygons <code>self</code> and <code>other</code>.</p>
-	<p><code><span class="Hilite">setPoints</span>(pts, pos=None)</code> → <code>self</code>: Replace the existing vertices with new ones. Arguments are the same as for the constructor.</p>
+	<p><code><span class="Hilite">setPoints</span>(pts, anchor=None)</code> → <code>self</code>: Replace the existing <code>vertices</code> and and <code>anchor</code> properties by new values; see the constructor for details.</p>
 	<p><code><span class="Hilite">transform</span>(self, rotate=0, scale=1)</code> → <code>self</code>: Scales and rotates the polygon about its centre (<code>pos</code>). You can also perform rotations by assigning a new <code>angle</code> property, and scale transformations by modifying the <code>width</code> or <code>height</code> properties.</p>
 
 </div>
