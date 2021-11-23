@@ -94,7 +94,7 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 	<p><code><span class="Hilite">cover</span>()</code> → <code>Image</code>: Creates a semi-transparent image that can cover the canvas. This is useful for blocking mouse events, for example when running a dialog on top of the canvas. <b class="Comment">[Added in v2.2]</b></p>
 	<p><code><span class="Hilite">cs</span>(*pt)</code> → <code>tuple</code>: Calculate the coordinates of a point in the attached coordinate system (see <code>attachCS</code> above) from its pixel coordinates. <b class="Comment">[Added in v2.2]</b></p>
 		<div class="Indent">
-		<p><code class="Hilite">pt</code>: The pixel coordinates of the point to be transformed.</p>
+		<p><code class="Hilite">*pt</code>: The pixel coordinates of the point to be transformed. Pass the <i>x</i> and <i>y</i> values as two separate arguments, or pass an ordered pair using the asterisk (<code>*pt</code>).</p>
 		</div>
 	<p><code><span class="Hilite">cs_delta</span>(dx=0, dy=0)</code> → <code>tuple</code>: Calculate the change in coordinates relative to the attached coordinate system from the corresponding change in pixel coordinates. <b class="Comment">[Added in v2.2]</b></p>
 	<p><code><span class="Hilite">cs_list</span>(*args)</code> → <code>list</code>: Perform a coordinate transformation using the <code>cs</code> method for multiple points. <b class="Comment">[Added in v2.2]</b></p>
@@ -123,7 +123,7 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 		</div>
 	<p><code><span class="Hilite">px</span>(*pt)</code> → <code>tuple</code>: Calculate the pixel coordinates of a point from its coordinates in the attached cordinate system (see <code>attachCS</code> above). <b class="Comment">[Added in v2.2]</b></p>
 		<div class="Indent">
-		<p><code class="Hilite">pt</code>: The coordinates of the point to be transformed.</p>
+		<p><code class="Hilite">*pt</code>: The coordinates of the point to be transformed. Pass the <i>x</i> and <i>y</i> values as two separate arguments, or pass an ordered pair using the asterisk (<code>*pt</code>)</p>
 		</div>
 	<p><code><span class="Hilite">px_delta</span>(dx=0, dy=0)</code> → <code>tuple</code>: Calculate the change in pixel coordinates corresponding to the given change in coordinates in the attached coordinate system values. <b class="Comment">[Added in v2.2]</b></p>
 	<p><code><span class="Hilite">px_list</span>(*args)</code> → <code>list</code>: Perform a coordinate transformation using the <code>px</code> method for multiple points. <b class="Comment">[Added in v2.2]</b></p>
