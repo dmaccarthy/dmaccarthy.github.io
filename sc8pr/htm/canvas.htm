@@ -80,7 +80,7 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 		<div class="Indent">
 		<p><code class="Hilite">lrbt</code>: A list or tuple containing coordinates corresponding to the left, right, bottom, and top of the canvas. If the top or the top and bottom values are omitted, they will be calculated so that the scale is the same on both axes.</p>
 		<p><code class="Hilite">margin</code>: A non-negative <code>int</code> or a 4-list or 4-tuple specifying the number of pixels to be considered as a margin around the edges of the canvas.</p>
-		<p><code class="Hilite">size</code>: The viewport size to use for the coordinate transformation; if omitted the canvas size (or scroll size for instances of <a class="Hilite Code" href="javascript:goNode('scroll')">ScrollCanvas</a>) will be used.</p>
+		<p><code class="Hilite">size</code>: The rectangle size (including margins) on which to base the coordinate transformations; this will usually be the canvas size (or scroll size for instances of <a class="Hilite Code" href="javascript:goNode('scroll')">ScrollCanvas</a>), which is the default.</p>
 		</div>
 	<p><code><span class="Hilite">attr_get</span>(*args)</code> → <code>dict</code>: Creates a dictionary of current attribute values for items currently added to the canvas. The graphic instances are used as dictionary keys. <b class="Comment">[Added in v2.2]</b></p>
 		<div class="Indent">
