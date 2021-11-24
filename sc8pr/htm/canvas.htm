@@ -76,7 +76,7 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 	<p><code><span class="Hilite">__isub__</span>(gr)</code> → <code>self</code>: Removes a <code>Graphic</code> instance or a sequence of such graphics from the canvas; enables the use of the <code>-=</code> operator. <b class="Comment">As of v2.2</b> the argument can be a string specifying the name with which the graphic was added to the canvas.</p>
 	<p><code><span class="Hilite">__len__</span>()</code> → <code>int</code>: Enables the <code>len</code> function to determine the number of graphic instances currently added to the canvas.</p>
 	<p><code><span class="Hilite">__setitem__</span>(key, gr)</code> → <code>None</code>: Adds a graphic instance to the canvas with the specified key (name). <b class="Comment">As of v2.2</b>, this function will accept an <code>int</code> in place of a key, to insert the item into the canvas with a specific <code>layer</code> value. The key cannot be a <code>slice</code>, or a non-hashable type. A <code>KeyError</code> will be raised if an invalid type is used (including an <code>int</code> in versions earlier than 2.2), or if the key is already in use by an instance other than <code>gr</code>.</p>
-	<p><code><span class="Hilite">attachCS</span>(lrbt, margin=0, size=None)</code> → <code>self</code>: Attach a coordinate system to the canvas; coordinate transformations can then be performed using the <code>px</code> method (from coordinate system to pixels) or <code>cs</code> method (from pixels to the coordinate system). Items can be positioned and oriented within the canvas using the <code>pos</code> and <code>angle</code> properties (relative to the pixel coordinates) or the <code>xy</code> and <code>theta</code> properties (relative to the attached coordinate system). If a canvas is resized, the coordinate transformations will remain based on the original size until you call <code>updateCS</code> or <code>attachCS</code> again. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code><span class="Hilite">attachCS</span>(lrbt, margin=0, size=None)</code> → <code>self</code>: Attach a coordinate system to the canvas; coordinate transformations can then be performed using the <code>px</code> method (from coordinate system to pixels) or <code>cs</code> method (from pixels to the coordinate system). Items can be positioned and oriented within the canvas using the <code>pos</code> and <code>angle</code> properties (relative to the pixel coordinates) or the <code>xy</code> and <code>theta</code> properties (relative to the attached coordinate system). <!--If a canvas is resized, the coordinate transformations will remain based on the original size until you call <code>updateCS</code> or <code>attachCS</code> again.--> <b class="Comment">[Added in v2.2]</b></p>
 		<div class="Indent">
 		<p><code class="Hilite">lrbt</code>: A list or tuple containing coordinates corresponding to the left, right, bottom, and top of the canvas. If the top or the top and bottom values are omitted, they will be calculated so that the scale is the same on both axes.</p>
 		<p><code class="Hilite">margin</code>: A non-negative <code>int</code> or a 4-list or 4-tuple specifying the number of pixels to be considered as a margin around the edges of the canvas.</p>
@@ -144,11 +144,11 @@ Sketch((524,200)).play("Canvas Demo")</pre>
 		</div>
 	<p><code><span class="Hilite">snapshot</span>()</code> → <code>Image</code>: Create a new image by drawing the canvas.</p>
 	<p><code><span class="Hilite">sprites</span>()</code> → <code>generator</code>: Yields a sequence of <code>BaseSprite</code> instances currently added to the canvas.</p>
-	<p><code><span class="Hilite">updateCS</span>(adjust=None, scale=True)</code> → <code>self</code>: Adjust the attached coordinate system to account for the current size of the canvas, typically called after resizing. <b class="Comment">[Added in v2.2]</b></p>
+	<!--p><code><span class="Hilite">updateCS</span>(adjust=None, scale=True)</code> → <code>self</code>: Adjust the attached coordinate system to account for the current size of the canvas, typically called after resizing. <b class="Comment">[Added in v2.2]</b></p>
 		<div class="Indent">
 		<p><code class="Hilite">adjust</code>: A dictionary (created by calling <code>attr_get</code>) of graphics properties to adjust to the updated coordinate system.</p>
 		<p><code class="Hilite">scale</code>: A <code>bool</code> indicating whether to multiply the graphics’ <code>size</code> properties by the appropriate resizing factor.</p>
-		</div>
+		</div-->
 
 </div>
 

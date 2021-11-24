@@ -1,7 +1,7 @@
 ﻿<article><h1><code>sc8pr.gui.scroll</code> Module</h1>
 <p><span class="Comment"><b>Experimental in v2.2</b>.</span></p>
 
-<p>This module defines the <code>ScrollCanvas</code> and <code>ScrollSketch</code> classes which display a viewport to a virtual canvas and provide scroll bars to move the viewport. In addition to the attributes they inherit from <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> and <a class="Hilite Code" href="javascript:goNode('sketch')">Sketch</a> respectively, these classes define the following...</p>
+<p>This module defines the <code>ScrollCanvas</code> and <code>ScrollSketch</code> classes which display a viewport to a virtual canvas and provide scroll bars to move the viewport. The abstract base class <code>BaseScroll</code> defines features shared by both classes. <code>ScrollCanvas</code> is also a subclass of <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> while <code>ScrollSketch</code> is a subclass of <a class="Hilite Code" href="javascript:goNode('sketch')">Sketch</a>. Additionally, the following are defined...</p>
 
 <h4>Constructors</h4><div class="Indent">
 	<p><code><span class="Hilite">ScrollCanvas</span>(size, scrollSize=None, bg=None)</code></p>
