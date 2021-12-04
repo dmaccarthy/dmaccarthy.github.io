@@ -11,7 +11,6 @@ body {
 	background-repeat:no-repeat;
 }
 
-#Home:hover {background-image:url("img/sc8hover.png")}
 #Copyright {font-size:85%}
 #Logo {width:80px}
 article {padding:0.5em}
@@ -55,6 +54,8 @@ nav ul li span:hover, #Home:hover {
 	cursor:pointer;
 	background-color:blue;
 }
+
+#Home:hover {background-image:url("img/sc8hover.png")}
 
 nav span.Current {
 	font-weight:bold;
