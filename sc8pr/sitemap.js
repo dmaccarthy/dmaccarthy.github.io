@@ -45,20 +45,21 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 		{title:"sc8pr.misc.*", link:"misc", pages:[
 			{title:".effect", link:"effect"},
 			{title:".hsv", link:"hsv"},
-			{title:".plot", link:"plot", pages:[
-				{title:"class Locus", link:"locus"},
-				{title:"class Plot", link:"plot_class"},
-				{title:"class Series", link:"series"},
-			]},	
 			{title:".media", link:"media", pages:[
 				{title:"class FFReader", link:"ffr"},
 				{title:"class FFWriter", link:"ffw"},
 				{title:"class Grabber", link:"grabber"},
 				{title:"class Movie", link:"movie"},
 			]},
+			{title:".plot", link:"plot", pages:[
+				{title:"class Locus", link:"locus"},
+				{title:"class Plot", link:"plot_class"},
+				{title:"class Series", link:"series"},
+			]},	
 			{title:".progress", link:"progress"},
 			{title:".s8v", link:"s8v"},
-			{title:".table", link:"table"},
+			{title:".typeset", link:"typeset"},
+			{title:".effect", link:"effect"},
 			{title:".video", link:"video", pages:[
 				{title:"class Video", link:"video_class"},
 			]},
