@@ -44,6 +44,7 @@ makeIcon.urls = {
     "gsld": "https://ssl.gstatic.com/docs/presentations/images/favicon5.ico",
     "py": "https://www.python.org/static/favicon.ico",
     "repl": "https://replit.com/public/icons/favicon-196.png",
+    "desmos": "https://www.desmos.com/favicon.ico",
 };
 
 function deep(obj) {

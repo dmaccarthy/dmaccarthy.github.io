@@ -1,34 +1,5 @@
 // , vid:"#PLpVmtCaB-lykC3KWCNWfsOFWwLVtPHwhN"
 
-let phys = {title:"Unit B: Physics", id:"phys", icon:"rocket", menu:[
-    {title:"Assignment Booklet", gdrv:"1dKbreMxOXUs2u_TwsgtoqFPgQIS9PVAM"},
-    // {title:"Science Skills", icon:"flask", menu:[]},
-    {title:"Part 1: Science Skills & Motion", id:"p1", icon:"rocket", menu:[
-        // {title:"Significant Digits", unavail:1, icon:1, open:"phys/sigdig.html"},
-        {title:"Scientific Notation", icon:1, open:"phys/sciNot.html"},
-        {title:"SI Units", icon:1, open:"phys/si.html"},
-        // {title:"Scientific Method", icon:1, open:"phys/sciMeth.html"},
-        {title:"Graphing Data", icon:1, open:"phys/scatter.html"},
-        {title:"Displacement", icon:1, open:"phys/displ.html"},
-        {title:"Velocity", icon:1, open:"phys/vel.html"},
-        {title:"Acceleration", icon:1, open:"phys/accel.html"},
-    ]},
-    {title:"Part 2: Energy & Heat", id:"p2", icon:"rocket", menu:[
-        {title:"Mechanical Energy", icon:1, open:"phys/mech.html"},
-        {title:"Energy Transformations", icon:1, open:"phys/Etransform.html"},
-        {title:"Work & Energy", icon:1, open:"phys/work.html"},
-        {title:"Efficiency", icon:1, open:"phys/effic.html"},
-        {title:"Unit Project", gdoc:"1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18"},
-    // ]},
-    // {title:"Part 3: Thermodynamics", icon:"rocket", menu:[
-        // {title:"Modern Energy Sources", icon:1, open:"phys/modsrc.html"},
-    ]},
-    {title:"Unit Review", icon:1, menu:[
-        {title:"Assignment", gdrv:"1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i"},
-        // {title:"Answer Key", unavail:1, gdrv:"1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To"},
-    ]},
-]};
-
 let bio = {title:"Unit C: Biology", id:"bio", icon:"leaf", menu:[
     {title:"Assignment Booklet", gdrv:"1ewtwqCG3yx79b6nmadMONLPDUNaI2vdM"},
     {title:"Part 1: Cells", id:"cell", icon:"leaf", menu:[
@@ -36,14 +7,14 @@ let bio = {title:"Unit C: Biology", id:"bio", icon:"leaf", menu:[
         {title:"Cell Theory", icon:1, open:"https://docs.google.com/presentation/d/1yg_Q804TGQauW9EzNnbmJZlHkK8nR0qiIp5iaESYRBA"},
         {title:"Organelles", icon:1, open:"bio/org.html"},
     ]},
-    {title:"Part 2: Membranes & Transport", unavail:1, id:"membr", icon:"leaf", menu:[
-        {title:"Fluid-Mosaic Model", icon:"video", vid:"#PLpVmtCaB-lykC3KWCNWfsOFWwLVtPHwhN"},
+    {title:"Part 2: Membranes & Transport", id:"membr", icon:"leaf", menu:[
+        {title:"Fluid-Mosaic Model", icon:1, vid:"#PLpVmtCaB-lykC3KWCNWfsOFWwLVtPHwhN", menu:[]},
         {title:"Diffusion Simulation", icon:"html5", open:"https://phet.colorado.edu/sims/html/diffusion/latest/diffusion_en.html"},
         {title:"Passive & Active Transport", icon:1, vid:"Ptmlvtei8hw", menu:[
             {title:"Lesson Notes", icon:1, open:"https://docs.google.com/presentation/d/1qJYqVyhLdOpIwEF8qv0EsbnYO6dRbofZvqICN0g568g"},
         ]},
     ]},
-    {title:"Part 3: Plant Systems", unavail:1, id:"plants", icon:"leaf", menu:[
+    {title:"Part 3: Plant Systems", id:"plants", icon:"leaf", menu:[
         {title:"Photosynthesis & Cell Specialization", icon:"leaf", vid:"#PLpVmtCaB-lyl-3YflYKGbMkgGYSwAfIdd", menu:[
             {title:"Lesson Notes", icon:1, open:"https://docs.google.com/presentation/d/11zl5GF0VgrNojVPIWGbLGaerb42djfIATyvtBpJHvZI"},
         ]},
@@ -106,6 +77,35 @@ let chem = {title:"Unit A: Chemistry", id:"chem", icon:"flask", menu:[
         {title:"Molar Mass", icon:1, open:"chem/mole.html"},
     ]},
     {title:"Unit Review Key", gdrv:"1IaRKpczT_-sy76rFqBEOcIwyQ3AORxxYAEzJGKJpY7w"},
+]};
+
+let phys = {title:"Unit B: Physics", id:"phys", icon:"rocket", menu:[
+    {title:"Assignment Booklet", gdrv:"1dKbreMxOXUs2u_TwsgtoqFPgQIS9PVAM"},
+    // {title:"Science Skills", icon:"flask", menu:[]},
+    {title:"Part 1: Science Skills & Motion", id:"p1", icon:"rocket", menu:[
+        // {title:"Significant Digits", unavail:1, icon:1, open:"phys/sigdig.html"},
+        {title:"Scientific Notation", icon:1, open:"phys/sciNot.html"},
+        {title:"SI Units", icon:1, open:"phys/si.html"},
+        // {title:"Scientific Method", icon:1, open:"phys/sciMeth.html"},
+        {title:"Graphing Data", icon:1, open:"phys/scatter.html"},
+        {title:"Displacement", icon:1, open:"phys/displ.html"},
+        {title:"Velocity", icon:1, open:"phys/vel.html"},
+        {title:"Acceleration", icon:1, open:"phys/accel.html"},
+    ]},
+    {title:"Part 2: Energy & Heat", id:"p2", icon:"rocket", menu:[
+        {title:"Mechanical Energy", icon:1, open:"phys/mech.html"},
+        {title:"Energy Transformations", icon:1, open:"phys/Etransform.html"},
+        {title:"Work & Energy", icon:1, open:"phys/work.html"},
+        {title:"Efficiency", icon:1, open:"phys/effic.html"},
+        {title:"Unit Project", gdoc:"1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18"},
+    // ]},
+    // {title:"Part 3: Thermodynamics", icon:"rocket", menu:[
+        // {title:"Modern Energy Sources", icon:1, open:"phys/modsrc.html"},
+    ]},
+    {title:"Unit Review", icon:1, menu:[
+        {title:"Assignment", gdrv:"1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i"},
+        // {title:"Answer Key", unavail:1, gdrv:"1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To"},
+    ]},
 ]};
 
 let home = addHome({title:"Science 10", id:"home", icon:"flask", htmx:"<p class='Center'>Teacher: <a href='mailto:david.maccarthy@eips.ca'>D.G. MacCarthy</a></p>", menu:[

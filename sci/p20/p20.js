@@ -1,3 +1,58 @@
+let shm = [
+    {title:"Assignment Booklet", gdrv:"1epM1sYOHlUXxbMQ3DODu-J3aj_JYQ0YA"},
+    {title:"Equilibrium & Oscillations", icon:1, menu:[
+        {title:"Pendulum Video", icon:"video", gdrv:"1EaP7bhyrze7XRIu52sILu5ErM5qhM7b0"},
+        {title:"Pendulum Motion Data", icon:"gdrv", open:"https://docs.google.com/spreadsheets/d/1nmwJnNxtU4Bn4u9thB75AOvNSB9_sb08TjivGVcUHdQ"},
+        {title:"Lesson Notes", open:"shm/eqm.html"},
+        {title:"Practice Solutions", gdoc:"1hYFX1MvbaVO8K-psaF189gWVsRHPRSIw_FUXNYLTRN4"},
+    ]},
+    {title:"Simple Harmonic Motion", icon:1, menu:[
+        {title:"Lesson Notes", open:"shm/shm.html"},
+        {title:"Practice Solutions", gdoc:"1rioTx98SvQHei_l4f8jXOQwxPKtS17-fUKBDLDLD_z4"},
+    ]},
+    {title:"Period of SHM", icon:1, menu:[
+        {title:"Lesson Notes", open:"shm/period.html"},
+        {title:"Practice Solutions", gdoc:"1o5KvYsGQOVMT10Ce0e5fB9U2p8_VlyH3mdSeh0qW7Q4"},
+    ]},
+    {title:"Energy of SHM", icon:1, menu:[
+        {title:"Lesson Notes", open:"shm/energy.html"},
+        {title:"Practice Solutions", gdoc:"1lKmGWUFPgX6N19YKXzMrpxdo4ebAs8v88Y1r9BLiFfI"},
+    ]},
+    {title:"Simple Pendulum", icon:1, menu:[
+        {title:"Lesson Notes", open:"shm/pend.html"},
+        {title:"Practice Solutions", gdoc:"1l0OopFOETXE5pU4MpsPThlSV74FVj5BxEV_EC3Y90Xo"},
+    ]},
+    {title:"Mechanical Resonance", icon:1, vid:"#PLpVmtCaB-lymgmGIEvph0whN7Fh1WA2SA", menu:[
+        {title:"Lesson Notes", open:"shm/res.html"},
+    ]},
+];
+
+let grav = [
+    {title:"Assignment Booklet", gdrv:"1rbDbfZ-SklBP0zx0XnSFJn2lPzJM_Vyd"},
+    {title:"Universal Gravitation", icon:1, id:"ugrav", menu:[
+        {title:"Lesson Notes", open:"grav/uGrav.html"},
+        {title:"Practice Solutions", gdoc:"1b96Ht-6midtdBeRU2L2o9OkESdmDF3dzdA5Sj3On-nM"},
+    ]},
+    {title:"Cavendish Experiment", icon:1, id:"cav", menu:[
+        {title:"Lesson Notes", open:"grav/cav.html"},
+        {title:"Practice Solutions", gdoc:"1g8p4H2J2U6wDXiKpyxsu1r3SUObrI0P1EHmMN9VfbPE"},
+    ]},
+    {title:"Visualizing Gravity", icon:1, menu:[
+        {title:"Field Visualization (Falstad)", icon:"html5", open:"https://falstad.com/vector2de/vector2de.html?f=InverseSquaredRadial&fc=Floor%3A%20field%20magnitude&fl=Overlay%3A%20equipotentials&d=partsvel&m=Mouse%20%3D%20Adjust%20Angle&st=1&pc=500&hs=40&ft=true&rx=63&ry=0&rz=0&zm=1.2"},
+        // {title:"Field Visualization (Falstad)", icon:"html5", open:"https://falstad.com/vector2de/vector2de.html"},
+        {title:"Field Visualization (PhET)", icon:"html5", open:"https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields_en.html"},
+        {title:"Field Visualization (Desmos)", icon:"desmos", open:"https://www.desmos.com/calculator/br0ig8pci1"},
+    ]},
+    {title:"Gravitational Field", icon:1, vid:"MTY1Kje0yLg", menu:[
+        {title:"Lesson Notes", open:"grav/field.html"},
+        {title:"Practice Solutions", gdoc:"1ha6uk0RSF4bZKS_Q5CjW-4LlNtbGDihVfGdcGW-4YTA"},
+    ]},
+    {title:"Circular Orbital Motion", icon:1, menu:[
+        {title:"Lesson Notes", open:"grav/orbit.html"},
+        {title:"Practice Solutions", gdoc:"1XxYSCqIJbKH016exfXOBS1yb-jTPia_UOcqxQfO1dwM"},
+    ]},
+];
+
 let circ = [
     {title:"Assignment Booklet", gdrv:"1wmnIhIc2yAJFbkAeUi5XUe3ijVRjXi6j"},
     {title:"Model Equations [Skills]", icon:1, menu:[
@@ -180,28 +235,6 @@ let vec2d = [
     ]},
 ];
 
-let grav = [
-    {title:"Assignment Booklet", gdrv:"1bO__6Lv6zze146IVAseuX-yyxRFBgkSp"},
-    {title:"Universal Gravitation", id:"ugrav", menu:[
-        {title:"Lesson Notes", open:"grav/uGrav.html"},
-        {title:"Practice Solutions", gdoc:"1b96Ht-6midtdBeRU2L2o9OkESdmDF3dzdA5Sj3On-nM"},
-    ]},
-    {title:"Cavendish Experiment", id:"cav", menu:[
-        {title:"Lesson Notes", open:"grav/cav.html"},
-        {title:"Practice Solutions", gdoc:"1g8p4H2J2U6wDXiKpyxsu1r3SUObrI0P1EHmMN9VfbPE"},
-    ]},
-    {title:"Circular Orbital Motion", menu:[
-        {title:"Lesson Notes", open:"grav/orbit.html"},
-        {title:"Practice Solutions", gdoc:"1XxYSCqIJbKH016exfXOBS1yb-jTPia_UOcqxQfO1dwM"},
-    ]},
-    {title:"Gravitational Field", vid:"MTY1Kje0yLg", menu:[
-        {title:"Field Visualization (PhET)", icon:"html5", open:"https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields_en.html"},
-        {title:"Field Visualization (Falstad)", icon:"html5", open:"https://falstad.com/vector2de/vector2de.html"},
-        {title:"Lesson Notes", open:"grav/field.html"},
-        {title:"Practice Solutions", gdoc:"1ha6uk0RSF4bZKS_Q5CjW-4LlNtbGDihVfGdcGW-4YTA"},
-    ]},
-];
-
 let wave = [
     {title:"Assignment Booklet", gdrv:"1u8HPa7Mtn5LN7DsjMdyryXh2fgKBmrm7"},
     {title:"Harmonic Waves", menu:[
@@ -220,34 +253,6 @@ let wave = [
         {title:"Standing Waves Animation", icon:"html5", open:"../applet/stWave.html"},
         {title:"Lesson Notes", open:"wave/stand.html"},
         {title:"Practice Solutions", gdoc:"1Nz98VKhZjecAm001MC1ImzppsVQHnJoT9V2M7_Q-kak"},
-    ]},
-];
-
-let shm = [
-    {title:"Assignment Booklet", gdrv:"1I1mAAJShRy2pjkBKjuj_I_623FHSHxO1"},
-    // {title:"Pendulum Video", icon:"video", gdrv:"1EaP7bhyrze7XRIu52sILu5ErM5qhM7b0"},
-    {title:"Equilibrium & Oscillations", menu:[
-        {title:"Lesson Notes", open:"shm/eqm.html"},
-        {title:"Practice Solutions", gdoc:"1hYFX1MvbaVO8K-psaF189gWVsRHPRSIw_FUXNYLTRN4"},
-    ]},
-    {title:"Simple Harmonic Motion", menu:[
-        {title:"Lesson Notes", open:"shm/shm.html"},
-        {title:"Practice Solutions", gdoc:"1rioTx98SvQHei_l4f8jXOQwxPKtS17-fUKBDLDLD_z4"},
-    ]},
-    {title:"Period of SHM", menu:[
-        {title:"Lesson Notes", open:"shm/period.html"},
-        {title:"Practice Solutions", gdoc:"1o5KvYsGQOVMT10Ce0e5fB9U2p8_VlyH3mdSeh0qW7Q4"},
-    ]},
-    {title:"Energy of SHM", menu:[
-        {title:"Lesson Notes", open:"shm/energy.html"},
-        {title:"Practice Solutions", gdoc:"1lKmGWUFPgX6N19YKXzMrpxdo4ebAs8v88Y1r9BLiFfI"},
-    ]},
-    {title:"Simple Pendulum", menu:[
-        {title:"Lesson Notes", open:"shm/pend.html"},
-        {title:"Practice Solutions", gdoc:"1l0OopFOETXE5pU4MpsPThlSV74FVj5BxEV_EC3Y90Xo"},
-    ]},
-    {title:"Mechanical Resonance", vid:"#PLpVmtCaB-lymgmGIEvph0whN7Fh1WA2SA", menu:[
-        {title:"Lesson Notes", open:"shm/res.html"},
     ]},
 ];
 
@@ -273,9 +278,9 @@ let home = addHome({title:"Physics 20", id:"home", htmx:"<p class='Right'>Teache
     //     {title:"Chapter 2 Key", gdoc:"1bZelxmufKP0ghnwg92MBghKJelgb34xCRtehd4_OugQ"},
     // ]},
     {title:"Chapter 3: Dynamics", id:"dyn", icon:"rocket", menu:dyn},
-    {title:"Chapter 5: Uniform Circular Motion", id:"circ", unavail:0, icon:"midway", menu:circ},
-    {title:"Chapter 4: Universal Gravitation", id:"grav", unavail:1, icon:"earth", menu:grav},
-    {title:"Chapter 7: Oscillations (SHM)", id:"shm", unavail:1, icon:"crane", menu:shm},
+    {title:"Chapter 5: Circular & Planetary Motion", id:"circ", icon:"midway", menu:circ},
+    {title:"Chapter 4: Universal Gravitation", id:"grav", icon:"earth", menu:grav},
+    {title:"Chapter 7: Oscillations (SHM)", id:"shm", icon:"crane", menu:shm},
     {title:"Chapter 8: Mechanical Waves", id:"wave", unavail:1, icon:"speaker", menu:wave},
     // {title:"Course Review", gdrv:"1Pe-o2p0VbWJ9UAnGt0ZNPqLArqpvhhPG"},
 ]});
