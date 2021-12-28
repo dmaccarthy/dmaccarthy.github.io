@@ -1,6 +1,6 @@
 var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
-	{title:"Installation", link:"inst"},
 	{title:"Gallery", link:"ex"},
+	{title:"Installation", link:"inst"},
 	{title:"Tutorial", link:"tut", pages:[
 		{title:"Basics", link:"sk", pages:[
 			{title:"The <code>setup</code> Function", link:"setup"},
