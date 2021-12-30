@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulations, Animations &amp; Tools</title>
+<link rel="shortcut icon" type="image/png" href="../media/rocket.png" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<script type="text/javascript" src="../script/util.js"></script>
+<script type="text/javascript" src="../2021/ui.js"></script>
+<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript">
+
+let home = addHome({title:"Simulations, Animations & Tools", id:"home", menu:[
+    {title:"General", id:"simGen", icon:"desmos", menu:simGen},
+    {title:"Physics 20", id:"sim20", icon:"rocket", menu:sim20},
+    {title:"Physics 30", id:"sim30", icon:"magnet", menu:sim30},
+]});
+
+</script>
+<script type="text/javascript" src="../2021/tree.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700" />
+<link rel="stylesheet" href="../2021/ui.css" />
+</head>
+<body><article>
+    <p id="Crumbs"></p>
+    <div id="Content"></div>
+</article></body>
+</html>

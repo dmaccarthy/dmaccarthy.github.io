@@ -21,7 +21,7 @@ let course = "robo";
 <p>A <b class="Red">robot</b> is an electromechanical system that is capable of doing the following:</p>
 <ul>
     <li><b>Sensing</b>: A robot is typically equipped with <b class="Red">sensors</b> that allow it to experience its surroundings. Sensors may include a camera or light detector; microphone or sound detector; gyroscope, compass or GPS; infrared proximity detector; or many others.</li>
-    <li><b>Planning</b>: Using its sensor data, robots can make decisions as to what actions it needs to perform in order to accomplish its goals.</li>
+    <li><b>Planning</b>: Using its sensor data, a robot can make decisions as to what actions it needs to perform in order to accomplish its goals.</li>
     <li><b>Acting</b>: Robots are often equipped with <b class="Red">actuators</b> (e.g. motors and servos; speakers; light or radio transmitters) that allow it to move itself or other objects and to act in other ways.</li>
 </ul>
 <p>These are known as <b class="Red">primitives</b>, or primitive behaviours, of robots. The Sense-Plan-Act paradigm for robotics is analogous to the Input-Processing-Output approach to computer programming. The robot’s sensors provide its input and its actuators provide its output.</p>
@@ -32,7 +32,8 @@ let course = "robo";
     package for Python 3. This package is not part of the Python standard library; it has to be
     installed separately from Python itself. If you are using a computer that does not already
     have <code>sc8pr</code>, installation may depend on the IDE you are using.</p>
-<p>If you are using a fork of the <code>Robo</code> repl in repl.it, it should be pre-configured with <code>sc8pr</code>.</p>
+<p>If you are using a fork of the <a class="Code" href="https://replit.com/@DavidMacCarthy/Robo">Robo</a> repl in <code>repl.it</code>, it should be pre-configured with <code>sc8pr</code>. Open the file <code>pyproject.toml</code> and ensure that the <code>[tool.poetry.dependencies]</code> section includes the line:</p>
+<pre class="IO">sc8pr = "^2.2b0"</pre>
 <p>If you are using Thonny, go to the “Tools” menu and select “Manage packages...”</p>
 <p class="Center"><img src="../game/img/thonny.png" alt="Thonny"/></p>
 <ol>

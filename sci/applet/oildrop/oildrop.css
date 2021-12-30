@@ -1,0 +1,8 @@
+#Display {
+	margin-top:0px;
+	color:blue;
+	font-family:"Source Code Pro", "Lucida Console", monospace;
+}
+
+.Link {cursor:pointer}
+.Link:hover {background-color:#c0c0ff	}

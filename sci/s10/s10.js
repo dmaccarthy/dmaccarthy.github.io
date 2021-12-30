@@ -1,5 +1,22 @@
 // , vid:"#PLpVmtCaB-lykC3KWCNWfsOFWwLVtPHwhN"
 
+let clim = {title:"Unit D: Climate", id:"clim", icon:"earth", menu:[
+    {title:"Assignment Booklet", gdrv:"1WlpJ3W-AIBaeofelJN23NDDWMdUQAyZZ"},
+    {title:"Part 1: Climate Science", icon:"earth", menu:[
+        {title:"Theories of Heat", icon:1, open:"clim/heat.html"},
+        {title:"Heat Capacity", icon:1, open:"clim/heatcap.html"},
+        {title:"Latent Heat", icon:1, open:"clim/latent.html"},
+        {title:"Heat Transfer", icon:1, open:"clim/transfer.html"},
+        {title:"Earth’s Energy Budget", icon:1, open:"clim/budget.html"},
+        {title:"Climate Models", gdoc:"1GmAjjrBOW5aakCV5Y8AM6CtBUNiBkbw_BVwfoarlmCw"},
+    ]},
+    {title:"Part 2: Biomes & Climate Change", unavail: 1, icon:"earth", menu:[
+        {title:"Biomes & Adaptations", icon:1, open:"clim/biome.html"},
+        {title:"Polar Bears Video", icon:"video", open:"https://www.cbc.ca/archives/entry/climate-change-threatens-polar-bears"},
+        // {title:"", icon:1, open:"clim/.html"},
+    ]},
+]};
+
 let bio = {title:"Unit C: Biology", id:"bio", icon:"leaf", menu:[
     {title:"Assignment Booklet", gdrv:"1ewtwqCG3yx79b6nmadMONLPDUNaI2vdM"},
     {title:"Part 1: Cells", id:"cell", icon:"leaf", menu:[
@@ -26,23 +43,7 @@ let bio = {title:"Unit C: Biology", id:"bio", icon:"leaf", menu:[
             {title:"Lesson Notes", icon:1, open:"https://docs.google.com/presentation/d/1NxKWWQRXaY2yZxrAL3EYZUzBpLXKTDoEeGHjIxlN32g"},
         ]},
     ]},
-]};
-
-let clim = {title:"Unit D: Climate", id:"clim", icon:"earth", unavail:1, menu:[
-    {title:"Assignment Booklet", gdrv:"1WlpJ3W-AIBaeofelJN23NDDWMdUQAyZZ"},
-    {title:"Part 1: Climate Science", icon:"earth", menu:[
-        // {title:"Theories of Heat", icon:1, open:"clim/heat.html"},
-        {title:"Heat Capacity", icon:1, open:"clim/heatcap.html"},
-        {title:"Latent Heat", icon:1, open:"clim/latent.html"},
-        {title:"Heat Transfer", icon:1, open:"clim/transfer.html"},
-        {title:"Earth’s Energy Budget", icon:1, open:"clim/budget.html"},
-        // {title:"", icon:1, open:"clim/.html"},
-    ]},
-    {title:"Part 2: Biomes & Climate Change", icon:"earth", menu:[
-        {title:"Biomes & Adaptations", icon:1, open:"clim/biome.html"},
-        {title:"Polar Bears Video", icon:"video", open:"https://www.cbc.ca/archives/entry/climate-change-threatens-polar-bears"},
-        // {title:"", icon:1, open:"clim/.html"},
-    ]},
+    {title:"Stem Cell Research", gdoc:"1NkfJkyPolerVB0NEKjiCRKfAJmsZFRr0x1UzECRkmEM"},
 ]};
 
 let chem = {title:"Unit A: Chemistry", id:"chem", icon:"flask", menu:[
@@ -119,6 +120,8 @@ let home = addHome({title:"Science 10", id:"home", icon:"flask", htmx:"<p class=
         {title:"Program of Studies", icon:"ab", open:"https://education.alberta.ca/science-10-12/programs-of-study/"},
         {title:"Course Outline", icon:"link", open:"https://scienceoutlines.davidmaccarthy.repl.co/?s10"},
     ]},
-    chem, phys, bio, clim]});
+    chem, phys, bio,
+    {title:"Pre-IB: Measurement Uncertainty", gdrv:"1UTzGI6zXaNLDsVK6ezVVFwysF2QbytOX"},
+    clim]});
 
 // home.menu[0].menu.splice(2, 3);

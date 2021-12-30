@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<meta name="description" content="Simulation of Millikan’s Oil Drop Experiment"/>
+	<title>Millikan’s Oil Drop Experiment</title>
+	<link rel="shortcut icon" type="image/x-icon" href="https://www.davidmaccarthy.repl.co/media/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+	<link href="../applet.css" rel="stylesheet" type="text/css" />
+	<link href="oildrop.css" rel="stylesheet" type="text/css" />
+	<!--link href="vec2d.css" rel="stylesheet" type="text/css" /-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../../script/plot.js"></script>
+	<script type="text/javascript" src="oildrop.js"></script>
+	<script type="text/javascript">
+
+function promptV() {
+	var v = prompt("Enter new voltage: 0-4000 V");
+	if (v != null) app.voltage.setValue(v);
+}
+	
+	</script>
+</head>
+<body class="Center">
+	<h2>Millikan’s Oil Drop Experiment</h2>
+	<p><i>m</i> / kg = <span id="Coeff"></span> [v / (m/s)]<sup>1.5</sup></p>
+	<p><canvas id="Drawing" width="288" height="512"/></p>
+	<p id="Display">
+		<span class="Link" title="Voltage" onclick="showVoltage(true)"><span id="V">0</span> V</span> /
+		<span class="Link" title="Update timer" onclick="timer()">⌚&emsp14;<span id="Lap">0.00</span> s</span>
+	</p>
+    <p class="Slider"><input id="Voltage" type="range" step="1" min="0" max="4000" value="0" onchange="showVoltage()"/></p>
+</body>
+</html>

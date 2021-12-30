@@ -1,3 +1,24 @@
+let wave = [
+    {title:"Assignment Booklet", gdrv:"1NC0Pk5VyhNKR8sGuTNhgHNQpG5ZiJyv9"},
+    {title:"Harmonic Waves", icon:1, menu:[
+        {title:"Lesson Notes", open:"wave/harm.html"},
+        {title:"Practice Solutions", gdoc:"1xb381kGFZ0uQ3VJtC6x-fDlataT-SNVG73jFTrMFFyA"},
+    ]},
+    {title:"Doppler Effect", icon:1, menu:[
+        {title:"Lesson Notes", open:"wave/doppler.html"},
+        {title:"Practice Solutions", gdoc:"1d31LStNsYOG7lU91dspgapqsm3JeiEoEFzDrINMc9-Q"},
+    ]},
+    {title:"Interference & Beats", icon:1, menu:[
+        {title:"Lesson Notes", open:"wave/beat.html"},
+        {title:"Practice Solutions", gdoc:"1tXxsgei7m80MUqUWvWXrTgxBhfrmgJBRW7iB21AD6SM"},
+    ]},
+    {title:"Standing Waves", icon:1, menu:[
+        {title:"Standing Waves Animation", icon:"html5", open:"../applet/stWave.html"},
+        {title:"Lesson Notes", open:"wave/stand.html"},
+        {title:"Practice Solutions", gdoc:"1Nz98VKhZjecAm001MC1ImzppsVQHnJoT9V2M7_Q-kak"},
+    ]},
+];
+
 let shm = [
     {title:"Assignment Booklet", gdrv:"1epM1sYOHlUXxbMQ3DODu-J3aj_JYQ0YA"},
     {title:"Equilibrium & Oscillations", icon:1, menu:[
@@ -116,7 +137,7 @@ let dyn = [
         {title:"Lesson Notes", open:"dyn/fric.html"},
         {title:"Assignment Handout", gdrv:"1hDszAFVnw969ETypsUQLBNTFwhgs3Q9A"},
         {title:"Practice Solutions", gdoc:"1jAoNeyNDfi1DPFyhi-Qf4AdesX2-Wfasv-Dsj0fYV0c"},
-        {title:"Friction Simulation", icon:"html5", open:"https://applets.davidmaccarthy.repl.co/pulley"},
+        {title:"Friction Simulation", icon:"html5", open:"../applet/pulley"},
     ]},
     {title:"Dynamics in 2D", icon:1, menu:[
         {title:"Examples", open:"vec/dyn2d.html"},
@@ -235,26 +256,6 @@ let vec2d = [
     ]},
 ];
 
-let wave = [
-    {title:"Assignment Booklet", gdrv:"1u8HPa7Mtn5LN7DsjMdyryXh2fgKBmrm7"},
-    {title:"Harmonic Waves", menu:[
-        {title:"Lesson Notes", open:"wave/harm.html"},
-        {title:"Practice Solutions", gdoc:"1xb381kGFZ0uQ3VJtC6x-fDlataT-SNVG73jFTrMFFyA"},
-    ]},
-    {title:"Doppler Effect", menu:[
-        {title:"Lesson Notes", open:"wave/doppler.html"},
-        {title:"Practice Solutions", gdoc:"1d31LStNsYOG7lU91dspgapqsm3JeiEoEFzDrINMc9-Q"},
-    ]},
-    {title:"Interference & Beats", menu:[
-        {title:"Lesson Notes", open:"wave/beat.html"},
-        {title:"Practice Solutions", gdoc:"1tXxsgei7m80MUqUWvWXrTgxBhfrmgJBRW7iB21AD6SM"},
-    ]},
-    {title:"Standing Waves", menu:[
-        {title:"Standing Waves Animation", icon:"html5", open:"../applet/stWave.html"},
-        {title:"Lesson Notes", open:"wave/stand.html"},
-        {title:"Practice Solutions", gdoc:"1Nz98VKhZjecAm001MC1ImzppsVQHnJoT9V2M7_Q-kak"},
-    ]},
-];
 
 let home = addHome({title:"Physics 20", id:"home", htmx:"<p class='Right'>Teacher: <a href='mailto:david.maccarthy@eips.ca'>D.G. MacCarthy</a></p>", menu:[
     {title:"Course Links", icon:"link", menu:[
@@ -281,6 +282,6 @@ let home = addHome({title:"Physics 20", id:"home", htmx:"<p class='Right'>Teache
     {title:"Chapter 5: Circular & Planetary Motion", id:"circ", icon:"midway", menu:circ},
     {title:"Chapter 4: Universal Gravitation", id:"grav", icon:"earth", menu:grav},
     {title:"Chapter 7: Oscillations (SHM)", id:"shm", icon:"crane", menu:shm},
-    {title:"Chapter 8: Mechanical Waves", id:"wave", unavail:1, icon:"speaker", menu:wave},
+    {title:"Chapter 8: Mechanical Waves", id:"wave", icon:"speaker", menu:wave},
     // {title:"Course Review", gdrv:"1Pe-o2p0VbWJ9UAnGt0ZNPqLArqpvhhPG"},
 ]});

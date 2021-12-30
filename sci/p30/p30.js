@@ -4,6 +4,7 @@ let mom = [
         {title:"Lesson Notes", open:"mom/mom.html"},
         {title:"Practice Solutions", gdoc:""},
     ]},
+    {title:"Video Analysis", icon:"html5", open:"../tools/vid_analysis/"},
 ];
 
 let elec = [
@@ -27,11 +28,11 @@ let home = addHome({title:"Physics 30", id:"home", htmx:"<p class='Right'>Teache
         {title:"Program of Studies", icon:"ab", open:"https://education.alberta.ca/science-10-12/programs-of-study/"},
         {title:"Course Outline", icon:"link", open:"https://scienceoutlines.davidmaccarthy.repl.co/?p30"},
     ]},
-    {title:"Chapter 9: Momentum", id:"mom", icon:"train", menu:mom},
-    {title:"Chapter 10 & 11: Electric Fields", unavail:1, id:"elec", icon:"", menu:elec},
-    {title:"Chapter 12: Magnetic Fields", unavail:1, id:"mag", icon:"", menu:mag},
-    {title:"Chapter 13: EM Radiation", unavail:1, id:"emr", icon:"", menu:emr},
-    {title:"Chapter 14: Photons", unavail:1, id:"photon", icon:"", menu:photon},
+    {title:"Chapter 9: Momentum & Impulse", id:"mom", icon:"train", menu:mom},
+    {title:"Chapters 10 & 11: Electric Fields", unavail:1, id:"elec", icon:"", menu:elec},
+    {title:"Chapter 12: Magnetic Fields", unavail:1, id:"mag", icon:"magnet", menu:mag},
+    {title:"Chapter 13: Electromagnetic Waves", unavail:1, id:"emr", icon:"lightbulb", menu:emr},
+    {title:"Chapter 14: Photons", unavail:1, id:"photon", icon:"xray", menu:photon},
     {title:"Chapter 15: Atomic Physics", unavail:1, id:"atom", icon:"", menu:atom},
-    {title:"Chapter 16 & 17: Nuclear & Particle Physics", unavail:1, id:"nuke", icon:"", menu:nuke},
+    {title:"Chapters 16 & 17: Nuclear & Particle Physics", unavail:1, id:"nuke", icon:"nuke", menu:nuke},
 ]});

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<meta name="description" content="Tool for drawing 2D vector diagrams and performing vector addition."/>
+	<title>2D Vectors</title>
+	<link rel="shortcut icon" type="image/x-icon" href="https://www.davidmaccarthy.repl.co/media/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+	<link href="../applet.css" rel="stylesheet" type="text/css" />
+	<link href="vec2d.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/script/plot.js"></script>
+	<script type="text/javascript" src="vector.js"></script>
+	<script type="text/javascript" src="vec2d.js"></script>
+</head>
+<body class="Center">
+	<h2>2D Vectors</h2>
+	<p><canvas id="Diagram" width="600" height="600" onclick="cvClick(event)" onmousemove="cvTitle(event)"
+		onmousedown="cvMouseDown(event)" onmouseup="cvMouseUp(event)" /></p><!-- style="border:1px solid blue padding:20px" -->
+	<p>Each square = <span id="Scale">1.0</span> units</p>
+	<p><input id="Cmd" data-value="0" type="text" onkeydown="keydown(event.keyCode)"/></p>
+	<p>
+		<!--button onclick="cmd(0)" title="Draw the vector diagram">Draw</button> &nbsp;
+		<button onclick="cmd(1)" title="Set the axis/grid view">View</button> &nbsp;
+		<button onclick="location.href=location.href.split('?')[0]">Reset</button> &nbsp;-->
+		<button onclick="window.open('help.html')">Help</button> 
+	</p>
+</body>
+</html>

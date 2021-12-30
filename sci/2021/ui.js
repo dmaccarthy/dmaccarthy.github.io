@@ -2,6 +2,11 @@ let uc = "<p class='Center'>Under Construction! Please check back later.</p>";
 
 function unavail() {alert("This action is currently unavailable!")}
 
+function eq() {
+    $.getScript("https://sci.davidmaccarthy.repl.co/script/math.js");
+    $.getScript("https://sci.davidmaccarthy.repl.co/script/phys.js");
+}
+
 function makeIcon(node) {
     if (node.gdrv || node.gdoc) {
         if (!node.icon) node.icon = "gdrv";

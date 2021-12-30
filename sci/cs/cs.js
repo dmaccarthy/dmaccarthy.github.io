@@ -149,7 +149,6 @@ let home = addHome({title:"Computing Science", id:"home", htmx:"<p class='Right'
         {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/42232"},
         // {title:"repl.it Online IDE", icon:"repl", html:repl_html, menu:[
         //     {title:"Python repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS30"},
-        //     {title:"Java repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/Java"},
         // ]},
         // link30,
         // iter30,
@@ -169,5 +168,6 @@ let home = addHome({title:"Computing Science", id:"home", htmx:"<p class='Right'
             {title:"Modifying Linked Lists", icon:1, href:"dds1/mod.html"},
             {title:"Searching & Sorting", icon:1, href:"dds1/sort.html"},
         ]},
+        {title:"Java repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/Java"},
     ]},
 ]});
