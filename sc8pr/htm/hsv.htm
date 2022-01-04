@@ -6,7 +6,7 @@
 <pre class="Code Scroll">from sc8pr import Sketch 
 from sc8pr.misc.hsv import HSV, hsva
 
-def onscroll(sk, ev):
+def onwheel(sk, ev):
     <span class="Comment">"Event handler for mouse scroll; change brightness value"</span>
     if ev.button in (4, 5):
         gr = sk["Picker"]
@@ -22,7 +22,7 @@ def onclick(gr, ev):
         gr.sketch.bg = printColor(gr.at(ev.pos))
     elif ev.button == 3: <span class="Comment"># Toggle wheel/matrix</span>
         gr.config(wheel=not gr.wheel)
-    else: onscroll(gr.sketch, ev)
+    else: onwheel(gr.sketch, ev)
 
 def printColor(c):
     <span class="Comment">"Print color to the console in HSV and RGB formats"</span>
@@ -38,7 +38,7 @@ print("""Left-click to select color.
 Right-click to toggle wheel/matrix.
 Use mouse scroll wheel to adjust brightness.
 """)
-Sketch((288,288)).bind(onclick=onscroll).play("HSV Color")</pre>
+Sketch((288,288)).bind(onclick=onwheel).play("HSV Color")</pre>
 
 <h4>Class</h4>
 <div class="Indent">

@@ -38,7 +38,7 @@ def setup(sk):
     plot(sk, -0.07, y, "{y}", anchor=RIGHT, **font)
 
 
-Sketch((512, 512)).bind().play("Plotting & Scrolling Demo")</pre>
+Sketch((512, 512)).bind().play("Plotting Demo")</pre>
 
 <h4>Functions</h4><div class="Indent">
 	<p><code><span class="Hilite">bars</span>(cv, x, y=None, width=1, **kwargs)</code> → <code>int</code>: Plot data as a bar graph; returns the number of bars added to the canvas.</p>
@@ -54,7 +54,7 @@ Sketch((512, 512)).bind().play("Plotting & Scrolling Demo")</pre>
 		<p><code class="Hilite">x</code>, <code class="Hilite">y</code>: Tuples or lists containing the lower and upper <i>x</i> or <i>y</i> values and, optionally, the interval. For example, <code>x = (0, 10, 2)</code> specifies grid lines at all mutliples of 2 between 0 and 10. The default value will draw a single gridline at <i>x</i> = 0, i.e. the <i>y</i>-axis.</p>
 		<p><code class="Hilite">**config</code>: Additional arguments to configure the <code>Line</code> instances, such as <code>weight</code> and <code>stroke</code>.
 	</div>
-	<p><code><span class="Hilite">plot</span>(cv, x, y=None, markers=5, offset=None, **kwargs)</code> → <code>int</code>: Plot something at one or more on the canvas; returns the number of <code>Graphic</code> instances added to the canvas.</p>
+	<p><code><span class="Hilite">plot</span>(cv, x, y=None, markers=5, offset=None, **kwargs)</code> → <code>int</code>: Plot something at one or more points on the canvas; returns the number of <code>Graphic</code> instances added to the canvas.</p>
 	<div class="Indent">
 		<p><code class="Hilite">cv</code>: The canvas to draw on. Data will be plotted using the canvas’s atttached coordinate system, or pixel coordinates if no coordinate system has been attached.
 		<p><code class="Hilite">x</code>, <code class="Hilite">y</code>: The points to plot. You can pass the <i>x</i> and <i>y</i> data as two separate sequences, or the data can be a single sequence of ordered pairs passed as <code>x</code> while <code>y</code> is <code>None</code></p>
