@@ -123,8 +123,6 @@ function collapseToggle(ev) {
 	var li = $(this).closest("li");
 	if (li.hasClass("Expanded")) collapse(li);
 	else expand(li);
-	console.log(li[0].node);	
-	console.log(ev);
 }
 
 function collapse(li) {
