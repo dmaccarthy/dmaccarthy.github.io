@@ -1,7 +1,8 @@
 ﻿<article><h1><code>sc8pr.misc.webcache</code> Module</h1>
 <p><span class="Comment"><b>Added in v2.1</b>. This module replaces the experimental <code>latex</code> module from v2.0.</span></p>
 
-<p>This module sends asynchronous requests for images and other web-based data. Data that is received is stored locally in a cache folder and subsequent requests for the same URL will read the cached data. This module includes features for rendering LaTeX markup as images using <a href="http://www.codecogs.com/latex/about.php">codecogs.com</a>.</p>
+<p>This module sends asynchronous requests for images and other web-based data. Data that is received is stored locally in a cache folder and subsequent requests for the same URL will read the cached data. This module includes features for rendering LaTeX markup as images using <a href="http://www.codecogs.com/latex/about.php">codecogs.com</a>. (<b class="Comment">As of v2.2</b>, you can use the <a class="Hilite Code" href="javascript:goNode('mpl')">sc8pr.plot.mpl</a> module instead, to render equations when <a class="Code" href="https://matplotlib.org/">matplotlib</a> is available.)</p>
+
 <p>Usage example...</p>
 
 <pre class="Code">from sc8pr import Image

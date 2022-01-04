@@ -52,8 +52,8 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 				{title:"class Grabber", link:"grabber"},
 				{title:"class Movie", link:"movie"},
 			]},
-			{title:".plot", link:"plot", pages:[
-				{title:"class Locus", link:"locus"},
+			{title:".plot [Deprecated]", link:"plot", pages:[
+				{title:"class Locus", link:"locus_depr"},
 				{title:"class Plot", link:"plot_class"},
 				{title:"class Series", link:"series"},
 			]},	
@@ -68,10 +68,10 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 				{title:"class WebCache", link:"wc"},
 			]},
 		]},
-		{title:"sc8pr.plot", link:"plot_pkg"},
-/*		{title:"sc8pr.plot.*", link:"plot_pkg", pages:[
-			{title:".regression", link:"regression"},
-		]},*/
+		{title:"sc8pr.plot.*", link:"plot_pkg", pages:[
+			{title:".mpl", link:"mpl"},
+//			{title:".regression", link:"regression"},
+		]},
 		{title:"sc8pr.robot.*", link:"robot_class", pages:[
 			{title:".gui", link:"r_gui"},
 		]},
@@ -81,6 +81,7 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 			{title:"class Circle", link:"circle"},
 			{title:"class Ellipse", link:"ellipse"},
 			{title:"class Line", link:"line"},
+			{title:"class Locus", link:"locus"},
 			{title:"class Polygon", link:"polygon"},
 		]},
 		{title:"sc8pr.sprite", link:"sprite", pages:[
