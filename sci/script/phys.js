@@ -1,5 +1,5 @@
-let pi = Math.PI, pow = Math.pow, exp = Math.exp;
-let DEG = pi/180, RAD = 180/pi;
+// let pi = Math.PI, pow = Math.pow, exp = Math.exp;
+// let DEG = pi/180, RAD = 180/pi;
 
 function sq(x) {return x*x}
 function root(x, n) {return Math.pow(x, 1 / (n ? n : 2))}

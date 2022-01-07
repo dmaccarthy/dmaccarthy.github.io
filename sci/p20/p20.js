@@ -17,6 +17,7 @@ let wave = [
         {title:"Lesson Notes", open:"wave/stand.html"},
         {title:"Practice Solutions", gdoc:"1Nz98VKhZjecAm001MC1ImzppsVQHnJoT9V2M7_Q-kak"},
     ]},
+    {title:"Chapter Review", icon:"lesson", id:"rev8", ajax:"wave/summary.htm", menu:[]},
 ];
 
 let shm = [
@@ -46,6 +47,7 @@ let shm = [
     {title:"Mechanical Resonance", icon:1, vid:"#PLpVmtCaB-lymgmGIEvph0whN7Fh1WA2SA", menu:[
         {title:"Lesson Notes", open:"shm/res.html"},
     ]},
+    {title:"Chapter Review", icon:"lesson", id:"rev7", ajax:"shm/summary.htm", menu:[]},
 ];
 
 let grav = [
@@ -194,7 +196,7 @@ let energy = [
         {title:"Assignment Handout", gdrv:"1ftuiOA79zM7EiV6Bq6OWSv9OYoQ2Od0h"},
         {title:"Practice Solutions", gdoc:"1PHRVmr9tMgm8ncSCnykQ1zYYznPADaJZV1KcrYZAWmQ"},
     ]},
-    {title:"Chapter Review", icon:"lesson", ajax:"energy/summary.htm", menu:[]},
+    {title:"Chapter Review", icon:"lesson", id:"rev6", ajax:"energy/summary.htm", menu:[]},
 ];
 
 let kin1d = [
@@ -283,5 +285,11 @@ let home = addHome({title:"Physics 20", id:"home", htmx:"<p class='Right'>Teache
     {title:"Chapter 4: Universal Gravitation", id:"grav", icon:"earth", menu:grav},
     {title:"Chapter 7: Oscillations (SHM)", id:"shm", icon:"crane", menu:shm},
     {title:"Chapter 8: Mechanical Waves", id:"wave", icon:"speaker", menu:wave},
-    // {title:"Course Review", gdrv:"1Pe-o2p0VbWJ9UAnGt0ZNPqLArqpvhhPG"},
+    {title:"Course Review", id:"rev20", icon:"rocket", menu:[
+        {title:"Notes [PDF]", gdrv:"1BitARClCliTU4PZ0vPCJ3jnVmW-3lyag"},
+        {title:"Assignment / Solutions", gdrv:"1Pe-o2p0VbWJ9UAnGt0ZNPqLArqpvhhPG"},
+        {title:"Energy Review", icon:"lesson", id:"rev1", ajax:"energy/summary.htm", menu:[]},
+        {title:"SHM Review", icon:"lesson", id:"rev7", ajax:"shm/summary.htm", menu:[]},
+        {title:"Waves Review", icon:"lesson", id:"rev8", ajax:"wave/summary.htm", menu:[]},
+    ]},
 ]});

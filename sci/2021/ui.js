@@ -69,7 +69,9 @@ function video(node) {
 }
 
 function breadCrumbs(node) {
-    let p = nodePath(node), e = $("#Crumbs").html("");
+    let e = $("<span>").html("&rarr;").attr({title:"Next Page"}).addClass("Next");
+    e = $("#Crumbs").html(e.click(drawNext));
+    let p = nodePath(node);
     for (let i=0;i<p.length;i++) {
         if (i) e.append(" / ");
         let s = $("<span>").html(p[i].title.replace(/\[.*\]/g, ""));
@@ -85,6 +87,7 @@ function breadCrumbs(node) {
 }
 
 function drawNode(node, init) {
+    if (node == null) node = home.menu[0];
     $("#Links").remove();
     $("#Content").html("");
     breadCrumbs(node);
@@ -113,7 +116,10 @@ function drawNode(node, init) {
         if (init) history.replaceState({}, "", url);
         else history.pushState({}, "", url);
     }
+    drawNode.current = node;
 }
+
+function drawNext() {drawNode(nextWith(drawNode.current, "menu"))}
 
 function drawContent(node, e) {
     e = $(e ? e : (node.content ? node.content : "#Content"));

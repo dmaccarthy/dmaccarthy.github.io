@@ -10,10 +10,11 @@ let clim = {title:"Unit D: Climate", id:"clim", icon:"earth", menu:[
         {title:"Earth’s Energy Budget", icon:1, open:"clim/budget.html"},
         {title:"Climate Models", gdoc:"1GmAjjrBOW5aakCV5Y8AM6CtBUNiBkbw_BVwfoarlmCw"},
     ]},
-    {title:"Part 2: Biomes & Climate Change", unavail: 1, icon:"earth", menu:[
+    {title:"Part 2: Biomes & Climate Change", icon:"earth", menu:[
+        {title:"Climatographs", icon:1, open:"clim/climatograph.html"},
+        {title:"Climate Research Project", gdoc:"1fF5E7tykIHYTwe9aly5KvT3hVwTiu6cYVY-6RpbGFBs"},
         {title:"Biomes & Adaptations", icon:1, open:"clim/biome.html"},
         {title:"Polar Bears Video", icon:"video", open:"https://www.cbc.ca/archives/entry/climate-change-threatens-polar-bears"},
-        // {title:"", icon:1, open:"clim/.html"},
     ]},
 ]};
 

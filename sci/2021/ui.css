@@ -20,6 +20,7 @@ article {
 #Crumbs, #Content {padding:8px}
 #Crumbs > span {padding:4px; white-space: nowrap}
 #Crumbs > span:last-child, code {font-weight:bold}
+#Crumbs > span.Next {float:right; position:relative; bottom:4px}
 
 code {
     font-family: "source Code Pro", "Lucida Console", Consolas, monospace;
@@ -41,14 +42,12 @@ p.Title.Home em {display:none} */
 
 .Right {text-align:right} 
 p.Video, .Center {text-align:center} 
-p.Video iframe {max-width:100%}
+p.Video iframe, img {max-width:100%}
 
 #Links {
     margin:auto;
     border-collapse:collapse;
     width:100%;
-    /* max-width:100%; //calc(100% - 0.5em);
-    min-width:80%; //20em; */
     cursor:pointer;
 }
 

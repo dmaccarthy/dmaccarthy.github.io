@@ -46,8 +46,9 @@ function nextSib(node) {
         if (i < menu.length) return menu[i];
     }
 }
+
 function nextNode(node) {
-    if (node.menu) return node.menu[0];
+    if (node.menu && node.menu.length) return node.menu[0];
     if (node.parent) {
         let sib = nextSib(node);
         if (sib) return sib;
@@ -56,6 +57,14 @@ function nextNode(node) {
             if (sib) return sib;
             node = node.parent;
         }
+    }
+}
+
+function nextWith(node, attr) {
+    node = nextNode(node);
+    while (node) {
+        if (node[attr] != null) return node;
+        node = nextNode(node);
     }
 }
 
