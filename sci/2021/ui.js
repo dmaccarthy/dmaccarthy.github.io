@@ -2,11 +2,6 @@ let uc = "<p class='Center'>Under Construction! Please check back later.</p>";
 
 function unavail() {alert("This action is currently unavailable!")}
 
-function eq() {
-    $.getScript("https://sci.davidmaccarthy.repl.co/script/math.js");
-    $.getScript("https://sci.davidmaccarthy.repl.co/script/phys.js");
-}
-
 function makeIcon(node) {
     if (node.gdrv || node.gdoc) {
         if (!node.icon) node.icon = "gdrv";
@@ -69,8 +64,8 @@ function video(node) {
 }
 
 function breadCrumbs(node) {
-    let e = $("<span>").html("&rarr;").attr({title:"Next Page"}).addClass("Next");
-    e = $("#Crumbs").html(e.click(drawNext));
+    // let e = $("<span>").html("&rarr;").attr({title:"Next Page"}).addClass("Next").click(drawNext);
+    let e = $("#Crumbs").html("");
     let p = nodePath(node);
     for (let i=0;i<p.length;i++) {
         if (i) e.append(" / ");
@@ -142,6 +137,20 @@ function drawContent(node, e) {
 }
 
 window.onresize = aspect;
+
+window.onkeydown = function(e) {
+    if (e.ctrlKey) {
+        if (e.key == "ArrowRight") drawNext();
+        else if (e.key == "ArrowLeft") history.back();
+    } 
+}
+
+try {
+    touch.swipe = function(data, ev) {
+        if (data.swipe == "left") drawNext();
+        else if (data.swipe == "right") history.back();
+    }
+} catch(err) {}
 
 function addHome(obj) {
     return {title:"Mr. Mac’s Website", start:0, menu:[obj], href:"../"};

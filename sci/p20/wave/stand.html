@@ -32,13 +32,14 @@ function wave() {
 }
 
 wave.dt = 0;
-wave.speed = 0.04;
+wave.speed = 0.02;
 
 function setup() {
     // Create a sketch with coordinate system
     let sk = new Sketch("#Wave");
     let pi2 = 2 * pi;
     sk.attachCS(-pi2, pi2, -1, 1);
+    sk.frameRate = 60;
 
     // Draw the axis and wave
     sk.line("Axis", -pi2, 0, pi2, 0, {stroke:"grey", lineWidth:0.5});
@@ -71,6 +72,9 @@ body.Present #Wave {margin-top:2em}
 <p>When a wave reaches the end of the medium, its energy is <em class="Defn">reflected</em> back the way it came.</p>
 <ul data-mark="+">
     <li>The reflected waves and the <em class="Defn">incident</em> (incoming) waves will <em>interfere</em> with each other.</li>
+</ul>
+<p class="Center" data-mark="="><iframe src="https://www.desmos.com/calculator/4b72hti1pr?embed" width="960" height="400" style="border: 1px solid #ccc" frameborder=0></iframe></p>
+<ul>
     <li data-mark="+">When the reflection occurs from a <em>fixed</em> end (e.g. a guitar string), the reflection will be <em>inverted</em>; crests will be reflected as troughs and vice versa.</li>
     <li data-mark="+">Reflections from a <em>free</em> end will not be inverted.</li>
 </ul>
@@ -137,6 +141,13 @@ body.Present #Wave {margin-top:2em}
     <li data-mark="+">Similarly an air column will resonate when there are sound waves at one of the air column’s harmonic frequencies.</li>
     <li data-mark="+">Harmonic frequencies are also called resonant frequencies.</li>
 </ul>
+
+</section>
+
+<section id="ex" data-last="?"><h3>Examples</h3>
+<p>A guitar has string lengths of 0.800 m. Calculate the speed of the waves on the string that produces a fundamental frequency of 500 Hz.</p>
+<p data-mark="+">A second (thicker) string on the same guitar produces waves with a speed of 600 m/s. Calculate the first three harmonics that this string would produce.</p>
+<p data-mark="+">How long would a closed (at one end) air column need to be to produce standing waves at 500 Hz as its third harmonic? What would the lower harmonic(s?) be?</p>
 </section>
 
 </article></body>

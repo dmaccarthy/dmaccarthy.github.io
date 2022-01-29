@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>2D Collisions</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/train.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+<script type="text/javascript" src="../../script/math.js"></script>
+<script type="text/javascript" src="../../script/sketch5.js"></script>
+<script type="text/javascript">
+
+// Sketch.debug = true;
+
+let BLUE = {fill:"#44fc"}, RED = {fill:"#f44c"}, GREEN = {fill:"#4f4c"};
+let THICK = {thickness:0.8};
+
+$(function () {
+    ex1();
+    ex2();
+    ex3();
+});
+
+function ex1() {
+    let sk = new VectorDiagram("#cv1", -30, 6, -6, 30,
+        [3, 6], {xoff:-1, yoff:1, margin:20});
+    sk.text("kNs", "kN·s", {x:5, y:30});
+    sk.vectors("p", THICK, BLUE, RED, 0, [0, 27], [-24, 0]);
+    sk.draw();
+
+    sk.onclick = function() {
+        let p = this.item("Σp");
+        p.hidden = !p.hidden;
+        this.draw();
+    };
+}
+
+function ex2() {
+    let sk = new VectorDiagram("#cv2", -30, 6, -6, 30,
+        [3, 6], {xoff:-1, yoff:1, margin:20});
+    sk.text("k", "kN·s", {x:5, y:30});
+    sk.vectors("p", THICK, BLUE, RED, 0, [0, 27], vec(24, 210));
+    let p = sk.item("Σp");
+    let xy = p.tip();
+    sk.vectors("c", THICK, GREEN, 0, 0, [xy[0], 0], [0, xy[1]]);
+    sk.config({hidden:true}, "c0", "c1");
+    p.setIndex(-1);
+    sk.draw();
+
+    sk.onclick = function() {
+        if (this.mouseEvent.shiftKey) {
+            let h = !this.item("c0").hidden;
+            this.config({hidden:h}, "c0", "c1");
+        }
+        else p.hidden = !p.hidden;
+        this.draw();
+    };
+}
+
+function ex3() {
+    let sk = new VectorDiagram("#cv3", -0.1, 0.5, -0.1, 0.3,
+        [0.05, 0.1], {xfmt:"${x:1f}", yfmt:0, xoff:-0.02, yoff:0.02, margin:[20,20,1,1]});
+    sk.vectors("p", {thickness:0.01}, BLUE, RED, 0,
+        vec(0.425*cos(35), 35), vec(0.425*sin(35), -55));
+    sk.text("θ1", "35°", {x:0.08, y:0.02}, BLUE);
+    sk.text("θ2", "55°", {x:0.36, y:0.02}, BLUE);
+    sk.text("Ns", "N·s", {x:0.5, y:-0.07});
+    sk.draw();
+}
+
+</script>
+</head>
+<body>
+
+<article>
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 30</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="vec" data-last="?"><h3>Momentum &amp; Impulse Vectors</h3>
+    <p>Momentum and impulse are <em class="Defn">vector</em> quantities.</p>
+    <ul data-mark="+">
+        <li>Momentum will always have the same direction as the velocity:$${\vec{\mathbf p}} = m{\vec{\mathbf v}}$$</li>
+        <li data-mark="+">Impulse will always have the same direction as the force:$$\Delta{\vec{\mathbf p}} = {\vec{\mathbf F}}\Delta t$$</li>
+    </ul>
+    <p data-mark="+">When calculating impulse as the change in momentum...$$\Delta{\vec{\mathbf p}} = {\vec{\mathbf p}}_f - {\vec{\mathbf p}}_i$$
+    <p data-mark="+">or calculating the total momentum to use the Law of Momentum Conservation...$$\Sigma{\vec{\mathbf p}}_f = \Sigma{\vec{\mathbf p}}_i$$</p>
+    <p data-mark="+">...we need to remember that in 2D or 3D situations, vector addition and subtraction is different than adding and subtracting scalar quantities.</p>
+</section>
+
+<section id="ex1" data-last="?"><h3>Example 1</h3>
+    <p  class="Blue">A 1500 kg car moving at 18.0 m/s [north] and a 1200 kg car moving at 20.0 m/s [west] collide in an intersection. What is the total momentum of the system? Calculate the final velocity of the cars if they stick together after the collision.</p>
+    <p data-mark="+">First calculate the initial momenta:</p>
+    <p data-mark="+">$${\vec{\mathbf p}}_{Ai} = m_A {\vec{\mathbf v}}_{Ai}\\= {\mathrm{1500\ kg\cdot 18.0\ m/s\ [north]\\= 27000\ N\cdot s\ [north]}}$$</p>
+    <p data-mark="+">$${\vec{\mathbf p}}_{Bi} = m_B {\vec{\mathbf v}}_{Bi}\\= {\mathrm{1200\ kg\cdot 20.0\ m/s\ [west]\\= 24000\ N\cdot s\ [west]}}$$</p>
+    <p data-mark="+">To add the 2D vectors, draw them <em class="Defn">tip-to-tail</em> starting at the origin.</p>
+    <p data-mark="=" class="Center">
+        <canvas id="cv1" class="Wide" width="509" height="509"></canvas>
+    </p>
+    <ul data-mark="+">
+        <li>The resultant vector goes from the origin to the tip of the last vector.</li>
+        <li data-mark="+">Because the triangle contains a right angle, we can solve for the missing sides and/or angles using trigonometry.</li>
+    </ul>
+    <p data-mark="+">$$|\Sigma{\vec{\mathbf p}}| = \sqrt{27000^2 + 24000^2}\ {\mathrm{N\cdot s}} = {\mathrm{36125\ N\cdot s}}$$</p>
+    <p data-mark="+">$$v_f = {\mathrm{36125\ N\cdot s\over 2700\ kg}} = {\mathrm{13.4\ m/s}}$$</p>
+    <p data-mark="+">$$\theta = \tan^{-1}\left({\mathrm{24000\ N\cdot s\over 27000\ N\cdot s}}\right) = 41.6°$$</p>
+    <ul data-mark="+">
+        <li>Note that this is 41.6° west of north, or 131.6° from the \(+x\)-axis.</li>
+    </ul>
+</section>
+
+<section id="ex2" data-last="?"><h3>Example 2</h3>
+    <p class="Blue">A 1500 kg car moving at 18.0 m/s [north] and a 1200 kg car moving at 20.0 m/s [30.0° south of west] collide in an intersection. Calculate the final velocity of the cars if they stick together after the collision.</p>
+    <p data-mark="+" class="Center">
+        <canvas id="cv2" class="Wide" width="509" height="509"></canvas>
+    </p>
+    <p data-mark="+">Because the triangle does <b>not</b> contain a right angle, we must use components to add the vectors.</p>
+    <table class="Normal" data-mark="+">
+        <thead><tr><th></th><th>x</th><th>y</th></tr></thead>
+        <tbody>
+            <tr class="Blue"><td>$$\frac{{\vec{\mathbf p}}_{Ai}}{\mathrm {N\cdot s}}$$</td><td>$${\mathrm{27000\ \cos(90.0°)\\ = 0}}$$</td><td>$${\mathrm{27000\ \sin(90.0°)\\ = 27000}}$$</td></tr>
+            <tr data-mark="+" class="Blue"><td>$$\frac{{\vec{\mathbf p}}_{Bi}}{\mathrm {N\cdot s}}$$</td><td>$${\mathrm{24000\ \cos(210.0°)\\ = -20785}}$$</td><td>$${\mathrm{24000\ \sin(210.0°)\\ = -12000}}$$</td></tr>
+            <tr data-mark="+" class="Red"><td>$$\frac{\Sigma{\vec{\mathbf p}}}{\mathrm {N\cdot s}}$$</td><td>$${\mathrm{-20785}}$$</td><td>$${\mathrm{15000}}$$</td></tr>
+        </tbody>
+    </table>
+    <p data-mark="+">$$|\Sigma{\vec{\mathbf p}}| = \sqrt{20785^2 + 15000^2}\ {\mathrm{N\cdot s}} = {\mathrm{25632\ N\cdot s}}$$</p>
+    <p data-mark="+">$$v_f = {\mathrm{25632\ N\cdot s\over 2700\ kg}} = {\mathrm{9.49\ m/s}}$$</p>
+    <p data-mark="+">$$\theta = \tan^{-1}\left({\mathrm{15000\ N\cdot s\over -20785\ N\cdot s}}\right) + 180° = 125.8°$$</p>
+</section>
+
+<section id="ex3" data-last="?"><h3>Example 3</h3>
+    <p class="Blue">During a billiards game, the 170-gram cue ball moving at 2.50 m/s collides with a stationary ball of mass 150 grams. After the collision, the cue ball moves at an angle of +35.0° to its original direction, while the second ball moves at &minus;55.0°. Find the final speeds of the two billiard balls.</p>
+    <p data-mark="+">Since only one ball is initially in motion, its momentum is the total momentum of the system:
+        $$\Sigma{\vec{\mathbf p}} = m_A {\vec{\mathbf v}}_{Ai}\\= {\mathrm{0.170\ kg\cdot 2.50\ m/s\ [0°]\\= 0.425\ N\cdot s\ [0°]}}$$</p>
+    <p data-mark="+" class="Center">
+        <canvas id="cv3" class="Wide" width="512" height="317"></canvas>
+    </p>
+</section>
+
+</article></body>
+</html>

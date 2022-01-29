@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Thomson’s CRT Experiment</title>
+<link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400"/>
+<link rel="stylesheet" href="applet.css"/>
+<style type="text/css">
+
+canvas {touch-action:none}
+
+td {
+    padding:6px;
+    border:1px solid black;
+}
+
+td.Num {width:3em}
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<script type="text/javascript" src="../script/math.js"></script>
+<script type="text/javascript" src="../script/sketch5.js"></script>
+<script type="text/javascript">
+
+let COLOR = "#ff8080";
+
+function setup() {
+    // Set the coordinate system of the sketch
+    let sk = new Sketch("canvas").attachCS(-2, 12, -3.5, 3.5);
+    sk.gridLines([0, 10, 1], [-3, 3, 1]);
+    // console.log(sk.units);
+
+    // Cathode ray
+    let attr = {fill:"#6E7173", lineWidth:0};
+    sk.polygon("Beam", beam_trajectory(800, 0, 0), {closed:false, stroke:"blue", lineWidth:2});
+
+    // Electrodes
+    sk.rect("Top", 0, 3, 10, 0.2, BOTTOM+LEFT, attr);
+    sk.rect("Bottom", 0, -3, 10, 0.2, TOP+LEFT, attr);
+
+    // Measuring tools (circle and parabola)
+    sk.circ("Circ", 1, {x:0, y:10, stroke:COLOR, fill:null});
+    sk.polygon("Para", [], {closed:false, stroke:COLOR});
+    sk.text("r", "", {fill:COLOR, align:"left", valign:"top"});
+
+    // Run the simulation
+    sk.onclick = onclick
+    redraw();
+}
+
+function onclick() {
+    let m = this.mousePos;
+    let x = m.x;
+    let y = m.y;
+    let r = Math.abs((x * x + y * y) / (2 * y));
+    if (y < 0) {
+        this.item("Circ").hidden = true;
+        let p = this.item("Para");
+        p.vertices = parabola(x, y);
+        p.hidden = false;
+        let a = parabola.angle;
+        y = Math.max(-a/12, -2.5);
+        this.config({text:`${a.toFixed(1)}°`, y:y, x:10.2, hidden:a>31}, this.item("r"));
+    }
+    else {
+        this.item("Para").hidden = true;
+        this.config({radius:r, y:r, hidden:false}, this.item("Circ"));
+        r = ("${r:" + (r < 0.995 ? 2 : 1) + "f} cm").format({r:r});
+        this.config({text:r, y:m.y, x:m.x + 0.5, hidden:false}, this.item("r"));
+    }
+    this.draw();
+}
+
+
+let q = 1.6e-19, m = 9.11e-31, qm = q / m, d = 0.06;
+
+function beam_trajectory(Va, Vd, B) {
+    let x = -0.03, y = 0, vy = 0, pts = [], n = 25;
+    let vx = root((2 * qm) * Va);
+    let dt = 0.0001 / vx / n;
+    let beam = true, i = 0;
+    while (beam) {
+        if ((i++) % n == 0) pts.push([100*x, 100*y]);
+        let dvy = dt * qm * (vx * B - Vd / d);
+        let dvx = dt * (-qm * vy * B);
+        if (x < 0 || x > 0.1) dvx = dvy = 0;
+        x += dt * (vx + dvx / 2);
+        y += dt * (vy + dvy / 2);
+        vx += dvx;
+        vy += dvy;
+        beam = x <= 0.1 ? Math.abs(y) < d/2 : x <= 0.12;
+    }
+    return pts;
+}
+
+function parabola(x, y) {
+    let a = x ? y / sq(x) : 0;
+    let pts = [];
+    for (x = -3; x <= 12; x += 0.02)
+        pts.push([x, a*x*x]);
+    parabola.angle = atan(-20 * a);
+    return pts;
+}
+
+function redraw() {
+    let Va = parseFloat($("#Va input").val());
+    let Vd = parseFloat($("#Vd input").val());
+    let B = parseFloat($("#B input").val());
+    $("#Va td.Num").html(Va);
+    $("#Vd td.Num").html(Vd < 99.5 ? Vd.toFixed(Vd < 9.995 ? 2 : 1) : Vd);
+    $("#B td.Num").html(B.toFixed(2));
+    B /= 1000;
+    let sk = $("canvas")[0].sketch;
+    sk.item("Beam").vertices = beam_trajectory(Va, Vd, B);
+    sk.draw();
+}
+
+$(setup);
+
+</script>
+</head>
+<body class="Center"><h1>Thomson’s CRT Experiment
+    <img class="Small Icon" src="../media/info.png" alt="Info" onclick="$('#Help').show()"/></h1>
+<p class="Center"><canvas width="631" height="316"></canvas></p>
+<table>
+    <tr id="Va">
+        <td>V<sub>acc</sub> / Volts</td>
+        <td class="Num">1200</td>
+        <td><input type="range" min="800" max="2000" value="1200" step="10" onchange="redraw()"/></td>
+    </tr>
+    <tr id="Vd">
+        <td>V<sub>def</sub> / Volts</td>
+        <td class="Num">0.00</td>
+        <td><input type="range" min="0" max="2000" value="0" step="10" onchange="redraw()"/></td>
+    </tr>
+    <tr id="B">
+        <td>B / mT</td>
+        <td class="Num">0.00</td>
+        <td><input type="range" min="0" max="6" value="0" step="0.01" onchange="redraw()"/></td>
+    </tr>
+</table>
+<p class="Center">
+
+</p>
+<section id="Help">
+<ul>
+    <li>The cathode beam travels from left to right.</li>
+    <li>The light grey grid is drawn at 1 cm intervals.</li>
+    <li>Use the slider controls to change the accelerating potential, the deflecting potential, and the magnetic field strength.</li>
+    <li>Click in the upper half to draw a circle and measure its radius. Match the circle to the beam path when the deflecting potential is zero.</li>
+    <li>Click in the lower half to draw a parabola and measure its direction at \(x\) = 10 cm. Match the parabola to the beam path when the magnetic field is zero.</li>
+    <li>If the parabola hits the electrode, no angle will be displayed.</li>
+</ul>
+<p>© 2022 by <a href="mailto:david.maccarthy@eips.ca" target="_">D.G. MacCarthy</a></p>
+<p><button onclick="$('#Help').hide()">Close</button></p></section>
+</body>
+</html>

@@ -17,7 +17,7 @@ let wave = [
         {title:"Lesson Notes", open:"wave/stand.html"},
         {title:"Practice Solutions", gdoc:"1Nz98VKhZjecAm001MC1ImzppsVQHnJoT9V2M7_Q-kak"},
     ]},
-    {title:"Chapter Review", icon:"lesson", id:"rev8", ajax:"wave/summary.htm", menu:[]},
+    {title:"Chapter Review", icon:"lesson", id:"ch8", ajax:"wave/summary.htm", menu:[]},
 ];
 
 let shm = [
@@ -47,7 +47,7 @@ let shm = [
     {title:"Mechanical Resonance", icon:1, vid:"#PLpVmtCaB-lymgmGIEvph0whN7Fh1WA2SA", menu:[
         {title:"Lesson Notes", open:"shm/res.html"},
     ]},
-    {title:"Chapter Review", icon:"lesson", id:"rev7", ajax:"shm/summary.htm", menu:[]},
+    {title:"Chapter Review", icon:"lesson", id:"ch7", ajax:"shm/summary.htm", menu:[]},
 ];
 
 let grav = [
@@ -74,6 +74,7 @@ let grav = [
         {title:"Lesson Notes", open:"grav/orbit.html"},
         {title:"Practice Solutions", gdoc:"1XxYSCqIJbKH016exfXOBS1yb-jTPia_UOcqxQfO1dwM"},
     ]},
+    {title:"Chapter Review", icon:"lesson", id:"ch4", ajax:"grav/summary.htm", menu:[]},
 ];
 
 let circ = [
@@ -109,10 +110,10 @@ let circ = [
         {title:"Lesson Notes", open:"circ/kepler.html"},
         {title:"Practice Solutions", gdoc:"1psk6s2R8sf2ctXisySewke-TVosxjW2g8UduRfX2yT0"},
     ]},
+    {title:"Chapter Review", icon:"lesson", id:"ch5", ajax:"circ/summary.htm", menu:[]},
 ];
 
 let dyn = [
-    // {title:"Assignment Booklet", gdrv:"14A2Kygg8Hq3FY226r6eqXj0CrA0c43R4"},
     {title:"Force & Inertia", icon:1, menu:[
         {title:"Lesson Notes", open:"dyn/inert.html"},
         {title:"Assignment Handout", gdrv:"1hq2o2RPw2asyprTawK9cua8wZnla2eW0"},
@@ -146,22 +147,26 @@ let dyn = [
         {title:"Assignment Handout", gdrv:"1reAudq1wnv_4utbooHhFlKaTP8qCEHBj"},
         {title:"Practice Solutions", unavail:0, gdoc:"1cPXcnazyRT1zQ9xmbCXz7gkMr6YHswAZT1lvA1bsU_w"},
     ]},
+    {title:"Chapter Review", icon:"lesson", id:"ch3", ajax:"dyn/summary.htm", menu:[]},
 ];
 
 let energy = [
-    // {title:"Assignment Booklet", gdrv:"1H1TNI0jWA51U-3evDH0UxcHS2V1ZQEsx"},
     {title:"Scientific Notation & SI Units [Skills]", icon:1, menu:[
-        {title:"Scientific Notation [Science 10]", open:"../s10/phys/sciNot.html"},
-        {title:"SI Units [Science 10]", open:"../s10/phys/si.html"},
+        {title:"Scientific Notation [Science 10]", icon:1, vid:"bXkewQ7WEdI?start=25", menu:[
+            {title:"Lesson Notes", open:"../s10/phys/sciNot.html"},
+        ]},
+        {title:"SI Units [Science 10]", icon:1, vid:"DTv_eI9Hlro", menu:[
+            {title:"Lesson Notes", open:"../s10/phys/si.html"},
+        ]},
         {title:"Assignment Handout", gdrv:"1PtRDy8ddsD11HKqygSGvPisSyX7QG4qy"},
         {title:"Practice Solutions", gdoc:"1Z9fiUwB-U9VCE_yPvb2wHFRSooBc97cuW-SAaA_CICQ"},
     ]},
-    {title:"Mechanical Energy", icon:1, menu:[
+    {title:"Mechanical Energy", icon:1, vid:"CW0_S5YpYVo", menu:[
         {title:"Lesson Notes", open:"energy/mech.html"},
         {title:"Assignment Handout", gdrv:"1-yrOiZGDaaKcrcMlLU3QP748jod8sd71"},
         {title:"Practice Solutions", gdoc:"1iloIQCAF9Mpqmu7UcgJUDTumhVlto3oiqaOynvRJXEM"},
     ]},
-    {title:"Energy Conservation", icon:1, menu:[
+    {title:"Energy Conservation", icon:1, vid:"#PLpVmtCaB-lymCk9sXymaiebN4XDuzZQsu", a:"HR5iEX3Sy1k", menu:[
         {title:"Lesson Notes", open:"energy/cons.html"},
         {title:"Assignment Handout", gdrv:"1m39wkjRYD6IyN0gvLSwgo1Hce9vJxyI2"},
         {title:"Practice Solutions", gdoc:"1R_2LFv4ACrEeqdQHBW2HgZGA0U4xBxyj_4OreFuKByc"},
@@ -196,11 +201,10 @@ let energy = [
         {title:"Assignment Handout", gdrv:"1ftuiOA79zM7EiV6Bq6OWSv9OYoQ2Od0h"},
         {title:"Practice Solutions", gdoc:"1PHRVmr9tMgm8ncSCnykQ1zYYznPADaJZV1KcrYZAWmQ"},
     ]},
-    {title:"Chapter Review", icon:"lesson", id:"rev6", ajax:"energy/summary.htm", menu:[]},
+    {title:"Chapter Review", icon:"lesson", id:"ch6", ajax:"energy/summary.htm", menu:[]},
 ];
 
 let kin1d = [
-    // {title:"Assignment Booklet", gdrv:"16_BYOnwY0FuwW7wXeVVwQ88IoC7tZ2gb"},
     {title:"Position & Displacement", icon:1, vid:"V8hJhTE3bUk", menu:[
         {title:"Lesson Notes", open:"kin/displ.html"},
         {title:"Assignment Handout", gdrv:"13YDvlb2IifPhmuuTyGMwO65T82H77bzL"},
@@ -230,11 +234,11 @@ let kin1d = [
         {title:"Lesson Notes", open:"kin/uam.html"},
         {title:"Assignment Handout", gdrv:"1FkSyKa-Sd_jvq5MhwjypL0p1MtL__jMv"},
         {title:"Practice Solutions", gdoc:"14GrA1jhjfFNOpCzbr0xraPt_mwPBfb3PHOFu7G6e6XQ"},
-    ]}
+    ]},
+    {title:"Chapter Review", icon:"lesson", id:"ch1", ajax:"kin/summary.htm", menu:[]},
 ];
 
 let vec2d = [
-    // {title:"Assignment Booklet", gdrv:"1qG81lRprAmdtcidfph_w-1kyF1VJUFrd"},
     {title:"2D Vectors Applet", icon:"html5", open:"https://applets.davidmaccarthy.repl.co/vec2dnew"},
     {title:"Magnitude & Direction", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/mag.html"},
@@ -256,40 +260,51 @@ let vec2d = [
         {title:"Assignment Handout", gdrv:"1Yr_n1cdCHWBwhPOHaKn1Zn5WO-scFqtU"},
         {title:"Practice Solutions", gdoc:"14uVxnRHjWAdOALpevl9sJq1ZgGIU9Hw82uaAilHrFF4"},
     ]},
+    {title:"Chapter Review", icon:"lesson", id:"ch2", ajax:"vec/summary.htm", menu:[]},
 ];
 
-
 let home = addHome({title:"Physics 20", id:"home", htmx:"<p class='Right'>Teacher: <a href='mailto:david.maccarthy@eips.ca'>D.G. MacCarthy</a></p>", menu:[
-    {title:"Course Links", icon:"link", menu:[
-        {title:"Brightspace (Block 3)", icon:"bs", open:"https://eips.brightspace.com/d2l/home/40674"},
-        {title:"Brightspace (Block 4)", icon:"bs", open:"https://eips.brightspace.com/d2l/home/40677"},
-        {title:"Data Sheet, Summary & Graph Paper", gdrv:"1BitARClCliTU4PZ0vPCJ3jnVmW-3lyag"},
-        // {title:"Graph Paper", gdrv:"1tiA8XrfPUxsZ2d-HDPP-8KMeRMngHalE"},
+    {title:"Handouts", icon:"gdrv", id:"handout", menu:[
+        {title:"Course Organizer", gdrv:"1GMSaHF4nIxAkWSCGY1_K7vbgHDm3mxgP"},
+        {title:"Lab Handouts", gdrv:"1CWH5oxkvmGXAs3RD3nhfveevDBQIHB1X"},
+    ]},
+    {title:"Notes & Solutions", icon:"rocket", id:"notes", menu:[
+        {title:"Chapter 6: Energy & Work", id:"energy", icon:"arrow", menu:energy},
+        {title:"Chapter 1: Kinematics", id:"kin", icon:"train", menu:kin1d},
+        // {title:"Review #1", icon:"soccer", menu:[
+        //     {title:"Chapter 6 Key", gdoc:"1_Sq9ttAcK0mEfo8PsAsA_AGD36C5yYDhtqSEjsgEKkw"},
+        //     {title:"Chapter 1 Key", gdoc:"1RIc3AgdQrE3c4kxT1IzoMCzDjAvof5NyL57kCmW7kpU"},
+        //     {title:"Chapter 2 Key", gdoc:"1bZelxmufKP0ghnwg92MBghKJelgb34xCRtehd4_OugQ"},
+        // ]},
+        {title:"Chapter 3: Dynamics", id:"dyn", icon:"rocket", menu:dyn},
+        {title:"Chapter 5: Circular & Planetary Motion", id:"circ", icon:"midway", menu:circ},
+        {title:"Chapter 4: Universal Gravitation", id:"grav", icon:"earth", menu:grav},
+        {title:"Chapter 7: Oscillations (SHM)", id:"shm", icon:"crane", menu:shm},
+        {title:"Chapter 8: Mechanical Waves", id:"wave", icon:"speaker", menu:wave},
+        {title:"Chapter 2: 2D Vectors", id:"vec2d", icon:"soccer", menu:vec2d},
+    ]},
+    {title:"Other Documents & Links", icon:"link", menu:[
+        {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/40678"},
+        {title:"Data Sheet", gdrv:"1gWLP0yLweKtHtn5nJk--Ev_KB2XDibqq"},
+        {title:"Graph Paper", gdrv:"1tiA8XrfPUxsZ2d-HDPP-8KMeRMngHalE"},
+        {title:"Solution Template", gdrv:"14tETNQF1xZbm-J9BXNokX9PfsGwJmT0r"},
         {title:"Email Mr. MacCarthy", icon:"mail", open:"mailto:david.maccarthy@eips.ca"},
         {title:"PowerSchool", icon:"ps", open:"https://powerschool.eips.ca/public/"},
         {title:"Salisbury Composite", icon:"sal", open:"https://salcomp.ca"},
         {title:"Program of Studies", icon:"ab", open:"https://education.alberta.ca/science-10-12/programs-of-study/"},
-        {title:"Course Outline", icon:"link", open:"https://scienceoutlines.davidmaccarthy.repl.co/?p20"},
+        {title:"Course Outline", gdrv:"1pIpT3c8RKU5QeN09m7iEQQoAuKHDtPgg"},
     ]},
-    // {title:"Experiment Design & Analysis", id:"exp", icon:"flask", menu:expDes},
-    {title:"Chapter 6: Energy & Work", id:"energy", icon:"arrow", menu:energy},
-    {title:"Chapter 1: Kinematics", id:"kin", icon:"train", menu:kin1d},
-    {title:"Chapter 2: 2D Vectors", id:"vec2d", icon:"soccer", menu:vec2d},
-    // {title:"Review #1", id:"rev1", icon:"soccer", menu:[
-    //     {title:"Chapter 6 Key", gdoc:"1_Sq9ttAcK0mEfo8PsAsA_AGD36C5yYDhtqSEjsgEKkw"},
-    //     {title:"Chapter 1 Key", gdoc:"1RIc3AgdQrE3c4kxT1IzoMCzDjAvof5NyL57kCmW7kpU"},
-    //     {title:"Chapter 2 Key", gdoc:"1bZelxmufKP0ghnwg92MBghKJelgb34xCRtehd4_OugQ"},
-    // ]},
-    {title:"Chapter 3: Dynamics", id:"dyn", icon:"rocket", menu:dyn},
-    {title:"Chapter 5: Circular & Planetary Motion", id:"circ", icon:"midway", menu:circ},
-    {title:"Chapter 4: Universal Gravitation", id:"grav", icon:"earth", menu:grav},
-    {title:"Chapter 7: Oscillations (SHM)", id:"shm", icon:"crane", menu:shm},
-    {title:"Chapter 8: Mechanical Waves", id:"wave", icon:"speaker", menu:wave},
     {title:"Course Review", id:"rev20", icon:"rocket", menu:[
-        {title:"Notes [PDF]", gdrv:"1BitARClCliTU4PZ0vPCJ3jnVmW-3lyag"},
-        {title:"Assignment / Solutions", gdrv:"1Pe-o2p0VbWJ9UAnGt0ZNPqLArqpvhhPG"},
-        {title:"Energy Review", icon:"lesson", id:"rev1", ajax:"energy/summary.htm", menu:[]},
-        {title:"SHM Review", icon:"lesson", id:"rev7", ajax:"shm/summary.htm", menu:[]},
-        {title:"Waves Review", icon:"lesson", id:"rev8", ajax:"wave/summary.htm", menu:[]},
+        // {title:"Assignment / Solutions", gdrv:"1Pe-o2p0VbWJ9UAnGt0ZNPqLArqpvhhPG"},
+        {title:"Data Analysis", icon:"lesson", id:"rev_da", ajax:"./da_summary.htm", menu:[]},
+        {title:"Energy", icon:"lesson", id:"rev6", ajax:"energy/summary.htm", menu:[]},
+        {title:"Kinematics", icon:"lesson", id:"rev1", ajax:"kin/summary.htm", menu:[]},
+        {title:"Dynamics", icon:"lesson", id:"rev3", ajax:"dyn/summary.htm", menu:[]},
+        {title:"Circular Motion", icon:"lesson", id:"rev5", ajax:"circ/summary.htm", menu:[]},
+        {title:"Gravitation", icon:"lesson", id:"rev4", ajax:"grav/summary.htm", menu:[]},
+        {title:"Simple Harmonic Motion", icon:"lesson", id:"rev7", ajax:"shm/summary.htm", menu:[]},
+        {title:"Mechanical Waves", icon:"lesson", id:"rev8", ajax:"wave/summary.htm", menu:[]},
+        {title:"2D Vectors", icon:"lesson", id:"rev2", ajax:"vec/summary.htm", menu:[]},
+        {title:"Printable Notes", gdrv:"1zQFWZVOF1ykK2mLAuiFsi63QJKhHkw9O"},
     ]},
 ]});

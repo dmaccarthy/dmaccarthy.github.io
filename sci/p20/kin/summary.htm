@@ -1,0 +1,75 @@
+<div>
+<script type="text/javascript">
+
+$(setup);
+
+function setup() {
+    let ar = {align:"right"}, vt = {valign:"top"};
+    let sk = new Sketch("");
+    sk.attachCS(0, 5, 0, 21, [64, 18, 54, 18])
+        .gridLines([0, 5, 1], [0, 21, 3])
+        .series("LabelX", "${x}", range(6), 0, [0, -0.3], vt)
+        .series("LabelY", "${y}", 0, range(3, 22, 3), [-0.1, 0], ar)
+        .series("TitleX", "Time / s", 4.9, -1.8, null, vt, ar)
+        .series("TitleY", "Velocity / (m/s)", -0.6, 21, null, {valign:"bottom", angle:90}, ar);
+    sk.polygon("Shade", [[0, 0], [0, 12], [5, 20], [5, 0]], {fill:"#aaf4", stroke:null});
+    sk.line("Line", 0, 12, 5, 20, {stroke:"blue", lineWidth:2});
+    sk.config({stroke:"black", lineWidth:2}, "GridH_0", "GridV_0").draw();
+}
+
+</script>
+<p>A <b class="Red">coordinate</b> is a measurement that describes an object’s <b class="Red">position</b>.</p>
+<ul>
+    <li>A coordinate is often the distance and direction (\(+\) or \(-\)) from an arbitrary <b class="Red">origin</b>.</li>
+    <li>Motion in a straight line is classified as <b class="Red">one-dimensional</b> (1D) because only one coordinate is needed to describe a position.</li>
+    <li>Motion in a plane is classified as <b class="Red">two-dimensional</b> (2D) because two coordinates are needed.</li>
+</ul>
+
+<p>An object’s <b class="Red">displacement</b> is the <em>change</em> in its position over some time interval:
+    $$\Delta\vec{\mathbf{d}} = \vec{\mathbf{d}}_f - \vec{\mathbf{d}}_i$$</p>
+<ul>
+    <li>Displacement is classified as a <b class="Red">vector</b> quantity because it involves a direction. Other vectors include velocity, acceleration, and force.</li>
+    <li>Quantities that do not involve a direction are called <b class="Red">scalars</b>. These include time, mass, and energy.</li>
+    <li>Displacment is measured in a straight line, even when the motion is not straight.</li>
+    <li>A <b class="Red">vector diagram</b> is a <em>tip-to-tail</em> illustration of the motion.</li>
+</ul>
+<p class="Center"><img src="kin/img/field-1.png" alt="Vectors"/></p>
+
+<p>An object’s <b class="Red">velocity</b> is the <em>rate</em> at which the position changes, which equals the <em>slope</em> of a \(\vec{\mathbf{d}}–t\) graph:
+    $${\vec{\mathbf{v}}} = \frac{\Delta\vec{\mathbf{d}}}{\Delta t}$$</p>
+<p>An object’s <b class="Red">acceleration</b> is the rate at which the <em>velocity</em> changes, which equals the <em>slope</em> of a \(\vec{\mathbf{v}}–t\) graph:
+    $${\vec{\mathbf{a}}} = \frac{\Delta\vec{\mathbf{v}}}{\Delta t}$$</p>
+
+<p><b class="Red">Uniform Motion</b> is 1D motion with <em>constant velocity</em> and <em>zero acceleration</em>.</p>
+<ul>
+    <li>This type of motion occurs when the net force is zero (there are no forces acting on the object, or the forces are balanced.)</li>
+    <li>A \(\vec{\mathbf{v}}–t\) graph is horizontal, and \(\vec{\mathbf{d}}–t\) is linear with a slope equal to the velocity.</li>
+</ul>
+
+<p><b class="Red">Uniform Accelerated Motion</b> (UAM) is 1D motion with <em>constant acceleration</em>.</p>
+<ul>
+    <li>This type of motion occurs when there is a constant net force parallel to the direction of the velocity.</li>
+    <li>A \(\vec{\mathbf{v}}–t\) graph is linear with a slope equal to the acceleration.</li>
+</ul>
+<p class="Center"><canvas width="420" height="420"></canvas></p>
+<ul>
+    <li>The area under any section of this graph (shaded area above) is equal to the displacement.</li>
+    <li>The \(\vec{\mathbf{d}}–t\) graph is a parabola.</li>
+</ul>
+
+<p>To solve UAM problems:</p>
+<ul>
+    <li>Identify <em>three</em> of the five variables (\(\vec{\mathbf{a}}\), \(\vec{\mathbf{v}}_i\), \(\vec{\mathbf{v}}_f\), \(\Delta\vec{\mathbf{d}}\), \(\Delta t\)) that are known.</li>
+    <li>Look through the following relations <em>in order</em>, to find an equation with only one unknown.</li>
+</ul>
+<p>
+    $$\vec{\mathbf{a}}=\frac{{\vec{\mathbf{v}}}_f-{\vec{\mathbf{v}}}_i}{\Delta t}$$
+    $$\Delta\vec{\mathbf{d}}=\frac{{\vec{\mathbf{v}}}_i+{\vec{\mathbf{v}}}_f}{2}\Delta t$$
+    $$v_f^2=v_i^2+2\vec{\mathbf{a}}\cdot\Delta\vec{\mathbf{d}}$$
+    $$\Delta\vec{\mathbf{d}}={\vec{\mathbf{v}}}_i\Delta t+\frac{1}{2}\vec{\mathbf{a}}\left(\Delta t\right)^2$$
+</p>
+<ul>
+    <li>Solve for the first unknown.</li>
+    <li>Choose the first equation that you haven’t already used, and use it to solve for the second unknown.</li>
+</ul>
+</div>

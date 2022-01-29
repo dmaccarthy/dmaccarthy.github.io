@@ -31,7 +31,7 @@ function wave() {
 }
 
 wave.dx = 0;
-wave.speed = 0.06;
+wave.speed = 0.03;
 
 function setup() {
     let pi2 = 2 * pi;
@@ -39,6 +39,7 @@ function setup() {
     // Create a sketch with coordinate system
     let sk = new Sketch("#Wave");
     sk.attachCS(-pi2, pi2, -1, 1);
+    sk.frameRate = 60;
 
     // Draw the axis and wave
     sk.line("Axis", -pi2, 0, pi2, 0, {stroke:"grey", lineWidth:0.5});

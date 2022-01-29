@@ -4,16 +4,18 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<!--link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/-->
 <style type="text/css">
 
 body {
-    font-family:Oxygen, sans-serif;
+    /* font-family:Oxygen, sans-serif; */
     text-align:center;
+    margin-top:2em;
 }
 
 iframe {
     max-width:calc(100% - 16px);
+    max-height:90vh;
 }
 
 </style>
@@ -37,7 +39,8 @@ $(function() {
 	let ar = args.aspect ? eval(args.aspect) : 16 / 9;
 	let vid = args.vid;
     if (vid == null) vid = "videoseries?list=" + args.pl;
-	attr = {width:1280, "data-aspect":ar, src:"https://www.youtube.com/embed/" + vid, frameborder:0, allowfullscreen:true}
+    let w = args.width;
+	attr = {width:w ? w : 1280, "data-aspect":ar, src:"https://www.youtube.com/embed/" + vid, frameborder:0, allowfullscreen:true}
     $("body").append($("<iframe>").attr(attr));
     $(window).trigger("resize");
 })
@@ -45,13 +48,12 @@ $(function() {
 window.onresize = function() {
     let vid = $("iframe");
     let ar = vid.attr("data-aspect");
-    h = Math.round(vid.width() / ar);
-    vid.attr({height: h});
+    h = Math.round(vid.attr("width") / ar);
+    vid.css("aspect-ratio", ar);
 }
 
 //--></script>
 </head>
-<body>
-	<h2>YouTube Video Player</h2>
+<body><!--h2>YouTube Video Player</h2-->
 </body>
 </html>

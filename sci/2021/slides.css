@@ -121,3 +121,7 @@ div.Icons button > img {
     height:3em;
     padding-bottom:0.2em;
 }
+
+li div.MathJax_Display {
+    margin-left:-1em;
+}

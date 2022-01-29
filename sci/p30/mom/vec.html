@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>2D Vectors Review</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/train.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+<script type="text/javascript" src="../../script/math.js"></script>
+<script type="text/javascript" src="../../script/sketch5.js"></script>
+<script type="text/javascript" >
+
+/*  Do not use this code as a template for vector diagrams!
+    See './collide2d.html' for a simpler template. */
+
+let latex_folder = "../../media/latex/";
+
+$(function() {
+    Sketch.init(setup, {
+        Fx: latex_folder + "blue/Fx.png",
+        Fy: latex_folder + "blue/Fy.png",
+        F: latex_folder + "red/F.png",
+        theta: latex_folder + "red/theta.png",
+    });
+})
+
+function setup(imgs) {
+    setup.imgs = imgs;
+    ex1();
+    ex2(true);
+    ex2(false);
+}
+
+function ex1() {
+    let sk = new Sketch("#Ex1");
+    sk.createCS(50, -1, 10, -2, 6, 1);
+    sk.gridLines([-1, 10, 1], [-2, 6, 1]);
+    sk.config({stroke:"black", lineWidth:2}, "GridH_2", "GridV_1");
+    sk.setIndex("GridV_1", -1);
+
+    let opt = {thickness:0.2};
+    let attr = {fill:"#44fc"};
+    let v = vec(10, 30);
+    let vx = [v[0], 0];
+    sk.arrow("VecX", [0,0], vx, opt, attr);
+    sk.arrow("VecY", vx, v, opt, attr);
+    sk.arrow("Vec", [0,0], v, opt, {fill:"#f44c"});
+
+    let imgs = setup.imgs;
+    sk.sprite("F", imgs.F, {x:4, y:3.25}).scale(0.75);
+    sk.sprite("θ", imgs.theta, {x:1.6, y:0.45}).scale(0.75);
+    sk.sprite("Fx", imgs.Fx, {x:v[0]/2, y:-0.25, valign:"top"}).scale(0.75);
+    sk.sprite("Fy", imgs.Fy, {x:10, y:2.5, align:"right"}).scale(0.75);
+
+    sk.onclick = click1;
+    sk.draw();
+}
+
+function click1() {
+    let h = !this.item("Fx").hidden;
+    this.config({hidden:h}, "Fx", "Fy", "VecX", "VecY").draw();
+}
+
+function click2() {
+    let v = this.item("v");
+    v.hidden = !v.hidden;
+    this.draw();
+}
+
+function ex2(dup) {
+    let sk = new Sketch(dup ? "#Ex3" : "#Ex2");
+    sk.createCS(24, -16, 2, -2, 18, [1, 1, 12, 12]);
+
+    let al = {align:"left"}, vt = {valign:"top"};
+    sk.gridLines([-16, 2, 2], [-2, 18, 2])
+        .series("LabelX", "${x}", range(-14, 0, 2), 0, [0, -0.3], vt)
+        .series("LabelY", "${y}", 0, range(-2, 19, 2), [0.3, 0], al)
+
+    sk.config({stroke:"black", lineWidth:2}, "GridH_1", "GridV_8");
+    sk.setIndex("GridV_8", -1);
+
+    let opt = {thickness:0.4};
+    let attr = {fill:"#44fc"};
+    let v1 = vec(20, 120);
+    let v2 = vec(5, 200);
+    let v = vsum(v1, v2);
+    sk.arrow("v1", [0,0], v1, opt, attr);
+    sk.arrow("v2", v1, v, opt, attr);
+    sk.arrow("v", [0,0], v, opt, {fill:"#f44c"});
+
+    sk.onclick = click2;
+    sk.draw();
+}
+
+</script>
+<style type="text/css">
+
+td {width:4em}
+
+</style>
+</head>
+<body>
+
+<article>
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 30</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="2d" data-last="?"><h3>2D Vectors</h3>
+<p><em class="Defn">Vectors</em> are quantities that involve a direction, such as displacement, velocity, acceleration, and force.</p>
+<ul data-mark="+">
+    <li>We can illustrate vectors using a <em class="Defn">vector diagram</em>, in which each vector is drawn as an arrow illustrating the direction and the magnitude (size) of the vector.</li>
+    <li data-mark="+">A vector described by its magnitude and direction is said to be in <em class="Defn">polar form</em>:$$\vec{\mathbf F} = \mathrm{10.0\ N\ [30.0°]}$$</li>
+</ul>
+<p class="Center" data-mark="="><canvas id="Ex1" width="553" height="403"></canvas></p>
+<ul data-mark="+">
+    <li>Directions are measured as angles measured counterclockwise from the \(+x\)-axis.</li>
+    <li data-mark="+">Negative angles indicate clockwise from the \(+x\)-axis.</li>
+    <li data-mark="+">The <em class="Defn">components</em> of a vector describe “how much” of the vector is in each of the \(x\) and \(y\) directions.</li>
+    <li data-mark="+">We can use trigonometry to calculate the components of a vector from its magnitude and direction:
+        $${\vec{\mathbf{F}}}_x=\left|\vec{\mathbf{F}}\right|\cos{\theta}$$
+        $${\vec{\mathbf{F}}}_y=\left|\vec{\mathbf{F}}\right|\sin{\theta}$$</li>
+    <li data-mark="+">Describing a vector by its components is called the <em>Cartesian</em> form of the vector:$$\vec{\mathbf F} = \mathrm{(8.66, 5.00)\ N}$$</li>
+    <li data-mark="+">We can also use trigonometry to convert a vector from Cartesian to polar form:
+        $$\left|\vec{\mathbf{F}}\right|=\sqrt{F_x^2+F_y^2}$$
+        $$\tan{\theta}=\frac{{\vec{\mathbf{F}}}_y}{{\vec{\mathbf{F}}}_x}$$</li>
+    <li data-mark="+">When solving for \(\theta\) using \(\tan^{-1}\), you will get only one of two possible solutions; when the \(x\)-component is negative, you will have to add 180° to get the correct answer.</li>
+    <li data-mark="+">Compass directions should be converted to conventional angles...</li>
+</ul>
+<table data-mark="=" class="Center">
+    <tr><td>East</td><td>0°</td></tr>
+    <tr><td>North</td><td>90°</td></tr>
+    <tr><td>West</td><td>180°</td></tr>
+    <tr><td>South</td><td>270°</td></tr>
+</table>
+</section>
+
+<section id="dia" data-last="?"><h3>Vector Diagrams</h3>
+<p>We can illustrate <em class="Defn">addition</em> of two or more 2D vectors by drawing a <em>tip-to-tail</em> <em class="Defn">vector diagram</em>.</p>
+<ul class="Blue" data-mark="+">
+    <li>Example: A speedboat has a velocity of 20.0 m/s [120°] relative to the water. There is a current of 5.00 m/s [200°]. Determine the resultant velocity.</li>
+</ul>
+<p class="Center" data-mark="+"><canvas id="Ex2" width="435" height="505"></canvas></p>
+<ul data-mark="+">
+    <li>To <em class="Defn">subtract</em> a vector, just add its negative!</li>
+<ul>
+</section>
+
+<section id="add" data-last="?"><h3>Vector Arithmetic</h3>
+<p class="Center Present"><canvas id="Ex3" width="435" height="505"></canvas></p>
+<p>To add or subtract vectors more precisely than is possible with a diagram, convert all vectors to Cartesian form...</p>
+<p data-mark="+">$$\vec{\mathbf v}_{1x} = |\vec{\mathbf v}_1| \cos\theta_1 = \mathrm{20.0\ m/s\cdot\cos 120° = -10.0\ m/s}$$</p>
+<p data-mark="+">$$\vec{\mathbf v}_{1y} = |\vec{\mathbf v}_1| \sin\theta_1 = \mathrm{20.0\ m/s\cdot\sin 120° = +17.3\ m/s}$$</p>
+<p data-mark="+">$$\vec{\mathbf v}_{2x} = |\vec{\mathbf v}_2| \cos\theta_2 = \mathrm{5.00\ m/s\cdot\cos 200° = -4.70\ m/s}$$</p>
+<p data-mark="+">$$\vec{\mathbf v}_{2y} = |\vec{\mathbf v}_2| \sin\theta_2 = \mathrm{5.00\ m/s\cdot\sin 200° = -1.71\ m/s}$$</p>
+<p data-mark="+">Then perform the calculations separately on the \(x\)- and \(y\)-components...</p>
+<p data-mark="+">$$\vec{\mathbf v}_x = \vec{\mathbf v}_{1x} + \vec{\mathbf v}_{2x}= \mathrm{(-10.0 + (-4.70))\ m/s = -14.7\ m/s}$$</p>
+<p data-mark="+">$$\vec{\mathbf v}_y = \vec{\mathbf v}_{1y} + \vec{\mathbf v}_{2y}= \mathrm{(+17.3 + (-1.71))\ m/s = +15.6\ m/s}$$</p>
+<ul data-mark="+">
+    <li>If the resultant vector needs to be in polar form, just convert it using the Pythagoras and \(\tan^{-1}\) formulas.</li>
+<ul>
+</section>
+
+</article></body>
+</html>

@@ -42,7 +42,7 @@ p.Title.Home em {display:none} */
 
 .Right {text-align:right} 
 p.Video, .Center {text-align:center} 
-p.Video iframe, img {max-width:100%}
+p.Video iframe, img, canvas {max-width:100%}
 
 #Links {
     margin:auto;

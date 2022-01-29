@@ -1,0 +1,16 @@
+{"images":{
+    "Eg":"../media/latex/blue/Eg.png"
+}, "draw":[
+    {"#":"Coordinate system", "cmd":"coords", "lrbt":[-1, 1], "margin":20, "resize":"16/9"},
+    {"cmd":"grid", "dx":0.1, "dy":0.1, "lrbt":[-1, 1, -0.5, 0.5], "stroke":"lightgrey"},
+    {"cmd":"axis", "axis":3, "stroke":"black"},
+    {"stroke":"red", "fill":"#f0f0ff80", "lineWidth":3},
+    {"cmd":"circle", "center":[0.8, -0.2], "r":0.2, "frame":1},
+    {"cmd":"img", "img":"Eg", "pos":[0,0], "args":{"anchor":5}},
+    {"cmd":"rect", "points":[[0.25, 0], [0.4, 0.2]], "fill":"#ff000080"},
+    {"#":"Polygon", "cmd":"points", "closed":true, "lineWidth":1, "stroke":"yellow", "points":[[0.7,-0.2], [0.4, 0], [0.2, 0.5]]},
+    {"#":"Connect points", "cmd":"points", "stroke":"violet", "points":[[0,0.3], [-0.4, -0.4], [0.2, -0.5]]},
+    {"#":"Labels", "cmd":"points", "format":{"y":2}, "fill":"black", "align":5, "angle":-45},
+    {"cmd":"arrow", "tail":[0, 0], "length":0.4, "angle":-60, "fill":"#a0a0ff80"},
+    {"#":"Locus", "cmd":"points", "lineWidth":1, "stroke":"green", "points":"[Math.sin(6*t), t]", "domain":[-1, 1], "A":0.5}
+]}

@@ -123,6 +123,12 @@ let home = addHome({title:"Science 10", id:"home", icon:"flask", htmx:"<p class=
     ]},
     chem, phys, bio,
     {title:"Pre-IB: Measurement Uncertainty", gdrv:"1UTzGI6zXaNLDsVK6ezVVFwysF2QbytOX"},
-    clim]});
+    clim, {title:"Course Review", icon:"flask", id:"rev", menu:[
+        {title:"Assignment", gdrv:"1L4k_84zsZ01nYmdVQ-DxNdWATVfFVrkY"},
+        {title:"Answer Key", gdrv:"17oewSnZoPMUuKuINSBXWivw_hyhlHBwZ"},
+    ]},
+    ]});
+
+//
 
 // home.menu[0].menu.splice(2, 3);

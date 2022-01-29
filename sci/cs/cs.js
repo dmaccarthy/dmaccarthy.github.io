@@ -3,18 +3,12 @@ let link = {title:"General Links", icon:"link", menu:[
     {title:"Python Tutorial", icon:"py", open:"https://docs.python.org/3.8/tutorial/"},
     {title:"Python Text", icon:"py", open:"https://codehs.com/textbook/intropython_textbook/"},
     {title:"Thonny (Python IDE)", icon:"thonny", open:"https://thonny.org/"},
-    // {title:"thonny.bat", icon:"", gdrv:"1dfiWkR-wXMEl5VgBkebt6Dlfj59TeaGT"},
     {title:"thonny.bat", icon:"link", open:"thonny.bat"},
     {title:"PowerSchool", icon:"ps", open:"https://powerschool.eips.ca/public/"},
     {title:"Salisbury Composite", icon:"sal", open:"https://salcomp.ca"},
     {title:"Program of Studies", icon:"ab", open:"https://education.alberta.ca/career-and-technology-studies/bit-cluster-businessadminfinanceit/?searchMode=3"},
     {title:"Course Outline", icon:"link", open:"https://docs.google.com/document/d/1ElD-IF84gr2epoYlVpRtMFDyBv3EEbhGF0moBBoObSE"},
 ]};
-
-// let link10 = {title:"Course Links", icon:"link", menu:[
-//     {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/26894"},
-//     {title:"repl.it Template", icon:"py", open:"https://replit.com/@DavidMacCarthy/CS10"},
-// ]};
 
 let iter = {title:"Iterative Algorithms", id:"iter", icon:"py", menu:[
     {title:"Linear Search", icon:1, href:"iter/search.html"},
@@ -25,26 +19,26 @@ let iter = {title:"Iterative Algorithms", id:"iter", icon:"py", menu:[
     {title:"Merging Sorted Data", icon:1, href:"iter/merge.html"},
 ]};
 
-// let iter30 = deep(iter);
-// iter30.id = "iter30";
+let iter30 = deep(iter);
+iter30.id = "iter30";
 
-let repl_html = "<p>Login to your <a href='https://repl.it' target='repl'>repl.it</a> account first. Then create a “fork” of each of the repl’s below and share it with your teacher.</p>";
-
-// <p>These assignments, and the summative assessment, comprise CSE 1010.</p>
+let repl_html = '<p>You will need to login to <a target="_" href="https://repl.it">repl.it</a> and then follow the link(s) below. Click the “Fork” button to copy the files into your own account.</p>' +
+ '<p>After you’ve done this, click the “Invite” button and add your teacher’s email:</p>' +
+ '<p class="Center">david.maccarthy@eips.ca</p>';
 
 let cs1_html = `<section>
     <p>For each topic, open the link and save a copy of the document in your Google Docs <code>CS10</code> folder.
         Watch the lesson video or read the notes, and then answer the questions. After completing all assignments, contact the teacher to schedule the summative assessment.</p>
     </section>`;
 
-let home = addHome({title:"Computing Science", id:"home", htmx:"<p class='Right'>Teacher: <a href='mailto:david.maccarthy@eips.ca'>D.G. MacCarthy</a></p>", menu:[
+let home = addHome({title:"Computing Science", id:"home", menu:[
     link,
     {title:"Computing Science 10", id:"cs10", icon:"robot", menu:[
-        {title:"repl.it", icon:"repl", open:"https://replit.com"},
-        {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/40003"},
-        // {title:"repl.it Online IDE", icon:"repl", html:repl_html, menu:[
-        //     {title:"Python repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS10"},
-        // ]},
+        {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/40007"},
+        {title:"repl.it Files", id:"repl10", icon:"repl", menu:[
+            {title:"Python Programming", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS10"},
+            {title:"Robotics Programming", icon:"repl", open:"https://replit.com/@DavidMacCarthy/Robo"},
+        ], html:repl_html},
         {title:"Structured Programming 1", id:"sp1", icon:"py", menu:[
             {title:"Intro to Programming", icon:1, href:"sp1/intro.html"},
             {title:"Integrated Development Environments", icon:1, href:"sp1/ide.html"},
@@ -91,31 +85,12 @@ let home = addHome({title:"Computing Science", id:"home", htmx:"<p class='Right'
         ]},
     ]},
     {title:"Computing Science 20", id:"cs20", icon:"py", menu:[
-        {title:"repl.it", icon:"repl", open:"https://replit.com"},
-        {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/42228"},
+        {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/42229"},
+        {title:"repl.it Files", id:"repl20", icon:"repl", menu:[
+            {title:"Python Programming", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS20"},
+            {title:"Video Game Project", icon:"repl", open:"https://replit.com/@DavidMacCarthy/Game"},
+        ], html:repl_html},
         // link20,
-        // {title:"repl.it Online IDE", icon:"repl", html:repl_html, menu:[
-        //     {title:"Web Programming", icon:1, open:"https://replit.com/@DavidMacCarthy/Web1"},
-        //     {title:"Python Programming", icon:1, open:"https://replit.com/@DavidMacCarthy/CS20"},
-        // ]},
-        {title:"Web Programming 1", id:"web1", icon:"html5", menu:[
-            {title:"Internet & World Wide Web", icon:1, href:"web1/internet.html"},
-            {title:"Data Trees", icon:1, href:"web1/tree.html"},
-            {title:"eXtensible Markup Language", icon:1, href:"web1/xml.html"},
-            {title:"Text & Comment Nodes", icon:1, href:"web1/text.html"},
-            {title:"Entities", icon:1, href:"web1/entity.html"},
-            {title:"Hypertext Markup Language (HTML)", icon:1, href:"web1/html5.html"},
-            {title:"Character Formatting", icon:1, href:"web1/char.html"},
-            {title:"Images & Video", icon:1, href:"web1/image.html"},
-            {title:"Lists & Tables", icon:1, href:"web1/list.html"},
-        ]},
-        {title:"Web Programming 2", id:"web2", icon:"html5", menu:[
-            {title:"Forms", icon:1, href:"web2/form.html"},
-            {title:"Style Sheets (CSS)", icon:1, href:"web2/style.html"},
-            {title:"External Stylesheets", icon:1, href:"web2/ext.html"},
-            {title:"Document Divisions", icon:1, href:"web2/div.html"},
-            {title:"Javascript", icon:1, href:"web2/js.html"},
-        ]},
         {title:"Procedural Programming", id:"pp", icon:"py", menu:[
             {title:"Functions", icon:1, href:"pp/func.html"},
             {title:"Variable Scope", icon:1, href:"pp/scope.html"},
@@ -144,14 +119,37 @@ let home = addHome({title:"Computing Science", id:"home", htmx:"<p class='Right'
         //     {title:"", icon:"py", href:"fs/.html"},
         // ]},
     ]},
-    {title:"Computing Science 30", id:"cs30", icon:"py", html:"After completing the first three courses, please consult with your teacher regarding your remaining credits.", menu:[
-        {title:"repl.it", icon:"repl", open:"https://replit.com"},
-        {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/42232"},
-        // {title:"repl.it Online IDE", icon:"repl", html:repl_html, menu:[
-        //     {title:"Python repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS30"},
-        // ]},
+    {title:"Web Scripting", id:"web", icon:"html5", menu:[
+        {title:"repl.it Files", id:"repl_web", icon:"repl", menu:[
+            {title:"Web Scripting", icon:"repl", open:"https://replit.com/@DavidMacCarthy/Web1"},
+        ], html:repl_html},
+        {title:"Web Programming 1", id:"web1", icon:"html5", menu:[
+            {title:"Internet & World Wide Web", icon:1, href:"web1/internet.html"},
+            {title:"Data Trees", icon:1, href:"web1/tree.html"},
+            {title:"eXtensible Markup Language", icon:1, href:"web1/xml.html"},
+            {title:"Text & Comment Nodes", icon:1, href:"web1/text.html"},
+            {title:"Entities", icon:1, href:"web1/entity.html"},
+            {title:"Hypertext Markup Language (HTML)", icon:1, href:"web1/html5.html"},
+            {title:"Character Formatting", icon:1, href:"web1/char.html"},
+            {title:"Images & Video", icon:1, href:"web1/image.html"},
+            {title:"Lists & Tables", icon:1, href:"web1/list.html"},
+        ]},
+        {title:"Web Programming 2", id:"web2", icon:"html5", menu:[
+            {title:"Forms", icon:1, href:"web2/form.html"},
+            {title:"Style Sheets (CSS)", icon:1, href:"web2/style.html"},
+            {title:"External Stylesheets", icon:1, href:"web2/ext.html"},
+            {title:"Document Divisions", icon:1, href:"web2/div.html"},
+            {title:"Javascript", icon:1, href:"web2/js.html"},
+        ]},
+    ]},
+    {title:"Computing Science 30", id:"cs30", icon:"py", html:"After completing the first four courses, please consult with your teacher regarding your remaining credits.", menu:[
+        {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/42235"},
+        {title:"repl.it Files", id:"repl30", icon:"repl", menu:[
+            {title:"Python Programming", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS30"},
+            {title:"Java Programming", icon:"repl", open:"https://replit.com/@DavidMacCarthy/Java"},
+        ], html:repl_html},
         // link30,
-        // iter30,
+        iter30,
         {title:"Object-Oriented Programming 1", id:"oop1", icon:"py", menu:[
             {title:"Objects", icon:1, href:"oop1/obj.html"},
             {title:"Modifiers & Accessors", icon:1, href:"oop1/mod.html"},
@@ -168,6 +166,5 @@ let home = addHome({title:"Computing Science", id:"home", htmx:"<p class='Right'
             {title:"Modifying Linked Lists", icon:1, href:"dds1/mod.html"},
             {title:"Searching & Sorting", icon:1, href:"dds1/sort.html"},
         ]},
-        {title:"Java repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/Java"},
     ]},
-]});
+], html:'<p>Use your EIPS Google account to create / login to your <a target="_" href="https://repl.it">repl.it</a> account.</p>'});

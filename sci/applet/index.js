@@ -7,7 +7,7 @@ let simGen = [
 let sim20 = [
     {title:"Motion on a Ramp", icon:"html5", open:"../applet/ramp.html"},
     {title:"Bouncing Ball", icon:"html5", open:"../applet/bounce.html"},
-    {title:"Pulley Dynamics (Friction)", icon:"html5", open:"../applet/pulley.html"},
+    {title:"Pulley Dynamics (Friction)", icon:"html5", open:"../applet/pulley/"},
     {title:"Circular Motion", icon:"html5", open:"../applet/car.html"},
     {title:"Field Visualizations", menu:[
         {title:"Falstad", icon:"html5", open:"https://falstad.com/vector2de/vector2de.html?f=InverseSquaredRadial&fc=Floor%3A%20field%20magnitude&fl=Overlay%3A%20equipotentials&d=partsvel&m=Mouse%20%3D%20Adjust%20Angle&st=1&pc=500&hs=40&ft=true&rx=63&ry=0&rz=0&zm=1.2"},
@@ -19,6 +19,8 @@ let sim20 = [
 ];
 
 let sim30 = [
+    {title:"Coulomb’s Experiment", icon:"html5", open:"../applet/coulomb.html"},
     {title:"Millikan’s Oil Drop Experiment", icon:"html5", open:"../applet/oildrop/"},
+    {title:"Thomson’s CRT Experiment", icon:"html5", open:"../applet/thomson.html"},
 ];
 

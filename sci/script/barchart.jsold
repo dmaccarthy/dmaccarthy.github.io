@@ -1,0 +1,82 @@
+function BarChart(sel, lrbt, marg, imgs) {
+    let p = this.plot = new Plot($(sel)[0], lrbt, marg);
+    p.loadImages(imgs ? imgs : BarChart.energy);
+}
+
+BarChart.energy = {
+    "W": "../media/latex/red/Eplus.png",
+    "Ek": "../media/latex/blue/Ek.png",
+    "Eg": "../media/latex/blue/Eg.png",
+}
+
+BarChart.prototype.draw = function(data, labels, colors, opt) {
+    let p = this.plot;
+    p.clear().barchart(data, labels, colors, opt);
+    this.ondraw();
+}
+
+BarChart.prototype.ondraw = function() {}
+
+
+_BarChart = {status:0, plot: new Plot(
+    $("#_BarChart canvas")[0],   // Canvas element
+    [-0.5, 2.5, 0, 85],          // Coordinate system
+    [48, 4, 60, 4]               // Margins
+)}
+
+_BarChart.imgAttr = {
+    "_all_": {},
+};
+
+_BarChart.data = [51, 7, 70];
+
+_BarChart.draw = function() {
+    let plot = _BarChart.plot;
+    let imgs = plot.images;
+    plot.clear().barchart(
+        _BarChart.data,                 // Data
+        [imgs.W, imgs.Ek, imgs.Eg],     // Labels (x)
+        ["red", "blue", "blue"],        // Bar colors
+        {grid:[0, 81, 10],              // Other options
+            labelPos:[-0.54, -2],
+            label: function(y) {return `${y}`}
+        }
+    );
+    _BarChart.data[0] *= 0.999;
+    if (_BarChart.status == 1)          // Animation playing?
+        setTimeout(_BarChart.draw, 25);
+}
+
+/* Uncomment for animation...
+
+_BarChart.show = function() {
+// Resume animation
+    if (_BarChart.status == -1) {
+        _BarChart.status = 1;
+        _BarChart.draw();
+    }
+}
+
+_BarChart.hide = function() {
+// Pause animation
+    _BarChart.status = -1;
+}
+
+// Add applet to script map
+articleScript.map._BarChart = _BarChart;
+
+*/
+
+// Draw first frame after images are loaded and sized
+_BarChart.plot.waitForImages(function(plot) {
+    let imgs = plot.images;
+    for (let k in imgs) {
+        let a = _BarChart.imgAttr;
+        let attr = {}
+        Object.assign(attr, a._all_);
+        if (a[k]) Object.assign(attr, a[k]);
+        $(imgs[k]).attr(attr);
+    }
+    _BarChart.status = -1;    // +1 for animation
+    _BarChart.draw();
+});

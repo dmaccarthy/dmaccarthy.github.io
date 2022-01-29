@@ -1,4 +1,5 @@
 function randint(n) {return Math.floor(n * Math.random())}
+function uniform(a, b) {return a + (b - a) * Math.random()}
 
 function shuffle(a) {
     for (let i=a.length-1; i>0;i--) {
@@ -27,6 +28,75 @@ function atan2(y,x) {return Math.atan2(y,x)*RAD}
 function log(x, b) {
     x = Math.log(x);
     return b ? x / Math.log(b) : x;
+}
+
+function polar(x, y) {
+    if (y == null) {y = x[1]; x = x[0]}
+    let a = atan2(y, x);
+    return [root(x*x + y*y), a < 0 ? a + 360 : a];
+}
+
+function vec(r, a) {return [r * cos(a), r * sin(a)]}
+
+function neg(x) {
+    let n = [];
+    for (let i in x) n.push(-x[i]);
+    return n;
+}
+
+function vsum(...v) {
+    let n = v[0].length;
+    let s = [...v[0]];
+    for (let i=1;i<v.length;i++) {
+        for (let j=0;j<n;j++) s[j] += v[i][j];
+    }
+    return s;
+}
+
+function dot(a, b) {
+    let d = 0;
+    for (let i=0; i<a.length; i++)
+        d += a[i] * b[i];
+    return d;
+}
+
+function cross(a, b) { // 2D cross product
+    return a[0] * b[1] - a[1] * b[0];
+}
+
+function _SSS(a, b, c) {
+    // Calculate angle C from sides a, b, c
+    return acos((c*c - a*a - b*b) / (-2*a*b));
+}
+
+function SSS(a, b, c) {
+    // Calculate angles A, B, C from sides a, b, c
+    return [_SSS(b, c, a), _SSS(a, c, b), _SSS(a, b, c)];
+}
+
+function SAS(a, C, b) {
+    // Calculate angle A, side c, angle B from others
+    let c = root(a*a + b*b - 2*a*b*cos(C));
+    let A = _SSS(b, c, a);
+    return [A, c, 180-(A+C)];
+}
+
+function ASA(A, b, C) {
+    // Calculate side a, angle B, side c from others
+    let B = 180 - (A + C);
+    b /= sin(B);
+    let a = b * sin(A);
+    let c = b * sin(C);
+    return [a, B, c];
+}
+
+function SSA(a, b, A, ambig) {
+    // Calculate side c, angle C, angle B
+    let B = asin(b * sin(A) / a);
+    if (ambig) B = 180 - B;
+    let C = 180 - (A + B);
+    if (C >= 0)
+        return [root(a*a + b*b - 2*a*b*cos(C)), C, B];
 }
 
 function quad_form(a, b, c) {return [(-b + sqrt(b*b-4*a*c))/(2*a), (-b - sqrt(b*b-4*a*c))/(2*a)]}

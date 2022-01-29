@@ -63,7 +63,7 @@ function nextNode(node) {
 function nextWith(node, attr) {
     node = nextNode(node);
     while (node) {
-        if (node[attr] != null) return node;
+        if (node[attr] != null && !node.unavail) return node;
         node = nextNode(node);
     }
 }

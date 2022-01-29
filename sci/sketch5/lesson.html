@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sketch Test</title>
+<link rel="shortcut icon" type="image/png" href="../media/rocket.png" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700" />
+<style type="text/css">
+
+.Center {
+    text-align:center;
+}
+
+canvas {
+    max-width:96vw;
+    touch-action:none;
+}
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../script/math.js"></script>
+<script type="text/javascript" src="../script/sketch5.js"></script>
+<script type="text/javascript">
+
+/* Call setup function after preloading images */
+
+$(function() {
+    Sketch.init(setup, {laptop: "../media/laptop.png"});
+})
+
+
+/* The setup function initializes and plays the sketch after the images are all loaded */
+
+function setup(imgs) {
+
+    // Create a sketch with coordinate system
+    let sk = new Sketch();
+    sk.attachCS(0, 1, 0, 9/16);
+
+    // Change canvas CSS
+    sk.css({border:"1px solid blue", padding:"2px"});
+
+    // Draw the coordinate grid and axes
+    let grey = {stroke:"grey", lineWidth:0.5};
+    sk.gridLines([0, 1, 0.1], [0, 0.6, 0.1], grey);
+
+    // Add some Text content
+    let font = "Source Code Pro, Lucida Console, monospace";
+    font = {font: `bold 28px ${font}`, fill:"red", align:"right", valign:"top"};
+    sk.text("FPS", "", {x:0.98, y:0.59}, font);
+    sk.text("Mouse", "", {x:0.98, y:0.49}, font);
+
+    // Add a Sprite (Image)
+    // let laptop = sk.sprite("Lap", imgs.laptop, {valign:"top", x:0.5, y:0.3, angle:45, spin:5/f});
+    // laptop.scale(0.75);
+
+    // Add some shapes
+    let arrow = sk.arrow("Arrow", [0.2, 0.5], [0.4, 0.1], {shape:0});
+    arrow.anchor = arrow.middle();
+
+    // Move coordinate axes to the "top layer" of sketch and add emphasis
+    let axis = {lineWidth:2, stroke:"black"};
+
+    Object.assign(sk.item("GridV_0").setIndex(-1), axis);
+    Object.assign(sk.item("GridH_0").setIndex(-1), axis);
+
+    // Define mouse event handlers
+
+
+    // Draw without starting animation
+    sk.draw();
+
+    // Play the animation
+    // sk.play();
+}
+
+
+/* Mouse event handlers */
+
+</script>
+</head>
+<body>
+    <p class="Center"><canvas width="960" height="540"></canvas></p>
+</body>
+</html>
