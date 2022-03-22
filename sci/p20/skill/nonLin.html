@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Transforming Power Data</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/da.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+<style type="text/css">
+
+table td {width:8em}
+
+</style>
+</head>
+<body>
+
+<article>
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 20</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="non" data-last="?"><h3>Non-Linear Data</h3>
+<p>Sometimes, a graph of our data will be curved rather than a straight line...</p>
+<table class="Center">
+    <tr><th>Radius /<br/>\(\mathrm{10^6\ m}\)</th><th>Gravity /<br/>\((\mathrm{m/s^2})\)</th></tr>
+    <tr><td>6.37</td><td>9.81</td></tr>
+    <tr><td>7.00</td><td>8.14</td></tr>
+    <tr><td>8.00</td><td>6.23</td></tr>
+    <tr><td>9.00</td><td>4.92</td></tr>
+    <tr><td>10.00</td><td>3.99</td></tr>
+    <tr><td>12.00</td><td>2.77</td></tr>
+    <tr><td>14.00</td><td>2.04</td></tr>
+    <tr><td>16.00</td><td>1.56</td></tr>
+</table>
+<p class="Center"><iframe src="https://www.desmos.com/calculator/ztbpyvcnyn?embed" width="720" height="512" style="border: 1px solid #ccc" frameborder=0></iframe></p>
+<ul data-mark="+">
+    <li>One way to obtain a model equation is to perform a non-linear (quadratic, power, exponential) regression.</li>
+    <li data-mark="+">When we have reason to believe the relationship will be a <em>power</em>, there is a better way...</li>
+</ul>
+</section>
+
+<section id="tr" data-last="?"><h3>Transforming Power Data</h3>
+<p>Suppose our hypothesis is an equation (from our Data Sheet?) that predicts the relationship between manipulated and responding variables:
+    $$g=\frac{GM}{r^2}$$</p>
+<ul data-mark="+">
+    <li>Variables that appear in the denominator are considered to have a <em>negative</em> exponent:
+        $$g=GMr^{-2}$$</li>
+    <li data-mark="+">Any equation of the form \(y = ax^n\) is classified as a <em class="Defn">power relationship</em>.</li>
+    <!--li data-mark="+">In this example, the exponent is \(n = -2\) and the constant or coefficient is \(a=GM\).</li-->
+    <li data-mark="+">The responding variable, \(g\), does not have an exponent so it does not need to be transformed.</li>
+    <li data-mark="+">We can <em class="Defn">transform</em> the manipulated variable by calculating \(r^{-2}\).</li>
+    <li data-mark="+">We do this because \(-2\) is the exponent that appears with \(r\) in the equation!</li>
+    <li data-mark="+">The first two points in the data table are...</li>
+</ul>
+<p data-mark="=">$$\mathrm{(6.37\times 10^{-6}\ m)^{-2} = 2.46\times 10^{-14}\ m^{-2}}$$</p>
+<p data-mark="+">$$\mathrm{(7.00\times 10^{-6}\ m)^{-2} = 2.04\times 10^{-14}\ m^{-2}}$$</p>
+<ul data-mark="+">
+    <li>Transform the remaining data, and tabulate and graph the <em class="Defn">transformed data</em>...</li>
+</ul>
+<table class="Center" data-mark="=">
+    <tr><th>Radius<sup>–2</sup> /<br/>\(\mathrm{10^{-14}\ m^{-2}}\)</th><th>Gravity /<br/>\((\mathrm{m/s^2})\)</th></tr>
+    <tr><td>2.46</td><td>9.81</td></tr>
+    <tr><td>2.04</td><td>8.14</td></tr>
+    <tr><td>1.56</td><td>6.23</td></tr>
+    <tr><td>1.23</td><td>4.92</td></tr>
+    <tr><td>1.00</td><td>3.99</td></tr>
+    <tr><td>0.694</td><td>2.77</td></tr>
+    <tr><td>0.510</td><td>2.04</td></tr>
+    <tr><td>0.391</td><td>1.56</td></tr>
+</table>
+<ul data-mark="+">
+    <li>If the data <em>does</em> follow a power relationship and we have used the correct exponent, \(-2\) in this case, the transformed data will now be linear!</li>
+</ul>
+<p class="Center" data-mark="="><iframe src="https://www.desmos.com/calculator/7mw5lk3qfy?embed" width="720" height="512" style="border: 1px solid #ccc" frameborder=0></iframe></p>
+</section>
+
+<section id="eq" data-last="?"><h3>Model Equation</h3>
+<p>Now that the graph has been <em class="Defn">linearized</em>, we can calculate its slope and \(y\)-intercept as with any other line.</p>
+<p data-mark="+">$$b = \mathrm{0.0\ m/s^2}$$</p>
+<p data-mark="+">$$k = \mathrm{\frac{(10.0 - 0.0)\ m/s^2}{(2.5 - 0.0) \times 10^{-14}\ m^{-2}} = 4.0 \times 10^{14}\ m^3/s^2}$$</p>
+<ul data-mark="+">
+    <li>When you write the <em class="Defn">model equation</em>, \(y=kx+b\), remember to include the <em>power</em>:
+        $$g = \mathrm{(4.0 \times 10^{14}\ m^3/s^2)}\ r^{-2}$$</li>
+    <li data-mark="+">The \(y\)-variable is \(g\); what was graphed on the \(y\)-axis.</li>
+    <li data-mark="+">The \(x\)-variable is \(r^{-2}\); what was graphed on the \(x\)-axis.</li>
+    <li data-mark="+">You can substitute the model equation into the <em class="Defn">theoretical equation</em>:
+        $$g=\frac{GM}{r^2} = \mathrm{(4.0 \times 10^{14}\ m^3/s^2)}\ r^{-2}$$</li>
+    <li data-mark="+">You could then algebraically solve for \(M\), if you know \(G\).</li>
+</ul>
+</section>
+
+<section id="ex1" data-last="?"><h3>Example 1</h3>
+<p class="Blue">Students conducted an experiment on sound waves to test the equation \(v=f\lambda\). They manipulated the frequency of the waves \((f)\) and controlled the speed \((v)\). The wavelength \((\lambda)\) was the responding variable. How should they transform the data?</p>
+<p data-mark="+">Isolate the responding variable:$$\lambda = \frac{v}{f}$$</p>
+<p data-mark="+">Since \(f\) appears in the denominator, use a negative power:$$\lambda = vf^{-1}$$</p>
+<p data-mark="+">Transform the data by calculating \(f^{-1}\) for each data point.</p>
+</section>
+
+<section id="ex2" data-last="?"><h3>Example 2</h3>
+<p class="Blue">Students conducted an experiment on a simple pendulum to see how the length \((L)\) of the pendulum affected its period \((T)\), the time for one swing. Their hypothesis was:
+    $$T = 2\pi\sqrt{\frac{L}{g}}$$
+    How should they transform the data?</p>
+<p data-mark="+">The square root sign is equivalent to a power of \(\frac{1}{2}\):
+    $$T = 2\pi\frac{L^{\frac{1}{2}}}{g^{\frac{1}{2}}}$$</p>
+<p data-mark="+">Transform the data by calculating \(L^{\frac{1}{2}}\) for each data point.</p>
+<ul data-mark="+">
+    <li>Since \(g\) is a <em>controlled</em> variable, it will not be graphed, so it doesn’t matter that it has an exponent!</li>
+    <li data-mark="+">Alternatively, we could get rid of the square root sign by squaring the original equation:
+        $$T^2 = 4\pi^2\frac{L}{g}$$</li>
+    <li data-mark="+">This alternative says we can transform the data by calculating \(T^2\), while not transforming \(L\).</li>
+</ul>
+</section>
+
+<!--If the data is not linear and you have reason to suspect that there is a power relationship, transform the data by applying the expected exponent and then graph the transformed data. For example, if your data is testing the hypothesis:
+you would calculate and graph r^{-2} rather than just r.
+You can also use the regression analysis features of a graphing calculator or statistics software to find a model equation. Specify the type of model you want (linear, power, quadratic, exponential, etc.) and the software will determine the equation that best fits the data. Have the software graph the model equation on the scatter plot of the data to see how well it fits.
+</section-->
+
+</body>
+</html>

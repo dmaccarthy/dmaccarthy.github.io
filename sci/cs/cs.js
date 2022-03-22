@@ -1,13 +1,14 @@
-let link = {title:"General Links", icon:"link", menu:[
+let link = {title:"General Links", id:"link", icon:"link", menu:[
     {title:"Email Mr. MacCarthy", icon:"mail", open:"mailto:david.maccarthy@eips.ca"},
     {title:"Python Tutorial", icon:"py", open:"https://docs.python.org/3.8/tutorial/"},
     {title:"Python Text", icon:"py", open:"https://codehs.com/textbook/intropython_textbook/"},
     {title:"Thonny (Python IDE)", icon:"thonny", open:"https://thonny.org/"},
-    {title:"thonny.bat", icon:"link", open:"thonny.bat"},
+    // {title:"thonny.bat", icon:"link", open:"thonny.bat"},
     {title:"PowerSchool", icon:"ps", open:"https://powerschool.eips.ca/public/"},
     {title:"Salisbury Composite", icon:"sal", open:"https://salcomp.ca"},
     {title:"Program of Studies", icon:"ab", open:"https://education.alberta.ca/career-and-technology-studies/bit-cluster-businessadminfinanceit/?searchMode=3"},
     {title:"Course Outline", icon:"link", open:"https://docs.google.com/document/d/1ElD-IF84gr2epoYlVpRtMFDyBv3EEbhGF0moBBoObSE"},
+    {title:"Sal Course Handbook", icon:"link", open:"https://indd.adobe.com/view/e0af178c-c692-4db8-b68f-a8d05eebb16d"},
 ]};
 
 let iter = {title:"Iterative Algorithms", id:"iter", icon:"py", menu:[

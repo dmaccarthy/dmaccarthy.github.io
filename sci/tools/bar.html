@@ -109,7 +109,7 @@ function parse4(id) {
     let i, m = $("#"+id).find("input").val();
     if (m) {
         m = m.split(",");
-        for (i in m) {m[i] = parseInt(m[i])}
+        for (i in m) {m[i] = parseFloat(m[i])}
         setup.data[id] = m;
     }
     else delete setup.data[id];

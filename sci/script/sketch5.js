@@ -452,6 +452,11 @@ class Sketch {  // Animated canvas
             if (items[i].key == key) return items[i];
     }
 
+    purge() { // Remove all items
+        this.items = [];
+        return this;
+    }
+
     log() {
         for (let i in this.items) {
             let item = this.items[i];

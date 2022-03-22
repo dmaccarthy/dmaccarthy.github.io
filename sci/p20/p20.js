@@ -1,5 +1,5 @@
 let wave = [
-    {title:"Assignment Booklet", gdrv:"1NC0Pk5VyhNKR8sGuTNhgHNQpG5ZiJyv9"},
+    // {title:"Assignment Booklet", gdrv:"1NC0Pk5VyhNKR8sGuTNhgHNQpG5ZiJyv9"},
     {title:"Harmonic Waves", icon:1, menu:[
         {title:"Lesson Notes", open:"wave/harm.html"},
         {title:"Practice Solutions", gdoc:"1xb381kGFZ0uQ3VJtC6x-fDlataT-SNVG73jFTrMFFyA"},
@@ -21,7 +21,7 @@ let wave = [
 ];
 
 let shm = [
-    {title:"Assignment Booklet", gdrv:"1epM1sYOHlUXxbMQ3DODu-J3aj_JYQ0YA"},
+    // {title:"Assignment Booklet", gdrv:"1epM1sYOHlUXxbMQ3DODu-J3aj_JYQ0YA"},
     {title:"Equilibrium & Oscillations", icon:1, menu:[
         {title:"Pendulum Video", icon:"video", gdrv:"1EaP7bhyrze7XRIu52sILu5ErM5qhM7b0"},
         {title:"Pendulum Motion Data", icon:"gdrv", open:"https://docs.google.com/spreadsheets/d/1nmwJnNxtU4Bn4u9thB75AOvNSB9_sb08TjivGVcUHdQ"},
@@ -51,7 +51,7 @@ let shm = [
 ];
 
 let grav = [
-    {title:"Assignment Booklet", gdrv:"1rbDbfZ-SklBP0zx0XnSFJn2lPzJM_Vyd"},
+    // {title:"Assignment Booklet", gdrv:"1rbDbfZ-SklBP0zx0XnSFJn2lPzJM_Vyd"},
     {title:"Universal Gravitation", icon:1, id:"ugrav", menu:[
         {title:"Lesson Notes", open:"grav/uGrav.html"},
         {title:"Practice Solutions", gdoc:"1b96Ht-6midtdBeRU2L2o9OkESdmDF3dzdA5Sj3On-nM"},
@@ -77,21 +77,24 @@ let grav = [
     {title:"Chapter Review", icon:"lesson", id:"ch4", ajax:"grav/summary.htm", menu:[]},
 ];
 
-let circ = [
-    {title:"Assignment Booklet", gdrv:"1wmnIhIc2yAJFbkAeUi5XUe3ijVRjXi6j"},
-    {title:"Model Equations [Skills]", icon:1, menu:[
+let data = [
+    {title:"Model Equations", id:"model", icon:1, menu:[
         {title:"Lesson Notes", open:"skill/eqn.html"},
         {title:"Practice Solutions", gdoc:"1q0L17HIG8W3RzaCKDaSEK5itlcRwmnzU-zkxxiI-_E0"},
     ]},
-    {title:"Regression Analysis [Skills]", icon:1, menu:[
+    {title:"Regression Analysis", id:"regr", icon:1, menu:[
         {title:"Lesson Notes", open:"skill/reg.html"},
         {title:"TI-83+ Data Analysis", gdrv:"0B_gX0kaqRFXTenBOOTNNNkczZ3M"},
         {title:"Practice Solutions", gdoc:"1EjnS2SHuKCvv4D8MGSvVv2_L8Sy8nRiwfpSnIXGCcE0"},
     ]},
-    {title:"Transforming Power Data [Skills]", icon:1, menu:[
-        // {title:"Lesson Notes", open:"skill/nonLin.html"},
+    {title:"Transforming Power Data", id:"nonLin", icon:1, menu:[
+        {title:"Lesson Notes", open:"skill/nonLin.html"},
         {title:"Practice Solutions", gdoc:"11JzR1EpOw7ATi7wZuzIyklMmeYtxv-yrJLxkm40_OFc"},
     ]},
+];
+
+let circ = [
+    // {title:"Assignment Booklet", gdrv:"1wmnIhIc2yAJFbkAeUi5XUe3ijVRjXi6j"},
     {title:"Uniform Circular Motion", icon:1, menu:[
         {title:"Lesson Notes", open:"circ/ucm.html"},
         {title:"Practice Solutions", gdoc:"1EC7Lao0wjSZNWTopkRewQ_FCvGUeE_dFdyLeNtUNnTI"},
@@ -114,125 +117,105 @@ let circ = [
 ];
 
 let dyn = [
-    {title:"Force & Inertia", icon:1, menu:[
+    {title:"Force & Inertia", id:"inert", icon:1, menu:[
         {title:"Lesson Notes", open:"dyn/inert.html"},
-        {title:"Assignment Handout", gdrv:"1hq2o2RPw2asyprTawK9cua8wZnla2eW0"},
         {title:"Practice Solutions", gdoc:"1aMbFTmo1sNi91ULonApGutTAqpGIc7o3xE0NcVQ0GfQ"},
     ]},
-    {title:"Free Body Diagrams", icon:1, menu:[
+    {title:"Free Body Diagrams", id:"fbd", icon:1, menu:[
         {title:"Lesson Notes", open:"dyn/fbd.html"},
-        {title:"Assignment Handout", gdrv:"1z9s8I2fI8QJDcn8ATOhuU2m4V4VjgZ_V"},
         {title:"Practice Solutions", gdoc:"1ecVJbHXRGtCmoCOmTXco-DHDAvSjWlqaO-to-DjEEQ4"},
     ]},
-    {title:"Newton’s Third Law", icon:1, menu:[
+    {title:"Newton’s Third Law", id:"N3", icon:1, menu:[
         {title:"Lesson Notes", open:"dyn/n3.html"},
-        {title:"Assignment Handout", gdrv:"1Z1YWrihzFPATKZV6UbzzDy8_we5izZ-M"},
         {title:"Practice Solutions", gdoc:"1zUzJTyrdwsWblAz1StqF0sNn3lclQigmLoTT4R1mfkc"},
     ]},
-    {title:"Mass & Weight", icon:1, vid:"KDp1tiUsZw8", menu:[
+    {title:"Mass & Weight", id:"weight", icon:1, vid:"KDp1tiUsZw8", menu:[
         // {title:"Pennies Lab Video", gdrv:"1iJ9iZ2QLj3fwcki75mKcb9XR18yFSCvl"},
         // {title:"Experiment Handout", gdrv:"1Z05e3AIQpijSqzOmC3UOk74t9PFo1ErC"},
         {title:"Lesson Notes", open:"dyn/weight.html"},
-        {title:"Assignment Handout", gdrv:"1ZDDkWGCVypkt1q48kxkSwuebTx_k3EYr"},
         {title:"Practice Solutions", gdoc:"1wtfhYaqUeBUotX8nm4PHM0UjLZdUNLgdibdyFQcjjXo"},
     ]},
-    {title:"Contact Forces", icon:1, menu:[
+    {title:"Contact Forces", id:"fric", icon:1, menu:[
         {title:"Lesson Notes", open:"dyn/fric.html"},
-        {title:"Assignment Handout", gdrv:"1hDszAFVnw969ETypsUQLBNTFwhgs3Q9A"},
         {title:"Practice Solutions", gdoc:"1jAoNeyNDfi1DPFyhi-Qf4AdesX2-Wfasv-Dsj0fYV0c"},
         {title:"Friction Simulation", icon:"html5", open:"../applet/pulley"},
-    ]},
-    {title:"Dynamics in 2D", icon:1, menu:[
-        {title:"Examples", open:"vec/dyn2d.html"},
-        {title:"Assignment Handout", gdrv:"1reAudq1wnv_4utbooHhFlKaTP8qCEHBj"},
-        {title:"Practice Solutions", unavail:0, gdoc:"1cPXcnazyRT1zQ9xmbCXz7gkMr6YHswAZT1lvA1bsU_w"},
     ]},
     {title:"Chapter Review", icon:"lesson", id:"ch3", ajax:"dyn/summary.htm", menu:[]},
 ];
 
-let energy = [
-    {title:"Scientific Notation & SI Units [Skills]", icon:1, menu:[
-        {title:"Scientific Notation [Science 10]", icon:1, vid:"bXkewQ7WEdI?start=25", menu:[
-            {title:"Lesson Notes", open:"../s10/phys/sciNot.html"},
-        ]},
-        {title:"SI Units [Science 10]", icon:1, vid:"DTv_eI9Hlro", menu:[
-            {title:"Lesson Notes", open:"../s10/phys/si.html"},
-        ]},
-        {title:"Assignment Handout", gdrv:"1PtRDy8ddsD11HKqygSGvPisSyX7QG4qy"},
+let meas = [
+    {title:"Experiment Design", id:"expDes", icon:1, menu:[
+        {title:"Lesson Notes", open:"../s10/chem/expDes.html"},
+        {title:"Practice Solutions", gdoc:"13UxfP50msvqwlMy4qc3miOa3av8FWLgC8A4VKu78DxE"},
+    ]},
+    {title:"Scientific Notation", id:"sciNot", icon:1, vid:"bXkewQ7WEdI?start=25", menu:[
+        {title:"Lesson Notes", open:"../s10/phys/sciNot.html"},
+    ]},
+    {title:"SI Units", id:"si", icon:1, vid:"DTv_eI9Hlro", menu:[
+        {title:"Lesson Notes", open:"../s10/phys/si.html"},
         {title:"Practice Solutions", gdoc:"1Z9fiUwB-U9VCE_yPvb2wHFRSooBc97cuW-SAaA_CICQ"},
     ]},
-    {title:"Mechanical Energy", icon:1, vid:"CW0_S5YpYVo", menu:[
+    {title:"Scatter Plots & Slope", id:"scatter", icon:1, menu:[
+        {title:"Lesson Notes", open:"skill/scatter.html"},
+        {title:"Practice Solutions", gdoc:"1gfrttglGFggu4xvrl1yv4a5w_Q9yYydEWVLdnuwF6MA"},
+    ]}, 
+];
+
+let energy = [
+    {title:"Mechanical Energy", id:"mech", icon:1, vid:"CW0_S5YpYVo", menu:[
         {title:"Lesson Notes", open:"energy/mech.html"},
-        {title:"Assignment Handout", gdrv:"1-yrOiZGDaaKcrcMlLU3QP748jod8sd71"},
         {title:"Practice Solutions", gdoc:"1iloIQCAF9Mpqmu7UcgJUDTumhVlto3oiqaOynvRJXEM"},
     ]},
-    {title:"Energy Conservation", icon:1, vid:"#PLpVmtCaB-lymCk9sXymaiebN4XDuzZQsu", a:"HR5iEX3Sy1k", menu:[
+    {title:"Energy Conservation", id:"Econs", icon:1, vid:"#PLpVmtCaB-lymCk9sXymaiebN4XDuzZQsu", a:"HR5iEX3Sy1k", menu:[
         {title:"Lesson Notes", open:"energy/cons.html"},
-        {title:"Assignment Handout", gdrv:"1m39wkjRYD6IyN0gvLSwgo1Hce9vJxyI2"},
         {title:"Practice Solutions", gdoc:"1R_2LFv4ACrEeqdQHBW2HgZGA0U4xBxyj_4OreFuKByc"},
     ]},
-    {title:"Scatter Plots & Slope [Skills]", icon:1, menu:[
-        {title:"Lesson Notes", open:"skill/scatter.html"},
-        {title:"Assignment Handout", gdrv:"1eI5frPcTesdoVJVwrRdMk7T9Gqln_fcu"},
-        {title:"Practice Solutions", gdoc:"1gfrttglGFggu4xvrl1yv4a5w_Q9yYydEWVLdnuwF6MA"},
-    ]},
-    {title:"Lab: Energy Transformation on a Ramp", icon:1, menu:[
-        {title:"Handout (Live Experiment)", gdrv:"1tSjy8SVnbKYEQSiBKyGj6i2DYtCpfvBH"},
-        {title:"Handout (Simulation)", gdrv:"1vUVexzbmqghH1hGGlGV8eWGMJC0C0sOQ"},
-        {title:"Simulation", icon:"html5", open:"../applet/ramp.html"},
-    ]},
-    {title:"Non-Isolated Systems", icon:1, menu:[
+    // {title:"Lab: Energy Transformation on a Ramp", id:"rampLab", icon:1, menu:[
+    //     {title:"Handout (Live Experiment)", gdrv:"1tSjy8SVnbKYEQSiBKyGj6i2DYtCpfvBH"},
+    //     {title:"Handout (Simulation)", gdrv:"1vUVexzbmqghH1hGGlGV8eWGMJC0C0sOQ"},
+    //     {title:"Simulation", icon:"html5", open:"../applet/ramp.html"},
+    // ]},
+    {title:"Non-Isolated Systems", id:"syst", icon:1, menu:[
         {title:"Lesson Notes", open:"energy/nonIso.html"},
-        {title:"Assignment Handout", gdrv:"1WRrYOS0TrrAQccf33QZfJmXWDv_khdST"},
         {title:"Practice Solutions", gdoc:"16l4nFjj8OgsKLtjsPEh-jtAtsg3pYahDXFcDsT3K0dk"},
     ]},
-    {title:"Energy Transformations (Work)", icon:1, menu:[
+    {title:"Energy Transformations (Work)", id:"work", icon:1, menu:[
         {title:"Lesson Notes", open:"energy/work.html"},
-        {title:"Assignment Handout", gdrv:"1P_H57_IQeO1DHvmDWw2cJmR0CmsbwNpq"},
         {title:"Practice Solutions", gdoc:"1M3ePHY_hvHRRvZpyOkLHkUbeOgSM0NQfO5oxZ75mKcY"},
     ]},
-    {title:"Work-Energy Theorem", icon:1, menu:[
+    {title:"Work-Energy Theorem", id:"we", icon:1, menu:[
         {title:"Lesson Notes", open:"energy/we.html"},
-        {title:"Assignment Handout", gdrv:"1T6TmgI0K0F-rlx7xXMj-gNYA9twU-dxF"},
         {title:"Practice Solutions", gdoc:"1Xk85LGlNrOTX4Ckg672gfp5T6L9IZOTdKxAu7lKPGLM"},
     ]},
-    {title:"Power & Efficiency", icon:1, menu:[
+    {title:"Power & Efficiency", id:"power", icon:1, menu:[
         {title:"Lesson Notes", open:"energy/power.html"},
-        {title:"Assignment Handout", gdrv:"1ftuiOA79zM7EiV6Bq6OWSv9OYoQ2Od0h"},
         {title:"Practice Solutions", gdoc:"1PHRVmr9tMgm8ncSCnykQ1zYYznPADaJZV1KcrYZAWmQ"},
     ]},
     {title:"Chapter Review", icon:"lesson", id:"ch6", ajax:"energy/summary.htm", menu:[]},
 ];
 
 let kin1d = [
-    {title:"Position & Displacement", icon:1, vid:"V8hJhTE3bUk", menu:[
+    {title:"Position & Displacement", id:"displ", icon:1, vid:"V8hJhTE3bUk", menu:[
         {title:"Lesson Notes", open:"kin/displ.html"},
-        {title:"Assignment Handout", gdrv:"13YDvlb2IifPhmuuTyGMwO65T82H77bzL"},
         {title:"Practice Solutions", gdoc:"1EkZMELpyV191px9oqb_zru74Xaf01eEAZsmLG4c3-jw"},
     ]},
-    {title:"Velocity & Speed", icon:1, menu:[
+    {title:"Velocity & Speed", id:"vel", icon:1, menu:[
         {title:"Lesson Notes", open:"kin/vel.html"},
-        {title:"Assignment Handout", gdrv:"1P3ebOhTWW83ybxkfQxX2ASKBcCrnHz90"},
         {title:"Practice Solutions", gdoc:"1eRjia_G9Zny7pNvpGp282N-XVMRCjJh9MWwRlNCW36A"},
+        {title:"Basketball Lab (Logger Pro)", gdrv:"1pI39R2RcajEK35gwJq-gko6mjtzH-w1m"},
     ]},
-    {title:"Lab: Motion of a Rolling Ball", gdrv:"1W92quSuyMqFEnT1QdJlm0Y4poPIvDTGI"},
-    {title:"Motion Graphs", icon:1, menu:[
+    {title:"Motion Graphs", id:"graph", icon:1, menu:[
         {title:"Lesson Notes", open:"kin/graph.html"},
-        {title:"Assignment Handout", gdrv:"1AIEupND1GX2W-yd5QZ0CaDh97KE7mM8n"},
         {title:"Practice Solutions", gdoc:"12uwMmaCWOsEemtR8fj6jujP-FjGihNef3Wn08nHmCOY"},
     ]},
-    {title:"Acceleration", icon:1, menu:[
+    {title:"Acceleration", id:"acc", icon:1, menu:[
         {title:"Lesson Notes", open:"kin/accel.html"},
-        {title:"Assignment Handout", gdrv:"1Cy9IOAlj7GwufjHM6vHXMa2UgCaH539S"},
         {title:"Practice Solutions", gdoc:"1RVLIxYzDym_sqjgL8SYdxtLIts9mJ0BAcoEG0FCZfvo"},
+        {title:"Basketball Lab (Logger Pro)", gdrv:"1pI39R2RcajEK35gwJq-gko6mjtzH-w1m"},
+        {title:"Bouncing Ball Simulation", icon:"ball", open:"../applet/bounce.html"},
     ]},
-    {title:"Lab: Motion of a Bouncing Ball", icon:"ball", menu:[
-        {title:"Handout", gdrv:"10Huo142Lt2-qn3suDdfvbK3wp6Cg2TeA"},
-        {title:"Simulation", icon:1, open:"../applet/bounce.html"},
-    ]},
-    {title:"Uniform Accelerated Motion", icon:1, menu:[
+    {title:"Uniform Accelerated Motion", id:"uam", icon:1, menu:[
         {title:"Lesson Notes", open:"kin/uam.html"},
-        {title:"Assignment Handout", gdrv:"1FkSyKa-Sd_jvq5MhwjypL0p1MtL__jMv"},
         {title:"Practice Solutions", gdoc:"14GrA1jhjfFNOpCzbr0xraPt_mwPBfb3PHOFu7G6e6XQ"},
     ]},
     {title:"Chapter Review", icon:"lesson", id:"ch1", ajax:"kin/summary.htm", menu:[]},
@@ -242,23 +225,23 @@ let vec2d = [
     {title:"2D Vectors Applet", icon:"html5", open:"https://applets.davidmaccarthy.repl.co/vec2dnew"},
     {title:"Magnitude & Direction", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/mag.html"},
-        {title:"Assignment Handout", gdrv:"1vim1oj76fW9OQc6tCA_mwlSIH4ejfbbk"},
         {title:"Practice Solutions", gdoc:"14vQp9XvGS1yPjDoLDfFNE2u5MAnIqKgcXTgIAwVCRQQ"},
     ]},
     {title:"Polar & Cartesian Form", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/polar.html"},
-        {title:"Assignment Handout", gdrv:"1GzdkoyY60Nn2LaQ93qSoy8WUVFdeLBt-"},
         {title:"Practice Solutions", gdoc:"14-CgdDFUiCwpJfPlghKpw1iMRfC8J3NJBwrNP20fois"},
     ]},
     {title:"Vector Arithmetic", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/arith.html"},
-        {title:"Assignment Handout", gdrv:"15xe5uJ67N0FNz4171ZUIm2y0sT7tL_xM"},
         {title:"Practice Solutions", gdoc:"1960E_v1vFacD-7sbtFqrE3Xzqjr32rO4H435r4aT3WM"},
     ]},
     {title:"Projectile Motion", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/proj.html"},
-        {title:"Assignment Handout", gdrv:"1Yr_n1cdCHWBwhPOHaKn1Zn5WO-scFqtU"},
         {title:"Practice Solutions", gdoc:"14uVxnRHjWAdOALpevl9sJq1ZgGIU9Hw82uaAilHrFF4"},
+    ]},
+    {title:"Dynamics in 2D", icon:1, menu:[
+        {title:"Examples", open:"vec/dyn2d.html"},
+        {title:"Practice Solutions", unavail:0, gdoc:"1cPXcnazyRT1zQ9xmbCXz7gkMr6YHswAZT1lvA1bsU_w"},
     ]},
     {title:"Chapter Review", icon:"lesson", id:"ch2", ajax:"vec/summary.htm", menu:[]},
 ];
@@ -269,6 +252,7 @@ let home = addHome({title:"Physics 20", id:"home", htmx:"<p class='Right'>Teache
         {title:"Lab Handouts", gdrv:"1CWH5oxkvmGXAs3RD3nhfveevDBQIHB1X"},
     ]},
     {title:"Notes & Solutions", icon:"rocket", id:"notes", menu:[
+        {title:"Skills: Science 10 Review", id:"s10", icon:"da", menu:meas},
         {title:"Chapter 6: Energy & Work", id:"energy", icon:"arrow", menu:energy},
         {title:"Chapter 1: Kinematics", id:"kin", icon:"train", menu:kin1d},
         // {title:"Review #1", icon:"soccer", menu:[
@@ -277,6 +261,7 @@ let home = addHome({title:"Physics 20", id:"home", htmx:"<p class='Right'>Teache
         //     {title:"Chapter 2 Key", gdoc:"1bZelxmufKP0ghnwg92MBghKJelgb34xCRtehd4_OugQ"},
         // ]},
         {title:"Chapter 3: Dynamics", id:"dyn", icon:"rocket", menu:dyn},
+        {title:"Skills: Data Analysis", id:"da", icon:"da", menu:data},
         {title:"Chapter 5: Circular & Planetary Motion", id:"circ", icon:"midway", menu:circ},
         {title:"Chapter 4: Universal Gravitation", id:"grav", icon:"earth", menu:grav},
         {title:"Chapter 7: Oscillations (SHM)", id:"shm", icon:"crane", menu:shm},
@@ -296,15 +281,15 @@ let home = addHome({title:"Physics 20", id:"home", htmx:"<p class='Right'>Teache
     ]},
     {title:"Course Review", id:"rev20", icon:"rocket", menu:[
         // {title:"Assignment / Solutions", gdrv:"1Pe-o2p0VbWJ9UAnGt0ZNPqLArqpvhhPG"},
-        {title:"Data Analysis", icon:"lesson", id:"rev_da", ajax:"./da_summary.htm", menu:[]},
-        {title:"Energy", icon:"lesson", id:"rev6", ajax:"energy/summary.htm", menu:[]},
-        {title:"Kinematics", icon:"lesson", id:"rev1", ajax:"kin/summary.htm", menu:[]},
-        {title:"Dynamics", icon:"lesson", id:"rev3", ajax:"dyn/summary.htm", menu:[]},
-        {title:"Circular Motion", icon:"lesson", id:"rev5", ajax:"circ/summary.htm", menu:[]},
-        {title:"Gravitation", icon:"lesson", id:"rev4", ajax:"grav/summary.htm", menu:[]},
-        {title:"Simple Harmonic Motion", icon:"lesson", id:"rev7", ajax:"shm/summary.htm", menu:[]},
-        {title:"Mechanical Waves", icon:"lesson", id:"rev8", ajax:"wave/summary.htm", menu:[]},
-        {title:"2D Vectors", icon:"lesson", id:"rev2", ajax:"vec/summary.htm", menu:[]},
+        {title:"Data Analysis", icon:"da", id:"rev_da", ajax:"./da_summary.htm", menu:[]},
+        {title:"Energy", icon:"arrow", id:"rev6", ajax:"energy/summary.htm", menu:[]},
+        {title:"Kinematics", icon:"train", id:"rev1", ajax:"kin/summary.htm", menu:[]},
+        {title:"Dynamics", icon:"rocket", id:"rev3", ajax:"dyn/summary.htm", menu:[]},
+        {title:"Circular Motion", icon:"midway", id:"rev5", ajax:"circ/summary.htm", menu:[]},
+        {title:"Gravitation", icon:"earth", id:"rev4", ajax:"grav/summary.htm", menu:[]},
+        {title:"Simple Harmonic Motion", icon:"crane", id:"rev7", ajax:"shm/summary.htm", menu:[]},
+        {title:"Mechanical Waves", icon:"speaker", id:"rev8", ajax:"wave/summary.htm", menu:[]},
+        {title:"2D Vectors", icon:"soccer", id:"rev2", ajax:"vec/summary.htm", menu:[]},
         {title:"Printable Notes", gdrv:"1zQFWZVOF1ykK2mLAuiFsi63QJKhHkw9O"},
     ]},
 ]});

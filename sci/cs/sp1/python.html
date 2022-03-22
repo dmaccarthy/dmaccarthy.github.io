@@ -26,16 +26,20 @@ let course = "sp1";
 </ol>
 
 <pre class="Code" contenteditable="true" data-mime="text/plain">
-from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
+from turtle import setup, speed, pencolor, penup, pendown, left, circle, backward, forward, exitonclick
 
 setup(600, 480)
 speed(1)
-pencolor("red")
 penup()
+
 backward(200)
 left(45)
+forward(100)
+
+pencolor("red")
 pendown()
-forward(200)
+circle(-200, 180)
+
 exitonclick()</pre>
 
 <p>Try to predict what the program will do. Run the program to see if you were right.
@@ -75,7 +79,7 @@ exitonclick()</pre>
 	Python to import several functions located in the <code>turtle</code> module. If you try to
 	call a function that you haven’t imported, an error will occur. (Try running the program after
 	deleting the first line.)</p>
-<pre class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick</pre>
+<pre class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, circle, backward, forward, exitonclick</pre>
 
 <!--p>The asterix at the end of the <code>import</code> statement tells Python to import everything
 	that it finds in the <code>turtle</code> module. Importing functions and data that your program
@@ -87,11 +91,12 @@ exitonclick()</pre>
 </div>
 
 <h3>Assignment</h3><ol class="Assign" start="2">
-<li>Create a new Python file called <code>s03_Q.py</code>. You can copy and paste the example program as a starting point.
+<li>Create a Python file called <code>s03_Q.py</code>. You can copy and paste the example program as a starting point.
     Modify the program so that it makes the turtle trace out the letter “Q” in your favourite colour.
 	You can refer to the <a href="https://docs.python.org/3/library/turtle.html#overview-of-available-turtle-and-screen-methods"
 	target="ref">documentation for the <code>turtle</code> module</a> to see what functions are
 	available for controlling the turtle, in addition to the functions used in the example.</li>
+<li>Create a Python file called <code>s03_letter.py</code>. Write a program that draws a different letter. (Don’t choose an easy letter like ‘O’ or ‘I’!)</li>
 </ol>
 </article></body>
 </html>

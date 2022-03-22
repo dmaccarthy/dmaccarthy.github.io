@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width"/>
+<meta name="description" content="Ray diagrams for curved mirrors and lenses."/>
+<title>Principle Ray Diagrams</title>
+<link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" type="text/css" href="applet.css"/>
+<style type="text/css">
+
+td {
+    font-size:125%;
+    width:6em;
+    border:1px solid black;
+}
+
+td input[type=text] {
+    font-size:110%;
+    text-align:center;
+    width:6em;
+    border:none;
+}
+
+#Device {
+    font-size:150%;
+    text-align:center;
+}
+
+#Device input {width:1.25em; height:1.25em}
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<script type="text/javascript" src="../script/util.js"></script>
+<script type="text/javascript" src="../script/math.js"></script>
+<script type="text/javascript" src="../script/sketch5.js"></script>
+<script type="text/javascript">
+
+function drawMirror(sk, f, d, di, m) {
+    let c = 2 * f;
+    let x = sk.get_rect()[2];
+    sk.line("I1", d, 1, 0, 1, {stroke:"blue"});
+    sk.line("R1", 0, 1, x, 1 - 1/f * x, {stroke:"red"});
+    if (di < 0) sk.line("V1", 0, 1, -x, 1 + 1/f * x, {stroke:"lightgrey"});
+    if (d != f) {
+        let y = f/(f-d);
+        sk.line("I2", d, 1, 0, y, {stroke:"blue"});
+        sk.line("R2", 0, y, x, y, {stroke:"red"});
+        if (di < 0) sk.line("V2", 0, y, -x, y, {stroke:"lightgrey"});
+    }
+    if (d != c) {
+        let y = c/(c-d), k = 1 / (d - c);
+        sk.line("I3", d, 1, 0, y, {stroke:"blue"});
+        sk.line("R3", d, 1, x, 1 + k * (x-d), {stroke:"red"});
+        if (di < 0) sk.line("V3", 0, y, -x, y - k * x, {stroke:"lightgrey"});
+    }
+
+    let r = 3 / sk.unit;
+    sk.circ("Fc", r, {x:f, y:0, fill:"white"});
+    sk.circ("Cc", r, {x:2*f, y:0, fill:"white"});
+    r *= 1.5;
+    sk.text("F", "F", {x:f, y:-r, valign:"top"});
+    sk.text("C", "C", {x:2*f, y:-r, valign:"top"});
+    r = Math.round(Math.abs(sk.px_delta(0, 1)[1]) / 10);
+    r = sk.cs_delta(r, 0)[0];
+    sk.polygon("Obj", [[d,1], [d+r,0], [d-r,0]], {fill:"blue"});
+    r *= Math.abs(m);
+    sk.polygon("Img", [[di,m], [di+r,0], [di-r,0]], {fill:"red"});
+}
+
+function drawLens(sk, f, d, di, m) {
+    let x = sk.get_rect()[2];
+    sk.line("I1", d, 1, 0, 1, {stroke:"blue"});
+    sk.line("R1", 0, 1, -x, 1 - 1/f * x, {stroke:"red"});
+    if (di < 0) sk.line("V1", 0, 1, x, 1 + 1/f * x, {stroke:"lightgrey"});
+    if (d != f) {
+        let y = f / (f-d);
+        sk.line("I2", d, 1, 0, y, {stroke:"blue"});
+        sk.line("R2", 0, y, -x, y, {stroke:"red"});
+        if (di < 0) sk.line("V2", 0, y, x, y, {stroke:"lightgrey"});
+    }
+    sk.line("I3", d, 1, 0, 0, {stroke:"blue"});
+    sk.line("R3", 0, 0, -x, -x/d, {stroke:"red"});
+    if (di < 0) sk.line("V3", d, 1, x, x/d, {stroke:"lightgrey"});
+
+    let r = 3 / sk.unit;
+    sk.circ("F1c", r, {x:f, y:0, fill:"white"});
+    sk.circ("F2c", r, {x:-f, y:0, fill:"white"});
+    r *= 1.5;
+    sk.text("F2", "F", {x:f, y:-r, valign:"top"});
+    sk.text("F1", "F’", {x:-f, y:-r, valign:"top"});
+    r = Math.round(Math.abs(sk.px_delta(0, 1)[1]) / 10);
+    r = sk.cs_delta(r, 0)[0];
+    sk.polygon("Obj", [[d,1], [d+r,0], [d-r,0]], {fill:"blue"});
+    r *= Math.abs(m);
+    sk.polygon("Img", [[-di,m], [-di+r,0], [-di-r,0]], {fill:"red"});
+}
+
+function draw(f, d, di, m) {
+    let x0, x1, lens = !$("#Mirror")[0].checked;
+    if (lens) {
+        x0 = Math.min(0, -Math.abs(f), -di);
+        x1 = Math.max(d, Math.abs(f), -di);        
+    }
+    else {
+        x0 = Math.min(0, d, 2*f, di);
+        x1 = Math.max(d, 2*f, di);
+    }
+    let w = x1 - x0;
+    x0 -= (x1 - x0) / 20;
+    x1 += (x1 - x0) / 20;
+    let y = 1.1 * Math.max(1, Math.abs(m));
+
+    let sk = new Sketch("canvas").attachCS(x0, x1, -y, y);
+    sk.gridLines([x0, x1, 1], 0, {stroke:"black"});
+    sk.gridLines(0, [-y, y], {stroke:"black", lineWidth:3});
+    if (lens) drawLens(sk, f, d, di, m);
+    else drawMirror(sk, f, d, di, m);
+    sk.draw();
+
+    let url = {f:f.toPrecision(5), do:d.toPrecision(5)};
+    if (lens) url.lens = 1;
+    history.replaceState({}, "", makeURL("./ray.html", url));
+}
+
+function getValue(id) {
+    let x = parseFloat($("#" + id).val());
+    return x && !isNaN(x) ? x : null;
+}
+
+function solve() {
+    let f = getValue("f");
+    let d = getValue("do");
+    let di = getValue("di");
+    let m = getValue("m");
+    if (f) {
+        if (d) {di = 1/(1/f-1/d); m = -di/d;}
+        else if (di) {d = 1/(1/f-1/di); m = -di/d;}
+        else if (m) {d = f*(1-1/m); di = 1/(1/f-1/d);}
+        else d = -1;
+    }
+    else if (d) {
+        if (di) m = -di/d;
+        else if (m) di = -m * d;
+        else d = -1
+        f = 1/(1/d+1/di);
+    }
+    else if (di && m) {
+        d = -di / m;
+        f = 1/(1/d+1/di);
+    }
+    else d = -1;
+    if (d > 0) {
+        $("#f").val(f.toPrecision(4));
+        $("#do").val(d.toPrecision(4));
+        $("#di").val(di.toPrecision(4));
+        $("#m").val(m.toPrecision(4));
+        draw(f, d, di, m);
+    }
+}
+
+$(function() {
+    let qs = qsArgs();
+    $(qs.lens ? "#Lens" : "#Mirror")[0].checked = true;
+    $("#f").val(qs.f ? qs.f : 3);
+    $("#do").val(qs.do ? qs.do : 5);
+    $("canvas, input[type=radio]").click(solve);
+    solve();
+});
+
+</script>
+</head>
+<body class="Center">
+<h1>Principle Ray Diagrams
+    <img class="Small Icon" src="../media/info.png" alt="Info" onclick="$('#Help').show()"/></h1>
+<p><canvas id="Drawing" width="720" height="320" /></p>
+
+<table>
+    <tr><td>\(f\)</td><td class="Blue">\(d_o\)</td><td class="Red">\(d_i\)</td><td>\(m\)</td></tr>
+    <tr>
+        <td><input id="f" type="text"/></td>
+        <td><input class="Blue"id="do" type="text"/></td>
+        <td><input class="Red" id="di" type="text"/></td>
+        <td><input id="m" type="text"/></td>
+    </tr>
+</table>
+<p id="Device">
+    <input type="radio" name="device" id="Mirror" value="0"/> Mirror &nbsp;
+    <input type="radio" name="device" id="Lens" value="1"/> Lens
+</p>
+
+<section id="Help"><ul>
+    <li>Enter two of the four variables and leave the other two blank.
+    <ul>
+        <li>\(f\) = Focal Length</li>
+        <li>\(d_o\) = Object Position</li>
+        <li>\(d_i\) = Image Position</li>
+        <li>\(m\) = Magnification</li>
+    </ul>
+    </li>
+    <li>Click the diagram to solve and redraw. If the page does not respond, the data entered does not have a valid solution.</li>
+    <li>The blue triangle is the object and the blue rays are incident rays.</li>
+    <li>The red triangle is the image and the red rays are reflected / refracted rays.</li>
+    <li>The grey lines are the virtual reflected / refracted rays.</li>
+</ul>
+<p>© 2022 by <a href="mailto:david.maccarthy@eips.ca" target="_">D.G. MacCarthy</a></p>
+<p><button onclick="$('#Help').hide()">Close</button></p></section>
+</section>
+</body>
+</html>

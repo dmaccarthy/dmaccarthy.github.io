@@ -9,13 +9,35 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../media/arrow.png"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
 <link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
-<script type="text/javascript" src="../../script/plot.js"></script>
-<script type="text/javascript" src="../../script/plotItems.js"></script>
 <script type="text/javascript" src="../../script/touch.js"></script>
 <script type="text/javascript" src="../../2021/bigMouse.js"></script>
 <script type="text/javascript" src="../../2021/slides.js"></script>
-<!-- <script type="text/javascript" src="../p20.js"></script>
-<script type="text/javascript" src="../../2021/tree.js"></script> -->
+<script type="text/javascript" src="../../script/math.js"></script>
+<script type="text/javascript" src="../../script/sketch5.js"></script>
+<script type="text/javascript">
+
+window.latex_folder = "../../media/latex/";
+
+$(function() {
+    Sketch.init(setup, {
+        Ek: latex_folder + "blue/Ek.png",
+        Eg: latex_folder + "blue/Eg.png",
+        W: latex_folder + "red/Wloss.png",
+        Wg: latex_folder + "red/Wgain.png"
+    });
+})
+
+function setup(imgs) {
+    let labels = [imgs.Wg, imgs.Eg, imgs.Ek, imgs.W];
+    let sk = new BarGraph("", labels.length, 10, 2, 0.6, [60, 2, 40, 18])
+        .labels(labels, [0, -0.2], 0.75)
+        .values("${y:0f}", [0, 10, 2], [-0.05, 0])
+        .series("TitleY", "Energy / J", -0.875, 6, null, {valign:"bottom", angle:90, fill:"blue"})
+        .animation("Bar", [9, 0, 0, 0], [0, 5, 3, 1], 3);
+    sk.config({fill:"#faa"}, "Bar_0", "Bar_3").draw();
+}
+
+</script>
 <style type="text/css">
 
 td {text-align:center}
@@ -23,42 +45,6 @@ th.Narrow {width:4em}
 th:not(.Narrow) {width:8em}
 
 </style>
-<script type="text/javascript">
-
-Plot.loadImages({
-    "Eg": "../../media/latex/blue/Eg.png",
-    "Ek": "../../media/latex/blue/Ek.png",
-    "-W": "../../media/latex/red/Wloss.png",
-    "+W": "../../media/latex/red/Wgain.png",
-});
-
-let Work = {status:0, font:"28px Arial"}
-
-Work.bar = function(i) {
-    i = i % 2;
-    console.log(i);
-    let data = [[0, 0, 9], [5, 3, 1]][i];
-    let p = new Plot($("canvas")[0], [0, 3, 0, 10], [72, 6, 54, 18]);
-    p.items = [
-        new Grid({y:1, gridStyle:["grey", 0.5], yLabel:{font:Work.font, anchor:RIGHT, offset:-5, format:0}}),
-    ];
-    p.items.extend(Segments.bars(data));
-    p.items.extend([
-        new Grid({x:1, axisStyle:["black", 2]}),
-        new Text("Energy / J", [-0.25, p.top()], {align:BOTTOMRIGHT, font:Work.font, angle:90}),
-    ]);
-    // console.log(p.items);
-    p.items[3].opt.fill = "red";
-    p.barLabels(["Eg", "Ek", i ? "-W" : "+W"], -0.2);
-    Work.bar.status = i;
-    Work.bar.plot = p.draw();
-}
-
-Plot.waitForImages(function() {
-    Work.bar(0);
-})
-
-</script>
 </head>
 <body>
 
@@ -87,6 +73,11 @@ Plot.waitForImages(function() {
         <li data-mark="+"><em class="Defn">Air Resistance</em>: Exerted by air (or other gases) on objects moving through.</li>
         <li data-mark="+"><em class="Defn">Applied</em>: Exerted by a person, animal, or machine.</li>
         <li data-mark="+">Others: <em class="Defn">Buoyancy</em>, <em class="Defn">Electric</em>, <em class="Defn">Magnetic</em>, <em class="Defn">Nuclear</em></li>
+    </ul>
+    <p data-mark="+">Forces that transform kinetic energy to or from potential energy (without affecting the total mechanical energy) are classified as <em class="Defn">conservative</em> forces.</p>
+    <ul data-mark="+">
+        <li>Gravitational and elastic forces are conservative.</li>
+        <li>Most of the other forces above are <em class="Defn">non-conservative</em>; they transform energy between mechanical and non-mechanical forces.</li>
     </ul>
 </section>
 
@@ -118,7 +109,7 @@ Plot.waitForImages(function() {
         Draw energy bar charts for the bottom and top of the ramp, and an energy flow diagram.
     </p>
     <p class="Center" data-mark="+">
-        <canvas data-aspect="1" width="600" height="600" onclick="Work.bar(Work.bar.status+1)"></canvas>
+        <canvas width="680" height="384"></canvas>
     </p>
     <p data-mark="+">An <em class="Defn">energy flow diagram</em> illustrates the energy transformations that have occured...</p>
     <p data-mark="+" class="Center"><img src="img/flow1-0.png" onclick="imageCycle(event, this, 4)" alt="Flow" class="w20"/></p>

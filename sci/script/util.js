@@ -24,7 +24,7 @@ function makeURL(path, search, hash) {
         s += `${encodeURIComponent(k)}=${encodeURIComponent(search[k])}`;
     }
     hash = hash === true ? location.hash : (hash ? "#" + hash : "");
-    return `${path}/${s}${hash}`.replace("//", "/");
+    return `${path}${s}${hash}`.replace("//", "/");
 }
 
 function objectInList(data, key, val) {

@@ -32,11 +32,12 @@ function ex1() {
         [3, 6], {xoff:-1, yoff:1, margin:20});
     sk.text("kNs", "kN·s", {x:5, y:30});
     sk.vectors("p", THICK, BLUE, RED, 0, [0, 27], [-24, 0]);
+    sk.text("θ", "θ", {x:-2, y:5}, BLUE, {font:"italic 32px Oxygen, sans-serif"});
     sk.draw();
 
     sk.onclick = function() {
         let p = this.item("Σp");
-        p.hidden = !p.hidden;
+        this.item("θ").hidden = p.hidden = !p.hidden;
         this.draw();
     };
 }
@@ -142,6 +143,27 @@ function ex3() {
     <p data-mark="+" class="Center">
         <canvas id="cv3" class="Wide" width="512" height="317"></canvas>
     </p>
+    <ul data-mark="+">
+        <li>Draw the two final momentum vectors tip-to-tail.</li>
+        <li data-mark="+">The resultant vector must equal the initial momentum, since momentum must be conserved.</li>
+        <li data-mark="+">You can solve for the missing sides or angles using trigonometry when the vector diagram is a triangle.</li>
+        <li data-mark="+">Since the two known angles add up to 90°, the third angle must be 90°.</li>
+        <li data-mark="+">Since it is a right-angle triangle, you can use \(\sin\) or \(\cos\) to find the missing sides:
+            $$p_A = \mathrm{0.425\ N\cdot s}\times \cos(35.0°) = \mathrm{0.348\ N\cdot s}$$
+            $$p_B = \mathrm{0.425\ N\cdot s}\times \sin(35.0°) = \mathrm{0.244\ N\cdot s}$$
+        </li>
+        <li data-mark="+">Remember to divide the momenta by the masses to get the speeds:
+            $$v_A = \frac{p_A}{m_A} = \mathrm{\frac{0.348\ N\cdot s}{0.170\ kg}} = \mathrm{2.05\ m/s}$$
+            $$v_B = \frac{p_B}{m_B} = \mathrm{\frac{0.244\ N\cdot s}{0.150\ kg}} = \mathrm{1.63\ m/s}$$
+        </li>
+        <li data-mark="+">When the triangle does not have a right angle, you must use the Law of Sines or Law of Cosines.</li>
+        <li data-mark="+">Alternatively, you can write the momentum conservation equation separately for the \(x\)- and \(y\)-components:</li>
+    </ul>
+    <p data-mark="+">$$\Sigma{\vec{\mathbf p}}_x = p_A\cos(35.0°) + p_B\cos(-55.0°)= \mathrm{0.425\ N\cdot s}$$</p>
+    <p data-mark="+">$$\Sigma{\vec{\mathbf p}}_y = p_A\sin(35.0°) + p_B\sin(-55.0°)= \mathrm{0.00\ N\cdot s}$$</p>
+    <ul data-mark="+">
+        <li>This is more difficult to solve because it is a system of two equations with two unknowns.</li>
+    </ul>
 </section>
 
 </article></body>

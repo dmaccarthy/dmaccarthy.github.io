@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Magnetic Force</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/lightning.jpg"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+</head>
+<body>
+
+<article>
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 30</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="Fm" data-last="?"><h3>Magnetic Force</h3>
+<p>Gravitational and electric forces do not depend on the velocities of the test mass or charge.</p>
+<ul data-mark="+">
+    <li>The direction of these forces is simply the direction of the field unless the test charge is negative, in which case the force is directed opposite to the field.</li>
+</li>
+</ul>
+<p data-mark="+">Magnetic forces are more complicated...</p>
+<ul data-mark="+">
+    <li>The direction of the force depends on whether the test charge is positive or negative.</li>
+    <li data-mark="+">It also depends on the direction of the test charge’s velocity.</li>
+</ul>
+<p class="Center" data-mark="+"><img class="w16" src="img/3HR.png" alt="Magnetic Force"/></p>
+<p class="Center" data-mark="=">Directions of \(\vec{\mathbf B}\) and \(\vec{\mathbf F}_m\) with<br/>Electron Flow (\(\vec{\mathbf v}\)) Out of the Page</p>
+</section>
+
+<section id="3" data-last="?"><h3>Third Hand Rule</h3>
+<p class="Center Present">
+    <img class="w16" src="img/3HR.png" alt="Magnetic Force"/>
+</p>
+<p>Use the <em class="Defn">Third Hand Rule</em> to find the directions of the vectors.</p>
+<ul data-mark="+">
+    <li>With your thumb pointed in the direction of the test charge’s velocity, \(\vec{\mathbf v}\), and your fingers extended in the direction of the magnetic field, \(\vec{\mathbf B}\), your palm will be facing the direction of the magnetic force, \(\vec{\mathbf F}_m\).</li> 
+    <li data-mark="+">Use your left hand for negative test charges and your right hand for positive ones.</li>
+    <li data-mark="+">According to this rule, the direction of the magnetic force acting on a test charge will always be perpendicular to both the velocity of the test charge and the magnetic field (i.e. the direction that a compass needle would point.)</li>
+    <li data-mark="+">Test charges at rest experience no magnetic force.</li>
+</ul>
+</section>
+
+<section id="Lor" data-last="?"><h3>Magnetic Force on a Moving Charge</h3>
+<p>Moving test charges experience a magnetic force that increases with the speed of the test charge.
+    $$|\vec{\mathbf F}_m| = qv_\perp |\vec{\mathbf B}|$$</p>
+<ul data-mark="+">
+    <li>Contrast this equation to the simpler ones for gravity and electric forces:
+        $$\vec{\mathbf F}_g = m\vec{\mathbf g} \\
+        \vec{\mathbf F}_e = q\vec{\mathbf E}$$</li>
+    <li data-mark="+">The symbol \(\vec{\mathbf v}_\perp\) means the component of the velocity that is perpendicular to the magnetic field:
+            $$\vec{\mathbf v}_\perp = |\vec{\mathbf v}| \sin\theta$$</li>
+    <li data-mark="+">\(\theta\) is the angle between \(\vec{\mathbf v}\) and \(\vec{\mathbf B}\).</li>
+    <li data-mark="+">The parallel component of the velocity is not relevant to the force because the Third Hand Rule says there is no force when the velocity is parallel to \(\vec{\mathbf B}\)!</li>
+</ul>
+</section>
+
+<section id="Wire" data-last="?"><h3>Magnetic Force on a Wire</h3>
+<p>We often need to know the magnetic force not just on a single test charge, but also on all of the charges moving through a wire.</p>
+<ul>
+    <li>The force for this situation is:
+        $$|\vec{\mathbf F}_m| = IL |\vec{\mathbf B}_\perp|$$</li> 
+    <li data-mark="+">\(I\) is the current flowing through the wire.</li>
+    <li data-mark="+">\(L\) is the length of wire experiencing (the perpendicular component of) the magnetic field.</li>
+</ul>
+</section>
+
+    
+</article></body>
+</html>

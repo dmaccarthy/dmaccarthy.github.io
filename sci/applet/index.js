@@ -21,6 +21,8 @@ let sim20 = [
 let sim30 = [
     {title:"Coulomb’s Experiment", icon:"html5", open:"../applet/coulomb.html"},
     {title:"Millikan’s Oil Drop Experiment", icon:"html5", open:"../applet/oildrop/"},
+    {title:"Double-Slit Interference", icon:"html5", open:"https://www.desmos.com/calculator/2dcav2cmz5"},
+    {title:"Snell’s Law Derivation", icon:"html5", open:"https://www.geogebra.org/m/agnjb9mf"},
+    {title:"Ray Diagrams", icon:"html5", open:"../applet/ray.html"},
     {title:"Thomson’s CRT Experiment", icon:"html5", open:"../applet/thomson.html"},
 ];
-

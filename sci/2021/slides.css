@@ -19,6 +19,7 @@ em.Defn {color:blue; text-decoration:none}
 .w12 {width:12em}
 .w14 {width:14em}
 .w16 {width:16em}
+.w18 {width:18em}
 .w20 {width:20em}
 .w24 {width:24em}
 .w800 {width:800px}
@@ -80,7 +81,7 @@ body:not(.NoPanel) > nav {left:0}
 body.NoPanel > nav {left:101vw}
 body > nav > p.Selected[data-section] {font-weight:bold}
 body:not(.Present) > nav > p[data-section] {cursor:pointer}
-.Wide, body > article img, body > article iframe, body > article canvas {max-width:100%}
+.Wide, body > article img, body > article iframe, body > article canvas {max-width:100%; height:auto}
 
 #Title p:not(.Small):not(.Course) {font-size:125%}
 
@@ -124,4 +125,11 @@ div.Icons button > img {
 
 li div.MathJax_Display {
     margin-left:-1em;
+}
+
+.Scroller {
+    margin:auto;
+    max-width:100%;
+    width:100%;
+    overflow:auto;
 }

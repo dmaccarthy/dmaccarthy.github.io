@@ -9,53 +9,32 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../media/arrow.png"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
 <link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
-<script type="text/javascript" src="../../script/plot.js"></script>
-<script type="text/javascript" src="../../script/plotItems.js"></script>
 <script type="text/javascript" src="../../script/touch.js"></script>
 <script type="text/javascript" src="../../2021/bigMouse.js"></script>
 <script type="text/javascript" src="../../2021/slides.js"></script>
-<!-- <script type="text/javascript" src="../p20.js"></script>
-<script type="text/javascript" src="../../2021/tree.js"></script> -->
-<style type="text/css">
-
-</style>
+<script type="text/javascript" src="../../script/math.js"></script>
+<script type="text/javascript" src="../../script/sketch5.js"></script>
 <script type="text/javascript">
 
-Plot.loadImages({
-    "Eg": "../../media/latex/blue/Eg.png",
-    "Ek": "../../media/latex/blue/Ek.png",
-    "-W": "../../media/latex/red/Wloss.png",
-    "+W": "../../media/latex/red/Wgain.png",
-});
+window.latex_folder = "../../media/latex/";
 
-let NonIso = {status:0, frame:0, rotn:2/7, font:"28px Arial"}
-
-NonIso.bar = function(i) {
-    let p = new Plot($("canvas")[0], [0, 3, 0, 10], [72, 6, 54, 18]);
-    p.items = [
-        new Grid({y:1, gridStyle:["grey", 0.5]}),
-        new Grid({y:2, yLabel:{font:NonIso.font, anchor:RIGHT, offset:-5, format:0}}),
-    ];
-    let data = [[9.81, 0, 0], [0, 6.25, 3.26]][i];
-    p.items.extend(Segments.bars(data));
-    p.items.extend([
-        new Grid({x:1, axisStyle:["black", 2]}),
-        new Text("Energy / J", [-0.25, p.top()], {align:BOTTOMRIGHT, font:NonIso.font, angle:90}),
-    ]);
-    p.items[4].opt.fill = "red";
-    p.barLabels(["Eg", "Ek", i ? "-W" : "+W"], -0.25);
-    NonIso.graphNumber = i;
-    p.draw();
-}
-
-NonIso.toggle = function() {
-    NonIso.bar(1 - NonIso.graphNumber);
-}
-
-Plot.waitForImages(function() {
-    NonIso.bar(0);
+$(function() {
+    Sketch.init(setup, {
+        Ek: latex_folder + "blue/Ek.png",
+        Eg: latex_folder + "blue/Eg.png",
+        W: latex_folder + "red/Wloss.png"
+    });
 })
 
+function setup(imgs) {
+    let labels = [imgs.Eg, imgs.Ek, imgs.W];
+    let sk = new BarGraph("", labels.length, 12, 2, 0.6, [60, 2, 40, 18])
+        .labels(labels, [0, -0.2], 0.75)
+        .values("${y:0f}", [0, 12, 2], [-0.05, 0])
+        .series("TitleY", "Energy / J", -0.875, 6, null, {valign:"bottom", angle:90, fill:"blue"})
+        .animation("Bar", [9.81, 0, 0], [0, 6.25, 3.56], 3);
+    sk.config({fill:"#faa"}, "Bar_2").draw();
+}
 
 </script>
 </head>
@@ -89,7 +68,7 @@ Plot.waitForImages(function() {
         <li>The “missing” 3.56 joules is the energy that leaves the system.</li>
         <li data-mark="+">This energy is the sound and thermal energy produced by the air resistance force.</li>
     </ul>
-    <p class="Center" data-mark="+"><canvas data-aspect="1" width="600" height="600" onclick="NonIso.toggle()"></canvas></p>
+    <p class="Center" data-mark="+"><canvas width="680" height="384"></canvas></p>
     <p data-mark="+">An <em class="Defn">energy flow diagram</em> (also called a Sankey diagram) illustrates the energy transformations.</p>
     <p data-mark="=" class="Center"><img src="img/flow0.png" alt="Flow" class="w16"/></p>
     <ul data-mark="+">
