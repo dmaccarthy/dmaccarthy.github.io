@@ -21,7 +21,7 @@ p.Caption {text-align:center; font-weight:bold}
 p.Next {text-align:center; font-size:75%} 
 
 pre.IO, .Code, code {
-    font-family: "source Code Pro", "Lucida Console", Consolas, monospace;
+    font-family: Consolas, "Source Code Pro", "Lucida Console", monospace;
     font-weight:bold;
 }
 

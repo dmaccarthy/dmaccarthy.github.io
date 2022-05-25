@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Photoelectric Effect</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/xray.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+</head>
+<body>
+
+<article>
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 30</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="pe" data-last="?"><h3>Photoelectric Effect</h3>
+<p>The <em class="Defn">photoelectric effect</em> (discovered by Heinrich Hertz) is the emission of electrons from a metal that has been exposed to EMR.</p>
+<ul data-mark="+">
+    <li>Electrons emitted this way are called <em class="Defn">photoelectrons</em>.</li>
+    <li data-mark="+">There is no difference whatsoever between a photoelectron and any other electron!</li>
+    <li data-mark="+">Interestingly, there is a sharp <em class="Defn">threshold frequency</em> (that depends on the metal), below which the photoelectric effect does not occur.</li>
+    <li data-mark="+">For zinc, EMR below \(1.05 \times 10^{15}\ \mathrm{Hz}\) will not result in the release of photoelectrons, no matter how intense the radiation is.</li>
+    <li data-mark="+">EMR above \(1.05 \times 10^{15}\ \mathrm{Hz}\) will release photoelectrons, even at low intensities (although the number of photoelectrons will be low when the EMR intensity is low.)</li>
+    <li data-mark="+">Maxwell’s wave theory of EMR cannot explain the photoelectric effect.</li>
+    <li data-mark="+">However, the explanation using Einstein’s photon theory is simple: photons below the threshold frequency do not have enough energy to knock an electron out of its orbit.</li>
+    <li data-mark="+">The energy required to free electrons from the least tightly bound orbit is called the <em class="Defn">work function</em>. The work function, \(W\), equals the energy of photons at the threshold frequency, \(f_0\):$$W = hf_0$$</li>
+    <li data-mark="+">If we expose a metal to photons of a frequency <em>higher</em> than the threshold frequency \((f > f_0\)), some of the extra energy may appear as the photoelectron’s kinetic energy.</li>
+    <li data-mark="+">We can use conservation of energy to write a relation:
+        $$hf = E_k^{max} + W$$</li>
+    <li data-mark="+">The kinetic energy may be less that \(E_k^{max}\) if the electron loses some energy through collisions or radiation as it leaves the metal, or if it comes from a lower energy level.</li>
+</ul>
+</section>
+
+<section id="exp" data-last="?"><h3>Millikan’s Experiment</h3>
+<p>This relationship can be tested experimentally, to confirm that the photon energy is \(E=hf\) as predicted by Einstein, and to directly measure Planck’s constant.</p>
+<ul data-mark="+">
+    <li>Robert A. Millikan (who also performed the oil drop experiment) designed an experiment for the photoelectric effect.</li>
+    <li data-mark="+">The <em>frequency</em> of the light source is the manipulated variable.</li>
+    <li data-mark="+">The intensity of the light and the electrode metal (work function, threshhold frequency) are controlled variables.</li>
+    <li data-mark="+">The maximum kinetic energy of the photoelectrons is the responding variable.</li>
+</ul>
+<p class="Center" data-mark="+"><img class="w24" src="img/pe.png" alt="Experiment"/></p>
+<ul data-mark="=">
+    <li>The photoelectrode is connected to a second electrode through an ammeter. When the ammeter indicates a current, we know that photoelectrons are being emitted.</li>
+    <li data-mark="+">A potential difference is applied to <em>repel</em> the photoelectrons. This reduces the current by preventing the slower electrons from reaching the anode.</li>
+    <li data-mark="+">As the voltage is increased, fewer electrons reach the anode.</li>
+    <li data-mark="+">When the current reaches zero, the voltage is strongh enough to repel even the fastest photoelectrons.</li>
+    <li data-mark="+">We can calculate \(E_k^{max}\) from the <em class="Defn">stopping voltage</em>:
+        $$E_k^{max} = qV_{stop}$$</li>
+    <li data-mark="+">Rearranging the energy conservation equation predicts that a graph of \(E_k^{max}\) vs. \(f\) will be linear, with a slope of \(h\), a \(y\)-intercept of \(-W\), and an \(x\)-intercept of \(f_0\):
+        $$E_k^{max} = hf - W = h(f-f_0)$$</li>
+    <li data-mark="+">Millikan’s data showed that this was true, and that the value of Planck’s constant was the same as Planck calculated from the blackbody radiation spectrum!</li>
+    <li data-mark="+">The photoelectric effect confirms that photons exist and have the expected energy:$$E=hf$$</li>
+    <li data-mark="+">If we repeat the experiment with a different electrode, the slope of the graph will remain the same (\(h\)) but the intercepts will change since the work function depends on the metal.</li>
+</ul>
+</section>
+
+<section id="app" data-last="?"><h3>Applications</h3>
+    <p>The photoelectric effect gives us a method for detecting the presence of photons above the threshhold frequency.</p>
+    <p data-mark="+">This has many applications:</p>
+<ul data-mark="+">
+    <li>photovoltaic cells</li>
+    <li data-mark="+">infrared remote controls / detectors</li>
+    <li data-mark="+">remote sensing (elevator doors, robots)</li>
+    <li data-mark="+">smoke detectors</li>
+</ul>
+</section>
+
+<section id="ex1" data-last="?"><h3>Example 1</h3>
+<p class="Blue">The stopping voltage is measured to be 1.02 volts when a photoelectrode is exposed to light at 520 nm. Find the work function and threshhold frequency.</p>
+<p data-mark="+">$$E_k^{max} = qV_{stop} = 1.02\ \mathrm{eV}$$</p>
+<p data-mark="+">$$hf = E_k^{max} + W$$</p>
+<p data-mark="+">$$W = hf - E_k^{max} = \frac{hc}{\lambda} - E_k^{max}$$</p>
+<p data-mark="+">$$W = \mathrm{\frac{(4.14\times 10^{-15}\ eV\cdot s) (3.00\times 10^8\ m/s)}{5.20\times 10^{-7}\ m} - 1.02\ eV}$$</p>
+<p data-mark="+">$$W = \mathrm{2.39\ eV - 1.02\ eV = 1.37\ eV}$$</p>
+<p data-mark="+">$$f_0 = \frac{W}{h} = \mathrm{\frac{1.37\ eV}{4.14\times 10^{-15}\ eV\cdot s} = 3.31\times 10^{14}\ Hz}$$</p>
+<p class="Blue" data-mark="+">If the source was replaced by light with wavelength 410 nm, what would the new stopping voltage become?</p>
+<p data-mark="+">$$E_k^{max} = \frac{hc}{\lambda} - W$$</p>
+<p data-mark="+">$$E_k^{max} = \mathrm{\frac{(4.14\times 10^{-15}\ eV\cdot s) (3.00\times 10^8\ m/s)}{4.10\times 10^{-7}\ m} - 1.37\ eV}$$</p>
+<p data-mark="+">$$E_k^{max} = \mathrm{3.03\ eV - 1.37\ eV = 1.66\ eV}$$</p>
+<p data-mark="+">$$V_{stop} = \frac{E_k^{max}}{q} = \mathrm{1.66\ V}$$</p>
+</section>
+    
+</article></body>
+</html>

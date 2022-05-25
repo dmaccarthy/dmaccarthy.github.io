@@ -327,7 +327,7 @@ class Sketch {  // Animated canvas
 
     // Drawing...
 
-    draw () {  // Draw the current frame
+    draw() {  // Draw the current frame
         let cx = this.cx();
         cx.clearRect(0, 0, ...this.canvasSize());
         let items = [...this.items];
@@ -452,6 +452,14 @@ class Sketch {  // Animated canvas
             if (items[i].key == key) return items[i];
     }
 
+    instOf(cls) {  // Return a list of items of the specified class
+        let match = [], items = this.items;
+        for (let i=0;i<items.length;i++) {
+            if (items[i] instanceof cls) match.push(items[i]);
+        }
+        return match;
+    }
+
     purge() { // Remove all items
         this.items = [];
         return this;
@@ -503,6 +511,32 @@ class Sketch {  // Animated canvas
         return t;
     }
 
+    chevron(key, x, y, px, alpha, theta, ...attr) {
+        // Draw a 'chevron' (angle)
+        let c = cos(theta), s = -sin(theta);
+        let x0 = -px * cos(alpha), y0 = px * sin(alpha);
+        let dx = c * x0 - s * y0, dy = s * x0 + c * y0;
+        let d1 = this.cs_delta(dx, dy);
+        y0 = -y0;
+        dx = c * x0 - s * y0, dy = s * x0 + c * y0;
+        let d2 = this.cs_delta(dx, dy);
+        this.line(key+"a", x, y, x+d1[0], y+d1[1], ...attr);
+        this.line(key+"b", x, y, x+d2[0], y+d2[1], ...attr);
+    }
+
+    ray(key, x1, y1, x2, y2, ...attr) {
+        // Draw a line segment with direction chevron
+        this.line(key, x1, y1, x2, y2, ...attr);
+        let dx = x2 - x1, dy = y2 - y1;
+        let d = this.px_delta(dx, dy);
+        let a = join(...attr);
+        let px = a.chevron ? a.chevron : 10;
+        let alpha = a.alpha ? a.alpha : 30;
+        let p = a.posn ? a.posn : 0.5;
+        a = atan2(-d[1], d[0]);
+        this.chevron(key, x1 + p * dx, y1 + p * dy, px, alpha, a, ...attr);
+    }
+
     gridLines(x, y, attr) {  // Draw a coordinate grid and/or axes
         let n = 0, tmp;
         attr = join({stroke:"lightgrey"}, attr);
@@ -518,6 +552,26 @@ class Sketch {  // Animated canvas
                 this.line(`GridH_${n++}`, x[0], z, x[1], z, attr);
         }
         return this;
+    }
+
+    grid(dx, x0, x1, y0) { // Create a coordinate system for geometry
+        let cv = this.canvas, err;
+        if (y0 == null) y0 = x0;
+        let y1 = y0 + (cv.height - 4) / (cv.width - 4) * (x1 - x0);
+        this.purge().attachCS(x0, x1, y0, null, 2);
+        this.gridLines([x0, x1, dx], [y0, y1, dx]);
+        let axis = {lineWidth:1, stroke:"black"};            
+        try {
+            let xi = this.item(`GridV_${Math.round(-x0 / dx)}`);
+            this.config(axis, xi);
+            this.setIndex(xi, -1);
+        } catch(err) {}
+        try {
+            let yi = this.item(`GridH_${Math.round(-y0 / dx)}`);
+            this.config(axis, yi);
+            this.setIndex(yi, -1);
+        } catch(err) {}
+        return this.draw();
     }
 
     series(key, items, x, y, shift, ...attr) {
@@ -1088,6 +1142,7 @@ class Arrow extends Polygon {
     static _geom(L, T, H, A, shape) {  // www.desmos.com/calculator/kr61ws62tm
         if (!A) A = 35;
         if (!T) T = L / 14;
+        else if (T < 0) T *= -L;
         if (!H) H = 4 * T;
         A *= DEG;
         let c = Math.cos(A), s = Math.sin(A);
@@ -1211,7 +1266,193 @@ class BarGraph extends Sketch {
 }
 
 
+class SciScale {
+
+    constructor(x) {
+        this.set(x ? x : 1);
+    }
+
+    val() {
+        let x = SciScale.values[this.n];
+        if (this.exp) x *= Math.pow(10, this.exp);
+        return x;
+    }
+
+    set(x) {
+        let v = SciScale.values;
+        let e = Math.floor(Math.log10(x));
+        x /= Math.pow(10, e);
+        this.n = 0;
+        if (x > v[v.length-1]) this.exp = e + 1;
+        else {
+            this.exp = e;
+            while (x > v[this.n]) this.n++;
+        }
+        return this;
+    }
+
+    html(p) {
+        if (!p) p = 4;
+        let e = this.exp;
+        let x = SciScale.values[this.n].toPrecision(p);
+        return (e >= p) || (e < -2) ? `${x} × 10<sup>${this.exp}</sup>` : this.val().toPrecision(p);
+    }
+
+    change(big) {
+        let n = SciScale.values.length;
+        this.n += big;
+        if (this.n == n) {
+            this.n = 0;
+            this.exp++;
+        }
+        else if (this.n < 0) {
+            this.n = n - 1;
+            this.exp--;
+        }
+        return this;
+    }
+
+}
+
+SciScale.values = [1, 1.5, 2, 2.5, 3, 4, 5, 7.5];
+
+
 class VectorDiagram extends Sketch {
+
+    constructor(cv) {
+        super(cv);
+        this.scale = new SciScale();
+        this.setGrid(16);
+    }
+
+    vector(key, v, attr) {
+        if (!(v instanceof Vec2d)) v = new Vec2d(v);
+        v = new Vector(v, attr);
+        this.add(key, v);
+        return v;
+    }
+
+    squaresY() {
+        let cv = this.canvas;
+        return this.squares * (cv.height - 4) / (cv.width - 4);
+    }
+
+    setGrid(squares, x0, y0, scale) {
+        this.purge();
+        if (scale) this.scale.set(scale);
+        scale = this.scale.val();
+        let nx = (x0 == null ? -1 : Math.round(x0 / scale));
+        let ny = (y0 == null ? -1 : Math.round(y0 / scale));
+        x0 = nx * scale;
+        y0 = ny * scale;
+        this.squares = squares;
+        this.corner = [x0, y0];
+        this.grid(scale, x0, x0 + this.squares * scale, y0);
+        Vector.style.opt.thickness = 9 / this.unit;
+        return this;
+    }
+
+    rescale(x0, x1, y0, y1) {
+        let nx = this.squares;
+        let ny = this.squaresY();
+        let s = Math.max((x1 - x0) / (nx-2), (y1 - y0) / (ny-2));
+        s = sk.scale.set(s).val() / 2;
+        let x = (x0 + x1) / 2;
+        let y = (y0 + y1) / 2;
+        return this.setGrid(this.squares, x - s * nx, y - s * ny);
+    }
+
+    vpSize() {
+        // Get the size of the viewport (excluding margin) in coordinate system units
+        let s = this.scale.val();
+        let w = s * this.squares;
+        let h = s * this.squaresY();
+        return [w, h];
+    }
+
+    labelAxes(interval, frmt) {
+        interval *= this.scale.val();
+        if (frmt == null) frmt = ["${x:1f}", "${y:1f}"];
+        let c = this.corner;
+        let vp = this.vpSize();
+        let x1 = c[0] + vp[0];
+        let y1 = c[1] + vp[1];
+        let x = interval * Math.ceil(Math.round(c[0] / interval));
+        let y = interval * Math.ceil(Math.round(c[1] / interval));
+        this.series("LabelX", frmt[0], range(x, x1, interval).remove(0), 0, null, {valign:"top"}); //, [0, attr.xoff], vt);
+        this.series("LabelY", frmt[1], 0, range(y, y1, interval).remove(0), null, {align:"right"}); //, [0, attr.xoff], vt);
+        return this;
+    }
+    
+}
+
+
+class Vector extends Graphic {
+
+    constructor(v, attr) {
+        super(attr);
+        this.setVector(v, this.flags);
+    }
+
+    setVector(v, flags, opt) {
+        if (!flags) flags = v.addends ? 5 : 3;
+        this.flags = flags;
+        this.vec2d = v; //.copy();
+        this.x = v.x;
+        this.y = v.y;
+        let arrows = this.arrows = [];
+        if (opt == null) opt = Vector.style.opt;
+        let vs = v.addends;
+        if (vs) for (let i=0;i<vs.length;i++)
+            Vector._vector(arrows, vs[i], flags, opt, false); 
+        Vector._vector(arrows, v, flags, opt, true);
+    }
+
+    static _vector(arrows, v, flags, opt, res) {
+        let s1, s2;
+        if (res) {
+            s1 = Vector.style.res;
+            s2 = Vector.style.xy;
+        }
+        else {
+            flags = (flags & 12) / 4;
+            s1 = Vector.style.add;
+            s2 = Vector.style.add_xy;
+        }
+        if (flags & 2) {
+            let vx = vec([v.x, 0], v.tail)
+            let vy = vec([0, v.y], vx.tip());
+            arrows.push(Vector._arrow(vx, opt, s2));
+            arrows.push(Vector._arrow(vy, opt, s2));
+        }
+        if (flags & 1)
+            arrows.push(Vector._arrow(v, opt, s1));
+    }
+
+    static _arrow(v, opt, attr) {
+        attr = join({update:null}, attr);
+        let a = new Arrow(v.tail, v.tip(), opt, attr);
+        return a;
+    }
+    
+    draw(sk, cx) {
+        let a = this.arrows;
+        for (let i=0;i<a.length;i++) a[i].draw(sk, cx);
+    }
+
+}
+
+Vector.style = {
+    opt: {shape:Arrow.SHARP},
+    res: {fill:"#0000ffc0"},
+    xy: {fill:"#ffff00c0"},
+    add: {fill:"#ff0000c0"},
+    add_xy: {fill:"#00ff00c0"}
+};
+
+
+class VectorDiagram0 extends Sketch {
+/*** Used only in p30\mom\collide2d.html ***/
 
     constructor(cv, l, r, b, t, grid, opt) {
         let attr = {xfmt:"${x}", yfmt:"${y}", xoff:0, yoff:0,

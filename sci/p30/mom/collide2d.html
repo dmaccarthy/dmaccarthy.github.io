@@ -28,7 +28,7 @@ $(function () {
 });
 
 function ex1() {
-    let sk = new VectorDiagram("#cv1", -30, 6, -6, 30,
+    let sk = new VectorDiagram0("#cv1", -30, 6, -6, 30,
         [3, 6], {xoff:-1, yoff:1, margin:20});
     sk.text("kNs", "kN·s", {x:5, y:30});
     sk.vectors("p", THICK, BLUE, RED, 0, [0, 27], [-24, 0]);
@@ -43,7 +43,7 @@ function ex1() {
 }
 
 function ex2() {
-    let sk = new VectorDiagram("#cv2", -30, 6, -6, 30,
+    let sk = new VectorDiagram0("#cv2", -30, 6, -6, 30,
         [3, 6], {xoff:-1, yoff:1, margin:20});
     sk.text("k", "kN·s", {x:5, y:30});
     sk.vectors("p", THICK, BLUE, RED, 0, [0, 27], vec(24, 210));
@@ -65,7 +65,7 @@ function ex2() {
 }
 
 function ex3() {
-    let sk = new VectorDiagram("#cv3", -0.1, 0.5, -0.1, 0.3,
+    let sk = new VectorDiagram0("#cv3", -0.1, 0.5, -0.1, 0.3,
         [0.05, 0.1], {xfmt:"${x:1f}", yfmt:0, xoff:-0.02, yoff:0.02, margin:[20,20,1,1]});
     sk.vectors("p", {thickness:0.01}, BLUE, RED, 0,
         vec(0.425*cos(35), 35), vec(0.425*sin(35), -55));

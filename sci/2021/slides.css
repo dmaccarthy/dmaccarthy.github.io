@@ -22,6 +22,8 @@ em.Defn {color:blue; text-decoration:none}
 .w18 {width:18em}
 .w20 {width:20em}
 .w24 {width:24em}
+.w28 {width:28em}
+.w32 {width:32em}
 .w800 {width:800px}
 h3.SectionTitle {font-size:100%; font-weight:bold}
 
@@ -82,7 +84,8 @@ body.NoPanel > nav {left:101vw}
 body > nav > p.Selected[data-section] {font-weight:bold}
 body:not(.Present) > nav > p[data-section] {cursor:pointer}
 .Wide, body > article img, body > article iframe, body > article canvas {max-width:100%; height:auto}
-
+.SD {aspect-ratio:4/3}
+.HD {aspect-ratio:16/9}
 #Title p:not(.Small):not(.Course) {font-size:125%}
 
 .Caption, .Title {

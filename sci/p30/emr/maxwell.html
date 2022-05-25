@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Electromganetic Waves</title>
+<title>Electromagnetic Waves</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
-<link rel="shortcut icon" type="image/x-icon" href="../../media/lightning.jpg"/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/lightbulb.png"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
 <link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
 <script type="text/javascript" src="../../script/touch.js"></script>
@@ -21,54 +21,101 @@
 <p class="Title"></p>
 </section>
 
-<section id="ac" data-last="?"><h3></h3>
-<p>A.</p>
+<section id="trf" data-last="?"><h3>Transformers</h3>
+<p>A <em class="Defn">transformer</em> is a device similar to a generator, except that we use two coils instead of a ferromagnet and one coil.</p>
 <ul data-mark="+">
-    <li data-mark="+">B.</li>
+    <li>The coil that replaces the ferromagnet is called the <em class="Defn">primary</em> coil and the coil in which the EMF will be produced is called the <em class="Defn">secondary</em> coil.</li>
+    <li data-mark="+">According to Faraday’s Law, an EMF will be induced whenever the magnetic field experienced by the secondary coil (due to the primary coil’s field) changes.</li>
+    <li data-mark="+">This can be done by moving the coils (as in a generator), or by changing the current in the primary coil.</li>
+    <li data-mark="+">In the latter case, neither coil is moving, so there is <b>no source of mechanical energy</b>!</li>
+    <li data-mark="+">The electrical energy gained in the secondary coil is offset by a loss of electrical energy in the primary coil.</li>
+    <li data-mark="+">The benefit of transforming electrical energy from one coil to another is that it allows us to change the voltage.</li>
+    <li data-mark="+">A standard voltage input to the primary coil (e.g. 115 Volts) can be adjusted using a transformer to any output voltage we desire.</li>
+    <li data-mark="+">Because Faraday’s Law requires a changing magnetic field, transformers only work with alternating current, in which the current is varied like a sine function so that it is always changing.</li>
+    <li data-mark="+">A constant amount of current (direct current) will not result in an EMF being produced.</li>
 </ul>
-<p data-mark="+">C.</p>
 </section>
 
+<section id="far" data-last="?"><h3>Faraday’s Law</h3>
+<p>The transformer presents an important conceptual problem...</p>
+<ul data-mark="+">
+    <li>The secondary coil is not in motion, and it initially has no current.</li>
+    <li data-mark="+">Since there is no motion (\(\vec{\mathbf v} = 0\)), there cannot be any magnetic force:
+        $$|\vec{\mathbf F}_m| = qv|\vec{\mathbf B}_\perp|$$</li>
+    <li data-mark="+">How is it possible that an EMF can be induced?</li>
+</ul>
+<p data-mark="+">Faraday realized that when the primary coil’s magnetic field changed (due to changing its current), this somehow created an electric field!</p>
+<ul data-mark="+">
+    <li>An electric field is the only way we know of producing a current in the stationary secondary coil.</li>
+    <li data-mark="+">Faraday’s Law is not merely a recipe for making a working generator, it is a fundamental law of nature...</li>
+    <li data-mark="+">Changing magnetic fields create electric fields.</li>
+</ul>
+</section>
 
-Transformers
-•	A transformer is a device similar to a generator, except that we use two coils instead of a ferromagnet and one coil.  The coil that replaces the ferromagnet is called the primary coil and the coil in which the EMF will be produced is called the secondary coil.
-•	According to Faraday’s Law, an EMF will be induced whenever the magnetic field experienced by the secondary coil (due to the primary coil’s field) changes.  This can be done by moving the coils (as in a generator), or by changing the current in the primary coil.  In the latter case, neither coil is moving, so there is no source of mechanical energy.  The electrical energy gained in the secondary coil is offset by a loss of electrical energy in the primary coil.
-•	The benefit of transforming electrical energy from one coil to another is that it allows us to change the voltage: a standard voltage input to the primary coil (e.g. 115 Volts) can be adjusted using a transformer to any output voltage we desire!
-•	Because Faraday’s Law requires a changing magnetic field, transformers only work with alternating current, in which the current is varied like a sine function so that it is always changing.  A constant amount of current (direct current) will not result in an EMF being produced.
-•	The transformer presents an important conceptual problem.  The secondary coil is not in motion, and it initially has no current.  Since there is no motion, there cannot be any magnetic force (Fm = qvB and v = 0!)  How is it possible that an EMF can be induced?
-•	Faraday realized that when the primary coil’s magnetic field changed (due to changing its current), this somehow created an electric field, which is the only way we know of producing a current in the stationary secondary coil.  Faraday’s Law is not merely a recipe for making a working generator, it is a fundamental law of nature: Changing magnetic fields create electric fields.
-Electromagnetic Waves
-•	James Clerk Maxwell proposed that the reverse of Faraday’s Law might also be true: Changing electric fields create magnetic fields.
-•	If Maxwell’s hypothesis is right, then the changing magnetic field of a transformer’s primary coil (for example) produces an electric field (which is responsible for the current induced in the secondary coil).  This electric field then produces an induced magnetic field, which produces another electric field, which produces another magnetic field, and so on, forever.
-•	The electric and magnetic fields “radiate” away from the transformer like links in a chain, as they generate each other!  This phenomenon is called electro¬magnetic radiation.
-Harmonic EM Wave
- 
-•	Maxwell assembled all of the known equations that describe electric and magnetic fields…
-1.	Coulomb’s Law: Charged objects produce electric fields.
-2.	Ampere’s Law: Electric currents (moving charges) produce magnetic fields.
-3.	Gauss’s Law: Magnetic field lines form loops that have no convergence or divergence points.
-4.	Faraday’s Law: A changing magnetic field will produce an electric field.
-5.	Maxwell’s Law: A changing electric field will produce a magnetic field.
-•	By doing some advanced math with these equations, Maxwell demonstrated that electromagnetic radiation behaved as waves.  Maxwell calculated the speed of the waves from Coulomb’s constant and its magnetic equivalent, Ampere’s constant.  His result for the speed of EM waves was 3.00 × 108 m/s.
-•	As with any wave, EM waves can be characterized by a wavelength and frequency that are related by the equation:
-v = f λ.
-•	The period and the frequency of a wave are reciprocals of each other:
-f = 1T.
-Light behaves like a wave with a speed of 3.00 × 108 m/s!  Scientists of Maxwell’s era did not understand how light waves could travel through empty space.  Maxwell’s theory gives the answer.  Light waves are not waves of matter: they are waves of electric and magnetic fields that do not need a material medium!
-•	Light waves are EM waves that have wavelengths between about 400 and 750 nm.  EM waves exist at shorter and longer wavelengths, but the human eye is unable to detect these wavelengths.
- 
-•	EM waves are classified into the electromagnetic spectrum as illustrated above.  The boundaries between the invisible forms of EMR are roughly spaced by factors of 103.
-Polarization
-•	According to Maxwell’s calculations, the simplest EM wave (just like any other type of wave!) is sine shaped.
-•	A harmonic EM wave consists of an electric field and a magnetic field that vary from point to point in the shape of a sine function.  The two fields have the same wavelength and frequency and are “in phase” (their maximums are in the same places) but are perpendicular to each other.
-•	The wave illustrated above has a vertical electric field and a horizontal magnetic field.  The entire wave is propagating (moving or travelling) to the right, perpendicular to both E and B.  This is called a vertically polarized wave.  (The electric field direction determines the direction of polarization).
-•	A horizontally polarized wave has a horizontal electric field and a vertical magnetic field.
-•	EM waves can also be diagonally or elliptically polarized.  Mathematically, these more complicated polarizations can be thought of as two separate waves (one vertical and one horizontal) added together.
-•	Sunlight is unpolarized: it has equal amounts of both polarizations.
-•	When light is reflected, scattered by the atmosphere, or passed through some types of materials, it becomes polarized because the material absorbs, reflects, or scatters the two polarizations of light differently.
-•	A Polaroid filter selectively absorbs one of the polarizations while allowing the other to pass through.  This is why Polaroid sunglasses are particular effective with reflected light.
+<section id="max" data-last="?"><h3>Maxwell’s Theory</h3>
+<p>James Clerk Maxwell proposed that the reverse of Faraday’s Law might also be true...</p>
+<ul data-mark="+">
+    <li>Changing electric fields create magnetic fields.</li>
+    <li data-mark="+">If Maxwell’s hypothesis is right, then the changing magnetic field of a transformer’s primary coil (for example) produces an electric field (which is responsible for the current induced in the secondary coil).</li>
+    <li data-mark="+">This electric field then produces an induced magnetic field, which produces another electric field, which produces another magnetic field, and so on, forever.</li>
+    <li data-mark="+">The electric and magnetic fields <em class="Defn">radiate</em> away from the transformer like links in a chain, as they generate each other!</li>
+    <li data-mark="+">This phenomenon is called <em class="Defn">electromagnetic radiation</em> (EMR).</li>
+</ul>
+</section>
 
+<section id="wave" data-last="?"><h3>Electromagnetic Waves</h3>
+<p>Maxwell assembled all of the known equations that describe electric and magnetic fields...</p>
+<ol data-mark="+">
+    <li>Coulomb’s Law: Charged objects produce electric fields.</li>
+    <li data-mark="+">Ampere’s Law: Electric currents (moving charges) produce magnetic fields.</li>
+    <li data-mark="+">Gauss’s Law: Magnetic field lines form loops that have no convergence or divergence points.</li>
+    <li data-mark="+">Faraday’s Law: A changing magnetic field will produce an electric field.</li>
+    <li data-mark="+">Maxwell’s Law: A changing electric field will produce a magnetic field.</li> 
+</ol>
+<p data-mark="+">By doing some advanced math with these equations, Maxwell demonstrated that electromagnetic radiation behaved as <em class="Defn">waves</em>.</p>
+<!--p class="Center" data-mark="="><img class="w28" src="img/emwave.png" alt="EM Wave"/></p-->
+<p data-mark="=" class="Center"><iframe class="SD" src="https://www.geogebra.org/geometry/nsbxgjz8?embed" width="640" height="480" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe></p>
+<!--p class="Caption" data-mark="="><a target="Geo" href="https://www.geogebra.org/geometry/nsbxgjz8">Animation</a></p-->
+<ul data-mark="+">
+    <li>The electric and magnetic fields are perpendicular to each other and to the direction of propagation.</li>
+    <li data-mark="+">Maxwell calculated the speed of the waves from Coulomb’s constant and its magnetic equivalent, Ampere’s constant.</li>
+    <li data-mark="+">His result for the speed of EM waves was \(c = 3.00 \times 10^8\ \mathrm{m/s}\).</li>
+    <li data-mark="+">As with any wave, EM waves can be characterized by a <em class="Defn">wavelength</em> and <em class="Defn">frequency</em> that are related by the equation:
+        $$v = f\lambda$$</li>
+    <li data-mark="+">The <em class="Defn">period</em> and the <em class="Defn">frequency</em> of a wave are reciprocals of each other:$$T = \frac{1}{f}$$</li>
+    <li data-mark="+">The <em class="Defn">amplitude</em> of the wave is the maximum electric field at the top of the “crest”.</li>
+</ul>
+</section>
 
-    
+<section id="spec" data-last="?"><h3>EM Spectrum</h3>
+<p><em class="Defn">Light</em> behaves like a wave with a speed of \(c = 3.00 \times 10^8\ \mathrm{m/s}\)!</p>
+<ul data-mark="+">
+    <li>Scientists of Maxwell’s era did not understand how light waves could travel through empty space. Maxwell’s theory gives the answer...</li>  
+    <li data-mark="+">Light waves are not waves of matter: they are waves of electric and magnetic fields that do not need a material medium!</li>
+    <li data-mark="+">Light waves are EM waves that have wavelengths between about 400 and 750 nm.</li>
+    <li data-mark="+">EM waves exist at shorter and longer wavelengths, but the human eye is unable to detect these wavelengths.</li>
+    <li data-mark="+">EM waves are classified into the <em class="Defn">electromagnetic spectrum</em> as illustrated above.  The boundaries between the invisible forms of EMR are roughly spaced by factors of \(10^3\).</li>
+</ul>
+<p class="Center" data-mark="="><img class="w24" src="img/spectrum.png" alt="EM Spectrum"/></p>
+</section>
+
+<section id="polz" data-last="?"><h3>Polarization</h3>
+<p>According to Maxwell’s calculations, the simplest EM wave (just like any other type of wave!) is sine shaped.</p>
+<p class="Center"><img class="w28" src="img/emwave.png" alt="EM Wave"/></p>
+<ul data-mark="+">
+    <li>A harmonic EM wave consists of an electric field and a magnetic field that vary from point to point in the shape of a sine function.</li>
+    <li data-mark="+">The two fields have the same wavelength and frequency and are “in phase” (their maximums are in the same places) but are perpendicular to each other.</li>
+    <li data-mark="+">The entire wave is propagating (moving or travelling) to the right, perpendicular to both \(\vec{\mathbf E}\) and \(\vec{\mathbf B}\).</li>
+    <li data-mark="+" data-mark="+">The wave illustrated above has a vertical electric field and a horizontal magnetic field.</li>
+    <li data-mark="+">This is called a vertically polarized wave. The electric field direction determines the direction of <em class="Defn">polarization</em>.</li>
+    <li data-mark="+">A horizontally polarized wave has a horizontal electric field and a vertical magnetic field.</li>
+    <li data-mark="+">EM waves can also be diagonally or elliptically polarized.</li>
+    <li data-mark="+">Mathematically, these more complicated polarizations can be thought of as two separate waves (one vertical and one horizontal) added together.</li>
+    <li data-mark="+">Sunlight is unpolarized: it has equal amounts of both polarizations.</li>
+    <li data-mark="+">When light is reflected, scattered by the atmosphere, or passed through some types of materials, it becomes polarized because the material absorbs, reflects, or scatters the two polarizations of light differently.</li>
+    <li data-mark="+">A Polaroid filter selectively absorbs one of the polarizations while allowing the other to pass through.  This is why Polaroid sunglasses are particular effective with reflected light.</li>
+</ul>
+</section>
+
 </article></body>
 </html>

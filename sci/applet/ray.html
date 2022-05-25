@@ -2,24 +2,25 @@
 <html lang="en-ca">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="description" content="Ray diagrams for curved mirrors and lenses."/>
 <title>Principle Ray Diagrams</title>
-<link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico"/>
+<link rel="shortcut icon" type="image/png" href="../media/magnet.png" />
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
 <link rel="stylesheet" type="text/css" href="applet.css"/>
 <style type="text/css">
 
 td {
+    width:5em;
     font-size:125%;
-    width:6em;
     border:1px solid black;
 }
 
 td input[type=text] {
-    font-size:110%;
+    font-size:100%;
     text-align:center;
-    width:6em;
+    width:5em;
+    margin:2px;
     border:none;
 }
 
@@ -30,6 +31,11 @@ td input[type=text] {
 
 #Device input {width:1.25em; height:1.25em}
 
+table.Virtual *.di {color:grey}
+table:not(.Virtual) *.di {color:red}
+body {max-width:calc(100vw - 16px)}
+canvas {max-width:calc(100% - 0px)}
+    
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
@@ -38,64 +44,75 @@ td input[type=text] {
 <script type="text/javascript" src="../script/sketch5.js"></script>
 <script type="text/javascript">
 
+let chevron = {posn:0.25};
+
+function left_right(sk) {
+    let r = sk.get_rect();
+    return [r[0], r[0] + r[2]];
+}
+    
 function drawMirror(sk, f, d, di, m) {
+    let lr = left_right(sk);
+    let x0 = lr[0], x1 = lr[1];
     let c = 2 * f;
-    let x = sk.get_rect()[2];
-    sk.line("I1", d, 1, 0, 1, {stroke:"blue"});
-    sk.line("R1", 0, 1, x, 1 - 1/f * x, {stroke:"red"});
-    if (di < 0) sk.line("V1", 0, 1, -x, 1 + 1/f * x, {stroke:"lightgrey"});
+    sk.ray("I1", d, 1, 0, 1, chevron, {stroke:"blue"});
+    sk.ray("R1", 0, 1, x1, 1 - 1/f * x1, chevron, {stroke:"red"});
+    if (di < 0) sk.line("V1", 0, 1, x0, 1 - 1/f * x0, {stroke:"lightgrey"});
     if (d != f) {
         let y = f/(f-d);
-        sk.line("I2", d, 1, 0, y, {stroke:"blue"});
-        sk.line("R2", 0, y, x, y, {stroke:"red"});
-        if (di < 0) sk.line("V2", 0, y, -x, y, {stroke:"lightgrey"});
+        sk.ray("I2", d, 1, 0, y, chevron, {stroke:"blue"});
+        sk.ray("R2", 0, y, x1, y, chevron, {stroke:"red"});
+        if (di < 0) sk.line("V2", 0, y, x0, y, {stroke:"lightgrey"});
     }
     if (d != c) {
         let y = c/(c-d), k = 1 / (d - c);
-        sk.line("I3", d, 1, 0, y, {stroke:"blue"});
-        sk.line("R3", d, 1, x, 1 + k * (x-d), {stroke:"red"});
-        if (di < 0) sk.line("V3", 0, y, -x, y - k * x, {stroke:"lightgrey"});
+        sk.ray("I3", d, 1, 0, y, chevron, {stroke:"blue"});
+        sk.ray("R3", d, 1, x1, 1 + k * (x1-d), chevron, {stroke:"red"});
+        if (di < 0) sk.line("V3", 0, y, x0, y + k * x0, {stroke:"lightgrey"});
     }
 
     let r = 3 / sk.unit;
     sk.circ("Fc", r, {x:f, y:0, fill:"white"});
     sk.circ("Cc", r, {x:2*f, y:0, fill:"white"});
-    r *= 1.5;
+    r = Math.abs(sk.cs_delta(0, 6)[1]);
     sk.text("F", "F", {x:f, y:-r, valign:"top"});
     sk.text("C", "C", {x:2*f, y:-r, valign:"top"});
     r = Math.round(Math.abs(sk.px_delta(0, 1)[1]) / 10);
     r = sk.cs_delta(r, 0)[0];
     sk.polygon("Obj", [[d,1], [d+r,0], [d-r,0]], {fill:"blue"});
     r *= Math.abs(m);
-    sk.polygon("Img", [[di,m], [di+r,0], [di-r,0]], {fill:"red"});
+    sk.polygon("Img", [[di,m], [di+r,0], [di-r,0]],
+        {fill:di < 0 ? "lightgrey" : "red"});
 }
 
 function drawLens(sk, f, d, di, m) {
-    let x = sk.get_rect()[2];
-    sk.line("I1", d, 1, 0, 1, {stroke:"blue"});
-    sk.line("R1", 0, 1, -x, 1 - 1/f * x, {stroke:"red"});
-    if (di < 0) sk.line("V1", 0, 1, x, 1 + 1/f * x, {stroke:"lightgrey"});
+    let lr = left_right(sk);
+    let x0 = lr[0], x1 = lr[1];
+    sk.ray("I1", d, 1, 0, 1, chevron, {stroke:"blue"});
+    sk.ray("R1", 0, 1, x0, 1 + 1/f * x0, chevron, {stroke:"red"});
+    if (di < 0) sk.line("V1", 0, 1, x1, 1 + 1/f * x1, {stroke:"lightgrey"});
     if (d != f) {
         let y = f / (f-d);
-        sk.line("I2", d, 1, 0, y, {stroke:"blue"});
-        sk.line("R2", 0, y, -x, y, {stroke:"red"});
-        if (di < 0) sk.line("V2", 0, y, x, y, {stroke:"lightgrey"});
+        sk.ray("I2", d, 1, 0, y, chevron, {stroke:"blue"});
+        sk.ray("R2", 0, y, x0, y, chevron, {stroke:"red"});
+        if (di < 0) sk.line("V2", 0, y, x1, y, {stroke:"lightgrey"});
     }
-    sk.line("I3", d, 1, 0, 0, {stroke:"blue"});
-    sk.line("R3", 0, 0, -x, -x/d, {stroke:"red"});
-    if (di < 0) sk.line("V3", d, 1, x, x/d, {stroke:"lightgrey"});
+    sk.ray("I3", d, 1, 0, 0, chevron, {stroke:"blue"});
+    sk.ray("R3", 0, 0, x0, x0/d, chevron, {stroke:"red"});
+    if (di < 0) sk.line("V3", d, 1, x1, x1/d, {stroke:"lightgrey"});
 
     let r = 3 / sk.unit;
     sk.circ("F1c", r, {x:f, y:0, fill:"white"});
     sk.circ("F2c", r, {x:-f, y:0, fill:"white"});
-    r *= 1.5;
-    sk.text("F2", "F", {x:f, y:-r, valign:"top"});
-    sk.text("F1", "F’", {x:-f, y:-r, valign:"top"});
+    r = Math.abs(sk.cs_delta(0, 6)[1]);
+    sk.text("F2", "F’", {x:f, y:-r, valign:"top"});
+    sk.text("F1", "F", {x:-f, y:-r, valign:"top"});
     r = Math.round(Math.abs(sk.px_delta(0, 1)[1]) / 10);
     r = sk.cs_delta(r, 0)[0];
     sk.polygon("Obj", [[d,1], [d+r,0], [d-r,0]], {fill:"blue"});
     r *= Math.abs(m);
-    sk.polygon("Img", [[-di,m], [-di+r,0], [-di-r,0]], {fill:"red"});
+    sk.polygon("Img", [[-di,m], [-di+r,0], [-di-r,0]],
+        {fill:di < 0 ? "lightgrey" : "red"});
 }
 
 function draw(f, d, di, m) {
@@ -108,21 +125,24 @@ function draw(f, d, di, m) {
         x0 = Math.min(0, d, 2*f, di);
         x1 = Math.max(d, 2*f, di);
     }
-    let w = x1 - x0;
-    x0 -= (x1 - x0) / 20;
-    x1 += (x1 - x0) / 20;
-    let y = 1.1 * Math.max(1, Math.abs(m));
-
-    let sk = new Sketch("canvas").attachCS(x0, x1, -y, y);
-    sk.gridLines([x0, x1, 1], 0, {stroke:"black"});
-    sk.gridLines(0, [-y, y], {stroke:"black", lineWidth:3});
-    if (lens) drawLens(sk, f, d, di, m);
-    else drawMirror(sk, f, d, di, m);
+    let sk = new Sketch("canvas");
+    if (isFinite(x0) && isFinite(x1)) {
+        let w = x1 - x0;
+        x0 -= (x1 - x0) / 20;
+        x1 += (x1 - x0) / 20;
+        let y = 1.1 * Math.max(1, Math.abs(m));
+    
+        sk.attachCS(x0, x1, -y, y);
+        sk.gridLines([x0, x1, 1], 0, {stroke:"black"});
+        sk.gridLines(0, [-y, y], {stroke:"black", lineWidth:3});
+        if (lens) drawLens(sk, f, d, di, m);
+        else drawMirror(sk, f, d, di, m);
+    
+        let url = {f:f.toPrecision(5), do:d.toPrecision(5)};
+        if (lens) url.lens = 1;
+        history.replaceState({}, "", makeURL("./ray.html", url));        
+    }
     sk.draw();
-
-    let url = {f:f.toPrecision(5), do:d.toPrecision(5)};
-    if (lens) url.lens = 1;
-    history.replaceState({}, "", makeURL("./ray.html", url));
 }
 
 function getValue(id) {
@@ -130,11 +150,20 @@ function getValue(id) {
     return x && !isNaN(x) ? x : null;
 }
 
+function count(val, ...args) {
+    let n= 0;
+    for (let i=0;i<args.length;i++)
+        if (args[i] == val) n++;
+    return n;
+}
+
 function solve() {
     let f = getValue("f");
     let d = getValue("do");
     let di = getValue("di");
     let m = getValue("m");
+    if (f == null)
+        if (count(null, d, di, m) == 2) f = 1.0;
     if (f) {
         if (d) {di = 1/(1/f-1/d); m = -di/d;}
         else if (di) {d = 1/(1/f-1/di); m = -di/d;}
@@ -157,12 +186,15 @@ function solve() {
         $("#do").val(d.toPrecision(4));
         $("#di").val(di.toPrecision(4));
         $("#m").val(m.toPrecision(4));
+        if (di < 0) $("table").addClass("Virtual");
+        else $("table").removeClass("Virtual");
         draw(f, d, di, m);
     }
 }
 
 $(function() {
     let qs = qsArgs();
+    if (qs.embed) $("h1").hide();
     $(qs.lens ? "#Lens" : "#Mirror")[0].checked = true;
     $("#f").val(qs.f ? qs.f : 3);
     $("#do").val(qs.do ? qs.do : 5);
@@ -175,14 +207,23 @@ $(function() {
 <body class="Center">
 <h1>Principle Ray Diagrams
     <img class="Small Icon" src="../media/info.png" alt="Info" onclick="$('#Help').show()"/></h1>
-<p><canvas id="Drawing" width="720" height="320" /></p>
+<p><canvas width="720" height="360" /></p>
 
 <table>
-    <tr><td>\(f\)</td><td class="Blue">\(d_o\)</td><td class="Red">\(d_i\)</td><td>\(m\)</td></tr>
     <tr>
+        <td>\(f\)</td>
         <td><input id="f" type="text"/></td>
+    </tr>
+    <tr>
+        <td class="Blue">\(d_o\)</td>
         <td><input class="Blue"id="do" type="text"/></td>
-        <td><input class="Red" id="di" type="text"/></td>
+    </tr>
+    <tr>
+        <td class="di">\(d_i\)</td>
+        <td><input class="di" id="di" type="text"/></td>
+    </tr>
+    <tr>
+        <td>\(m\)</td>
         <td><input id="m" type="text"/></td>
     </tr>
 </table>
@@ -192,18 +233,16 @@ $(function() {
 </p>
 
 <section id="Help"><ul>
-    <li>Enter two of the four variables and leave the other two blank.
+    <li>Enter two of the four variables and leave the other two blank...
     <ul>
         <li>\(f\) = Focal Length</li>
-        <li>\(d_o\) = Object Position</li>
+        <li>\(d_o\) = Object Position (\(d_o>0\))</li>
         <li>\(d_i\) = Image Position</li>
         <li>\(m\) = Magnification</li>
     </ul>
     </li>
-    <li>Click the diagram to solve and redraw. If the page does not respond, the data entered does not have a valid solution.</li>
-    <li>The blue triangle is the object and the blue rays are incident rays.</li>
-    <li>The red triangle is the image and the red rays are reflected / refracted rays.</li>
-    <li>The grey lines are the virtual reflected / refracted rays.</li>
+    <li>Click the ray diagram to solve and redraw. If the page does not respond, the data entered does not have a valid solution.</li>
+    <li>The image is drawn in red if it is real, or grey if it is virtual.</li>
 </ul>
 <p>© 2022 by <a href="mailto:david.maccarthy@eips.ca" target="_">D.G. MacCarthy</a></p>
 <p><button onclick="$('#Help').hide()">Close</button></p></section>

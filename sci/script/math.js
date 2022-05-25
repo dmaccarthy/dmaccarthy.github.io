@@ -30,19 +30,15 @@ function log(x, b) {
     return b ? x / Math.log(b) : x;
 }
 
-function polar(x, y) {
-    if (y == null) {y = x[1]; x = x[0]}
-    let a = atan2(y, x);
-    return [root(x*x + y*y), a < 0 ? a + 360 : a];
-}
+/*** Deprecated but used in...
+
+sketch5.js
+p30\mom\collide2d.html
+p30\mom\vec.html
+
+***/
 
 function vec(r, a) {return [r * cos(a), r * sin(a)]}
-
-function neg(x) {
-    let n = [];
-    for (let i in x) n.push(-x[i]);
-    return n;
-}
 
 function vsum(...v) {
     let n = v[0].length;
@@ -51,6 +47,20 @@ function vsum(...v) {
         for (let j=0;j<n;j++) s[j] += v[i][j];
     }
     return s;
+}
+
+/*** Deprecated and unused...
+
+function polar(x, y) {
+    if (y == null) {y = x[1]; x = x[0]}
+    let a = atan2(y, x);
+    return [root(x*x + y*y), a < 0 ? a + 360 : a];
+}
+
+function neg(x) {
+    let n = [];
+    for (let i in x) n.push(-x[i]);
+    return n;
 }
 
 function dot(a, b) {
@@ -63,6 +73,9 @@ function dot(a, b) {
 function cross(a, b) { // 2D cross product
     return a[0] * b[1] - a[1] * b[0];
 }
+
+***/
+
 
 function _SSS(a, b, c) {
     // Calculate angle C from sides a, b, c

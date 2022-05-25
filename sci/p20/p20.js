@@ -1,18 +1,18 @@
 let wave = [
     // {title:"Assignment Booklet", gdrv:"1NC0Pk5VyhNKR8sGuTNhgHNQpG5ZiJyv9"},
-    {title:"Harmonic Waves", icon:1, menu:[
+    {title:"Harmonic Waves", id:"harm", icon:1, menu:[
         {title:"Lesson Notes", open:"wave/harm.html"},
         {title:"Practice Solutions", gdoc:"1xb381kGFZ0uQ3VJtC6x-fDlataT-SNVG73jFTrMFFyA"},
     ]},
-    {title:"Doppler Effect", icon:1, menu:[
+    {title:"Doppler Effect", id:"dopp", icon:1, menu:[
         {title:"Lesson Notes", open:"wave/doppler.html"},
         {title:"Practice Solutions", gdoc:"1d31LStNsYOG7lU91dspgapqsm3JeiEoEFzDrINMc9-Q"},
     ]},
-    {title:"Interference & Beats", icon:1, menu:[
+    {title:"Interference & Beats", id:"beat", icon:1, menu:[
         {title:"Lesson Notes", open:"wave/beat.html"},
         {title:"Practice Solutions", gdoc:"1tXxsgei7m80MUqUWvWXrTgxBhfrmgJBRW7iB21AD6SM"},
     ]},
-    {title:"Standing Waves", icon:1, menu:[
+    {title:"Standing Waves", id:"stand", icon:1, menu:[
         {title:"Standing Waves Animation", icon:"html5", open:"../applet/stWave.html"},
         {title:"Lesson Notes", open:"wave/stand.html"},
         {title:"Practice Solutions", gdoc:"1Nz98VKhZjecAm001MC1ImzppsVQHnJoT9V2M7_Q-kak"},
@@ -22,29 +22,29 @@ let wave = [
 
 let shm = [
     // {title:"Assignment Booklet", gdrv:"1epM1sYOHlUXxbMQ3DODu-J3aj_JYQ0YA"},
-    {title:"Equilibrium & Oscillations", icon:1, menu:[
+    {title:"Equilibrium & Oscillations", id:"eqm", icon:1, menu:[
         {title:"Pendulum Video", icon:"video", gdrv:"1EaP7bhyrze7XRIu52sILu5ErM5qhM7b0"},
-        {title:"Pendulum Motion Data", icon:"gdrv", open:"https://docs.google.com/spreadsheets/d/1nmwJnNxtU4Bn4u9thB75AOvNSB9_sb08TjivGVcUHdQ"},
+        // {title:"Pendulum Motion Data", icon:"gdrv", open:"https://docs.google.com/spreadsheets/d/1nmwJnNxtU4Bn4u9thB75AOvNSB9_sb08TjivGVcUHdQ"},
         {title:"Lesson Notes", open:"shm/eqm.html"},
         {title:"Practice Solutions", gdoc:"1hYFX1MvbaVO8K-psaF189gWVsRHPRSIw_FUXNYLTRN4"},
     ]},
-    {title:"Simple Harmonic Motion", icon:1, menu:[
+    {title:"Simple Harmonic Motion", id:"shm_eq", icon:1, menu:[
         {title:"Lesson Notes", open:"shm/shm.html"},
         {title:"Practice Solutions", gdoc:"1rioTx98SvQHei_l4f8jXOQwxPKtS17-fUKBDLDLD_z4"},
     ]},
-    {title:"Period of SHM", icon:1, menu:[
+    {title:"Period of SHM", id:"shm_T", icon:1, menu:[
         {title:"Lesson Notes", open:"shm/period.html"},
         {title:"Practice Solutions", gdoc:"1o5KvYsGQOVMT10Ce0e5fB9U2p8_VlyH3mdSeh0qW7Q4"},
     ]},
-    {title:"Energy of SHM", icon:1, menu:[
+    {title:"Energy of SHM", id:"shm_E", icon:1, menu:[
         {title:"Lesson Notes", open:"shm/energy.html"},
         {title:"Practice Solutions", gdoc:"1lKmGWUFPgX6N19YKXzMrpxdo4ebAs8v88Y1r9BLiFfI"},
     ]},
-    {title:"Simple Pendulum", icon:1, menu:[
+    {title:"Simple Pendulum", id:"pend", icon:1, menu:[
         {title:"Lesson Notes", open:"shm/pend.html"},
         {title:"Practice Solutions", gdoc:"1l0OopFOETXE5pU4MpsPThlSV74FVj5BxEV_EC3Y90Xo"},
     ]},
-    {title:"Mechanical Resonance", icon:1, vid:"#PLpVmtCaB-lymgmGIEvph0whN7Fh1WA2SA", menu:[
+    {title:"Mechanical Resonance", id:"res", icon:1, vid:"#PLpVmtCaB-lymgmGIEvph0whN7Fh1WA2SA", menu:[
         {title:"Lesson Notes", open:"shm/res.html"},
     ]},
     {title:"Chapter Review", icon:"lesson", id:"ch7", ajax:"shm/summary.htm", menu:[]},
@@ -60,17 +60,17 @@ let grav = [
         {title:"Lesson Notes", open:"grav/cav.html"},
         {title:"Practice Solutions", gdoc:"1g8p4H2J2U6wDXiKpyxsu1r3SUObrI0P1EHmMN9VfbPE"},
     ]},
-    {title:"Visualizing Gravity", icon:1, menu:[
+    {title:"Visualizing Gravity", id:"gvis", icon:1, menu:[
         {title:"Field Visualization (Falstad)", icon:"html5", open:"https://falstad.com/vector2de/vector2de.html?f=InverseSquaredRadial&fc=Floor%3A%20field%20magnitude&fl=Overlay%3A%20equipotentials&d=partsvel&m=Mouse%20%3D%20Adjust%20Angle&st=1&pc=500&hs=40&ft=true&rx=63&ry=0&rz=0&zm=1.2"},
         // {title:"Field Visualization (Falstad)", icon:"html5", open:"https://falstad.com/vector2de/vector2de.html"},
         {title:"Field Visualization (PhET)", icon:"html5", open:"https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields_en.html"},
         {title:"Field Visualization (Desmos)", icon:"desmos", open:"https://www.desmos.com/calculator/br0ig8pci1"},
     ]},
-    {title:"Gravitational Field", icon:1, vid:"MTY1Kje0yLg", menu:[
+    {title:"Gravitational Field", id:"g", icon:1, vid:"MTY1Kje0yLg", menu:[
         {title:"Lesson Notes", open:"grav/field.html"},
         {title:"Practice Solutions", gdoc:"1ha6uk0RSF4bZKS_Q5CjW-4LlNtbGDihVfGdcGW-4YTA"},
     ]},
-    {title:"Circular Orbital Motion", icon:1, menu:[
+    {title:"Circular Orbital Motion", id:"orbit", icon:1, menu:[
         {title:"Lesson Notes", open:"grav/orbit.html"},
         {title:"Practice Solutions", gdoc:"1XxYSCqIJbKH016exfXOBS1yb-jTPia_UOcqxQfO1dwM"},
     ]},
@@ -95,19 +95,19 @@ let data = [
 
 let circ = [
     // {title:"Assignment Booklet", gdrv:"1wmnIhIc2yAJFbkAeUi5XUe3ijVRjXi6j"},
-    {title:"Uniform Circular Motion", icon:1, menu:[
+    {title:"Uniform Circular Motion", id:"ucm", icon:1, menu:[
         {title:"Lesson Notes", open:"circ/ucm.html"},
         {title:"Practice Solutions", gdoc:"1EC7Lao0wjSZNWTopkRewQ_FCvGUeE_dFdyLeNtUNnTI"},
     ]},
-    {title:"Centripetal Acceleration", icon:1, menu:[
+    {title:"Centripetal Acceleration", id:"ac", icon:1, menu:[
         {title:"Lesson Notes", open:"circ/ac.html"},
         {title:"Practice Solutions", gdoc:"1N9tQLEzRIabBf_Bs6p2ZYHnV_FKh5pTX4bKdHsTTfys"},
     ]},
-    {title:"Apparent Weight", icon:1, menu:[
+    {title:"Apparent Weight", id:"appWt", icon:1, menu:[
         {title:"Lesson Notes", open:"circ/appWt.html"},
         {title:"Practice Solutions", gdoc:"1tI4TBQUCDj-xNb97iy9EUIVc2SuUbmeDHg0xFbS6GQ0"},
     ]},
-    {title:"Planetary Motion (Kepler’s Laws)", icon:1, vid:"1E3vlf-Esqk", menu:[
+    {title:"Planetary Motion (Kepler’s Laws)", id:"kepler", icon:1, vid:"1E3vlf-Esqk", menu:[
         {title:"Planetary Data", icon:"link", open:"https://nssdc.gsfc.nasa.gov/planetary/factsheet/"},
         {title:"Heliocentric Animation", icon:"html5", open:"../applet/helio.html"},
         {title:"Lesson Notes", open:"circ/kepler.html"},
@@ -222,24 +222,24 @@ let kin1d = [
 ];
 
 let vec2d = [
-    {title:"2D Vectors Applet", icon:"html5", open:"https://applets.davidmaccarthy.repl.co/vec2dnew"},
-    {title:"Magnitude & Direction", icon:1, menu:[
+    {title:"2D Vectors Applet", icon:"html5", open:"../applet/vec.html"},
+    {title:"Magnitude & Direction", id:"mag", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/mag.html"},
         {title:"Practice Solutions", gdoc:"14vQp9XvGS1yPjDoLDfFNE2u5MAnIqKgcXTgIAwVCRQQ"},
     ]},
-    {title:"Polar & Cartesian Form", icon:1, menu:[
+    {title:"Polar & Cartesian Form", id:"polar", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/polar.html"},
         {title:"Practice Solutions", gdoc:"14-CgdDFUiCwpJfPlghKpw1iMRfC8J3NJBwrNP20fois"},
     ]},
-    {title:"Vector Arithmetic", icon:1, menu:[
+    {title:"Vector Arithmetic", id:"arith", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/arith.html"},
         {title:"Practice Solutions", gdoc:"1960E_v1vFacD-7sbtFqrE3Xzqjr32rO4H435r4aT3WM"},
     ]},
-    {title:"Projectile Motion", icon:1, menu:[
+    {title:"Projectile Motion", id:"proj", icon:1, menu:[
         {title:"Lesson Notes", open:"vec/proj.html"},
         {title:"Practice Solutions", gdoc:"14uVxnRHjWAdOALpevl9sJq1ZgGIU9Hw82uaAilHrFF4"},
     ]},
-    {title:"Dynamics in 2D", icon:1, menu:[
+    {title:"Dynamics in 2D", id:"dyn2d", icon:1, menu:[
         {title:"Examples", open:"vec/dyn2d.html"},
         {title:"Practice Solutions", unavail:0, gdoc:"1cPXcnazyRT1zQ9xmbCXz7gkMr6YHswAZT1lvA1bsU_w"},
     ]},

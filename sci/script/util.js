@@ -1,4 +1,17 @@
-Array.prototype.extend = function(a) {this.push.apply(this, a)}
+Array.prototype.extend = function(a) {
+    this.push.apply(this, a);
+    return this;
+}
+
+Array.prototype.remove = function(val, removeAll) {
+    let loop = true;
+    while (loop) {
+        let i = this.indexOf(val);
+        if (i >= 0) this.splice(i, 1);
+        if ((i == -1) || (!removeAll)) loop = false;
+    }
+    return this;
+}
 
 function qsArgs(key, str) {
     if (str == null) str = location.search;

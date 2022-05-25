@@ -1,4 +1,3 @@
-
 body {
     font-family:Oxygen;
     font-size:125%;
@@ -79,4 +78,14 @@ img.Icon {
 table.Auto {
     margin:auto;
     border-collapse:collapse;
+}
+
+table.Auto.TD td, table.Auto.TD th {
+    border:1px solid black;
+    text-align:center;
+    padding:4px;
+}
+
+li div.MathJax_Display {
+    margin-left:-1em;
 }

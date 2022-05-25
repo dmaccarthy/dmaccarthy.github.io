@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>2D Vectors</title>
+<link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400"/>
+<link rel="stylesheet" href="applet.css"/>
+<style type="text/css">
+
+#Big {font-size:120%}
+input[type=text] {
+    width:600px;
+    max-width:98%;
+    font-size:120%;
+}
+
+table {
+    width:600px;
+    background-color:#ffc0c0; 
+}
+    
+th, td {
+    width:25%;
+    padding:3px;
+    text-align:center;
+    border:1px solid black;
+}
+
+th, tr.Resultant td {background-color:#c0c0ff}
+tr.Resultant td {font-weight:bold}
+    
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<script type="text/javascript" src="../script/util.js"></script>
+<script type="text/javascript" src="../script/math.js"></script>
+<script type="text/javascript" src="../script/vec2d.js"></script>
+<script type="text/javascript" src="../script/sketch5.js"></script>
+<script type="text/javascript">
+
+class VectorDiagram extends Sketch {
+
+    constructor(cv) {
+        super(cv);
+        this.vectorStyle = {
+            opt: {shape:Arrow.SHARP},
+            res: {fill:"#0000ffc0"},
+            xy: {fill:"#ffff00c0"},
+            add: {fill:"#ff0000c0"},
+            add_xy: {fill:"#00ff00c0"}
+        };
+        this.scale = new SciScale();
+        this.setGrid(16);
+        this.vectorList = [];
+    }
+
+    squaresY() {
+        let cv = this.canvas;
+        return this.squares * (cv.height - 4) / (cv.width - 4);
+    }
+
+    setGrid(squares, x0, y0, scale) {
+        if (scale) this.scale.set(scale);
+        scale = this.scale.val();
+        let nx = (x0 == null ? -1 : Math.round(x0 / scale));
+        let ny = (y0 == null ? -1 : Math.round(y0 / scale));
+        x0 = nx * scale;
+        y0 = ny * scale;
+        this.squares = squares;
+        this.corner = [x0, y0];
+        return this;
+    }
+
+    redraw() {
+        this._draw_grid();
+        this.vectorStyle.opt.thickness = 9 / this.unit;
+        if (this.label) this.labelAxes();
+        let vs = this.vectorList;
+        for (let i=0;i<vs.length;i++) {
+            let v = vs[i];
+            this._draw_vector(...v);
+        }
+        this.draw();        
+    }
+    
+    _draw_grid() {
+        let c = this.corner;
+        let x0 = c[0];
+        let s = this.scale.val();
+        this.grid(s, x0, x0 + this.squares * s, c[1]);
+    }
+
+    _draw_vector(v, flags, style, label) {
+        if (label == null) {
+            let i = 0;
+            while (sk.item(`Vec2d${i}`)) i++;
+            label = `Vec2d${i}`;
+        }
+        let tip = v.tip();
+        let vs = v.addends;
+        v.sk_label = label;
+        if (!flags) flags = vs ? 5 : 3;
+        if (style == null) style = this.vectorStyle;
+        if (flags & 2) {
+            let p = [tip[0], v.tail[1]];
+            this.arrow(`${label}_x`, v.tail, p, style.opt, style.xy);
+            this.arrow(`${label}_y`, p, tip, style.opt, style.xy);
+        }
+        if (vs && (flags & 12)) {
+            let s = {opt:style.opt, res:style.add, xy:style.add_xy}
+            for (let i=0;i<vs.length;i++)
+                this._draw_vector(vs[i], Math.floor(flags / 4), s, `${label}${i}`);
+        }
+        if (flags & 1) this.arrow(label, v.tail, tip, style.opt, style.res);
+        return this;
+    }
+
+    autoScale(lims) {
+        if (lims instanceof Vec2d) lims = lims.limits();
+        let nx = this.squares;
+        let ny = this.squaresY();
+        let s = Math.max((lims[1] - lims[0]) / (nx-2), (lims[3] - lims[2]) / (ny-2));
+        s = sk.scale.set(s).val() / 2;
+        let x = (lims[0] + lims[1] ) / 2;
+        let y = (lims[2] + lims[3] ) / 2;
+        return this.setGrid(this.squares, x - s * nx, y - s * ny);
+    }
+
+    vpSize() {
+        // Get the size of the viewport (excluding margin) in coordinate system units
+        let s = this.scale.val();
+        let w = s * this.squares;
+        let h = s * this.squaresY();
+        return [w, h];
+    }
+
+    labelAxes() {
+        let info = this.label;
+        let int = info.interval * this.scale.val();
+        let frmt = info.frmt ? info.frmt : ["${x:1f}", "${y:1f}"];
+        let c = this.corner;
+        let vp = this.vpSize();
+        let x1 = c[0] + vp[0];
+        let y1 = c[1] + vp[1];
+        let x = int * Math.ceil(Math.round(c[0] / int));
+        let y = int * Math.ceil(Math.round(c[1] / int));
+        this.series("LabelX", frmt[0], range(x, x1, int).remove(0), 0, null, {valign:"top"}); //, [0, attr.xoff], vt);
+        this.series("LabelY", frmt[1], 0, range(y, y1, int).remove(0), null, {align:"right"}); //, [0, attr.xoff], vt);
+    }
+
+}
+
+    
+let sk, symbol = "v";
+
+function setup() {
+    let qs = qsArgs();
+    if (qs.symbol) symbol = qs.symbol;
+    sk = new VectorDiagram();
+    $(sk.canvas).on("wheel", zoom).on("click", shiftGrid)
+        .on("mousemove", showCoords);
+    if (qs.v) {
+        $("#Input").val(qs.v.replace(/\+/g, " + "));
+        run();
+    }
+    else zoom();
+}
+
+function showScale() {
+    $("#Scale").html(sk.scale.html(2));
+}
+
+function zoom(ev) {
+    $(sk.canvas).attr({title:""});
+    let s = sk.scale;
+    let s0 = s.val();
+    if (ev) {
+        if (!ev.shiftKey) return;
+        s.change(ev.originalEvent.deltaY > 0 ? 1 : -1);
+        ev.preventDefault();
+    }
+    showScale();
+    s = s.val();
+    let c = sk.corner;
+    let x0 = c[0] * s / s0;
+    let y0 = c[1] * s / s0;
+    sk.setGrid(sk.squares, x0, y0).redraw();
+}
+  
+function shiftGrid(ev) {
+    if (ev.originalEvent.shiftKey) {
+        $(sk.canvas).attr({title:""});
+        let s = prompt("Enter coordinates of lower left corner...", "0, 0");
+        if (s) {
+            s = s.split(",");
+            let n = s.length;
+            for (let i=0;i<n;i++) s[i] = parseFloat(s[i]);
+            sk.setGrid(sk.squares, s[0], s[1]).redraw();
+        }        
+    }
+}
+
+function showCoords(ev) {
+    let x = sk.mousePos.x.toPrecision(3);
+    let y = sk.mousePos.y.toPrecision(3);
+    $(sk.canvas).attr({title:`${x}, ${y}`});
+}
+
+function tableRow(v) {
+    let tr = $("<tr>");
+    tr.append($("<td>").html(v.x.toPrecision(4)));
+    tr.append($("<td>").html(v.y.toPrecision(4)));
+    let p = v.polar();
+    tr.append($("<td>").html(p.mag.toPrecision(4)));
+    tr.append($("<td>").html(p.dir.toPrecision(4)));
+    return tr;
+}
+
+function drawTable(v) {
+    $("#Table").remove();
+    let tbl = $("<table>").attr({id:"Table"});
+    let tr = $("<tr>").appendTo(tbl);
+    let s = symbol.indexOf("\\vec") == -1 ? `\\vec{\\mathbf{${symbol}}}`: symbol;
+    let th = [`\\(${s}_x\\)`, `\\(${s}_y\\)`, `\\(|${s}|\\)`, "\\(\\theta\\)"];
+    for (let i=0;i<4;i++) tr.append($("<th>").html(th[i]));
+    let a = v.addends;
+    if (a) for (let i=0;i<a.length;i++) tbl.append(tableRow(a[i]));
+    tbl.append(tableRow(v).addClass("Resultant"));
+    $("#Big").append(tbl);
+    let err;
+    try {MathJax.Hub.Typeset()} catch(err) {};
+}
+
+function run(e, ev) {
+    e = $(e ? e : "#Input");
+    if (ev == null) ev = {key: "Enter"}
+    let up = ev.key == "ArrowUp" ? 1 : (ev.key == "ArrowDown" ? -1 : 0);
+    if (ev.key == "Enter") {
+        let txt = e.val();
+        let v = vec(txt); // .replace(/[\)\()]/g, "")
+        drawTable(v);
+        sk.vectorList = [[v, null, null]];
+        sk.autoScale(v).redraw();
+        showScale();
+        e.val("");
+        if (txt != run.history[0]) run.history.splice(0, 0, txt);
+        delete run.n;
+        let p = "v=" + encodeURIComponent(txt.replace(/\s/g, ""));
+        if (symbol != "v") p += "&symbol=" + encodeURIComponent(symbol);
+        history.replaceState({}, "", `${location.pathname}?${p}`);
+    }
+    else if (up) {
+        let n = run.history.length;
+        if (run.n == null) run.n = up ? 0 : -1;
+        else run.n += up;
+        if (run.n == n) run.n = 0;
+        else if (run.n < 0) run.n = n - 1;
+        e.val(run.history[run.n]);
+    }
+}
+
+run.history = [];
+
+function drag() {
+    if (this.dragging()) {
+        this.drag();
+        sk.setIndex(this, -1);
+        this.sketch.draw();        
+    }
+}
+
+function custom(f) {
+    sk.vectorList[0][1] = f;
+    sk.redraw();
+    sk.config({onmousemove:drag}, ...sk.instOf(Arrow));
+}
+
+console.log(`v1 = vec("7@45 + 6@-35", [1,1]);
+v2 = vec(5, 105);
+v3 = vec([2,-1]);
+v = vsum(v1, v2, v3.neg()).draw(sk);
+
+sk.label = {interval:2 , frmt:["\${x:1f}", "\${y:1f}"]};
+
+custom(f) // 1=Resultant, 2=Components, 4=Addends, 8=Addend Components;
+
+`);
+
+$(setup);
+
+</script>
+</head>
+<body class="Center"><h1>2D Vectors
+    <img class="Small Icon" src="../media/info.png" alt="Info" onclick="$('#Help').show()"/></h1>
+<div id="Big">
+    <p class="Center">
+        <input id="Input" type="text" onkeydown="run(this, event)"
+            placeholder="Enter a 2D vector expression"/>
+    </p>
+    <p class="Center"><canvas width="600" height="600"></canvas><br/>
+        1 square = <span id="Scale"></span> units</p>
+</div>
+
+<section id="Help">
+<ul>
+    <li>In the input area, type the components of a vector separated by commas and then press <em>Enter</em> to draw: <b class="Code">3, 4</b> or <b class="Code">(3, 4)</b>.</li>
+    <li>To enter a vector in polar form, enter the magnitude and then the direction in degrees separated by an ‘@’ symbol: <b class="Code">5 @ 135</b></li>
+    <li>To add two or more vectors, type the vectors in component or polar form separated by ampersands: <b class="Code">5 @ 135 + (0, -6) + (5, 2)</b></li>
+    <li>Select the input area and use the up and down arrows to cycle through previous drawings.</li>
+    <li>With the mouse pointer in the drawing canvas, you can Shift+Scroll to zoom in or out and Shift+Click to re-centre the drawing.</li>
+</ul>
+<p>© 2022 by <a href="mailto:david.maccarthy@eips.ca" target="_">D.G. MacCarthy</a></p>
+<p><button onclick="$('#Help').hide()">Close</button></p></section>
+</body>
+</html>

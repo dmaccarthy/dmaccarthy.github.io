@@ -51,9 +51,10 @@ function move_q2(e) {
     // Drag the blue charge to a new position
     if (this.dragging()) {
         let xy = this.sketch.mousePos;
-        let a = polar(xy.x, xy.y)[1];
-        this.x = R * cos(a);
-        this.y = R * sin(a);
+        // let a = polar -- (xy.x, xy.y)[1];
+        let a = Math.atan2(xy.y, xy.x);
+        this.x = R * Math.cos(a);
+        this.y = R * Math.sin(a);
     }
 }
 

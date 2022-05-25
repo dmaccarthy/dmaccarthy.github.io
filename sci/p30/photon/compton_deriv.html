@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Compton Effect</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/xray.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+</head>
+<body>
+
+<article>
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 30</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="ph" data-last="?"><h3>Derivation</h3>
+<p>The relativistic relation between energy and momentum is:
+ $$E^2 = (mc^2)^2 + (cp)^2$$</p>
+<p>For particles with no mass (i.e. photons), this simplifies to:$$E=cp$$</p>
+<p>For particles that do have mass, the entire equation must be used when in motion, but at rest (\(p=0\)) it simplifies to:$$E = mc^2$$</p>
+<p>For the collision between the photon and the electron at rest, energy conservation states:
+    $$cp_i + mc^2 = cp_s + \left((mc^2)^2 + (cp_e)^2\right)^\frac{1}{2}$$
+    $$c(p_i - p_s) + mc^2 = \left((mc^2)^2 + (cp_e)^2\right)^\frac{1}{2}$$
+</p>
+<p>Divide both sides by \(c\) and then square both sides:
+    $$(p_i - p_s) + mc = \left((mc)^2 + p_e^2\right)^\frac{1}{2}$$
+    $$(p_i - p_s)^2 + 2mc(p_i - p_s) + (mc)^2 = (mc)^2 + p_e^2$$
+</p>
+<p>Cancel the \((mc)^2\):
+    $$(p_i - p_s)^2 + 2mc(p_i - p_s) = p_e^2$$
+</p>
+<p>Momentum conservation is described by writing the Law of Cosines for the vector diagram:
+    $$p_e^2 = p_i^2 + p_s^2 - 2p_i p_s\cos\theta$$
+</p>
+<p>Combining equations gives:
+    $$(p_i - p_s)^2 + 2mc(p_i - p_s) = p_i^2 + p_s^2 - 2p_i p_s\cos\theta$$
+    $$(p_i^2 - 2p_i p_s + p_s^2) + 2mc(p_i - p_s) = p_i^2 + p_s^2 - 2p_i p_s\cos\theta$$
+</p>
+<p>Cancel and collect like terms:
+    $$-2p_i p_s + 2mc(p_i - p_s) = -2p_i p_s\cos\theta$$
+    $$p_i p_s - mc(p_i - p_s) = p_i p_s\cos\theta$$
+    $$p_i p_s (1 - \cos\theta) = mc(p_i - p_s)$$
+</p>
+<p>Replace the photon momenta by the wavelength using:
+    $$E = cp = \frac{hc}{\lambda}$$
+    $$p = \frac{h}{\lambda}$$
+    $$\frac{h^2}{\lambda_i \lambda_s} (1 - \cos\theta) = mc(\frac{h}{\lambda_i} - \frac{h}{\lambda_s})$$
+</p>
+<p>Multiply by \(\lambda_i \lambda_s\):
+    $$h^2 (1 - \cos\theta) = hmc(\lambda_s - \lambda_i)$$
+    $$h (1 - \cos\theta) = mc(\lambda_s - \lambda_i)$$
+    $$\frac{h}{mc} (1 - \cos\theta) = \lambda_s - \lambda_i$$
+</p>
+</section>
+
+</article></body>
+</html>

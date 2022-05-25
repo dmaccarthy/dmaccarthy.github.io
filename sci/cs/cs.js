@@ -20,8 +20,8 @@ let iter = {title:"Iterative Algorithms", id:"iter", icon:"py", menu:[
     {title:"Merging Sorted Data", icon:1, href:"iter/merge.html"},
 ]};
 
-let iter30 = deep(iter);
-iter30.id = "iter30";
+// let iter20 = deep(iter);
+// iter20.id = "iter20";
 
 let repl_html = '<p>You will need to login to <a target="_" href="https://repl.it">repl.it</a> and then follow the link(s) below. Click the “Fork” button to copy the files into your own account.</p>' +
  '<p>After you’ve done this, click the “Invite” button and add your teacher’s email:</p>' +
@@ -147,10 +147,9 @@ let home = addHome({title:"Computing Science", id:"home", menu:[
         {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/42235"},
         {title:"repl.it Files", id:"repl30", icon:"repl", menu:[
             {title:"Python Programming", icon:"repl", open:"https://replit.com/@DavidMacCarthy/CS30"},
-            {title:"Java Programming", icon:"repl", open:"https://replit.com/@DavidMacCarthy/Java"},
         ], html:repl_html},
         // link30,
-        iter30,
+        iter,
         {title:"Object-Oriented Programming 1", id:"oop1", icon:"py", menu:[
             {title:"Objects", icon:1, href:"oop1/obj.html"},
             {title:"Modifiers & Accessors", icon:1, href:"oop1/mod.html"},
@@ -167,5 +166,13 @@ let home = addHome({title:"Computing Science", id:"home", menu:[
             {title:"Modifying Linked Lists", icon:1, href:"dds1/mod.html"},
             {title:"Searching & Sorting", icon:1, href:"dds1/sort.html"},
         ]},
+        {title:"Java Programming Project", id:"java", icon:"java", menu:[
+            {title:"Java repl", icon:"repl", open:"https://replit.com/@DavidMacCarthy/Java"},
+            {title:"Online Tutorial", icon:"https://www.caveofprogramming.com/favicon.ico", href:"https://www.caveofprogramming.com/java-video/java-for-complete-beginners-video-part-1-a-hello-world-program.html"},
+            // {title:"Online Tutorial", icon:1, href:"https://www.udemy.com/course/java-tutorial/?matchtype=b&msclkid=d78b6e1ed5571bf557b90c9cad4e2a77"},
+            {title:"Project Template", icon:"gdrv", href:"https://docs.google.com/document/d/1CSfKQJl9mXdgKSIg_NzxjhCDC_w2x7Dq/edit?usp=sharing&ouid=103858348653315276963&rtpof=true&sd=true"},
+        ]},
     ]},
 ], html:'<p>Use your EIPS Google account to create / login to your <a target="_" href="https://repl.it">repl.it</a> account.</p>'});
+
+//
