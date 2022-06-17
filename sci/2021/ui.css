@@ -89,3 +89,29 @@ table.Auto.TD td, table.Auto.TD th {
 li div.MathJax_Display {
     margin-left:-1em;
 }
+
+div.Practice li {
+    padding:0.25em;
+}
+
+div.Practice ol {
+    padding:auto 2em;    
+}
+
+div.Practice .Answer {
+    color:red;
+    margin:0.5em auto;
+}
+
+div.Practice p.Answer {
+/*     text-align:center; */
+}
+
+div.Practice p.Answer > span {
+    cursor:pointer;
+/*     color:green; */
+}
+
+div.Practice div.Answer, div.Practice div.NoAnswer {
+    display:none;
+}

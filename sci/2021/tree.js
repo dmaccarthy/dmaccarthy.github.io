@@ -60,10 +60,11 @@ function nextNode(node) {
     }
 }
 
-function nextWith(node, attr) {
+function nextWith(node, attr, length) {
     node = nextNode(node);
     while (node) {
-        if (node[attr] != null && !node.unavail) return node;
+        if (node[attr] != null && !node.unavail)
+            if (!length || node[attr].length) return node;
         node = nextNode(node);
     }
 }

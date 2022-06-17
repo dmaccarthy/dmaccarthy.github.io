@@ -5,7 +5,8 @@ function unavail() {alert("This action is currently unavailable!")}
 function s(x, fldr) {
 // Test summary notes...
     if (!fldr) fldr = s.folder;
-    let url = `${fldr}/summary${x?x:""}.htm`;
+    let url = `${fldr}/${x?x:""}.htm`;
+    console.log(x, url);
     $.ajax({url:url, success:function(x) {
         $("#Content").html(x);
         MathJax.Hub.Typeset();
@@ -33,7 +34,7 @@ function makeIcon(node) {
             p = p.parent;
         }
     }
-    else if (icon == null) icon = node.menu ? "folder" : "lesson";
+    else if (icon == null) icon = node.menu && node.menu.length ? "folder" : "lesson";
     if (icon) {
         let i = makeIcon.urls[icon];
         if (i) icon = i;
@@ -56,6 +57,7 @@ makeIcon.urls = {
     "py": "https://www.python.org/static/favicon.ico",
     "repl": "https://replit.com/public/icons/favicon-196.png",
     "desmos": "https://www.desmos.com/favicon.ico",
+    "ccohs": "https://www.ccohs.ca/assets/favicon.ico",
 };
 
 function deep(obj) {
@@ -101,19 +103,21 @@ function drawNode(node, init) {
     let menu = node.menu;
     if (menu) for (let i=0;i<menu.length;i++) {
         let mi = menu[i];
-        let tr = $("<tr>").appendTo(tbl);
-        let img = mi.icon ? "Icon" : "&nbsp;"
-        tr.append($("<td>").html(makeIcon(mi))).append($("<td>").html(mi.title));
-        tr.click(function() {
-            if (mi.unavail) unavail();
-            else {
-                if (mi.js) eval(mi.js);
-                if (mi.open) window.open(mi.open);
-                if (mi.menu) drawNode(mi);
-                else if (mi.href) location.href = mi.href;
-                else drawContent(mi);
-            }
-        });
+        if (isAfter(mi.show)) {
+            let tr = $("<tr>").appendTo(tbl);
+            // let img = mi.icon ? "Icon" : "&nbsp;"
+            tr.append($("<td>").html(makeIcon(mi))).append($("<td>").html(mi.title));
+            tr.click(function() {
+                if (mi.unavail) unavail();
+                else {
+                    if (mi.js) eval(mi.js);
+                    if (mi.open) window.open(mi.open);
+                    if (mi.menu) drawNode(mi);
+                    else if (mi.href) location.href = mi.href;
+                    else drawContent(mi);
+                }
+            }); 
+        }
     }
     tbl.appendTo($("article"));
     drawContent(node);
@@ -125,7 +129,23 @@ function drawNode(node, init) {
     drawNode.current = node;
 }
 
-function drawNext() {drawNode(nextWith(drawNode.current, "menu"))}
+function drawNext() {drawNode(nextWith(drawNode.current, "menu", true))}
+
+function isAfter(due, date) {
+    if (due == null) return true;
+    else if (due == false) return false;
+    if (date == null) date = new Date();
+    if (!(due instanceof Date)) {
+        due = due.split(".");
+        due[1] = parseInt(due[1]) - 1;
+        due = new Date(...due);
+    }
+    return date >= due;
+}
+
+function showAll() {
+    window.isAfter = function() {return true}
+}
 
 function drawContent(node, e) {
     e = $(e ? e : (node.content ? node.content : "#Content"));
@@ -137,7 +157,17 @@ function drawContent(node, e) {
         }});
     }
     if (node.html) {
-        e.html(node.html);
+        let ans = e.html(node.html).find("div.Answer");
+        let div = e.find("div.Practice");
+        let due = div.attr("data-date");
+        div.removeAttr("data-date");
+        if (isAfter(due)) {
+            let s = $("<span>").html("☑").click(function(e) { // ✅
+                $(e.target).closest("p.Answer").next("div.Answer").toggle();
+            }).attr({title:"Show or hide the answer"});
+            $("<p>").addClass("Answer").html(s).insertBefore(ans);
+        }
+        else e.find(".Answer").remove();
         if (window.MathJax) MathJax.Hub.Typeset();
     }
     if (node.vid) {
@@ -149,7 +179,7 @@ function drawContent(node, e) {
 
 window.onresize = aspect;
 
-window.onkeydown = function(e) {
+window.onkeydown = function(e) {   
     if (e.ctrlKey) {
         if (e.key == "ArrowRight") drawNext();
         else if (e.key == "ArrowLeft") history.back();
@@ -158,6 +188,8 @@ window.onkeydown = function(e) {
 
 try {
     touch.swipe = function(data, ev) {
+        let s = $(ev.target).closest("[data-swipe]");
+        if (s.attr("data-swipe") == "0") return;
         if (data.swipe == "left") drawNext();
         else if (data.swipe == "right") history.back();
     }

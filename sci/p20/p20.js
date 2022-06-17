@@ -197,6 +197,7 @@ let energy = [
 let kin1d = [
     {title:"Position & Displacement", id:"displ", icon:1, vid:"V8hJhTE3bUk", menu:[
         {title:"Lesson Notes", open:"kin/displ.html"},
+        {title:"Review & Practice", id:"displ-rp", ajax:"kin/assign/displ.htm", menu:[]},
         {title:"Practice Solutions", gdoc:"1EkZMELpyV191px9oqb_zru74Xaf01eEAZsmLG4c3-jw"},
     ]},
     {title:"Velocity & Speed", id:"vel", icon:1, menu:[
@@ -280,7 +281,7 @@ let home = addHome({title:"Physics 20", id:"home", htmx:"<p class='Right'>Teache
         {title:"Course Outline", gdrv:"1pIpT3c8RKU5QeN09m7iEQQoAuKHDtPgg"},
     ]},
     {title:"Course Review", id:"rev20", icon:"rocket", menu:[
-        // {title:"Assignment / Solutions", gdrv:"1Pe-o2p0VbWJ9UAnGt0ZNPqLArqpvhhPG"},
+        {title:"Assignment / Solutions", gdrv:"1Pe-o2p0VbWJ9UAnGt0ZNPqLArqpvhhPG"},
         {title:"Data Analysis", icon:"da", id:"rev_da", ajax:"./da_summary.htm", menu:[]},
         {title:"Energy", icon:"arrow", id:"rev6", ajax:"energy/summary.htm", menu:[]},
         {title:"Kinematics", icon:"train", id:"rev1", ajax:"kin/summary.htm", menu:[]},

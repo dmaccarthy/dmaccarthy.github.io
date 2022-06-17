@@ -3,15 +3,20 @@
 <head>
 <meta charset="utf8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Title</title>
+<title>Half-life</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
-<link rel="shortcut icon" type="image/x-icon" href="../../media/atom.png"/>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/nuke.png"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
 <link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
 <script type="text/javascript" src="../../script/touch.js"></script>
 <script type="text/javascript" src="../../2021/bigMouse.js"></script>
 <script type="text/javascript" src="../../2021/slides.js"></script>
+<style type="text/css">
+
+td {width:6em}
+
+</style>
 </head>
 <body>
 
@@ -21,12 +26,64 @@
 <p class="Title"></p>
 </section>
 
-<section id="ac" data-last="?"><h3></h3>
-<p></p>
+<section id="T" data-last="?"><h3>Half-life</h3>
+<p>Radioactivity is a quantum mechanical process that follows <em>probability</em> laws.</p>
 <ul data-mark="+">
-    <li></li>
-    <li data-mark="+"></li>
+    <li>We can never predict exactly when a particular nucleus will decay; however, we can predict the probability that a particular nucleus will decay within a particular range of time.</li>
+    <li data-mark="+"><em class="Defn">Half-life</em> is defined as the time necessary for half of a large sample of identical nuclei to undergo radioactive decay (the time for which the probability of decay is 0.5.)</li>
+    <li data-mark="+">Half-life varies from practically zero for extremely unstable isotopes, to billions of years for isotopes that are nearly stable (e.g. U-238).</li>
+    <li data-mark="+">Stable isotopes (e.g. C-12) do not undergo spontaneous radioactive decay.</li>
 </ul>
+<table class="Center" data-mark="+">
+    <tr><td>Half-lives<br/>\(n\)</td><td colspan="2">Expected Nuclei<br/>\(N\)</td></tr>
+    <tr><td>0.0</td><td>8000</td><td>\(N_0\)</td></tr>
+    <tr><td>1.0</td><td>4000</td><td>\(N_0 (\frac{1}{2})\)</td></tr>
+    <tr><td>2.0</td><td>2000</td><td>\(N_0(\frac{1}{2})^2\)</td></tr>
+    <tr><td>3.0</td><td>1000</td><td>\(N_0(\frac{1}{2})^3\)</td></tr>
+    <tr><td>4.0</td><td>500</td><td>\(N_0(\frac{1}{2})^4\)</td></tr>
+</table>
+<ul data-mark="+">
+    <li>The relationship between time and the number of nuclei remaining in a sample is illustrated in the table above. The data for radioactive decay can be described by an exponential equation:
+        $$N = N_0 \left(\frac{1}{2}\right)^n$$</li>
+    <li data-mark="+">In this equation, \(n\) is the time in half-lives:$$n=\frac{t}{T_{1/2}}$$</li>
+    <li data-mark="+">\(N\) is the number of nuclei of the radioactive isotope remaining, and \(N_0\) is the initial number of nuclei.</li>
+    <li data-mark="+">Note that the “missing” nuclei have not disappeared, but have transmuted into other isotopes.</li>
+    <li data-mark="+">The \(N\)’s in the equation can also represent any quantity that is directly proportional to the number of nuclei, such as the <em>mass</em> remaining, the <em>percentage</em> remaining, or the <em>rate</em> of decay.</li>
+    <li data-mark="+">The decay rate is also called the <em class="Defn">activity</em> of the sample.</li>
+    <li data-mark="+">The SI unit of activity is the becquerel (Bq) which represents 1 nuclear decay per second.</li>
+    <li data-mark="+">An alternative (non-SI) unit of activity is the curie (Ci):
+        $$\mathrm{1\ Ci = 3.70 \times 10^{10}\ Bq}$$</li>
+    <li data-mark="+">You can read the half-life from a graph of the radioactive decay...</li>
+</ul>
+<p class="Center" data-mark="="><iframe src="https://www.desmos.com/calculator/pjadjlzlmj?embed" class="SD" width="600" height="450" style="border: 1px solid #ccc" frameborder=0></iframe></p>
+<ul data-mark="+">
+    <li>The half-life is the point at which the activity or the amount remaining is one-half of its initial value.</li>
+</ul>
+</section>
+
+<section id="C14" data-last="?"><h3>Radioisotope Dating</h3>
+<p>Radioactive decay can be used in archaeology and geology (and other fields) to determine the age of a specimen.</p>
+<ul data-mark="+">
+    <li>Carbon-14 decays back into nitrogen-14 by \(\beta-\) decay with a half-life of 5730 years:
+        $${_6^{14}}{\mathrm C} \rightarrow {_7^{14}}{\mathrm N} + {_{-1}^0}e + {_0^0}\overline\nu$$</li>
+    <li data-mark="+">Nitrogen-14 is the most common isotope in the atmosphere.</li>
+    <li data-mark="+">Energy from cosmic rays converts N-14 back to C-14, maintaining an equilibrium.</li>
+    <li data-mark="+">Living organisms get their carbon from the atmosphere and have the same ratio of C-14 to C-12 as the atmosphere does.</li>
+    <li data-mark="+">When the organism dies, the carbon-14 will no longer be replenished as it decays.</li>
+    <li data-mark="+">The proportion of C-14 in a sample of dead material (e.g. bone, wood, leather) compared to the abundance of C-14 in the atmosphere tells us the age of the sample.</li>
+    <li data-mark="+">The half-life of carbon-14 is ideal for archaeology where the specimen age can range from a few hundred to 20000 years.</li>
+    <li data-mark="+">Dating of geological formations is often done using isotopes with much longer half-lives.</li>
+</ul>
+</section>
+
+<section id="Ex1" data-last="?"><h3>Example</h3>
+<p class="Blue">A bone from an archaeology dig has a carbon-14 activity of 28.0 Bq. Based on the amount of carbon-12 in the sample, the bone would have had an activity of 112 Bq when it was part of a living organism. Calculate the age of the bone.</p>
+<p data-mark="+">$$N = N_0\left(\frac{1}{2}\right)^n$$</p>
+<p data-mark="+">$$\frac{N}{N_0} = \left(\frac{1}{2}\right)^n$$</p>
+<p data-mark="+">$$\frac{N_0}{N} = 2^n$$</p>
+<p data-mark="+">$$2^n = \mathrm{\frac{112\ Bq}{28.0\ Bq}} = 4.00$$</p>
+<p data-mark="+">$$n = 2.00$$</p>
+<p data-mark="+">$$t = \mathrm{2.00 (5730\ years) = 11460\ years}$$</p>
 </section>
 
 </article></body>

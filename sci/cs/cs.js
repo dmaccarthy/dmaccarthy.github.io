@@ -53,6 +53,7 @@ let home = addHome({title:"Computing Science", id:"home", menu:[
         ]},
         {title:"Computing Theory 1", icon:"laptop", id:"ct1", html:cs1_html, menu:[
             {title:"Binary Encoding", icon:1, vid:"#PLpVmtCaB-lykMzpjcg79la6effekhfsJq", menu:[
+                {title:"Practice", icon:1, open:"ct1/binary.html"},
                 {title:"Assignment", gdoc:"1uD73FDAhv1AiH5rVPLIsZn-acMjGY09gNxLbEozjDA4"},
             ]},
             {title:"Text Encoding", icon:1, vid:"MijmeoH9LT4", menu:[

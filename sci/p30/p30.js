@@ -13,22 +13,25 @@ let nuke = [
         {title:"Practice Solutions", gdoc:"1GR6QHi-w37Fjz7n2P6-AnR_ouURlfebXwyV-NifMhu4"},
     ]},
     {title:"Half-life", id:"half", icon:1, menu:[
-        {title:"Lesson Notes", unavail:1, open:"nuke/half.html"},
+        {title:"Lesson Notes", open:"nuke/half.html"},
         {title:"Practice Solutions", gdoc:"18UYJgyheUIIkO5WSYLT6BRvSCIYf3mNY-NZ65xNFJZ4"},
         {title:"Simulation", icon:"html5", open:"../applet/halflife.html"},
     ]},
     {title:"Nuclear Energy", id:"mc2", icon:1, menu:[
-        {title:"Lesson Notes", unavail:1, open:"nuke/energy.html"},
+        {title:"Lesson Notes", open:"nuke/energy.html"},
+        {title:"Table of Masses", icon:"link", open:"https://docs.google.com/spreadsheets/d/1XBdapwVh_d7ikGvZ9zWRTP_2jYY_GG1IUjOn-_c1aaE"},
+        // {title:"NIST Data (n = 1.00866491588(49))", icon:"link", open:"https://www.nist.gov/pml/atomic-weights-and-isotopic-compositions-relative-atomic-masses"},
         {title:"Practice Solutions", gdoc:"1HyjtHhnUoKr6l7tXJbSVVLL2s1jkrTtNyu8LltwNjIo"},
     ]},
     {title:"Fission & Fusion", id:"fiss", icon:1, menu:[
-        {title:"Lesson Notes", unavail:1, open:"nuke/fission.html"},
+        {title:"Lesson Notes", open:"nuke/fission.html"},
         {title:"Practice Solutions", gdoc:"10U8NxWjPZEO6TIROh7V9VjYba5J0YC1hLNDYNwIt7ug"},
     ]},
     {title:"Standard Model of Particle Physics", id:"quark", icon:1, menu:[
-        {title:"Lesson Notes", unavail:1, open:"nuke/quark.html"},
+        {title:"Lesson Notes", open:"nuke/quark.html"},
         {title:"Practice Solutions", gdoc:"1X742dlRHzvyLoFSsroMb73I3AzkPVTXsRjquBRvP0hU"},
     ]},
+    {title:"Chapter Review", icon:"lesson", id:"ch16", ajax:"nuke/summary.htm", menu:[]},
 ];
 
 let atom = [
@@ -257,6 +260,6 @@ let home = addHome({title:"Physics 30", id:"home", htmx:"<p class='Right'>Teache
         {title:"Optics", icon:"lightbulb", id:"rev13b", ajax:"emr/summaryb.htm", menu:[]},
         {title:"Photons", icon:"xray", id:"rev14", ajax:"photon/summary.htm", menu:[]},
         {title:"Atomic Physics", icon:"atom", id:"rev15", ajax:"atom/summary.htm", menu:[]},
-        // {title:"Nuclear & Particle Physics", icon:"nuke", id:"rev16", ajax:"atom/summary.htm", menu:[]},
+        {title:"Nuclear & Particle Physics", icon:"nuke", id:"rev16", ajax:"nuke/summary.htm", menu:[]},
     ]},
 ]});

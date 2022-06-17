@@ -84,20 +84,34 @@ let c = 3.00e8, k = 8.99e9, qe = 1.6e-19, me = 9.11e-31, mp = 1.67e-27;
 let h = 6.63e-34, E1 = -13.6;
 
 function uam(data) {
+// Solve uniform accelerated motion given 3 of 5 variables: a, vi, vf, d, t
     let t = data.t;
     if (t != null) {
         if (data.a != null) {
             if (data.vf != null) data.vi = data.vf - data.a * t;
-            else if (data.d != null) data.vi = (data.d / t - data.a *t / 2);
+            else if (data.d != null) data.vi = (data.d / t - data.a * t / 2);
         }
         else if (data.vi != null) {
             if (data.d != null) data.vf = 2 * data.d / t - data.vi;
         }
         else data.vi = 2 * data.d / t - data.vf;
     }
+    else if (data.a == null)
+        data.a = (sq(data.vf) - sq(data.vi)) / (2 * data.d);
+    else if (data.d == null)
+        data.d = (sq(data.vf) - sq(data.vi)) / (2 * data.a);
+    else if (data.vf == null) {
+        data.vf = root(sq(data.vi) + 2 * data.a * data.d);
+        if ((data.vf - data.vi) * data.a < 0) data.vf = -data.vf;
+    }
+    else if (data.vi == null) {
+        data.vi = root(sq(data.vf) - 2 * data.a * data.d);
+        if ((data.vf - data.vi) * data.a < 0) data.vi = -data.vi;
+    }
 
-    if (data.a == null) data.a = (data.vf - data.vi) / data.t;
-    if (data.vf == null) data.vf = data.vi + data.a * data.t;
-    if (data.d == null) data.d = (data.vi + data.vf) * data.t / 2;
+    if (data.a == null) data.a = (data.vf - data.vi) / t;
+    if (data.vf == null) data.vf = data.vi + data.a * t;
+    if (data.d == null) data.d = (data.vi + data.vf) * t / 2;
+    if (data.t == null) data.t = (data.vf - data.vi) / data.a;
     return data;
 }

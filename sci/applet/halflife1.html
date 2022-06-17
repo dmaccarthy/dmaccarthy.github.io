@@ -20,7 +20,7 @@
 </style>
 <script type="text/javascript">
 
-// Half-life / min = [Isotope ID] * ln(2) / 600
+// Half-life = [Isotope ID] * ln(2) / 600
     
 let width = 10, grid;
 
@@ -50,7 +50,7 @@ function update() {
         let x = data[i];
         if (x > 0 && x < t) {
             data[i] = 0;
-            circle(i, "#ffa0a0");
+            circle(i, "#ffff40")
             count();
         }
     }
@@ -81,12 +81,9 @@ function circle(i, f) {
     let cx = initSim.cx;
     let x = Math.floor(i / grid) + 0.5;
     let y = i % grid + 0.5;
-	x *= width;
-	y *= width;
-	cx.clearRect(x - width / 2, y - width / 2, width, width);
     cx.beginPath();
     let radius = Math.round(width / 2 - 2);
-    cx.arc(x, y, radius, 0, 2 * Math.PI, false);
+    cx.arc(width * x, width * y, radius, 0, 2 * Math.PI, false);
     cx.fillStyle = f;
     cx.fill();
 }
