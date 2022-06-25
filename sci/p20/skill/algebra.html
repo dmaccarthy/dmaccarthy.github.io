@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Algebra</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../../media/da.png"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700"/>
+<link rel="stylesheet" type="text/css" href="../../2021/slides.css"/>
+<script type="text/javascript" src="../../script/touch.js"></script>
+<script type="text/javascript" src="../../2021/bigMouse.js"></script>
+<script type="text/javascript" src="../../2021/slides.js"></script>
+</head>
+<body>
+
+<article>
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 20</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="eq" data-last="?"><h3>Equations</h3>
+<p>In Physics, <em class="Defn">relationships</em> between variables are often described by an equation.</p>
+<ul data-mark="+">
+    <li>You saw many relationships in Science 10:</li>
+</ul>
+<p data-mark="+">$$E_k = \frac{1}{2}mv^2$$</p>
+<p data-mark="+">$$\vec{\mathbf a} = \frac{\vec{\mathbf v}_f - \vec{\mathbf v}_i}{\Delta t}$$</p>
+<p data-mark="+">$$Q = mc\Delta T$$</p>
+<ul data-mark="+">
+    <li>When solving problems in Physics, you will often need to use <em class="Defn">algebra</em> to <em>rearrange</em> an equation to <em class="Defn">isolate</em> the variable that you are trying to solve for.</li>
+</ul>
+</section>
+
+<section id="alg" data-last="?"><h3>Algebra</h3>
+<p>The basic principle of algebra is that you can perform any mathematical operation to an equation, <em>as long as you do the same to both sides of the equation</em>.</p>
+<p>$$E_k = \frac{1}{2}mv^2$$</p>
+<ul data-mark="+">
+    <li>If we are trying to isolate \(v\), we need to <em>cancel</em> all of the operations involving \(v\): squaring, multiplication by \(\frac{1}{2}\), and multiplication by \(m\).</li>
+    <li data-mark="+">You can “cancel” an operation by performing its <em class="Defn">inverse</em>: addition cancels subtraction, division cancels multiplication, square rooting cancels squaring.</li>
+    <li data-mark="+">When you have more than one operation to cancel, use <em>reverse</em> order of operations</em>.</li>
+    <li data-mark="+">To cancel multiplication by a fraction, multiply by its reciprocal:
+        $$\color{red}{2}E_k = \color{red}{2}\cdot\frac{1}{2}mv^2$$</li>
+    <li data-mark="+">Rewrite the equation without the operations that cancel:
+        $$2E_k = mv^2$$</li>
+    <li data-mark="+">Now perform the inverse of the next operation you want to cancel, then simplify:
+        $$\frac{2E_k}{\color{red}{m}} = \frac{mv^2}{\color{red}{m}}$$
+        $$\frac{2E_k}{m} = v^2$$
+    </li>
+    <li data-mark="+">Continue performing inverse operations and then simplifying until the variable you are solving for has been isolated:
+        $$\color{red}{\sqrt{\color{black}{\frac{2E_k}{m}}} = \sqrt{\color{black}{v^2}}}$$
+        $$\sqrt{\frac{2E_k}{m}} = v$$
+    </li>
+    <li data-mark="+">Once you’ve isolated your unknown, you can substitute values and <em class="Defn">evaluate</em>:
+        $$v = \mathrm{\sqrt{\frac{2\cdot 8000\ J}{65.0\ kg}} = 15.7\ m/s}$$</li>
+    <li data-mark="+">You should always check your answer by substituting it into the <em>original</em> equation:
+        $$E_k = \frac{1}{2}mv^2 = \mathrm{\frac{1}{2}(65.0\ kg)(15.7\ m/s)^2 = 8011\ J}$$</li>
+    <li data-mark="+">This is slightly different than what we were expecting (8000 J) because we rounded our answer to three digits.</li>
+    <li data-mark="+">If we keep more decimal places (15.689291 m/s) we get 8000 joules almost exactly!</li>
+</ul>
+
+</section>
+
+</body>
+</html>
