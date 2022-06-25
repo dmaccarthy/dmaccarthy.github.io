@@ -72,9 +72,9 @@ def setup(sk):
     sk.size = w + 48, h + 48
 
     # Add a Slider
-    slider = Slider((16, cv.height), BLUE, 100, 0, 100)
+    slider = Slider((16, cv.height), [BLUE], 100, 0, 100)
     slider.config(pos=(cv.width, 0), anchor=TOPRIGHT, bg=GREY, weight=1)
-    cv += slider.bind(onchange=sliderChange)
+    cv["Slider"] = slider.bind(onchange=sliderChange)
 
     # Create a popup menu
     img = Image.fromBytes(sc8prData("alien"))
