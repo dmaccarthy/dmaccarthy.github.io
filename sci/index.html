@@ -11,11 +11,16 @@
 <script type="text/javascript" src="script/util.js"></script>
 <script type="text/javascript">
 
-let home = {title:"Mr. Mac’s Website", html:"<p>Please select a page...</p>", menu:[
-    {title:"Science 10", show:"2022.7.1", href:"s10", icon:"flask"},
+let msg = [
+    "<p>Welcome to Mr. MacCarthy’s class at Sal! Please select your course...</p>",
+    "<p>This website is being modified for the 2022-2023 school year. Some pages and links may not be complete yet!</p>"
+];
+    
+let home = {title:"Mr. Mac’s Website", html:msg[0], menu:[
+    {title:"Science 10H", href:"s10", icon:"flask"},
     {title:"Physics 20", href:"p20", icon:"rocket"},
     {title:"Physics 30", href:"p30", icon:"magnet"},
-    {title:"Computing Science", href:"cs", icon:"laptop"},
+    {title:"Computing Science", show:"2023.2", href:"cs", icon:"laptop"},
     {title:"Simulations, Applets & Tools", href:"applet", icon:"html5"},
 ]}
 

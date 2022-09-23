@@ -235,7 +235,7 @@ let mom = [
 
 let home = addHome({title:"Physics 30", id:"home", htmx:"<p class='Right'>Teacher: <a href='mailto:david.maccarthy@eips.ca'>D.G. MacCarthy</a></p>", menu:[
     {title:"Course Links", icon:"link", menu:[
-        {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/40848"},
+        {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/62385"},
         {title:"Data Booklet", icon:"link", open:"https://www.alberta.ca/assets/documents/edc-physics30-data-booklet.pdf"},
         {title:"Graph Paper", gdrv:"1tiA8XrfPUxsZ2d-HDPP-8KMeRMngHalE"},
         // {title:"Solution Template", gdrv:"14tETNQF1xZbm-J9BXNokX9PfsGwJmT0r"},
@@ -243,16 +243,16 @@ let home = addHome({title:"Physics 30", id:"home", htmx:"<p class='Right'>Teache
         {title:"PowerSchool", icon:"ps", open:"https://powerschool.eips.ca/public/"},
         {title:"Salisbury Composite", icon:"sal", open:"https://salcomp.ca"},
         {title:"Program of Studies", icon:"ab", open:"https://education.alberta.ca/science-10-12/programs-of-study/"},
-        {title:"Course Outline", gdrv:"1iG0oo3ekpCxkiQfROZG7mvvjGydQxU1O"},
+        {title:"Course Outline", gdrv:"1Tw-YQlKYBATI0Yml051NJbw0QM6yU6BV"},
     ]},
     {title:"Chapter 9: Momentum & Impulse", id:"mom", icon:"train", menu:mom},
-    {title:"Chapters 10 & 11: Electric Fields", id:"elec", icon:"../media/lightning.jpg", menu:elec},
-    {title:"Chapter 12: Magnetic Fields", id:"mag", icon:"magnet", menu:mag},
-    {title:"Chapter 13: Electromagnetic Waves", id:"emr", icon:"lightbulb", menu:emr},
-    {title:"Chapter 14: Photons", id:"photon", icon:"xray", menu:photon},
-    {title:"Chapter 15: Atomic Physics", id:"atom", icon:"atom", menu:atom},
-    {title:"Chapters 16 & 17: Nuclear & Particle Physics", id:"nuke", icon:"nuke", menu:nuke},
-    {title:"Course Review", id:"rev30", icon:"magnet", menu:[
+    {title:"Chapters 10 & 11: Electric Fields", show:"2023.1", id:"elec", icon:"../media/lightning.jpg", menu:elec},
+    {title:"Chapter 12: Magnetic Fields", show:"2023.1", id:"mag", icon:"magnet", menu:mag},
+    {title:"Chapter 13: Electromagnetic Waves", show:"2023.1", id:"emr", icon:"lightbulb", menu:emr},
+    {title:"Chapter 14: Photons", show:"2023.1", id:"photon", icon:"xray", menu:photon},
+    {title:"Chapter 15: Atomic Physics", show:"2023.1", id:"atom", icon:"atom", menu:atom},
+    {title:"Chapters 16 & 17: Nuclear & Particle Physics", show:"2023.1", id:"nuke", icon:"nuke", menu:nuke},
+    {title:"Course Review", show:"2023.1", id:"rev30", icon:"magnet", menu:[
         {title:"Momentum & Impulse", icon:"train", id:"rev9", ajax:"mom/summary.htm", menu:[]},
         {title:"Electric Fields", icon:"../media/lightning.jpg", id:"rev11", ajax:"em/summaryE.htm", menu:[]},
         {title:"Magnetic Fields", icon:1, id:"rev12", ajax:"em/summaryB.htm", menu:[]},

@@ -1,3 +1,12 @@
+Array.prototype.sum = function() {
+    let n = this.length, s = 0;
+    if (n) {
+        s = this[0];
+        for (let i=1; i<n; i++) s += this[i];
+    }
+    return s;
+}
+    
 Array.prototype.extend = function(a) {
     this.push.apply(this, a);
     return this;

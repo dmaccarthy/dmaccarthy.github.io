@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head><title>Speech Synthesis</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">//<!--
+
+let voices, cast = {}, script = [];
+let names = [
+    "David", "Hazel", "Zira", "Susan", "Richard", "George", "Linda", "Mark",
+    "US English", "UK English Female", "UK English Male"
+];
+let alias = {"US English":"Sara", "UK English Female":"Liz", "UK English Male":"Phil"}
+
+function loadVoices() {
+    voices = speechSynthesis.getVoices();
+    if (voices.length == 0) setTimeout(loadVoices, 200);
+    else {
+        for (let i=0;i<voices.length;i++) {
+            let key = i;
+            for (let j=0;j<names.length;j++) {
+                let c = voices[i].name.search(names[j]);
+                if (c != -1) key = names[j];
+            }
+            if (alias[key]) key = alias[key];
+            cast[key] = voices[i];
+        }
+        for (let key in cast) console.log(key, ":=", cast[key].name);
+        console.log([M, F, A]);
+    }
+}
+
+let A = "Richard", F = "Linda", M = "Phil"; // Chrome
+if (navigator.userAgent.search("Chrome") == -1) {
+    A = "Hazel", F = "Zira", M = "David";    
+}
+
+loadVoices();
+
+function play() {
+    play.i = 0;
+    sayNext();
+}
+
+function sayNext() {
+    let err;
+    try {say(...script[play.i++])}
+    catch (err) {console.log("Done!")}
+}
+    
+function say(text, name, pause, opt) {
+    if (pause == null) pause = 0.5;
+    let u = play.u = new SpeechSynthesisUtterance(text);
+    Object.assign(u, {voice:cast[name], rate:1.05, lang:"en-CA"});
+    if (opt) Object.assign(u, opt);
+    u.onend = function() {
+        play.timeout = setTimeout(sayNext, 1000 * pause);
+    }
+    console.log(u);
+    speechSynthesis.speak(u);
+}
+
+function stop() {
+    play.u.onend = function() {};
+    clearTimeout(play.timeout);
+}
+
+function loadScript() {
+    let url = $("#scriptURL").val();
+    $.getScript({url:url, cache:false, success:function() {
+        console.log(`Loaded ${script.length} lines.`);
+    }});
+}
+
+//--></script>
+<!--script type="text/javascript" src="tts.js"></script-->
+</head>
+<body>
+    <p>
+        <input id="scriptURL" type="text" value="tts.js"></input>
+        <button onclick="loadScript()">Load</button>    
+    </p>
+    <p>
+        <button onclick="play()">Start</button>
+        <button onclick="stop()">Stop</button>        
+    </p>
+</body>
+</html>
