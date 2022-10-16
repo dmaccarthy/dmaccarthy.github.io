@@ -1,5 +1,44 @@
 // , vid:"#PLpVmtCaB-lykC3KWCNWfsOFWwLVtPHwhN"
 
+let phys = {title:"Unit B: Physics", id:"phys", icon:"rocket", menu:[
+    // {title:"Assignment Booklet", gdrv:"1dKbreMxOXUs2u_TwsgtoqFPgQIS9PVAM"},
+    // {title:"Science Skills", icon:"flask", menu:[]},
+    {title:"Part 1: Science Skills & Motion", id:"p1", icon:"rocket", menu:[
+        // {title:"Significant Digits", unavail:1, icon:1, open:"phys/sigdig.html"},
+        {title:"Scientific Notation", id:"sciNot", icon:1, menu:[
+            {title:"Lesson Notes", open:"phys/sciNot.html"},
+            {title:"Review & Practice", id:"sciNot-rp", ajax:"phys/assign/sciNot.htm", menu:[]},
+        ]},
+        {title:"SI Units", icon:1, id:"si", menu:[
+            {title:"Lesson Notes", open:"phys/si.html"},
+            {title:"Review & Practice", id:"si-rp", ajax:"phys/assign/si.htm", menu:[]},            
+        ]},
+        // {title:"Scientific Method", icon:1, open:"phys/sciMeth.html"},
+        {title:"Graphing Data", id:"scatter", icon:1, menu:[
+            {title:"Lesson Notes", open:"phys/scatter.html"},
+            {title:"Review & Practice", id:"scatter-rp", ajax:"phys/assign/scatter.htm", menu:[]},                        
+            {title:"Assignment Handout", gdrv:"1OocOlfCpevWkVke-zUJHd6cfLQTDUEZ8"},
+        ]},
+        {title:"Displacement", show:"2023.1", icon:1, open:"phys/displ.html"},
+        {title:"Velocity", show:"2023.1", icon:1, open:"phys/vel.html"},
+        {title:"Acceleration", show:"2023.1", icon:1, open:"phys/accel.html"},
+    ]},
+    {title:"Part 2: Energy & Heat", show:"2023.1", id:"p2", icon:"rocket", menu:[
+        {title:"Mechanical Energy", icon:1, open:"phys/mech.html"},
+        {title:"Energy Transformations", icon:1, open:"phys/Etransform.html"},
+        {title:"Work & Energy", icon:1, open:"phys/work.html"},
+        {title:"Efficiency", icon:1, open:"phys/effic.html"},
+        {title:"Unit Project", gdoc:"1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18"},
+    // ]},
+    // {title:"Part 3: Thermodynamics", icon:"rocket", menu:[
+        // {title:"Modern Energy Sources", icon:1, open:"phys/modsrc.html"},
+    ]},
+    {title:"Unit Review", show:"2023.1", icon:1, menu:[
+        {title:"Assignment", gdrv:"1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i"},
+        // {title:"Answer Key", unavail:1, gdrv:"1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To"},
+    ]},
+]};
+
 let chem = {title:"Unit A: Chemistry", id:"chem", icon:"flask", menu:[
     // {title:"Assignment Booklet", gdrv:"1BH_QKnH_--Nkm69sG9joeWm-ZqM3lQGW"},
     {title:"Part 1: Matter", id:"c1", icon:"flask", menu:[
@@ -83,46 +122,39 @@ let chem = {title:"Unit A: Chemistry", id:"chem", icon:"flask", menu:[
             {title:"Lesson Notes", open:"chem/rxn.html"},
             {title:"Review & Practice", id:"rxn-rp", ajax:"chem/assign/rxn.htm", menu:[]},
             {title:"Assignment Handout", gdrv:"1sgnZIIZwLZ_pNfRfca4S9tSAMpvZzEyd"},
-            {title:"Assignment Solutions", show:"2022.9.24", gdrv:"1JzWkgHMIiiuTZetrvvs3ys6i099uf4wQ"},            
+            {title:"Assignment Solutions", gdrv:"1JzWkgHMIiiuTZetrvvs3ys6i099uf4wQ"},            
         ]},
-        {title:"Formation & Decomposition", icon:1, menu:[
+        {title:"Formation & Decomposition", id:"rxn-fd", icon:1, menu:[
             {title:"Lesson Notes", open:"chem/rxn_fd.html"},
-
+            {title:"Review & Practice", id:"rxn-fd-rp", ajax:"chem/assign/rxn_fd.htm", menu:[]},
+            {title:"Assignment Handout", gdrv:"1N6QeWFMQ8SfWABtuaW25fDDGupcPN2LW"},
+            {title:"Assignment Solutions", show:"2022.9.27.13.00", gdrv:"1CNNBdkYKKfkxuDu3WAtuSb5ZithFC5la"},
         ]},
-        {title:"Single & Double Replacement", show:"2023.1", icon:1, open:"chem/rxn_sdr.html"},
-        {title:"Hydrocarbon Combustion", show:"2023.1", icon:1, open:"chem/rxn_c.html"},
-        {title:"Molar Mass", show:"2023.1", icon:1, open:"chem/mole.html"},
+        {title:"Single & Double Replacement", id:"rxn-sdr", icon:1, menu:[
+            {title:"Lesson Notes", open:"chem/rxn_sdr.html"},
+            {title:"Review & Practice", id:"rxn-sdr-rp", ajax:"chem/assign/rxn_sdr.htm", menu:[]},
+            {title:"Assignment Handout", gdrv:"1YVl64Ozh_HdXFfhjj5t24vkpvCoJzWRc"},
+            {title:"Assignment Solutions", show:"2022.9.29.13.00", gdrv:"12gRc6fq0gHnXd4AyDyaf_aESOQMPP4zl"},            
+        ]},
+        {title:"Hydrocarbon Combustion", id:"rxn-c", icon:1, menu:[
+            {title:"Lesson Notes", open:"chem/rxn_c.html"},
+            {title:"Review & Practice", id:"rxn-c-rp", ajax:"chem/assign/rxn_c.htm", menu:[]},
+            {title:"Assignment Handout", gdrv:"117UOa9ZT7sZtq3WCDXJZvxT-MGEM1nay"},
+            {title:"Assignment Solutions", show:"2022.10.3.12.00", gdrv:"1LBiP0RwcFVfaH0k_dtxGQ3EC7DdapIni"},            
+        ]},
+        {title:"Molar Mass", id:"mole", icon:1, menu:[
+            {title:"Lesson Notes", open:"chem/mole.html"},
+            {title:"Review & Practice", id:"mole-c-rp", ajax:"chem/assign/mole.htm", menu:[]},
+            {title:"Assignment Handout", gdrv:"1PwdH5Sb7MA7z3-b4MnZyvW4TROz_kWPr"},
+            {title:"Assignment Solutions", show:"2022.10", gdrv:"1B4WKY1HFQn0o6tLFaPSuRTvjvZ-L3KlD"},
+        ]},
     ]},
-    {title:"Unit Review Key", show:"2023.1", gdrv:"1IaRKpczT_-sy76rFqBEOcIwyQ3AORxxYAEzJGKJpY7w"},
-]};
-
-let phys = {title:"Unit B: Physics", show:"2023.1", id:"phys", icon:"rocket", menu:[
-    {title:"Assignment Booklet", gdrv:"1dKbreMxOXUs2u_TwsgtoqFPgQIS9PVAM"},
-    // {title:"Science Skills", icon:"flask", menu:[]},
-    {title:"Part 1: Science Skills & Motion", id:"p1", icon:"rocket", menu:[
-        // {title:"Significant Digits", unavail:1, icon:1, open:"phys/sigdig.html"},
-        {title:"Scientific Notation", icon:1, open:"phys/sciNot.html"},
-        {title:"SI Units", icon:1, open:"phys/si.html"},
-        // {title:"Scientific Method", icon:1, open:"phys/sciMeth.html"},
-        {title:"Graphing Data", icon:1, open:"phys/scatter.html"},
-        {title:"Displacement", icon:1, open:"phys/displ.html"},
-        {title:"Velocity", icon:1, open:"phys/vel.html"},
-        {title:"Acceleration", icon:1, open:"phys/accel.html"},
+    {title:"Antacids Project", gdrv:"11UBjbZNTnvHZEb8_JpBXj1X2_jqBJt-w"},
+    {title:"Unit Review", id:"revc", icon:1, menu:[
+            {title:"Assignment Handout", gdrv:"1X861gwjsc5jhm-0KnWObdV4ApDQjwM5S"},
+            {title:"Assignment Solutions", gdrv:"1IaRKpczT_-sy76rFqBEOcIwyQ3AORxxYAEzJGKJpY7w"},        
     ]},
-    {title:"Part 2: Energy & Heat", id:"p2", icon:"rocket", menu:[
-        {title:"Mechanical Energy", icon:1, open:"phys/mech.html"},
-        {title:"Energy Transformations", icon:1, open:"phys/Etransform.html"},
-        {title:"Work & Energy", icon:1, open:"phys/work.html"},
-        {title:"Efficiency", icon:1, open:"phys/effic.html"},
-        {title:"Unit Project", gdoc:"1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18"},
-    // ]},
-    // {title:"Part 3: Thermodynamics", icon:"rocket", menu:[
-        // {title:"Modern Energy Sources", icon:1, open:"phys/modsrc.html"},
-    ]},
-    {title:"Unit Review", icon:1, menu:[
-        {title:"Assignment", gdrv:"1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i"},
-        // {title:"Answer Key", unavail:1, gdrv:"1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To"},
-    ]},
+    // {title:"Unit Review Key", gdrv:"1IaRKpczT_-sy76rFqBEOcIwyQ3AORxxYAEzJGKJpY7w"},
 ]};
 
 let clim = {title:"Unit D: Climate", show:"2023.1", id:"clim", icon:"earth", menu:[

@@ -1,0 +1,126 @@
+<div class="Practice" data-date="2023.10.11.16.00">
+<h3>Review</h3>
+<ol>
+
+    <li><ol type="a">
+        <li>Why are the <b class="Red">friction</b> and <b class="Red">normal</b> forces described as <b class="Red">contact forces</b>?</li>
+        <li>How are the friction and normal forces similar and how are they different?</li>
+    </ol></li>
+
+    <li><ol type="a">
+        <li>What factors affect how strong the friction force is?</li>
+        <li>Write the relationship (equation) between the friction and normal forces.</li>
+        <li>Explain the difference between <b class="Red">static</b> and <b class="Red">kinetic</b> friction.</li>
+        <li>Explain the difference between the <em>force</em> of friction and the <b class="Red">coefficient of friction</b>.</li>
+    </ol></li>
+
+</ol>
+ 
+<h3>Practice</h3>
+<ol>
+
+    <li>The coefficient of kinetic friction between a table and a moving 4.00 kg wooden block is 0.270. Draw and label a free body diagram. Determine the force of friction acting on the block.</li>
+    <div class="Answer">
+        <p class="Center"><img alt="FBD" src="dyn/assign/img/fbd.png"/></p>
+        <p>The normal and gravity forces are balanced:
+$$F_n = F_g = mg = \mathrm{4.00\ kg\cdot 9.81\ m/s^2 = 39.2\ N}$$
+Solve for friction:
+$$F_f = \mu_kF_n = \mathrm{0.270\cdot 39.2\ N = 10.6\ N}$$
+We cannot solve for the block’s acceleration unless the applied force is given.</p>
+    </div>
+
+    <li>Determine the acceleration of a 50.0 kg chair being dragged horizontally by an applied force of 280 N. The coefficient of friction between the chair and the floor is 0.400. Include a labelled free body diagram.</li>
+    <div class="Answer">The FBD is the same as for as #1. Since the motion is horizontal, the vertical forces (normal and gravity) balance:
+$$F_n = F_g = mg = \mathrm{50.0\ kg\cdot 9.81\ m/s^2 = 491\ N}$$
+The friction force is 40% of the normal force:
+$$F_f = \mu_kF_n = \mathrm{0.400\cdot 491\ N = 196\ N}$$
+The direction of friction must oppose the motion, therefore...
+$$\vec{\mathbf F}_f = \mathrm{-196\ N}$$
+The net force is the sum of the unbalanced forces (applied and friction):
+$$\vec{\mathbf F}_{net} = \vec{\mathbf F}_a + \vec{\mathbf F}_f = \mathrm{+280\ N + (-196\ N) = +83.8\ N}$$
+Use Newton’s 2nd Law:
+$$\vec{\mathbf a} = \frac{\vec{\mathbf F}_{net}}{m} = \mathrm{\frac{+83.8\ N}{50.0 kg} = +1.68\ m/s^2}$$</div>
+
+    <li><ol type="a">
+        <li>An applied force of 65.0 N is required to keep a 14.0 kg object moving with constant velocity (i.e. \(\vec{\mathbf{a}}\) = 0!) along the floor. Calculate the coefficient of kinetic friction between the object and floor.</li>
+        <div class="Answer">Since the motion is horizontal, the vertical forces (normal and gravity) balance:
+$$F_n = F_g = mg = \mathrm{14.0\ kg\cdot 9.81\ m/s^2 = 137\ N}$$
+Since the acceleration is zero, the net force must be zero according to Newton’s Laws, and thus the friction force must balance the applied force:
+$$\vec{\mathbf F}_f = -\vec{\mathbf F}_a = \mathrm{-65.0\ N}$$
+Do not include the directions when calculating the coefficient of friction...
+$$\mu_k = \frac{F_f}{F_n} = \mathrm{\frac{65.0\ N}{137\ N} = 0.473}$$</div>
+
+        <li>If the object is allowed to come to rest, it takes 82.0 N of applied force to start the object moving again. Calculate the coefficient of static friction.</li>
+        <div class="Answer">The solution is identical to (a) except that the balanced applied and friction forces are both 82.0 N rather than 65.0 N:
+$$\mu_k = \frac{F_f}{F_n} = \mathrm{\frac{82.0\ N}{137\ N} = 0.597}$$
+        </div>
+    </ol></li>
+
+    <li><ol type="a">
+        <li>A textbook is slid across the floor with an initial velocity of 2.60 m/s. Once the person stops pushing the book (\({\vec{\mathbf{F}}}_a\) = 0!), it comes to rest after 1.72 m. Calculate the acceleration of the textbook.</li>
+        <div class="Answer">
+$$v_f^2 = v_i^2 + 2\vec{\mathbf a}\cdot\Delta\vec{\mathbf d}$$
+$$\vec{\mathbf a} = \frac{v_f^2 – v_i^2}{2 \Delta\vec{\mathbf d}}
+    = \mathrm{\frac{(0.00\ m/s)^2 – (2.60\ m/s)^2}{2\cdot 1.72\ m}}
+    = \mathrm{-1.97\ m/s^2}$$
+        </div>
+
+        <li>If the mass of the textbook is 1.50 kg, what is the coefficient of friction?</li>
+        <div class="Answer">
+$$F_n = F_g = mg = \mathrm{1.50\ kg\cdot 9.81\ m/s^2 = 14.7\ N}$$
+$$F_f = F_{net} = ma = \mathrm{1.50\ kg\cdot 1.97\ m/s^2 = 2.95\ N}$$
+$$\mu_k = \frac{F_f}{F_n} = \mathrm{\frac{1.97\ N}{14.7\ N} = 0.200}$$
+        </div>
+
+        <li>Repeat (b) for a mass of 2.50 kg.</li>
+        <div class="Answer">
+$$F_n = F_g = mg = \mathrm{2.50\ kg\cdot 9.81\ m/s^2 = 24.5\ N}$$
+$$F_f = F_{net} = ma = \mathrm{2.50\ kg\cdot 1.97\ m/s^2 = 4.91\ N}$$
+$$\mu_k = \frac{F_f}{F_n} = \mathrm{\frac{4.91\ N}{24.5\ N} = 0.200}$$
+        </div>
+
+        <li>Does the mass of the book seem to make any difference to the answer when the applied force is zero? Explain. If the applied force had not been zero, would the mass matter?</li>
+        <div class="Answer">
+$$\mu_k = \frac{F_f}{F_n} = \frac{ma}{mg} = \frac{a}{g}$$
+The mass does <em>not</em> matter because it cancels. If there was an applied force, the net force would no longer be just the friction force and the mass <em>would</em> affect the answer!            
+        </div>
+
+    </ol></li>
+
+    <li><ol type="a">
+        <li>A puck is shot along the ice with a speed of 3.50 m/s. If the coefficient of friction between the puck and ice is 0.020, determine the acceleration of the puck. [Recall from the previous question that the mass of the puck does not matter!]</li>
+        <div class="Answer">
+$$\begin{align}
+    F_{net} &= F_f
+    \\ F_{net} &= \mu_k F_n
+    \\ ma &= \mu_k (mg)
+    \\ a &= \mu_k g
+    \\ &= \mathrm{0.020\cdot 9.81\ m/s^2}
+    \\ &= \mathrm{0.196\ m/s^2}
+\end{align}$$
+The direction of the acceleration is opposite to the motion.
+        </div>
+
+        <li>How long will it take the puck to come to rest?</li>
+        <div class="Answer">$$\begin{align}
+    \Delta t &= \frac{\vec{\mathbf v}_f - \vec{\mathbf v}_i}{\vec{\mathbf a}}
+    \\ &= \mathrm{\frac{0.00\ m/s - 3.50\ m/s}{-0.196\ m/s^2}}
+    \\ &= \mathrm{17.8\ s}
+\end{align}$$
+        </div>
+
+    </ol></li>
+
+    <li>A puck sliding along the ice at 4.75 m/s comes to a stop over 42.0 m. Determine the coefficient of kinetic friction between the puck and ice.</li>
+    <div class="Answer">
+$$v_f^2 = v_i^2 + 2\vec{\mathbf a}\cdot\Delta\vec{\mathbf d}$$
+$$\vec{\mathbf a} = \frac{v_f^2 – v_i^2}{2 \Delta\vec{\mathbf d}}
+    = \mathrm{\frac{(0.00\ m/s)^2 – (4.75\ m/s)^2}{2\cdot 42.0\ m}}
+    = \mathrm{-0.269\ m/s^2}$$
+Since there is no applied force, the acceleration is caused solely by friction as in #5a:
+$$\mu_k = \frac{F_f}{F_n} = \frac{ma}{mg}= \frac{a}{g} = \mathrm{\frac{0.269\ m/s^2}{9.81\ m/s^2} = 0.0274}$$
+    </div>
+
+</ol>
+
+</div>

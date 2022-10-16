@@ -79,6 +79,7 @@ function orbit(data) {
     return data;
 }
 
+let hr = 3600, day = 24 * hr, yr = 365.24 * day;
 let G = 6.67e-11, Ms = 1.99e30, Me = 5.97e24, Re = 6.37e6, g = 9.81;
 let c = 3.00e8, k = 8.99e9, qe = 1.6e-19, me = 9.11e-31, mp = 1.67e-27;
 let h = 6.63e-34, E1 = -13.6;

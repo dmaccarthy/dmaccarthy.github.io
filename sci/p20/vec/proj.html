@@ -48,7 +48,7 @@ td {
 </ul>
 </section>
 
-<section id="ex1" data-last="?"><h3>Example</h3>
+<section id="ex1" data-last="?"><h3>Example 1</h3>
 <p class="Blue">A golfer imparts an initial velocity of 40.0 m/s [52.0°] to a ball. The ball lands on the green 3.00 metres lower than the tee area. Calculate the “hang time” and “range” of the ball.</p>
 <ul data-mark="+">
     <li><em class="Defn">Hang time</em> means the time the projectile is in motion before it contacts the ground.</li>
@@ -65,22 +65,49 @@ td {
     <tr><td>\(\Delta t\) / \((\mathrm{s})\)</td><td colspan="2" onclick="tdClick(this)"><span class="Red Hidden">6.52</span></td></tr>
 </table>
 <p data-mark="+">Solve the \(y\)-motion as uniform accelerated motion. First find the final velocity...</p>
-<p data-mark="+">$$v_f^2 = v_i^2 + 2\vec{\mathbf a}\cdot\Delta\vec{\mathbf d}$$</p>
-<p data-mark="+">$$v_f = \sqrt{v_i^2 + 2\vec{\mathbf a}\cdot\Delta\vec{\mathbf d}}$$</p>
-<p data-mark="+">$$v_f = \sqrt{\mathrm{(31.5\ m/s)^2 + 2(-9.81\ m/s^2)(-3.00\ m)}}$$</p>
-<p data-mark="+">$$\vec{\mathbf v}_f = \mathrm{-32.4\ m/s}$$</p>
+<p data-mark="+">$$v_{fy}^2 = v_{iy}^2 + 2\vec{\mathbf a}_y\cdot\Delta\vec{\mathbf d}_y$$</p>
+<p data-mark="+">$$v_{fy} = \sqrt{v_{iy}^2 + 2\vec{\mathbf a}_y\cdot\Delta\vec{\mathbf d}_y}$$</p>
+<p data-mark="+">$$v_{fy} = \sqrt{\mathrm{(31.5\ m/s)^2 + 2(-9.81\ m/s^2)(-3.00\ m)}}$$</p>
+<p data-mark="+">$$\vec{\mathbf v}_{fy} = \mathrm{-32.4\ m/s}$$</p>
 
 <p data-mark="+">Next find the time...</p>
-<p data-mark="+">$$\vec{\mathbf a} = {\vec{\mathbf v}_f - \vec{\mathbf v}_i \over \Delta t}$$</p>
-<p data-mark="+">$$\Delta t = {\vec{\mathbf v}_f - \vec{\mathbf v}_i \over \vec{\mathbf a}}$$</p>
+<p data-mark="+">$$\vec{\mathbf a}_y = {\vec{\mathbf v}_{fy} - \vec{\mathbf v}_{iy} \over \Delta t}$$</p>
+<p data-mark="+">$$\Delta t = {\vec{\mathbf v}_{fy} - \vec{\mathbf v}_{iy} \over \vec{\mathbf a}_y}$$</p>
 <p data-mark="+">$$\Delta t = \mathrm{{-32.4\ m/s - 31.5\ m/s \over -9.81\ m/s^2} = 6.52\ s}$$</p>
 
 <p data-mark="+">Now solve the \(x\)-motion as uniform motion...</p>
-<p data-mark="+">$$\Delta\vec{\mathbf d} = \vec{\mathbf v}\Delta t = \mathrm{24.6\ m/s\cdot 6.52\ s = 161\ m}$$</p>
+<p data-mark="+">$$\Delta\vec{\mathbf d}_x = \vec{\mathbf v}_x\Delta t = \mathrm{24.6\ m/s\cdot 6.52\ s = 161\ m}$$</p>
 
 <!-- <p data-mark="+">$${\vec{\mathbf{F}}}_x=\left|\vec{\mathbf{F}}\right|\cos{\theta}=-47.0\ \mathrm{N}$$</p>
 <p data-mark="+">$${\vec{\mathbf{F}}}_y=\left|\vec{\mathbf{F}}\right|\sin{\theta=+17.1\ \mathrm{N}}$$</p> -->
 </section>
 
+<section id="ex2" data-last="?"><h3>Example 2</h3>
+<p class="Blue">A soccer ball is kicked from the ground with an initial velocity of 20.0 m/s [60.0°]. A spectator sitting in the stands 10.0 metres above the field observes the ball passing the 10.0-metre mark on the way up and again on the way down. Find the times at which these events occur and how far down the field the ball has travelled.</p>
+<table data-mark="+">
+    <tr><td>&nbsp;</td><td>\(x\)</td><td>\(y\)</td></tr>
+    <tr><td>\(\vec{\mathbf a}\) / \((\mathrm{m/s^2})\)</td><td>0</td><td>–9.81</td></tr>
+    <tr><td>\(\vec{\mathbf v}_i\) / \((\mathrm{m/s})\)</td><td rowspan="2">20.0 cos(60.0°)<br/>= 10.0</td><td>20.0 sin(60.0°)<br/>= 17.3</td></tr>
+    <tr><td>\(\vec{\mathbf v}_f\) / \((\mathrm{m/s})\)</td><td><span></span></td></tr>
+    <tr><td>\(\Delta\vec{\mathbf d}\) / \((\mathrm{m})\)</td><td><span></span></td><td>10.0</td></tr>
+    <tr><td>\(\Delta t\) / \((\mathrm{s})\)</td><td colspan="2"><span></span></td></tr>
+</table>
+<p data-mark="+">Solve the \(y\)-motion as uniform accelerated motion. First find the final velocity...</p>
+<p data-mark="+">$$v_{fy} = \sqrt{v_{iy}^2 + 2\vec{\mathbf a}_y\cdot\Delta\vec{\mathbf d}_y}$$</p>
+<p data-mark="+">$$v_{fy} = \sqrt{\mathrm{(17.3\ m/s)^2 + 2(-9.81\ m/s^2)(-10.0\ m)}} = \mathrm{\pm 10.2\ m/s}$$</p>
+
+<p data-mark="+">Next find the time. Use the positive answer for the final velocity to find the time for the ball to reach 10-metres on the way up...</p>
+<p data-mark="+">$$\Delta t = {\vec{\mathbf v}_{fy} - \vec{\mathbf v}_{iy} \over \vec{\mathbf a}_y}$$</p>
+<p data-mark="+">$$\Delta t = \mathrm{{+10.2\ m/s - 17.3\ m/s \over -9.81\ m/s^2} = 0.727\ s}$$</p>
+
+<p data-mark="+">Now solve the \(x\)-motion as uniform motion...</p>
+<p data-mark="+">$$\Delta\vec{\mathbf d}_x = \vec{\mathbf v}_x\Delta t = \mathrm{10.0\ m/s\cdot 0.727\ s = 7.27\ m}$$</p>
+
+<p data-mark="+">To find the solution for when the ball is on the way back down, repeat the above calculations using the negative answer for \(\vec{\mathbf v}_{fy}\)...</p>
+<p data-mark="+">$$\Delta t = \mathrm{{-10.2\ m/s - 17.3\ m/s \over -9.81\ m/s^2} = 2.80\ s}$$</p>
+<p data-mark="+">$$\Delta\vec{\mathbf d}_x = \vec{\mathbf v}_x\Delta t = \mathrm{10.0\ m/s\cdot 2.80\ s = 28.0\ m}$$</p>
+    
+</section>
+    
 </article></body>
 </html>

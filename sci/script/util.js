@@ -1,3 +1,12 @@
+Number.prototype.html = function(p, latex) {
+    let s = this.toPrecision(p).toLowerCase().split("e");
+    let n = s[1];
+    n = s[0] + (s.length > 1 ?
+        (latex ? `\times 10^{${n}}` : ` × 10<sup>${n}</sup>`) : "");
+    if (!latex) n = n.replace("-", "–"); // hyphen -> endash
+    return n;
+}
+
 Array.prototype.sum = function() {
     let n = this.length, s = 0;
     if (n) {

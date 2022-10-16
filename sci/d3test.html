@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://d3js.org/d3.v4.js"></script>
+<script type="text/javascript">
+
+// https://d3-graph-gallery.com/intro_d3js.html
+    
+function coord_tr(svg, x, y) {
+    svg = $($(svg)[0]);
+    let w = svg.width(), h = svg.height(), a = h / w;
+    if (y == null) y = [a * x[0], a * x[1]];
+    x = d3.scaleLinear().domain(x).range([0, w]);
+    y = d3.scaleLinear().domain([y[1], y[0]]).range([0, h]);
+    return {x:x, y:y};
+}
+
+$(function() {
+    let x = coord_tr("#plot1", [-1, 1]);
+    // window.xy = x;
+    let y = x.y;
+    x = x.x;
+    var svg = d3.select("#plot1");
+    svg.call(d3.axisBottom(x));
+    svg.append("circle")
+      .attr("cx", x(0)).attr("cy", y(0)).attr("r", 40).style("fill", "blue");
+    svg.append("circle")
+      .attr("cx", x(0.5)).attr("cy", y(-0.25)).attr("r", 40).style("fill", "#ff00ff");
+    svg.append("circle")
+      .attr("cx", x(-1)).attr("cy", y(0.25)).attr("r", 40).style("fill", "green");    
+});
+</script>
+</head>
+<body>
+<svg id="plot1" height=200 width=450></svg>
+</body>
+</html>

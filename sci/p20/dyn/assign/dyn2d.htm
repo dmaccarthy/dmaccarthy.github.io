@@ -1,0 +1,125 @@
+<div class="Practice" data-date="2022.10.6.16.00">
+<h3>Review</h3>
+<ol>
+    <li><ol type="a">
+        <li>What makes a problem <b class="Red">2D</b> as opposed to <b class="Red">1D</b>?</li>
+        <li>In general, how can we solve 2D dynamics problems with Newton’s 2nd Law?</li>
+    </ol></li>
+
+    <li>When using Newton’s Laws to solve problems involving motion along an inclined plane (ramp), why is it better to use a coordinate system where the x-axis is parallel to the ramp and the y-axis is perpendicular to the ramp rather than using the usual horizontal and vertical directions for the axes?</li>
+</ol>
+
+<style type="text/css">
+
+table.TD td {min-width:4em}
+    
+</style>
+  
+<h3>Practice</h3>
+<ol>
+    <li>A student pulls a 12.8 kg wagon along a horizontal surface using an applied force of 26.2 N [25.0°].
+        Other forces acting on the wagon are: air resistance and other forms of friction (\({\vec{\mathbf{F}}}_f\) = 1.65 N [180°]), gravity (\({\vec{\mathbf{F}}}_g\) = 126 N [270°]) and the normal force of the ground pushing up on the wagon’s wheels (\({\vec{\mathbf{F}}}_n\), has a direction of 90° and an unknown magnitude).
+    <ol type="a">
+        <li>Draw a free body diagram showing all forces acting on the wagon and express all forces in Cartesian form.</li>
+        <div class="Answer">
+    $$\vec{\mathbf F}_{ax} = \mathrm{26.2\ N \cos(25.0^\circ) = +23.7\ N}$$
+    $$\vec{\mathbf F}_{ay} = \mathrm{26.2\ N \sin(25.0^\circ) = +11.1\ N}$$
+    <table class="Auto TD">
+        <tr><td>\(\vec{\mathbf F}_a\)</td><td>+23.7</td><td>+11.1</td></tr>
+        <tr><td>\(\vec{\mathbf F}_g\)</td><td>0</td><td>–126</td></tr>
+        <tr><td>\(\vec{\mathbf F}_n\)</td><td>0</td><td>?</td></tr>
+        <tr><td>\(\vec{\mathbf F}_f\)</td><td>–1.65</td><td>0</td></tr>
+        <tr><td>\(\vec{\mathbf F}_{net}\)</td><td>?</td><td>0</td></tr>
+    </table>
+        </div>
+    
+        <li>Find the normal force by solving the \(y\)-component of Newton’s 2nd Law.</li>
+        <div class="Answer">The normal force must balance the other two \(y\)-forces:
+        $$\vec{\mathbf F}_{ny} = \mathrm{0\ N - (-126 + 11.1)\ N = +114.9\ N}$$</div>
+    
+        <li>Find the acceleration by solving the \(x\)-component of Newton’s 2nd Law.</li>
+        <div class="Answer">
+            $$\vec{\mathbf F}_{net} = \mathrm{+23.7\ N + (-1.65\ N) = +22.1\ N}$$
+            $$\vec{\mathbf a} = \frac{\vec{\mathbf F}_{net}}{m} = \mathrm{\frac{+22.1\ N}{12.8\ kg} = +1.73\ m/s^2}$$
+        </div>
+        <li>Calculate the speed of the wagon after it has moved 3.00 metres. Assume it started from rest.</li>
+        <div class="Answer">$$\begin{align}
+v_f &= \sqrt{v_i^2 + 2\vec{\mathbf a}\cdot\Delta\vec{\mathbf d}}
+\\ &= \mathrm{\sqrt{0 + 2(+1.73\ m/s^2)(+3.00\ m)}}
+\\ &= \mathrm{3.22\ m/s}
+        \end{align}$$</div>
+    </ol></li>
+
+    <li>A 50.0-kilogram sign is designed to hang from two cables at 45.0° angles from the top corners as illustrated.
+    <p class="Center"><img alt="Sign" src="dyn/assign/img/sign.png" width="320"/></p>
+    <ol type="a">
+        <li>Under normal circumstances (e.g. no strong winds, etc.) how much force does each of the cables exert?</li>
+        <div class="Answer">
+            <p>Draw a vector diagram of the three forces. The net force must be zero because the sign is not accelerating. (The scale is 1 square = 40 newtons.)</p>
+            <p class="Center">
+                <img alt="Sign" src="dyn/assign/img/sign_v.png" width="320"/>
+                $$F_g = mg = \mathrm{50.0\ kg\cdot 9.81\ m/s^2 = 491\ N}$$
+                $$F_1 = F_2 = F_g\cos(45.0^\circ) = \mathrm{347\ N}$$
+            </p>
+        </div>
+
+        <li>Suppose that the sign was mounted incorrectly so that the cable on the right makes an angle of 60.0° from horizontal instead of 45.0°. What would the forces in the cables be? Assume that the left cable remains attached at the correct angle.</li>
+        <div class="Answer">
+            <p>Draw a new vector diagram with the new angles:</p>
+            <p class="Center">
+                <img alt="Sign" src="dyn/assign/img/sign_u.png" width="238"/>
+            </p>
+            <p>The easy way to find the forces (if you have taken Math 20) is to use the Law of Sines:
+            $$F_1 = \frac{F_g}{\sin(105^\circ)} \sin(45.0^\circ) = \mathrm{359\ N}$$</p>
+            $$F_2 = \frac{F_g}{\sin(105^\circ)} \sin(30.0^\circ) = \mathrm{254\ N}$$</p>
+            <p>Without using the Sine Law, we have to use components:</p>
+    <table class="Auto TD">
+        <tr><td></td><td>\(x\)</td><td>\(y\)</td></tr>
+        <tr><td>\(\vec{\mathbf F}_g\)</td><td>0</td><td>–491</td></tr>
+        <tr><td>\(\vec{\mathbf F}_1\)</td><td>\(F_1\cos(60^\circ)\)<br/>\(= 0.500F_1\)</td><td>\(F_1\sin(60^\circ)\)<br/>\(= 0.866F_1\)</td></tr>
+        <tr><td>\(\vec{\mathbf F}_2\)</td><td>\(F_2\cos(135^\circ)\)<br/>\(= -0.707F_2\)</td><td>\(F_2\sin(135^\circ)\)<br/>\(= 0.707F_2\)</td></tr>
+        <tr><td>\(\vec{\mathbf F}_{net}\)</td><td>0</td><td>0</td></tr>
+    </table>
+    <p>The \(x\)-equation is:
+$$0.500 F_1 - 0.707 F_2 = 0$$
+$$0.707 F_2 = 0.500 F_1$$
+The \(y\)-equation is:
+$$0.866 F_1 + 0.707 F_2 - \mathrm{491\ N} = 0$$
+We can eliminate \(0.707 F_2\) by substituting the \(x\)-equation into the \(y\)...
+$$0.866 F_1 + 0.500 F_1 - \mathrm{491\ N} = 0$$
+$$1.366 F_1 = \mathrm{491\ N}$$
+$$F_1 = \mathrm{\frac{491\ N}{1.366} = 359\ N}$$
+We can now use the \(x\)-equation to find the other force...
+$$F_2 = \frac{0.500 F_1}{0.707} = \mathrm{254\ N}$$</p>
+        </div>
+    </ol></li>
+
+<!-- #3-5...
+https://docs.google.com/document/d/1cPXcnazyRT1zQ9xmbCXz7gkMr6YHswAZT1lvA1bsU_w
+-->
+    
+    <li>A 1.25 kg physics textbook slides from rest down a 3.00 m long ramp that is inclined at a 15.0° angle. When the book reaches the bottom of the ramp, its speed is found to be 2.42 m/s.
+    <p class="Center"><img alt="Ramp" src="dyn/assign/img/ramp.png" height="400"/></p>
+    <ol type="a">
+        <li>Calculate the acceleration of the book using kinematics and use the result to calculate the net force. If you take the direction parallel to the ramp as the \(x\)-axis, you can solve the problem as a 1D uniform accelerated motion situation since there is no motion in the \(y\)-direction.</li>
+        <li>Express the force of gravity in Cartesian form. Since we are taking the \(x\)-axis as the direction parallel to the ramp, the direction of gravity is not 270° in this coordinate system.</li>
+        <li>Find the normal force by solving the \(y\)-component (perpendicular to the ramp) of Newton’s 2nd Law.</li>
+        <li>Calculate the force of friction from the net force you obtained in (a). Use the answer to calculate the coefficient of kinetic friction.</li>
+    </ol></li>
+
+    <li>A 5.00 kg object sits at rest on a ramp inclined at 12.0°.<ol type="a">
+        <li>Using the direction parallel to the ramp as the \(x\)-axis, express the force of gravity in Cartesian form.</li>
+        <li>Determine the normal force and the force of friction. [Hint: What must the acceleration and the net force equal if the block remains at rest?]</li>
+        <li>Students observe that they can incline the ramp up to a maximum angle of 18.0°. For inclinations higher than this, the object no longer remains at rest but begins to slide down the ramp. Determine the coefficient of friction between the ramp and the object. Is this coefficient the static or the dynamic friction?</li>
+        <li>Show that in general, the coefficient of static friction is \(\mu_s=\sin{\theta}/\cos{\theta}\) where is the incline \(\theta\) at which the mass begins to slide down the ramp.</li>
+    </ol></li>
+
+    <li>A pulley system is combined with an inclined plane as illustrated below and released from rest.
+        <p class="Center"><img alt="Pulley" src="dyn/assign/img/pulley.png" width="320"/></p>
+    <ol type="a">
+        <li>Using \(m_1\) = 5.00 kg and \(m_2\) = 2.50 kg, \(h\) = 60.0 cm, and a ramp inclination of \(\theta\) = 10.0° from the horizontal, determine the acceleration and the speed of the system just before \(m_2\) strikes the ground. Assume the ramp is frictionless.</li>
+        <li>Repeat your calculations for a coefficient of friction of \(\mu_k\) = 0.150.</li>
+    </ol></li>
+</ol>
+
+</div>

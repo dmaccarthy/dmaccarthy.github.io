@@ -1,97 +1,36 @@
-let kin1d = [
-    {title:"Unit 1 Organizer", gdrv:"1H1RECEgfTDTZoAEBgPmnUIy5Zn5TIdeb"},
-    // {title:"Additional Handouts", gdrv:""},
-    {title:"Position & Displacement", id:"displ", icon:1, vid:"V8hJhTE3bUk", menu:[
-        {title:"Lesson Notes", open:"kin/displ.html"},
-        {title:"Review & Practice", id:"displ-rp", ajax:"kin/assign/displ.htm", menu:[]},
-        // {title:"Practice Solutions", gdoc:"1EkZMELpyV191px9oqb_zru74Xaf01eEAZsmLG4c3-jw"},
-    ]},
-    {title:"Velocity & Speed", id:"vel", icon:1, menu:[
-        {title:"Lesson Notes", open:"kin/vel.html"},
-        {title:"Review & Practice", id:"vel-rp", ajax:"kin/assign/vel.htm", menu:[]},
-        // {title:"Practice Solutions", gdoc:"1eRjia_G9Zny7pNvpGp282N-XVMRCjJh9MWwRlNCW36A"},
-    ]},
-    {title:"Basketball Motion Labs", id:"bball", icon:"ball", menu:[
-        // {title:"Logger Pro Setup (Rolling)", gdrv:"1xPepAdIKoIzIembAw02G4gXEbVIeh_27"},
-        // {title:"Logger Pro Setup (Bouncing)", gdrv:"1pI39R2RcajEK35gwJq-gko6mjtzH-w1m"},
-        {title:"Lab: Motion of a Rolling Ball", gdrv:"1FohO987NAdlQm4Kg05GEkSADQH5CmCwh"},
-        {title:"Lab: Motion of a Bouncing Ball", gdrv:"1K4FfWTyN2LLdPeTP8jYqpHmMryJ8Ljz2"},
-        {title:"Bouncing Ball Simulation", icon:1, open:"../applet/bounce.html"},
-        {title:"Bouncing Ball Data", icon:"desmos", open:"https://www.desmos.com/calculator/mop5f8vzxj"},
-    ]},
-    {title:"Motion Graphs", id:"graph", icon:1, menu:[
-        // {title:"Logger Pro Setup", open:"../logger/Basketball.cmbl"},
-        {title:"Lesson Notes", open:"kin/graph.html"},
-        {title:"Review & Practice", id:"graph-rp", ajax:"kin/assign/graph.htm", menu:[]},
-        // {title:"Practice Solutions", gdoc:"12uwMmaCWOsEemtR8fj6jujP-FjGihNef3Wn08nHmCOY"},
-    ]},
-    {title:"Acceleration", id:"acc", icon:1, menu:[
-        {title:"Lesson Notes", open:"kin/accel.html"},
-        {title:"Review & Practice", id:"accel-rp", ajax:"kin/assign/accel.htm", menu:[]},
-        // {title:"Practice Solutions", gdoc:"1RVLIxYzDym_sqjgL8SYdxtLIts9mJ0BAcoEG0FCZfvo"},
-    ]},
-    {title:"Uniform Accelerated Motion", id:"uam", icon:1, menu:[
-        {title:"Lesson Notes", open:"kin/uam.html"},
-        {title:"Review & Practice", id:"uam-rp", ajax:"kin/assign/uam.htm", menu:[]},
-        // {title:"Practice Solutions", gdoc:"14GrA1jhjfFNOpCzbr0xraPt_mwPBfb3PHOFu7G6e6XQ"},
-    ]},
-    {title:"Chapter Review", icon:"lesson", id:"ch1", ajax:"kin/summary.htm", menu:[]},
-];
-
-let vec2d = [
-    {title:"Unit 1 Organizer", gdrv:"1H1RECEgfTDTZoAEBgPmnUIy5Zn5TIdeb"},
-    // {title:"Additional Handouts", gdrv:""},
-    {title:"2D Vectors Applet", icon:"html5", open:"../applet/vec.html"},
-    {title:"Magnitude & Direction", id:"mag", icon:1, menu:[
-        {title:"Lesson Notes", open:"vec/mag.html"},
-        {title:"Review & Practice", id:"mag-rp", ajax:"vec/assign/mag.htm", menu:[]},
-        // {title:"Practice Solutions", gdoc:"14vQp9XvGS1yPjDoLDfFNE2u5MAnIqKgcXTgIAwVCRQQ"},
-    ]},
-    {title:"Polar & Cartesian Form", id:"polar", icon:1, menu:[
-        {title:"Lesson Notes", open:"vec/polar.html"},
-        {title:"Review & Practice", id:"polar-rp", ajax:"vec/assign/polar.htm", menu:[]},
-        // {title:"Practice Solutions", gdoc:"14-CgdDFUiCwpJfPlghKpw1iMRfC8J3NJBwrNP20fois"},
-    ]},
-    {title:"Vector Arithmetic", show:"2023.1", id:"arith", icon:1, menu:[
-        {title:"Lesson Notrigtes", open:"vec/arith.html"},
-        {title:"Practice Solutions", gdoc:"1960E_v1vFacD-7sbtFqrE3Xzqjr32rO4H435r4aT3WM"},
-    ]},
-    {title:"Projectile Motion", show:"2023.1", id:"proj", icon:1, menu:[
-        {title:"Lesson Notes", open:"vec/proj.html"},
-        {title:"Practice Solutions", gdoc:"14uVxnRHjWAdOALpevl9sJq1ZgGIU9Hw82uaAilHrFF4"},
-    ]},
-    {title:"Dynamics in 2D", show:"2023.1", id:"dyn2d", icon:1, menu:[
-        {title:"Examples", open:"vec/dyn2d.html"},
-        {title:"Practice Solutions", unavail:0, gdoc:"1cPXcnazyRT1zQ9xmbCXz7gkMr6YHswAZT1lvA1bsU_w"},
-    ]},
-    {title:"Chapter Review", icon:"lesson", id:"ch2", ajax:"vec/summary.htm", menu:[]},
-];
-
 let dyn = [
     {title:"Unit 2 Organizer", gdrv:"1rug0IdD7DkN2-zvl2z9Lq4DI9Rapb10i"},
-    {title:"Additional Handouts", gdrv:""},
     {title:"Force & Inertia", id:"inert", icon:1, menu:[
         {title:"Lesson Notes", open:"dyn/inert.html"},
-        {title:"Practice Solutions", gdoc:"1aMbFTmo1sNi91ULonApGutTAqpGIc7o3xE0NcVQ0GfQ"},
+        {title:"Review & Practice", id:"inert-rp", ajax:"dyn/assign/inert.htm", menu:[]},
     ]},
     {title:"Free Body Diagrams", id:"fbd", icon:1, menu:[
         {title:"Lesson Notes", open:"dyn/fbd.html"},
-        {title:"Practice Solutions", gdoc:"1ecVJbHXRGtCmoCOmTXco-DHDAvSjWlqaO-to-DjEEQ4"},
+        {title:"Review & Practice", id:"fbd-rp", ajax:"dyn/assign/fbd.htm", menu:[]},
     ]},
     {title:"Newton’s Third Law", id:"N3", icon:1, menu:[
         {title:"Lesson Notes", open:"dyn/n3.html"},
-        {title:"Practice Solutions", gdoc:"1zUzJTyrdwsWblAz1StqF0sNn3lclQigmLoTT4R1mfkc"},
+        {title:"Review & Practice", id:"n3-rp", ajax:"dyn/assign/n3.htm", menu:[]},
     ]},
+    {title:"Pennies Experiment", icon:"https://upload.wikimedia.org/wikipedia/en/c/c5/Canadian_Penny_-_Reverse.png", gdrv:"18JxTsaYqlALajnFlVY3mONF4ps5_5hhD"},
+    // {title:"Pennies Experiment", id:"penny", icon:"https://upload.wikimedia.org/wikipedia/en/c/c5/Canadian_Penny_-_Reverse.png", menu:[
+    //     {title:"Video", gdrv:"1iJ9iZ2QLj3fwcki75mKcb9XR18yFSCvl"},
+    //     {title:"Handout", gdrv:"18JxTsaYqlALajnFlVY3mONF4ps5_5hhD"},
+    // ]},
     {title:"Mass & Weight", id:"weight", icon:1, vid:"KDp1tiUsZw8", menu:[
-        // {title:"Pennies Lab Video", gdrv:"1iJ9iZ2QLj3fwcki75mKcb9XR18yFSCvl"},
-        // {title:"Experiment Handout", gdrv:"1Z05e3AIQpijSqzOmC3UOk74t9PFo1ErC"},
         {title:"Lesson Notes", open:"dyn/weight.html"},
-        {title:"Practice Solutions", gdoc:"1wtfhYaqUeBUotX8nm4PHM0UjLZdUNLgdibdyFQcjjXo"},
+        {title:"Review & Practice", id:"weight-rp", ajax:"dyn/assign/weight.htm", menu:[]},
     ]},
     {title:"Contact Forces", id:"fric", icon:1, menu:[
         {title:"Lesson Notes", open:"dyn/fric.html"},
-        {title:"Practice Solutions", gdoc:"1jAoNeyNDfi1DPFyhi-Qf4AdesX2-Wfasv-Dsj0fYV0c"},
+        {title:"Review & Practice", id:"fric-rp", ajax:"dyn/assign/fric.htm", menu:[]},
+        {title:"Friction Lab", gdrv:"1d9lmd_jhew9hZXY_F9STZDWIbZjoTaFJ"},
         {title:"Friction Simulation", icon:"html5", open:"../applet/pulley"},
+    ]},
+    {title:"Dynamics in 2D", show:"202.1", id:"dyn2d", icon:1, menu:[
+        {title:"Examples", open:"vec/dyn2d.html"},
+        {title:"Review & Practice", id:"dyn2d-rp", ajax:"dyn/assign/dyn2d.htm", menu:[]},
+        // {title:"Practice Solutions", gdoc:"1cPXcnazyRT1zQ9xmbCXz7gkMr6YHswAZT1lvA1bsU_w"},
     ]},
     {title:"Chapter Review", icon:"lesson", id:"ch3", ajax:"dyn/summary.htm", menu:[]},
 ];
@@ -271,7 +210,6 @@ let shm = [
 
 let wave = [
     {title:"Unit 4 Organizer", gdrv:"1JaXx7B8V0CxDWiYVdKQOkmFa5IRM_XDT"},
-    {title:"Additional Handouts", gdrv:""},
     // {title:"Assignment Booklet", gdrv:"1NC0Pk5VyhNKR8sGuTNhgHNQpG5ZiJyv9"},
     {title:"Harmonic Waves", id:"harm", icon:1, menu:[
         {title:"Lesson Notes", open:"wave/harm.html"},
@@ -293,6 +231,63 @@ let wave = [
     {title:"Chapter Review", icon:"lesson", id:"ch8", ajax:"wave/summary.htm", menu:[]},
 ];
 
+let kin1d = [
+    {title:"Unit 1 Organizer", gdrv:"1H1RECEgfTDTZoAEBgPmnUIy5Zn5TIdeb"},
+    {title:"Position & Displacement", id:"displ", icon:1, vid:"V8hJhTE3bUk", menu:[
+        {title:"Lesson Notes", open:"kin/displ.html"},
+        {title:"Review & Practice", id:"displ-rp", ajax:"kin/assign/displ.htm", menu:[]},
+    ]},
+    {title:"Velocity & Speed", id:"vel", icon:1, menu:[
+        {title:"Lesson Notes", open:"kin/vel.html"},
+        {title:"Review & Practice", id:"vel-rp", ajax:"kin/assign/vel.htm", menu:[]},
+    ]},
+    {title:"Basketball Motion Labs", id:"bball", icon:"ball", menu:[
+        // {title:"Logger Pro Setup (Rolling)", gdrv:"1xPepAdIKoIzIembAw02G4gXEbVIeh_27"},
+        // {title:"Logger Pro Setup (Bouncing)", gdrv:"1pI39R2RcajEK35gwJq-gko6mjtzH-w1m"},
+        {title:"Lab: Motion of a Rolling Ball", gdrv:"1FohO987NAdlQm4Kg05GEkSADQH5CmCwh"},
+        {title:"Lab: Motion of a Bouncing Ball", gdrv:"1K4FfWTyN2LLdPeTP8jYqpHmMryJ8Ljz2"},
+        {title:"Bouncing Ball Simulation", icon:1, open:"../applet/bounce.html"},
+        {title:"Bouncing Ball Data", icon:"desmos", open:"https://www.desmos.com/calculator/mop5f8vzxj"},
+    ]},
+    {title:"Motion Graphs", id:"graph", icon:1, menu:[
+        // {title:"Logger Pro Setup", open:"../logger/Basketball.cmbl"},
+        {title:"Lesson Notes", open:"kin/graph.html"},
+        {title:"Review & Practice", id:"graph-rp", ajax:"kin/assign/graph.htm", menu:[]},
+    ]},
+    {title:"Acceleration", id:"acc", icon:1, menu:[
+        {title:"Lesson Notes", open:"kin/accel.html"},
+        {title:"Review & Practice", id:"accel-rp", ajax:"kin/assign/accel.htm", menu:[]},
+    ]},
+    {title:"Uniform Accelerated Motion", id:"uam", icon:1, menu:[
+        {title:"Lesson Notes", open:"kin/uam.html"},
+        {title:"Review & Practice", id:"uam-rp", ajax:"kin/assign/uam.htm", menu:[]},
+    ]},
+    {title:"Chapter Review", icon:"lesson", id:"ch1", ajax:"kin/summary.htm", menu:[]},
+];
+
+let vec2d = [
+    {title:"Unit 1 Organizer", gdrv:"1H1RECEgfTDTZoAEBgPmnUIy5Zn5TIdeb"},
+    {title:"2D Vectors Applet", icon:"html5", open:"../applet/vec.html"},
+    {title:"Magnitude & Direction", id:"mag", icon:1, menu:[
+        {title:"Lesson Notes", open:"vec/mag.html"},
+        {title:"Review & Practice", id:"mag-rp", ajax:"vec/assign/mag.htm", menu:[]},
+        {title:"Vector Diagrams", gdrv:"1MIg3JWB8dxKHzXXAWK61ubq_wFUzMFxx"},
+    ]},
+    {title:"Polar & Cartesian Form", id:"polar", icon:1, menu:[
+        {title:"Lesson Notes", open:"vec/polar.html"},
+        {title:"Review & Practice", id:"polar-rp", ajax:"vec/assign/polar.htm", menu:[]},
+    ]},
+    {title:"Vector Arithmetic", id:"arith", icon:1, menu:[
+        {title:"Lesson Notes", open:"vec/arith.html"},
+        {title:"Review & Practice", id:"arith-rp", ajax:"vec/assign/arith.htm", menu:[]},
+    ]},
+    {title:"Projectile Motion", id:"proj", icon:1, menu:[
+        {title:"Lesson Notes", open:"vec/proj.html"},
+        {title:"Review & Practice", id:"proj-rp", ajax:"vec/assign/proj.htm", menu:[]},
+    ]},
+    {title:"Chapter Review", icon:"lesson", id:"ch2", ajax:"vec/summary.htm", menu:[]},
+];
+
 let home = addHome({title:"Physics 20", id:"home", htmx:"<p class='Right'>Teacher: <a href='mailto:david.maccarthy@eips.ca'>D.G. MacCarthy</a></p>", menu:[
     {title:"Documents & Links", id:"doc", icon:"link", menu:[
         {title:"Brightspace", icon:"bs", open:"https://eips.brightspace.com/d2l/home/62225"},
@@ -312,15 +307,15 @@ let home = addHome({title:"Physics 20", id:"home", htmx:"<p class='Right'>Teache
     {title:"Science & Math 10 Review", id:"s10", icon:"da", menu:meas},
     {title:"Chapter 1: Kinematics", id:"kin", icon:"train", menu:kin1d},
     {title:"Chapter 2: 2D Vectors", id:"vec2d", icon:"soccer", menu:vec2d},
-    {title:"Chapter 3: Dynamics", show:"2023.1", id:"dyn", icon:"rocket", menu:dyn},
+    {title:"Chapter 3: Dynamics", id:"dyn", icon:"rocket", menu:dyn},
     {title:"Data Analysis", show:"2023.1", id:"da", icon:"da", menu:data},
     {title:"Chapter 4: Universal Gravitation", show:"2023.1", id:"grav", icon:"earth", menu:grav},
     {title:"Chapter 5: Circular & Planetary Motion", show:"2023.1", id:"circ", icon:"midway", menu:circ},
     {title:"Chapter 6: Energy & Work", show:"2023.1", id:"energy", icon:"arrow", menu:energy},
     {title:"Chapter 7: Oscillations (SHM)", show:"2023.1", id:"shm", icon:"crane", menu:shm},
     {title:"Chapter 8: Mechanical Waves", show:"2023.1", id:"wave", icon:"speaker", menu:wave},
-    {title:"Course Review", show:"2023.1", id:"rev20", icon:"rocket", menu:[
-        {title:"Assignment / Solutions", gdrv:"1Pe-o2p0VbWJ9UAnGt0ZNPqLArqpvhhPG"},
+    {title:"Course Review", id:"rev20", icon:"rocket", menu:[
+        // {title:"Assignment / Solutions", gdrv:"1Pe-o2p0VbWJ9UAnGt0ZNPqLArqpvhhPG"},
         {title:"Kinematics", icon:"train", id:"rev1", ajax:"kin/summary.htm", menu:[]},
         {title:"2D Vectors", icon:"soccer", id:"rev2", ajax:"vec/summary.htm", menu:[]},
         {title:"Dynamics", icon:"rocket", id:"rev3", ajax:"dyn/summary.htm", menu:[]},

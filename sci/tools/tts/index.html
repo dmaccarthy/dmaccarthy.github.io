@@ -3,7 +3,6 @@
 <head><title>Speech Synthesis</title>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">//<!--
 
@@ -12,7 +11,8 @@ let names = [
     "David", "Hazel", "Zira", "Susan", "Richard", "George", "Linda", "Mark",
     "US English", "UK English Female", "UK English Male"
 ];
-let alias = {"US English":"Sara", "UK English Female":"Liz", "UK English Male":"Phil"}
+let alias = {"US English":"Sara", "UK English Female":"Liz", "UK English Male":"Phil"};
+let pitch = {Sara:0.8, Linda:1.4, Hazel:0.8, Zira:1.2};
 
 function loadVoices() {
     voices = speechSynthesis.getVoices();
@@ -32,7 +32,7 @@ function loadVoices() {
     }
 }
 
-let A = "Richard", F = "Linda", M = "Phil"; // Chrome
+let F = "Sara", M = "Phil", A = "Linda"; // Chrome
 if (navigator.userAgent.search("Chrome") == -1) {
     A = "Hazel", F = "Zira", M = "David";    
 }
@@ -53,7 +53,8 @@ function sayNext() {
 function say(text, name, pause, opt) {
     if (pause == null) pause = 0.5;
     let u = play.u = new SpeechSynthesisUtterance(text);
-    Object.assign(u, {voice:cast[name], rate:1.05, lang:"en-CA"});
+    Object.assign(u, {voice:cast[name], rate:1, lang:"en-CA"});
+    if (pitch[name]) u.pitch = pitch[name];
     if (opt) Object.assign(u, opt);
     u.onend = function() {
         play.timeout = setTimeout(sayNext, 1000 * pause);
@@ -68,18 +69,20 @@ function stop() {
 }
 
 function loadScript() {
+    if (play.u) stop();
     let url = $("#scriptURL").val();
+    if (url.substr(0, 4) != "http")
+        url = `script/${url}.js`;
     $.getScript({url:url, cache:false, success:function() {
         console.log(`Loaded ${script.length} lines.`);
     }});
 }
 
 //--></script>
-<!--script type="text/javascript" src="tts.js"></script-->
 </head>
 <body>
     <p>
-        <input id="scriptURL" type="text" value="tts.js"></input>
+        <input id="scriptURL" type="text" value="tts"></input>
         <button onclick="loadScript()">Load</button>    
     </p>
     <p>

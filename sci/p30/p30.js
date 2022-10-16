@@ -246,7 +246,7 @@ let home = addHome({title:"Physics 30", id:"home", htmx:"<p class='Right'>Teache
         {title:"Course Outline", gdrv:"1Tw-YQlKYBATI0Yml051NJbw0QM6yU6BV"},
     ]},
     {title:"Chapter 9: Momentum & Impulse", id:"mom", icon:"train", menu:mom},
-    {title:"Chapters 10 & 11: Electric Fields", show:"2023.1", id:"elec", icon:"../media/lightning.jpg", menu:elec},
+    {title:"Chapters 10 & 11: Electric Fields", id:"elec", icon:"../media/lightning.jpg", menu:elec},
     {title:"Chapter 12: Magnetic Fields", show:"2023.1", id:"mag", icon:"magnet", menu:mag},
     {title:"Chapter 13: Electromagnetic Waves", show:"2023.1", id:"emr", icon:"lightbulb", menu:emr},
     {title:"Chapter 14: Photons", show:"2023.1", id:"photon", icon:"xray", menu:photon},
