@@ -1,0 +1,103 @@
+body {
+    font-family: Oxygen;
+    text-align:center;
+    margin:0;
+}
+
+.Left {text-align:left}
+.Center {text-align:center}
+.Red {color:red}
+.Blue {color:blue}
+
+#Location {
+    max-width:800px;
+    margin:0 auto;
+    color:blue;
+}
+
+#Location > select {
+    background:none;
+    border:none;
+    text-align:center;
+    min-width:12em;
+    font-size:150%;
+    margin:0;
+    margin-top:16px;
+    cursor:pointer;
+}
+
+#Location > p {
+    padding-bottom:8px;
+    border-bottom:1px solid blue;
+    text-align:left;
+}
+
+#Location > p > span {
+    border-radius:6px;
+    padding:4px;
+}
+
+#Location > p > span:hover:not(:last-child) {
+    cursor:pointer;
+    background-color:#a0a0ff;
+}
+
+#Location * {color:blue}
+#Location > p > span.Current {font-weight:bold}
+
+#Main {
+    margin:8px auto;
+    text-align:left;
+    max-width:800px;
+}
+
+iframe, img, canvas {max-width:100%}
+section {margin:16px 0}
+section.Video {text-align:center}
+
+section.Menu > table {
+    border-collapse:collapse;
+    font-size:125%;
+    background-color:#e0e0ff;
+    width:100%;
+    margin:auto 0;
+    color:blue;
+}
+
+section.Menu > table tr:nth-child(even) {background-color:#f0f0f0}
+
+section.Menu > table td {
+    padding:8px;
+    cursor:pointer;
+}
+
+section.Menu > table td:first-child {width:2.5em}
+section.Menu > table td:not(:first-child) {padding-left:16px}
+
+section.Menu > table td > img {
+    width:2.5em;
+    height:2.5em;
+    vertical-align:middle;
+}
+
+section.Icons {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+section.Icons > button {
+    margin:0.6em;
+    background-color:#fff;
+    border:none;
+    color:blue;
+    cursor:pointer;
+}
+
+section.Icons > button > i {font-size:175%}
+section.Icons > button * {vertical-align:middle}
+
+section.HTML {
+    font-size:125%;
+    padding:8px;
+}

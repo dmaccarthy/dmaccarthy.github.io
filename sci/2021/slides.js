@@ -130,7 +130,14 @@ function goMarker(i) {
 	else if (i === false) hideLast();
 }
 
-function goCourse(href) {location.href = href ? href : "../"}
+function goCourse(href) {
+    if (!href) href = location.hash;
+    if (!href) {
+        href = location.pathname.split("/");
+        href = "#" + href[href.length-1].split(".")[0];
+    }
+    location.href = "../" + (href ? href : "");
+}
 
 function goNext(n) {
     for (let i=0;i<lesson_sequence.length;i++) {

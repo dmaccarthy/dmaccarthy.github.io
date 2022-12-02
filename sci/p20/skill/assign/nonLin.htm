@@ -1,0 +1,119 @@
+<div class="Practice" data-date="2022.10.28.16.00">
+<style type="text/css">
+    table.TD td {min-width:5em; width:50%}
+</style>
+<h3>Review</h3>
+<ol>
+    <li><ol type="a">
+        <li>Explain how to <b class="Red">transform</b> or <b class="Red">linearize</b> the raw data when the data is expected to follow a power relationship.</li>
+        <li>Describe two possible ways of determining the appropriate exponent to use when transforming power data.</li>
+    </ol></li>
+
+    <li><ol type="a">
+        <li>Describe how to determine the <b class="Red">model equation</b> from the scatter plot of transformed data.</li>
+        <li>How can the model equation be used to evaluate constants or controlled variables that appear in the “formula”?</li>
+    </ol></li>
+    
+</ol>
+
+<h3>Practice</h3>
+<ol>
+    <li><ol type="a">
+        <li>Referring to the Earth’s Gravity data from the <a href="javascript:open('#regr-rp')">previous assignment</a>, transform the data (based on the results of your power regression) to produce a linear graph. Include a table of the transformed data, the graph with best-fit line, and a calculation of the slope.</li>
+        <div class="Answer">
+        <table class="Auto TD">
+            <tr>
+                <td>Orbital Radius<sup>–2</sup><br/>\(r^{-2}\) / 10<sup>–14</sup> m<sup>2</sup></td>
+                <td>Gravitational Field<br/>\(g\) / (m/s<sup>2</sup>)</td>
+            </tr>
+            <tr><td>2.37</td><td>9.44</td></tr>
+            <tr><td>2.04</td><td>8.14</td></tr>
+            <tr><td>1.78</td><td>7.09</td></tr>
+            <tr><td>1.56</td><td>6.23</td></tr>
+            <tr><td>1.38</td><td>5.52</td></tr>
+            <tr><td>1.24</td><td>4.92</td></tr>
+            <tr><td>1.11</td><td>4.42</td></tr>
+            <tr><td>1.00</td><td>3.99</td></tr>
+        </table>
+        <p><a target="D1" href="https://www.desmos.com/calculator/vflff6tmyp">Graph</a>
+            $$g = \mathrm{(3.99\times 10^{14}\ m^3/s^2)} r^{-2}$$</p>
+        </div>
+    
+        <li>Do the results of your calculation agree with the power regression?</li>
+    </ol></li>
+
+    <li><ol type="a">
+        <li>Referring to the Sound Waves data from the <a href="javascript:open('#regr-rp')">previous assignment</a>, transform the data (based on the results of your power regression) to produce a linear graph. Include a table of the transformed data, the graph with best-fit line, and a calculation of the slope.</li>
+        <div class="Answer">
+        <table class="Auto TD">
+            <tr>
+                <td>Frequency<sup>–1</sup><br/>\(f^{-1}\) / Hz<sup>–1</sup></td>
+                <td>Wavelength<br/>\(\lambda\) / m</td>
+            </tr>
+            <tr><td>0.00909</td><td>3.07</td></tr>
+            <tr><td>0.00455</td><td>1.54</td></tr>
+            <tr><td>0.00227</td><td>0.77</td></tr>
+            <tr><td>0.00152</td><td>0.51</td></tr>
+            <tr><td>0.00114</td><td>0.38</td></tr>
+            <tr><td>0.000909</td><td>0.31</td></tr>
+            <tr><td>0.000758</td><td>0.26</td></tr>
+            <tr><td>0.000649</td><td>0.22</td></tr>
+        </table>
+        <p><a target="D2" href="https://www.desmos.com/calculator/selb3hwfhj">Graph</a>
+            $$\lambda = \mathrm{338\ m/s} \cdot f^{-1}$$</p>
+        </div>
+        <li>Do the results of your calculation agree with the power regression?</li>
+        <li>The Physics 20 data sheet predicts the relationship should be described by the equation $$\lambda=vf^{-1}$$ where \(v\) is the speed of sound waves. Algebraically determine the speed of sound from the data.</li>
+        <div class="Answer">
+$$\lambda = vf^{-1} = \mathrm{338\ m/s} \cdot f^{-1}$$
+$$v = \mathrm{338\ m/s} $$
+
+        </div>
+    </ol></li>
+
+    <li><p>Physics students collected the following data as part of an experiment on the motion of a simple pendulum:</p>
+    <table class="Auto TD">
+        <tr>
+            <td>Length<br/>\(L\) / m</td>
+            <td>Period<br/>\(T\) / s</td>
+        </tr>
+        <tr><td>0.25</td><td>1.01</td></tr>
+        <tr><td>0.50</td><td>1.43</td></tr>
+        <tr><td>0.75</td><td>1.75</td></tr>
+        <tr><td>1.00</td><td>2.02</td></tr>
+        <tr><td>1.25</td><td>2.26</td></tr>
+        <tr><td>1.50</td><td>2.47</td></tr>
+        <tr><td>1.75</td><td>2.67</td></tr>
+        <tr><td>2.00</td><td>2.86</td></tr>
+    </table>
+    <p>The Physics 20 data sheet suggests that the relationship between these variables can be described by the following equation: $$T=2\pi\sqrt{\frac{L}{g}}$$
+    It may be more helpful for your analysis to write this equation as: $$T=\frac{2\pi}{\sqrt g}L^{1/2}$$
+    Analyze the data completely. Include a linearized table of values and graph, a model equation from your graph, and a regression equation. Also, use your equation to calculate the experimental value of \(g\).</p></li>
+    <div class="Answer">
+    <table class="Auto TD">
+        <tr>
+            <td>Length<sup>1/2</sup><br/>\(L^{1/2}\) / m<sup>1/2</sup></td>
+            <td>Period<br/>\(T\) / s</td>
+        </tr>
+        <tr><td>0.50</td><td>1.01</td></tr>
+        <tr><td>0.71</td><td>1.43</td></tr>
+        <tr><td>0.87</td><td>1.75</td></tr>
+        <tr><td>1.00</td><td>2.02</td></tr>
+        <tr><td>1.12</td><td>2.26</td></tr>
+        <tr><td>1.22</td><td>2.47</td></tr>
+        <tr><td>1.32</td><td>2.67</td></tr>
+        <tr><td>1.41</td><td>2.86</td></tr>
+    </table>
+        <p><a target="D3" href="https://www.desmos.com/calculator/fyuzvo9vps">Graph</a>
+$$k = \mathrm{Slope = \frac{2.86 - 0)\ s}{(1.41 - 0)\ m^{1/2}} = 2.03\ s/m^{1/2}}$$
+$$b = 0$$
+$$y = kx + b \rightarrow T = \mathrm{(2.03\ s/m^{1/2})} L^{1/2}$$
+Substitute the formula for \(T\)...
+$$\frac{2\pi}{\sqrt g}L^{1/2} = \mathrm{(2.03\ s/m^{1/2})} L^{1/2}$$
+Cancel \(L^{1/2}\)...
+$$\frac{2\pi}{\sqrt g} = \mathrm{(2.03\ s/m^{1/2})}$$
+$$\frac{4\pi^2}{g} = \mathrm{(2.03\ s/m^{1/2})^2 = 4.11\ s^2/m}$$
+$$g = \frac{4\pi^2}{\mathrm{4.11\ s^2/m}} = \mathrm{9.60\ m/s^2}$$</p>
+    </div>
+</ol>
+</div>

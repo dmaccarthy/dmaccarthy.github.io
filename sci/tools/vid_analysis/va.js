@@ -1,9 +1,8 @@
 var err;
 
-
-function openFile() {
-	var file = document.getElementById("VideoFile").files[0];
-	openPlayer(window.URL.createObjectURL(file));
+function openFile(blob) {
+	if (!blob) blob = document.getElementById("VideoFile").files[0];
+	openPlayer(window.URL.createObjectURL(blob));
 }
 
 function openPlayer(fileURL) {

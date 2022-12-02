@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Answer Key</title>
+<link rel="shortcut icon" type="image/png" href="../../media/rocket.png" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<script type="text/javascript" src="../script/util.js"></script>
+<script type="text/javascript" src="../script/sketch5.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700" />
+<link rel="stylesheet" href="../script/ui2023.css" />
+<script type="text/javascript">
+
+$(function() {
+    let arg = location.hash.slice(1).split("/");
+    let url = `${arg[0]}/assign/${arg[1]}.htm`;
+    $.ajax({url:url, success:function(e) {
+        e = $(e);
+        let title = e.attr("title");
+        $("h2").find("a").html(title);
+        document.title = title;
+        $("#AnswerKey").html(e.html());
+        mjTypeset();
+    }});
+    $("h2").find("a").attr({href:"./#" + arg[1]});
+});
+
+</script>
+<style>
+
+#AnswerKey {
+    text-align:left;
+    max-width:800px;
+    margin:0 auto;
+    padding:8px;
+    font-size:125%;
+}
+
+.Answer {
+    color:red;
+    margin:0.75em 0;
+}
+
+h3:first-child {margin-top:0}
+
+</style>
+</head>
+<body>
+<h2 class="Blue"><a>Answer Key</a></h2>
+<article id="AnswerKey"></article>
+</body>
+</html>

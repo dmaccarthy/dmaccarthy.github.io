@@ -132,10 +132,9 @@ let emr = [
 
 //     {title:"Snell’s Law Derivation", icon:"html5", open:"https://www.geogebra.org/m/agnjb9mf"},
 
-
 let mag = [
     {title:"Assignment Booklet", gdrv:"1KuLEqojBVQOI4wZcC5TKVjmrpGE2hpYE"},
-    {title:"Electromagnetism", id:"em", icon:1, menu:[
+    {title:"Electromagnetism", id:"em", icon:1, vid:"RwilgsQ9xaM", menu:[
         {title:"Lesson Notes", open:"em/mag.html"},
         {title:"Practice Solutions", gdoc:"1gf_5knTUqHibU_09BV6LvKX4Il0BDE1vWieigAc4B4E"},
         {title:"Weak Field (Logger Pro)", gdrv:"10TYeWeR9Cx9NEJV-cnuNUodkP5kWmjB9"},
@@ -247,7 +246,7 @@ let home = addHome({title:"Physics 30", id:"home", htmx:"<p class='Right'>Teache
     ]},
     {title:"Chapter 9: Momentum & Impulse", id:"mom", icon:"train", menu:mom},
     {title:"Chapters 10 & 11: Electric Fields", id:"elec", icon:"../media/lightning.jpg", menu:elec},
-    {title:"Chapter 12: Magnetic Fields", show:"2023.1", id:"mag", icon:"magnet", menu:mag},
+    {title:"Chapter 12: Magnetic Fields", id:"mag", icon:"magnet", menu:mag},
     {title:"Chapter 13: Electromagnetic Waves", show:"2023.1", id:"emr", icon:"lightbulb", menu:emr},
     {title:"Chapter 14: Photons", show:"2023.1", id:"photon", icon:"xray", menu:photon},
     {title:"Chapter 15: Atomic Physics", show:"2023.1", id:"atom", icon:"atom", menu:atom},

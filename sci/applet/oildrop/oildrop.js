@@ -72,7 +72,8 @@ function ruler() {
 
 function timer() {
 // Update the "lap timer"
-    $("#Voltage")[0].value = 0
+    $("#Voltage").val(0);
+    showVoltage();
 	var t = new Date().getTime();
 	var dt = (t - app.lap) / 1000;
 	$("#Lap").html(dt.toFixed(2));

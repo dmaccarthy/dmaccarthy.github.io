@@ -74,3 +74,8 @@ function aspect() {
         e.css({height:h});
     }
 }
+
+function mjTypeset() {
+    if (window.MathJax) MathJax.Hub.Typeset();
+}
+

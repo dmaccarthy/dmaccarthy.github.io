@@ -15,11 +15,17 @@ article {
 }
 
 #Content {color:black}
-#Crumbs {margin-bottom:0; border-bottom:1px solid blue}
 #Crumbs, #Content {padding:8px}
 #Crumbs > span {padding:4px; white-space: nowrap}
 #Crumbs > span:last-child, code {font-weight:bold}
 #Crumbs > span.Next {float:right; position:relative; bottom:4px}
+
+#Crumbs {
+    margin-bottom:0;
+    border-bottom:1px solid blue;
+    font-size:75%;
+}
+
 
 code {
     font-family: "source Code Pro", "Lucida Console", Consolas, monospace;

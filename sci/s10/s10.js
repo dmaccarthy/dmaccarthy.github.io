@@ -1,5 +1,69 @@
 // , vid:"#PLpVmtCaB-lykC3KWCNWfsOFWwLVtPHwhN"
 
+let bio = {title:"Unit C: Biology", id:"bio", icon:"leaf", menu:[
+    // {title:"Assignment Booklet", gdrv:"1ewtwqCG3yx79b6nmadMONLPDUNaI2vdM"},
+    {title:"Part 1: Cells", id:"cell", icon:"leaf", menu:[
+        {title:"Microscopes", icon:1, id:"micro", menu:[
+            {title:"Lesson Notes", icon:"gdrv", open:"https://docs.google.com/presentation/d/1wKI1blXJukMRBUC7b1B4PhBrgXfBZs7KKx_DVFRf-9M"},
+            // {title:"Lesson Notes", open:"bio/micro.html"},
+            {title:"Review & Practice", id:"cell-rp", ajax:"bio/assign/micro.htm", menu:[]},
+            {title:"Microscope Lab", gdrv:"1uMygwun4DCPu3yESLoDztbDrHPsxZ_dc"},
+        ]},
+        {title:"Cell Theory", icon:1, id:"ct", menu:[
+            // {title:"Lesson Notes", icon:"gdrv", open:"https://docs.google.com/presentation/d/1yg_Q804TGQauW9EzNnbmJZlHkK8nR0qiIp5iaESYRBA"},
+            {title:"Lesson Notes", open:"bio/cell.html"},
+            {title:"Review & Practice", id:"micro-rp", ajax:"bio/assign/cell.htm", menu:[]},
+        ]},
+        {title:"Organelles", icon:1, id:"org", menu:[
+            {title:"Lesson Notes", open:"bio/org.html"},
+            {title:"Assignment Handout", gdrv:"17RHZ30dkl6tfjhiAufBPBzQ8wE80PlhZ"},
+            {title:"Observing the Cell Lab", gdrv:"1v2NQhdqaG5uE2hNDjzxmEhvwbCSTY1VO"},
+        ]},
+        {title:"Cell Analogy / Model", gdrv:"1OUTokvdkVlela_raYkZ5GipWo2Ks7Gg_"},
+    ]},
+    {title:"Part 2: Membranes & Transport", id:"membr", icon:"leaf", menu:[
+        {title:"Biological Membranes", icon:1, id:"fm", vid:"#PLpVmtCaB-lykC3KWCNWfsOFWwLVtPHwhN", menu:[
+            {title:"Review & Practice", id:"fm-rp", ajax:"bio/assign/fm.htm", menu:[]},
+        ]},
+        {title:"Passive Transport", icon:1, id:"ptr", vid:"Ptmlvtei8hw", menu:[
+            {title:"Lesson Notes", open:"bio/ptr.html"},
+            {title:"Review & Practice", id:"ptr-rp", ajax:"bio/assign/ptr.htm", menu:[]},
+            {title:"Assignment Handout", gdrv:"19t9Ud0fWTPNHq91uUfzHW4vLQJ9OEehp"},
+            {title:"Assignment Solutions", show:"2022.11.25.12.00", gdrv:"1-9HXwNPldvaBWLDx-chsnDBOi0XMhWtW/"},
+        ]},
+        {title:"Active Transport", icon:1, id:"atr", vid:"Ptmlvtei8hw", menu:[
+            {title:"Lesson Notes", open:"bio/atr.html"},
+            {title:"Review & Practice", id:"atr-rp", ajax:"bio/assign/atr.htm", menu:[]},
+            {title:"Cell Size Handout", gdrv:"1CjfLLnQjFiD5is2vvmGU59zxy5J11dfG"},
+        ]},
+    ]},
+    {title:"Part 3: Plant Systems", id:"plants", icon:"leaf", menu:[
+        {title:"Photosynthesis", id:"photo", icon:1, vid:"#PLpVmtCaB-lyl-3YflYKGbMkgGYSwAfIdd", menu:[
+            // {title:"Lesson Notes", open:"bio/photo.html"},
+            {title:"Lesson Notes", icon:1, open:"https://docs.google.com/presentation/d/11zl5GF0VgrNojVPIWGbLGaerb42djfIATyvtBpJHvZI"},
+            {title:"Review & Practice", id:"photo-rp", ajax:"bio/assign/photo.htm", menu:[]},
+            {title:"Leaf Lab", gdrv:"1XEoSmBcOAvTT6txCcdxcSYjin3aXjis0"},
+        ]},
+        {title:"Gas Exchange", id:"gas", icon:1, menu:[
+            {title:"Lesson Notes", icon:1, open:"https://docs.google.com/presentation/d/1A1nqaSPSjbQia9YlNB74RixvCHGjlDiR63lBZTI7QiE"},
+            {title:"Review & Practice", id:"gas-rp", ajax:"bio/assign/gas.htm", menu:[]},
+        ]},
+        {title:"Water Transport", id:"wtr", icon:1, vid:"h9oDTMXM7M8", menu:[
+            {title:"Lesson Notes", icon:1, open:"https://docs.google.com/presentation/d/1T9swb7XJxenjxa-MA_6nOoZTwtLmYIalZnjREZ3_4Ss"},
+            {title:"Review & Practice", id:"wtr-rp", ajax:"bio/assign/wtr.htm", menu:[]},
+        ]},
+        {title:"Plant Control Systems (Tropisms)", id:"tropism", icon:"leaf", vid:"#PLpVmtCaB-lylU4P1GdPb8b-zDbwUcvGCf", menu:[
+            {title:"Lesson Notes", icon:1, open:"https://docs.google.com/presentation/d/1NxKWWQRXaY2yZxrAL3EYZUzBpLXKTDoEeGHjIxlN32g"},
+            // {title:"Review & Practice", id:"tropism-rp", ajax:"bio/assign/tropism.htm", menu:[]},
+        ]},
+    ]},
+    {title:"Stem Cell Research", gdoc:"1NkfJkyPolerVB0NEKjiCRKfAJmsZFRr0x1UzECRkmEM"},
+    {title:"Biology Review", id:"revb", icon:"leaf", menu:[
+        {title:"Assignment Handout", gdrv:"1RrtZTZn_WjtHq7lYGYoIci9W8mHQUYyV"},
+        {title:"Answer Key", show:"2022.12.7.12.00", gdrv:"1A5nH2GaVEi-FBUTYAEUC6zXUPelwylnq"},
+    ]},
+]};
+
 let phys = {title:"Unit B: Physics", id:"phys", icon:"rocket", menu:[
     // {title:"Assignment Booklet", gdrv:"1dKbreMxOXUs2u_TwsgtoqFPgQIS9PVAM"},
     // {title:"Science Skills", icon:"flask", menu:[]},
@@ -19,23 +83,52 @@ let phys = {title:"Unit B: Physics", id:"phys", icon:"rocket", menu:[
             {title:"Review & Practice", id:"scatter-rp", ajax:"phys/assign/scatter.htm", menu:[]},                        
             {title:"Assignment Handout", gdrv:"1OocOlfCpevWkVke-zUJHd6cfLQTDUEZ8"},
         ]},
-        {title:"Displacement", show:"2023.1", icon:1, open:"phys/displ.html"},
-        {title:"Velocity", show:"2023.1", icon:1, open:"phys/vel.html"},
-        {title:"Acceleration", show:"2023.1", icon:1, open:"phys/accel.html"},
+        {title:"Displacement", id:"displ", icon:1, menu:[
+            {title:"Kinematics (Motion) Lab", gdrv:"1sSre7Zf3TEng9bC6yFrQLRQCOI786rRM"},            
+            {title:"Lesson Notes", open:"phys/displ.html"},
+            {title:"Review", id:"displ-rp", ajax:"phys/assign/displ.htm", menu:[]},                        
+            {title:"Assignment Handout", gdrv:"17Ovyqu2RzRBJXAvhXIgRzCkat6A9wksL"},
+            {title:"Assignment Solutions", show:"2022.10.21.12.00", gdrv:"1ibOyPlj2OO3mb0cmy3g8Zo9Hvnt1n6NT"},
+        ]},
+        {title:"Velocity", id:"vel", icon:1, menu:[
+            {title:"Lesson Notes", open:"phys/vel.html"},
+            {title:"Review", id:"vel-rp", ajax:"phys/assign/vel.htm", menu:[]},                        
+            {title:"Assignment Handout", gdrv:"1V2YdSU_8Y-4RSRQ8U4TcYKdITrAUUvnT"},
+            {title:"Assignment Solutions", show:"2022.10.24.12.00", gdrv:"1eplQRaG1v2c3_TCcivcD50_o3_pwWUAY"},
+        ]},
+        {title:"Acceleration", id:"accel", icon:1, menu:[
+            {title:"Lesson Notes", open:"phys/accel.html"},
+            {title:"Review & Practice", id:"accel-rp", ajax:"phys/assign/accel.htm", menu:[]},
+        ]},
     ]},
-    {title:"Part 2: Energy & Heat", show:"2023.1", id:"p2", icon:"rocket", menu:[
-        {title:"Mechanical Energy", icon:1, open:"phys/mech.html"},
-        {title:"Energy Transformations", icon:1, open:"phys/Etransform.html"},
-        {title:"Work & Energy", icon:1, open:"phys/work.html"},
-        {title:"Efficiency", icon:1, open:"phys/effic.html"},
-        {title:"Unit Project", gdoc:"1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18"},
+    {title:"Part 2: Mechanical Energy", id:"p2", icon:"rocket", menu:[
+        {title:"Mechanical Energy", id:"mech", icon:1, menu:[
+            {title:"Lesson Notes", open:"phys/mech.html"},
+            {title:"Review & Practice", id:"mech-rp", ajax:"phys/assign/mech.htm", menu:[]},
+            {title:"Pendulum Energy Lab", gdrv:"172P9Mho1nPBk-7ZhI7iZuWpKVadIPuMr"},
+        ]},
+        {title:"Energy Transformations", id:"etr", icon:1, menu:[
+            {title:"Lesson Notes", open:"phys/Etransform.html"},
+            {title:"Review & Practice", id:"etr-rp", ajax:"phys/assign/etr.htm", menu:[]},
+        ]},
+        {title:"Work & Energy", id:"work", icon:1, menu:[
+            {title:"Lesson Notes", open:"phys/work.html"},
+            {title:"Review & Practice", id:"work-rp", ajax:"phys/assign/work.htm", menu:[]},
+        ]},
+        {title:"Efficiency", id:"eff", icon:1, menu:[
+            {title:"Lesson Notes", open:"phys/eff.html"},
+            {title:"Review & Practice", id:"eff-rp", ajax:"phys/assign/eff.htm", menu:[]},
+            {title:"Energy Transforming Technologies", gdrv:"1rMOuLm4emO-j_mbX-57JWHcTK2Wi_XmT"},
+            //
+        ]},
+        {title:"Unit Project", id:"", gdoc:"1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18"},
     // ]},
     // {title:"Part 3: Thermodynamics", icon:"rocket", menu:[
         // {title:"Modern Energy Sources", icon:1, open:"phys/modsrc.html"},
     ]},
-    {title:"Unit Review", show:"2023.1", icon:1, menu:[
+    {title:"Unit Review", id:"revp", icon:1, menu:[
         {title:"Assignment", gdrv:"1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i"},
-        // {title:"Answer Key", unavail:1, gdrv:"1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To"},
+        {title:"Answer Key", show:"2022.11.17", gdrv:"1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To"},
     ]},
 ]};
 
@@ -173,35 +266,6 @@ let clim = {title:"Unit D: Climate", show:"2023.1", id:"clim", icon:"earth", men
         {title:"Biomes & Adaptations", icon:1, open:"clim/biome.html"},
         {title:"Polar Bears Video", icon:"video", open:"https://www.cbc.ca/archives/entry/climate-change-threatens-polar-bears"},
     ]},
-]};
-
-let bio = {title:"Unit C: Biology", show:"2023.1", id:"bio", icon:"leaf", menu:[
-    {title:"Assignment Booklet", gdrv:"1ewtwqCG3yx79b6nmadMONLPDUNaI2vdM"},
-    {title:"Part 1: Cells", id:"cell", icon:"leaf", menu:[
-        {title:"Microscopes", icon:1, open:"https://docs.google.com/presentation/d/1wKI1blXJukMRBUC7b1B4PhBrgXfBZs7KKx_DVFRf-9M"},
-        {title:"Cell Theory", icon:1, open:"https://docs.google.com/presentation/d/1yg_Q804TGQauW9EzNnbmJZlHkK8nR0qiIp5iaESYRBA"},
-        {title:"Organelles", icon:1, open:"bio/org.html"},
-    ]},
-    {title:"Part 2: Membranes & Transport", id:"membr", icon:"leaf", menu:[
-        {title:"Fluid-Mosaic Model", icon:1, vid:"#PLpVmtCaB-lykC3KWCNWfsOFWwLVtPHwhN", menu:[]},
-        {title:"Diffusion Simulation", icon:"html5", open:"https://phet.colorado.edu/sims/html/diffusion/latest/diffusion_en.html"},
-        {title:"Passive & Active Transport", icon:1, vid:"Ptmlvtei8hw", menu:[
-            {title:"Lesson Notes", icon:1, open:"https://docs.google.com/presentation/d/1qJYqVyhLdOpIwEF8qv0EsbnYO6dRbofZvqICN0g568g"},
-        ]},
-    ]},
-    {title:"Part 3: Plant Systems", id:"plants", icon:"leaf", menu:[
-        {title:"Photosynthesis & Cell Specialization", icon:"leaf", vid:"#PLpVmtCaB-lyl-3YflYKGbMkgGYSwAfIdd", menu:[
-            {title:"Lesson Notes", icon:1, open:"https://docs.google.com/presentation/d/11zl5GF0VgrNojVPIWGbLGaerb42djfIATyvtBpJHvZI"},
-        ]},
-        {title:"Gas Exchange", icon:1, open:"https://docs.google.com/presentation/d/1A1nqaSPSjbQia9YlNB74RixvCHGjlDiR63lBZTI7QiE"},
-        {title:"Water Transport", icon:"leaf", vid:"h9oDTMXM7M8", menu:[
-            {title:"Lesson Notes", icon:1, open:"https://docs.google.com/presentation/d/1T9swb7XJxenjxa-MA_6nOoZTwtLmYIalZnjREZ3_4Ss"},
-        ]},
-        {title:"Plant Control Systems (Tropisms)", id:"tropism", icon:"leaf", vid:"#PLpVmtCaB-lylU4P1GdPb8b-zDbwUcvGCf", menu:[
-            {title:"Lesson Notes", icon:1, open:"https://docs.google.com/presentation/d/1NxKWWQRXaY2yZxrAL3EYZUzBpLXKTDoEeGHjIxlN32g"},
-        ]},
-    ]},
-    {title:"Stem Cell Research", gdoc:"1NkfJkyPolerVB0NEKjiCRKfAJmsZFRr0x1UzECRkmEM"},
 ]};
 
 let home = addHome({title:"Science 10", id:"home", icon:"flask", htmx:"<p class='Center'>Teacher: <a href='mailto:david.maccarthy@eips.ca'>D.G. MacCarthy</a></p>", menu:[

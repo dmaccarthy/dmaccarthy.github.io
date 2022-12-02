@@ -35,19 +35,35 @@ function tdClick(td) {$(td).find("span").toggle()}
 </section>
 
 <section id="ex1" data-last="?"><h3>Example 1</h3>
+<p class="Blue">A 2000 kg rail car is hauled by a truck that on a road parallel to the tracks.
+    The cable connecting the truck to the rail car exerts a force of 1500 newtons [–30.0°].
+    Because the rail car can only move parallel to the tracks, assume that the track exerts a force that exactly balances the perpendicular component.
+    Find the rail car’s acceleration.
+</p>
+</section>
+
+<section id="ex2" data-last="?"><h3>Example 2</h3>
+<p class="Blue">A 100 kg sign is attached to a building by a cable that exerts a force at 140°.
+    The coefficient of static friction between the left edge of the sign and the building is 0.250.
+    Calculate the tension in the cable.
+</p>
+<p data-mark="=" class="Center"><img src="img/sign-bldg.png" alt="Sign" class="w10"/></p>
+</section>
+
+<section id="ex3" data-last="?"><h3>Example 3</h3>
 <p class="Blue">A student pushes a 2.00 kg box from rest, 2.00 metres up an 8.00° frictionless incline, using an applied force of 10.0 newtons parallel to the ramp.
     Find the acceleration of the box and its speed at the top of the ramp.</p>
 
 <div data-mark="1,4">
 <p>There are two ways to answer this.</p>
 <ul data-mark="+">
-    <li>Work / Energy Conservation</li>
-    <li data-mark="+">Newton's 2nd Law</li>
+    <li>Work / Energy Conservation (Chapter 6)</li>
+    <li data-mark="+">Newton's 2nd Law (Chapter 3)</li>
 </ul>
-<p data-mark="+">Which method is easier?</p>
+<!--p data-mark="+">Which method is easier?</p-->
 </div>
-<p data-mark="+" class="Center"><img src="img/ramp.png" alt="Ramp" class="w16"/></p>
-<p data-mark="+"><b>Work-Energy Method</b></p>
+<p data-mark="+" class="Center"><img src="img/ramp-fbd.png" alt="Ramp" class="w16"/></p>
+<!--p data-mark="+"><b>Work-Energy Method</b></p>
 <p data-mark="=">$$W_a = \vec{\mathbf F}_a \cdot \Delta\vec{\mathbf d} = \mathrm{10.0\ N\cdot 2.00\ m = 20.0\ J}$$</p>
 <p data-mark="+">$$h = \mathrm{2.00\ m\cdot\sin(8.00^\circ) = 0.278\ m}$$</p>
 <p data-mark="+">$$\begin{align}E_{gf} &= mgh \\&= \mathrm{2.00\ kg\cdot 9.81\ m/s^2 \cdot 0.278\ m}\\&= \mathrm{5.46\ J}\end{align}$$</p>
@@ -56,15 +72,15 @@ function tdClick(td) {$(td).find("span").toggle()}
 <p data-mark="+">$$\vec{\mathbf a} = {v_f^2 - v_i^2\over 2\Delta\vec{\mathbf d}} = \mathrm{{(3.81\ m/s)^2 \over 2\cdot 2.00\ m} = 3.64\ m/s^2}$$</p>
 <ul data-mark="+">
     <li>The normal force is not relevant to the solution because it acts perpendicular to the motion and does no work.</li>
-</ul>
+</ul-->
 
 <p data-mark="+"><b>Newton's Laws Method</b></p>
 
 <!--/section>
 
-<section id="ex2" data-last="?"><h3>Example 2</h3>
+<section id="ex4" data-last="?"><h3>Example 2</h3>
 <p class="Blue">Calculate the normal force and the acceleration of the box using Newton’s 2nd Law.</p>
-<p class="Center"><img src="img/ramp.png" alt="Ramp" class="Present w16"/></p-->
+<p class="Center"><img src="img/ramp-fbd.png" alt="Ramp" class="Present w16"/></p-->
 <ul data-mark="=">
     <li>Use the direction parallel to the ramp as \(x\) and the perpendicular direction as \(y\).</li>
     <li data-mark="+">Convert the gravity force to Cartesian form:
@@ -85,13 +101,13 @@ function tdClick(td) {$(td).find("span").toggle()}
     <li data-mark="+">The normal force balances the <em>perpendicular component</em> of gravity.</li>
 </ul>
 <p data-mark="+">$$\vec{\mathbf a}_x = {\vec{\mathbf F}_{net}\over m} = \mathrm{{+7.27\ N\over 2.00\ kg} = +3.64\ m/s^2}$$</p>
-<p data-mark="+">$$v_f = \sqrt{v_i^2 + 2\vec{\mathbf a}\cdot\Delta\vec{\mathbf d}} = \mathrm{\sqrt{2\cdot 3.64\ m/s^2 \cdot 2.00\ m} = 3.81\ m/s}$$</p>
-<ul data-mark="+">
+<p data-mark="+">$$v_{fx} = \sqrt{v_{ix}^2 + 2\vec{\mathbf a}_x\cdot\Delta\vec{\mathbf d}_x} = \mathrm{\sqrt{2\cdot 3.64\ m/s^2 \cdot 2.00\ m} = 3.81\ m/s}$$</p>
+<!--ul data-mark="+">
     <li>The Newton's Laws method gives us the normal force while the work-energy method does not!</li>
-</ul>
+</ul-->
 </section>
 
-<section id="ex3" data-last="?"><h3>Example 2</h3>
+<section id="ex5" data-last="?"><h3>Example 4</h3>
 <p class="Blue">Calculate the speed and acceleration of the box when the coefficient of kinetic friction is 0.200.</p>
 <ul data-mark="+">
     <li>The normal force is relevant now, because it determines how strong the friction force is.</li>
@@ -109,11 +125,11 @@ function tdClick(td) {$(td).find("span").toggle()}
     <tr><td>\(\vec{\mathbf F}_{net}\)</td><td onclick="tdClick(this)"><span class="Red Hidden">+3.38</span></td><td>0.00</td></tr>
 </table>
 <p data-mark="+">$$\vec{\mathbf a}_x = {\vec{\mathbf F}_{net}\over m} = \mathrm{{+3.38\ N\over 2.00\ kg} = +1.69\ m/s^2}$$</p>
-<p data-mark="+">$$v_f = \sqrt{v_i^2 + 2\vec{\mathbf a}\cdot\Delta\vec{\mathbf d}} = \mathrm{\sqrt{2\cdot 1.69\ m/s^2 \cdot 2.00\ m} = 2.60\ m/s}$$</p>
-<p data-mark="+">Is energy conserved?<p>
+<p data-mark="+">$$v_{fx} = \sqrt{v_{ix}^2 + 2\vec{\mathbf a}_x\cdot\Delta\vec{\mathbf d}_x} = \mathrm{\sqrt{2\cdot 1.69\ m/s^2 \cdot 2.00\ m} = 2.60\ m/s}$$</p>
+<!--p data-mark="+">Is energy conserved?<p>
 <p data-mark="+">$$E_k = {1\over 2}mv^2 = \mathrm {{1\over 2} 2.00\ kg (2.60\ m/s)^2 = 6.76\ J}$$</p>
 <p data-mark="+">$$W_f = \mathrm{-3.89\ J\cdot 2.00\ m = -7.78\ J}$$</p>
-<p data-mark="+">The kinetic energy (6.76 J), gravitational potential energy (5.46 J) and waste (7.78 J), add up to the energy added (20.0 J)!<p>
+<p data-mark="+">The kinetic energy (6.76 J), gravitational potential energy (5.46 J) and waste (7.78 J), add up to the energy added (20.0 J)!<p-->
 </section>
 
 </article></body>
