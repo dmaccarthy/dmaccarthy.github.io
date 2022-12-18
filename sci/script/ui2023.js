@@ -1,4 +1,5 @@
 function isAfter(due, date) {
+/* Check whether a date (today) is after the specified due date */
     if (due == null) return true;
     else if (due == false) return false;
     if (date == null) date = new Date();
@@ -8,6 +9,12 @@ function isAfter(due, date) {
         due = new Date(...due);
     }
     return date >= due;
+}
+
+function teacher(a) {
+/* Enable / disable teacher mode */
+    if (a) localStorage.setItem("teacher_mode", 1);
+    else localStorage.removeItem("teacher_mode");
 }
 
 if (localStorage.getItem("teacher_mode")) if (confirm("Teacher mode?"))
@@ -72,22 +79,10 @@ function findNode(id) {
 }
 
 let current;
-// function $select() {return $("#Location > select")}
 function current_index() {return nodeList.all.indexOf(current)}
 
-function breadSelect(s, p) {
-    let n = s.options.length = p.length;
-    for (let i=0;i<n;i++) {
-        let opt = s.options[i];
-        opt.node = p[i];
-        opt.innerHTML = p[i].title;
-    }
-    drawNode.index = s.selectedIndex = n - 1;
-    $(s).trigger("blur");
-    return s.value;
-}
-
 function breadCrumbs(p) {
+/* Display the current node tree location as bread crumbs */
     let n = p.length;
     let c = $("#Location > p").html("");
     for (let i=0;i<n;i++) {
@@ -105,7 +100,21 @@ function breadCrumbs(p) {
     return p[n-1].title;
 }
 
+function breadSelect(s, p) {
+/* Draw a <select> element on narrow screens instead of bread crumbs */
+    let n = s.options.length = p.length;
+    for (let i=0;i<n;i++) {
+        let opt = s.options[i];
+        opt.node = p[i];
+        opt.innerHTML = p[i].title;
+    }
+    drawNode.index = s.selectedIndex = n - 1;
+    $(s).trigger("blur");
+    return s.value;
+}
+
 function drawNode(node, init) {
+/* Draw the specified node */
     if (!node) return;
     current = node;
     let s = $("#Location > *")[0];
@@ -115,7 +124,7 @@ function drawNode(node, init) {
     }
     else {
         let p = nodePath(node);
-        document.title = $("body").hasClass("Touch") ? breadSelect(s, p)
+        document.title = $("body").hasClass("Narrow") ? breadSelect(s, p)
             : breadCrumbs(p);
     
         let url = makeURL(true, {}, node.id);
@@ -126,7 +135,10 @@ function drawNode(node, init) {
     }
 }
 
+let MENU = 0, NEXT = 1;
+
 function drawLayout(node) {
+/* Draw the content for the specified node */
     let a = $("#Main").html("");
     let lay = node.layout;
     if (!lay) lay = layout[node.id];
@@ -135,25 +147,29 @@ function drawLayout(node) {
     mjTypeset.ajax = 0;
     for (let i=0;i<lay.length;i++) {
         let item = lay[i];
-        if (item == 0) drawMenu(node, a);
+        if (item == NEXT) item = {icons:nextIcons()}
+        if (item == MENU) drawMenu(node, a);
+        else if (item.html) drawHtml(item, a);
         else if (item.ajax) {
             drawAjax(item, a);
             mjTypeset.ajax++;
         }
         else if (item.icons) drawIcons(item, a);
         else if (item.vid) drawVid(item, a);
-        else if (item.html) drawHtml(item, a);
     }
     if (!mjTypeset.ajax) mjTypeset();
 }
 
 function drawHtml(item, a) {
+/* Draw an HTML item */
     let s = $("<section>").addClass("HTML").appendTo(a);
     s.append(item.html);
 }
 
 function drawAjax(item, a) {
+/* Send an AJAX request for HTML content */
     let s = $("<section>").addClass("HTML").appendTo(a);
+    s[0].item = item;
     s.append("Loading...");
     $.ajax({url:item.ajax, success:function(e) {
         ajaxDone(e, s);
@@ -161,6 +177,7 @@ function drawAjax(item, a) {
 }
 
 function ajaxDone(e, s) {
+    s[0].item.html = e;
     s.html(e);
     if (mjTypeset.ajax) mjTypeset.ajax--;
     if (!mjTypeset.ajax) mjTypeset();
@@ -227,6 +244,16 @@ function drawMenu(node, a) {
     tbl.find("tr").click(clickMenu);
 }
 
+function nextIcons() {
+    let p = nextNode(-1), n = nextNode();
+    let items = [];
+    if (p) items.push({icon:"arrow_back", text:p.title});
+    if (n) items.push({icon:"arrow_forward", text:n.title});
+    // if (p) items.push({icon:"arrow_back", text:`Previous (${p.title})`});
+    // if (n) items.push({icon:"arrow_forward", text:`Next (${n.title})`});
+    return items;
+}
+
 window.onpopstate = function() {
     drawNode(findNode(location.hash.slice(1)), true);
 }
@@ -241,6 +268,10 @@ function buttonAction(item) {
     if (icon == "gdrv") window.open(`https://drive.google.com/file/d/${item.url}`);
     else if (link.indexOf(icon) >= 0) location.href = item.url;
     else if (item.url) window.open(item.url);
+    else {
+        let n = 2 * ["arrow_back", "arrow_forward"].indexOf(icon) - 1;
+        if (n >= -1) drawNext(n);
+    }
     if (a) {
         if (typeof(a) == "string") eval(a);
         else a(item);
@@ -267,17 +298,15 @@ function swipe(data, ev) {
 }
 
 $(function() {
-    let t = touchscreen();
-    if (t) {
-        $("body").addClass("Touch");
-        touch.swipe = swipe;
-    }
+    if (touchscreen()) touch.swipe = swipe;
+    if ($(window).width() < 641) $("body").addClass("Narrow");
     else $("#Location").html($("<p>").html("..."));
     $(window).on("resize", aspect).on("keydown", keyNext);
     linkNodes(home);
     nodeList.all = nodeList(home);
     let id = location.hash.slice(1);
     let node = findNode(id);
+    if (qsArgs("today")) node = findNode(today);
     drawNode(node ? node : home.menu[0], true);
     $("#Location > select").change(function(e) {
         drawNode(this.options[this.selectedIndex].node);

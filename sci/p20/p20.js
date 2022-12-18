@@ -1,3 +1,62 @@
+let shm = [
+    {title:"Unit 4 Organizer", gdrv:"1JaXx7B8V0CxDWiYVdKQOkmFa5IRM_XDT"},
+    // {title:"Assignment Booklet", gdrv:"1epM1sYOHlUXxbMQ3DODu-J3aj_JYQ0YA"},
+    {title:"Equilibrium & Oscillations", id:"eqm", icon:1, menu:[
+        {title:"Pendulum Video", icon:"video", gdrv:"1EaP7bhyrze7XRIu52sILu5ErM5qhM7b0"},
+        // {title:"Pendulum Motion Data", icon:"gdrv", open:"https://docs.google.com/spreadsheets/d/1nmwJnNxtU4Bn4u9thB75AOvNSB9_sb08TjivGVcUHdQ"},
+        {title:"Lesson Notes", open:"shm/eqm.html"},
+        {title:"Review & Practice", id:"eqm-rp", ajax:"shm/assign/eqm.htm", menu:[]},
+        // {title:"Practice Solutions", gdoc:"1hYFX1MvbaVO8K-psaF189gWVsRHPRSIw_FUXNYLTRN4"},
+    ]},
+    {title:"Simple Harmonic Motion", id:"shm_eq", icon:1, menu:[
+        {title:"Lesson Notes", open:"shm/shm.html"},
+        {title:"Review & Practice", id:"shm_eq-rp", ajax:"shm/assign/shm_eq.htm", menu:[]},
+        // {title:"Practice Solutions", gdoc:"1rioTx98SvQHei_l4f8jXOQwxPKtS17-fUKBDLDLD_z4"},
+    ]},
+    {title:"Period of SHM", id:"shm_T", icon:1, menu:[
+        {title:"Lesson Notes", open:"shm/period.html"},
+        {title:"Review & Practice", id:"shm_T-rp", ajax:"shm/assign/shm_T.htm", menu:[]},
+        // {title:"Practice Solutions", gdoc:"1o5KvYsGQOVMT10Ce0e5fB9U2p8_VlyH3mdSeh0qW7Q4"},
+    ]},
+    {title:"Energy of SHM", id:"shm_E", icon:1, menu:[
+        {title:"Lesson Notes", open:"shm/energy.html"},
+        {title:"Review & Practice", id:"shm_E-rp", ajax:"shm/assign/shm_E.htm", menu:[]},
+        // {title:"Practice Solutions", gdoc:"1lKmGWUFPgX6N19YKXzMrpxdo4ebAs8v88Y1r9BLiFfI"},
+    ]},
+    {title:"Simple Pendulum", id:"pend", icon:1, menu:[
+        {title:"Lesson Notes", open:"shm/pend.html"},
+        {title:"Review & Practice", id:"pend-rp", ajax:"shm/assign/pend.htm", menu:[]},
+        // {title:"Practice Solutions", gdoc:"1l0OopFOETXE5pU4MpsPThlSV74FVj5BxEV_EC3Y90Xo"},
+    ]},
+    {title:"Mechanical Resonance", id:"res", icon:1, vid:"#PLpVmtCaB-lymgmGIEvph0whN7Fh1WA2SA", menu:[
+        {title:"Lesson Notes", open:"shm/res.html"},
+    ]},
+    {title:"Chapter Review", icon:"lesson", id:"ch7", ajax:"shm/summary.htm", menu:[]},
+];
+
+let wave = [
+    {title:"Unit 4 Organizer", gdrv:"1JaXx7B8V0CxDWiYVdKQOkmFa5IRM_XDT"},
+    // {title:"Assignment Booklet", gdrv:"1NC0Pk5VyhNKR8sGuTNhgHNQpG5ZiJyv9"},
+    {title:"Harmonic Waves", id:"harm", icon:1, menu:[
+        {title:"Lesson Notes", open:"wave/harm.html"},
+        {title:"Practice Solutions", gdoc:"1xb381kGFZ0uQ3VJtC6x-fDlataT-SNVG73jFTrMFFyA"},
+    ]},
+    {title:"Doppler Effect", id:"dopp", icon:1, menu:[
+        {title:"Lesson Notes", open:"wave/doppler.html"},
+        {title:"Practice Solutions", gdoc:"1d31LStNsYOG7lU91dspgapqsm3JeiEoEFzDrINMc9-Q"},
+    ]},
+    {title:"Interference & Beats", id:"beat", icon:1, menu:[
+        {title:"Lesson Notes", open:"wave/beat.html"},
+        {title:"Practice Solutions", gdoc:"1tXxsgei7m80MUqUWvWXrTgxBhfrmgJBRW7iB21AD6SM"},
+    ]},
+    {title:"Standing Waves", id:"stand", icon:1, menu:[
+        {title:"Standing Waves Animation", icon:"html5", open:"../applet/stWave.html"},
+        {title:"Lesson Notes", open:"wave/stand.html"},
+        {title:"Practice Solutions", gdoc:"1Nz98VKhZjecAm001MC1ImzppsVQHnJoT9V2M7_Q-kak"},
+    ]},
+    {title:"Chapter Review", icon:"lesson", id:"ch8", ajax:"wave/summary.htm", menu:[]},
+];
+
 let energy = [
     {title:"Chapter 6 Handouts", gdrv:"1xb4JUE1UVq8U3Rec4rjaGCTUrN8plqGQ"},
     {title:"Mechanical Energy", id:"mech", icon:1, vid:"CW0_S5YpYVo", menu:[
@@ -28,9 +87,11 @@ let energy = [
     {title:"Work-Energy Theorem", id:"we", icon:1, menu:[
         {title:"Lesson Notes", open:"energy/we.html"},
         // {title:"Practice Solutions", gdoc:"1Xk85LGlNrOTX4Ckg672gfp5T6L9IZOTdKxAu7lKPGLM"},
+        {title:"Review & Practice", id:"we-rp", ajax:"energy/assign/we.htm", menu:[]},
     ]},
     {title:"Power & Efficiency", id:"power", icon:1, menu:[
         {title:"Lesson Notes", open:"energy/power.html"},
+        {title:"Review & Practice", id:"power-rp", ajax:"energy/assign/power.htm", menu:[]},
         // {title:"Practice Solutions", gdoc:"1PHRVmr9tMgm8ncSCnykQ1zYYznPADaJZV1KcrYZAWmQ"},
     ]},
     {title:"Chapter Review", icon:"lesson", id:"ch6", ajax:"energy/summary.htm", menu:[]},
@@ -191,61 +252,6 @@ let circ = [
     {title:"Chapter Review", icon:"lesson", id:"ch5", ajax:"circ/summary.htm", menu:[]},
 ];
 
-let shm = [
-    {title:"Unit 4 Organizer", gdrv:"1JaXx7B8V0CxDWiYVdKQOkmFa5IRM_XDT"},
-    {title:"Additional Handouts", gdrv:""},
-    // {title:"Assignment Booklet", gdrv:"1epM1sYOHlUXxbMQ3DODu-J3aj_JYQ0YA"},
-    {title:"Equilibrium & Oscillations", id:"eqm", icon:1, menu:[
-        {title:"Pendulum Video", icon:"video", gdrv:"1EaP7bhyrze7XRIu52sILu5ErM5qhM7b0"},
-        // {title:"Pendulum Motion Data", icon:"gdrv", open:"https://docs.google.com/spreadsheets/d/1nmwJnNxtU4Bn4u9thB75AOvNSB9_sb08TjivGVcUHdQ"},
-        {title:"Lesson Notes", open:"shm/eqm.html"},
-        {title:"Practice Solutions", gdoc:"1hYFX1MvbaVO8K-psaF189gWVsRHPRSIw_FUXNYLTRN4"},
-    ]},
-    {title:"Simple Harmonic Motion", id:"shm_eq", icon:1, menu:[
-        {title:"Lesson Notes", open:"shm/shm.html"},
-        {title:"Practice Solutions", gdoc:"1rioTx98SvQHei_l4f8jXOQwxPKtS17-fUKBDLDLD_z4"},
-    ]},
-    {title:"Period of SHM", id:"shm_T", icon:1, menu:[
-        {title:"Lesson Notes", open:"shm/period.html"},
-        {title:"Practice Solutions", gdoc:"1o5KvYsGQOVMT10Ce0e5fB9U2p8_VlyH3mdSeh0qW7Q4"},
-    ]},
-    {title:"Energy of SHM", id:"shm_E", icon:1, menu:[
-        {title:"Lesson Notes", open:"shm/energy.html"},
-        {title:"Practice Solutions", gdoc:"1lKmGWUFPgX6N19YKXzMrpxdo4ebAs8v88Y1r9BLiFfI"},
-    ]},
-    {title:"Simple Pendulum", id:"pend", icon:1, menu:[
-        {title:"Lesson Notes", open:"shm/pend.html"},
-        {title:"Practice Solutions", gdoc:"1l0OopFOETXE5pU4MpsPThlSV74FVj5BxEV_EC3Y90Xo"},
-    ]},
-    {title:"Mechanical Resonance", id:"res", icon:1, vid:"#PLpVmtCaB-lymgmGIEvph0whN7Fh1WA2SA", menu:[
-        {title:"Lesson Notes", open:"shm/res.html"},
-    ]},
-    {title:"Chapter Review", icon:"lesson", id:"ch7", ajax:"shm/summary.htm", menu:[]},
-];
-
-let wave = [
-    {title:"Unit 4 Organizer", gdrv:"1JaXx7B8V0CxDWiYVdKQOkmFa5IRM_XDT"},
-    // {title:"Assignment Booklet", gdrv:"1NC0Pk5VyhNKR8sGuTNhgHNQpG5ZiJyv9"},
-    {title:"Harmonic Waves", id:"harm", icon:1, menu:[
-        {title:"Lesson Notes", open:"wave/harm.html"},
-        {title:"Practice Solutions", gdoc:"1xb381kGFZ0uQ3VJtC6x-fDlataT-SNVG73jFTrMFFyA"},
-    ]},
-    {title:"Doppler Effect", id:"dopp", icon:1, menu:[
-        {title:"Lesson Notes", open:"wave/doppler.html"},
-        {title:"Practice Solutions", gdoc:"1d31LStNsYOG7lU91dspgapqsm3JeiEoEFzDrINMc9-Q"},
-    ]},
-    {title:"Interference & Beats", id:"beat", icon:1, menu:[
-        {title:"Lesson Notes", open:"wave/beat.html"},
-        {title:"Practice Solutions", gdoc:"1tXxsgei7m80MUqUWvWXrTgxBhfrmgJBRW7iB21AD6SM"},
-    ]},
-    {title:"Standing Waves", id:"stand", icon:1, menu:[
-        {title:"Standing Waves Animation", icon:"html5", open:"../applet/stWave.html"},
-        {title:"Lesson Notes", open:"wave/stand.html"},
-        {title:"Practice Solutions", gdoc:"1Nz98VKhZjecAm001MC1ImzppsVQHnJoT9V2M7_Q-kak"},
-    ]},
-    {title:"Chapter Review", icon:"lesson", id:"ch8", ajax:"wave/summary.htm", menu:[]},
-];
-
 let kin1d = [
     {title:"Unit 1 Organizer", gdrv:"1H1RECEgfTDTZoAEBgPmnUIy5Zn5TIdeb"},
     {title:"Position & Displacement", id:"displ", icon:1, vid:"V8hJhTE3bUk", menu:[
@@ -327,7 +333,7 @@ let home = addHome({title:"Physics 20", id:"home", htmx:"<p class='Right'>Teache
     {title:"Chapter 4: Universal Gravitation", id:"grav", icon:"earth", menu:grav},
     {title:"Chapter 5: Circular & Planetary Motion", id:"circ", icon:"midway", menu:circ},
     {title:"Chapter 6: Energy & Work", id:"energy", icon:"arrow", menu:energy},
-    {title:"Chapter 7: Oscillations (SHM)", show:"2023.1", id:"shm", icon:"crane", menu:shm},
+    {title:"Chapter 7: Oscillations (SHM)", id:"shm", icon:"crane", menu:shm},
     {title:"Chapter 8: Mechanical Waves", show:"2023.1", id:"wave", icon:"speaker", menu:wave},
     {title:"Course Review", id:"rev20", icon:"rocket", menu:[
         // {title:"Assignment / Solutions", gdrv:"1Pe-o2p0VbWJ9UAnGt0ZNPqLArqpvhhPG"},

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Desmos SHM Graphs</title>
+<link rel="shortcut icon" type="image/png" href="../../media/crane.png" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script type="text/javascript" src="../../script/util.js"></script>
+<script type="text/javascript">
+
+function desmos_shm(e, opt) {
+    let A, y, s = 0, c = "black";
+    if (opt.A) {
+        A = opt.A;
+        y = "Position / m";
+    }
+    else if (opt.v) {
+        A = opt.v;
+        y = "Velocity / (m/s)"; 
+        s = Math.PI / 2;
+        c = "red";
+    }
+    else if (opt.a) {
+        A = opt.a;
+        y = "Acceleration / (m/s^2)";        
+        s = Math.PI;
+        c = "blue";
+    }
+    e = $(e).html("")[0];
+    let calc = Desmos.GraphingCalculator(e, {
+        expressions: false,
+        zoomButtons: false,
+        settingsMenu: false,
+        xAxisLabel: "Time / s",
+        yAxisLabel: y,
+    });
+
+    let T = opt.T;
+    let d = opt.d ? opt.d : 0;
+    calc.setMathBounds({left:-T/4, right:2.25*T, bottom:-1.1*A, top:1.1*A});
+    calc.setExpression({id:"s", latex:`s=${s}`});
+    calc.setExpression({id:"d", latex:`d=${d}`});
+    calc.setExpression({id:"A", latex:`A=${A}`});
+    calc.setExpression({id:"T", latex:`T=${T}`});
+    calc.setExpression({id:"curve", latex:"y=A\\sin(2\\pi\\frac{t}{T}+s)", color:`${c}`});
+    return calc;
+}
+
+$(function() {
+    aspect();
+    let opt = qsArgs();
+    for (let k in opt) opt[k] = parseFloat(opt[k]);
+    desmos_shm("#Calc1", opt);
+});
+
+window.onresize = aspect;
+    
+</script>
+<style type="text/css">
+
+#Calc1 {
+    width:720px;
+    height:540px;
+    margin:auto;
+    max-width: 100%;
+}
+
+</style>
+</head>
+<body>
+    <div id="Calc1" data-aspect="4/3"></div>
+</body>
+</html>

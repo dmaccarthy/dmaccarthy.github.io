@@ -1,0 +1,170 @@
+<div title="Energy of SHM" class="Practice" data-date="2022.12.19.16.00">
+   
+<h3>Review</h3>
+<ol>
+    <li><ol type="a">
+        <li>Derive an expression for the potential energy of an object under SHM.</li>
+        <li>Where is the origin or “reference level” for this equation? Why is this a convenient choice for calculating potential energy?</li>
+        <li>Does it matter if this potential energy is gravitational, elastic, or a combination of the two types of potential energy? Explain.</li>
+    </ol></li>
+
+    <li>Explain how we can use energy conservation to calculate the speed of an object at any point in the motion. (Recall that \(v_{max}\) only tells us the speed at equilibrium.)</li>
+</ol>  
+
+<h3>Practice</h3>
+<ol>
+    <li>A mass oscillates with an amplitude of 3.00 cm, at the end of a spring with \(k\) = 20.0 N/m.
+    <ol type="a">
+        <li>Sketch a graph of the equation \({\vec{\mathbf{F}}}_{net}=-k\vec{\mathbf{x}}\) from \(\vec{\mathbf{x}}\) = –3.00 cm to +3.00 cm. Start by calculating and plotting the force at these two points and at equilibrium.</li>
+        <div class="Answer">At \(\vec{\mathbf{x}}\) = 0.0300 m...
+$$\vec{\mathbf{F}} = -k\vec{\mathbf{x}} = \mathrm{-20.0\ N/m\cdot 0.0300\ m = -0.600\ N}$$
+<a target="Q1" href="https://www.desmos.com/calculator/jpxlckldbh">Desmos Graph</a>
+        </div>
+
+        <li>Calculate the areas of the two triangles formed by the line and the x-axis. Be sure to use standard SI units.</li>
+        <div class="Answer">
+For the right half of the graph, the base is 0.0300 cm and the height is –0.600 newtons...
+$$\mathrm{Area = \frac{Base\times Height}{2} = \frac{-0.600\ N\times 0.0300\ m}{2} = -0.00900\ J}$$
+This is the negative of the work done in moving the object from +0.0300 cm back to equilibrium.
+        </div>
+
+        <li>Does the expression \(\frac{1}{2}kx^2\) give the correct result for the area? Why does this work? </li>
+        <div class="Answer">
+$$E_p = \frac{1}{2}kx^2 = \mathrm{\frac{1}{2} (20.0\ N/m)\ (0.0300\ m)^2 = 0.00900\ J}$$
+        </div>
+
+        <li>Calculate the potential energy of the system when the mass is halfway to its maximum (\(\vec{\mathbf{x}}\) = 1.50 cm).</li>
+        <div class="Answer">
+$$E_p = \frac{1}{2}kx^2 = \mathrm{\frac{1}{2} (20.0\ N/m)\ (0.0150\ m)^2 = 0.00225\ J}$$
+        </div>
+
+        <li>Why is the answer to (b) less than half of the answer to (a), even though \(\vec{\mathbf{x}}\) is exactly half?</li>
+        <div class="Answer">According to \(E_p = \frac{1}{2}kx^2\), the potential energy varies as the <em>square</em> of the position;
+            at half the maximum position, there is only one-quarter as much potential energy.</div>
+    </ol></li>
+
+    <li>A 250-gram mass executes SHM with \(k\) = 32.0 N/m. Calculate the potential energy of the system at the following positions relative to equilibrium: (a) \(\vec{\mathbf{x}}\) = 5.00 cm, (b) \(\vec{\mathbf{x}}\) = –10.0 cm, and (c) \(\vec{\mathbf{x}}\) = 25.0 cm.</li>
+    <div class="Answer">
+$$E_p = \frac{1}{2}kx^2 = \mathrm{\frac{1}{2} (32.0\ N/m)\ (0.050\ m)^2 = 0.0400\ J}$$
+$$E_p = \frac{1}{2}kx^2 = \mathrm{\frac{1}{2} (32.0\ N/m)\ (-0.100\ m)^2 = 0.160\ J}$$
+$$E_p = \frac{1}{2}kx^2 = \mathrm{\frac{1}{2} (32.0\ N/m)\ (0.250\ m)^2 = 1.00\ J}$$
+    </div>
+
+    <li>A mass oscillating on a spring with \(k\) = 100 N/m has 0.320 joules of potential energy. How far is the mass from its equilibrium position?</li>
+    <div class="Answer">
+$$E_p = \frac{1}{2}kx^2$$
+$$\frac{2E_p}{k} = x^2$$
+$$x = \pm\sqrt{\frac{2E_p}{k}} = \mathrm{\pm\sqrt{\frac{2\cdot 0.320\ J}{100\ N/m}} = \pm 0.0800\ m}$$
+    </div>
+
+    <li>A 68.0-gram mass oscillates with an amplitude of 3.00 cm at the end of a spring with \(k\) = 18.0 N/m.
+    <ol type="a">
+        <li>Calculate the potential energy at \(\vec{\mathbf{x}}\) = 3.00 cm. Note that when \(\vec{\mathbf{x}}=\pm A\), the kinetic energy is zero!</li>
+        <div class="Answer">
+$$E_p = \frac{1}{2}kx^2 = \mathrm{\frac{1}{2} (18.0\ N/m)\ (0.030\ m)^2 = 0.00810\ J}$$
+        </div>
+
+        <li>Using mechanical energy conservation, calculate the speed of the mass as it passes through equilibrium.</li>
+        <div class="Answer">
+At equilibrium, all of the energy is kinetic...
+$$E = \frac{1}{2} mv_{max}^2$$
+$$\frac{2E}{m} = v_{max}^2$$
+$$v_{max} = \sqrt{\frac{2E}{m}} = \mathrm{\sqrt{\frac{2\cdot 0.00810\ J}{0.0680\ kg}} = 0.488\ m/s}$$
+        </div>
+
+        <li>Use the SHM equations to calculate first \(T\), and then \(v_{max}\). Does the maximum speed agree with your answer from (b)?</li>
+        <div class="Answer">
+$$T = 2\pi\sqrt{\frac{m}{k}} = \mathrm{2\pi\sqrt{\frac{0.0680\ kg}{18.0\ N/m}} = 0.386 \ s}$$
+$$v_{max} = \frac{2\pi A}{T} = \mathrm{\frac{2\pi\cdot 0.0300\ m}{0.386\ s} = 0.488\ m/s}$$
+        </div>
+
+        <li>Calculate the potential energy at \(\vec{\mathbf{x}}\) = 1.00 cm and use the result to calculate the mass’s kinetic energy. Draw energy bar charts for the initial and “final” energy.</li>
+        <div class="Answer">
+$$E_p = \frac{1}{2} kx^2 = \mathrm{\frac{1}{2} (18.0\ N/m) (0.0100\ m)^2 = 0.000900\ J}$$
+$$E_k = E - E_p = \mathrm{0.00810\ J - 0.000900\ J = 0.0720\ J}$$
+        </div>
+
+        <li>Calculate the speed of the mass when it is 1.00 cm from equilibrium.</li>
+        <div class="Answer">
+$$v = \sqrt{\frac{2E_k}{m}} = \mathrm{\sqrt{\frac{2\cdot 0.0720\ J}{0.0680\ kg}} = 0.460\ m/s}$$
+        </div>
+
+        <li>Calculate the speed of the mass when it is 2.00 cm from equilibrium. Include another energy bar chart.</li>
+        <div class="Answer">
+$$E_p = \frac{1}{2} kx^2 = \mathrm{\frac{1}{2} (18.0\ N/m) (0.0200\ m)^2 = 0.00360\ J}$$
+$$E_k = E - E_p = \mathrm{0.00810\ J - 0.00360\ J = 0.0450\ J}$$
+$$v = \sqrt{\frac{2E_k}{m}} = \mathrm{\sqrt{\frac{2\cdot 0.0450\ J}{0.0680\ kg}} = 0.364\ m/s}$$
+        </div>
+    </ol></li>
+
+    <li>A 175 g mass is attached to the end of an ideal spring and allowed to settle at its equilibrium position. The mass is then moved 4.20 cm from equilibrium and then released from rest. The resulting motion is observed to have a period of 0.420 s.
+    <ol type="a">
+        <li>Calculate the elastic constant, \(k\).</li>
+        <div class="Answer">
+$$T = 2\pi\sqrt{\frac{m}{k}}$$
+$$T^2 = \frac{4\pi^2m}{k}$$
+$$kT^2 = 4\pi^2m$$
+$$k = \frac{4\pi^2m}{T^2} = \mathrm{\frac{4\pi^2 (0.175\ kg)}{(0.420\ s)^2} = 39.0\ N/m}$$
+        </div>
+
+        <li>Determine the total mechanical energy of the system.</li>
+        <div class="Answer">
+Initially, \(x_i = -A\) and \(v_i = 0\)...
+$$\begin{align}E &= \frac{1}{2} kx^2 + \frac{1}{2} mv^2
+\\\\&= \mathrm{\frac{1}{2} (39.0\ N/m) (-0.0420\ m)^2 + 0.00\ J}
+\\\\&= \mathrm{0.0344\ J}\end{align}$$
+        </div>
+
+        <li>Determine the speed of the mass when it passes through its equilibrium position.</li>
+        <div class="Answer">
+At equilibrium, all of the energy is kinetic...
+$$E = \frac{1}{2} mv_{max}^2$$
+$$\frac{2E}{m} = v_{max}^2$$
+$$v_{max} = \sqrt{\frac{2E}{m}} = \mathrm{\sqrt{\frac{2\cdot 0.0344\ J}{0.175\ kg}} = 0.627\ m/s}$$
+        </div>
+
+        <li>Determine the speed of the mass when it passes through a point 1.00 cm from equilibrium.</li>
+        <div class="Answer">
+$$E_p = \frac{1}{2} kx^2 = \mathrm{\frac{1}{2} (39.0\ N/m) (0.0100\ m)^2 = 0.00195\ J}$$
+$$E_k = E - E_p = \mathrm{0.0344\ J - 0.00195\ J = 0.0325\ J}$$
+$$v = \sqrt{\frac{2E_k}{m}} = \mathrm{\sqrt{\frac{2\cdot 0.0325\ J}{0.175\ kg}} = 0.609\ m/s}$$
+        </div>
+
+        <li>Determine the speed of the mass when it passes through a point 4.00 cm from equilibrium.</li>
+        <div class="Answer">
+$$E_p = \frac{1}{2} kx^2 = \mathrm{\frac{1}{2} (39.0\ N/m) (0.0400\ m)^2 = 0.0312\ J}$$
+$$E_k = E - E_p = \mathrm{0.0344\ J - 0.0312\ J = 0.00320\ J}$$
+$$v = \sqrt{\frac{2E_k}{m}} = \mathrm{\sqrt{\frac{2\cdot 0.00320\ J}{0.175\ kg}} = 0.191\ m/s}$$
+        </div>
+
+    </ol></li>
+
+    <li>A 79.0 g mass attached to an ideal spring with \(k\) = 19.0 N/m is released with an initial speed of 35.0 cm/s from a position 3.60 cm from equilibrium.
+    <ol type="a">
+        <li>Determine the total mechanical energy of the system.</li>
+        <div class="Answer">
+$$E_k = \frac{1}{2} mv^2 = \mathrm{\frac{1}{2} (0.0790 kg) (0.350 m/s)^2 = 0.00484\ J}$$
+$$E_p = \frac{1}{2} kx^2 = \mathrm{\frac{1}{2} (19.0\ N/m) (0.0360\ m)^2 = 0.0123\ J}$$
+$$E = E_k + E_p = \mathrm{0.00484\ J + 0.0123\ J = 0.0172\ J}$$
+<a target="Q6i" href="https://sci.davidmaccarthy.repl.co/p20/energy/barchart.html?%7B%22data%22:[4.84,12.3],%22labels%22:[%22Ek%22,%22Ep%22],%22grid%22:2,%22yMax%22:18,%22title%22:%22Energy%20/%20mJ%22%7D">Energy Bar Chart</a>
+        </div>
+
+        <li>Determine the amplitude of the motion.</li>
+        <div class="Answer">
+At the furthest point in the motion, \(x = \pm A\) and the energy is all potential...
+$$E = \frac{1}{2} kA^2$$
+$$\frac{2E}{k} = A^2$$
+$$A = \sqrt{\frac{2E}{k}} = \mathrm{\sqrt{\frac{2\cdot 0.0172\ J}{19.0\ N/m}} = 0.0425\ m}$$
+        </div>
+
+        <li>Determine the speed of the mass as it passes through equilibrium.</li>
+        <div class="Answer">
+At equilibrium, all of the energy is kinetic...
+$$E = \frac{1}{2} mv_{max}^2$$
+$$\frac{2E}{m} = v_{max}^2$$
+$$v_{max} = \sqrt{\frac{2E}{m}} = \mathrm{\sqrt{\frac{2\cdot 0.0172\ J}{0.0790\ kg}} = 0.659\ m/s}$$
+        </div>
+
+    </ol></li>
+</ol>
+</div>

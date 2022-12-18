@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Desmos Embed</title>
+<link rel="shortcut icon" type="image/png" href="../media/rocket.png" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script type="text/javascript" src="script/util.js"></script>
+<script type="text/javascript">
+
+// https://www.desmos.com/api/v1.7/docs/index.html
+
+desmos = [];
+
+function graph1(e) {
+    let calc = Desmos.GraphingCalculator($(e)[0], {
+        expressions: false,
+        xAxisLabel: "Time / s",
+        yAxisLabel: "Position / m",
+    });
+    calc.setMathBounds({left:-1, right:8, bottom:-1, top:12});
+
+    let t = {latex:"t", values:[1,2,3,4,5]};
+    let d = {latex:"d", values:[8,7,6,5,4], color:"red"};
+
+    calc.setExpression({id:"data", type:"table", columns:[t,d]});
+    calc.setExpression({id:"linReg", latex:"d~vt+d_0", color:"red"});
+    calc.setExpression({id:"expReg", latex:"d~at^n", color:"blue"});
+    return calc;
+}
+   
+$(function() {
+    aspect();
+    graph1("#Calc1");
+});
+
+</script>
+<style type="text/css">
+
+#Calc1 {
+    width:720px;
+    height:540px;
+    margin:auto;
+    max-width: 100%;
+}
+
+</style>
+</head>
+<body>
+    <div id="Calc1" data-aspect="4/3"></div>
+</body>
+</html>

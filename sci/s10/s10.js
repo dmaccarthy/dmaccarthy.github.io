@@ -1,5 +1,39 @@
 // , vid:"#PLpVmtCaB-lykC3KWCNWfsOFWwLVtPHwhN"
 
+let clim = {title:"Unit D: Heat & Climate", id:"clim", icon:"earth", menu:[
+    // {title:"Assignment Booklet", gdrv:"1WlpJ3W-AIBaeofelJN23NDDWMdUQAyZZ"},
+    {title:"Part 1: Climate Science", id:"climSci", icon:"earth", menu:[
+        {title:"Theories of Heat", id:"heat", icon:1, menu:[
+            {title:"Lesson Notes", open:"clim/heat.html"},
+            {title:"Review & Practice", id:"heat-rp", ajax:"clim/assign/heat.htm", menu:[]},
+        ]},
+        {title:"Heat Capacity", id:"heatcap", icon:1, menu:[
+            {title:"Lesson Notes", open:"clim/heatcap.html"},
+            {title:"Review & Practice", id:"heatcap-rp", ajax:"clim/assign/heatcap.htm", menu:[]},
+        ]},
+        {title:"Latent Heat", id:"latent", icon:1, menu:[
+            {title:"Lesson Notes", open:"clim/latent.html"},
+            {title:"Review & Practice", id:"latent-rp", ajax:"clim/assign/latent.htm", menu:[]},            
+        ]},
+        {title:"Heat Transfer", id:"transfer", icon:1, menu:[
+            {title:"Lesson Notes", open:"clim/transfer.html"},
+            {title:"Review & Practice", id:"transfer-rp", ajax:"clim/assign/transfer.htm", menu:[]},
+        ]},
+        {title:"Earth’s Energy Budget", id:"budget", icon:1, menu:[
+            {title:"Lesson Notes", open:"clim/budget.html"},
+            {title:"Review & Practice", id:"budget-rp", ajax:"clim/assign/budget.htm", menu:[]},
+        ]},
+        //https://docs.google.com/document/d/1GmAjjrBOW5aakCV5Y8AM6CtBUNiBkbw_BVwfoarlmCw/edit#heading=h.1y7n6h55na6z
+        {title:"Climate Models", gdoc:"1GmAjjrBOW5aakCV5Y8AM6CtBUNiBkbw_BVwfoarlmCw"},
+    ]},
+    {title:"Part 2: Biomes & Climate Change", show:"2023.1", icon:"earth", menu:[
+        {title:"Climatographs", icon:1, open:"clim/climatograph.html"},
+        {title:"Climate Research Project", gdoc:"1fF5E7tykIHYTwe9aly5KvT3hVwTiu6cYVY-6RpbGFBs"},
+        {title:"Biomes & Adaptations", icon:1, open:"clim/biome.html"},
+        {title:"Polar Bears Video", icon:"video", open:"https://www.cbc.ca/archives/entry/climate-change-threatens-polar-bears"},
+    ]},
+]};
+
 let bio = {title:"Unit C: Biology", id:"bio", icon:"leaf", menu:[
     // {title:"Assignment Booklet", gdrv:"1ewtwqCG3yx79b6nmadMONLPDUNaI2vdM"},
     {title:"Part 1: Cells", id:"cell", icon:"leaf", menu:[
@@ -34,10 +68,10 @@ let bio = {title:"Unit C: Biology", id:"bio", icon:"leaf", menu:[
         {title:"Active Transport", icon:1, id:"atr", vid:"Ptmlvtei8hw", menu:[
             {title:"Lesson Notes", open:"bio/atr.html"},
             {title:"Review & Practice", id:"atr-rp", ajax:"bio/assign/atr.htm", menu:[]},
-            {title:"Cell Size Handout", gdrv:"1CjfLLnQjFiD5is2vvmGU59zxy5J11dfG"},
         ]},
     ]},
     {title:"Part 3: Plant Systems", id:"plants", icon:"leaf", menu:[
+        {title:"Cell Size Handout", gdrv:"1CjfLLnQjFiD5is2vvmGU59zxy5J11dfG"},
         {title:"Photosynthesis", id:"photo", icon:1, vid:"#PLpVmtCaB-lyl-3YflYKGbMkgGYSwAfIdd", menu:[
             // {title:"Lesson Notes", open:"bio/photo.html"},
             {title:"Lesson Notes", icon:1, open:"https://docs.google.com/presentation/d/11zl5GF0VgrNojVPIWGbLGaerb42djfIATyvtBpJHvZI"},
@@ -52,9 +86,10 @@ let bio = {title:"Unit C: Biology", id:"bio", icon:"leaf", menu:[
             {title:"Lesson Notes", icon:1, open:"https://docs.google.com/presentation/d/1T9swb7XJxenjxa-MA_6nOoZTwtLmYIalZnjREZ3_4Ss"},
             {title:"Review & Practice", id:"wtr-rp", ajax:"bio/assign/wtr.htm", menu:[]},
         ]},
+        {title:"Aquatic Plants Lab", gdrv:"1pW0LS3i_NJRmDmPxVaWdqXUC-JUIjsMD"},
         {title:"Plant Control Systems (Tropisms)", id:"tropism", icon:"leaf", vid:"#PLpVmtCaB-lylU4P1GdPb8b-zDbwUcvGCf", menu:[
             {title:"Lesson Notes", icon:1, open:"https://docs.google.com/presentation/d/1NxKWWQRXaY2yZxrAL3EYZUzBpLXKTDoEeGHjIxlN32g"},
-            // {title:"Review & Practice", id:"tropism-rp", ajax:"bio/assign/tropism.htm", menu:[]},
+            {title:"Review & Practice", id:"tropism-rp", ajax:"bio/assign/tropism.htm", menu:[]},
         ]},
     ]},
     {title:"Stem Cell Research", gdoc:"1NkfJkyPolerVB0NEKjiCRKfAJmsZFRr0x1UzECRkmEM"},
@@ -250,24 +285,6 @@ let chem = {title:"Unit A: Chemistry", id:"chem", icon:"flask", menu:[
     // {title:"Unit Review Key", gdrv:"1IaRKpczT_-sy76rFqBEOcIwyQ3AORxxYAEzJGKJpY7w"},
 ]};
 
-let clim = {title:"Unit D: Climate", show:"2023.1", id:"clim", icon:"earth", menu:[
-    {title:"Assignment Booklet", gdrv:"1WlpJ3W-AIBaeofelJN23NDDWMdUQAyZZ"},
-    {title:"Part 1: Climate Science", icon:"earth", menu:[
-        {title:"Theories of Heat", icon:1, open:"clim/heat.html"},
-        {title:"Heat Capacity", icon:1, open:"clim/heatcap.html"},
-        {title:"Latent Heat", icon:1, open:"clim/latent.html"},
-        {title:"Heat Transfer", icon:1, open:"clim/transfer.html"},
-        {title:"Earth’s Energy Budget", icon:1, open:"clim/budget.html"},
-        {title:"Climate Models", gdoc:"1GmAjjrBOW5aakCV5Y8AM6CtBUNiBkbw_BVwfoarlmCw"},
-    ]},
-    {title:"Part 2: Biomes & Climate Change", icon:"earth", menu:[
-        {title:"Climatographs", icon:1, open:"clim/climatograph.html"},
-        {title:"Climate Research Project", gdoc:"1fF5E7tykIHYTwe9aly5KvT3hVwTiu6cYVY-6RpbGFBs"},
-        {title:"Biomes & Adaptations", icon:1, open:"clim/biome.html"},
-        {title:"Polar Bears Video", icon:"video", open:"https://www.cbc.ca/archives/entry/climate-change-threatens-polar-bears"},
-    ]},
-]};
-
 let home = addHome({title:"Science 10", id:"home", icon:"flask", htmx:"<p class='Center'>Teacher: <a href='mailto:david.maccarthy@eips.ca'>D.G. MacCarthy</a></p>", menu:[
     {title:"Course Links", icon:"link", menu:[
         {title:"Email Mr. MacCarthy", icon:"mail", open:"mailto:david.maccarthy@eips.ca"},
@@ -281,7 +298,10 @@ let home = addHome({title:"Science 10", id:"home", icon:"flask", htmx:"<p class=
         {title:"Course Outline", gdrv:"1Iws0YDdjSkChdtqARUuuzx4yHTwaHrIz"},
     ]},
     chem, phys, bio,
-    {title:"Pre-IB: Measurement Uncertainty", show:"2023.1", gdrv:"1UTzGI6zXaNLDsVK6ezVVFwysF2QbytOX"},
+    {title:"Pre-IB: Measurement Uncertainty", id:"unc", menu:[
+        {title:"Lesson Notes", gdrv:"16s8TAPzv5P3sP1Gdy8hPibajXBCrhKtM"},
+        {title:"Assignment", gdrv:"1UTzGI6zXaNLDsVK6ezVVFwysF2QbytOX"},
+    ]},
     clim, {title:"Course Review", show:"2023.1", icon:"flask", id:"rev", menu:[
         {title:"Assignment", gdrv:"1L4k_84zsZ01nYmdVQ-DxNdWATVfFVrkY"},
         {title:"Answer Key", gdrv:"17oewSnZoPMUuKuINSBXWivw_hyhlHBwZ"},
