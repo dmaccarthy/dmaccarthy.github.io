@@ -1,24 +1,24 @@
-function isAfter(due, date) {
-/* Check whether a date (today) is after the specified due date */
-    if (due == null) return true;
-    else if (due == false) return false;
-    if (date == null) date = new Date();
-    if (!(due instanceof Date)) {
-        due = due.split(".");
-        due[1] = parseInt(due[1]) - 1;
-        due = new Date(...due);
-    }
-    return date >= due;
-}
-
 function teacher(a) {
 /* Enable / disable teacher mode */
-    if (a) localStorage.setItem("teacher_mode", 1);
-    else localStorage.removeItem("teacher_mode");
+    if (a == null) a = parseInt(localStorage.getItem("teacher_mode")) + 1;
+    if (isNaN(a)) a = 1;
+    a = a % 3;
+    localStorage.setItem("teacher_mode", a);
+    console.log(["Student", "Ask", "Teacher"][a] + " mode");
 }
 
-if (localStorage.getItem("teacher_mode")) if (confirm("Teacher mode?"))
-    window.isAfter = function() {return true}
+function teacher_mode() {
+    let a = localStorage.getItem("teacher_mode");
+    if (a != null && a != "0") {
+        if (a == 2 || confirm("Teacher mode?")) {
+            window.isAfter = function() {return true}
+            isAfter.teacher = true;
+            console.log("Teacher mode!");
+        }            
+    }
+}
+
+teacher_mode();
 
 function linkNodes(node) {
 /* Add parent attribute to each node in the tree */
@@ -46,7 +46,9 @@ function nextNode(i, node) {
     return i < 0 || i >= nodes.length ? null : nodes[i];
 }
 
-function drawNext(i, node) {drawNode(nextNode(i, node))}
+function drawNext(i, node) {
+    drawNode(nextNode(i, node));
+}
 
 function nodeList(node) {
 /* Create an array of the current node and all of its descendants */
@@ -57,7 +59,6 @@ function nodeList(node) {
         nodes.extend(c);
     }
     return nodes;
-    // return isAfter(node.show) ? nodes : [];
 }
 
 function nodePath(node) {
@@ -88,7 +89,8 @@ function breadCrumbs(p) {
     for (let i=0;i<n;i++) {
         let item = p[i];
         if (i) c.append(" / ");
-        let s = $("<span>").html(item.title).appendTo(c);
+        let t = item.text ? item.text : item.title;
+        let s = $("<span>").html(t).appendTo(c);
         s.attr("data-id", item.id);
         if (i == n-1) s.addClass("Current");
         else s.attr("title", `Go to ${item.title}`);
@@ -126,7 +128,7 @@ function drawNode(node, init) {
         let p = nodePath(node);
         document.title = $("body").hasClass("Narrow") ? breadSelect(s, p)
             : breadCrumbs(p);
-    
+
         let url = makeURL(true, {}, node.id);
         if (init) history.replaceState({}, "", url);
         else history.pushState({}, "", url);
@@ -135,7 +137,7 @@ function drawNode(node, init) {
     }
 }
 
-let MENU = 0, NEXT = 1;
+let MENU = 0, NEXT = 1, uc = {html:"Under Construction..."};
 
 function drawLayout(node) {
 /* Draw the content for the specified node */
@@ -150,6 +152,7 @@ function drawLayout(node) {
         if (item == NEXT) item = {icons:nextIcons()}
         if (item == MENU) drawMenu(node, a);
         else if (item.html) drawHtml(item, a);
+        else if (item.img) drawImg(item, a);
         else if (item.ajax) {
             drawAjax(item, a);
             mjTypeset.ajax++;
@@ -158,12 +161,24 @@ function drawLayout(node) {
         else if (item.vid) drawVid(item, a);
     }
     if (!mjTypeset.ajax) mjTypeset();
+    aspect();
 }
 
 function drawHtml(item, a) {
 /* Draw an HTML item */
     let s = $("<section>").addClass("HTML").appendTo(a);
     s.append(item.html);
+}
+
+function drawImg(item, a) {
+/* Draw an image */
+    let s = $("<section>").addClass("Image").appendTo(a);
+    let img = item.img;
+    if (typeof(img) == "string") img = {src:img};
+    let e = $("<img>").attr(img);
+    if (item.link)
+        e = $("<a>").attr({href:item.link, target:String.random(6)}).append(e);
+    e.appendTo(s);
 }
 
 function drawAjax(item, a) {
@@ -179,8 +194,10 @@ function drawAjax(item, a) {
 function ajaxDone(e, s) {
     s[0].item.html = e;
     s.html(e);
+    pre_data(s);
     if (mjTypeset.ajax) mjTypeset.ajax--;
     if (!mjTypeset.ajax) mjTypeset();
+    aspect();
 }
 
 function drawIcons(item, a) {
@@ -189,18 +206,27 @@ function drawIcons(item, a) {
         let b = item.icons[i];
         if (isAfter(b.show)) {
             let btn = $("<button>").appendTo(s);
+            if (b.key) {
+                if (!b.text) b.text = "Answer Key";
+                if (!b.icon) b.icon = "key";
+                if (!b.url) {
+                    let t = isAfter.teacher ? `?tp=${btoa('KHbnGbKdZHrQ')}` : "";
+                    b.url = `../key.html${t}#${crs}/${b.key}`;
+                }
+                delete b.key;
+            }
             let k = b.icon;
             if (!k) k = b.icon = "open";
             let icon = drawIcons.map[k];
             btn.html($("<i>").html(icon ? icon : k).addClass("material-symbols-sharp"));
             btn.append(" " + b.text);
-            btn.click(function() {buttonAction(b)});            
+            btn.click(function(e) {buttonAction(b, e)});            
         }
     }
     return s;
 }
 
-drawIcons.map = {open:"open_in_new", gdrv:"cloud_download",
+drawIcons.map = {open:"open_in_new", gdrv:"cloud_download", gdoc:"cloud_download",
     note:"edit_note", more:"more_horiz"};
 
 function swapIcons(item, s0) {
@@ -220,7 +246,7 @@ function drawVid(item, a) {
     if (!r) r = "16/9";
     $("<iframe>").attr({width:w, frameborder:0, allowfullscreen:1,
         src:"https://www.youtube.com/embed/" + id, "data-aspect":r}).appendTo(s);
-    aspect();
+    // aspect();
 }
 
 function getIcon(node) {
@@ -233,15 +259,20 @@ function getIcon(node) {
 function drawMenu(node, a) {
     let s = $("<section>").addClass("Menu").appendTo(a);
     let m = node.menu;
-    let tbl = $("<table>").appendTo(s);
-    for (let i=0;i<m.length;i++) {
-        let tr = $("<tr>").appendTo(tbl);
-        tr[0].node = node = m[i];
-        let img = $("<img>").addClass("Icon").attr({alt:"Icon", src:`../media/${getIcon(node)}.png`});
-        tr.append($("<td>").html(img));
-        tr.append($("<td>").html(node.title));
-    }
-    tbl.find("tr").click(clickMenu);
+    if (m) {
+        let tbl = $("<table>").appendTo(s);
+        for (let i=0;i<m.length;i++) {
+            let tr = $("<tr>").appendTo(tbl);
+            tr[0].node = node = m[i];
+            let icon = getIcon(node);
+            if (getIcon[icon]) icon = getIcon[icon];
+            else icon = `../media/${icon}.png`;
+            let img = $("<img>").addClass("Icon").attr({alt:"Icon", src:icon});
+            tr.append($("<td>").html(img));
+            tr.append($("<td>").html(node.title));
+        }
+        tbl.find("tr").click(clickMenu);        
+        }
 }
 
 function nextIcons() {
@@ -262,11 +293,16 @@ function clickMenu(ev) {
     drawNode(ev.currentTarget.node);
 }
 
-function buttonAction(item) {
+function buttonAction(item, e) {
+    let c = e.ctrlKey;
     let icon = item.icon, a = item.action;
     let link = ["link", "note", "key"];
     if (icon == "gdrv") window.open(`https://drive.google.com/file/d/${item.url}`);
-    else if (link.indexOf(icon) >= 0) location.href = item.url;
+    else if (icon == "gdoc") window.open(`https://docs.google.com/document/d/${item.url}`);
+    else if (link.indexOf(icon) >= 0) {
+        if (c) window.open(item.url);
+        else location.href = item.url;
+    }
     else if (item.url) window.open(item.url);
     else {
         let n = 2 * ["arrow_back", "arrow_forward"].indexOf(icon) - 1;
@@ -288,7 +324,7 @@ function keyNext(e) {
 
 function noSwipe(e) {
     e = $(e);
-    return (e[0].isMathJax) || (e.closest("[data-swipe]").attr("data-swipe") == "0");
+    return (e[0].isMathJax) || e.closest("pre").is(".Code") || (e.closest("[data-swipe]").attr("data-swipe") == "0");
 }
 
 function swipe(data, ev) {
@@ -311,4 +347,13 @@ $(function() {
     $("#Location > select").change(function(e) {
         drawNode(this.options[this.selectedIndex].node);
     });
+    if (isAfter.teacher) {
+        let p = $("<p>").addClass("Teacher");
+        p.html("Teacher Preview!");
+        $("body").prepend(p);
+        p.click(function() {
+            teacher(0);
+            location.reload();
+        });
+    }
 });

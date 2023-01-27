@@ -1,30 +1,11 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Parking Lot Challenge</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "robo";
-
-</script>
-</head>
-<body><article>
-
 <h3>Assignment</h3><ol class="Assign">
-<p class="Center"><img class="Wide" src="img/park.png" alt="Image"/></p>
+<p class="Center"><img src="robo/img/park.png" alt="Image"/></p>
 <li>Teach the robot how to follow the <em>edge</em> of the blue line by completing the <code>followLine</code> function.
     To do this, the robot needs to move forward when it’s on the <em>edge</em> of the line, turn in
     one direction when it’s on the <em>centre</em> of the line, and turn in the opposite direction
     when it’s off the line completely. When it’s on the <em>edge</em>, the colour sensor will detect
     bluish-white, which will have the same H and V values as ordinary blue, but a smaller S value.
-<pre class="Code"><span class="Comment"># Program 'r07_line1.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 'r07_line1.py'</span>
 
 from sc8pr.robot.park import ParkingLot
 
@@ -48,7 +29,7 @@ ParkingLot.run(brain)</pre>
     expression <code>robot.gyroChange</code> will indicate by how many degrees this reading has changed
     over the last three seconds. The gryroscope should change by very little when moving along the line
     and by a much larger amount when it turns around at the end.
-<pre class="Code"><span class="Comment"># Program 'r07_ex1.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 'r07_ex1.py'</span>
 
 from sc8pr.robot.park import ParkingLot
 
@@ -66,5 +47,3 @@ ParkingLot.run(brain)</pre>
     avoid colliding with another robot, you can use the robot’s proximity sensor (<code>robot.proximity</code>)
     which indicates how far away the nearest obstacle is.</li>
 </ol>
-</article></body>
-</html>

@@ -1,22 +1,3 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Modifying Linked Lists</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "dds1";
-
-</script>
-</head>
-<body><article>
-
 <h3>Assignment</h3>
 <p>All programs require the use of good programming techniques, including:</p><ul>
 <li>Internal documentation (docstrings and comments)</li>
@@ -35,14 +16,14 @@ let course = "dds1";
     and insert the items into the linked list at a location specified by the second argument.
     If <code>insert</code> is called without a second argument, the new node(s) should be
     appended to the end of the list.</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-mime="text">
 myList = LinkedList(1, True, "three", 4.0)
 myList.insert([5, "insert"], 2)
 for node in myList:
     print(node)  <span class="Comment"># 1 True 5 insert three 4.0</span></pre>
 
 <p>The <code>insert</code> method should be able to merge two linked lists...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-mime="text">
 myList = LinkedList(1, 2, 3)
 another = LinkedList(4, 5)
 myList.insert(another)
@@ -50,7 +31,7 @@ for node in myList:
     print(node)  <span class="Comment"># 1 2 3 4 5</span></pre>
 
 <p>It should also be able to accept a <em>generator</em> or other iterable object as its sequence...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-mime="text">
 def fib(n):
     <span class="Comment">"Generator for the Fibonacci sequence"</span>
     a, b = 0, 1
@@ -65,12 +46,10 @@ for node in myList:
     print(node)   <span class="Comment"># 0 1 1 2 3 5 8 13 21 34</span></pre>
 </li>
 <li><p>Add a <code>remove</code> method to remove one or more nodes from a specified location in the list.</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-mime="text">
 myList = LinkedList(1, True, "three", 4.0, 5)
 myList.remove(1, 2)  <span class="Comment"># Remove 2 nodes at index 1</span>
 for node in myList:
     print(node)      <span class="Comment"># 1 4.0 5</span></pre>
 </li></li>
 </ol>
-</article></body>
-</html>

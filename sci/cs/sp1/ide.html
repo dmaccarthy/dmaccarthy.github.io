@@ -1,22 +1,3 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Integrated Development Environments</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "sp1";
-
-</script>
-</head>
-<body><article>
-
 <h3>Programming Tools</h3><div class="Note">
 <p>To write your own programs, you will need several software tools:
 <ul>
@@ -46,7 +27,7 @@ let course = "sp1";
     to your project using Thonny will need to be uploaded to repl.it since Thonny does not sync files to the cloud automatically.</p>
 <p>To use Thonny at home or on your own laptop, download and run the installer from the <a href="https://thonny.org" target="thonny">Thonny website</a>. A Python interpreter is included with Thonny so you do not need to install it separately.</p>
 <p>After Thonny is installed, you will need to install the graphics and robotics software for this course. Go to Thonny’s “Tools” menu and select “Manage packages...” </p>
-<p class="Center"><img src="../game/img/thonny.png" alt="Thonny"/></p>
+<p class="Center"><img src="game/img/thonny.png" alt="Thonny"/></p>
 <ol>
     <li>Type the name of the software package, <code>sc8pr</code>.</li>
     <li>Click the button to search the Python Package Index (PyPI).</li>
@@ -62,64 +43,22 @@ let course = "sp1";
 <p>Like Thonny, the files you create or modify in Eclipse will be saved on the local computer or network. They will not be available on other computers unless you sync them yourself.</p>
 <p>If you install Eclipse on your own computer, you will need to install <a href="https://python.org">Python</a> first.
     You will also need to install additional packages by running the following command (after installing Python but before configuring Eclipse) in your terminal program:</p>
-<pre class="IO">pip3 install -U pip setuptools sc8pr</pre>
+<pre data-mime="text" class="IO">pip3 install -U pip setuptools sc8pr</pre>
 <p>On Windows, if the system does not recognize <code>pip3</code>, try typing the command as:</p>
-<pre class="IO">py -3 -m pip install -U pip setuptools sc8pr</pre>
-<p>Eclipse may already be installed on computers in the Computing Science Lab. You will need to configure it the first time you use it.</p>
-<!--ol>
-	<li><b>Workspace</b>: When Eclipse launches, you will be asked to choose a workspace. This is a
-		folder where Eclipse will keep your files. Use the <span class="Code">CS10</span> folder in your
-        EIPS OneDrive for your workspace location.  Use the same workspace every class.
-		If you start Eclipse and your work seems to be missing, you have probably chosen the wrong
-		workspace folder.</li>
-	<li><b>Welcome</b>: When Eclipse has finished loading, you can close the Welcome tab.</li>
-	<li><b>Perspective</b>: By default, Eclipse opens in the “Java” perspective. Java is a
-		programming language that we will use in CS 30. For CS 10 and 20, most of our assignments
-		will be done using the Python language. At the upper right of the Eclipse window, click the
-		+ icon beside the Java button. Select “PyDev” (Python Development) from the list.
-		<p class="Center"><img class="Wide" alt="Image" src="img/perspective.png"/></p>
-	</li>
-	<li><b>Project</b>: To create a project, click the small triangle near the left end of the toolbar.
-		Choose “PyDev Project” from the list.
-		<p class="Center"><img class="Wide" alt="Image" src="img/newproject.png"/></p>
-	</li>
-	<li><b>Configure PyDev</b>: Enter <span class="Code">Python</span> for the project name.
-		Change the “Grammar Version” to the highest available choice, and then click the link labelled
-		“Please configure an interpreter before proceeding.” When asked how you want to proceed, choose
-		“Manual Config”.
-		<p class="Center"><img class="Wide" alt="Image" src="img/pydev_prj.png"/></p>
-	</li>
-	<li><b>Locate Python</b>: The list of available interpreters should be empty. Click the “New”
-		button and type “Python 3.8” or “Python 3.7” for the interpreter name (whichever is installed). Click “Browse” and then locate the
-		file <span class="Code">python.exe</span>. Click “OK” or “Finish” to close
-		all of the dialog windows.
-		<p class="Center"><img class="Wide" alt="Image" src="img/python37.png"/></p>
-	</li>
-	<li><b>Encoding</b>: Open Eclipse’s “Window” menu and choose “Preferences”. Under “General”, find
-		“Workspace” and change the “Text File Encoding” to UTF-8.
-		<p class="Center"><img class="Wide" alt="Image" src="img/utf8.png"/></p>
-	</li>
-	<li><b>New File</b>: Right-click on your project and choose “New | File”. Type a file name
-		such as “test.py”. The file name must end in “.py” to be recognized as a Python file. Do
-		not use spaces or punctuation marks in your file name.
-		<p class="Center"><img class="Wide" alt="Image" src="img/newfile.png"/></p>
-	</li>
-	<li><b>Write a Program</b>: In the editor, type a short program. You can copy and paste the examples below. Click the green and white “Run” button on the toolbar and select “Python Run”.</li>
-</ol-->
+<pre data-mime="text" class="IO">py -3 -m pip install -U pip setuptools sc8pr</pre>
 </div>
 
 <h3>Assignment</h3><ol class="Assign">
-<li>Test that your IDE is working properly by running the following Python 3 programs as examples. Here is an example of a simple console program (no graphics)...
-<pre class="Code"><span class="Comment"># Program 's02_print.py'</span>
+<li>Test that your IDE is working properly by running the following Python 3 programs as examples. Here is an example of a simple console program (no graphics).
+    If you have “forked” the CS10 repl.it project, this program should already be in your workspace. If not, hold the Alt key and click on the program to copy it to your clipboard, and then paste the code into your program file.
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's02_print.py'</span>
 
 print(5 * 2)</pre>
 
 Here is an example that accepts input from the keyboard...
-<pre class="Code"><span class="Comment"># Program 's02_name.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's02_name.py'</span>
 
 user = input("Please enter your name: ")
 print("Hello, {}!".format(user))</pre>
 </li>
 </ol>
-</article></body>
-</html>

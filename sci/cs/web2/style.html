@@ -1,22 +1,3 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Cascading Style Sheets</title>
-<link rel="shortcut icon" type="image/x-icon" href="../../../media/html5.png"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "web2";
-
-</script>
-</head>
-<body><article>
-
 <h3>Style Attribute</h3><div class="Note">
 
 <p>We saw in an earlier lesson that HTML includes tags <code>b</code>, <code>i</code>,
@@ -70,7 +51,7 @@ let course = "web2";
 <p>In this example, the <code>background-color</code> and <code>text-align</code> properties
 	are set for the <code>body</code> tag, so that the entire page is centred on a yellow
 	background. The <code>color</code> property is set for the <code>p</code> tag, so
-	that it applied to all paragraphs, but not headings.</p>
+	that it applies to all paragraphs, but not headings.</p>
 </div>
 
 <h3>Using Classes &amp; IDs</h3><div class="Note">
@@ -185,7 +166,7 @@ let course = "web2";
 <ol>
 	<li><p>Suppose you were creating an HTML document that allowed users to play checkers in
 		their browser.</p>
-		<p class="Center"><img src="img/checkers.png" alt="Board" style="border:1px solid black"/></p>
+		<p class="Center"><img src="web2/img/checkers.png" alt="Board" style="border:1px solid black"/></p>
 		<p>Your document could use an 8 by 8 <code>&lt;table&gt;</code> for the board. The colours of the squares need to
 			alternate. (This <a target="nth" href="https://www.w3schools.com/cssref/sel_nth-child.asp">reference</a> could be useful!)
             You would also need images of red and black circles for the pieces, which you can create in a paint program, save in PNG format, and upload to your repl.
@@ -193,10 +174,9 @@ let course = "web2";
 
 	<li>Copy your files <code>w09_Tuscany.html</code> and <code>w09_specials.html</code> as
 		<code>x02_Tuscany.html</code> and <code>x02_specials.html</code>. Use styles to make the appearance of the page closer to
-		what the restaurant manager <a href="../web1/img/tuscany.png">requested</a>.</li>
+		what the restaurant manager requested:
+    <p class="Center"><img style="border:1px solid blue" src="web1/img/tuscany.png" alt="Menu"/></p></li>
 
 	<li><p>Copy your files <code>w08_whatsOn.html</code> as <code>x02_whatsOn.html</code>.
 		Use styles to make the webpage more visually appealing.</p></li>
 </ol>
-</article></body>
-</html>

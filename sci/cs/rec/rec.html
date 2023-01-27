@@ -1,26 +1,6 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Recursion</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "rec";
-
-</script>
-</head>
-<body><article>
-
 <p>Functions often call other functions to help perform their tasks. For example, a function that chooses a random
     RGB colour could use Python’s <code>randint</code> function to produce each of the three values...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Program 'rec1_ex1.py'...</span>
 
 from random import randint
@@ -30,18 +10,18 @@ def randColor():
 
 print(randColor())</pre>
 <p>In some circumstances, a function may want to call itself. This is known as <b class="Red">recursion</b>.  One example could be calculating factorials. Factorials occur in the mathematical study of permutations and combinations. The factorial of a whole number is calculated by multiplying that number by all preceding natural numbers...</p>
-<pre class="IO">6! = 6 × 5 × 4 × 3 × 2 × 1 = 720</pre>
+<pre data-mime="text" class="IO">6! = 6 × 5 × 4 × 3 × 2 × 1 = 720</pre>
 
 <p>One thing we can observe about this, is that the factorial of a number is equal to that number multiplied by the factorial of the preceding number, i.e. \(6! = 6 × 5!\) Or more generally:</p>
 $$n! = n × (n - 1)!$$
 <p>We could try to implement this as a recursive Python function...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 def factorial(n):
     return n * factorial(n-1)</pre>
 
 <p>The problem is that the recursion would occur forever. Eventually, we need to end the recursion and return a value.
     We do this by providing a <b class="Red">base case</b>: when \(n = 0\), the factorial evaluates to \(1\) and so no recursion is needed...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Program 'rec1_ex2.py'...</span>
 
 def factorial(n):
@@ -49,7 +29,7 @@ def factorial(n):
     return 1 if n == 0 else n * factorial(n-1)</pre>
 
 <p>Of course, recursion is not necessary to calculate factorials. We could use iteration (loops) to perform the same calculation without recursion...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Program 'rec1_ex3.py'...</span>
 
 def factorial(n):
@@ -89,7 +69,7 @@ def factorial(n):
 
 <li>
 <p>The <em>Towers of Hanoi</em> is a puzzle wherein rings or disks of different sizes are stacked in three “towers”. The disks are originally stacked from largest (bottom) to smallest (top) in the left-most tower.</p>
-<iframe data-aspect="0.5625" src="https://www.youtube.com/embed/zP9tPttNk6I" allowfullscreen="true" width="1280" frameborder="0"></iframe>
+<iframe data-aspect="16/9" src="https://www.youtube.com/embed/zP9tPttNk6I" allowfullscreen="true" width="1280" frameborder="0"></iframe>
 <p>The centre and right towers are initially empty. The object of the puzzle is to move all disks from the left to the centre tower, observing the following rules:</p>
 <ul>
 <li>You can only move one disk at a time.</li>
@@ -112,5 +92,3 @@ def factorial(n):
 </li>
 
 </ol>
-</article></body>
-</html>

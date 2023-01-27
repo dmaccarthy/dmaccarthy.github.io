@@ -19,7 +19,10 @@ function say(text) {
 say.cast = [0];
 
 function play() {
+    let err;
     goTime(0);
+    try {initPlay()}
+    catch(err) {}
     clearTimeout(play.timeout);
     play.item = 0;
     nextItem();
@@ -60,6 +63,19 @@ function loadScript(url) {
         for (let i=0; i<n; i++) {
             s += (i ? ", " : "") + i;
         }
-        console.log(`To set voices, type 'say.cast = [${s}]'`);
+        // console.log(`To set voices, type 'say.cast = [${s}]'`);
     });
+}
+
+function setCast(...names) {
+    let c = [];
+    for (let j=0;j<names.length;j++) {
+        c.push(0);
+        for (let i=0;i<voices.length;i++) {
+            if (voices[i].name.indexOf(names[j]) > -1) {
+                c[j] = i;
+            }
+        }
+    }
+    say.cast = c;
 }

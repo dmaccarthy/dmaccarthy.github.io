@@ -1,22 +1,3 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Formatted Output</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "sp2";
-
-</script>
-</head>
-<body><article>
-
 <h3>Templates &amp; Format Specifiers</h3><div class="Note">
 <p>When writing a program, it is good to keep the user in mind. How will your program look to the
 	people using it? Will they be able to understand how to use your program? As the programmer,
@@ -26,7 +7,7 @@ let course = "sp2";
 	and organized. Python provides a function called <code>format</code> that gives you more control
 	over how data is converted to text to be displayed in the console.</p>
 
-<pre class="Code"><span class="Comment"># Program 's15_ex1.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's15_ex1.py'</span>
 
 from math import sqrt
 
@@ -35,21 +16,21 @@ root = sqrt(num)
 print("The square root of", num, "is", root, ".")</pre>
 
 <p>The output of the program might look like this:</p>
-<pre class="IO">What is your favourite number? <span class="Blue">6</span>
+<pre data-mime="text" class="IO">What is your favourite number? <span class="Blue">6</span>
 The square root of 6.0 is 2.449489742783178 .</pre>
 
 <p>To make this output cleaner, we might want to round the answer to a smaller number of decimal places,
     and to remove the unnecessary space before the period. To do this, we create a <b class="Red">template</b>
     string that shows what we want the output to like like, using curly brackets <code>{}</code> as
     placeholders to show where the data will be inserted.</p>
-<pre class="Code">template = "The square root of {} is {}."</span></pre>
+<pre data-mime="text" class="Code">template = "The square root of {} is {}."</span></pre>
 
 <p>You can use any variable name you want; you don’t have to call it <code>template</code>.</p>
 <p>We can type an optional <b class="Red">format specifier</b> inside the braces. In the example below, <code>.2f</code> is a format code that tells
     Python we want to insert data as a floating point number with two decimal places. Python requires a semi-colon
     immediately before the format specifier.</p>
 
-<pre class="Code"><span class="Comment"># Program 's15_ex2.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's15_ex2.py'</span>
 
 from math import sqrt
 
@@ -61,7 +42,7 @@ print(<span class="Blue">template.format</span>(num, root))</pre>
 <p>After creating your template, call its <code>format</code> function to insert the data into the
     template with the desired format. The example above produces the following output.</p>
 
-<pre class="IO">What is your favourite number? <span class="Blue">6</span>
+<pre data-mime="text" class="IO">What is your favourite number? <span class="Blue">6</span>
 The square root of 6.00 is 2.45.</pre>
 </div>
 
@@ -69,7 +50,7 @@ The square root of 6.00 is 2.45.</pre>
 <p>When a program displays data in a table, such as sports league standings, we want to make sure the
     columns line up properly. We can do this with a template and the <code>format</code> function as well.</p>
 
-<pre class="Code"><span class="Comment"># Program 's15_ex3.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's15_ex3.py'</span>
 
 standings = [
     ("Pandas", 18, 2),
@@ -92,7 +73,7 @@ for team, won, lost in standings:
 </pre>
 
 <p>This will produce the following output.</p>
-<pre class="IO">   TEAM      Won  Lost
+<pre data-mime="text" class="IO">   TEAM      Won  Lost
   Pandas      18     2
  Gryphons     16     4
   Bears       15     5
@@ -120,7 +101,7 @@ for team, won, lost in standings:
     This is basically an abbreviated syntax for formatting strings. The example below does the same as <code>s15_ex2.py</code> above,
     but uses an f-string (shown in <span class="Blue">blue</span>) rather than an explicit call to the <code>format</code> method.
     Note the <code>f</code> before the opening quotation mark of the f-string!</p>
-<pre class="Code"><span class="Comment"># Program 's15_ex4.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's15_ex4.py'</span>
 
 from math import sqrt
 
@@ -133,7 +114,7 @@ print(<span class="Blue">f"The square root of {num:.2f} is {root:.2f}."</span>)<
     you should still create a template and call the <code>format</code> method
     for each data record, as you learned in the previous sections of this lesson.</p>
 <p>F-strings also allow you to include an <em>expression</em> rather than just a single variable name...</p>
-<pre class="Code"><span class="Comment"># Program 's15_ex4.py' (continued)</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's15_ex4.py' (continued)</span>
 
 <span class="Comment"># This also works!</span>
 print(f"The square root of {num:.2f} is {<span class="Blue">sqrt(num)</span>:.2f}.")</pre>
@@ -148,6 +129,3 @@ print(f"The square root of {num:.2f} is {<span class="Blue">sqrt(num)</span>:.2f
 <li>The program <code>s15_cities.py</code> prints the largest Canadian cities by metro population based on the 2016 census.
     Modify the program to display the data in fixed-width columns.</li>
 </ol>
-
-</article></body>
-</html>

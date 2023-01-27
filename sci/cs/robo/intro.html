@@ -1,22 +1,3 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Intro to Robotics Programming</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "robo";
-
-</script>
-</head>
-<body><article>
-
 <h3>Robotics</h3><div class="Note"></div>
 <p>A <b class="Red">robot</b> is an electromechanical system that is capable of doing the following:</p>
 <ul>
@@ -33,9 +14,9 @@ let course = "robo";
     installed separately from Python itself. If you are using a computer that does not already
     have <code>sc8pr</code>, installation may depend on the IDE you are using.</p>
 <p>If you are using a fork of the <a class="Code" href="https://replit.com/@DavidMacCarthy/Robo">Robo</a> repl in <code>repl.it</code>, it should be pre-configured with <code>sc8pr</code>. Open the file <code>pyproject.toml</code> and ensure that the <code>[tool.poetry.dependencies]</code> section includes the line:</p>
-<pre class="IO">sc8pr = "^2.2"</pre>
+<pre data-mime="text" class="IO">sc8pr = "^2.2"</pre>
 <p>If you are using Thonny, go to the “Tools” menu and select “Manage packages...”</p>
-<p class="Center"><img src="../game/img/thonny.png" alt="Thonny"/></p>
+<p class="Center"><img src="game/img/thonny.png" alt="Thonny"/></p>
 <ol>
     <li>Type the name of the software package, <code>sc8pr</code>.</li>
     <li>Click the button to search the Python Package Index (PyPI).</li>
@@ -54,7 +35,7 @@ let course = "robo";
     of an operator (like a remote control device).</p>
 <p>Here is an example of a robotics simulation...</p>
 
-<pre class="Code"><span class="Comment"># Program 'r01_ex1.py'...</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 'r01_ex1.py'...</span>
 
 from sc8pr.robot.arena import Arena
 
@@ -69,7 +50,7 @@ Arena.run(brain)</pre>
 <p>We have used built-in functions (e.g. <code>print</code>, <code>input</code>) and imported functions
     (e.g. <code>randint</code>, <code>sqrt</code>) in our previous courses. Using Python’s <code>def</code>
     statement, we can define our own functions to perform tasks like controlling the robot. The first line
-    of the function, <pre class="Code">def brain(robot):</pre> creates a function named <code>brain</code> and also
+    of the function, <pre data-mime="text" class="Code">def brain(robot):</pre> creates a function named <code>brain</code> and also
     creates a variable name <code>robot</code> that we can use to control the robot. As with <code>if</code>
     and <code>while</code> statements, the <code>def</code> statement ends with a colon and the subsequent
     lines that form the function body are indented by four spaces.<p>
@@ -88,7 +69,7 @@ Arena.run(brain)</pre>
     example below, the left wheel (<code>0.7</code>) will be moving faster than the right one
     (<code>0.3</code>), so the robot will turn clockwise while moving forward.
 
-<pre class="Code"><span class="Comment"># Program 'r01_ex2.py'...</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 'r01_ex2.py'...</span>
 
 from sc8pr.robot.arena import Arena
 
@@ -102,7 +83,7 @@ Arena.run(brain)</pre>
 
 <p>Setting the motors to the same power but opposite directions will cause the robot to spin in place.</p>
 
-<pre class="Code"><span class="Comment"># Program 'r01_ex3.py'...</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 'r01_ex3.py'...</span>
 
 from sc8pr.robot.arena import Arena
 
@@ -120,7 +101,7 @@ Arena.run(brain)</pre>
     of time. For example, to run both motors on full power for 2.5 seconds and then stop them,
     you could use the following function.</p>
 
-<pre class="Code"><span class="Comment"># Program 'r01_ex4.py'...</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 'r01_ex4.py'...</span>
 
 from sc8pr.robot.arena import Arena
 
@@ -153,5 +134,3 @@ Arena.run(brain)</pre--></li>
 <li>Make a copy of this <a target="Doc" href="https://docs.google.com/document/d/1atUJmBx4xREUgPNyZFZAakpMF7EKNmnZA554aSeCLBA">Google
     Doc</a> in the <code>CS10</code> folder of your EIPS Google Drive. Follow the instructions in the document.</li>
 </ol>
-</article></body>
-</html>

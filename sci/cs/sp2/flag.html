@@ -1,22 +1,3 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Flags &amp; Counters</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "sp2";
-
-</script>
-</head>
-<body><article>
-
 <h3>Flags</h3><div class="Note">
 <p>We saw in the previous lesson that Python’s <code>while</code> keyword can be used to repeat a block
 	of instructions as long as a certain condition remains <code>True</code>.</p>
@@ -26,7 +7,7 @@ let course = "sp2";
 	when we want the loop to terminate. In the example below, the variable <code>waiting</code> is used as
 	a flag.</p>
 
-<pre class="Code"><span class="Comment"># Program 's13_ex1.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's13_ex1.py'</span>
 
 <span class="Blue">waiting</span> = True
 while <span class="Blue">waiting</span>:
@@ -50,7 +31,7 @@ print("Your number is", num)</pre>
 
 <p>The example below prints the first ten numbers of the <a href="https://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci Sequence</a>, using a variable <code>count</code> to ensure the loop runs ten times.</p>
 
-<pre class="Code"><span class="Comment"># Program 's13_ex2.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's13_ex2.py'</span>
 
 <span class="Docstring">"Fibonacci Sequence"</span>
 
@@ -65,7 +46,7 @@ while <span class="Blue">count < 10</span>:
 <p>Alternatively, you can initialize the counter to the number of times you want the loop to run and
 	then count down (“decrement”) to zero.</p>
 
-<pre class="Code"><span class="Comment"># Program 's13_ex3.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's13_ex3.py'</span>
 
 <span class="Docstring">"Fibonacci Sequence"</span>
 
@@ -80,7 +61,7 @@ while <span class="Blue">remaining</span>:
 
 <h3>Assignment</h3><ol class="Assign">
 <li>Write a program <code>s13_factors.py</code> that asks the user to enter a positive whole number, and then prints all of the number’s factors (numbers that divide evenly into the first number).
-<pre class="IO">Please enter a positive number: <span class="Blue">21</span>
+<pre data-mime="text" class="IO">Please enter a positive number: <span class="Blue">21</span>
 1
 3
 7
@@ -95,5 +76,3 @@ Use a <u>counter</u> to check each number in turn. For example, if the user ente
     age. The program should only accept grades between 10 and 12 and ages between 14 and 19, and
     should loop until the user provides valid data. Use a <u>flag</u> to control the loop.</li>
 </ol>
-</article></body>
-</html>

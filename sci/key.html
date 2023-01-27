@@ -4,7 +4,7 @@
 <meta charset="utf8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Answer Key</title>
-<link rel="shortcut icon" type="image/png" href="../../media/rocket.png" />
+<link rel="shortcut icon" type="image/png" href="media/rocket.png" />
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
 <script type="text/javascript" src="../script/util.js"></script>
@@ -13,18 +13,32 @@
 <link rel="stylesheet" href="../script/ui2023.css" />
 <script type="text/javascript">
 
+function availDate(d) {
+    let a = d.split(".");
+    if (a.length > 3) {
+        d = `${a[0]}.${a[1]}.${a[2]} @ ${a[3]}`;
+        d += a.length > 4 ? `:${a[4]}` : ":00";
+    }
+    return d;
+}
+    
 $(function() {
     let arg = location.hash.slice(1).split("/");
-    let url = `${arg[0]}/assign/${arg[1]}.htm`;
+    let url = `${arg[0]}/${arg[1]}/assign/${arg[2]}.htm`;
     $.ajax({url:url, success:function(e) {
         e = $(e);
         let title = e.attr("title");
         $("h2").find("a").html(title);
         document.title = title;
         $("#AnswerKey").html(e.html());
+        let d = e.attr("data-date");
+        if (!(qsArgs("tp") == atob("UzBoaWJrZGlTMlJhU0hKUg==") || isAfter(d))) {
+            e = $(".Answer").hide();
+            $("<p>").addClass("Red").html(`Answers available ${availDate(d)}`).insertBefore($("#AnswerKey"));
+        }
         mjTypeset();
     }});
-    $("h2").find("a").attr({href:"./#" + arg[1]});
+    $("h2").find("a").attr({href:`./${arg[0]}/#${arg[2]}`});
 });
 
 </script>
@@ -48,7 +62,7 @@ h3:first-child {margin-top:0}
 </style>
 </head>
 <body>
-<h2 class="Blue"><a>Answer Key</a></h2>
+<h2 class="Blue"><a title="View Lesson Webpage">Answer Key</a></h2>
 <article id="AnswerKey"></article>
 </body>
 </html>

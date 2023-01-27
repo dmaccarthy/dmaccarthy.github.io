@@ -1,27 +1,8 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Pre- &amp; Post-Conditions</title>
-<link rel="shortcut icon" type="image/x-icon" href="../../../media/html5.png"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "pp";
-
-</script>
-</head>
-<body><article>
-
 <h3>Preconditions</h3>
 <div class="Note">
 
 <p>The <code>resource.wholeNum</code> module contains a function <code>isPrime</code> that tests whether a number is prime or not. A prime number is a number that has no factors other than 1 and itself.</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain"><span class="Comment"># Example 1...</span>
+<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 1...</span>
 
 from resource.wholeNum import isPrime
 
@@ -41,7 +22,7 @@ print(isPrime("Hi"))  <span class="Comment"># TypeError</span></pre>
 <p>In <u>statically typed</u> programming languages such as Java or C/C++, this is not an issue since the class of each argument must be declared and the compiler or interpreter only permits arguments of the correct class.
     In <u>dynamically typed</u> languages like Python, it is possible to pass a non-integer object to a function that is expecting an integer.</p>
 <p>Python has an <code>assert</code> statement that can be used for type checking. The function defined below will only accept <code>int</code> instances as an argument and will raise an <code>AssertionError</code> exception if any other class of object is passed...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain"><span class="Comment"># Example 2...</span>
+<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 2...</span>
 
 def intOnly(num):
     assert type(num) is int, "Argument must be an integer"
@@ -51,7 +32,7 @@ intOnly("Bad data")</pre>
 <p>The error message provided at the end of the <code>assert</code> statement is optional.</p>
 <p>The <code>assert</code> statement can be used to check any precondition that can be expressed as a Boolean (<code>True</code> or <code>False</code>) expression, not just that the arguments have the correct class.
     For example, a function may require not only that an argument is an integer but that it is within a specific range of values...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain"><span class="Comment"># Example 3...</span>
+<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 3...</span>
 
 def recentYear(year):
     assert type(year) is int, "Argument must be an integer"
@@ -71,7 +52,7 @@ recentYear(1996)</pre>
 <div class="Note">
 <p><b class="Red">Postconditions</b> are statements about what is guaranteed to be true at the end of a function, provided that the function’s preconditions were satisfied.
     In Python programs, the <code>assert</code> statement is used to declare postconditions as well as preconditions.</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain"><span class="Comment"># Example 4...</span>
+<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 4...</span>
 
 def sortThree(num1, num2, num3):
     <span class="Comment">"Sort three numbers from lowest to highest"</span>
@@ -120,5 +101,3 @@ print(sortThree(3, 1, False))</pre>
     Add <code>assert</code> statements to document the pre- and post-conditions for each function.
     (For postconditions, you can verify that the hypotenuse is longer than the other sides, but shorter than the <em>sum</em> of the two other sides.) Test that calling a function with bad data raises an <code>AssertionError</code>.</li>
 </ol>
-</article></body>
-</html>

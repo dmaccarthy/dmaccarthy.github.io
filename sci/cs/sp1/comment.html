@@ -1,22 +1,3 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Comments &amp; Docstrings</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "sp1";
-
-</script>
-</head>
-<body><article>
-
 <h3>Comments</h3><div class="Note">
 <p><b class="Red">Comments</b> are extra information added to your source code (program)
 	to make it easier for human readers to understand. In Python, the <code>#</code> symbol
@@ -26,7 +7,7 @@ let course = "sp1";
 <p>Here is an example from the previous lesson with four comment lines added to	explain what
     the program is doing.</p>
 
-<pre class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
+<pre data-mime="text" class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
 
 <span class="Comment"># Set the canvas size, turtle speed, and pen color</span>
 setup(600, 480)
@@ -50,7 +31,7 @@ exitonclick()</pre>
 	out the <code>penup()</code> instruction, we could add a <code>#</code> character to
 	the beginning of the line. This is commonly called “commenting out” the instruction.</p>
 
-<pre class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
+<pre data-mime="text" class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
 
 <span class="Comment"># Set the canvas size, turtle speed, and pen color</span>
 setup(600, 480)
@@ -81,7 +62,7 @@ exitonclick()</pre>
     in quotation marks. If the docstring does not fit on a single line, it needs to be enclosed
     in <em>triple</em> quotes, as in the example below.</p>
 
-<pre class="Code"><span class="Green">"""
+<pre data-mime="text" class="Code"><span class="Green">"""
 An example of a Python 3 'Turtle Graphics' program.
 
 Author: D. MacCarthy &lt;david.maccarthy@eips.ca&gt;
@@ -117,5 +98,3 @@ exitonclick()</pre>
     program and add comments to describe each group of instructions, such as “move
     the turtle into position”, “draw the circle”, “draw the 'tail' of the Q”.</li>
 </ol>
-</article></body>
-</html>

@@ -26,7 +26,7 @@ table.Normal td, table.Normal th {
 .Red {color:red}
 .Border1 {border:1px solid black}
 p {margin:12px 0}
-p.Title {font-weight:bold}
+p.Title {font-weight:bold; font-size:150%}
 #Blank {margin:20px}
 
 #Screen {
@@ -49,6 +49,7 @@ p.Title {font-weight:bold}
     background-color:var(--left);
 }
 
+#Screen section {padding:8px}
 #Screen section.Left * {background-color:var(--left)}
 #Screen section.Note * {background-color:var(--note)}
 

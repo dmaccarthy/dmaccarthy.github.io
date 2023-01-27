@@ -1,25 +1,6 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>List Comprehensions</title>
-<link rel="shortcut icon" type="image/png" href="../../../media/laptop.png" />
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "ds";
-
-</script>
-</head>
-<body><article>
-
 <h3>List Comprehensions</h3><div class="Note">
 <p>Python includes a feature for making lists by performing the same operation on a sequence of objects. Suppose that we have a sequence of ordered pairs representing points on a drawing (e.g. the alien spacecraft locations in a space invaders type game).  We need to calculate the distance between each point and some other point (e.g. the player’s ship).  We might write the following...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Example 1...</span>
 
 from math import hypot
@@ -43,7 +24,7 @@ main()</pre>
 
 <p>In the <code>main</code> procedure above, we created an empty list, <code>distanceList</code>, and then used a <code>for</code> loop to iterate through the sequence of invader ships, appending each result to the list.
     Below is an abbreviated version of the procedure that uses a list comprehension (shown in blue)...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Example 2...</span>
 
 def main():
@@ -53,7 +34,7 @@ def main():
     print(distanceList)      <span class="Comment"># [598, 542, 486, 519, 463]</span></pre>
 
 <p>The list comprehension shortens the <code>for</code> loop into a single statement, while automatically assembling the results into a list. We do not need to initialize the list or append items explicitly.  The syntax for a list comprehension is...</p>
-<pre class="IO">[&lt;Expression&gt; for &lt;Item&gt; in &lt;Sequence&gt;]</pre>
+<pre data-mime="text" class="IO">[&lt;Expression&gt; for &lt;Item&gt; in &lt;Sequence&gt;]</pre>
 <p>...where <code>&lt;Sequence&gt;</code> is any <code>list</code>, <code>tuple</code>, string, or other iterable object;
     <code>&lt;Item&gt;</code> is the local variable name you want to use for the items in the sequence;
     and <code>&lt;Expression&gt;</code> is the expression to be evaluated and appended to the <code>list</code> for each item.</p>
@@ -62,7 +43,7 @@ def main():
 <h3>Conditional Comprehensions</h3><div class="Note">
 <p>Suppose in the previous example, we wanted to obtain a <code>list</code> of invaders that were within
     a certain distance of the player’s ship. We could do this with a <em>conditional</em> list comprehension.</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Example 3...</span>
 
 def main():
@@ -76,12 +57,12 @@ def main():
     satisfy the condition <code>distance(ship, player) < 500</code>. The result of this comprehension will be a <code>list</code>
     containing the two invader ships that are within 500 pixels of the player’s ship.</p>
 <p>The general syntax for a conditional list comprehension is...</p>
-<pre class="IO">[&lt;Expression&gt; for &lt;Item&gt; in &lt;Sequence&gt; if &lt;Condition&gt;]</pre>
+<pre data-mime="text" class="IO">[&lt;Expression&gt; for &lt;Item&gt; in &lt;Sequence&gt; if &lt;Condition&gt;]</pre>
 </div>
 
 <h3>Nested Comprehensions</h3><div class="Note">
 <p>Python also supports nested <code>for...in</code> clauses within list comprehensions...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Example 4...</span>
 
 suits = "Hearts", "Diamonds", "Clubs", "Spades"
@@ -96,5 +77,3 @@ for card in deck: print(card)</pre>
 <li>Complete the program <code>d05_numsOnly.py</code> to use a list comprehension to collect a <code>list</code> of numbers (data that has either <code>int</code> or <code>float</code> as its type) from a <code>list</code> that may contain other types of data.</li>
 
 </ol>
-</article></body>
-</html>

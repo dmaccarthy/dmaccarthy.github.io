@@ -1,22 +1,3 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Iteration &amp; Searching</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "sp2";
-
-</script>
-</head>
-<body><article>
-
 <h3><code>for</code> Loop</h3><div class="Note">
 <p>We saw that Python’s <code>while</code> statement is used to run a block of instructions repeatedly
 	as long as the Boolean condition we provide remains <code>True</code>. We also saw that flags and
@@ -26,7 +7,7 @@ let course = "sp2";
 	<b class="Red">iterate</b> through a <b class="Red">sequence</b>. One type of sequence is a string; Python
 	treats each string value as a sequence of individual characters.</p>
 
-<pre class="Code"><span class="Comment"># Program 's14_ex1.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's14_ex1.py'</span>
 
 word = "Salisbury Composite High School"
 for letter in word:
@@ -43,7 +24,7 @@ for letter in word:
 	statement within a <code>for</code> loop, for example. The program below will print each of the
 	lower case letters and punctutation marks on its own line, but will ignore any upper case letters.</p>
 
-<pre class="Code"><span class="Comment"># Program 's14_ex2.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's14_ex2.py'</span>
 
 word = "Salisbury Composite High School"
 for letter in word:
@@ -56,7 +37,7 @@ for letter in word:
 
 <p>Besides strings, other types of sequences that you can iterate through include files	and lists of numbers or other data.</p>
 
-<pre class="Code"><span class="Comment"># Program 's14_ex3.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's14_ex3.py'</span>
 
 data = 0, 1, 1, 2, 3, 5, 8
 for num in data:
@@ -70,7 +51,7 @@ for num in data:
 	you an alternate way to loop with a counter. The following example runs the loop ten times, with the
 	variable <code>count</code> keeping track of how many times the loop has run.</p>
 
-<pre class="Code"><span class="Comment"># Program 's14_ex4.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's14_ex4.py'</span>
 
 for count in range(10):
     print(count)</pre>
@@ -81,7 +62,7 @@ for count in range(10):
 <p>You can pass more arguments to the <code>range</code> function to create other sequences of
     numbers. For example, if you want to count by twos, starting at 10 and ending at (but not
     including!) 20...</p>
-<pre class="Code"><span class="Comment"># Program 's14_ex5.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's14_ex5.py'</span>
 
 for count in range(10, 20, 2):
     print(count)</pre>
@@ -97,7 +78,7 @@ for count in range(10, 20, 2):
     display only the letters that have already been guessed, as well as spaces and punctuation marks.
     Letters that have not yet been guessed would be shown as a blank or placeholder character such as
     a star.
-<pre class="Code"><span class="Comment"># A portion of program 's14_hangman.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># A portion of program 's14_hangman.py'</span>
 
 answer = "STAR WARS"
 guesses = "AESD"</pre>
@@ -105,7 +86,7 @@ guesses = "AESD"</pre>
 Complete the program using a <code>for</code> loop to iterate through the letters in <code>answer</code>
 so that it produces the following output. The program must continue to work properly even if you change
 the <code>answer</code> and <code>guesses</code>.
-<pre class="IO">S
+<pre data-mime="text" class="IO">S
 *
 A
 *
@@ -124,6 +105,3 @@ S</pre></li>
 <li>Duplicate your previous program (<code>s14_fail.py</code>) into the file <code>s14_highest.py</code>. Modify the
     program so that it searches and prints out the student who earned the highest mark in the class.</li>
 </ol>
-
-</article></body>
-</html>

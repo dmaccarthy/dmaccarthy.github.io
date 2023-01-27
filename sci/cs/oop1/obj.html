@@ -1,22 +1,3 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Objects</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "oop1";
-
-</script>
-</head>
-<body><article>
-
 <h3>Programming Paradigms</h3><div class="Note">
 <p>A <b class="Red">programming paradigm</b> is a perspective, or a way of thinking about what a program actually is.
     Paradigms influence how creators of programming language design their languages. Some common programming paradigms are...</p>
@@ -64,17 +45,17 @@ let course = "oop1";
 <h3>Encapsulation</h3><div class="Note">
 <p><b class="Red">Encapsulation</b> is the idea that objects can contain (encapsulate) other objects. For example, we can
     think of a <code>date</code> instance as a container that encapsulates three <code>int</code> instances which represent the year, month, and day.</p>
-<p class="Center"><img src="img/date_obj.png" alt="Date Object"/></p>
+<p class="Center"><img src="oop1/img/date_obj.png" alt="Date Object"/></p>
 <p>Objects that are encapsulated within composite objects are called <b class="Red">attributes</b>. Each <code>date</code>
     instance has a <code>year</code> attribute, for example. Some programming languages use the term <b class="Red">members</b>
     instead of attributes. Attributes that represent data can also be called <b class="Red">properties</b> of the object.
 </p>
 <p>An <b class="Red">object diagram</b> is an illustration that shows (some of) the objects encapsulated within a composite object. Here are object
     diagrams for three different <code>date</code> instances. (Object diagrams for instances are also known as <b class="Red">instance diagrams</b>.)
-<p class="Center"><img src="img/obj_diagram.png" alt="Object Diagram"/></p>
+<p class="Center"><img src="oop1/img/obj_diagram.png" alt="Object Diagram"/></p>
 <p>The Python program below uses the <code>date</code> class from the <code>datetime</code> module to create and print the instances illustrated by the diagrams above...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
-<span class="Comment">Example 1...</span>
+<pre class="Code" contenteditable="true" data-mime="text">
+<span class="Comment"># Example 1...</span>
 
 from datetime import date
 
@@ -84,7 +65,7 @@ confed = date(1867, 7, 1)
 print(today, newYear, confed, sep="\n")</pre>
 
 <p>Instance diagrams emphasize what is unique to each instance. Since the three instances illustrated above represent the same type of data, there is also much that these objects have in common. The common features are illustrated by a <b class="Red">class diagram</b>...</p>
-<p class="Center"><img src="img/cls_diagram.png" alt="Class Diagram"/></p>
+<p class="Center"><img src="oop1/img/cls_diagram.png" alt="Class Diagram"/></p>
 <p>As the class diagram above shows, every <code>date</code> instance has <code>year</code>, <code>month</code> and <code>day</code> attributes. The class diagram cannot show specific values for these attributes because the values will differ between instances.</p>
 <p>Python <code>date</code> objects also have attributes called <code>min</code> and <code>max</code> which indicate the first
     and last date that the system is capable of representing. These attributes are not unique to each instance, but are common
@@ -104,8 +85,8 @@ print(today, newYear, confed, sep="\n")</pre>
     would be referenced as <code>newYear.year</code>. With dot notation, attribute names can be chained together. In the
     example below, we first access the <code>date</code> class’s <code>max</code> attribute (which is a <code>date</code> instance)
     and then we access that object’s <code>year</code> attribute...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
-<span class="Comment">Example 2...</span>
+<pre class="Code" contenteditable="true" data-mime="text">
+<span class="Comment"># Example 2...</span>
 
 from datetime import date
 
@@ -138,5 +119,3 @@ print(date.max.year)</pre>
     implement the class in Python. Be sure to share your completed class diagram with your teacher.</p>
 </li>
 </ol>
-</article></body>
-</html>

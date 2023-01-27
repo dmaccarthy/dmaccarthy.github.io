@@ -1,23 +1,3 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Modules &amp; Packages</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "sp1";
-
-</script>
-</head>
-<body><article>
-
 <h3>Standard Library</h3><div class="Note"></div>
 <p>The <code>print</code> and <code>input</code> functions are examples of Python “built-ins”.
 	Built-ins are functions, classes, and other features that are part of the Python interpreter
@@ -28,7 +8,7 @@ let course = "sp1";
 	<code>max</code>, <code>sum</code>, and <code>len</code>. You can get a complete list of built-ins
 	by running the following:</p>
 
-<pre class="Code"><span class="Comment"># Program 's08_ex1.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's08_ex1.py'</span>
 
 for b in sorted(vars(__builtins__)):
     print(b)</pre>
@@ -40,7 +20,7 @@ for b in sorted(vars(__builtins__)):
 	functions. Use the <code>from-import</code> statement to import functions, classes, and data from
 	a module. Import statements are usually placed at the beginning of the source code, right after the docstring.</p>
 
-<pre class="Code"><span class="Comment">"Program 's08_ex2.py'"</span>
+<pre data-mime="text" class="Code"><span class="Comment">"Program 's08_ex2.py'"</span>
 
 from turtle import setup, forward, exitonclick
 
@@ -50,7 +30,7 @@ exitonclick()</pre>
 
 <p>It is also possible to use a “wildcard” to import <b>all</b> names of functions, classes, and data
 	from a module...<p>
-<pre class="Code">from turtle import *</pre>
+<pre data-mime="text" class="Code">from turtle import *</pre>
 
 <p>It is generally better to avoid wildcard imports. Importing names that your program does not actually
 	use requires more memory and makes Python run less efficiently. It also increases the likelihood of
@@ -62,7 +42,7 @@ exitonclick()</pre>
 	and <a href="https://docs.python.org/3/library/random.html" target="_r"><code>random</code></a>,
 	modules for performing mathematical and random number calculations.</p>
 
-<pre class="Code"><span class="Comment"># Program 's08_ex3.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's08_ex3.py'</span>
 
 from math import pi, sqrt
 from random import randint, uniform
@@ -104,7 +84,7 @@ print(uniform(1,6))</pre>
 <p>Here is an example of how to import from a package. As long as the site package (<code>numpy</code>) has been properly installed,
     there is no difference between importing from the standard library and from the site package. If <code>numpy</code> is not installed, the program will raise an <code>ModuleNotFoundError</code>.
     (To see this, try misspelling <code>numpy</code> as <code>nupy</code>.)</p>
-<pre class="Code"><span class="Comment"># Program 's08_ex4.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's08_ex4.py'</span>
 
 from numpy import zeros
 
@@ -124,7 +104,7 @@ print(z)</pre>
 <li>The program below is supposed to simulate rolling a pair of dice. Currently, the program
     always rolls a 6 and a 3. Modify the program to randomize the roll using the <code>randint</code>
     function from the <code>random</code> module.
-<pre class="Code"><span class="Comment"># Program 's08_dice.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's08_dice.py'</span>
 
 <span class="Docstring">"Simulate rolling a pair of dice"</span>
 
@@ -136,5 +116,3 @@ total = die1 + die2
 <span class="Comment"># Output</span>
 print("You rolled {} + {} = {}".format(die1, die2, total))</pre></li>
 </ol>
-</article></body>
-</html>

@@ -1,22 +1,3 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Colours &amp; Sensors</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "robo";
-
-</script>
-</head>
-<body><article>
-
 <h3>Colour Sensors</h3><div class="Note">
 <p>The gyroscope is only one of the sensors that the <code>sc8pr</code> robot is equipped with.
     The robot also has two colour sensors, one pointed to the front and one pointed down. The
@@ -24,7 +5,7 @@ let course = "robo";
 <p>You can access the colour data using <code>robot.sensorFront</code> and <code>robot.sensorDown</code>.
     The colour sensor data is only updated when your <code>brain</code> function requests it,
     so you must call the <code>robot.updateSensors</code> function before checking the sensor colours.</p>
-<pre class="Code"><span class="Comment"># Program 'r04_ex1.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 'r04_ex1.py'</span>
 
 from sc8pr.robot.arena import Arena, quilt
 
@@ -60,7 +41,7 @@ Arena.run(brain, pattern=quilt)</pre>
 <p>The RGB colour model is useful because it is how computer hardware actually represents and produces
     colour, but it is not especially suited to how humans perceive colour. The colour wheel illustrates
     a continuum of colours.</p>
-<p class="Center"><img class="Wide" src="img/wheel.png" alt="Wheel"/></p>
+<p class="Center"><img src="robo/img/wheel.png" alt="Wheel"/></p>
 <p>At the far right, you will find the colour red. As you move clockwise around the outside of the circle,
     the colour gradually changes to yellow (at 60°), then green (at 120°), cyan (at 180°), etc. As you
     move toward the centre of the circle, the colour passes through various different shades before
@@ -81,7 +62,7 @@ Arena.run(brain, pattern=quilt)</pre>
     detects the exact colour “blue” – <code><span class="Black">(0, 0, 255)</span></code> in the RGB
     model – it will not be able to “see” the object reliably. What we can do instead, is to convert
     the colour sensor data to an HSV representation, and then define a <em>range</em> which is acceptably blue.</p>
-<p class="Center"><img class="Wide" src="img/blue.png" alt="Wheel (Blue)"/></p>
+<p class="Center"><img src="robo/img/blue.png" alt="Wheel (Blue)"/></p>
 <p>The “box” drawn on the colour wheel above identifies colours with a hue between 205 and 260, and a
     saturation between 60 and 100. We can take these criteria as our definition of what our robot will
     consider to be “blue”. We might also want to specify a minimum brightness value, since the blue
@@ -98,7 +79,7 @@ Arena.run(brain, pattern=quilt)</pre>
 <p>In the example below, the keyword <code>return</code> is a Python instruction that sends a result
     from a function back to the function or program that called it. In this example the result will be
     either <code>True</code> (the colour is blue) or <code>False</code> (the colour is not blue.)</p>
-<pre class="Code"><span class="Comment"># Program 'r04_ex2.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 'r04_ex2.py'</span>
 
 from sc8pr.robot.arena import Arena, quilt
 from sc8pr.misc.hsv import hsvBox
@@ -124,7 +105,7 @@ Arena.run(brain, pattern=quilt)</pre>
     called <code>isGrey</code> that will detect when the robot reaches the grey warning track. Modify the
     <code>brain</code> so that the robot turns by a random angle (between 10° and 120°) when it gets to the
     warning track instead of running into the wall. The robot should continue moving forward after turning.
-<pre class="Code"><span class="Comment"># Program 'r04_arena1.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 'r04_arena1.py'</span>
 
 from sc8pr.robot.arena import Arena, quilt
 
@@ -142,5 +123,3 @@ Arena.run(brain, pattern=quilt)</pre></li>
     words <code><span class="Black">Red</span></code> or <code><span class="Black">Blue</span></code> when the
     robot crosses red or blue patches, and only prints the HSVA values when crossing patches that are not red or blue.</li>
 </ol>
-</article></body>
-</html>

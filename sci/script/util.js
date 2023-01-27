@@ -79,3 +79,48 @@ function mjTypeset() {
     if (window.MathJax) MathJax.Hub.Typeset();
 }
 
+function isAfter(due, date) {
+/* Check whether a date (today) is after the specified due date */
+    if (due == null) return true;
+    else if (due == false) return false;
+    if (date == null) date = new Date();
+    if (!(due instanceof Date)) {
+        due = due.split(".");
+        due[1] = parseInt(due[1]) - 1;
+        due = new Date(...due);
+    }
+    return date >= due;
+}
+
+function pre_data(e) {
+    $(e ? e : "body").find("pre[data-mime]").click(function(ev) {
+        if (ev.altKey) {
+            let e = $(this);
+            let mime = e.attr("data-mime");
+            let text = e.text();
+            if (mime != "text") {
+                text = `data:${mime};charset=utf-8,${encodeURIComponent(text)}`;
+            }
+            e = $("<textarea>").text(text).appendTo($("body"));
+            e.select();
+            document.execCommand("copy");
+            e.remove();
+        }
+    });
+}
+
+String.random = function(n, allowNum) {
+// allowNum = 1: numerals are allowed
+// allowNum = 2: allowed except for first character
+    let s = "";
+    if (allowNum == 2) {
+        s = String.random(1);
+        n--;
+    }
+    while (n--) {
+        let i = Math.floor((allowNum ? 62 : 52) * Math.random());
+        i = (i < 26 ? 65 : (i < 52 ? 97 : 48)) + i % 26;
+        s += String.fromCharCode(i);
+    }
+    return s;
+}

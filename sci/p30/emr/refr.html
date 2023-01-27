@@ -49,13 +49,20 @@
 </video>
 <ul data-mark="+">
     <li>The bending of a wave as it changes speed is called <em class="Defn">refraction</em>.</li>
-    <li data-mark="+">We can derive an equation from the triangles in the animation above.
-        $$\sin\theta_1 = \frac{4\lambda_1}{Hyp}$$
-        $$\sin\theta_2 = \frac{4\lambda_2}{Hyp}$$</li>
-    <li data-mark="+">Dividing the two equations:
-        $$\frac{\sin\theta_1}{\sin\theta_2} = \frac{\lambda_1}{\lambda_2}$$</li>
+    <li data-mark="+">We can derive an equation from the triangles in the animation below</li>
+</ul>
+<p data-mark="=" class="Center">
+    <iframe id="Desmos" src="https://www.desmos.com/calculator/52pe8xzeel?embed" width="512" height="512" frameborder="0"></iframe>
+</p>
+<p data-mark="+">
+    $$\sin\theta_1 = \frac{v_1\Delta t}{Hyp}$$
+    $$\sin\theta_2 = \frac{v_2\Delta t}{Hyp}$$    
+</p>
+<ul data-mark="+">
+    <li>Dividing the two equations:
+        $$\frac{\sin\theta_1}{\sin\theta_2} = \frac{v_1}{v_2}$$</li>
     <li data-mark="+">Combining this with the equation from the previous section gives us <em class="Defn">Snell’s Law of Refraction</em>:
-        $$\frac{\sin\theta_1}{\sin\theta_2} = \frac{\lambda_1}{\lambda_2} = \frac{v_1}{v_2}$$</li>
+        $$\frac{\sin\theta_1}{\sin\theta_2} = \frac{v_1}{v_2} = \frac{\lambda_1}{\lambda_2}$$</li>
    <li data-mark="+">For light waves, we can express this ratio in terms of the index of fraction:
         $$\frac{\sin\theta_1}{\sin\theta_2} = \frac{c/n_1}{c/n_2} = \frac{n_2}{n_1}$$</li>
     <li data-mark="+">The angles of incidence and refraction, \(\theta_1\) and \(\theta_2\), are measured between the <em>direction of propagation</em> and the <em>normal</em> (a line perpendicular to the boundary at the point if incidence).</li>
@@ -67,13 +74,13 @@
 <p class="Blue">Calculate the angle of refraction when a light wave passes from air into glass with \(n=1.50\) when \(\theta_1 = 60.0^\circ\).</p>
 <p data-mark="+">$$\frac{\sin\theta_1}{\sin\theta_2} = \frac{n_2}{n_1}$$</p>
 <p data-mark="+">$$\sin\theta_1 = \frac{n_2}{n_1} \sin\theta_2$$</p>
-<p data-mark="+">$$\begin{align} \sin\theta_2 &= \frac{n_1}{n_2} \sin\theta_1 \\&= \frac{1.00}{1.50} \sin(60.0^\circ)\\&= 0.577 \end{align}$$</p>
+<p data-mark="+">$$\begin{align} \sin\theta_2 &= \frac{n_1}{n_2} \sin\theta_1 \\\\&= \frac{1.00}{1.50} \sin(60.0^\circ) \\\\&= 0.577 \end{align}$$</p>
 <p data-mark="+">$$\theta_2 = \sin^{-1}(0.577) = 35.3^\circ$$</p>
 </section>
 
 <section id="ex2" data-last="?"><h3>Example 2</h3>
 <p class="Blue">Calculate the angle of refraction when a light wave passes from glass with \(n=1.50\) into air when \(\theta_1 = 60.0^\circ\).</p>
-<p data-mark="+">$$\begin{align} \sin\theta_2 &= \frac{n_1}{n_2} \sin\theta_1\\ &= \frac{1.50}{1.00} \sin(60.0^\circ)\\ &= 1.30 \end{align}$$</p>
+<p data-mark="+">$$\begin{align} \sin\theta_2 &= \frac{n_1}{n_2} \sin\theta_1 \\\\ &= \frac{1.50}{1.00} \sin(60.0^\circ) \\\\ &= 1.30 \end{align}$$</p>
 <p data-mark="+">$$\theta_2 = \sin^{-1}(1.30) = \mathrm{Undefined!}$$</p>
 </section>
 
@@ -93,7 +100,7 @@
 <section id="ex3" data-last="?"><h3>Example 3</h3>
 <p class="Blue">Calculate the critical angle when light wave passes from glass with \(n=1.50\) into air.</p>
 <p data-mark="+">$$\frac{\sin\theta_1}{\sin\theta_2} = \frac{n_2}{n_1}$$</p>
-<p data-mark="+">$$\begin{align} \sin\theta_1 &= \frac{n_2}{n_1} \sin\theta_2\\ &= \frac{1.00}{1.50} \sin 90^\circ\\ &= 0.667 \end{align}$$</p>
+<p data-mark="+">$$\begin{align} \sin\theta_1 &= \frac{n_2}{n_1} \sin\theta_2 \\\\ &= \frac{1.00}{1.50} \sin 90^\circ \\\\ &= 0.667 \end{align}$$</p>
 <p data-mark="+">$$\theta_1 = \sin^{-1}(0.667) = 41.8^\circ$$</p>
 </section>
 
@@ -111,5 +118,9 @@
 </ul>
 </section>
     
-</article></body>
+</article>
+<script type="text/javascript">
+    $("#Desmos").css({height:512});
+</script>
+</body>
 </html>

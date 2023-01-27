@@ -1,22 +1,3 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Searching &amp; Sorting</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "dds1";
-
-</script>
-</head>
-<body><article>
-
 <h3>Assignment</h3>
 <p>All programs require the use of good programming techniques, including:</p><ul>
 <li>Internal documentation (docstrings and comments)</li>
@@ -37,7 +18,7 @@ let course = "dds1";
     for a school, we might want to search for all students born in 1999 who are enrolled in
     Computing Science 30. Add a <code>find</code> method as a <em>generator</em> to locate
     nodes that match criteria specified by a supplied <code>match</code> function...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-mime="text">
 <span class="Comment"># Program 'dds3_sort.py'...</span>
 
 from resource.school import Student
@@ -67,7 +48,7 @@ for student in students.find(match, 20, **crit):
     Do not use any built-in or standard library sorting functions. Test the algorithm by
     sorting the students by birthday. In the program below, the <code>compareBirthday</code> function
     (which you will need to write) should take two nodes as arguments; it should return 0 if both students have the same birthday, 1 if the second node is greater than the first, and -1 if the second node is less than the first.</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-mime="text">
 from resource.school import Student
 
 <span class="Comment"># Randomly generate data for 1200 students</span>
@@ -86,5 +67,3 @@ for student in students:
     print(student.data)</pre>
 </li></ol>
 </ol>
-</article></body>
-</html>

@@ -26,11 +26,20 @@ let clim = {title:"Unit D: Heat & Climate", id:"clim", icon:"earth", menu:[
         //https://docs.google.com/document/d/1GmAjjrBOW5aakCV5Y8AM6CtBUNiBkbw_BVwfoarlmCw/edit#heading=h.1y7n6h55na6z
         {title:"Climate Models", gdoc:"1GmAjjrBOW5aakCV5Y8AM6CtBUNiBkbw_BVwfoarlmCw"},
     ]},
-    {title:"Part 2: Biomes & Climate Change", show:"2023.1", icon:"earth", menu:[
-        {title:"Climatographs", icon:1, open:"clim/climatograph.html"},
+    {title:"Part 2: Biomes & Climate Change", id:"clch", show:"2023.1", icon:"earth", menu:[
+        {title:"Climatographs", id:"cg", icon:1, menu:[
+            {title:"Lesson Notes", open:"clim/climatograph.html"},
+            {title:"Assignment Handout", gdrv:"12ba8JT4hLOjHO9hej_ZCFvqftL3bZxnh"},
+        ]},
         {title:"Climate Research Project", gdoc:"1fF5E7tykIHYTwe9aly5KvT3hVwTiu6cYVY-6RpbGFBs"},
-        {title:"Biomes & Adaptations", icon:1, open:"clim/biome.html"},
-        {title:"Polar Bears Video", icon:"video", open:"https://www.cbc.ca/archives/entry/climate-change-threatens-polar-bears"},
+        {title:"Biomes & Adaptations", id:"biome", icon:1, menu:[
+            {title:"Lesson Notes", open:"clim/biome.html"},
+            {title:"Assignment Handout", gdrv:"1Fs96fVv9Nii1oXzwu_cgvpBhLvNlBFA0"},            
+            {title:"Polar Bears Video", icon:"video", open:"https://www.cbc.ca/player/play/1630724983"},
+        ]},
+        {title:"Natural Climate Change", id:"ncc", icon:1, menu:[
+            {title:"Review & Practice", id:"ncc-rp", ajax:"clim/assign/ncc.htm", menu:[]},
+        ]},
     ]},
 ]};
 
@@ -307,7 +316,5 @@ let home = addHome({title:"Science 10", id:"home", icon:"flask", htmx:"<p class=
         {title:"Answer Key", gdrv:"17oewSnZoPMUuKuINSBXWivw_hyhlHBwZ"},
     ]},
     ]});
-
-//
 
 // home.menu[0].menu.splice(2, 3);

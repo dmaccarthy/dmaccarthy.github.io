@@ -5,44 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Science 10</title>
 <link rel="shortcut icon" type="image/png" href="../media/flask.png" />
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=default"></script>
-<script type="text/javascript" src="../script/util.js"></script>
-<script type="text/javascript" src="../script/touch.js"></script>
-<script type="text/javascript" src="../2021/ui.js"></script>
-<script type="text/javascript" src="s10.js"></script>
-<script type="text/javascript" src="../2021/tree.js"></script>
-<script type="text/javascript" src="../script/math.js"></script>
-<script type="text/javascript" src="../script/phys.js"></script>
-<script type="text/javascript" src="../script/chem.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700" />
-<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" /> -->
-<link rel="stylesheet" href="../2021/ui.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
+<link rel="stylesheet" href="../script/ui2023.css" />
 <style type="text/css">
 
-table.Lewis {
-    margin:auto;
-    text-align:center;
-    font-weight:bold;
-}
-    
-table.Lewis td.B {transform: rotate(180deg)}
-table.Lewis td.L {transform: rotate(270deg)}
-table.Lewis td.R {transform: rotate(90deg)}
-table.Lewis td.E {color:red}
-
-table.Lewis td.Q {
-    font-size:50%;
-    color:red;
-}
-
 </style>
-</head>
-<body>
-<article>
-<!-- <p class="Title" title="Up one level" onclick="up(this)"><span id="Back"><em class="material-icons">west</em></span> <span id="Title"></span></p> -->
-<p id="Crumbs"></p>
-<div id="Content"></div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<script type="text/javascript" src="../script/util.js"></script>
+<script type="text/javascript" src="../script/touch.js"></script>
+<script type="text/javascript" src="../script/ui2023.js"></script>
+<script type="text/javascript" src="../script/math.js"></script>
+<script type="text/javascript" src="../script/phys.js"></script>
+<script type="text/javascript" src="../script/sketch5.js"></script>
+<script type="text/javascript">
+
+let today = "sciNot", layout = {}, crs = "s10";
+
+</script>
+<script type="text/javascript" src="chem/layouts.js"></script>
+<script type="text/javascript" src="phys/layouts.js"></script>
+<script type="text/javascript" src="bio/layouts.js"></script>
+<script type="text/javascript" src="clim/layouts.js"></script>
+<script type="text/javascript">
+
+let s10 = {title:"Science 10", id:"home", icon:"flask", menu:[chem, phys, bio, clim]};
+let home = {title:"Mr. Mac’s Website", id:"~", menu:[s10], href:"../"};
+
+let homeIcons = [
+    {icons:[
+        // {icon:"gdrv", text:"Data Sheet", url:""},
+        {icon:"today", text:"Brightspace", url:"https://eips.brightspace.com/d2l/home/62823"},
+        {text:"PowerSchool", url:"https://powerschool.eips.ca/public/"},
+        {icon:"gdrv", text:"Graph Paper", url:"1tiA8XrfPUxsZ2d-HDPP-8KMeRMngHalE"},
+        {icon:"mail", text:"Email Mr. MacCarthy", url:"mailto://david.maccarthy@eips.ca"},
+        {icon:"more", text:"More", action:function() {swapIcons(homeIcons[1])}}
+    ]},
+    {icons:[
+        {icon:"open", text:"Salisbury Composite", url:"https://salcomp.ca"},
+        {icon:"gdrv", text:"Course Outline", url:"1qCJgOO1WdUSIZKVgpyZWe2xs4tkXL0Wc"},
+        {icon:"open", text:"Program of Studies", url:"https://education.alberta.ca/science-10-12/programs-of-study/"},
+        {icon:"more", text:"More", action:function() {swapIcons(homeIcons[0])}},
+    ]}
+];
+
+layout.home = [homeIcons[0], 0];
+
+</script></head>
+<body data-swipe="1">
+<nav id="Location"><select title="Select a page"></select></nav>
+<article id="Main">
 </article>
 </body>
 </html>

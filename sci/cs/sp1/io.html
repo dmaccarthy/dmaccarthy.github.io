@@ -1,22 +1,3 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Input &amp; Output</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "sp1";
-
-</script>
-</head>
-<body><article>
-
 <p>Two of the key operations that programs can perform are input and output. <b class="Red">Input</b>
 	involves moving information into the computer’s memory from somewhere else, such as the keyboard or mouse;
 	a file stored on a hard disk, DVD, or USB drive; or a network connection (e.g. WiFi, Bluetooth, or Ethernet).
@@ -31,7 +12,7 @@ let course = "sp1";
 <p>Each <code>print</code> statement prints its data on a separate line. If the argument is an expression, Python
 	<b class="Red">evaluates</b> it before printing. In the example below, the second line will print <code>10</code>.</p>
 
-<pre class="Code"><span class="Comment"># Program 's06_ex1.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's06_ex1.py'</span>
 
 print("Hello!")
 print(5 * 2)</pre>
@@ -39,14 +20,14 @@ print(5 * 2)</pre>
 <p>You can print several pieces of data on a single line by passing multiple arguments to the same
 	<code>print</code> call...</p>
 
-<pre class="Code"><span class="Comment"># Program 's06_ex2.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's06_ex2.py'</span>
 
 print("Hello!", 5 * 2)</pre>
 
 <p>Python adds a space character between the data being printed. If you want to specify a separator other than
 	a space, you can specify the separator as the final argument...</p>
 
-<pre class="Code"><span class="Comment"># Program 's06_ex3.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's06_ex3.py'</span>
 
 pi = 3.14
 print("Hello!", pi, 5 * 2, <span class="Blue">sep=</span>" ;-) ")</pre>
@@ -66,7 +47,7 @@ print("Hello!", pi, 5 * 2, <span class="Blue">sep=</span>" ;-) ")</pre>
 	data will be saved in the computer’s memory. Your program will need to assign a variable name to the data if
 	it wants to use it later...</p>
 
-<pre class="Code"><span class="Comment"># Program 's06_ex4.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's06_ex4.py'</span>
 
 user_name = input("Please tell me your name? ")
 print("Hello, ", user_name, "!", sep="")</pre>
@@ -80,7 +61,7 @@ print("Hello, ", user_name, "!", sep="")</pre>
 	function <code>textinput</code> (which has to be imported from <code>turtle</code>) instead of
 	<code>input</code>...</p>
 
-<pre class="Code"><span class="Comment"># Program 's06_ex5.py'</span>
+<pre data-mime="text" class="Code"><span class="Comment"># Program 's06_ex5.py'</span>
 
 from turtle import textinput, setup, speed, penup, pendown, pencolor, left, forward, exitonclick
 
@@ -128,7 +109,7 @@ exitonclick()</pre>
 	<li>Copy your completed program <code>s05_polygon.py</code> as <code>s06_polygon.py</code>. Modify the program so that it asks the user for the size, number of sides, and color of the shape.</li>
 
 	<li>Write a console program <code>s06_userInfo.py</code> to prompt the user to enter his or her name, age, and grade. Then print the information back to the user as in the example below. The black text is printed by the program and the blue text is entered by the user. Include a docstring and comments, and use the IPO program structure.
-<pre class="Code" style="color:black">Please tell me your name: <span class="Blue">Chris</span>
+<pre data-mime="text" class="Code" style="color:black">Please tell me your name: <span class="Blue">Chris</span>
 Please tell me your age: <span class="Blue">15</span>
 What grade are you in? <span class="Blue">10</span>
 
@@ -138,9 +119,7 @@ Age: 15
 Grade: 10</pre></li>
 
 <li>Save the program below as <code>s06_number.py</code>. The program does not behave the way its programmer intended! Read the program to figure out what it is <em>supposed</em> to do. Then run the program to see what it actually does. Describe what the program is supposed to do and actually does in the comments at the end of the file.
-<pre class="Code">num = input("What is your favourite number? ")
+<pre data-mime="text" class="Code">num = input("What is your favourite number? ")
 print(2 * num)
 print(2 + num)</pre></li>
 </ol>
-</article></body>
-</html>

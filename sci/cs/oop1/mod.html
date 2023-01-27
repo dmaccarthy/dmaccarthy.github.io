@@ -1,23 +1,3 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Modifiers &amp; Accessors</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "oop1";
-
-</script>
-</head>
-<body><article>
-
 <p>In previous lessons, we have used the terms “class” and “data type” interchangeably. Strictly speaking, in Python a <b class="Red">class</b>
     is an object that <em>defines</em> a data type by <em>encapsulating</em> the data attributes and methods associated with that data
     type. Other object-oriented language (such as C++ and Java) may define classes differently, and some object-oriented
@@ -25,7 +5,7 @@ let course = "oop1";
 <p>Suppose we wanted to create a Python data type to represent temperature measurements. One of the things we would want
     <code>Temperature</code> objects to do is to convert between units (Celsius, Fahrenheit, Kelvin). From an object-oriented perspective,
     we might describe the <code>Temperature</code> data type using the following class diagram...</p>
-<p class="Center"><img src="img/cls_temp.png" alt="Temperature"/></p>
+<p class="Center"><img src="oop1/img/cls_temp.png" alt="Temperature"/></p>
 
 <p>According to the class diagram above, <code>Temperature</code> instances would require a single data attribute, a
     <code>float</code> value describing the temperature being represented. We have named this attribute <code>degC</code>,
@@ -46,7 +26,7 @@ let course = "oop1";
 <p>Below is a Python program that uses the <code>Temperature</code> class described by the class diagram above to convert a
     temperature from Celsius to Fahrenheit degrees. Note that the <code>Temperature</code> class is not part of the Python
     standard library and that the program below will not work until we have written a definition for this class...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-mime="text">
 <span class="Comment"># Example 1...</span>
 
 <span class="Blue">temp = Temperature()</span>        <span class="Comment"># Create a Temperature instance</span>
@@ -57,7 +37,7 @@ print(temp.Fahrenheit())    <span class="Comment"># Print the temperature in Fah
     <code>setCelsius</code> and <code>Fahrenheit</code>. The class definition must be placed <em>before</em> the main program,
     because Python cannot create a <code>Temperature</code> instance before the class has been defined.
     Also notice that the two method definitions below are <em>indented</em> to show that they are part of the class definition...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-mime="text">
 <span class="Comment"># Example 1 (continued)...</span>
 
 class Temperature:
@@ -91,7 +71,7 @@ class Temperature:
     for Celsius units simply record or return the data without performing any unit conversions. The Fahrenheit and Kelvin
     modifiers convert the temperature to Celsius before recording it and the accessors convert the temperature back from
     Celsius before returning it.</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-mime="text">
 <span class="Comment"># Example 1 (continued)...</span>
 
     def setKelvin (self, degK=0.0):
@@ -176,7 +156,7 @@ class Temperature:
 <ol class="Assign">
 <li>
     <p>The object diagram below illustrates a class designed to represent a point in a 2D plane.</p>
-    <p class="Center"><img src="img/cls_point2d.png" alt="Point2D"/></p>
+    <p class="Center"><img src="oop1/img/cls_point2d.png" alt="Point2D"/></p>
     <p>Recall from Math class that points can be represented as an ordered pair containing the \(x\) and \(y\) coordinates.
         The methods <code>setCoords</code> and <code>coords</code> are the simple modifier and accessor for this class. The
         remaining methods calculate the distance, slope, and midpoint between the <code>Point2D</code> instance (<code>self</code>)
@@ -191,5 +171,3 @@ class Temperature:
         as described. A <code>main</code> function is included to test that your class works correctly. Once your program
         produces the correct output, change the coordinates of the two points to verify that the output remains correct.</p>
 </li></ol>
-</article></body>
-</html>

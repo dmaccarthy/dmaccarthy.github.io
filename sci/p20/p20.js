@@ -1,3 +1,30 @@
+let wave = [
+    {title:"Unit 4 Organizer", gdrv:"1JaXx7B8V0CxDWiYVdKQOkmFa5IRM_XDT"},
+    // {title:"Assignment Booklet", gdrv:"1NC0Pk5VyhNKR8sGuTNhgHNQpG5ZiJyv9"},
+    {title:"Harmonic Waves", id:"harm", icon:1, menu:[
+        {title:"Lesson Notes", open:"wave/harm.html"},
+        {title:"Review & Practice", id:"harm-rp", ajax:"wave/assign/harm.htm", menu:[]},
+        // {title:"Practice Solutions", gdoc:"1xb381kGFZ0uQ3VJtC6x-fDlataT-SNVG73jFTrMFFyA"},
+    ]},
+    {title:"Doppler Effect", id:"dopp", icon:1, menu:[
+        {title:"Lesson Notes", open:"wave/doppler.html"},
+        {title:"Review & Practice", id:"dopp-rp", ajax:"wave/assign/dopp.htm", menu:[]},
+        // {title:"Practice Solutions", gdoc:"1d31LStNsYOG7lU91dspgapqsm3JeiEoEFzDrINMc9-Q"},
+    ]},
+    {title:"Interference & Beats", id:"beat", icon:1, menu:[
+        {title:"Lesson Notes", open:"wave/beat.html"},
+        {title:"Review & Practice", id:"beat-rp", ajax:"wave/assign/beat.htm", menu:[]},
+        // {title:"Practice Solutions", gdoc:"1tXxsgei7m80MUqUWvWXrTgxBhfrmgJBRW7iB21AD6SM"},
+    ]},
+    {title:"Standing Waves", id:"stand", icon:1, menu:[
+        {title:"Standing Waves Animation", icon:"html5", open:"../applet/stWave.html"},
+        {title:"Lesson Notes", open:"wave/stand.html"},
+        {title:"Review & Practice", id:"stand-rp", ajax:"wave/assign/stand.htm", menu:[]},
+        // {title:"Practice Solutions", gdoc:"1Nz98VKhZjecAm001MC1ImzppsVQHnJoT9V2M7_Q-kak"},
+    ]},
+    {title:"Chapter Review", icon:"lesson", id:"ch8", ajax:"wave/summary.htm", menu:[]},
+];
+
 let shm = [
     {title:"Unit 4 Organizer", gdrv:"1JaXx7B8V0CxDWiYVdKQOkmFa5IRM_XDT"},
     // {title:"Assignment Booklet", gdrv:"1epM1sYOHlUXxbMQ3DODu-J3aj_JYQ0YA"},
@@ -32,29 +59,6 @@ let shm = [
         {title:"Lesson Notes", open:"shm/res.html"},
     ]},
     {title:"Chapter Review", icon:"lesson", id:"ch7", ajax:"shm/summary.htm", menu:[]},
-];
-
-let wave = [
-    {title:"Unit 4 Organizer", gdrv:"1JaXx7B8V0CxDWiYVdKQOkmFa5IRM_XDT"},
-    // {title:"Assignment Booklet", gdrv:"1NC0Pk5VyhNKR8sGuTNhgHNQpG5ZiJyv9"},
-    {title:"Harmonic Waves", id:"harm", icon:1, menu:[
-        {title:"Lesson Notes", open:"wave/harm.html"},
-        {title:"Practice Solutions", gdoc:"1xb381kGFZ0uQ3VJtC6x-fDlataT-SNVG73jFTrMFFyA"},
-    ]},
-    {title:"Doppler Effect", id:"dopp", icon:1, menu:[
-        {title:"Lesson Notes", open:"wave/doppler.html"},
-        {title:"Practice Solutions", gdoc:"1d31LStNsYOG7lU91dspgapqsm3JeiEoEFzDrINMc9-Q"},
-    ]},
-    {title:"Interference & Beats", id:"beat", icon:1, menu:[
-        {title:"Lesson Notes", open:"wave/beat.html"},
-        {title:"Practice Solutions", gdoc:"1tXxsgei7m80MUqUWvWXrTgxBhfrmgJBRW7iB21AD6SM"},
-    ]},
-    {title:"Standing Waves", id:"stand", icon:1, menu:[
-        {title:"Standing Waves Animation", icon:"html5", open:"../applet/stWave.html"},
-        {title:"Lesson Notes", open:"wave/stand.html"},
-        {title:"Practice Solutions", gdoc:"1Nz98VKhZjecAm001MC1ImzppsVQHnJoT9V2M7_Q-kak"},
-    ]},
-    {title:"Chapter Review", icon:"lesson", id:"ch8", ajax:"wave/summary.htm", menu:[]},
 ];
 
 let energy = [
@@ -336,7 +340,6 @@ let home = addHome({title:"Physics 20", id:"home", htmx:"<p class='Right'>Teache
     {title:"Chapter 7: Oscillations (SHM)", id:"shm", icon:"crane", menu:shm},
     {title:"Chapter 8: Mechanical Waves", show:"2023.1", id:"wave", icon:"speaker", menu:wave},
     {title:"Course Review", id:"rev20", icon:"rocket", menu:[
-        // {title:"Assignment / Solutions", gdrv:"1Pe-o2p0VbWJ9UAnGt0ZNPqLArqpvhhPG"},
         {title:"Kinematics", icon:"train", id:"rev1", ajax:"kin/summary.htm", menu:[]},
         {title:"2D Vectors", icon:"soccer", id:"rev2", ajax:"vec/summary.htm", menu:[]},
         {title:"Dynamics", icon:"rocket", id:"rev3", ajax:"dyn/summary.htm", menu:[]},
@@ -347,5 +350,7 @@ let home = addHome({title:"Physics 20", id:"home", htmx:"<p class='Right'>Teache
         {title:"Mechanical Waves", icon:"speaker", id:"rev8", ajax:"wave/summary.htm", menu:[]},
         {title:"Data Analysis", icon:"da", id:"rev_da", ajax:"skill/summary.htm", menu:[]},
         {title:"Printable Notes", gdrv:"1zQFWZVOF1ykK2mLAuiFsi63QJKhHkw9O"},
+        {title:"Review Assignment", gdrv:"1wM8_Xmu3_bffQ0dUBumrLbFfzfpfEgZl"},
+        {title:"Solutions", show:"2023.1.18", gdrv:"1Pe-o2p0VbWJ9UAnGt0ZNPqLArqpvhhPG"},
     ]},
 ]});

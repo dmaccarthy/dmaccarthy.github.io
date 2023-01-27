@@ -85,11 +85,12 @@ $(window).on("keydown", function(e) {
 });
 
 $(function() {
-    let url = qsArgs("url");
+    let url = qsArgs("lesson");
+    url = `${url}/${url}.htm`;
+    console.log(url);
     if (url) $.ajax({url:url, success:function(e) {
-        let s = $("#Screen").html(e);
+        $("#Screen").html(e);
         autoTime();
-        goTime(0, 0);
         mjTypeset();
         e = $("[data-pos]");
         for (let i=0;i<e.length;i++) {
@@ -98,15 +99,21 @@ $(function() {
             p = eval(`[${p}]`);
             positionItem(ei, ...p);
         }
-        e = $(".Left");
-        let l = e.length ? parseInt(e.outerWidth()) : 0;
-        if (l) {
-            e.width(l - 24).css({padding:"0 12px"});
-        }
-        s.css({width:screenSize()[0] - l, "padding-left":`${l}px`})
-        
+        goTime.t = 0;
+        panel(1);
     }});
 });
+
+function panel(p, t) {
+    if (p == null) p = $(".Left:visible").length == 0;
+    let e = $(".Left").show();
+    let n = e.length;
+    let l = p && n ? parseInt(e.outerWidth()) : 0;
+    if (l) e.width(l - 24).css({padding:"0 12px"});
+    else e.hide();
+    $("#Screen").css({width:screenSize()[0] - l, "padding-left":`${l}px`});
+    goTime(goTime.t + (t ? t : 0));
+}
 
 console.log(`.Drag ... Alt + Click
 .Layer (Top) ... Ctrl + Click

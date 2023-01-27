@@ -1,29 +1,10 @@
-<!DOCTYPE html><html lang="en-ca" class="NoWinClick">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Tuples &amp; Lists</title>
-<link rel="shortcut icon" type="image/png" href="../../../media/laptop.png" />
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-<link rel="stylesheet" type="text/css" href="../../2021/cs.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../2021/cs.js"></script>
-<script type="text/javascript">
-
-let course = "ds";
-
-</script>
-</head>
-<body><article>
-
 <h3>Classes (Data Types)</h3><div class="Note">
 <p>In CSE 1110, you learned that all data objects stored by a Python program have an associated <b class="Red">class</b> which describes the type
     of data being represented. (Classes are also known simply as “data types”.)  Python 3 classes include <code>bool</code>
     (<code>True</code> or <code>False</code>), <code>int</code> (numbers with no decimal part), <code>float</code> (numbers that
     include a decimal part), and <code>str</code> (sequences of Unicode characters). The class of a data object determines how
     much memory is allocated to store the data, how the data is encoded, and what operations can be performed with it.</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Example 1...</span>
 
 print(3 + 5)      <span class="Comment"># 8</span>
@@ -43,7 +24,7 @@ print(3 + "5")    <span class="Comment"># Exception!!</span></pre>
 <p>Sometimes, we may need to encode sequences of other data. For example, graphics coordinates can be represented by sequences
     of two numbers that represent the <i>x</i> and <i>y</i> positions and colours are represented by sequences of 3 (RGB) or 4 (RGBA) values
     between 0 and 255...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Example 2...</span>
 
 location = 200, 128   <span class="Comment"># x, y coordinates</span>
@@ -53,7 +34,7 @@ print(type(purple))   <span class="Comment"># &lt;class 'tuple'&gt;</span></pre>
     the individual items into a <b class="Red">data structure</b> that can be referred to by a single name and passed to a
     function as a single argument.</p>
 <p>Data can also be “unpacked” from a <code>tuple</code> to assign separate names to each of the items...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Example 3...</span>
 
 purple = 160, 32, 240
@@ -63,10 +44,10 @@ print(g)   <span class="Comment"># 32</span>
 print(b)   <span class="Comment"># 240</span></pre>
 <p>A Python <code>tuple</code> can contain items of different data types. If we used a <code>tuple</code> to represent a date,
     the Python code might look like this...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">birthDay = 1999, "January", 9</pre>
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">birthDay = 1999, "January", 9</pre>
 
 <p>You can also have an “empty” tuple (a sequence of zero items) or a singleton (a sequence of one item)...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 empty = ()    <span class="Comment"># Empty tuple</span>
 faves = 99,   <span class="Comment"># Singleton</span></pre>
 </div>
@@ -76,7 +57,7 @@ faves = 99,   <span class="Comment"># Singleton</span></pre>
     indices (plural of index) to allow access to items without unpacking. An <b class="Red">index</b> is an integer that tells us how far from the beginning of the tuple each object is located. Thus, the first item in the tuple has an index of 0, while the second item has an index of 1, and so on. Python also supports negative indices, which describe an object’s position from the end of the tuple: an index of -1 refers to the last item while -2 refers to the second last one.</p>
 <p>Individual objects in a <code>tuple</code> can be referenced by the <code>tuple</code>’s variable name, followed by the
     index in square brackets...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Example 4...</span>
 
 favNumbers = 4, 8, 15, 16, 23, 42
@@ -86,7 +67,7 @@ print(favNumbers[-1])     <span class="Comment"># 42</span></pre>
 <p>In Python, tuples are <b class="Red">immutable</b>. This means you cannot change the <code>tuple</code> once it has been
     created. In the example below, the second statement will result in a <code>TupleError</code> exception since it attempts
     to assign a new value to an existing item in the <code>tuple</code>...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Example 5...</span>
 
 favNumbers = 4, 8, 15, 16, 23, 42
@@ -96,7 +77,7 @@ favNumbers[1] = 9</pre>
 <p>Python has an <code>in</code> operator that tests whether a particular value exists in a <code>tuple</code>, a <code>len</code>
     function that determines the number of items in a <code>tuple</code>, and an <code>index</code> method that returns the
     index of the first occurrence of a value in the <code>tuple</code>...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Example 6...</span>
 
 favNumbers = 4, 8, 15, 16, 23, 42
@@ -107,7 +88,7 @@ print(favNumbers.index(23))    <span class="Comment"># 4</span></pre>
 
 <h3>Slicing</h3><div class="Note">
 <p>Python allows you to extract <b class="Red">slices</b> of a <code>tuple</code> into a new <code>tuple</code>. Consider the following example...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Example 7...</span>
 
 favNumbers = 4, 8, 15, 16, 23, 42
@@ -128,7 +109,7 @@ print(oneDigit, teens, biggies)</pre>
 <p>The string data type (class <code>str</code>) is similar to a <code>tuple</code> in the sense that it is a sequence of items,
     the items being individual Unicode characters. The constructor for the <code>tuple</code> class can explicitly convert a
     string to a <code>tuple</code>...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Example 8...</span>
 
 place = "Sherwood Park"
@@ -137,7 +118,7 @@ print(letters)</pre>
 
 <p>Many of the features of <code>tuple</code>, such as indexing and slicing, can be applied to string objects even without
     converting them to <code>tuple</code>...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Example 9...</span>
 
 place = "Sherwood Park"
@@ -148,7 +129,7 @@ print(place[-4:])</pre>
 <p>A <code>list</code> is a Python data structure that is similar to a <code>tuple</code>, except that where a <code>tuple</code> is immutable,
     a <code>list</code> is <b class="Red">mutable</b>. You can add, remove, and modify items within a <code>list</code> without
     having to copy all of the data into a new data structure. In Python, lists are created using square brackets...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Example 10...</span>
 
 favNumbers = [4, 8, 15, 16, 23, 42]
@@ -158,7 +139,7 @@ print(favNumbers)</pre>
     changed. However, the program works fine with a <code>list</code>. You can use the <code>list</code> and <code>tuple</code>
     constructors to convert a sequence from a <code>tuple</code> to a <code>list</code> or vice versa. The constructors will
     also convert strings to lists or tuples.</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
 <span class="Comment"># Example 11...</span>
 
 favNumbers = 4, 8, 15, 16, 23, 42
@@ -192,5 +173,3 @@ print(favNumList)</pre>
     Use appropriate modular programming and exception handling techniques. Hint: Write a separate function to calculate the
     smallest prime factor of a number.</li>
 </ol>
-</article></body>
-</html>
