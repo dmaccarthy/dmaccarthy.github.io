@@ -23,6 +23,10 @@ let web = {title:"Web Scripting", id:"web", icon:"html5", menu:[
 
 // Client-Side Scripting 1
 
+layout.web = [{icons:[
+    {text:"Progress Update", url:pu_form},
+]}, 0];
+
 layout.web1 = [{icons:[
     {text:"repl.it Project", show:"2023.1", url:"https://replit.com/@DavidMacCarthy/Web1"},
 ]}, 0];

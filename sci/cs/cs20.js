@@ -22,11 +22,22 @@ let cs20 = {title:"Computing Science 20", text:"CS 20", id:"cs20", menu:[
         {title:"Generator Functions", id:"gen"},
         {title:"Arrays", id:"array"},        
     ]},
+    {title:"Files & File Structures", show:"2023.7", id:"fs", menu:[
+        {title:"File Systems", id:"fsys"},
+        {title:"Reading Text Files", id:"fread"},
+        {title:"Writing Text Files", id:"fwrite"},
+        {title:"Sequential & Direct Access", id:"fseq"},
+        {title:"Binary Files", id:"fbin"},
+        {title:"File Indexing", id:"findex"},
+    ]},
 ]};
+
+let html20 = `<p>Students are expected to complete five credits over the semester. This can include <a href="#web">Web Scripting</a> or <a href="#cs30">CS 30</a> credits. <i>Data Structures</i> is a prerequisite for CS 30.</p>`;
 
 layout.cs20 = [{icons:[
     {icon:"today", text:"Brightspace", url:"https://eips.brightspace.com/d2l/home/63493"},
-]}, 0, {html:"After finishing the <i>Data Structures</i> credit, complete two additional credits under <a href='#web'>Web Scripting</a>, or if you already completed these in CS 10, work ahead into <a href='#cs30'>CS 30</a>."}];
+    {text:"Progress Update", url:pu_form},
+]}, {html:html20}, 0];
 
 // Procedural Programming 1
 
@@ -62,30 +73,8 @@ layout.list_comp = [{ajax:"ds/comp.html"}, 1];
 layout.gen = [{ajax:"ds/gen.html"}, 1];
 layout.array = [{ajax:"ds/array.html"}, 1];
 
-// Client-Side Scripting 1
+// Files & File Systems
 
-layout.web1 = [{icons:[
-    {text:"repl.it Project", show:"2023.1", url:"https://replit.com/@DavidMacCarthy/Web1"},
+layout.fs = [{icons:[
+    {text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/FileSys"},
 ]}, 0];
-
-layout.www = [{vid:"#PLpVmtCaB-lymr5oyB7BWvxEnddOou05Nf"}, {ajax:"web1/www.html"}, 1];
-layout.tree = [{ajax:"web1/tree.html"}, 1];
-layout.xml = [{ajax:"web1/xml.html"}, 1];
-layout.text = [{ajax:"web1/text.html"}, 1];
-layout.entity = [{ajax:"web1/entity.html"}, 1];
-layout.html = [{ajax:"web1/html5.html"}, 1];
-layout.char = [{ajax:"web1/char.html"}, 1];
-layout.img = [{ajax:"web1/img.html"}, 1];
-layout.table = [{ajax:"web1/table.html"}, 1];
-
-// Client-Side Scripting 2
-
-layout.form = [{ajax:"web2/form.html"}, 1];
-layout.style = [{ajax:"web2/style.html"}, 1];
-layout.ext = [{ajax:"web2/ext.html"}, 1];
-layout.div = [{ajax:"web2/div.html"}, 1];
-layout.js = [{ajax:"web2/js.html"}, 1];
-
-layout.web3 = [{icons:[
-    // {text:"repl.it Project", show:"2023.1", url:"https://replit.com/@DavidMacCarthy/Web3"},
-]}, uc, 0];

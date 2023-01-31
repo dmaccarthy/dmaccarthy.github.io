@@ -20,7 +20,8 @@
 <script type="text/javascript">
 
 let layout = {}, today = "home";
-
+let pu_form = "https://docs.google.com/forms/d/e/1FAIpQLScc6vWg7WYI8r3XNSjF10SsQT82rCdTm42ZnoN83U1NQ5kKDw/viewform?usp=sf_link";
+    
 </script>
 <script type="text/javascript" src="cs10.js"></script>
 <script type="text/javascript" src="web.js"></script>
@@ -39,6 +40,7 @@ let home = {title:"Mr. Mac’s Website", id:"~", menu:[cs], href:"../"};
 let homeIcons = [
     {icons:[
         {text:"repl.it", url:"https://repl.it"},
+        {text:"Progress Update", url:pu_form},
         {icon:"mail", text:"Email Mr. MacCarthy", url:"mailto://david.maccarthy@eips.ca"},
         {text:"PowerSchool", url:"https://powerschool.eips.ca/public/"},
         {icon:"more", text:"More", action:function() {swapIcons(homeIcons[1])}}

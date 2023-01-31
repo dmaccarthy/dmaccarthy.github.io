@@ -24,28 +24,17 @@ let cs30 = {title:"Computing Science 30", text:"CS 30", id:"cs30", menu:[
         {title:"Searching & Sorting", id:"lsort"},
     ]},
     {title:"Java Programming Project", icon:"java", id:"java"},
-    {title:"Files & File Structures", show:"2023.7", id:"fs", menu:[
-        {title:"File Systems", id:"fsys"},
-        {title:"Reading Text Files", id:"fread"},
-        {title:"Writing Text Files", id:"fwrite"},
-        {title:"Sequential & Direct Access", id:"fseq"},
-        {title:"Binary Files", id:"fbin"},
-        {title:"File Indexing", id:"findex"},
-    ]},
 ]};
 
+let html30 = `<p>Students are expected to complete a total of five credits during the semester. Complete any prerequisite courses under <a href="#cs20">CS 20</a> before starting the courses below.</p>`;
+
 layout.cs30 = [{icons:[
-    {icon:"today", text:"Brightspace", url:"https://eips.brightspace.com/d2l/home/63499"},
-    {text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/CS30"},
-]}, 0];
-
-// Files & File Systems
-
-layout.fs = [{icons:[
-    {text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/FileSys"},
-]}, 0];
-
-// docs.google.com/document/d/1YtnB-kE047uAncFvkVhDyeTyH9LEq_z-MdOLWHlSkSg
+        {icon:"today", text:"Brightspace", url:"https://eips.brightspace.com/d2l/home/63499"},
+        {text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/CS30"},
+        {text:"Progress Update", url:pu_form},
+    ]},
+    {html:html30},
+    0];
 
 layout.fsys = [{ajax:"fs/fsys.html"}, 1];
 layout.fread = [uc, 1];
