@@ -17,8 +17,8 @@ let web = {title:"Web Scripting", id:"web", icon:"html5", menu:[
         {title:"Document Divisions", id:"div"},
         {title:"Javascript", id:"js"},        
     ]},
-    {title:"Client-Side Scripting 3", id:"web3", icon:"html5", menu:[]},
-    {title:"Server-Side Scripting 1", id:"web4", icon:"python", menu:[]},
+    {title:"Client-Side Scripting 3", show:"2023.7", id:"web3", icon:"html5", menu:[]},
+    {title:"Server-Side Scripting 1", show:"2023.7", id:"web4", icon:"python", menu:[]},
 ]};
 
 // Client-Side Scripting 1

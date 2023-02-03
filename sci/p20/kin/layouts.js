@@ -27,7 +27,7 @@ layout.rball = [
 layout.graph = [
     {icons:[
         {icon:"note", text:"Lesson Notes", url:"kin/graph.html"},
-        {icon:"gdrv", text:"Assignment", url:""},
+        {icon:"gdrv", text:"Assignment", url:"1pxA-hl9ItTPGPenLMfR_d3DX4F7_NPt0"},
         {key:"kin/graph"},
     ]}, 1,
 ];
@@ -41,11 +41,11 @@ layout.bball = [
     ]}, 1,
 ];
 
-layout.acc = [
+layout.accel = [
     {icons:[
-        {icon:"note", text:"Lesson Notes", url:"kin/acc.html"},
-        {icon:"gdrv", text:"Assignment", url:""},
-        {key:"kin/acc"},
+        {icon:"note", text:"Lesson Notes", url:"kin/accel.html"},
+        {icon:"gdrv", text:"Assignment", url:"18yTk0T7qPaf_jZAY2t8Vn6gbS0AxgH7n"},
+        {key:"kin/accel"},
     ]}, 1,
 ];
 
@@ -62,8 +62,8 @@ let kin = {title:"Chapter 1: Kinematics (1D)", show:"2023.7", id:"kin", icon:"tr
     {title:"Velocity & Speed", id:"vel"},
     {title:"Lab: Rolling Basketball", id:"rball", icon:"ball"},
     {title:"Motion Graphs", id:"graph"},
+    {title:"Acceleration", id:"accel"},
     {title:"Lab: Bouncing Basketball", id:"bball", icon:"ball"},
-    {title:"Acceleration", id:"acc"},
     {title:"Uniform Accelerated Motion", id:"uam"},
     {title:"Kinematics Review", id:"ch1"},
 ]};

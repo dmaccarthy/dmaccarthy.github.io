@@ -18,9 +18,19 @@ let cs20 = {title:"Computing Science 20", text:"CS 20", id:"cs20", menu:[
         {title:"Iteration", id:"iteration"},
         {title:"Dictionaries & Sets", id:"dict"},
         {title:"Positional & Keyword Arguments", id:"kwargs"},
+        {title:"Mini-Project #1", show:"2023.2", id:"mp21"},
         {title:"List Comprehensions", id:"list_comp"},
         {title:"Generator Functions", id:"gen"},
-        {title:"Arrays", id:"array"},        
+        {title:"Arrays", id:"array"},
+        {title:"Mini-Project #2", show:"2023.7", id:"mp22"},
+    ]},
+    {title:"Files & File Structures", id:"fs", menu:[
+        {title:"File Systems", id:"fsys"},
+        {title:"Reading Text Files", id:"fread"},
+        {title:"Writing Text Files", id:"fwrite"},
+        {title:"Sequential & Direct Access", id:"fseq"},
+        {title:"Binary Files", id:"fbin"},
+        {title:"File Indexing", id:"findex"},
     ]},
     {title:"Files & File Structures", show:"2023.7", id:"fs", menu:[
         {title:"File Systems", id:"fsys"},
@@ -72,9 +82,21 @@ layout.kwargs = [{ajax:"ds/args.html"}, 1];
 layout.list_comp = [{ajax:"ds/comp.html"}, 1];
 layout.gen = [{ajax:"ds/gen.html"}, 1];
 layout.array = [{ajax:"ds/array.html"}, 1];
+layout.mp21 = [{ajax:"ds/mp1.html"}, 1];
+layout.mp22 = [{ajax:"ds/mp2.html"}, 1];
 
 // Files & File Systems
 
 layout.fs = [{icons:[
     {text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/FileSys"},
 ]}, 0];
+<<<<<<< Updated upstream
+=======
+
+layout.fsys = [{ajax:"fs/fsys.html"}, 1];
+layout.fread = [{ajax:"fs/fread.html"}, 1];
+layout.fwrite = [{ajax:"fs/fwrite.html"}, 1];
+layout.fseq = [{ajax:"fs/fseq.html"}, 1];
+layout.fbin = [{ajax:"fs/fbin.html"}, 1];
+layout.findex = [{ajax:"fs/findex.html"}, 1];
+>>>>>>> Stashed changes

@@ -137,7 +137,7 @@ function drawNode(node, init) {
     }
 }
 
-let MENU = 0, NEXT = 1, uc = {html:"Under Construction..."};
+let MENU = 0, NEXT = 1, uc = {html:"Under Construction..."}, ua = {html:'<h1 class="Center">Unavailable!</h1>'};
 
 function drawLayout(node) {
 /* Draw the content for the specified node */

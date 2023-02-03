@@ -4,7 +4,7 @@ let chem = {title:"Unit A: Chemistry", id:"chem", menu:[
         {title:"Experiment Design", id:"expDes"},
         {title:"Classifying Matter", id:"classify"},
         {title:"Atomic Theory", id:"atomic"},
-        {title:"Isotopes & Ions", id:"iso"},
+        {title:"Isotopes & Ions", id:"isotope"},
         {title:"Bohr Model (Energy Levels)", id:"bohr"},
         {title:"Periodic Table & Dot Diagrams", id:"dot"},
     ]},
@@ -39,6 +39,7 @@ layout.whmis = [
         {icon:"science", text:"WHMIS 1988", url:"https://www.ccohs.ca/oshanswers/legisl/msds_lab.html#wb-auto-15"},
         {icon:"note", text:"Lesson Notes", url:"chem/whmis.html"},
         {icon:"gdrv", text:"Assignment", url:"14wdP3YUoyp57uUFT3-IsTCiqhIyyEsxH"},
+        {key:"chem/whmis"},
     ]},
     {img:{src:"https://sbt.blob.core.windows.net/storyboards/oliversmith/lab-safety.png"}},
     1
@@ -54,10 +55,10 @@ layout.expDes = [
 
 layout.classify = [
     {icons:[
-        {icon:"note", text:"Lesson Notes", url:"chem/matter.html"},
+        {icon:"note", text:"Lesson Notes", url:"chem/classify.html"},
         {icon:"gdrv", text:"Assignment", url:"1OtFHEIrGpSYUEfQ-BbS4Cx34S1aW_zih"},
-        {key:"chem/matter"},
-    ]}, 1
+        {key:"chem/classify"},
+    ]}, {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Water_drop_001.jpg/320px-Water_drop_001.jpg", class:"w32"}}, 1
 ];
 
 layout.atomic = [
@@ -68,6 +69,24 @@ layout.atomic = [
     ]},
     {vid:"ogPNZ_MXksM", aspect:"4/3"}, 1
 ];
+
+layout.isotope = [
+    {icons:[
+        {icon:"note", text:"Lesson Notes", url:"chem/isotope.html"},
+        {icon:"gdrv", text:"Assignment", url:"1bLGfc3IslpSN-5xYvkCK_qz7AjTZ4miO"},
+        {key:"chem/isotope"},
+    ]}, {img:"http://images.amcnetworks.com/ifc.com/wp-content/uploads/2015/07/Springfield-Isotopes.jpg"}, 1
+];
+
+layout.bohr = [
+    {icons:[
+        {icon:"note", text:"Lesson Notes", url:"chem/bohr.html"},
+        {icon:"gdrv", text:"Assignment", url:"1Zqoen7f551BpjqJctTSpQ-OO_BPvA793"},
+        {key:"chem/bohr"},
+    ]}, {img:""}, 1
+];
+
+layout.dot = [uc, 1];
 
 
 layout.ionic = [

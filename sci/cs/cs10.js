@@ -9,16 +9,20 @@ let cs10 = {title:"Computing Science 10", text:"CS 10", id:"cs10", menu:[
         {title:"Data Types (Classes)", id:"type"},
         {title:"Modules & Packages", id:"pkg"},
         {title:"Operators", id:"oper"},
+        {title:"Mini-Project #1", show:"2023.7", id:"mp11"},
     ]},
     {title:"Structured Programming 2", id:"sp2", menu:[
         {title:"Boolean Values & Operators", id:"bool"},
         {title:"Conditional Statements", id:"if"},
         {title:"Loops", id:"loop"},
         {title:"Flags & Counters", id:"flag"},
+        {title:"Mini-Project #2", show:"2023.7", id:"mp12"},
         {title:"Iteration & Searching", id:"iter_srch"},
         {title:"Formatted Output", id:"format"},
         {title:"Accumulation", id:"accum"},
-        {title:"String Methods", id:"str"},        
+        {title:"Mini-Project #3", show:"2023.7", id:"mp13"},
+        {title:"String Methods", id:"str"},
+        {title:"Mini-Project #4", show:"2023.7", id:"mp14"},
     ]},
     {title:"Computer Science 1", id:"ct1", icon:"laptop", menu:[
         {title:"Binary Encoding", id:"bin"},
@@ -108,6 +112,12 @@ layout.io = [{ajax:"sp1/io.html"}, 1];
 layout.type = [{ajax:"sp1/type.html"}, 1];
 layout.pkg = [{ajax:"sp1/pkg.html"}, 1];
 layout.oper = [{ajax:"sp1/oper.html"}, 1];
+
+layout.mp11 = layout.mp12 = layout.mp13 = layout.mp14 = [ua, 1];
+// layout.mp11 = [{ajax:"sp1/mp1.html"}, 1];
+// layout.mp12 = [{ajax:"sp2/mp2.html"}, 1];
+// layout.mp13 = [{ajax:"sp2/mp3.html"}, 1];
+// layout.mp14 = [{ajax:"sp2/mp4.html"}, 1];
 
 // Structured Programming 2
 
