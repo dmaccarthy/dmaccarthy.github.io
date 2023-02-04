@@ -25,7 +25,7 @@ let web = {title:"Web Scripting", id:"web", icon:"html5", menu:[
 
 layout.web = [{icons:[
     {text:"Progress Update", url:pu_form},
-]}, 0];
+]}, 0, 1];
 
 layout.web1 = [{icons:[
     {text:"repl.it Project", show:"2023.1", url:"https://replit.com/@DavidMacCarthy/Web1"},

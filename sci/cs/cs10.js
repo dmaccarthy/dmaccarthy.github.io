@@ -45,14 +45,14 @@ let cs10 = {title:"Computing Science 10", text:"CS 10", id:"cs10", menu:[
 layout.cs10 = [{icons:[
     {icon:"today", text:"Brightspace", url:"https://eips.brightspace.com/d2l/home/61649"},
     {text:"Progress Update", url:pu_form},
-]}, 0];
+]}, 0, 1];
 
 
 // Robotics Programming
 
 layout.robo = [
     {icons:[{text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/Robo"},]},
-    0];
+    0, 1];
 
 layout.rintro = [{ajax:"robo/intro.html"}, 1];
 layout.turn = [{ajax:"robo/turn.html"}, 1];
@@ -95,13 +95,13 @@ layout.tcs = [
 
 layout.algo = [{ajax:"ct1/algo.html"}, 1];
 
-layout.ct1 = [{html:`For each topic, open the link and save a copy of the document in your Google Docs <code>CS10</code> folder. Watch the lesson video or read the notes, and then answer the questions. After completing all assignments, contact the teacher to schedule the summative assessment.`}, 0];
+layout.ct1 = [{html:`For each topic, open the link and save a copy of the document in your Google Docs <code>CS10</code> folder. Watch the lesson video or read the notes, and then answer the questions. After completing all assignments, contact the teacher to schedule the summative assessment.`}, 0, 1];
 
 // Structured Programming 1
 
 layout.sp1 = [{icons:[
     {text:"repl.it Project", show:"2023.1", url:"https://replit.com/@DavidMacCarthy/CS10"},
-]}, 0];
+]}, 0, 1];
 
 layout.intro = [{ajax:"sp1/intro.html"}, 1];
 layout.ide = [{ajax:"sp1/ide.html"}, 1];

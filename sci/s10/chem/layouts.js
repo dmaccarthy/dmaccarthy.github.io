@@ -27,79 +27,44 @@ let chem = {title:"Unit A: Chemistry", id:"chem", menu:[
     ]},
 ]};
 
+lesson.chap = "chem";
+
 layout.chem_rev = [{icons:[
     {icon:"gdrv", text:"Antacids Project", url:"11UBjbZNTnvHZEb8_JpBXj1X2_jqBJt-w"},    
     {icon:"gdrv", text:"Assignment", url:"1X861gwjsc5jhm-0KnWObdV4ApDQjwM5S"},
     {icon:"gdrv", text:"Answer Key", show:"2023.7", url:"1IaRKpczT_-sy76rFqBEOcIwyQ3AORxxYAEzJGKJpY7w"},
 ]}, 0];
 
-layout.whmis = [
-    {icons:[
-        {icon:"science", text:"WHMIS 2015", url:"https://www.ccohs.ca/oshanswers/chemicals/whmis_ghs/pictograms.html#wb-auto-5"},
-        {icon:"science", text:"WHMIS 1988", url:"https://www.ccohs.ca/oshanswers/legisl/msds_lab.html#wb-auto-15"},
-        {icon:"note", text:"Lesson Notes", url:"chem/whmis.html"},
-        {icon:"gdrv", text:"Assignment", url:"14wdP3YUoyp57uUFT3-IsTCiqhIyyEsxH"},
-        {key:"chem/whmis"},
-    ]},
-    {img:{src:"https://sbt.blob.core.windows.net/storyboards/oliversmith/lab-safety.png", width:"697"}},
-    1
-];
+// Part 1: Matter
 
-layout.expDes = [
-    {icons:[
-        {icon:"note", text:"Lesson Notes", url:"chem/expDes.html"},
-        {icon:"gdrv", text:"Lab Handout", url:"1D1uE5sm9ZaBew958QC88CKhzhc4WA5H-"},
-    ]},
-    {vid:"x2606GQmDqY"}, 1
-];
+_l = lesson("whmis", "14wdP3YUoyp57uUFT3-IsTCiqhIyyEsxH", {img:{src:"https://sbt.blob.core.windows.net/storyboards/oliversmith/lab-safety.png", width:"697"}});
+_l[0].icons.splice(0, 0,
+    {icon:"science", text:"WHMIS 2015", url:"https://www.ccohs.ca/oshanswers/chemicals/whmis_ghs/pictograms.html#wb-auto-5"},
+    {icon:"science", text:"WHMIS 1988", url:"https://www.ccohs.ca/oshanswers/legisl/msds_lab.html#wb-auto-15"}
+);
 
-layout.classify = [
-    {icons:[
-        {icon:"note", text:"Lesson Notes", url:"chem/classify.html"},
-        {icon:"gdrv", text:"Assignment", url:"1OtFHEIrGpSYUEfQ-BbS4Cx34S1aW_zih"},
-        {key:"chem/classify"},
-    ]}, {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Water_drop_001.jpg/320px-Water_drop_001.jpg", width:"608"}}, 1
-];
+_l = lesson("expDes", "1D1uE5sm9ZaBew958QC88CKhzhc4WA5H-", {vid:"x2606GQmDqY"});
+_l[0].icons[1].text = "Lab Handout";
+_l[0].icons.pop(); // No key!
 
-layout.atomic = [
-    {icons:[
-        {icon:"note", text:"Lesson Notes", url:"chem/atom.html"},
-        {icon:"gdrv", text:"Assignment", url:"1B4YSICICgk6GCp7rmpIJSWdzysGCxfk6"},
-        {icon:"gdrv", text:"Answer Key", show:"2023.7", url:"1XDp9oNYsFG59WSe8OOKwKvzB9m0XgFi1"},
-    ]},
-    {vid:"ogPNZ_MXksM", aspect:"4/3"}, 1
-];
+lesson("classify", "1OtFHEIrGpSYUEfQ-BbS4Cx34S1aW_zih", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Water_drop_001.jpg/320px-Water_drop_001.jpg", width:"608"}});
 
-layout.isotope = [
-    {icons:[
-        {icon:"note", text:"Lesson Notes", url:"chem/isotope.html"},
-        {icon:"gdrv", text:"Assignment", url:"1bLGfc3IslpSN-5xYvkCK_qz7AjTZ4miO"},
-        {key:"chem/isotope"},
-    ]}, {img:{src:"https://static.simpsonswiki.com/images/thumb/c/cd/I%27m_Just_a_Girl_Who_Can%27t_Say_D%27oh_billboard_gag.png/790px-I%27m_Just_a_Girl_Who_Can%27t_Say_D%27oh_billboard_gag.png", width:"533"}}, 1
-];
+lesson("atomic", "1B4YSICICgk6GCp7rmpIJSWdzysGCxfk6", {vid:"ogPNZ_MXksM", aspect:"4/3"})[0].icons[2] =
+    {icon:"gdrv", text:"Answer Key", show:"2023.2.6.12", url:"1XDp9oNYsFG59WSe8OOKwKvzB9m0XgFi1"};
 
-layout.bohr = [
-    {icons:[
-        {icon:"note", text:"Lesson Notes", url:"chem/bohr.html"},
-        {icon:"gdrv", text:"Assignment", url:"1Zqoen7f551BpjqJctTSpQ-OO_BPvA793"},
-        {key:"chem/bohr"},
-    ]}, {vid:"Vd5duzNtBuI"}, 1
-];
+lesson("isotope", "1bLGfc3IslpSN-5xYvkCK_qz7AjTZ4miO", {img:{src:"https://static.simpsonswiki.com/images/thumb/c/cd/I%27m_Just_a_Girl_Who_Can%27t_Say_D%27oh_billboard_gag.png/790px-I%27m_Just_a_Girl_Who_Can%27t_Say_D%27oh_billboard_gag.png", width:"533"}});
+lesson("bohr", "1Zqoen7f551BpjqJctTSpQ-OO_BPvA793", {vid:"Vd5duzNtBuI"});
+lesson("dot", "1FyV47UafHRW3bPBemF7-5o2_z61xEby8", {img:{src:"chem/img/pt.png", width:"724"}})[0].icons.push(
+    {icon:"gdrv", text:"Lab Handout", url:"1JNRmuk-naEjNIAOKpzfoLdkiKE94pVby"}
+);
 
-layout.dot = [
-    {icons:[
-        {icon:"note", text:"Lesson Notes", url:"chem/dot.html"},
-        {icon:"gdrv", text:"Assignment", url:"1FyV47UafHRW3bPBemF7-5o2_z61xEby8"},
-        {key:"chem/dot"},
-        {icon:"gdrv", text:"Practice Key", url:"1UixlOwjhsY-pok-goXQuOnsKtxke0lts"},
-    ]},
-    {img:{src:"chem/img/pt.png", width:"724"}}, 1
-];
+// Part 2: Compounds
 
-layout.ionic = [
-    {icons:[
-        {icon:"note", text:"Lesson Notes", url:"chem/ionic.html"},
-        {icon:"gdrv", text:"Assignment", url:"1ngNJIFv1GXXhg8gZQiFBLxYwC4yHOHme"},
-        {key:"chem/ionic"},
-    ]}, 1
-];
+lesson("ionic", "1ngNJIFv1GXXhg8gZQiFBLxYwC4yHOHme", );
+// lesson("", "", );
+// lesson("", "", );
+
+// Part 3: Reactions
+
+// lesson("", "", );
+// lesson("", "", );

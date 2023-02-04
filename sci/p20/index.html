@@ -21,37 +21,21 @@
 // lattescience.wordpress.com/physics20/
     
 let today = "sciNot", layout = {}, crs = "p20";
-    
+
 </script>
 <script type="text/javascript" src="skill/layouts.js"></script>
 <script type="text/javascript" src="kin/layouts.js"></script>
+<script type="text/javascript" src="vec/layouts.js"></script>
 <script type="text/javascript">
 
-let p20 = {title:"Physics 20", id:"home", icon:"rocket", menu:[s10, kin,
-    {title:"Chapter 2: Vectors (2D)", id:"vec", show:"2023.7", icon:"soccer", menu:[
-        
-    ]},
-    {title:"Chapter 3: Dynamics", id:"dyn", show:"2023.7", menu:[
-        
-    ]},
-    {title:"Chapter 6: Energy & Work", id:"energy", show:"2023.7", icon:"archer", menu:[
-        
-    ]},
-    {title:"Data Analysis", id:"da", show:"2023.7", icon:"da", menu:[
-        
-    ]},
-    {title:"Chapter 5: Circular & Planetary Motion", id:"circ", show:"2023.7", icon:"midway", menu:[
-        
-    ]},
-    {title:"Chapter 4: Universal Gravitation", id:"grav", show:"2023.7", icon:"earth", menu:[
-        
-    ]},
-    {title:"Chapter 7: Oscillations", id:"shm", show:"2023.7", icon:"crane", menu:[
-        
-    ]},
-    {title:"Chapter 8: Mechanical Waves", id:"wave", show:"2023.7", icon:"speaker", menu:[
-        
-    ]},
+let p20 = {title:"Physics 20", id:"home", icon:"rocket", menu:[s10, kin, vec2d,
+    {title:"Chapter 3: Dynamics", id:"dyn", show:"2023.7", menu:[]},
+    {title:"Chapter 6: Energy & Work", id:"energy", show:"2023.7", icon:"archer", menu:[]},
+    da,
+    {title:"Chapter 5: Circular & Planetary Motion", id:"circ", show:"2023.7", icon:"midway", menu:[]},
+    {title:"Chapter 4: Universal Gravitation", id:"grav", show:"2023.7", icon:"earth", menu:[]},
+    {title:"Chapter 7: Oscillations", id:"shm", show:"2023.7", icon:"crane", menu:[]},
+    {title:"Chapter 8: Mechanical Waves", id:"wave", show:"2023.7", icon:"speaker", menu:[]},
     {title:"Course Review", id:"rev20", menu:[
         {title:"Kinematics Review", id:"rev1", icon:"train"},
         {title:"Vectors Review", id:"rev2", icon:"soccer"},

@@ -39,7 +39,7 @@ let html20 = `<p>Students are expected to complete five credits over the semeste
 layout.cs20 = [{icons:[
     {icon:"today", text:"Brightspace", url:"https://eips.brightspace.com/d2l/home/63493"},
     {text:"Progress Update", url:pu_form},
-]}, {html:html20}, 0];
+]}, {html:html20}, 0, 1];
 
 // Procedural Programming 1
 

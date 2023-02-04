@@ -33,8 +33,7 @@ layout.cs30 = [{icons:[
         {text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/CS30"},
         {text:"Progress Update", url:pu_form},
     ]},
-    {html:html30},
-    0];
+    {html:html30}, 0, 1];
 
 // Object-Oriented Programming 1
 

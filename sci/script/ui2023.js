@@ -79,7 +79,7 @@ function findNode(id) {
         if (nodes[i].id == id) return nodes[i];
 }
 
-let current;
+let current, _l;
 function current_index() {return nodeList.all.indexOf(current)}
 
 function breadCrumbs(p) {
@@ -144,12 +144,19 @@ function drawLayout(node) {
     let a = $("#Main").html("");
     let lay = node.layout;
     if (!lay) lay = layout[node.id];
-    if (!lay && node.menu && node.menu.length) lay = [0];
+    if (!lay && node.menu && node.menu.length) lay = [0, 1];
     if (!lay) lay = [];
     mjTypeset.ajax = 0;
     for (let i=0;i<lay.length;i++) {
         let item = lay[i];
         if (item == NEXT) item = {icons:nextIcons()}
+        else if (item.desmos) {
+            let ifr = {frameborder:0, style:"border: 1px solid #ccc"};
+            Object.assign(ifr, item);
+            ifr.src = `https://www.desmos.com/calculator/${ifr.desmos}?embed`;
+            delete ifr.desmos;
+            item = lay[i] = {iframe:ifr};
+        }
         if (item == MENU) drawMenu(node, a);
         else if (item.iframe) {
             if (!item.html) item.html = $("<iframe>").attr(item.iframe);
@@ -299,6 +306,14 @@ function nextIcons() {
     return items;
 }
 
+function lesson(id, gdrv, ...args) {
+    let full = lesson.chap + "/" + id;
+    let icons = [{icon:"note", text:"Lesson Notes", url:`${full}.html`}];
+    if (gdrv != null) icons.push({icon:"gdrv", text:"Assignment", url:gdrv});
+    icons.push({key:full});
+    let l = layout[id] = [{icons:icons}].extend(args).extend([1]);
+    return l;
+}
 window.onpopstate = function() {
     drawNode(findNode(location.hash.slice(1)), true);
 }
