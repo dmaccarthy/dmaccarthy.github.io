@@ -41,7 +41,7 @@ layout.whmis = [
         {icon:"gdrv", text:"Assignment", url:"14wdP3YUoyp57uUFT3-IsTCiqhIyyEsxH"},
         {key:"chem/whmis"},
     ]},
-    {img:{src:"https://sbt.blob.core.windows.net/storyboards/oliversmith/lab-safety.png"}},
+    {img:{src:"https://sbt.blob.core.windows.net/storyboards/oliversmith/lab-safety.png", width:"697"}},
     1
 ];
 
@@ -58,7 +58,7 @@ layout.classify = [
         {icon:"note", text:"Lesson Notes", url:"chem/classify.html"},
         {icon:"gdrv", text:"Assignment", url:"1OtFHEIrGpSYUEfQ-BbS4Cx34S1aW_zih"},
         {key:"chem/classify"},
-    ]}, {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Water_drop_001.jpg/320px-Water_drop_001.jpg", class:"w32"}}, 1
+    ]}, {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Water_drop_001.jpg/320px-Water_drop_001.jpg", width:"608"}}, 1
 ];
 
 layout.atomic = [
@@ -75,7 +75,7 @@ layout.isotope = [
         {icon:"note", text:"Lesson Notes", url:"chem/isotope.html"},
         {icon:"gdrv", text:"Assignment", url:"1bLGfc3IslpSN-5xYvkCK_qz7AjTZ4miO"},
         {key:"chem/isotope"},
-    ]}, {img:"http://images.amcnetworks.com/ifc.com/wp-content/uploads/2015/07/Springfield-Isotopes.jpg"}, 1
+    ]}, {img:{src:"https://static.simpsonswiki.com/images/thumb/c/cd/I%27m_Just_a_Girl_Who_Can%27t_Say_D%27oh_billboard_gag.png/790px-I%27m_Just_a_Girl_Who_Can%27t_Say_D%27oh_billboard_gag.png", width:"533"}}, 1
 ];
 
 layout.bohr = [
@@ -83,11 +83,18 @@ layout.bohr = [
         {icon:"note", text:"Lesson Notes", url:"chem/bohr.html"},
         {icon:"gdrv", text:"Assignment", url:"1Zqoen7f551BpjqJctTSpQ-OO_BPvA793"},
         {key:"chem/bohr"},
-    ]}, {img:""}, 1
+    ]}, {vid:"Vd5duzNtBuI"}, 1
 ];
 
-layout.dot = [uc, 1];
-
+layout.dot = [
+    {icons:[
+        {icon:"note", text:"Lesson Notes", url:"chem/dot.html"},
+        {icon:"gdrv", text:"Assignment", url:"1FyV47UafHRW3bPBemF7-5o2_z61xEby8"},
+        {key:"chem/dot"},
+        {icon:"gdrv", text:"Practice Key", url:"1UixlOwjhsY-pok-goXQuOnsKtxke0lts"},
+    ]},
+    {img:{src:"chem/img/pt.png", width:"724"}}, 1
+];
 
 layout.ionic = [
     {icons:[

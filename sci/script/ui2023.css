@@ -5,7 +5,7 @@ body {
 }
 
 .Left {text-align:left}
-.Center, section.Image {text-align:center}
+.Center, section.Image, section.IFrame {text-align:center}
 .Red {color:red}
 .Blue {color:blue}
 .Black {color:black}
@@ -14,7 +14,7 @@ p, li, div {margin:0.5em 0}
 ol, ul {padding-left:1.5em}
 h1 {margin-top:0}
 
-.w16 {width:16em}
+.w20 {width:20em}
 .w24 {width:24em}
 .w28 {width:28em}
 .w32 {width:32em}
@@ -88,7 +88,7 @@ table.TD6 td, table.TD6 th {min-width:6em}
     max-width:800px;
 }
 
-iframe, img, canvas {max-width:100%}
+iframe, img, canvas, video {max-width:100%}
 section {margin:16px 0}
 section.Video {text-align:center}
 
@@ -134,7 +134,7 @@ section.Icons > button {
 section.Icons > button > i {font-size:175%}
 section.Icons > button * {vertical-align:middle}
 
-section.HTML {
+section:not(.Icons):not(.Menu) {
     font-size:125%;
     padding:8px;
 }

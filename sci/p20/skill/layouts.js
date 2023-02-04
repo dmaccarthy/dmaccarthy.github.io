@@ -25,7 +25,8 @@ layout.algebra = [
         {icon:"gdrv", text:"Assignment", url:"10tHFGoYWPkfpDiAjTpstfZ2OSVTm7c9X"},
         {key:"skill/algebra"},
     ]},
-    {vid:"s9s8IreslFw?start=1267"}, 1
+    {vid:"nUw-hB4m03I"}, // s9s8IreslFw?start=1267
+    1
 ];
 
 layout.sciNot = [
@@ -52,7 +53,8 @@ layout.scatter = [
         {icon:"gdrv", text:"Assignment", url:"1qUD-eR8r8y0AZU3_q7Qa7LmYuolpfOzP"},
         {key:"skill/scatter"},
     ]},
-    {html:`<p class="Center"><iframe data-aspect="1.6" src="https://www.desmos.com/calculator/atvylhkqe5?embed" width="720" height="450" style="border: 1px solid #ccc" frameborder=0></iframe></p>`}, 1,
+    {iframe:{src:"https://www.desmos.com/calculator/atvylhkqe5?embed", width:720, "data-aspect":"16/9", frameborder:0, style:"border: 1px solid #ccc"}},
+    1,
 ];
 
 layout.trig = [

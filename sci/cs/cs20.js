@@ -32,14 +32,6 @@ let cs20 = {title:"Computing Science 20", text:"CS 20", id:"cs20", menu:[
         {title:"Binary Files", id:"fbin"},
         {title:"File Indexing", id:"findex"},
     ]},
-    {title:"Files & File Structures", show:"2023.7", id:"fs", menu:[
-        {title:"File Systems", id:"fsys"},
-        {title:"Reading Text Files", id:"fread"},
-        {title:"Writing Text Files", id:"fwrite"},
-        {title:"Sequential & Direct Access", id:"fseq"},
-        {title:"Binary Files", id:"fbin"},
-        {title:"File Indexing", id:"findex"},
-    ]},
 ]};
 
 let html20 = `<p>Students are expected to complete five credits over the semester. This can include <a href="#web">Web Scripting</a> or <a href="#cs30">CS 30</a> credits. <i>Data Structures</i> is a prerequisite for CS 30.</p>`;
@@ -90,8 +82,6 @@ layout.mp22 = [{ajax:"ds/mp2.html"}, 1];
 layout.fs = [{icons:[
     {text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/FileSys"},
 ]}, 0];
-<<<<<<< Updated upstream
-=======
 
 layout.fsys = [{ajax:"fs/fsys.html"}, 1];
 layout.fread = [{ajax:"fs/fread.html"}, 1];
@@ -99,4 +89,3 @@ layout.fwrite = [{ajax:"fs/fwrite.html"}, 1];
 layout.fseq = [{ajax:"fs/fseq.html"}, 1];
 layout.fbin = [{ajax:"fs/fbin.html"}, 1];
 layout.findex = [{ajax:"fs/findex.html"}, 1];
->>>>>>> Stashed changes

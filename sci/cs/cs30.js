@@ -35,16 +35,6 @@ layout.cs30 = [{icons:[
     ]},
     {html:html30},
     0];
-<<<<<<< Updated upstream
-
-layout.fsys = [{ajax:"fs/fsys.html"}, 1];
-layout.fread = [uc, 1];
-layout.fwrite = [uc, 1];
-layout.fseq = [uc, 1];
-layout.fbin = [uc, 1];
-layout.findex = [uc, 1];
-=======
->>>>>>> Stashed changes
 
 // Object-Oriented Programming 1
 

@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
-<h3>Reading Text Files</h3>
-
-<!--docs.google.com/document/d/1OUaa3FRAVs1fiASt4qPdseQiUacz4oNuuEwA03dNZn0-->
-=======
 <p>We have already studied sequential versus direct file access. Sequential access involves reading the file from the beginning; this can be inefficient for large files. Direct access involves jumping to the location where the data we want to read or modify is located. This is more efficient than sequential access, but it works best when all records are the same size.</p>
 <p>One technique that programmers can use to improve access to large data files is to create an <b class="Red">index</b>. An index is a secondary data file that contains pointers or links to records in the primary data file.</p>
 <p>Consider this small portion of a database of Alberta municipalities. Each record contains the municipality name, type, population, latitude, and longitude...</p>
@@ -25,4 +20,3 @@ Edmonton;City;817498;N53-32;W113-30
     <li>The program <code>f06_browse.py</code> uses the primary data file and the index file from question 1. The program allows the user to type a record number and responds by outputting the corresponding data.The user can type -1 to quit the program. Complete the program by implementing the functions <code>readIndex</code> and <code>getRecord</code>.</li>
     <li>Duplicate your program from question 2 as <code>f06_Alberta.py</code>. Modify the program so that the user can add, delete, and edit records. Note 1: You must update the index every time you make changes to the data file. Note 2: To delete a record, you only need to remove its pointer from the index; you do not actually have to remove the data from the primary file.</li>
 </ol>
->>>>>>> Stashed changes

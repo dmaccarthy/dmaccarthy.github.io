@@ -151,6 +151,10 @@ function drawLayout(node) {
         let item = lay[i];
         if (item == NEXT) item = {icons:nextIcons()}
         if (item == MENU) drawMenu(node, a);
+        else if (item.iframe) {
+            if (!item.html) item.html = $("<iframe>").attr(item.iframe);
+            drawHtml(item, a).removeClass("HTML").addClass("IFrame");
+        }
         else if (item.html) drawHtml(item, a);
         else if (item.img) drawImg(item, a);
         else if (item.ajax) {
@@ -167,7 +171,7 @@ function drawLayout(node) {
 function drawHtml(item, a) {
 /* Draw an HTML item */
     let s = $("<section>").addClass("HTML").appendTo(a);
-    s.append(item.html);
+    return s.append(item.html);
 }
 
 function drawImg(item, a) {
@@ -177,7 +181,7 @@ function drawImg(item, a) {
     if (typeof(img) == "string") img = {src:img};
     let e = $("<img>").attr(img);
     if (item.link)
-        e = $("<a>").attr({href:item.link, target:String.random(6)}).append(e);
+        e = $("<a>").attr({href:item.link, target:String.random(6), title:"Click for source/credits"}).append(e);
     e.appendTo(s);
 }
 
@@ -238,14 +242,24 @@ function swapIcons(item, s0) {
 
 function drawVid(item, a) {
     let s = $("<section>").addClass("Video").appendTo(a);
-    let id = item.vid;
-    if (id.charAt(0) == "#") id = "videoseries?list=" + id.slice(1);
     let w = item.width;
     let r = item.aspect;
-    if (!w) w = 720;
     if (!r) r = "16/9";
-    $("<iframe>").attr({width:w, frameborder:0, allowfullscreen:1,
-        src:"https://www.youtube.com/embed/" + id, "data-aspect":r}).appendTo(s);
+    if (!w) w = 405 * eval(r);
+    let id = item.vid, c = id.charAt(0);
+    if (c == "@") {
+        let q = qsArgs(null, id);
+        id = id.slice(1).split("?")[0];
+        id = `https://media.davidmaccarthy.repl.co/${id}`;
+        let args = {src:id, controls:1, width:w, "data-aspect":r};
+        Object.assign(args, q);
+        $("<video>").attr(args).appendTo(s);
+    }
+    else {
+        if (c == "#") id = "videoseries?list=" + id.slice(1);
+        $("<iframe>").attr({width:w, frameborder:0, allowfullscreen:1,
+            src:"https://www.youtube.com/embed/" + id, "data-aspect":r}).appendTo(s);
+    }
     // aspect();
 }
 
@@ -334,7 +348,7 @@ function swipe(data, ev) {
 }
 
 $(function() {
-    if (touchscreen()) touch.swipe = swipe;
+    // if (touchscreen()) touch.swipe = swipe;
     if ($(window).width() < 641) $("body").addClass("Narrow");
     else $("#Location").html($("<p>").html("..."));
     $(window).on("resize", aspect).on("keydown", keyNext);

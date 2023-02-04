@@ -1,4 +1,4 @@
-<p>Here is a program that uses a function pythag_hyp to calculate the hypotenuse of a triangle
+<p>Here is a program that uses a function <code>pythag_hyp</code> to calculate the hypotenuse of a triangle
     using the Pythagoras formula. The <code>pythag_hyp</code> function defines three variable names,
     <code>a</code>, <code>b</code>, and <code>c</code>. The main program defines variables named
     <code>x</code>, <code>y</code>, and <code>z</code>. Variables defined with a function definition
@@ -43,7 +43,7 @@ z = pythag_hyp(x, y)
 print(z)  <span class="Comment"># 5.0</span>
 </pre>
 
-<p>The example below is a bit tricky! The main program defines a variable name a that has global scope, and refers to the value 1. The test function assigns the value 2 to a and then prints it. After the test function is complete, the main program prints the value of a. The value that is printed will be 1!</p>
+<p>The example below is a bit tricky! The main program defines a variable name <code>a</code> that has global scope, and refers to the value 1. The <code>test</code> function assigns the value 2 to <code>a</code> and then prints it. After the test function is complete, the main program prints the value of <code>a</code>. The value that is printed will be 1!</p>
 <pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 3...</span>
 
 def test():
@@ -57,7 +57,7 @@ print(a)     <span class="Comment"># 1</span>
 
 <p>What has happened here is that the Python interpreter treats <code>a</code> as two separate names
     referring to two different objects! The name <code>a</code> is a local variable referring to the
-    value 2 when used within the test function. The name <code>a</code> is a global variable referring
+    value 2 when used within the <code>test</code> function. The name <code>a</code> is a global variable referring
     to the value 1 when used in the main program.</p>
 <p>You can declare the name <code>a</code> as global before using it within the <code>test</code>
     function. This prevents Python from treating it as a separate local variable.</p>
@@ -102,7 +102,7 @@ main()
 <p>Global scope may be appropriate for constants.  Constants are data that can be assigned once and
     will never change.  Many programmers use the convention of naming constants in all capitals
     so that they are easily distinguishable from variables.</p>
-<p>The example below performs some chemistry calculations that use three chemical constants. Constant definitions can be placed in the program after any import statements and before any function definitions.</p>
+<p>The example below performs some chemistry calculations that use three chemical constants. Constant definitions can be placed in the program after any <code>import</code> statements and before any function definitions.</p>
 
 <pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 6...</span>
 

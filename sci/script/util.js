@@ -65,13 +65,21 @@ function objectInList(data, key, val) {
     }
 }
 
-function aspect() {
+function aspect(w) {
+    // Adjust height(width) of iframe/video tags to maintain aspect ratio
     let e = $("[data-aspect]");
+    // console.log(e);
     for (let i=0;i<e.length;i++) {
         let ei = $(e[i]);
         let a = eval(ei.attr("data-aspect"));
-        let h = Math.round(ei.width() / a);
-        e.css({height:h});
+        if (w) {
+            w = Math.round(ei.height() * a);
+            e.css({width:w});                        
+        }
+        else {
+            let h = Math.round(ei.width() / a);
+            e.css({height:h});            
+            }
     }
 }
 
