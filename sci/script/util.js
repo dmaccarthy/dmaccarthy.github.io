@@ -100,22 +100,29 @@ function isAfter(due, date) {
     return date >= due;
 }
 
+function echo_pre(e) {
+    e = $(e);
+    let echo = e.attr("data-echo"), text = e.text();
+    if (echo == "copy") {
+        e = $("<textarea>").text(text).appendTo($("body"));
+        e.select();
+        document.execCommand("copy");
+        e.remove();    
+    }
+    else {
+        text = encodeURIComponent(text);
+        window.open(`https://webapp.davidmaccarthy.repl.co/echo.${echo}?data=${text}`);                
+    }    
+}
+
 function pre_data(e) {
-    $(e ? e : "body").find("pre[data-echo]").click(function(ev) {
-        if (ev.altKey) {
-            let e = $(this);
-            let echo = e.attr("data-echo"), text = e.text();
-            if (echo == "copy") {
-                e = $("<textarea>").text(text).appendTo($("body"));
-                e.select();
-                document.execCommand("copy");
-                e.remove();    
-            }
-            else {
-                text = encodeURIComponent(text);
-                window.open(`https://webapp.davidmaccarthy.repl.co/echo.${echo}?data=${text}`);                
-            }
-        }
+    e = $(e ? e : "body").find("pre[data-echo]");
+    if (window.touchscreen && touchscreen()) {
+        e.removeAttr("contenteditable").dblclick(function() {echo_pre(this)});
+        console.log(touch);
+    }
+    else e.click(function(ev) {
+        if (ev.altKey) echo_pre(this);
     });
 }
 
