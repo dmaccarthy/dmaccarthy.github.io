@@ -66,9 +66,8 @@ function objectInList(data, key, val) {
 }
 
 function aspect(w) {
-    // Adjust height(width) of iframe/video tags to maintain aspect ratio
+/* Adjust height(width) of iframe/video tags to maintain aspect ratio */
     let e = $("[data-aspect]");
-    // console.log(e);
     for (let i=0;i<e.length;i++) {
         let ei = $(e[i]);
         let a = eval(ei.attr("data-aspect"));
@@ -98,32 +97,6 @@ function isAfter(due, date) {
         due = new Date(...due);
     }
     return date >= due;
-}
-
-function echo_pre(e) {
-    e = $(e);
-    let echo = e.attr("data-echo"), text = e.text();
-    if (echo == "copy") {
-        e = $("<textarea>").text(text).appendTo($("body"));
-        e.select();
-        document.execCommand("copy");
-        e.remove();    
-    }
-    else {
-        text = encodeURIComponent(text);
-        window.open(`https://webapp.davidmaccarthy.repl.co/echo.${echo}?data=${text}`);                
-    }    
-}
-
-function pre_data(e) {
-    e = $(e ? e : "body").find("pre[data-echo]");
-    if (window.touchscreen && touchscreen()) {
-        e.removeAttr("contenteditable").dblclick(function() {echo_pre(this)});
-        console.log(touch);
-    }
-    else e.click(function(ev) {
-        if (ev.altKey) echo_pre(this);
-    });
 }
 
 String.random = function(n, allowNum) {

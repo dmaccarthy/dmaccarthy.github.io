@@ -204,9 +204,10 @@ function drawAjax(item, a) {
 }
 
 function ajaxDone(e, s) {
-    s[0].item.html = e;
+/* Complete page update when AJAX requests are complete */
     s.html(e);
-    pre_data(s);
+    if (code_echo.touch) s.find("pre[data-echo]").removeAttr("contenteditable");
+    s[0].item.html = s.html(); //e;
     if (mjTypeset.ajax) mjTypeset.ajax--;
     if (!mjTypeset.ajax) mjTypeset();
     aspect();
@@ -268,7 +269,6 @@ function drawVid(item, a) {
         $("<iframe>").attr({width:w, frameborder:0, allowfullscreen:1,
             src:"https://www.youtube.com/embed/" + id, "data-aspect":r}).appendTo(s);
     }
-    // aspect();
 }
 
 function getIcon(node) {
@@ -302,8 +302,6 @@ function nextIcons() {
     let items = [];
     if (p) items.push({icon:"arrow_back", text:p.title});
     if (n) items.push({icon:"arrow_forward", text:n.title});
-    // if (p) items.push({icon:"arrow_back", text:`Previous (${p.title})`});
-    // if (n) items.push({icon:"arrow_forward", text:`Next (${n.title})`});
     return items;
 }
 
@@ -315,6 +313,7 @@ function lesson(id, gdrv, ...args) {
     let l = layout[id] = [{icons:icons}].extend(args).extend([1]);
     return l;
 }
+
 window.onpopstate = function() {
     drawNode(findNode(location.hash.slice(1)), true);
 }
@@ -363,16 +362,37 @@ function swipe(data, ev) {
     else if (data.swipe == "right") drawNext(-1);
 }
 
+function code_echo(ev) {
+/* Preview code in browser or copy to clipboard */
+    if (code_echo.touch || ev.altKey) {
+        let e = $(ev.target), sel = "pre[data-echo]";
+        if (e.is(`:not(${sel})`)) e = e.closest(sel);
+        let echo = e.attr("data-echo"), text = e.text();
+        if (echo == "copy") {
+            e = $("<textarea>").text(text).appendTo($("body"));
+            e.select();
+            document.execCommand("copy");
+            e.remove();    
+        }
+        else {
+            text = encodeURIComponent(text);
+            window.open(`https://webapp.davidmaccarthy.repl.co/echo.${echo}?data=${text}`);                
+        }
+    }
+}
+
 $(function() {
-    // if (touchscreen()) touch.swipe = swipe;
-    if ($(window).width() < 641) $("body").addClass("Narrow");
+    let t = code_echo.touch = window.touchscreen ? touchscreen() : false;
+    $(window).on(t ? "dblclick" : "click", code_echo);
+    // if (t) touch.swipe = swipe;
+    if ($(window).width() < 640) $("body").addClass("Narrow");
     else $("#Location").html($("<p>").html("..."));
     $(window).on("resize", aspect).on("keydown", keyNext);
     linkNodes(home);
     nodeList.all = nodeList(home);
     let id = location.hash.slice(1);
     let node = findNode(id);
-    if (qsArgs("today")) node = findNode(today);
+    if (today == "~" || qsArgs("today")) node = findNode(today);
     drawNode(node ? node : home.menu[0], true);
     $("#Location > select").change(function(e) {
         drawNode(this.options[this.selectedIndex].node);

@@ -4,37 +4,34 @@
 <meta charset="utf8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Mr. Mac’s Website</title>
-<link rel="shortcut icon" type="image/png" href="../media/rocket.png" />
+<link rel="shortcut icon" type="image/png" href="media/rocket.png" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
-<link rel="stylesheet" href="../script/ui2023.css" />
+<link rel="stylesheet" href="2021/ui.css" />
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../script/util.js"></script>
-<script type="text/javascript" src="../script/ui2023.js"></script>
-<script type="text/javascript" src="../script/math.js"></script>
-<script type="text/javascript" src="../script/phys.js"></script>
+<script type="text/javascript" src="script/util.js"></script>
 <script type="text/javascript">
 
 let msg = [
     "<p>Welcome to Mr. MacCarthy’s class at Sal! Please select your course...</p>",
     "<p>This website is being modified for the 2022-2023 school year. Some pages and links may not be complete yet!</p>"
 ];
-
-let today = "~", layout =  {"~": [{html:msg[0]}, 0, COPY]};
-
-let home = {title:"Mr. Mac’s Website", id:"~", menu:[
+    
+let home = {title:"Mr. Mac’s Website", html:msg[0], menu:[
     {title:"Science 10", href:"s10", icon:"flask"},
     {title:"Physics 20", href:"p20", icon:"rocket"},
     {title:"Physics 30", href:"p30", icon:"magnet"},
     {title:"Computing Science", href:"cs", icon:"laptop"},
     {title:"Simulations, Applets & Tools", href:"applet", icon:"html5"},
-]};
+]}
 
 </script>
+<script type="text/javascript" src="2021/ui.js"></script>
+<script type="text/javascript" src="2021/tree.js"></script>
 </head>
-<body data-swipe="1">
-<nav id="Location"><select title="Select a page"></select></nav>
-<article id="Main">
+<body><article>
+<p id="Crumbs"></p>
+<div id="Content"></div>
 </article>
+<p class="Center" style="font-size:75%">&copy; 2021-2023 by <a href="mailto:david.maccarthy@eips.ca">D.G. MacCarthy</a></p>
 </body>
 </html>
