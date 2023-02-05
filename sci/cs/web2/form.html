@@ -27,7 +27,7 @@ form {margin:2em auto}
 
 <p>The HTML code for the form is:</p>
 
-<pre class="Code" contenteditable="true" data-mime="text/html">
+<pre class="Code" contenteditable="true" data-echo="html">
 &lt;form&gt;
   Username: &lt;input type="text" name="user" value="guest"/&gt;
   Password: &lt;input type="password" name="pass"/&gt;
@@ -57,15 +57,18 @@ form {margin:2em auto}
 	more securely than the default method. Whether a form needs to use the <em>post</em> method
 	or the default method is determined by the server to which it is being submitted.</p>
 
-<pre class="Code" contenteditable="true" data-mime="text/html">
-&lt;form action="https://webapp.davidmaccarthy.repl.co/formecho" method="post"&gt;
-</pre>
+<pre class="Code" contenteditable="true" data-echo="html">
+&lt;form <span class="Blue">action</span>="https://webapp.davidmaccarthy.repl.co/formecho" <span class="Blue">method</span>="post"&gt;
+  Username: &lt;input type="text" name="user" value="guest"/&gt;
+  Password: &lt;input type="password" name="pass"/&gt;
+  &lt;input type="submit" value="Login"/&gt;
+&lt;/form&gt;</pre>
 
-<form class="Center" target="Echo" action="https://webapp.davidmaccarthy.repl.co/formecho" method="post">
+<!--form class="Center" target="Echo" action="https://webapp.davidmaccarthy.repl.co/formecho" method="post">
 	Username: <input type="text" name="user" value="guest"/>
 	Password: <input type="password" name="pass"/>
 	<input type="submit" value="Login"/>
-</form>
+</form-->
 </div>
 
 <h3>Other Inputs</h3><div class="Note">
@@ -89,7 +92,7 @@ form {margin:2em auto}
 </form>
 
 <p>Here is the HTML code for the form above:</p>
-<pre class="Code" contenteditable="true" data-mime="text/html">
+<pre class="Code" contenteditable="true" data-echo="html">
 &lt;form action="https://webapp.davidmaccarthy.repl.co/formecho" method="post" enctype="multipart/form-data"&gt;
   &lt;p&gt;&lt;input type="checkbox" name="student" value="yes" /&gt; Current Student&lt;/p&gt;
   &lt;p&gt;
@@ -105,7 +108,7 @@ form {margin:2em auto}
 	the server. To permit the file to be uploaded, you have to add an additional attribute
 	called <code>enctype</code> (encoding type) to the <code>form</code> element:<p>
 
-<pre class="Code" contenteditable="true" data-mime="text/html">
+<pre class="Code" data-echo="copy">
 enctype="multipart/form-data"</pre>
 
 <p>Without this extra attribute, the browser will only submit the file name, not the actual

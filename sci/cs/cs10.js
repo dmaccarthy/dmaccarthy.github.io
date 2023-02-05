@@ -90,7 +90,7 @@ layout.tcs = [
     {icons:[
         {icon:"gdoc", text:"Assignment", url:"13cPWZNfIyKYM6DPi_IxaVgUSj0b8II1kCzZVfvLZyOc"},
     ]},
-    {ajax:"ct1/algo.html"}, 1
+    {html:"Please see the instructions in the assignment document!"}, 1
 ];
 
 layout.algo = [{ajax:"ct1/algo.html"}, 1];

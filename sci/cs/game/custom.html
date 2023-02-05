@@ -6,7 +6,7 @@
 <p>In addition to the <code>setup</code> function (which initializes your sketch), you can create an <code>ondraw</code> function
     to make changes to your sketch. The <code>sc8pr</code> system will run your <code>ondraw</code> function at the end of each
     animation frame. Here is an example...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment">"Example 1 - Customizing with ‘ondraw’"</span>
 
 from random import uniform, randint
@@ -39,15 +39,15 @@ Sketch().play()</pre>
 <h3>Pre-Loading Images</h3><div class="Note">
 
 <p>The code below creates a sprite from an image file...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">Sprite("img/alien.png")</pre>
+<pre class="Code" contenteditable="true" data-echo="copy">Sprite("img/alien.png")</pre>
 <p>Loading and decoding an image from a file is one of the <em>slowest</em> operations the animation will perform. If we were to
     reload and decode the image file every time we created a sprite, the program would likely run very slowly.</p>
 <p>If you need to reuse an image many times, it is usually best to load and decode the image <em>once</em> before you need it (i.e. in the <code>setup</code> function) and keep the decoded image in the computer’s memory for when it is needed. In Example 1 above, the following line in the <code>setup</code> loads the alien image...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">sk.alien = Image("img/alien.png")</pre>
+<pre class="Code" contenteditable="true" data-echo="copy">sk.alien = Image("img/alien.png")</pre>
 <p>The decoded image is stored in the computer’s RAM and can be accessed using the variable name <code>sk.alien</code>. Prefixing the
     variable name with <code>sk.</code> stores the data along with the sketch object’s data. This prevents the data from being deleted at the end of the <code>setup</code> function, as would happen if we used a local variable.</p>
 <p>When the <code>ondraw</code> function needs the image data to make a sprite, it runs the following...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">sk += Sprite(sk.alien)</pre>
+<pre class="Code" contenteditable="true" data-echo="copy">sk += Sprite(sk.alien)</pre>
 <p>This creates the sprite from the already-decoded image data represented by <code>sk.alien</code>.</p>
 <!-- <p>Another change we have made to this program is that we have loaded the <code>img/alien.png</code> image in the <code>setup</code> function, and assigned it the variable name <code>sk.alien</code>.  When we create new sprites in the <code>ondraw</code> function, we use this already-loaded image to create the sprites rather than reloading the image file. Loading and decoding image files is one of the slowest aspects of an animation, so it is best to pre-load any images your program will require.</p> -->
 </div>
@@ -55,7 +55,7 @@ Sketch().play()</pre>
 <h3>Collisions</h3><div class="Note">
 <p>Besides creating new sprites, your <code>ondraw</code> function might also remove sprites. For example, you might want to detect whether or not any of the sprites are colliding with each other and remove any that are.
     To do this, replace the <code>ondraw</code> function from the example above with the following and add <code>Collisions</code> to your imports...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment">"Example 2 - Collisions"</span>
 
 def ondraw(sk):
@@ -79,7 +79,7 @@ The <code>Collisions</code> function creates a collision-detector for your sketc
 
 <h3>Mouse Position</h3><div class="Note">
 <p>Another thing you might want to do each frame is to adjust one or more sprites’ properties. For example, we can make the sprites chase the mouse pointer by changing their velocity so that the sprite is always moving toward the mouse. We could add the following lines between the removal of the colliding sprites and the creation of new random sprites...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment">"Example 3 - Follow the Mouse"</span>
 
 for alien in sk.sprites():

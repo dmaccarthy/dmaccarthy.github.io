@@ -1,7 +1,7 @@
 <h3>Gyroscope Sensor</h3><div class="Note">
 <p>In the previous assignment, you made the robot draw a letter on the floor of the arena. You probably used trial and error to determine how long to run the motors to execute a given stroke or turn. One problem with this approach is that it does not give reliable results. For a real robot, running the motors on full power may produce different outcomes depending on whether the robot is on concrete, mud, ice, or grass. It can also depend on whether the robot’s power supply is fully charged or partly depleted.</p>
 <p>A better method is to rely on the robot’s <b class="Red">sensors</b> to decide when to stop the motors. The <code>sc8pr</code> robot simulation has a sensor called <code>gyro</code> (gyroscope) that indicates the direction the robot is pointing.</p>
-<pre data-mime="text" class="Code"><span class="Comment"># Program 'r02_ex1.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r02_ex1.py'</span>
 
 from sc8pr.robot.arena import Arena
 from sc8pr.geom import angleDifference
@@ -18,7 +18,7 @@ Arena.run(brain)    <span class="Comment"># Run the simulation</span></pre>
     When the gyroscope reading reaches <code>360</code>, it resets to <code>0</code>. Other simulations may calibrate the gyroscope differently or not at all.</p>
 <p><code>sc8pr</code> has an <code>angleDifference</code> function that we can use to calculate how far away the robot is from its desired direction. Suppose we want to orient the robot to 45° (diagonally down and right).
     This expression will tell us how far, and in what direction, the robot is from 45°:</p>
-<pre data-mime="text" class="Code">angleDifference(gyro, 45.0)</pre>
+<pre data-echo="copy" class="Code">angleDifference(gyro, 45.0)</pre>
 <p>When the robot is close to the correct direction, the <code>angleDifference</code> will be close to <code>0</code>.</p>
 </div>
 

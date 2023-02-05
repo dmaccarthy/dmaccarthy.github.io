@@ -27,7 +27,7 @@ lesson("trig", "1dY1oQV_zrJTrfQsb7-iPQh0dYwgZm2zN", {html:"$$Hyp^2 = Opp^2 + Adj
 
 // Data Analysis
 
-let da = {title:"Data Analysis", id:"data", icon:"da", menu:[
+let da = {title:"Data Analysis", show:"2023.7", id:"data", icon:"da", menu:[
     {title:"Transforming Power Data", id:"pwr"},
 ]};
 

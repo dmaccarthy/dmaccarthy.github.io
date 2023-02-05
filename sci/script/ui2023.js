@@ -138,6 +138,7 @@ function drawNode(node, init) {
 }
 
 let MENU = 0, NEXT = 1, uc = {html:"Under Construction..."}, ua = {html:'<h1 class="Center">Unavailable!</h1>'};
+let COPY = {html:`<p class="Copyright">&copy; 2022-2023 by <a href="mailto:david.maccarthy@eips.ca">D.G. MacCarthy</a></p>`};
 
 function drawLayout(node) {
 /* Draw the content for the specified node */

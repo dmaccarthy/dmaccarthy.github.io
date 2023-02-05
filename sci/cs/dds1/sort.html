@@ -18,7 +18,7 @@
     for a school, we might want to search for all students born in 1999 who are enrolled in
     Computing Science 30. Add a <code>find</code> method as a <em>generator</em> to locate
     nodes that match criteria specified by a supplied <code>match</code> function...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Program 'dds3_sort.py'...</span>
 
 from resource.school import Student
@@ -48,7 +48,7 @@ for student in students.find(match, 20, **crit):
     Do not use any built-in or standard library sorting functions. Test the algorithm by
     sorting the students by birthday. In the program below, the <code>compareBirthday</code> function
     (which you will need to write) should take two nodes as arguments; it should return 0 if both students have the same birthday, 1 if the second node is greater than the first, and -1 if the second node is less than the first.</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 from resource.school import Student
 
 <span class="Comment"># Randomly generate data for 1200 students</span>

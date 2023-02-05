@@ -1,6 +1,5 @@
 <h3>Viewing the Examples</h3>
-<p>To preview the XML examples in your browser, hold the <em>Alt</em> key and click the example code.
-    Then open a new browser tab and paste the URL into the address bar. You can edit the code before previewing.</p>
+<p>To preview the XML examples in your browser, hold the <em>Alt</em> key and click the example code. You can edit the code before previewing.</p>
 
 <h3>eXtensible Markup Language (XML)</h3>
 <div id="xml" class="Hidden">
@@ -15,7 +14,7 @@ information (“The capital of Alberta is Edmonton.”) from a graphics file.</p
 Language (XML)</em>. XML is a special text format that is widely used to describe
 hierarchical data. Here is an example of a single node of a data tree encoded as XML...</p>
 
-<pre class="Code" data-mime="text/xml" contenteditable="true">&lt;Community name="Sherwood Heights" /&gt;</pre>
+<pre class="Code" data-echo="xml" contenteditable="true">&lt;Community name="Sherwood Heights" /&gt;</pre>
 
 <ul>
 <li>XML uses the less than (<code>&lt;</code>) and greater than (<code>&gt;</code>) symbols
@@ -36,7 +35,7 @@ hierarchical data. Here is an example of a single node of a data tree encoded as
 	tags in XML. The start-tag marks the beginning of the element and the end-tag marks the element’s
 	end. The space between is used for the child nodes...</p>
 
-<pre class="Code" data-mime="text/xml" contenteditable="true">&lt;Municipality name="Strathcona" type="County"&gt;
+<pre class="Code" data-echo="xml" contenteditable="true">&lt;Municipality name="Strathcona" type="County"&gt;
 
     <span class="Blue">&lt;!-- Child nodes go here --&gt;</span>
 
@@ -53,13 +52,13 @@ hierarchical data. Here is an example of a single node of a data tree encoded as
 <p>Here is the XML code for a <code>Municipality</code> node and its two <code>Community</code>
 	child nodes...</p>
 
-<pre class="Code" data-mime="text/xml" contenteditable="true">&lt;Municipality name="Strathcona" type="County"&gt;
+<pre class="Code" data-echo="xml" contenteditable="true">&lt;Municipality name="Strathcona" type="County"&gt;
    &lt;Community name="Sherwood Heights" /&gt;
    &lt;Community name="Lakeland Ridge" /&gt;
 &lt;/Municipality&gt;</pre>
 
 <p>Here is the complete XML for the whole data tree that we used in the	last lesson.</p>
-<pre class="Code" data-mime="text/xml" contenteditable="true">&lt;Country name="Canada" capital="Ottawa"&gt;
+<pre class="Code" data-echo="xml" contenteditable="true">&lt;Country name="Canada" capital="Ottawa"&gt;
     &lt;Province name="Alberta" capital="Edmonton"&gt;
         &lt;Municipality name="Strathcona" type="County"&gt;
             &lt;Community name="Sherwood Heights" /&gt;
@@ -77,7 +76,7 @@ hierarchical data. Here is an example of a single node of a data tree encoded as
 	The code below attempts to use an attribute name (<code>capital city</code>) that contains a space.
 	Preview the document in your browser to see what happens. Then remove the space and preview it again.</p>
 
-<pre class="Code" data-mime="text/xml" contenteditable="true">&lt;Country name="Canada" capital city="Ottawa"/&gt;</pre>
+<pre class="Code" data-echo="xml" contenteditable="true">&lt;Country name="Canada" capital city="Ottawa"/&gt;</pre>
 </div>
 
 <h3>Assignment</h3>

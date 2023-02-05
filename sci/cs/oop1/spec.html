@@ -1,7 +1,7 @@
 <h3>Initializing Instances</h3><div class="Note">
 <p>The first two lines of the program fragment below illustrate a common pattern: a new instance is created by calling a constructor
     function and is then immediately initialized by calling a modifier...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 1...</span>
 
 temp = Temperature()
@@ -17,14 +17,14 @@ p1.setCoords(4.0, -1.5) -->
     you pass to the constructor will be forwarded to the <code>__init__</code> method. If we want to  the <code>Temperature</code>
     constructor to call <code>setCelsius</code> automatically, add the following method to the <code>Temperatue</code>
     class definition...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 2...</span>
 
     def __init__(self, C=0.0):
         self.setCelsius(C)</pre>
 
 <p>Now we can simplify the main program...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 2 (continued)...</span>
 
 temp = Temperature(C=20.0)
@@ -32,7 +32,7 @@ print(temp.Fahrenheit())</pre>
 
 <p>Here is another example...</p>
 
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 3...</span>
 
 class Person:
@@ -54,7 +54,7 @@ print(myFriend.name())</pre>
     <code>__init__</code>. Because <code>__init__</code> begins with an underscore, it must be considered private.
     If you want to initialize your instances using a public method, you can simply create two names (<code>__init__</code>
         and a public name) that refer to the same method...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 4...</span>
 
 class Person:
@@ -81,7 +81,7 @@ print(myFriend.name())</pre>
 <p>When you use Python’s <code>print</code> function to output an instance of a class you have defined, the output
     will be a description of the instance’s class and memory location. This is because the interpreter does not know
     any other way to represent (display) your object as a string...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 5...</span>
 
 class Person:
@@ -97,7 +97,7 @@ print(myFriend)   <span class="Comment"># &lt;__main__.Person object at 0x02BF09
 <p>You can “teach” Python how to represent your objects as strings by defining the special methods <code>__repr__</code>
     and/or <code>__str__</code>. The <code>__repr__</code> method returns the formal string representation which
     should be a Python <em>expression</em> that can be evaluated to obtain an equivalent object...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 6...</span>
 
 class Person:
@@ -116,7 +116,7 @@ print(myFriend)       <span class="Comment"># Person("John Q. Doe")</span></pre>
 <p>The <code>__str__</code> method returns the informal string representation which is how you normally want the object
     to be printed. If your class includes both <code>__repr__</code> and <code>__str__</code>, the <code>print</code>
         function will use <code>__str__</code>...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 7...</span>
 
 class Person:
@@ -140,7 +140,7 @@ print(myFriend)       <span class="Comment"># John Q. Doe</span></pre>
 <p>Another thing that the Python interpreter must be taught to do is to use operators (e.g. <code>+</code>,
     <code>*</code>, <code>&lt;=</code>). For example, defining a special method named <code>__sub__</code> allows you
     to use the subtraction operator (<code>−</code>) with your instances.</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 8...</span>
 
 class Point2D:
@@ -180,7 +180,7 @@ print(<span class="Blue">p2 - p1</span>)           <span class="Comment"># (-5.0
     <code>__iter__</code> in your class definition. This method should be a generator function or a function that
     returns an iterator object. (You can make an iterator object by passing any iterable object to the <code>iter</code>
     built-in function.)</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 9...</span>
 
 class Color:

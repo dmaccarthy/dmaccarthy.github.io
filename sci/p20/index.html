@@ -55,11 +55,11 @@ let homeIcons = [
         {icon:"gdrv", text:"Data Sheet", url:"1W1GLdlJP6u0ivIPomSkc_ZqimbXxW0xa"},
         {icon:"today", text:"Brightspace", url:"https://eips.brightspace.com/d2l/home/62229"},
         {text:"PowerSchool", url:"https://powerschool.eips.ca/public/"},
-        {icon:"mail", text:"Email Mr. MacCarthy", url:"mailto://david.maccarthy@eips.ca"},
+        // {icon:"mail", text:"Email Mr. MacCarthy", url:"mailto://david.maccarthy@eips.ca"},
+        {icon:"gdrv", text:"Graph Paper", url:"1tiA8XrfPUxsZ2d-HDPP-8KMeRMngHalE"},
         {icon:"more", text:"More", action:function() {swapIcons(homeIcons[1])}}
     ]},
     {icons:[
-        {icon:"gdrv", text:"Graph Paper", url:"1tiA8XrfPUxsZ2d-HDPP-8KMeRMngHalE"},
         {icon:"open", text:"Salisbury Composite", url:"https://salcomp.ca"},
         {icon:"gdrv", text:"Course Outline", url:"1I42f3Twrtn1BNwJkwUnydhyj2I4SAcHF"},
         {icon:"open", text:"Program of Studies", url:"https://education.alberta.ca/science-10-12/programs-of-study/"},
@@ -67,7 +67,7 @@ let homeIcons = [
     ]}
 ];
 
-layout.home =  [homeIcons[0], 0];
+layout.home =  [homeIcons[0], 0, COPY];
 layout.ch1 = layout.rev1 = [{ajax:"kin/summary.htm"}, 1];
 layout.ch2 = layout.rev2 = [{ajax:"vec/summary.htm"}, 1];
 layout.ch3 = layout.rev3 = [{ajax:"dyn/summary.htm"}, 1];

@@ -6,7 +6,7 @@
 <p>One way to produce a Boolean result is to use one of Python’s comparison operators. <b class="Red">Comparison
 	operators</b> are operators that compare two values for equality or inequality.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's10_ex1.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's10_ex1.py'</span>
 
 a = 3
 b = 5
@@ -31,7 +31,7 @@ print(type(a_is_smaller)) <span class="Comment"># &lt;class 'bool'&gt;</span></p
 	These operators can be used to check if a string contains a particular letter or substring, and whether a
 	sequence of numbers (e.g a color code) contains a specific value.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's10_ex2.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's10_ex2.py'</span>
 
 word = "Computing Science"
 print("i" in word)         <span class="Comment"># True</span>
@@ -51,7 +51,7 @@ print(255 in red)          <span class="Comment"># True</span></pre>
 <p>We often need to combine two or more Boolean values or expressions to create a “final” result. For example,
 	if we wanted to know if a number was between 1 and 100, we would have to check two conditions.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's10_ex3.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's10_ex3.py'</span>
 
 a = 57
 print(a >= 1)                <span class="Comment"># True</span>
@@ -82,7 +82,7 @@ print(a >= 1 or a <= 100)    <span class="Comment"># True</span></pre>
 <p>The third Boolean operator is <code>not</code>. The <code>not</code> operator reverses <code>True</code> to
 	<code>False</code> and <code>False</code> to <code>True</code>.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's10_ex4.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's10_ex4.py'</span>
 
 a = 3 < 5
 b = "her" in "Sherwood Park"
@@ -96,7 +96,7 @@ print(a and not b)  <span class="Comment"># False</span></pre>
 <p>For Boolean operators, the order of operations is <code>not</code> first, then <code>and</code>, and
 	<code>or</code> last. Python evaluates the final expression in the example above as follows:</p>
 
-<pre data-mime="text" class="Code Black">a and not b
+<pre class="IO">a and not b
   = True and not True
   = True and False
   = False</pre>

@@ -1,6 +1,6 @@
 <p>Functions often call other functions to help perform their tasks. For example, a function that chooses a random
     RGB colour could use Python’s <code>randint</code> function to produce each of the three values...</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Program 'rec1_ex1.py'...</span>
 
 from random import randint
@@ -10,18 +10,18 @@ def randColor():
 
 print(randColor())</pre>
 <p>In some circumstances, a function may want to call itself. This is known as <b class="Red">recursion</b>.  One example could be calculating factorials. Factorials occur in the mathematical study of permutations and combinations. The factorial of a whole number is calculated by multiplying that number by all preceding natural numbers...</p>
-<pre data-mime="text" class="IO">6! = 6 × 5 × 4 × 3 × 2 × 1 = 720</pre>
+<pre class="IO">6! = 6 × 5 × 4 × 3 × 2 × 1 = 720</pre>
 
 <p>One thing we can observe about this, is that the factorial of a number is equal to that number multiplied by the factorial of the preceding number, i.e. \(6! = 6 × 5!\) Or more generally:</p>
 $$n! = n × (n - 1)!$$
 <p>We could try to implement this as a recursive Python function...</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 def factorial(n):
     return n * factorial(n-1)</pre>
 
 <p>The problem is that the recursion would occur forever. Eventually, we need to end the recursion and return a value.
     We do this by providing a <b class="Red">base case</b>: when \(n = 0\), the factorial evaluates to \(1\) and so no recursion is needed...</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Program 'rec1_ex2.py'...</span>
 
 def factorial(n):
@@ -29,7 +29,7 @@ def factorial(n):
     return 1 if n == 0 else n * factorial(n-1)</pre>
 
 <p>Of course, recursion is not necessary to calculate factorials. We could use iteration (loops) to perform the same calculation without recursion...</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Program 'rec1_ex3.py'...</span>
 
 def factorial(n):

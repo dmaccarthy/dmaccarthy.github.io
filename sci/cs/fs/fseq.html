@@ -8,7 +8,7 @@
 <h3>Direct Read Access</h3>
 <p>Python file objects have methods that can be used to read from anywhere within a text file without having to read from the beginning of the file. This is known as <b class="Red">direct</b> or <b class="Red">random access</b>.</p>
 <p>Each file object keeps track of its “current position” within the file. You can use the <code>seek</code> method to change the current position, and the <code>read</code> method to read data from the current position...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 1...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 1...</span>
 
 with open("myData1.txt", "r", encoding="UTF-8") as text:
     text.seek(8)
@@ -29,7 +29,7 @@ print(data)</pre>
 <p>When you write data to a file that has been opened in “append” mode, the current position automatically moves to the end of the file and the data is written there.  When you write to a file that has been opened in “write” mode, the file will be created.  If the file already exists, it will be truncated to zero bytes.</p>
 <p>There is an “update” mode (<code>"r+"</code>) you can use to open the file if you want to both read and write without truncating the file.</p>
 <p>The code below replaces bytes 9 through 18 of the file with the characters <code>"[New Data]"</code> and then prints the entire contents of the file. Note that if the program did not call the seek method the second time, it would read starting at byte 19...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 2...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 2...</span>
 
 with open("myData2.txt", "r+", encoding="UTF-8") as text:
     text.seek(8)

@@ -10,7 +10,7 @@
 <p>For example, instances of the <code>date</code> class (from Python’s <code>datetime</code> module) can reference
     methods like <code>today</code> and data attributes like <code>max</code> that are inherited from the <code>date</code>
     class. In the Python example below, we can see that the attributes of the class are treated as attributes of any instance constructed from that class...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 1...</span>
 
 class MyClass:
@@ -24,7 +24,7 @@ print(myInstance.myStr, myInstance.myInt)   <span class="Comment"># Hello! 7</sp
 print(myInstance.myStr is MyClass.myStr)    <span class="Comment"># True</span></pre>
 
 <p>The last line of the program above shows that the inherited attribute is the same object (rather than a duplicate) defined in the class. This is true as long as you do not assign to the attribute using the instance name (as in the <span class="Blue">blue</span> line below). This causes Python to encapsulate the assigned object as a unique attribute of the instance. The attribute as defined in the class continues to apply to the class and to any other instances that have not had the attribute reassigned.</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 2...</span>
 
 class MyClass:
@@ -44,7 +44,7 @@ print(myInstance.myStr is MyClass.myStr)    <span class="Comment"># False</span>
 <p>Inheritance allows us to define attributes that are <em>shared</em> between the class and all of its instances. Shared
     attributes are also called <b class="Red">static attributes</b> or <b class="Red">class attributes</b>. The example
     below defines an <code>int</code> attribute that keeps track of how many instances of the class have been created...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 3...</span>
 
 class MyClass:
@@ -62,7 +62,7 @@ print(MyClass.count)     <span class="Comment"># 2</span></pre>
 
 <p>Note that when the shared attribute is modified, we must refer to it using the class name (i.e. <code>MyClass.count</code>) rather than an instance name (i.e. <code>self.count</code>) for the attribute to remain shared.</p>
 <p>If we assign an attribute using an instance name, the new attribute becomes unique to that instance and is no longer shared with the class and other instances...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 4...</span>
 
 class MyClass:
@@ -85,7 +85,7 @@ print(MyClass.count)     <span class="Comment"># 0</span></pre>
     want Python to always pass the <em>class object</em> rather than the instance. To do this, add the <b class="Red">decorator</b>
     <code>@classmethod</code> on the line before the method definition. The first parameter of a class method is conventionally
     named <code>cls</code> rather than <code>self</code>...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 5...</span>
 
 class MyClass:
@@ -104,7 +104,7 @@ print(inst1.count)      <span class="Comment"># 1</span></pre>
 <p>In some situations, we may want to define a method that does not access or modify any of the attributes of the class
     or of any instances of the class. In such a case, we do not need to pass an instance (<code>self</code>) or a class
     (<code>cls</code>) as the first parameter. To do this, define the method using the <code>@staticmethod</code> decorator...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 6...</span>
 
 from random import randint
@@ -132,7 +132,7 @@ for roll in Dice.roll(4):
     class in parentheses. This means that we are defining <code>Square</code> to be a <b class="Red">subclass</b>
     (sometimes called a <b class="Red">derived class</b>) of <code>Rectangle</code>. <code>Rectangle</code> is called the
     <b class="Red">superclass</b> (or <b class="Red">base class</b>) of <code>Square</code>.</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 7...</span>
 
 class Rectangle:
@@ -164,7 +164,7 @@ print(sq.area(), sq.perimeter())</pre>
     will <em>override</em> <code>Rectangle</code>’s version of this method. Instances of a subclass are considered to be
     instances of the superclass as well: any <code>Square</code> instance is also a <code>Rectangle</code> instance.</p>
 <p>Python includes a function <code>isinstance</code> that checks whether an object is an instance of a particular class...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 8...</span>
 
 print(type(sq))                   <span class="Comment"># &lt;class '__main__.Square'&gt;</span>
@@ -179,7 +179,7 @@ print(isinstance(sq, int))        <span class="Comment"># False</span></pre>
     derived from the classes <code>MyXClass</code> and <code>MyYClass</code>. The derived class inherits an attribute <code>x</code>
     from <code>MyXClass</code> and an attribute <code>y</code> from <code>MyYClass</code>. It also defines a third
     attribute <code>z</code>...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 9...</span>
 
 class MyXClass:
@@ -199,7 +199,7 @@ print(obj.x, obj.y, obj.z)</pre>
     base class which is listed first. In the example below, both base classes (<code>MyXClass</code> and <code>MyYClass</code>)
     include an attribute <code>w</code>. Since <code>MyXClass</code> is listed first in the definition of <code>MyClass</code>,
     <code>MyXClass.w</code> will be inherited and <code>MyYClass.w</code> will not...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 10...</span>
 
 class MyXClass:

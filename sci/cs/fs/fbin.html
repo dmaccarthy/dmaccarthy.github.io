@@ -1,21 +1,21 @@
 <h3>Bytes</h3>
 <p>Computers use sequences of 0’s and 1’s to represent data in both internal memory (RAM) and external storage (file systems). Each 0 or 1 is called a <b class="Red">binary digit</b> or <b class="Red">bit</b>. On most modern computers, a <b class="Red">byte</b> is a sequence of 8 bits.  Each byte can be considered equivalent to a whole number between 0 and 255.</p>
 <p>When dealing with text files, the programming language and/or operating system handle the encoding and decoding between text (i.e. <code>str</code> instances) and the sequence of bytes used to represent the data. For example, the Python 3 program below uses the UTF-8 codec to encode a text message (<code>"© 2023"</code>) as a sequence of bytes (identified in the program by the name <code>textAsBytes</code>). This encoding would occur automatically when you write to a text file...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 1...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 1...</span>
 
 textAsBytes = bytes("© 2023", encoding="UTF-8")
 print(textAsBytes)          <span class="Comment"># b'\xc2\xa9 2023'</span>
 print(list(textAsBytes))    <span class="Comment"># [194, 169, 32, 50, 48, 50, 51]</span></pre>
 
 <p>Notice that when you convert the bytes instance to a list, you can see the value of each byte as a number between 0 and 255. (The © symbol is encoded in UTF-8 using the <em>two-byte</em> sequence: 194, 169.) When you print a <code>bytes</code> instance without converting it to a list, Python displays it like a string but with the non-ASCII bytes (i.e. values greater than 127) displayed as escape sequences. Just as the <code>bytes</code> constructor can encode text to binary form, the </ode>str</code> constructor can decode a sequence of bytes...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 2...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 2...</span>
 
 textAsBytes = bytes([194, 169, 32, 50, 48, 50, 51])
 text = str(textAsBytes, encoding="UTF-8")
 print(text)                 <span class="Comment">#  © 2023</span></pre>
 
 <p>Like <code>str</code> and <code>tuple</code> instances, <code>bytes</code> are <em>immutable</em>. The <code>bytearray</code> class is a mutable version of <code>bytes</code> that can be edited like a list (for example, using indices, slices, or methods such as <code>append</code> and <code>extend</code>)...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 3...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 3...</span>
 
 textAsBytes = bytearray("© 1998", encoding="UTF-8")
 
@@ -45,7 +45,7 @@ print(textAsStr)   <span class="Comment"># © 2023 by Jane Doe</span></pre>
 
 <p>Thus the sequence of bytes <code>[0, 188, 97, 78]</code> is one way to encode the number 12345678. This example uses <b class="Red">big-endian</b> byte order: the byte on the end (78) has the biggest index or memory address.  This is the default byte order used for internet communication.  Some systems use a <b class="Red">little-endian</b> byte order, in which the end byte is given the lowest index or address.  On these systems, the number 12345678 would be encoded as <code>[78, 97, 188, 0]</code>.</p>
 <p>In Python 3, we can use the <code>struct.pack</code> function to encode numbers as bytes...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 4...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 4...</span>
 
 from struct import pack
 
@@ -62,7 +62,7 @@ print(list(numAsBytes))</pre>
 </ul>
 
 <p>In the example below, the format code <code>"!i 3d"</code> indicates one signed, 4-byte integer followed by three 8-byte floating point numbers, to be encoded using big-endian byte order...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 5...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 5...</span>
 
 from struct import pack
 
@@ -75,7 +75,7 @@ print(list(numAsBytes))</pre>
 
 <p>The result of the pack operation is a sequence of 28 bytes (4 for the signed integer <code>num1</code>, and 8 each for the three floats: <code>num2</code>, <code>num3</code>, and <code>num4</code>)</p>
 <p>We can collect the numbers to be encoded as a <code>list</code> or <code>tuple</code> However, the asterisk (<code>*</code>) in the code below indicates that Python is to pass the items in the tuple individually rather than as a single object...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 6...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 6...</span>
 
 from struct import pack
 
@@ -84,7 +84,7 @@ numAsBytes = pack("!i 3d", <span class="Blue">*data</span>)
 print(list(numAsBytes))</pre>
 
 <p>The <code>struct.unpack</code> function decodes <code>bytes</code> into a <code>tuple</code> of numbers...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 7...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 7...</span>
 
 from struct import unpack
 
@@ -94,7 +94,7 @@ print(numTuple)</pre>
 
 <h3>Binary Files</h3>
 <p>In addition to text mode, Python 3 also provides a binary mode for file I/O...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 8...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 8...</span>
 
 mode = "rb"
 with open("myData.txt", mode) as input:

@@ -27,7 +27,7 @@ The data stored on a hard disk (or any other type of external storage such as a 
 <p>Windows path names differ from Unix-like systems (Linux, Mac OS) in a couple of ways. Rather than using a single root folder for the entire system, Windows assigns a root folder to each external storage device and then denotes each device by a drive letter (e.g. <code>C:</code> or <code>R:</code>). Drive letters can also be assigned as shortcuts to network folders. Windows also uses the backslash character as a path delimiter rather than forward slash used in Unix and the Web...</p>
 <pre class="IO">R:\teacher\images\drawing.png</pre>
 <p>The backslash character can cause problems for programmers because it is used in Python (and other languages) to denote escape sequences. For example, if you were to type the above Windows path as a string literal in a Python program, the <code>\t</code> combination would be treated as a tab character! (Run the following in Python 3...)</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 1...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 1...</span>
 
 path = "R:\teacher\images\drawing.png"
 print(path)</pre>
@@ -43,7 +43,7 @@ print(path)</pre>
 
 <h3>Python Modules</h3>
 <p>Python’s <code>os</code> module (short for operating system) includes functions for determining the CWD (<code>getcwd</code>) and changing the CWD (<code>chdir</code>)...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 2...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 2...</span>
 
 import os
 
@@ -53,7 +53,7 @@ print(os.getcwd())</pre>
 
 <p>An exception may occur if the argument of the <code>os.chdir</code> function is not a valid absolute or relative path name, or if it describes a path to which the user does not have access.</p>
 <p>The <code>os.listdir</code> function returns a list of items (folders and files) within the specified folder. If no path is specified, a listing of the CWD will be returned...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 3...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 3...</span>
 
 import os
 
@@ -61,7 +61,7 @@ print(os.listdir())
 print(os.listdir("/home"))</pre>
 
 <p>Python also includes modules <a target="py_fnmatch" href="https://docs.python.org/3.11/library/fnmatch.html"><code>fnmatch</code></a> and <a target="py_glob" href="https://docs.python.org/3.11/library/glob.html"><code>glob</code></a> that contain functions such as <code>filter</code> that you can use to obtain a subset of files in the folder. In the example below, only files with the extension <code>png</code> will be included in the list.</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 4...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 4...</span>
 
 import os, fnmatch
 
@@ -71,7 +71,7 @@ print("All items:", allItems)
 print("PNG files:", pngFiles)</pre>
 
 <p>Python also has an <code>os.path</code> module that contains functions for parsing paths, checking whether an item exists and whether it is a file or a folder, and retrieving information about an item such as it size and last modification date...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 5...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 5...</span>
 
 import os
 from os.path import isfile, isdir, getmtime, getsize
@@ -133,14 +133,14 @@ Type ENTER to quit.
     and insert the items into the linked list at a location specified by the second argument.
     If <code>insert</code> is called without a second argument, the new node(s) should be
     appended to the end of the list.</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 myList = LinkedList(1, True, "three", 4.0)
 myList.insert([5, "insert"], 2)
 for node in myList:
     print(node)  <span class="Comment"># 1 True 5 insert three 4.0</span></pre>
 
 <p>The <code>insert</code> method should be able to merge two linked lists...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 myList = LinkedList(1, 2, 3)
 another = LinkedList(4, 5)
 myList.insert(another)
@@ -148,7 +148,7 @@ for node in myList:
     print(node)  <span class="Comment"># 1 2 3 4 5</span></pre>
 
 <p>It should also be able to accept a <em>generator</em> or other iterable object as its sequence...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 def fib(n):
     <span class="Comment">"Generator for the Fibonacci sequence"</span>
     a, b = 0, 1
@@ -163,7 +163,7 @@ for node in myList:
     print(node)   <span class="Comment"># 0 1 1 2 3 5 8 13 21 34</span></pre>
 </li>
 <li><p>Add a <code>remove</code> method to remove one or more nodes from a specified location in the list.</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 myList = LinkedList(1, True, "three", 4.0, 5)
 myList.remove(1, 2)  <span class="Comment"># Remove 2 nodes at index 1</span>
 for node in myList:

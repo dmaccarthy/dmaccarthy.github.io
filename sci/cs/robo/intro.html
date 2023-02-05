@@ -14,7 +14,7 @@
     installed separately from Python itself. If you are using a computer that does not already
     have <code>sc8pr</code>, installation may depend on the IDE you are using.</p>
 <p>If you are using a fork of the <a class="Code" href="https://replit.com/@DavidMacCarthy/Robo">Robo</a> repl in <code>repl.it</code>, it should be pre-configured with <code>sc8pr</code>. Open the file <code>pyproject.toml</code> and ensure that the <code>[tool.poetry.dependencies]</code> section includes the line:</p>
-<pre data-mime="text" class="IO">sc8pr = "^2.2"</pre>
+<pre class="IO">sc8pr = "^2.2"</pre>
 <p>If you are using Thonny, go to the “Tools” menu and select “Manage packages...”</p>
 <p class="Center"><img src="game/img/thonny.png" alt="Thonny"/></p>
 <ol>
@@ -35,7 +35,7 @@
     of an operator (like a remote control device).</p>
 <p>Here is an example of a robotics simulation...</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 'r01_ex1.py'...</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r01_ex1.py'...</span>
 
 from sc8pr.robot.arena import Arena
 
@@ -50,7 +50,7 @@ Arena.run(brain)</pre>
 <p>We have used built-in functions (e.g. <code>print</code>, <code>input</code>) and imported functions
     (e.g. <code>randint</code>, <code>sqrt</code>) in our previous courses. Using Python’s <code>def</code>
     statement, we can define our own functions to perform tasks like controlling the robot. The first line
-    of the function, <pre data-mime="text" class="Code">def brain(robot):</pre> creates a function named <code>brain</code> and also
+    of the function, <pre class="Code">def brain(robot):</pre> creates a function named <code>brain</code> and also
     creates a variable name <code>robot</code> that we can use to control the robot. As with <code>if</code>
     and <code>while</code> statements, the <code>def</code> statement ends with a colon and the subsequent
     lines that form the function body are indented by four spaces.<p>
@@ -69,7 +69,7 @@ Arena.run(brain)</pre>
     example below, the left wheel (<code>0.7</code>) will be moving faster than the right one
     (<code>0.3</code>), so the robot will turn clockwise while moving forward.
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 'r01_ex2.py'...</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r01_ex2.py'...</span>
 
 from sc8pr.robot.arena import Arena
 
@@ -83,7 +83,7 @@ Arena.run(brain)</pre>
 
 <p>Setting the motors to the same power but opposite directions will cause the robot to spin in place.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 'r01_ex3.py'...</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r01_ex3.py'...</span>
 
 from sc8pr.robot.arena import Arena
 
@@ -101,7 +101,7 @@ Arena.run(brain)</pre>
     of time. For example, to run both motors on full power for 2.5 seconds and then stop them,
     you could use the following function.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 'r01_ex4.py'...</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r01_ex4.py'...</span>
 
 from sc8pr.robot.arena import Arena
 

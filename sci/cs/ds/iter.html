@@ -4,7 +4,7 @@
     includes a <code>while</code> loop that can be used to repeat one or more instructions until the
     boolean condition controlling the loop becomes <code>False</code>. We can use this to print
     (or perform some other operation) on the items of a sequence one at a time...</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-echo="copy" class="Code" contenteditable="true">
 <span class="Comment"># Example 1...</span>
 
 data = 1, "two", 3.14
@@ -14,7 +14,7 @@ while index < len(data):
     index += 1</pre>
 
 <p>Python provides another type of loop, called a <code>for</code> loop, that is more concise when looping through iterable objects...</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-echo="copy" class="Code" contenteditable="true">
 <span class="Comment"># Example 2...</span>
 
 data = 1, "two", 3.14
@@ -25,7 +25,7 @@ for item in data:
     specified variable.  We used <code>item</code> as the variable name in the example above but you can use any valid name.  Our program does not need to check the length of the sequence or use an index to access the items: Python does this for us!</p>
 <p>We used a <em>counter</em> variable in CS 10 to make a <code>while</code> loop that ran a specified
     number of times. For example, the program below prints 10 random numbers...</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-echo="copy" class="Code" contenteditable="true">
 <span class="Comment"># Example 3...</span>
 
 from random import random
@@ -38,7 +38,7 @@ while counter < 10:
 <p>Python includes a built-in function called <code>range</code> that generates an iterable sequence of
     numbers. The <code>range</code> function provides us with an alternative to a <code>while</code> loop when we want to use a counter.</p>
 
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-echo="copy" class="Code" contenteditable="true">
 <span class="Comment"># Example 4...</span>
 
 from random import random
@@ -52,7 +52,7 @@ for counter in range(10):
     <li>With the <code>for-in</code> version of the loop, the <code>range</code> function generates the sequence 0..9 for us, so there is no need to initialize or increment the counter!</li>
     <li>The <code>range</code> function can be called with two or three arguments if we want to start the sequence at a number other than 0, or if we want to count by something other than 1...</li>
 </ul>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-echo="copy" class="Code" contenteditable="true">
 <span class="Comment"># Example 5...</span>
 
 for num in range(10,20,3):  <span class="Comment"># 10, 13, 16, 19</span>
@@ -61,7 +61,7 @@ for num in range(10,20,3):  <span class="Comment"># 10, 13, 16, 19</span>
 <p>The <code>in</code> keyword can also be used without the <code>for</code> keyword as an operator
     that tests whether an object occurs within an iterable sequence. The operator evaluates to a boolean
     value; i.e. either <code>True</code> or <code>False</code>.</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-echo="copy" class="Code" contenteditable="true">
 <span class="Comment"># Example 6...</span>
 
 print("a" in "Sal")      <span class="Comment"># True</span>

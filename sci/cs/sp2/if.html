@@ -2,7 +2,7 @@
 <p>Algorithms often involve “branching”, where the answer to a True/False decision determines which
 	instructions will be executed.  Python uses an <code>if-elif-else</code> structure to achieve branching.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's11_ex1.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's11_ex1.py'</span>
 
 from math import sqrt
 
@@ -25,7 +25,7 @@ num = float(input("Please enter a number: "))
 <p>The <code>if</code> block can be followed by an <code>else</code> block to specify instructions that
 	are executed when the condition is <code>False</code>.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's11_ex2.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's11_ex2.py'</span>
 
 from math import sqrt
 
@@ -39,7 +39,7 @@ num = float(input("Please enter a number: "))
 <p>When there are more than two possible conditions, you can use the <code>elif</code> (“else if”)
 	keyword to specify additional tests.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's11_ex3.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's11_ex3.py'</span>
 
 age = float(input("Please enter your age: "))
 <span class="Blue">if age < 12:</span>
@@ -56,7 +56,7 @@ age = float(input("Please enter your age: "))
     bank charges you. Write a program <code>s11_loan.py</code> that asks the user to enter the loan
     amount, the annual interest rate, and the monthly payment. Your program should then calculate the
     monthly interest and say whether or not the payment is big enough.Here is a sample session.
-<pre data-mime="text" class="Code Black">Loan amount in $: <span class="Blue">5000</span>
+<pre class="IO">Loan amount in $: <span class="Blue">5000</span>
 Annual interest in %: <span class="Blue">5</span>
 Monthly payment in $: <span class="Blue">10</span>
 
@@ -75,7 +75,7 @@ for each player. The three numbers correspond to the three choices Rock (1), Pap
 <p>Complete the program so that it displays each player’s choices as a string (i.e. it should print
 the word “Rock” and not the number 1). It should also determine which player wins (or if it is a
 draw) and output the result. The output should look something like this.</p>
-<pre data-mime="text" class="IO">Player 1 chose Paper.
+<pre class="IO">Player 1 chose Paper.
 Player 2 chose Rock.
 Player 1 wins!</pre>
 <p>Hint: To determine the winner, first check if it’s a tie, then check if player 1 wins. If neither

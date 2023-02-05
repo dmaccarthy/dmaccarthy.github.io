@@ -42,7 +42,7 @@
 
 <ol class="Assign">
 <li><p>To create a linked list in Python 3, each object in the list needs to be “attached” to a pointer that references the next item (“node”) in the list. This can be done using the class below:</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># A portion of program 'dds1_ll1.py'...</span>
 
 class ListNode:
@@ -55,7 +55,7 @@ class ListNode:
         return "<ListNode: {}>".format(str(self.data))</pre>
 
 <p>Complete program <code>dds1_ll1.py</code> by creating a second class, <code>LinkedList</code>, to represent the list as a whole. The main program below should produce the output indicated by the comments.</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Another portion of program 'dds1_ll1.py'...</span>
 
 myList = LinkedList(1, True, "three", 4.0)
@@ -75,7 +75,7 @@ print(myList.last)   <span class="Comment"># &lt;ListNode: 4.0&gt;</span></pre>
 <li>Duplicate your program as <code>dds1_ll2.py</code>. Add a <code>__getitem__</code> method
     to enable access to the <code>ListNode</code> instances using their index. Also add an
     <code>index</code> method that returns the index of a <code>ListNode</code> instance or the encapsulated data object.
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># A portion of program 'dds1_ll2.py'...</span>
 
 myList = LinkedList(1, True, "three", 4.0)
@@ -87,7 +87,7 @@ print(myList.index(4.0))   <span class="Comment"># 3</span></pre>
 <p>By adding the <code>__getitem__</code> and <code>__len__</code> methods, you have made
     your <code>LinkedList</code> instances <em>iterable</em>. Python understands how to use
     a <code>for</code> loop with linked lists...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 for node in myList:
     print(node.data)</pre>
 
@@ -99,7 +99,7 @@ for node in myList:
     efficiently. This method should take two optional arguments specifying the starting and
     ending index. In keeping with convention, the ending index is not included in the
     iteration.</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 for node in myList.traverse(1, 3):
     print(node)</pre>
 
@@ -108,5 +108,5 @@ for node in myList.traverse(1, 3):
     argument default to <code>None</code> (indicating the end of the list). Finally, add the
     following statement to your class definition to make Python use the <code>traverse</code>
     method (with its default arguments) as the default iterator...</p>
-<pre class="Code" contenteditable="true" data-mime="text">__iter__ = traverse</pre>
+<pre class="Code" contenteditable="true" data-echo="copy">__iter__ = traverse</pre>
 </li>

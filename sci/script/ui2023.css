@@ -7,6 +7,7 @@ body {
 .Left {text-align:left}
 .Center, section.Image, section.IFrame {text-align:center}
 .Red {color:red}
+.Green {color:green}
 .Blue {color:blue}
 .Black {color:black}
 .Comment {color:#666}
@@ -152,4 +153,9 @@ p.Teacher {
 .Caption {
     font-size:75%;
     margin-bottom:1.5em;
+}
+
+.Copyright {
+    text-align:center;
+    font-size:75%;
 }

@@ -26,7 +26,7 @@
 <p>Below is a Python program that uses the <code>Temperature</code> class described by the class diagram above to convert a
     temperature from Celsius to Fahrenheit degrees. Note that the <code>Temperature</code> class is not part of the Python
     standard library and that the program below will not work until we have written a definition for this class...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 1...</span>
 
 <span class="Blue">temp = Temperature()</span>        <span class="Comment"># Create a Temperature instance</span>
@@ -37,7 +37,7 @@ print(temp.Fahrenheit())    <span class="Comment"># Print the temperature in Fah
     <code>setCelsius</code> and <code>Fahrenheit</code>. The class definition must be placed <em>before</em> the main program,
     because Python cannot create a <code>Temperature</code> instance before the class has been defined.
     Also notice that the two method definitions below are <em>indented</em> to show that they are part of the class definition...</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 1 (continued)...</span>
 
 class Temperature:
@@ -71,7 +71,7 @@ class Temperature:
     for Celsius units simply record or return the data without performing any unit conversions. The Fahrenheit and Kelvin
     modifiers convert the temperature to Celsius before recording it and the accessors convert the temperature back from
     Celsius before returning it.</p>
-<pre class="Code" contenteditable="true" data-mime="text">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 1 (continued)...</span>
 
     def setKelvin (self, degK=0.0):

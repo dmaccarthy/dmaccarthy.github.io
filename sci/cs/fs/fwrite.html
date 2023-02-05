@@ -1,7 +1,7 @@
 <h3>Writing Text Files</h3>
 
 <p>Python’s <code>open</code> function defaults to read-only mode: it assumes that the file exists and that you want to access but not modify the data.  To create a new text file, you must open the file in <b class="Red">write mode</b>. To do this, add the argument <code>"w"</code> (write mode) after the file path when calling open...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 1...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 1...</span>
 
 from os.path import exists
 
@@ -17,7 +17,7 @@ else:
 
 <p>Opening a file in write mode will erase all data in the file if the file already exists. You can use the <code>os.path.exists</code> function to check whether or not the file exists before attempting to open it in write mode. Use the <code>write</code> method to add data to the file.</p>
 <p>Python also provides an <b class="Red">append</b> mode. This prevents the data in the file from being erased; new data is always appended to the end of the existing file...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 2...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 2...</span>
 
 data = "Line 4", "Line 5", "Line 6"
 filename= "myData.txt"
@@ -49,7 +49,7 @@ email:janedoe@gmail.com</pre>
 <p>XML and its relative HTML are the topics of their own course in the Computing Science program. Here, we will focus only on JSON.</p>
 <p>“Javascript Object Notation” gets its name from the Javascript programming language upon which it is based. This notation is very similar to Python dictionaries.  The Python standard library includes a <code>json</code> module that includes functions for saving and loading dictionaries as JSON files. (You can also save non-dictionary data but the resulting file may not be compatible with other JSON parsers.)</p>
 <p>The example below places the Contacts data in a dictionary and calls the function <code>json.dump</code> to save the JSON-encoded data as a text file...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 3...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 3...</span>
 
 import json
 

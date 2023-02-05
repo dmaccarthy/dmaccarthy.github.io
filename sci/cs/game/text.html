@@ -1,5 +1,5 @@
 <p>In making animations using <code>sc8pr</code>, we have so far seen how to use the <code>Image</code>, <code>Sprite</code>, and <code>Sketch</code> functions. Here is an example from an earlier assignment.</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment">"Assignment 1, Example 3 - Sprites"</span>
 
 from sc8pr import Sketch, Image
@@ -17,7 +17,7 @@ def setup(sk):
 
 <h3>Text</h3><div class="Note">
 <p>The example below shows you how to add text to your sketch.</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment">"Example 1 - Text"</span>
 
 from sc8pr import Sketch
@@ -28,7 +28,7 @@ def setup(sk):
     sk.bg ="yellow"
     sk += <span class="Blue">Text</span>("Hello, world!").config(pos=sk.center,
         font=<span class="Blue">Font.mono()</span>, fontSize=48, fontStyle=<span class="Blue">BOLD</span>,
-        bg = "red", color="white", padding=6)
+        bg="red", color="white", padding=6)
 
 <span class="Comment"># Play the sketch</span>
 Sketch().play()</pre>
@@ -38,7 +38,7 @@ Sketch().play()</pre>
 <p>The <code>fontStyle</code> keyword can be <code>BOLD</code>, <code>ITALIC</code>, or <code>BOLD+ITALIC</code>. This keyword only applies to system fonts, not to fonts loaded from a file.</p>
 <p>The text data in this example is the string <code>"Hello, world!"</code>. You can create text in your sketch from any type that Python can convert to a string, including <code>int</code> and <code>float</code> values. This can be useful for games that need to display a score, timer, or other numerical data. You can use the text <code>data</code> attribute to access and modify what is displayed.</p>
 <p>In the example below, we have attached an <code>ondraw</code> function to the text object. This function changes the number being displayed to a random integer each time the text is drawn to the animation. Note that we have slowed the animation down from 60 frames per second to only 4 frames per second; otherwise the text would change too quickly to see.</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment">"Example 2 - Updating the Text"</span>
 
 from random import randint
@@ -62,7 +62,7 @@ Sketch().play()</pre>
 
 <h3>Text Inputs</h3><div class="Note">
 <p>You might want to make the text you display in your sketch editable by the user. To do this, use the <code>TextInput</code> function instead of <code>Text</code>. The <code>TextInput</code> function takes two arguments: the initial data to display, and a prompt to be displayed when there is no data...</p>
-<pre class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment">"Example 3 - Text Inputs"</span>
 
 from sc8pr import Sketch

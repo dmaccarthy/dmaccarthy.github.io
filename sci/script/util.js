@@ -101,18 +101,20 @@ function isAfter(due, date) {
 }
 
 function pre_data(e) {
-    $(e ? e : "body").find("pre[data-mime]").click(function(ev) {
+    $(e ? e : "body").find("pre[data-echo]").click(function(ev) {
         if (ev.altKey) {
             let e = $(this);
-            let mime = e.attr("data-mime");
-            let text = e.text();
-            if (mime != "text") {
-                text = `data:${mime};charset=utf-8,${encodeURIComponent(text)}`;
+            let echo = e.attr("data-echo"), text = e.text();
+            if (echo == "copy") {
+                e = $("<textarea>").text(text).appendTo($("body"));
+                e.select();
+                document.execCommand("copy");
+                e.remove();    
             }
-            e = $("<textarea>").text(text).appendTo($("body"));
-            e.select();
-            document.execCommand("copy");
-            e.remove();
+            else {
+                text = encodeURIComponent(text);
+                window.open(`https://webapp.davidmaccarthy.repl.co/echo.${echo}?data=${text}`);                
+            }
         }
     });
 }

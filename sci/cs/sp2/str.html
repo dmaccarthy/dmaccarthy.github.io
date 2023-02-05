@@ -3,7 +3,7 @@
 	quote character may be used; however, you cannot use one type of quote to start the
 	string literal and the other quote character to end the string.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's17_ex1.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's17_ex1.py'</span>
 
 print("Hi there!")
 print('Greetings!')
@@ -14,7 +14,7 @@ print("This is bad.')    <span class="Comment"># Syntax Error!</span></pre>
 	characters to start and end the string. String literals expressed this way may extend
 	over multiple lines.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's17_ex2.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's17_ex2.py'</span>
 
 print("""This string
    takes up
@@ -27,14 +27,14 @@ print("""This string
 	single quotes to start and end the string literal, you cannot include the single quote
 	character (which also serves as the apostrophe) within the string data.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's17_ex3.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's17_ex3.py'</span>
 
 print('That's mine!')   <span class="Comment"># Syntax Error!</span></pre>
 
 <p>Normally, you would use double quotes to enclose a string that contains a single quote
 	character, and single quotes to enclose a string that contains double quotes.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's17_ex4.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's17_ex4.py'</span>
 
 print("That's mine!")
 print('"Sabre Pride"')</pre>
@@ -46,7 +46,7 @@ print('"Sabre Pride"')</pre>
 <p>In the example below, the backslash character indicates that the single quote immediately
 	following it is part of the string data and does not mark the end of the string literal.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's17_ex5.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's17_ex5.py'</span>
 
 print('She said, "That\'s mine!"')</pre>
 
@@ -54,10 +54,10 @@ print('She said, "That\'s mine!"')</pre>
 	feed or LF) character and <code>\t</code> which represents a tab character. These are
 	demonstrated in the first line below.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's17_ex6.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's17_ex6.py'</span>
 
 print('Line 1\nLine 2\n\tLine 3')
-print('\u00A9 2019')
+print('\u00A9 2023')
 print('C:\\Python38\\python.exe')</pre>
 
 <p>You can use escape sequences to include Unicode characters in string data even when
@@ -78,7 +78,7 @@ print('C:\\Python38\\python.exe')</pre>
 <h3>Operators</h3><div class="Note">
 <p>The <code>+</code> operator can be used to join two or more strings to make a new, larger string.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's17_ex7.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's17_ex7.py'</span>
 
 str1 = 'Hello, '
 str2 = 'world!'
@@ -87,21 +87,21 @@ print(str3)          <span class="Comment"># Hello, world!</span></pre>
 
 <p>The <code>*</code> operator can be used to repeat a string several times.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's17_ex8.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's17_ex8.py'</span>
 
 print(3 * 'Hi!')     <span class="Comment"># Hi!Hi!Hi!</pre>
 
 <p>The <code>in</code> operator can be used to check if a string contains a specific
 	letter or sequence of letters.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's17_ex9.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's17_ex9.py'</span>
 
 print('a' in 'Hi!')   <span class="Comment"># False</span></pre>
 
-<p>Python has a len (length) function that will return the number
+<p>Python has a <code>len</code> (length) function that will return the number
 	of characters in a string.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's17_ex10.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's17_ex10.py'</span>
 
 print(len("Hi there!"))   <span class="Comment"># 9</span></pre>
 </div>
@@ -117,7 +117,7 @@ print(len("Hi there!"))   <span class="Comment"># 9</span></pre>
 	To select a single character from a string, the string expression is followed by square
 	brackets enclosing the index to be selected.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's17_ex11.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's17_ex11.py'</span>
 
 sal = "Salisbury Composite High School"
 print(sal[0])        <span class="Comment"># S</span>
@@ -132,7 +132,7 @@ print(sal[-8])       <span class="Comment"># h</span></pre>
 	creates a string from the characters with indices 10 through 13 with the index 14 not
 	included.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's17_ex12.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's17_ex12.py'</span>
 
 sal = "Salisbury Composite High School"
 print(sal[10:14])    <span class="Comment"># Comp</span></pre>
@@ -141,7 +141,7 @@ print(sal[10:14])    <span class="Comment"># Comp</span></pre>
 	start from the beginning of the string. If you include the colon but omit the ending
 	index, Python assumes you want to go to the end of the string.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's17_ex13.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's17_ex13.py'</span>
 
 sal = "Salisbury Composite High School"
 print(sal[:3])       <span class="Comment"># Sal</span>
@@ -158,7 +158,7 @@ print(sal[-6:])      <span class="Comment"># School</span></pre>
 	the <code>str.format</code> method we used for formatting output. Rather than passing
 	the string as an argument, type the string or its variable followed by <code>.find</code>.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's17_ex14.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's17_ex14.py'</span>
 
 sal = "Salisbury Composite High School"
 index = sal.find("is")
@@ -175,7 +175,7 @@ print(index)                 <span class="Comment"># 3</span></pre>
 
 <p>Here are some examples.</p>
 
-<pre data-mime="text" class="Code"><span class="Comment"># Program 's17_ex15.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 's17_ex15.py'</span>
 
 sal = "Salisbury Composite High School"
 print(sal.upper())

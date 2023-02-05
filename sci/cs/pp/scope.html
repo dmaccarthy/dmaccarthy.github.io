@@ -6,7 +6,7 @@
     within the function where they are defined. In the example below, the last line raises an error
     because there is no variable <code>c</code> accessible to the main program.</p>
 
-<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 1...</span>
+<pre class="Code" contenteditable="true" data-echo="copy"><span class="Comment"># Example 1...</span>
 
 from math import sqrt
 
@@ -27,7 +27,7 @@ print(c)  <span class="Comment"># NameError</span>
     accessed from anywhere in the program. In the example below, the <code>pythag_hyp</code> function
     accesses the global names <code>x</code>, and <code>y</code>.</p>
 
-<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 2...</span>
+<pre class="Code" contenteditable="true" data-echo="copy"><span class="Comment"># Example 2...</span>
 
 from math import sqrt
 
@@ -44,7 +44,7 @@ print(z)  <span class="Comment"># 5.0</span>
 </pre>
 
 <p>The example below is a bit tricky! The main program defines a variable name <code>a</code> that has global scope, and refers to the value 1. The <code>test</code> function assigns the value 2 to <code>a</code> and then prints it. After the test function is complete, the main program prints the value of <code>a</code>. The value that is printed will be 1!</p>
-<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 3...</span>
+<pre class="Code" contenteditable="true" data-echo="copy"><span class="Comment"># Example 3...</span>
 
 def test():
     a = 2
@@ -62,7 +62,7 @@ print(a)     <span class="Comment"># 1</span>
 <p>You can declare the name <code>a</code> as global before using it within the <code>test</code>
     function. This prevents Python from treating it as a separate local variable.</p>
 
-<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 4...</span>
+<pre class="Code" contenteditable="true" data-echo="copy"><span class="Comment"># Example 4...</span>
 
 def test():
     <span class="Blue">global a</span>
@@ -80,7 +80,7 @@ print(a)     <span class="Comment"># 2</span>
     that make up the main program should be placed inside a function definition (often called
     <code>main</code>) to make the variables have local scope.</p>
 
-<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 5...</span>
+<pre class="Code" contenteditable="true" data-echo="copy"><span class="Comment"># Example 5...</span>
 
 from math import sqrt
 
@@ -104,7 +104,7 @@ main()
     so that they are easily distinguishable from variables.</p>
 <p>The example below performs some chemistry calculations that use three chemical constants. Constant definitions can be placed in the program after any <code>import</code> statements and before any function definitions.</p>
 
-<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 6...</span>
+<pre class="Code" contenteditable="true" data-echo="copy"><span class="Comment"># Example 6...</span>
 
 ABSOLUTE_ZERO = -273.15
 IDEAL_GAS_CONST = 8.314

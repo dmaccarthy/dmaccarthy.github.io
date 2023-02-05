@@ -19,7 +19,7 @@ tr:nth-child(1) > th:nth-child(1) {border:none; background-color:#ffffff00}
     (The complete list of type codes is available from the <a target="Py" href="https://docs.python.org/3.6/library/array.html">Python
     documentation</a>.) The second argument is an iterable (<code>list</code>, <code>tuple</code>, generator, etc.) from which
     the <code>array</code> is to be created.
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 1...</span>
 
 from array import array
@@ -61,7 +61,7 @@ print(fibArray.itemsize) <span class="Comment"># Probably 8</span></pre>
 </table>
 
 <p>We could create a list to represent each column, and then a list of columns to represent the entire table...</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 2...</span>
 
 col0 = [1, 2, 3, 4]
@@ -70,12 +70,12 @@ col2 = [9, 10, 11, 12]
 table1 = [col0, col1, col2]</pre>
 
 <p>To access an item in the table, we use two indices: one for the column and one for the row.</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 print(table1[1][0])  <span class="Comment"># Column 1, Row 0 = 5</span>
 print(table1[0][1])  <span class="Comment"># Column 0, Row 1 = 2</span></pre>
 
 <p>Alternatively, we could create the table by row rather than column...</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment"># Example 3...</span>
 
 row0 = [1, 5, 9]
@@ -87,7 +87,7 @@ print(table2[1][0])  <span class="Comment"># Row 1, Column 0 = 2</span>
 print(table2[0][1])  <span class="Comment"># Row 0, Column 1 = 5</span></pre>
 
 <p>Note that the <em>order</em> of the indices depends on whether the 2D list is created by row or column. In both of the previous examples, we could create the 2D list in one step rather than creating separate variables for each column or row...</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre class="Code" contenteditable="true" data-echo="copy">
 table1 = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
 table2 = [[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]</pre>
 

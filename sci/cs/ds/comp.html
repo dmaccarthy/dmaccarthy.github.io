@@ -1,6 +1,6 @@
 <h3>List Comprehensions</h3><div class="Note">
 <p>Python includes a feature for making lists by performing the same operation on a sequence of objects. Suppose that we have a sequence of ordered pairs representing points on a drawing (e.g. the alien spacecraft locations in a space invaders type game).  We need to calculate the distance between each point and some other point (e.g. the player’s ship).  We might write the following...</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-echo="copy" class="Code" contenteditable="true">
 <span class="Comment"># Example 1...</span>
 
 from math import hypot
@@ -24,7 +24,7 @@ main()</pre>
 
 <p>In the <code>main</code> procedure above, we created an empty list, <code>distanceList</code>, and then used a <code>for</code> loop to iterate through the sequence of invader ships, appending each result to the list.
     Below is an abbreviated version of the procedure that uses a list comprehension (shown in blue)...</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-echo="copy" class="Code" contenteditable="true">
 <span class="Comment"># Example 2...</span>
 
 def main():
@@ -34,7 +34,7 @@ def main():
     print(distanceList)      <span class="Comment"># [598, 542, 486, 519, 463]</span></pre>
 
 <p>The list comprehension shortens the <code>for</code> loop into a single statement, while automatically assembling the results into a list. We do not need to initialize the list or append items explicitly.  The syntax for a list comprehension is...</p>
-<pre data-mime="text" class="IO">[&lt;Expression&gt; for &lt;Item&gt; in &lt;Sequence&gt;]</pre>
+<pre class="IO">[&lt;Expression&gt; for &lt;Item&gt; in &lt;Sequence&gt;]</pre>
 <p>...where <code>&lt;Sequence&gt;</code> is any <code>list</code>, <code>tuple</code>, string, or other iterable object;
     <code>&lt;Item&gt;</code> is the local variable name you want to use for the items in the sequence;
     and <code>&lt;Expression&gt;</code> is the expression to be evaluated and appended to the <code>list</code> for each item.</p>
@@ -43,7 +43,7 @@ def main():
 <h3>Conditional Comprehensions</h3><div class="Note">
 <p>Suppose in the previous example, we wanted to obtain a <code>list</code> of invaders that were within
     a certain distance of the player’s ship. We could do this with a <em>conditional</em> list comprehension.</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-echo="copy" class="Code" contenteditable="true">
 <span class="Comment"># Example 3...</span>
 
 def main():
@@ -57,12 +57,12 @@ def main():
     satisfy the condition <code>distance(ship, player) < 500</code>. The result of this comprehension will be a <code>list</code>
     containing the two invader ships that are within 500 pixels of the player’s ship.</p>
 <p>The general syntax for a conditional list comprehension is...</p>
-<pre data-mime="text" class="IO">[&lt;Expression&gt; for &lt;Item&gt; in &lt;Sequence&gt; if &lt;Condition&gt;]</pre>
+<pre class="IO">[&lt;Expression&gt; for &lt;Item&gt; in &lt;Sequence&gt; if &lt;Condition&gt;]</pre>
 </div>
 
 <h3>Nested Comprehensions</h3><div class="Note">
 <p>Python also supports nested <code>for...in</code> clauses within list comprehensions...</p>
-<pre data-mime="text" class="Code" contenteditable="true" data-mime="text/plain">
+<pre data-echo="copy" class="Code" contenteditable="true">
 <span class="Comment"># Example 4...</span>
 
 suits = "Hearts", "Diamonds", "Clubs", "Spades"

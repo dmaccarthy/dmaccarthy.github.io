@@ -3,7 +3,7 @@
 
 <h3>“Reading” a Text File</h3>
 <p>A <b class="Red">text file</b> is a file containing data encoded using a text encoding scheme such as ASCII or UTF-8. That is, the sequence of binary data (0’s and 1’s) contained in the file represents a sequence of characters.  Python provides a built-in function named <code>open</code> that you can use to access text files...</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 1...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 1...</span>
 
 text = open("myData.txt", encoding="UTF-8")
 for line in text:
@@ -16,7 +16,7 @@ text.close()</pre>
 
 <h3>Python’s with-as Statement</h3>
 <p>Python provides a special <code>with-as</code> statement for objects (like files) that have a “clean-up” procedure.  In the case of file instances, the clean-up procedure is to close the file.</p>
-<pre class="Code" data-mime="text"><span class="Comment"># Example 2...</span>
+<pre class="Code" data-echo="copy"><span class="Comment"># Example 2...</span>
 
 with open("myData.txt", encoding="UTF-8") as text:
     for line in text:
@@ -30,7 +30,7 @@ with open("myData.txt", encoding="UTF-8") as text:
 Sports Team#Toronto Raptors
 Canadian City#Halifax, Nova Scotia</pre>
 <p>The program would need to read the file contents, separate each line into a (clue, answer) tuple or list, and return a list. The text input above should result in the list...</p>
-<pre class="Code" data-mime="text">[("80's Movie", "Raiders of the Lost Ark"),
+<pre class="Code" data-echo="copy">[("80's Movie", "Raiders of the Lost Ark"),
     ("Sports Team", "Toronto Raptors"),
     ("Canadian City", "Halifax, Nova Scotia")]</pre>
 <ol>

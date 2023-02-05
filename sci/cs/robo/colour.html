@@ -5,7 +5,7 @@
 <p>You can access the colour data using <code>robot.sensorFront</code> and <code>robot.sensorDown</code>.
     The colour sensor data is only updated when your <code>brain</code> function requests it,
     so you must call the <code>robot.updateSensors</code> function before checking the sensor colours.</p>
-<pre data-mime="text" class="Code"><span class="Comment"># Program 'r04_ex1.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r04_ex1.py'</span>
 
 from sc8pr.robot.arena import Arena, quilt
 
@@ -79,7 +79,7 @@ Arena.run(brain, pattern=quilt)</pre>
 <p>In the example below, the keyword <code>return</code> is a Python instruction that sends a result
     from a function back to the function or program that called it. In this example the result will be
     either <code>True</code> (the colour is blue) or <code>False</code> (the colour is not blue.)</p>
-<pre data-mime="text" class="Code"><span class="Comment"># Program 'r04_ex2.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r04_ex2.py'</span>
 
 from sc8pr.robot.arena import Arena, quilt
 from sc8pr.misc.hsv import hsvBox
@@ -105,7 +105,7 @@ Arena.run(brain, pattern=quilt)</pre>
     called <code>isGrey</code> that will detect when the robot reaches the grey warning track. Modify the
     <code>brain</code> so that the robot turns by a random angle (between 10° and 120°) when it gets to the
     warning track instead of running into the wall. The robot should continue moving forward after turning.
-<pre data-mime="text" class="Code"><span class="Comment"># Program 'r04_arena1.py'</span>
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r04_arena1.py'</span>
 
 from sc8pr.robot.arena import Arena, quilt
 

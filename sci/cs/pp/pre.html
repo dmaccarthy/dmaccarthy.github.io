@@ -2,11 +2,11 @@
 <div class="Note">
 
 <p>The <code>resource.wholeNum</code> module contains a function <code>isPrime</code> that tests whether a number is prime or not. A prime number is a number that has no factors other than 1 and itself.</p>
-<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 1...</span>
+<pre class="Code" contenteditable="true" data-echo="copy"><span class="Comment"># Example 1...</span>
 
 from resource.wholeNum import isPrime
 
-print(isPrime(6))     </span># False</span>
+print(isPrime(6))     <span class="Comment"># False</span>
 print(isPrime(7))     <span class="Comment"># True</span>
 print(isPrime(-7))    <span class="Comment"># False</span>
 print(isPrime("Hi"))  <span class="Comment"># TypeError</span></pre>
@@ -22,7 +22,7 @@ print(isPrime("Hi"))  <span class="Comment"># TypeError</span></pre>
 <p>In <u>statically typed</u> programming languages such as Java or C/C++, this is not an issue since the class of each argument must be declared and the compiler or interpreter only permits arguments of the correct class.
     In <u>dynamically typed</u> languages like Python, it is possible to pass a non-integer object to a function that is expecting an integer.</p>
 <p>Python has an <code>assert</code> statement that can be used for type checking. The function defined below will only accept <code>int</code> instances as an argument and will raise an <code>AssertionError</code> exception if any other class of object is passed...</p>
-<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 2...</span>
+<pre class="Code" contenteditable="true" data-echo="copy"><span class="Comment"># Example 2...</span>
 
 def intOnly(num):
     assert type(num) is int, "Argument must be an integer"
@@ -32,15 +32,22 @@ intOnly("Bad data")</pre>
 <p>The error message provided at the end of the <code>assert</code> statement is optional.</p>
 <p>The <code>assert</code> statement can be used to check any precondition that can be expressed as a Boolean (<code>True</code> or <code>False</code>) expression, not just that the arguments have the correct class.
     For example, a function may require not only that an argument is an integer but that it is within a specific range of values...</p>
-<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 3...</span>
+<pre class="Code" contenteditable="true" data-echo="copy"><span class="Comment"># Example 3...</span>
 
 def recentYear(year):
     assert type(year) is int, "Argument must be an integer"
-    assert year >= 2015 and year <= 2019, "Invalid year!"
-    print("{} is a good year.".format(year))
+    assert year >= <span class="LastYear5"></span> and year <= <span class="LastYear"></span>, "Invalid year!"
+    print(f"{year} is a good year.")
 
-recentYear(2018)
+recentYear(<span class="LastYear2"></span>)
 recentYear(1996)</pre>
+<script>
+
+$(".LastYear").html(new Date().getYear() + 1899);
+$(".LastYear5").html(new Date().getYear() + 1894);
+$(".LastYear2").html(new Date().getYear() + 1897);
+    
+</script>
 
 <p>The <code>assert</code> statement serves to help document your preconditions and to help debug your program by making it easier to identify errors resulting from arguments (and other circumstances) that violate those preconditions.
     It is expected that once you have finished debugging your program and are ready to deploy it, the <code>assert</code> statements will actually have no effect on your program;
@@ -52,7 +59,7 @@ recentYear(1996)</pre>
 <div class="Note">
 <p><b class="Red">Postconditions</b> are statements about what is guaranteed to be true at the end of a function, provided that the function’s preconditions were satisfied.
     In Python programs, the <code>assert</code> statement is used to declare postconditions as well as preconditions.</p>
-<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 4...</span>
+<pre class="Code" contenteditable="true" data-echo="copy"><span class="Comment"># Example 4...</span>
 
 def sortThree(num1, num2, num3):
     <span class="Comment">"Sort three numbers from lowest to highest"</span>

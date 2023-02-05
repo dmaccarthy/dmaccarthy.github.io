@@ -19,7 +19,7 @@
     from the Python standard library and from third-party packages such as <code>pygame</code> and <code>sc8pr</code>.
     You can also define your own custom functions using the <code>def</code> statement.</p>
 
-<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 1...</span>
+<pre class="Code" contenteditable="true" data-echo="copy"><span class="Comment"># Example 1...</span>
 
 from random import randint
 
@@ -45,7 +45,7 @@ for flip in range(10):
     This name is followed by parentheses and a colon. The rules for naming functions are the
     same as for variables.</p>
 
-<pre class="Code" contenteditable="true" data-mime="text">def coinFlip():</pre>
+<pre class="Code" contenteditable="true" data-echo="copy">def coinFlip():</pre>
 
 <p>In this example, the parentheses are empty because the function can perform its task without any additional information.</p>
 <p>The instructions that make up the function are <em>indented</em>.
@@ -53,11 +53,11 @@ for flip in range(10):
 <p>The next line after the <code>def</code> statement is an optional <u>documentation string</u> or “docstring” that describes what the function’s task is.
     If the docstring does not fit on a single line, you can use triple quotes (<code>"""</code>) to create a multi-line string.</p>
 
-<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment">"Flip a coin"</span></pre>
+<pre class="Code" contenteditable="true" data-echo="copy"><span class="Comment">"Flip a coin"</span></pre>
 
 <p>After the docstring come the instructions that we want the function to perform.
     Any variables that are created within the function are <u>local</u>: these variables belong to the function and cannot be accessed by other functions or by the main program, even if using a variable that has the same name.</p>
-<pre class="Code" contenteditable="true" data-mime="text">if randint(0, 1):
+<pre class="Code" contenteditable="true" data-echo="copy">if randint(0, 1):
     coin = "Heads"
 else:
     coin = "Tails"
@@ -66,7 +66,7 @@ else:
 <p>If the function produces a result, in this case a string containing either <code>"Heads"</code>
     or <code>"Tails"</code> represented by the variable name <code>coin</code>, the last line
     of the function is a <code>return</code> statement, which sends the result back to the main program.</p>
-<pre class="Code" contenteditable="true" data-mime="text">return coin</pre>
+<pre class="Code" contenteditable="true" data-echo="copy">return coin</pre>
 
 <p>This allows the result to be printed, assigned to a variable that the main program can access, or otherwise processed.</p>
 <p>Once the function definition is complete, it is important to <em>unindent</em> the next line of code so that the Python interpreter knows the function definition is done.</p>
@@ -78,14 +78,14 @@ else:
     because the <code>coinFlip</code> function does not require any data on which to perform its task.</p>
 <p>Sometimes functions <em>do</em> require additional data; for example, the <code>sqrt</code> function needs to be provided with a number for which the square root is to be calculated...</p>
 
-<pre class="Code" contenteditable="true" data-mime="text">x = sqrt(20.0) <span class="Comment"># 20.0 is the argument passed to sqrt</span></pre>
+<pre class="Code" contenteditable="true" data-echo="copy">x = sqrt(20.0) <span class="Comment"># 20.0 is the argument passed to sqrt</span></pre>
 
 <p>To define a function that receives data when it is called, you can assign variable names
     to the data within the parentheses. These variable names are called the function’s <b class="Red">parameters</b>
     and the data that is passed when the function is called are called <b class="Red">arguments</b>.</p>
 <p>In the example below, the functions <code>circumference</code> and <code>area</code> are tasked with calculating the circumference and area of a circle using the formulas \(C = 2\pi r\) and \(A = \pi r^2\). To perform these calculations, the functions must be provided with the radius, \(r\). The functions are both defined with a parameter named <code class="Blue">radius</code>.</p>
 
-<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 2...</span>
+<pre class="Code" contenteditable="true" data-echo="copy"><span class="Comment"># Example 2...</span>
 
 from math import pi
 
@@ -106,8 +106,8 @@ def main():
     A = area(<span class="Blue">r</span>)
 
     <span class="Comment"># Output...</span>
-    print("Circumference = {:.2f}".format(C))
-    print("Area = {:.2f}".format(A))
+    print(f"Circumference = {C:.2f}")
+    print(f"Area = {A:.2f}")
 
 main()
 </pre>
@@ -121,7 +121,7 @@ main()
     <code>faces</code> specifies how many faces there are on each die.
     The function definition gives a default value of 1 for <code>dice</code> and 6 for <code>faces</code>.</p>
 
-<pre class="Code" contenteditable="true" data-mime="text"><span class="Comment"># Example 3...</span>
+<pre class="Code" contenteditable="true" data-echo="copy"><span class="Comment"># Example 3...</span>
 
 from random import randint
 

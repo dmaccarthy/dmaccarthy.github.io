@@ -7,7 +7,7 @@ Bad Guesses: EJDI
 Guess a Letter? <span class="Blue">R</span></pre>
 
 The game keeps asking the player to guess a letter, and ends when the player guesses the puzzle correctly or when the number of bad guesses exceeds the number allowed. Using a top-down approach, let’s start by writing the <em>main function</em>. First, we need to initialize the relevant variables...
-<pre class="Code" contenteditable="true" data-mime="text">clue, answer = puzzle()
+<pre class="Code" contenteditable="true" data-echo="copy">clue, answer = puzzle()
 guesses = ""
 wrong = 0
 display = hideLetters(answer, guesses)
@@ -20,7 +20,7 @@ display = hideLetters(answer, guesses)
 <p>This display string will change whenever the player makes a correct guess. We can assume a function <code>hideLetters</code> which will create the appropriate string for us; we can go back and write this function later.</p>
 <p>The next part of the program is the guessing loop...</p>
 
-<pre class="Code" contenteditable="true" data-mime="text">while wrong < WRONG_LOSE and "*" in display:
+<pre class="Code" contenteditable="true" data-echo="copy">while wrong < WRONG_LOSE and "*" in display:
     letter = askPlayer(clue, display, guesses, wrong)
     guesses += letter
     if letter in answer:
@@ -34,7 +34,7 @@ display = hideLetters(answer, guesses)
     <code>hideLetters</code> again. If the guess is incorrect, the value of the variable <code>wrong</code> will increase by 1. The guessing loop continues until the number of wrong guesses gets too big, or until there are no more missing letters to guess.</p>
 <p>Once the guessing loop is finished, the program will print the outcome of the game...</p>
 
-<pre class="Code" contenteditable="true" data-mime="text">if wrong == WRONG_LOSE:
+<pre class="Code" contenteditable="true" data-echo="copy">if wrong == WRONG_LOSE:
     print("You lose!")
 else:
     print("You win!")

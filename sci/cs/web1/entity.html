@@ -1,14 +1,14 @@
 <h3>XML Entities</h3><div class="Note">
 <p>Suppose we wanted to encode the following math statements as an XML document...</p>
 
-<pre class="Code Black" contenteditable="true" data-mime="text/plain">
+<pre class="IO">
 x = 7
 y = 5
 y &lt; x</pre>
 
 <p>We might create a document something like this...</p>
 
-<pre class="Code" contenteditable="true" data-mime="text/xml">
+<pre class="Code" contenteditable="true" data-echo="xml">
 &lt;Math&gt;
   &lt;Statement&gt;x = 7&lt;/Statement&gt;
   &lt;Statement&gt;y = 5&lt;/Statement&gt;
@@ -21,7 +21,7 @@ y &lt; x</pre>
 	tags, these symbols cannot be used in the data, tag names, or attribute names or values. To solve
 	this problem, XML uses the concept of an <em class="Defn">entity</em>. Compare the following XML code...</p>
 
-<pre class="Code" contenteditable="true" data-mime="text/xml">
+<pre class="Code" contenteditable="true" data-echo="xml">
 &lt;Math&gt;
   &lt;Statement&gt;x = 7&lt;/Statement&gt;
   &lt;Statement&gt;y = 5&lt;/Statement&gt;
@@ -40,7 +40,7 @@ y &lt; x</pre>
 	and <code>&gt;</code> symbols solves one problem, it creates another; XML parsers will expect an
 	entity whenever they see an ampersand symbol! Look at the following XML...</p>
 
-<pre class="Code" contenteditable="true" data-mime="text/xml">
+<pre class="Code" contenteditable="true" data-echo="xml">
 &lt;TV_Shows&gt;
     &lt;Show&gt;Law <span class="Blue">&amp;</span> Order: SVU&lt;/Show&gt;
 &lt;/TV_Shows&gt;</pre>
@@ -49,7 +49,7 @@ y &lt; x</pre>
 	no entity in the data, the program will become confused and report an error. We need to use an
 	entity (<code>&amp;amp;</code>) for the ampersand symbol...</p>
 
-<pre class="Code" contenteditable="true" data-mime="text/xml">
+<pre class="Code" contenteditable="true" data-echo="xml">
 &lt;TV_Shows&gt;
     &lt;Show&gt;Law <span class="Blue">&amp;amp;</span> Order: SVU&lt;/Show&gt;
 &lt;/TV_Shows&gt;</pre>
@@ -64,7 +64,7 @@ y &lt; x</pre>
 <p>When you edit an XML document you may notice that a line like the
 	following appears before the root element...</p>
 
-<pre class="Code" contenteditable="true" data-mime="text/xml">
+<pre class="Code" contenteditable="true" data-echo="xml">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;Root/&gt;</pre>
 
@@ -86,7 +86,7 @@ y &lt; x</pre>
 <p>When coding an XML document, you are encouraged to first make a template before entering any actual
 	data...</p>
 
-<pre class="Code" contenteditable="true" data-mime="text/xml">
+<pre class="Code" contenteditable="true" data-echo="xml">
 &lt;Country name="" capital=""&gt;
     &lt;Province name="" capital=""&gt;
         &lt;Municipality name="" type=""&gt;
