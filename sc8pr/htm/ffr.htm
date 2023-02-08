@@ -51,7 +51,11 @@ FFReader.convert("movie.mp4")</pre>
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">__iter__</span>()</code> → <code>generator</code>: Iterates through the frames of the movie yielding a sequence of uncompressed <code>PixelData</code> instances.</p>
 	<p><code><span class="Hilite">estimateFrames</span>()</code> → <code>int</code> or <code>None</code>: Use the movie metadata to estimate the number of frames without actually reading them.</p>
-	<p><code><span class="Hilite">read</span>(n=None)</code> → <code>Video</code>: Read the next <code>n</code> frames of the movie and convert them to a <code>Video</code> instance.</p>
+	<p><code><span class="Hilite">read</span>(n=None, compress=None)</code> → <code>Video</code>: Read frames from the movie and convert them to a <code>Video</code> instance.</p>
+		<div class="Indent">
+		<p><code class="Hilite">n</code>: The number of frames to read; if omitted the method will read all remaining frames.</p>
+		<p><code class="Hilite">compress</code>: A <code>bool</code> specifying whether to compress the data. This will make loading much slower but will use less memory. By default, the frames will remain uncompressed when <code>n ≤ 20</code> but will be compressed otherwise. <b class="Comment">[Added in v2.3]</b></p>
+		</div>
 	<p><code><span class="Hilite">skip</span>(n)</code> → <code>self</code>: Read and discard the next <code>n</code> frames of the movie.</p>
 </div>
 	 
