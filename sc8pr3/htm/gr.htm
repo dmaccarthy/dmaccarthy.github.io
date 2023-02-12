@@ -26,9 +26,14 @@ sk["Hello"] = hello</pre>
 
 <p>You will notice that the alien sprite and the text message are drawn in the upper left corner and are only partly visible on the screen. This happens because we have not provided any information about the positions or sizes of these graphics. Using the local variable <code>hello</code> which refers to the “Hello, world!” text object, we can configure the appearance by adding the following instruction to the <code>setup</code> and by adding the constant <code>TOPLEFT</code> to the imports at the beginning of the program...</p>
 
-<pre class="Code" id="Ex2">hello.config(pos=(8,8), anchor=TOPLEFT, color="red", fontSize=32)</pre>
+<pre class="Code" id="Ex2">hello.config(
+    pos = (8,8),       <span class="Comment"># Set the position of the text</span>
+    anchor = TOPLEFT,  <span class="Comment"># Draw the top left corner of the text at the set position</span>
+    color = "red",     <span class="Comment"># Set the text color</span>
+    fontSize = 32      <span class="Comment"># Set the size of the text</span>
+)</pre>
 
-<p>The <code>config</code> method lets us adjust the properties of the graphics object. All of the arguments are passed by keyword and can be in any order. The <code>color</code> and <code>fontSize</code> keywords should be self-explanatory. The <code>pos</code> keyword is used to set the object’s position. <code>sc8pr</code> uses the <code>pygame</code> coordinate system where <code>(0, 0)</code> refers to the pixel at the top left of the sketch window, and <code>(511, 361)</code> refers to the lower right pixel for our sketch size of 512 × 362.</p>
+<p>All graphics have a <code>config</code> method that lets us adjust the properties of the object. All of the arguments are passed by keyword and can be in any order. <code>sc8pr</code> uses the <code>pygame</code> coordinate system where <code>(0, 0)</code> refers to the pixel at the top left of the sketch window, and <code>(511, 361)</code> refers to the lower right pixel for our sketch size of 512 × 362.</p>
 
 <p>By default, <code>sc8pr</code> graphics are anchored to their center; <code>sc8pr</code> will draw the objects with their centers at the specified coordinates. We have changed the text object’s <code>anchor</code> to <code>TOPLEFT</code> so that the text is drawn with its top left corner at the coordinates <code>(8, 8)</code>. The anchor constants — <code>CENTER</code>, <code>TOP</code>, <code>BOTTOM</code>, <code>LEFT</code>, <code>RIGHT</code>, <code>TOPLEFT</code>, <code>TOPRIGHT</code>, <code>BOTTOMLEFT</code>, <code>BOTTOMRIGHT</code> — must be imported from the <code>sc8pr</code> module.</p>
 

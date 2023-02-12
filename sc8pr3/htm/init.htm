@@ -1,10 +1,10 @@
 ﻿<article><h1><code>sc8pr</code> Module</h1>
 <h4>Classes</h4>
 <div class="Indent">
-	<p><code><a class="Hilite" href="javascript:goNode('graphic')">Graphic</a></code>: Abstract base class for graphics instances which can be added to a sketch.</p>
+	<p><code><a class="Hilite" href="javascript:goNode('graphic')">Graphic</a></code>: Abstract base class for graphics instances that can be added to the sketch or any canvas.</p>
 	<p><code><a class="Hilite" href="javascript:goNode('image')">Image</a> (Graphic)</code>: Class representing static bitmap images.</p>
-	<p><code><a class="Hilite" href="javascript:goNode('canvas')">Canvas</a> (Graphic)</code>: Class for composing images by drawing graphics onto a rectangular background.</p>
-	<p><code><a class="Hilite" href="javascript:goNode('sketch')">Sketch</a> (Canvas)</code>: Class representing the <code>sc8pr</code> application (i.e. the animation that plays in the <code>pygame</code> display window).</p>
+	<p><code><a class="Hilite" href="javascript:goNode('canvas')">Canvas</a> (Graphic)</code>: A rectangular drawing region that can contain other graphics instances (including other canvases.)</p>
+	<p><code><a class="Hilite" href="javascript:goNode('sketch')">Sketch</a> (Canvas)</code>: A top-level canvas that knows how to animate itself using <code>pygame</code>.</p>
 	<p><code><a class="Hilite" href="javascript:goNode('base')">BaseSprite</a> (Graphic)</code>: Abstract base class for various types of sprites.</p>
 	<p><code><a class="Hilite" href="javascript:goNode('render')">Renderable</a> (Graphic)</code>: Abstract base class for graphics that are drawn using a <code>render</code> method.</p>
 	<p><code><a class="Hilite" href="javascript:goNode('pixeldata')">PixelData</a></code>: A class for representing images as raw binary data. Used for data compression and format conversion.</p>

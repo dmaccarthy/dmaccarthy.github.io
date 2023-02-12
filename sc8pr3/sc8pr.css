@@ -11,10 +11,16 @@ body {
 	background-repeat:no-repeat;
 }
 
+body > article {
+	max-width:960px;
+	padding:0.5em;
+	margin:0 auto;
+}
+
+
 #Copyright {font-size:85%}
 #Logo {width:80px}
-article {padding:0.5em}
-button {width:8em}
+button {width:11em}
 
 nav {
 	margin:0;

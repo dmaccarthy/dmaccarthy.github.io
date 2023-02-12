@@ -2,7 +2,7 @@
 
 <p>The program below creates five alien sprites with random spin and velocity...</p>
 
-<pre class="Code">from random import uniform
+<pre class="Code Scroll">from random import uniform
 from sc8pr import Sketch, Image, BOTH
 from sc8pr.sprite import Sprite
 
@@ -11,8 +11,13 @@ def sprite(sk, img, i):
     p = 50 + 100 * i, sk.center[1]
     s = uniform(-2, 2)
     v = uniform(-2, 2), uniform(-2, 2)
-    return Sprite(img).config(pos=p, spin=s, vel=v,
-        height=sk.height/5, bounce=BOTH)
+    return Sprite(img).config(
+        pos = p,
+        spin = s,
+        vel = v,
+        height = sk.height / 5,
+        bounce = BOTH
+    )
 
 def setup(sk):
     <span class="Comment">"Make a sketch with 5 aliens"</span>
@@ -26,7 +31,7 @@ Sketch().play()</pre>
 <p class="Center"><img class="Fit" src="img/overlap.png" alt="Image" style="border:1px solid black"/></p>
 <p>For some programs, you may want the sprites to bounce off of each other as if they were physical objects. To do this, assign each sprite a <code>mass</code> value, and call the <code>physics</code> function from your sketch’s <code>ondraw</code> event handler. The changes are shown below in <span class="Hilite">blue</span>.</p>
 
-<pre class="Code">from random import uniform
+<pre class="Code Scroll">from random import uniform
 from sc8pr import Sketch, Image, BOTH
 from sc8pr.sprite import Sprite, <span class="Hilite">physics</span>
 
@@ -35,8 +40,14 @@ def sprite(sk, img, i):
     p = 50 + 100 * i, sk.center[1]
     s = uniform(-2, 2)
     v = uniform(-2, 2), uniform(-2, 2)
-    return Sprite(img).config(pos=p, spin=s, vel=v,
-        height=sk.height/5, bounce=BOTH, <span class="Hilite">mass=1</span>)
+    return Sprite(img).config(
+        <span class="Hilite">mass = 1</span>,
+        pos = p,
+        spin = s,
+        vel = v,
+        height = sk.height / 5,
+        bounce = BOTH
+    )
 
 def setup(sk):
     <span class="Comment">"Make a sketch with 5 aliens"</span>
@@ -57,7 +68,7 @@ Sketch().play()</pre>
 
 <p>Here is the program with the changes highlighted. Here is the <a href="img/alien_modified.png">modified image</a> to use with the program.</p>
 
-<pre class="Code">from random import uniform
+<pre class="Code Scroll">from random import uniform
 from sc8pr import Sketch, Image, BOTH
 from sc8pr.sprite import Sprite, physics
 
@@ -66,8 +77,14 @@ def sprite(sk, img, i):
     p = 50 + 100 * i, sk.center[1]
     s = uniform(-2, 2)
     v = uniform(-2, 2), uniform(-2, 2)
-    return Sprite(img).config(pos=p, spin=s, vel=v,
-        height=sk.height/5, bounce=BOTH, mass=1)
+    return Sprite(img).config(
+        mass = 1,
+        pos = p,
+        spin = s,
+        vel = v,
+        height = sk.height / 5,
+        bounce = BOTH
+    )
 
 def setup(sk):
     <span class="Comment">"Make a sketch with 5 aliens"</span>

@@ -17,8 +17,13 @@ def miss(sk, ev):
 
 def setup(sk):
     sk.bg = Image("sky.png")
-    alien = Sprite("alien.png").config(pos=sk.center,
-        spin=1, vel=(1,1), width=sk.width/10, bounce=BOTH)
+    alien = Sprite("alien.png").config(
+        pos=sk.center,
+        spin=1,
+        vel=(1,1),
+        width=sk.width/10,
+        bounce=BOTH
+    )
     sk += alien.<span class="Hilite">bind(onclick=hit)</span>
 
 Sketch((512,362)).<span class="Hilite">bind(onclick=miss)</span>.play()</pre>
@@ -29,7 +34,7 @@ Sketch((512,362)).<span class="Hilite">bind(onclick=miss)</span>.play()</pre>
 
 <p>Clicking on a sprite or other graphics object that does not have its own <code>onclick</code> handler will cause the click event to be sent to the sketch’s <code>onclick</code> handler (if any) instead. The event argument has an attribute, <code>ev.target</code> that refers to the graphics object that was actually clicked...</p>
 
-<pre class="Code" id="Ex2">from sc8pr import Sketch, Image, BOTH
+<pre class="Code Scroll" id="Ex2">from sc8pr import Sketch, Image, BOTH
 from sc8pr.sprite import Sprite
 
 def onclick(sk, ev):
@@ -39,8 +44,13 @@ def onclick(sk, ev):
 def setup(sk):
     sk.bg = Image("sky.png")
     sk.bind(onclick)
-    sk["Alien"] = Sprite("alien.png").config(pos=sk.center,
-        spin=1, vel=(1,1), width=sk.width/10, bounce=BOTH)
+    sk["Alien"] = Sprite("alien.png").config(
+        pos=sk.center,
+        spin=1,
+        vel=(1,1),
+        width=sk.width/10,
+        bounce=BOTH
+    )
 
 Sketch((512,362)).play()</pre>
 
