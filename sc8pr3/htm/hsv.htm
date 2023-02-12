@@ -1,0 +1,74 @@
+﻿<article><h1><code>sc8pr.misc.hsv</code> Module</h1>
+
+<p>This module defines functions for using HSVA color and the <code>HSV</code> graphics class for displaying “color picker” widgets as a wheel or matrix.</p>
+
+<p>Usage example:</p>
+<pre class="Code Scroll">from sc8pr import Sketch 
+from sc8pr.misc.hsv import HSV, hsva
+
+def onwheel(sk, ev):
+    <span class="Comment">"Event handler for mouse scroll; change brightness value"</span>
+    if ev.button in (4, 5):
+        gr = sk["Picker"]
+        v = max(0, min(100, gr.val + 9 - 2 * ev.button))
+        if v != gr.val:
+            gr.config(val=v)
+            h, s = sk.bg.hsva[:2]
+            sk.bg = printColor(hsva(h, min(100, s), v))
+
+def onclick(gr, ev):
+    <span class="Comment">"Event handler for button click"</span>
+    if ev.button == 1:   <span class="Comment"># Select background color</span>
+        gr.sketch.bg = printColor(gr.at(ev.pos))
+    elif ev.button == 3: <span class="Comment"># Toggle wheel/matrix</span>
+        gr.config(wheel=not gr.wheel)
+    else: onwheel(gr.sketch, ev)
+
+def printColor(c):
+    <span class="Comment">"Print color to the console in HSV and RGB formats"</span>
+    template = "HSV ({:5.1f}, {:5.1f}, {:5.1f}), RGB ({:3d}, {:3d}, {:3d})"
+    print(template.format(*(c.hsva[:3] + c[:3])))
+    return c
+
+def setup(sk):
+    sk["Picker"] = HSV().config(pos=sk.center, size=(192,192)).bind(onclick)
+
+<span class="Comment"># Main program...</span>
+print("""Left-click to select color.
+Right-click to toggle wheel/matrix.
+Use mouse scroll wheel to adjust brightness.
+""")
+Sketch((288,288)).bind(onclick=onwheel).play("HSV Color")</pre>
+
+<h4>Class</h4>
+<div class="Indent">
+	<p><code class="Hilite">HSV (<a class="Hilite" href="javascript:goNode('render')">Renderable</a>)</code>: Represents a color wheel or color matrix graphic.<p>
+
+	<p>The constructor takes no arguments. The class inherits most of its attributes from <code>Renderable</code>, and defines two additional properties...</p>
+	<div class="Indent">
+	<p><code><span class="Hilite">val</span></code>: The brightness of the image as a value between <code>0</code> and <code>100</code>; default <code>100</code>.</p>
+	<p><code><span class="Hilite">wheel</span></code>: Specifies whether the graphic should be displayed as a wheel (<code>True</code>, default) or a matrix (<code>False</code>).</p>
+	</div>
+</div>
+
+<h4>Functions</h4>
+<p><code><span class="Hilite">hs_surface</span>(size=(100,100), v=100, wheel=False)</code> → <code>pygame.Surface</code>: Render a color wheel or matrix as a surface.</p>
+	<div class="Indent">
+	<p><code class="Hilite">size</code>: The size of the surface as a 2-tuple or 2-list.</p>
+	<p><code class="Hilite">v</code>: The brightness value.</p>
+	<p><code class="Hilite">wheel</code>: A <code>bool</code> specifying whether to render a color wheel or matrix.</p>
+	</div>
+<p><code><span class="Hilite">hsva</span>(h, s, v=100, a=100)</code> → <code>pygame.Color</code>: Create a color from the given <code>h</code>, <code>s</code>, <code>v</code>, and <code>a</code> values.</p>
+<p><code><span class="Hilite">hsvBox</span>(color, hue=None, sat=None, val=None)</code> → <code>bool</code>: Check if <code>color</code> is within the specified HSV ranges.</p>
+	<div class="Indent">
+	<p><code class="Hilite">color</code>: A <code>pygame.Color</code> or something that can be interpreted as a color.</p>
+	<p><code class="Hilite">hue</code>: A 2-tuple or 2-list specifying the range of H-values. Allows wrapping at 360; for example, <code>(300, 60)</code> checks whether the H-value is greater than 300 or less than 60. </p>
+	<p><code class="Hilite">sat</code>: A 2-tuple or 2-list specifying the range of S-values.</p>
+	<p><code class="Hilite">val</code>: A 2-tuple or 2-list specifying the range of V-values.</p>
+	</div>
+</article></body>
+</html>
+
+
+def hsvBox():
+    ""

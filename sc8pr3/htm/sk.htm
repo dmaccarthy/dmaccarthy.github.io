@@ -1,0 +1,30 @@
+﻿<article><h1><code>sc8pr</code> Basics</h1>
+<p>In <code>sc8pr</code>, interactive animations are called <em>sketches</em><sup>†</sup>. To run an animation, you will create a sketch and then play it...</p>
+
+<pre class="Code" id="Ex1">from sc8pr import Sketch
+
+Sketch().play()</pre>
+
+<p>[In most desktop browsers , you can copy these code examples into your clipboard by holding down the Shift key and clicking anywhere in the code.]</p>
+
+<p>You can specify the initial size of your sketch by passing an ordered pair to the <a class="Hilite Code" href="javascript:goNode('sketch')">Sketch</a> function. If you do not specify the size, it will default to 512 pixels wide by 288 pixels tall.</p>
+
+<pre class="Code" id="Ex2">from sc8pr import Sketch
+
+size = 640, 480
+Sketch(size).play()</pre>
+
+<p>You can also provide up to three optional arguments to the <code>play</code> method, to specify the animation window’s caption and icon. The third argument is a <code>True</code> (default) or <code>False</code> value indicating whether to allow the user to resize the window.</p>
+
+<pre class="Code" id="Ex3">from sc8pr import Sketch
+
+caption = "An Awesome Game"
+icon = "icon.png"
+mode = False
+Sketch().play(caption, icon, mode)</pre>
+
+<hr id="Footnotes"/><p><sup>†</sup>The term <em>sketch</em> is shorted from 'sketchbook', which is what animations are called in the <a href="https://www.processing.org">Processing</a> programming language.</p>
+
+</article>
+
+

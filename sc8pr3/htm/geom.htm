@@ -1,0 +1,93 @@
+﻿<article><h1><code>sc8pr.geom</code> Module</h1>
+<p>This module defines contants and functions for performing 2D geometry calculations.</p>
+
+<h4>Constant</h4>
+<div class="Indent"><p><code><span class="Hilite">DEG</span></code>: The <code>float</code> value π / 180.</p></div>
+
+<h4>Functions</h4><div class="Indent">
+	<p><code><span class="Hilite">angleDifference</span>(a2, a1=0)</code> → <code>int</code> or <code>float</code>: Calculates the difference <code>a2-a1</code> and expresses the result as an angle between −180 and +180.</p>
+		<div class="Indent">
+		<p><code class="Hilite">a2</code>, <code class="Hilite">a1</code>: Angles in degrees.</p>
+		</div>
+	<p><code><span class="Hilite">circle_intersect</span>(c1, r1, c2, r2)</code> → <code>list</code>: Find the intersection points(s) of two circles.</p>
+		<div class="Indent">
+		<p><code class="Hilite">c1</code>, <code class="Hilite">c2</code>: Ordered pairs specifying the centres of the two circles.</p>
+		<p><code class="Hilite">r1</code>, <code class="Hilite">r2</code>: Radii of the circles.</p>
+		</div>
+	<p><code><span class="Hilite">delta</span>(v2, v1=None, mag=None)</code> → <code>tuple</code>: Calculate the difference between two vectors, <code>v2-v1</code>, and optionally adjust the magnitude of the result.</p>
+		<div class="Indent">
+		<p><code class="Hilite">v2</code>, <code class="Hilite">v1</code>: The vectors to subtract as 2-tuples or 2-lists; <code>v1</code> can be omitted, allowing the function to adjust the magnitude of <code>v2</code>.</p>
+		<p><code class="Hilite">mag</code>: If specified, the desired magntiude of the result; for example, passing <code>1</code> will produce a unit vector.</p>
+		</div>
+	<p><code><span class="Hilite">dist</span>(p1, p2)</code> → <code>float</code>: Calculate the distance between two points.</p>
+		<div class="Indent">
+		<p><code class="Hilite">p1</code>, <code class="Hilite">p2</code>: Points as 2-tuples or 2-lists.</p>
+		</div>
+	<p><code><span class="Hilite">neg</span>(v)</code> → <code>tuple</code>: Calculate the negative of a 2D vector.</p>
+	<p><code><span class="Hilite">positiveAngle</span>(a)</code> → <code>int</code> or <code>float</code>: Express an angle as a value between 0 and 360.</p>
+		<div class="Indent">
+		<p><code class="Hilite">a</code>: Angle in degrees.</p>
+		</div>
+	<p><code><span class="Hilite">polar2d</span>(vx, vy, deg=True)</code> → <code>tuple</code>: Convert a vector to polar form, returning the magnitude and direction as a 2-tuple.</p>
+		<div class="Indent">
+		<p><code class="Hilite">vx</code>, <code class="Hilite">vy</code>: The components of the vector.</p>
+		<p><code class="Hilite">deg</code>: A <code>bool</code> indicating the angle units: <code>True</code> for degrees and <code>False</code> for radians.</p>
+		</div>
+	<p><code><span class="Hilite">prod</span>(iterable, start=1)</code> → <code>int</code> or <code>float</code>: Calculate the product of the items in a sequence; imports <a class="Code" href="https://docs.python.org/3/library/math.html#math.prod">math.prod</a> if available or defines an equivalent function for earlier versins of Python.</p>
+	<p><code><span class="Hilite">rotatedSize</span>(w, h, angle)</code> → <code>tuple</code>: Calculate the dimensions of the containing rectangle when a rectangle is rotated.</p>
+		<div class="Indent">
+		<p><code class="Hilite">w</code>, <code class="Hilite">h</code>: Dimensions of the original rectangle.</p>
+		<p><code class="Hilite">angle</code>: Rotation angle in degrees.</p>
+		</div>
+	<p><code><span class="Hilite">shiftAlongNormal</span>(x, y, deriv, dr)</code> → <code>tuple</code>: Translate a point normal to a curve.</p>
+		<div class="Indent">
+		<p><code class="Hilite">x</code>, <code class="Hilite">y</code>: The point to translate.</p>
+		<p><code class="Hilite">deriv(x,y)</code>: A function that calculates the slope of the curve at <code>(x, y)</code>.</p>
+		<p><code class="Hilite">dr</code>:The distance along the normal to translate the point.</p>
+		</div>
+	<p><code><span class="Hilite">sigma</span>(*args)</code> → <code>tuple</code>: Calculate the sum of one or more vectors of identical dimension.</p>
+	<p><code><span class="Hilite">smallAngle</span>(a)</code> → <code>float</code>: Express an angle as a value between -180 and 180.</p>
+	<p><code><span class="Hilite">smult</span>(s, v)</code> → <code>tuple</code>: Multiply a 2D vector by a scalar.</p>
+		<div class="Indent">
+		<p><code class="Hilite">s</code>: Scalar as an <code>int</code> or <code>float</code>.</p>
+		<p><code class="Hilite">v</code>: Vector as 2-tuple or 2-list.</p>
+		</div>
+	<p><code><span class="Hilite">sprod</span>(v1, v2)</code> → <code>int</code> or <code>float</code>: Calculate the scalar “dot” product of two vectors.</p>
+		<div class="Indent">
+		<p><code class="Hilite">v1</code>, <code class="Hilite">v2</code>: Vectors as 2-tuples or 2-lists.</p>
+		</div>
+	<p><code><span class="Hilite">subtend</span>(P, C, r)</code> → <code>tuple</code>: Calculates the half-angle subtended by a circle of radius <code>r</code> centred at point <code>C</code>, observed from point <code>P</code>. Returns a 3-tuple containing the separation between <code>P</code> and <code>C</code>, the direction in degrees of <code>C</code> relative to <code>P</code>, and the half-angle.</p>
+		<div class="Indent">
+		<p><code class="Hilite">P</code>, <code class="Hilite">C</code>: Points as 2-tuples or 2-lists.</p>
+		<p><code class="Hilite">r</code>: Radius of the circle.</p>
+		</div>
+	<p><code><span class="Hilite">transform2d</span>(pt, shift1=None, scale1=1, matrix=(1,0,0,1), scale2=1, shift2=None)</code> → <code>tuple</code>: Perform a transformation (e.g. shift, scale, rotate) on a single point. The transformations are performed in the same order as the parameters as listed above.</p>
+		<div class="Indent">
+		<p><code class="Hilite">pt</code>: The point to transform as a 2-tuple or 2-list.</p>
+		<p><code class="Hilite">shift1</code>: A translation to be applied first, as a 2-tuple or list. If this argument is <code>True</code>, it will be calculated as the negative of <code>shift2</code>, which is useful to perform rotations and scale transformations using a centre other than the origin.</p>
+		<p><code class="Hilite">scale1</code>: A scale factor as an <code>int</code> or <code>float</code>, or a 2-tuple or list if the <i>x</i> and <i>y</i> scale factors differ.</p>
+		<p><code class="Hilite">matrix</code>: A 4-tuple or 4-list representing a 2&times;2 matrix (linear transformation). An <code>int</code> or <code>float</code> can also be supplied, in which case the function will construct the rotation matrix for the specified angle in degrees.</p>
+		<p><code class="Hilite">scale2</code>: A scale factor (like <code>shift1</code>) but to be applied <em>after</em> the rotation/linear transformation. (The order in which the scaling is performed only matters when the <i>x</i> and <i>y</i> scale factors differ)</p>
+		<p><code class="Hilite">shift2</code>: A translation to be applied last, as a 2-tuple or list. If this argument is <code>True</code>, it will be calculated as the negative of <code>shift1</code>.</p>
+		</div>
+
+	<p><code><span class="Hilite">transform_gen</span>(pts, shift1=None, scale1=1, matrix=(1,0,0,1), scale2=1, shift2=None)</code> → <code>generator</code>: Perform transformations (e.g. shift, scale, rotate) on a <em>sequence</em> of points. The parameters are the same as for <code>transform2d</code> except that <code>pts</code> is a sequence of points rather than a single point.</p>
+		<div class="Indent">
+		</div>
+	<p><code><span class="Hilite">vec2d</span>(r, a, deg=True)</code> → <code>tuple</code>: Create a 2D vector from polar form.</p>
+		<div class="Indent">
+		<p><code class="Hilite">r</code>: The magnitude of the vector.</p>
+		<p><code class="Hilite">a</code>: The direction of the vector.</p>
+		<p><code class="Hilite">deg</code>: A <code>bool</code> indicating the angle units: <code>True</code> for degrees and <code>False</code> for radians.</p>
+		</div>
+	<p><code><span class="Hilite">vmult</span>(v1, v2)</code> → <code>tuple</code>: Multiply two 2D vectors component-wise.</p>
+		<div class="Indent">
+		<p><code class="Hilite">v1</code>, <code class="Hilite">v2</code>: Vectors as 2-tuples or 2-lists.</p>
+		</div>
+	<p><code><span class="Hilite">vprod</span>(v1, v2)</code> → <code>int</code> or <code>float</code>: Calculate the vector “cross” product.</p>
+		<div class="Indent">
+		<p><code class="Hilite">v1</code>, <code class="Hilite">v2</code>: Vectors as 2-tuples or 2-lists.</p>
+		</div>
+</div>
+
+</article>

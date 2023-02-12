@@ -1,0 +1,43 @@
+﻿<article><h1><code>sc8pr.gui.button.Button</code> Class</h1>
+
+<p>The <code>Button</code> class allows you to use buttons as GUI controls. This class implements event handlers for <code>onclick</code>, <code>onmouseover</code>, and <code>onmouseout</code>. The <code>onclick</code> method may trigger <code>onaction</code>. In addition to the attributes it inherits from <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a>, the <code>Button</code> class defines the following...</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Button</span>(size=None, options=None)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">size</code>: The size of the button; if <code>None</code>, the size of the <code>options[0]</code> image will be used.</p>
+		<p><code class="Hilite">options</code>: A sequence or dictionary of images or colors to be used for the button backgrounds. Dictionary keys correspond to the button states: <code>"normal"</code>, <code>"hover"</code>, <code>"selected"</code>, <code>"hoverselected"</code>, <code>"disabled"</code>. If omitted, the default colors (<code>sc8pr.gui.button.OPTIONS</code>) will be used. If an <code>int</code> is provided, a subset of the default colors will be used; for example, passing <code>2</code> will use the default <i>normal</i> and <i>hover</i> colors only.</p>
+		</div>
+</div>
+
+<h4>Assignable Properties</h4><div class="Indent">
+	<p><code class="Hilite">allowButton</code>: A tuple of mouse button numbers that will be considered clicks by the <code>onclick</code> event handler. Clicks by other mouse buttons will be ignored but will still be considered to have been handled. Default is <code>(1,)</code>.</p>
+	<p><code class="Hilite">enabled</code>: A <code>bool</code> indicating whether the button is enabled.</p>
+	<p><code class="Hilite">options</code>: A list of colors or images describing the backgrounds for the different button statuses.</p>
+	<p><code class="Hilite">selected</code>: A <code>bool</code> indicating whether the button has a selected status.</p>
+	<p><code class="Hilite">status</code>: An <code>int</code> value between 0 and 4 indicating the current status of the button (<i>normal</i>, <i>hover</i>, <i>selected</i>, <i>hoverselected</i>, <i>disabled</i>).</p>
+</div>
+
+<h4>Read-Only Properties</h4><div class="Indent"><p></p>
+	<p><code class="Hilite">selectable</code>: Checks that the button has a <i>selected</i> option and that it is not currently disabled.</p>
+	<p><code class="Hilite">statusName</code>: A string describing the button status: <code>"normal"</code>, <code>"hover"</code>, <code>"selected"</code>, <code>"hoverselected"</code>, or <code>"disabled"</code>.</p>
+</div>
+
+<h4>Instance Method</h4><div class="Indent">
+	<p><code><span class="Hilite">textIcon</span>(text, icon=None, padding=6)</code> → <code>self</code>: Adds text and an optional icon to the button. For example, to create an “Okay” button: <code>okay = Button(size, 2).textIcon("Okay", True)</code>...</p>
+		<div class="Indent">
+		<p><code class="Hilite">text</code>: A string containing the button text or a <code>Graphic</code> instance to be used as text. The text will be added to the button after the icon and therefore can be referenced using a <code>layer</code> (index) of <code>-1</code>.</p>
+		<p><code class="Hilite">icon</code>: A <code>Graphic</code> instance (such as an <code>Image</code> or <code>Sprite</code>) to be used as the icon. If a <code>bool</code> is passed, the default icon for “Okay/Yes” (<code>True</code>) or “Cancel/No” (<code>False</code>) will be used.</p>
+		<p><code class="Hilite">padding</code>: The number of pixels of space to be added between the image and the edge of the button.</p>
+		</div>
+</div>
+
+<h4>Static Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">checkbox</span>(imgs=None)</code> → <code>Button</code>: Create a check box button.</p>
+		<div class="Indent">
+		<p><code class="Hilite">imgs</code>: A sequence of images or image file names to use as backgrounds; if <code>None</code> the default check box images will be used.</p>
+		</div>
+	<p><code><span class="Hilite">radio</span>()</code> → <code>Button</code>: Create a radio check box button. This method simply calls <code>checkbox</code> using the default radio images.</p>
+</div>
+
+</article>

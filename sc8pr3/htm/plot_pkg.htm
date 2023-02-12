@@ -1,0 +1,74 @@
+﻿<article><h1><code>sc8pr.plot</code> Module</h1>
+<p><b class="Comment">Experimental!</b></p>
+
+<p>This module defines features for plotting graphs, relying on the ability to attach coordinate systems to canvases. Here is an example program...</p>
+
+<pre class="Code" id="Ex1">from sc8pr import TOP, RIGHT, Sketch
+from sc8pr.text import Font
+from sc8pr.shape.locus import Locus
+from sc8pr.plot import gridlines, plot
+from sc8pr.plot.regression import expon, leastSq
+
+def setup(sk):
+    <span class="Comment"># Define the coordinate system</span>
+    LR = [0, 10]   <span class="Comment"># x (left and right) limits</span>
+    BT = [0, 10]   <span class="Comment"># y (bottom and top) limits</span>
+    margin = 28, 4, 28, 4
+    sk.attachCS(LR + BT, margin)
+
+    <span class="Comment"># Draw the coordinate grid using step size of 1</span>
+    gridlines(sk, LR+[1], BT+[1], stroke="lightgrey")
+    axes = sk[0], sk[11]
+
+    <span class="Comment"># Plot some data with regression curves</span>
+    x = list(range(0, 10, 3))
+    y = 0.5, 1, 4, 6
+    sk += Locus(expon(x, y)[0], LR).config(weight=2, stroke="darkgreen")
+    sk += Locus(leastSq(x, y)[0], LR).config(weight=2, stroke="red")
+
+    <span class="Comment"># Highlight axes and bring them to the top before plotting markers</span>
+    for gr in axes:
+        gr.config(stroke="black", weight=2, layer=-1)
+    plot(sk, x, y, fill="red", weight=6)
+
+    <span class="Comment"># Label the axes</span>
+    font = {"font": Font.mono(), "fontSize": 18}
+    plot(sk, x, -0.07, "{x}", anchor=TOP, **font)
+    y = list(range(2, 11, 2))
+    plot(sk, -0.07, y, "{y}", anchor=RIGHT, **font)
+
+
+Sketch((512, 512)).bind().play("Plotting Demo")</pre>
+
+<h4>Functions</h4><div class="Indent">
+	<p><code><span class="Hilite">bars</span>(cv, x, y=None, width=1, **kwargs)</code> → <code>int</code>: Plot data as a bar graph; returns the number of bars added to the canvas.</p>
+	<div class="Indent">
+		<p><code class="Hilite">cv</code>: The canvas to draw on. Data will be plotted using the canvas’s atttached coordinate system, or pixel coordinates if no coordinate system has been attached.
+		<p><code class="Hilite">x</code>, <code class="Hilite">y</code>: The data to plot. You can pass the <i>x</i> and <i>y</i> data as two separate sequences, or the data can be a single sequence of ordered pairs passed as <code>x</code> while <code>y</code> is <code>None</code></p>
+		<p><code class="Hilite">width</code>: The width of the bars in coordinate system units.
+		<p><code class="Hilite">**kwargs</code>: Additional arguments to configure the <code>Polygon</code> instances used to create the bars.
+	</div>
+	<p><code><span class="Hilite">gridlines</span>(cv, x=(0,1,2), y=(0,1,2), **config)</code> → <code>int</code>: Draws grid lines on the canvas; returns the number of <code>Line</code> instances added to the canvas.</p>
+	<div class="Indent">
+		<p><code class="Hilite">cv</code>: The canvas to draw on. Grid lines will be drawn using the canvas’s atttached coordinate system, or pixel coordinates if no coordinate system has been attached.</p>
+		<p><code class="Hilite">x</code>, <code class="Hilite">y</code>: Tuples or lists containing the lower and upper <i>x</i> or <i>y</i> values and, optionally, the interval. For example, <code>x = (0, 10, 2)</code> specifies grid lines at all mutliples of 2 between 0 and 10. The default value will draw a single gridline at <i>x</i> = 0, i.e. the <i>y</i>-axis.</p>
+		<p><code class="Hilite">**config</code>: Additional arguments to configure the <code>Line</code> instances, such as <code>weight</code> and <code>stroke</code>.</p>
+	</div>
+	<p><code><span class="Hilite">plot</span>(cv, x, y=None, markers=5, offset=None, **kwargs)</code> → <code>int</code>: Plot something at one or more points on the canvas; returns the number of <code>Graphic</code> instances added to the canvas.</p>
+	<div class="Indent">
+		<p><code class="Hilite">cv</code>: The canvas to draw on. Data will be plotted using the canvas’s atttached coordinate system, or pixel coordinates if no coordinate system has been attached.
+		<p><code class="Hilite">x</code>, <code class="Hilite">y</code>: The points to plot. You can pass the <i>x</i> and <i>y</i> data as two separate sequences, or the data can be a single sequence of ordered pairs passed as <code>x</code> while <code>y</code> is <code>None</code></p>
+		<p><code class="Hilite">markers</code>: This can be: (1) an image (or <code>Graphic</code> instance that has an <code>image</code> property) or sequence of such images to be plotted at the coordinates specified by the <code>x</code> and <code>y</code> arguments; (2) a number specifying the radius of circular markers to be plotted; or (3) a string representing a format template, for example <code>{x:.1f}</code> to plot the <i>x</i> values rounded to one decimal place.
+		<p><code class="Hilite">offset</code>: A 2-tuple or 2-list .
+		<p><code class="Hilite">**kwargs</code>: Additional arguments to configure the <code>Text</code> or <code>Circle</code> instances used to create the markers.
+	</div>
+</div>
+
+<!-- 
+MatPlotLib...
+def plotAsSurface(p, **kwargs)
+def plotAsImage(p, **kwargs)
+-->
+
+</article></body>
+</html>

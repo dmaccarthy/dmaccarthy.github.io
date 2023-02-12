@@ -1,0 +1,31 @@
+﻿<article><h1><code>sc8pr.shape.Line</code> Class</h1>
+
+<p>The <code>Line</code> class represents line segments. In addition to attributes inherited from <a class="Hilite Code" href="javascript:goNode('shape')">Shape</a> and <a class="Hilite Code" href="javascript:goNode('graphic')">Graphic</a> it defines the following...</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Line</span>(start, point=None, vector=None)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">start</code>: One endpoint of the line segment.</p>
+		<p><code class="Hilite">point</code>: A second endpoint of the line segment.</p>
+		<p><code class="Hilite">vector</code>: If <code>point</code> is not provided, it will be calculated by adding <code>vector</code> to <code>start</code>.</p>
+		</div>
+</div>
+
+<h4>Assignable Property</h4><div class="Indent">
+	<p><code><span class="Hilite">length</span></code>: The length of the line segment. This can be set to <code>None</code> to represent an entire line rather than just a segment; however an exception will be raised if you attempt to draw a line with a <code>length</code> of <code>None</code>.</p>
+</div>
+
+<h4>Read-Only Properties</h4><div class="Indent">
+	<p><code><span class="Hilite">snapshot</span></code>: This attribute is set to <code>None</code> to disable the <code>snapshot</code> method. To convert a drawing of a line into an <code>Image</code>, add the line to a <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> instance and then take a snapshot of the canvas.</p>
+	<p><code><span class="Hilite">u</span></code>: Unit vector along the line, as a 2-tuple.</p>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">closest</span>(pt)</code> → <code>tuple</code>: Calculates the point on the line segment closest to the given point <code>pt</code>.</p>
+	<p><code><span class="Hilite">intersect</span>(other)</code> → <code>tuple</code>: Calculates the intersection of two line segments. If the segments are colinear, returns the midpoint of the overlap. Returns <code>None</code> if the segments do not intersect.</p>
+	<p><code><span class="Hilite">midpoint</span>()</code> → <code>tuple</code>: Calculates the coordinates of the segment’s midpoint.</p>
+	<p><code><span class="Hilite">parameters</span>(pt)</code> → <code>tuple</code>: Describes the given point as <b>p</b> + <i>s</i> · <b>u</b> + <i>d</i> · <b>n</b>, where <b>p</b> is the first endpoint of the segment, <b>u</b> is the unit vector along the segment, and <b>n</b> is the unit normal. Returns the parameters <code>(s, d)</code> as a 2-tuple.</p>
+	<p><code><span class="Hilite">point</span>(s)</code> → <code>tuple</code>: Calculates the coordinates of a point a distance <code>s</code> along the segment from the first endpoint. Passing <code>0</code> will return the first endpoint and passing <code>self.length</code> will return the second endpoint.</p>
+</div>
+
+</article>

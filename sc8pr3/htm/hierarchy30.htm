@@ -1,0 +1,107 @@
+﻿<article><h1>Graphic Class Hierarchy</h1>
+<style type="text/css">
+
+#Hierarchy {
+	list-style-type: "  "; // square;
+}
+
+#Hierarchy ul {
+	list-style-type: "➥ "; //↳⮱⬊
+}
+
+ul {padding-left:40px}
+li span {cursor:pointer}
+.Red {color:red}
+.Blue {color:blue}
+
+</style>
+
+<p>Below is the <code>Graphic</code> “class hierarchy”. Classes shown in <span class="Comment">red</span> are “abstract” and should not be used to create graphics instances directly. Each class shown in  <span class="Blue">blue</span> is a subclass of <a class="Hilite Code" href="javascript:goNode('base')">BaseSprite</a> in addition to the listed superclass.</p>
+
+<ul id="Hierarchy">
+<li class="Red">Graphic</span></li>
+<ul>
+	<li>Canvas</li>
+	<ul>
+		<li>Sketch</li>
+		<ul><li link="scroll">ScrollSketch [Experimental]</li></ul>
+		<li link="scroll">ScrollCanvas [Experimental]</li>
+		<li>Table</li>
+		<li link="ti_canvas">TextInputCanvas</li>
+		<li>Slider</li>
+		<li link="button_class">Button</li>
+		<li>Options</li>
+		<ul><li>Radio</li></ul>
+		<li>Dialog</li>
+		<ul>
+			<li link="msgbox">MessageBox</li>
+			<ul><li link="msgbox">NumInputBox</li></ul>
+		</ul>
+		<li link="menu_class">Menu</li>
+		<li link="progress">ProgressBar</li>
+	</ul>
+	<!--li class="Red" link="base">BaseSprite</li-->
+	<li>Image</li>
+	<ul>
+		<li>Movie</li>
+		<ul><li class="Blue" link="movie">MovieSprite</li></ul>
+	</ul>
+	<li link="sprite_class">CostumeImage</li>
+	<ul>
+		<li class="Blue" link="sprite_class">Sprite</li>
+		<ul>
+			<li link="robot_class">Robot</li>
+			<ul><li link="r_gui">gui.Robot</li></ul>
+			<li link="video_class">Video</li>
+		</ul>
+	</ul>
+	<li link="render" class="Red">Renderable</li>
+	<ul>
+		<li>HSV</li>
+		<li link="text_class">Text</li>
+		<ul>
+			<li class="Blue" link="text_class">TextSprite</li>
+			<li link="ti_class">TextInput</li>
+		</ul>
+	</ul>
+	<li class="Red">Shape</li>
+	<ul>
+		<li>Line</li>
+		<li>Locus</li>
+		<li>Circle</li>
+		<ul><li class="Blue" link="circle">CircleSprite</li></ul>
+		<li>Polygon</li>
+		<ul>
+			<li class="Blue" link="polygon">PolygonSprite</li>
+			<li>Arrow</li>
+			<ul><li class="Blue" link="arrow">ArrowSprite</li></ul>
+		</ul>
+		<li>Ellipse</li>
+		<ul>
+			<li class="Blue" link="ellipse">EllipseSprite</li>
+			<li>Arc [Experimental]</li>
+			<ul><li class="Blue" link="arc">ArcSprite [Experimental]</li></ul>
+		</ul>
+	</ul>
+</ul>
+</ul>
+<script type="text/javascript">
+
+function _hierarchy() {
+	let li = $("#Hierarchy li");
+	for (let i=0;i<li.length;i++) {
+		let item = $(li[i]);
+		item.html($("<span>").html(item.html()));
+	};
+	li.find("span").attr("title", "Click for details").click(function(ev) {
+		var e = $(this);
+		var a = e.closest("li").attr("link");
+		if (a == null) a = e.html();
+		if (a != "0") goNode(a.toLowerCase());
+	});
+}
+
+_hierarchy();
+
+</script>
+</article>

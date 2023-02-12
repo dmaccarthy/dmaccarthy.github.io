@@ -1,0 +1,15 @@
+﻿<article><h1><code>sc8pr.plot.regression</code> Module</h1>
+<p><b class="Comment">Experimental!</b></p>
+<p>This module defines functions for performing simple regressions.</p>
+
+<h4>Functions</h4><div class="Indent">
+	<p><code><span class="Hilite">expon</span>(x, y)</code> → (<code>lambda, (float, float)</code>): Perform an exponential regression and return the model (<code>y = ab<sup>x</sup></code>) as a lambda, and a tuple containing the values of <code>a</code> and <code>b</code>.</p>
+		<div class="Indent">
+		<p><code class="Hilite">x</code>: A list or tuple containing the <i>x</i> data.</p>
+		<p><code class="Hilite">y</code>: A list or tuple containing the <i>y</i> data.</p>
+		</div>
+	<p><code><span class="Hilite">leastSq</span>(x, y)</code> → (<code>lambda, (float, float)</code>): Perform a least-squares linear regression and return the model (<code>y = mx + b</code>) as a lambda, and a tuple containing the values of <code>m</code> and <code>b</code>. Arguments are the same as for <code>expon</code>.</p>
+	<p><code><span class="Hilite">power</span>(x, y)</code> → (<code>lambda, (float, float)</code>): Perform a power regression and return the model (<code>y = ax<sup>n</sup></code>) as a lambda, and a tuple containing the values of <code>a</code> and <code>n</code>. Arguments are the same as for <code>expon</code>.</p>
+</div>
+
+</article>

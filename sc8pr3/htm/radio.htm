@@ -1,0 +1,36 @@
+﻿<article><h1><code>sc8pr.gui.radio.Radio</code> Class</h1>
+
+<p><code>Radio</code> is an <a class="Hilite Code" href="javascript:goNode('options')">Options</a> subclass where selecting one of the check boxes automatically deselects the others. It does this by implementing the <code>onaction</code> event handler, and triggering <code>onchange</code> when the selected option changes.</p>
+
+<p>Usage example:</p>
+<pre class="Code">from sc8pr import Sketch
+from sc8pr.gui.radio import Radio
+
+def setup(sk):
+    labels = "Yes", "No", "Maybe"
+    sk += Radio(labels).config(pos=sk.center).bind(onclick, onchange)
+
+def onchange(cv, ev):
+    option = cv.selected.layer
+    label = cv[option + len(cv) // 2]
+    print("Change:", option, label.data)
+
+def onclick(cv, ev):
+    try:    <span class="Comment"># Click text</span>
+        print("Click:", ev.target.data)
+    except: <span class="Comment"># Click background</span>
+        print("Click:", cv)
+
+Sketch().play()</pre>
+
+<p>In addition to the attributes inherited from from <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> and <a class="Hilite Code" href="javascript:goNode('graphic')">Graphic</a> the <code>Radio</code> class defines the following...</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Radio</span>(text, height=None, space=4, imgs=None, txtConfig={})</code>: All arguments are the same as for <a class="Hilite Code" href="javascript:goNode('options')">Options</a>.</p>
+</div>
+
+<h4>Assignable Property</h4><div class="Indent">
+	<p><code><span class="Hilite">selected</span></code>: A reference to the check box (<code>Button</code> instance) that is currently selected, or <code>None</code> if no option is selected.</p>
+</div>
+
+</article>

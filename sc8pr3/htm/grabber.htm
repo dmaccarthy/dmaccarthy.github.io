@@ -1,0 +1,24 @@
+﻿<article>
+<h1><code>sc8pr.misc.media.Grabber</code> Class</h1>
+
+<p>This class performs screen captures using the <a class="Code" href="http://python-pillow.org/">Pillow</a> package. The example below captures a portion of the screen starting at coordinates (100, 100), converts it to a <code>sc8pr.Image</code> instance, and adds the image to the sketch...</p>
+<pre class="Code">from sc8pr.misc.media import Grabber
+from sc8pr import Sketch
+
+def setup(sk):
+    w, h = sk.size
+    sk += Grabber([100, 100, w, h]).img.config(pos=sk.center)
+
+Sketch().play()</pre>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Grabber</span>(rect=None)</code></p><div class="Indent">
+		<p><code class="Hilite">rect</code>: The region of the screen to capture. Can be <code>None</code> to capture the entire screen, a 2-tuple or 2-list specifying the size of the rectangle to capture from the upper left, or a 4-list or 4-tuple giving both the upper left coordinates and the size.</p>
+</div></div>
+
+<h4>Read-only Properties</h4><div class="Indent">
+	<p><code class="Hilite">img</code>: The current contents of the specified rectangle as an <a class="Code" href="javascript:goNode('image')">Image</a> instance. This is the slowest format for screen captures since it requires the most processing. If speed is an issue, use the <code>pil</code> format and convert later using the <a class="Code" href="javascript:goNode('pixeldata')">PixelData</a> class.</p>
+	<p><code class="Hilite">pil</code>: The current contents of the specified rectangle as a <code>PIL.Image.Image</code> instance. This is the quickest format for screen captures.</p>
+	<p><code class="Hilite">pix</code>: The current contents of the specified rectangle as a <a class="Code" href="javascript:goNode('pixeldata')">PixelData</a> instance. Images captured in Pillow format can be converted later by calling the <code>PixelData</code> constructor.</p>
+</div>
+</article>

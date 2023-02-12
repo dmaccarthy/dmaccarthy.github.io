@@ -1,0 +1,50 @@
+﻿<article><h1><code>sc8pr.misc.typeset</code> Module</h1>
+<p><b class="Comment">Experimental!</b></p>
+
+<p>This module can be used for arranging text into paragraphs and lines.</p>
+
+<pre class="Code" id="Ex1">from sc8pr import Sketch
+from sc8pr.text import Font, ITALIC
+from sc8pr.misc.typeset import typeset
+
+TEXT = """You will rejoice to hear that no disaster has accompanied the commencement of an enterprise which you have regarded with such evil forebodings. I arrived here yesterday; and my first task is to assure my dear sister of my welfare, and increasing confidence in the success of my undertaking.
+I am already far north of London; and as I walk in the streets of Petersburgh, I feel a cold northern breeze play upon my cheeks, which braces my nerves, and fills me with delight. Do you understand this feeling? This breeze, which has travelled from the regions towards which I am advancing, gives me a foretaste of those icy climes...
+Frankenstein, Mary Shelley (1831)"""
+
+def setup(sk):
+    cv = typeset(TEXT, 640, 6, 14, font=Font.serif(), fontSize=16)
+    cv[-1].config(fontStyle=ITALIC)
+    sk.size = cv.size
+    sk += list(cv)
+
+Sketch().play(caption="Frankenstein")</pre>
+
+
+<h4>Functions</h4>
+
+	<p><code><span class="Hilite">breakLine</span>(text, font, width, chars=" -")</code> → <code>str</code>: Insert new-line (<code>\n</code>) characters into a string to fit the displayed text to the desired width.</p>
+	<div class="Indent">
+		<p><code class="Hilite">text</code>: A string to which line breaks will be added; should not contain any new-line characters.</p>
+		<p><code class="Hilite">font</code>: A <code>pygame.font.Font</code> instance representing the font renderer; this can be the <code>renderer</code> property of any <a class="Hilite Code" href="javascript:goNode('text_class')">Text</a> instance or the result of a call to the <code><a class="Hilite" href="javascript:goNode('font')">Font</a>.get</code> method.</p>
+		<p><code class="Hilite">width</code>: The desired width of the rendered paragraph in pixels; if too small, lines will be broken at the smallest possible width based on the text and font.</p>
+		<p><code class="Hilite">chars</code>: A sequence of characters after which line breaks can be placed.</p>
+	</div>
+
+	<p><code><span class="Hilite">breakLines</span>(text, font, width, chars=" -")</code> → <code>list</code>: Add line breaks to one or more paragraphs and return a list of strings.</p>
+	<div class="Indent">
+		<p><code class="Hilite">text</code>: One or more paragraphs as a string delimitted by <code>\n</code> characters, or as a list or tuple of strings.</p>
+		<p><code class="Hilite">font</code>, <code class="Hilite">width</code>, <code class="Hilite">chars</code>, : See <code>breakLine</code> function.</p>
+	</div>
+
+	<p><code><span class="Hilite">typeset</span>(text, width, padding=0, spaceBetween=None, strictWidth=False, chars=" -", **kwargs)</code> → <code>Canvas</code>: Arrange paragraphs into a canvas.</p>
+	<div class="Indent">
+		<p><code class="Hilite">text</code>, <code class="Hilite">width</code>, <code class="Hilite">chars</code>, : Arguments to be passed to the <code>breakLines</code> function.</p>
+		<p><code class="Hilite">padding</code>: Pixels to be added around the outside of the canvas.</p>
+		<p><code class="Hilite">spaceBetween</code>: Pixels to be added between paragraphs; if omitted this will default to three times the line spacing as set by the <code>spacing</code> keyword argument.</p>
+		<p><code class="Hilite">strictWidth</code>: A <code>bool</code> specifying whether the canvas width should match the requested width plus padding exactly (<code>True</code>) or whether it can be enlarged or reduced to fit the rendered text (<code>False</code>).</p>
+		<p><code class="Hilite">kwargs</code>: Additional arguments to be passed to the <a class="Hilite Code" href="javascript:goNode('text_class')">Text</a> constructor, which may include <code>font</code>, <code>fontSize</code>, <code>fontStyle</code>, <code>spacing</code>, and <code>align</code>; the <code>anchor</code> property should <b>not</b> be specified as it will be set based on the <code>align</code> property to produce the appropriate layout of <code>Text</code> instances within the canvas .</p>
+	</div>
+
+
+</article></body>
+</html>

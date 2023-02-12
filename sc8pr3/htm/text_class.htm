@@ -1,0 +1,38 @@
+﻿<article><h1><code>sc8pr.text.Text</code> Class</h1>
+
+<p>The <code>Text</code> class represents text that can be drawn into a canvas. In addition to the attributes it inherits from <a class="Hilite Code" href="javascript:goNode('graphic')">Graphic</a> and <a class="Hilite Code" href="javascript:goNode('render')">Renderable</a>, the <code>Text</code> class defines the following...</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Text</span>(data)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">data</code>: The initial value of the text to be drawn. This can be a <code>str</code> instance or an object that can be converted to a string by the <code>str</code> function.</p>
+		</div>
+</div>
+
+<h4>Assignable Properties</h4><div class="Indent"><p>It is recommended that you call the <code>config</code> method to modify properties rather than using a direct assignment. This will ensure that the text is re-rendered when needed.</p>
+	<p><code class="Hilite">align</code>: One of the constants <code>LEFT</code>, <code>RIGHT</code>, or <code>CENTER</code> (defined in the <code>sc8pr</code> module) specifying the alignment when the text contains more than a single line; default <code>LEFT</code>.</p>
+	<p><code class="Hilite">bg</code>: Color of the text background. If <code>None</code>, the background will be transparent.</p>
+	<p><code class="Hilite">border</code>: Color of the rectangular border to draw around the text; default is black.</p>
+	<p><code class="Hilite">color</code>: Color to use for the text; default is black.</p>
+	<p><code class="Hilite">data</code>: The value of the text to be drawn. This can be a <code>str</code> instance or an object that can be converted to a string by the <code>str</code> function.</p>
+	<p><code class="Hilite">font</code>: The name of a system font or path to a font file. Specifying <code>None</code> (default) uses the <code>pygame</code> default font.</p>
+	<p><code class="Hilite">fontSize</code>: The size of the font in pixels; default <code>24</code>.</p>
+	<p><code class="Hilite">fontStyle</code>: One of the constants <code>BOLD</code>, <code>ITALIC</code>, or <code>BOLD+ITALIC</code> specifying the font style; the default is <code>0</code> indicating neither bold not italic. This attribute applies only to system fonts.</p>
+	<p><code class="Hilite">height</code>: The rendered size of the text is determined by the font and the text content. Assigning a new value to the <code>height</code> or <code>width</code> will cause the font size to be adjusted, but the size of the final rendering will be only approximate to what was requested. Assigning a value to the <code>size</code> attribute will raise an exception.</p>
+	<p><code class="Hilite">padding</code>: Number of extra pixels to add around the outside of the rendered text but inside the border; default <code>0</code>.</p>
+	<p><code class="Hilite">spacing</code>: Number of extra pixels to add between lines for multi-line text; default <code>0</code>.</p>
+	<p><code class="Hilite">weight</code>: Thickness in pixels of the text border; default <code>0</code>.</p>
+	<p><code class="Hilite">width</code>: The rendered size of the text is determined by the font and the text content. Assigning a new value to the <code>height</code> or <code>width</code> will cause the font size to be adjusted, but the size of the final rendering will be only approximate to what was requested.</p>
+</div>
+
+<h4>Read-Only Properties</h4><div class="Indent">
+	<p><code class="Hilite">renderer</code>: A <code>pygame.font.Font</code> instance representing the renderer based on the current properties of the text.</p>
+	<p><code class="Hilite">size</code>: The rendered size of the text.</p>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">__iadd__</span>(v)</code> → <code>self</code>: Adds the argument to the current <code>data</code> attribute value and marks the rendering as stale. This operation is performed using the addition operator for the <code>data</code>, which will depend on whether it is a number or a string.</p>
+	<p><code><span class="Hilite">render</span>()</code> → <code>pygame.Surface</code>: Renders the text. This method is called automatically by <code>Renderable.image</code>. To force re-rendering, set the <code>Text</code> instance’s <code>stale</code> attribute to <code>True</code>.</p>
+</div>
+
+</article>

@@ -1,0 +1,37 @@
+﻿<article><h1><code>sc8pr.plot.mpl</code> Module</h1>
+<p><b class="Comment">Experimental!</b></p>
+
+<p>This module defines functions for converting <a class="Code" href="https://matplotlib.org/">matplotlib</a> figures to <code>sc8pr</code> images. For example, you can use <code>matplotlib</code> to render equations.</p>
+
+<pre class="Code" id="Ex1">from sc8pr import Sketch
+from sc8pr.plot.mpl import text, fonts
+
+def setup(sk):
+    fonts("cm")
+    formula = r"$V = \frac{4\pi}{3} r^3$"
+    sk += text(formula, "red").config(pos=sk.center)
+
+Sketch().play()</pre>
+
+<h4>Functions</h4><div class="Indent">
+	<p><code><span class="Hilite">figure</span>(fig, image=True, **kwargs)</code> → <code>Image</code> or <code>bytes</code>: Renders a <code>matplotlib</code> figure as an <code>Image</code> instance or as a <code>bytes</code> object containing the image data in PNG format.</p>
+	<div class="Indent">
+		<p><code class="Hilite">fig</code>: A <code>matplotlib</code> figure.</p>
+		<p><code class="Hilite">image</code>: Specifies whether to return the result as a <code>sc8pr.Image</code>.</p>
+		<p><code class="Hilite">**kwargs</code>: Additional arguments to be passed to the figure’s <code>savefig</code> method, which may include <code>dpi</code> (default <code>300</code>), <code>transparent</code> (default <code>True</code>), <code>bbox_inches</code> (default <code>"tight"</code>), and <code>pad_inches</code> (default <code>0.025</code>).</p>
+	</div>
+
+	<p><code><span class="Hilite">fonts</span>(math="stix", sans=None, serif=None, mono=None)</code> → <code>None</code>: Specify font names for <code>matplotlib</code> to use for text/math rendering.</p>
+	
+	<p><code><span class="Hilite">text</span>(text, color="black", fontsize=12, image=True, **kwargs)</code> → <code>Image</code> or <code>bytes</code>: Create a text/math figure and then pass it to the <code>figure</code> function described above.</p>
+	<div class="Indent">
+		<p><code class="Hilite">text</code>: The text to be rendered; math can be included enclosed between a pair of <code>$</code> symbols.</p>
+		<p><code class="Hilite">color</code>: The color in which the text is to be rendered.</p>
+		<p><code class="Hilite">fontsize</code>: The font size in which the text is to be rendered.</p>
+		<p><code class="Hilite">image</code>, <code class="Hilite">**kwargs</code>: Arguments to be passed to the <code>figure</code> function.</p>
+	</div>
+
+</div>
+
+</article></body>
+</html>
