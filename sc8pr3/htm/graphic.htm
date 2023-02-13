@@ -24,7 +24,7 @@
 	<p><code class="Hilite">aspectRatio</code>: The ratio of the graphic’s width to height.</p>
 	<p><code class="Hilite">avgColor</code>: The average color of the graphic as an RGBA 4-tuple.</p>
 	<p><code class="Hilite">canvas</code>: The <code>Canvas</code> instance to which the graphic belongs, or <code>None</code>.</p>
-	<p><code class="Hilite">center</code>: A 2-tuple describing the coordinates of the item’s centre relative to its upper left corner, not accounting for rotation; used by the <code>relXY</code> method.</p>
+	<p><code class="Hilite">center</code>: A 2-tuple describing the coordinates of the item’s centre relative to its upper left corner, not accounting for rotation; used by the <code>relPos</code> method.</p>
 	<p><code class="Hilite">clockwise</code>: A <code>bool</code> indicating whether the item’s canvas has a clockwise coordinate system.</p>
 	<p><code class="Hilite">dialog</code>: The top canvas (one level below the sketch) in which the graphic is located. Will return the graphic itself if added directly to the sketch. An exception will occur if called on the sketch itself or on a graphic that has been removed from or not added to the sketch.</p>
 	<p><code class="Hilite">focussed</code>: A <code>bool</code> indicating whether the graphic is currently focussed.</p>
@@ -81,7 +81,7 @@
 		<div class="Indent">
 		<p><code>cv</code>: A <code>Canvas</code> instance at which to terminate the list.</p>
 		</div>
-	<p><code><span class="Hilite">relXY</span>(pos)</code> → <code>tuple</code>: Calculate the coordinates of a point relative to the graphics instance by accounting for the instance’s <code>rect</code> and <code>angle</code> properties.</p>
+	<p><code><span class="Hilite">relPos</span>(pos)</code> → <code>tuple</code>: Calculate the coordinates of a point relative to the graphics instance by accounting for the instance’s <code>rect</code> and <code>angle</code> properties.</p>
 		<div class="Indent">
 		<p><code>pos</code>: Coordinates of a point relative to the sketch.</p>
 		</div>

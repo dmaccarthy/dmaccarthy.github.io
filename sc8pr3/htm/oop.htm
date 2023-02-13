@@ -17,7 +17,7 @@ class Alien(Sprite):
 
     def onclick(self, ev):
         print("Click @", ev.pos)     <span class="Comment"># Coordinates relative to sketch</span>
-        hitPos = self.relXY(ev.pos)  <span class="Comment"># Coordinates relative to target</span>
+        hitPos = self.relPos(ev.pos)  <span class="Comment"># Coordinates relative to target</span>
         print("You hit the alien at {}.".format(hitPos))
 
 
