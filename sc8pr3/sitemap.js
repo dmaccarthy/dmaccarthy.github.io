@@ -1,5 +1,5 @@
 var sitemap = {title:"sc8pr 3 Home", link:"home", pages:[
-	{title:"Gallery", link:"ex"},
+//	{title:"Gallery", link:"ex"},
 	{title:"Installation", link:"inst"},
 	{title:"Tutorial", link:"tut", pages:[
 		{title:"Basics", link:"sk", pages:[
