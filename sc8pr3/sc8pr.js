@@ -54,10 +54,19 @@ function goNode(node) {
 	}
 }
 
+function goPrev() {
+	let prev = null, node = sitemap;
+	while (node != current) {
+		prev = node;
+		node = next(node);
+	}
+	if (prev) goNode(prev);
+}
+
 function goNext() {
-	node = next(current);
-	if (!node) alert("End of Documentation!");
-	goNode(node);
+	let node = next(current);
+	if (node) goNode(node);
+	else alert("End of Documentation!");
 }
 
 function ajaxLoad(html, node) {
@@ -104,7 +113,6 @@ function highlight(node) {
 	var nav = $("nav");
 	nav.find(".Current").removeClass("Current");
 	var li = nav.find("[data-id='" + node.link + "']").addClass("Current").closest("li");
-//	console.log("Highlight!", li);
 	expandUp(li);
 	if (pop) pop = null;
 	else {
@@ -211,7 +219,7 @@ window.onkeydown = function (ev) {
 	var tag = ev.target.tagName.toUpperCase();
 	if (tag != "INPUT" && tag != "TEXTAREA") {
 		var key = ev.keyCode;
-		if (key == 37) history.back();
+		if (key == 37) goPrev();
 		else if (key == 39) goNext();
 	}
 }
