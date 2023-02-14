@@ -102,7 +102,7 @@ code, .Code {
 
 pre.Code {
 	background:#e8e8e8;
-	margin:1em;
+//	margin:1em;
 	padding:4px;
 	overflow:auto;
 }
