@@ -26,4 +26,10 @@ def setup(sk):
 
 Sketch().play()</pre>
 
+<p>For <code>sc8pr</code> to be able to locate your setup function on its own, your function must be named <code>setup</code> and it must be located in the same file as your main program. If you want to use a setup function with a different name or location, you will need to help <code>sc8pr</code> find it...</p>
+
+<pre class="Code" id="Ex4">Sketch().<span class="Hilite">bind(setup=mySetupFunction)</span>.play()</pre>
+
+<p>Before playing your sketch, call its <code>bind</code> method to tell <code>sc8pr</code> what you want to use as your setup function. In the example above, a function called <code>mySetupFunction</code> will be used.</p>
+
 </article>
