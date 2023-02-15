@@ -1,3 +1,8 @@
+let home_url = [
+    ["https://sci.davidmaccarthy.repl.co", "/"],
+    ["https://dmaccarthy.github.io/sci", "/sci"]
+][0];
+
 function teacher(a) {
 /* Enable / disable teacher mode */
     if (a == null) a = parseInt(localStorage.getItem("teacher_mode")) + 1;
@@ -288,7 +293,7 @@ function drawMenu(node, a) {
             tr[0].node = node = m[i];
             let icon = getIcon(node);
             if (getIcon[icon]) icon = getIcon[icon];
-            else icon = `../media/${icon}.png`;
+            else icon = `${home_url[0]}/media/${icon}.png`;
             let img = $("<img>").addClass("Icon").attr({alt:"Icon", src:icon});
             tr.append($("<td>").html(img));
             tr.append($("<td>").html(node.title));
