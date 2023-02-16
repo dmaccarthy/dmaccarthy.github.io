@@ -8,7 +8,7 @@ let chem = {title:"Unit A: Chemistry", id:"chem", menu:[
         {title:"Bohr Model (Energy Levels)", id:"bohr"},
         {title:"Periodic Table & Dot Diagrams", id:"dot"},
     ]},
-    {title:"Part 2: Compounds", show:"2023.7", id:"compound", menu:[
+    {title:"Part 2: Compounds", id:"compound", menu:[
         {title:"Binary Ionic Compounds", id:"ionic"},
         {title:"Molecular Compounds", id:"molec"},
         {title:"Polyatomic Ions & Solubility", id:"poly"},
@@ -35,6 +35,19 @@ layout.chem_rev = [{icons:[
     {icon:"gdrv", text:"Answer Key", show:"2023.7", url:"1IaRKpczT_-sy76rFqBEOcIwyQ3AORxxYAEzJGKJpY7w"},
 ]}, 0];
 
+// Part 2: Compounds
+
+layout.poly = [uc, 1];
+layout.acid = [uc, 1];
+layout.water = [uc, 1];
+
+lesson("ionic", "1ngNJIFv1GXXhg8gZQiFBLxYwC4yHOHme", {vid:"#PLpVmtCaB-lynZX8Pn3MyzoBCoGjUyNRUi"});
+lesson("molec", "1zBGawUGNqHVnDipMt72pLBbxjzykblDz", );
+// lesson("poly", "", );
+// lesson("acid", "", );
+// lesson("water", "", );
+// lesson("", "", );
+
 // Part 1: Matter
 
 _l = lesson("whmis", "14wdP3YUoyp57uUFT3-IsTCiqhIyyEsxH", {img:{src:"https://sbt.blob.core.windows.net/storyboards/oliversmith/lab-safety.png", width:"697"}});
@@ -57,12 +70,6 @@ lesson("bohr", "1Zqoen7f551BpjqJctTSpQ-OO_BPvA793", {vid:"Vd5duzNtBuI"});
 lesson("dot", "1FyV47UafHRW3bPBemF7-5o2_z61xEby8", {img:{src:"chem/img/pt.png", width:"724"}})[0].icons.push(
     {icon:"gdrv", text:"Lab Handout", url:"1JNRmuk-naEjNIAOKpzfoLdkiKE94pVby"}
 );
-
-// Part 2: Compounds
-
-lesson("ionic", "1ngNJIFv1GXXhg8gZQiFBLxYwC4yHOHme", );
-// lesson("", "", );
-// lesson("", "", );
 
 // Part 3: Reactions
 
