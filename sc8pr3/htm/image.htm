@@ -53,6 +53,11 @@
 
 <h4>Static Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">fromBytes</span>(data)</code> → <code>Image</code>: Create an <code>Image</code> instance from binary data or from any object that the <a class="Code" href="javascript:goNode('pixeldata')">PixelData</a> constructor can decode.</p>
+	<p><code><span class="Hilite">fromZip</span>(key, archive=None)</code> → <code>Image</code>: Create an <code>Image</code> instance from binary data stored in a zip file.</p>
+		<div class="Indent">
+		<p><code class="Hilite">key</code>: A string identifying the data within the zip file.</p>
+		<p><code class="Hilite">archive</code>: The path to the zip file; if omitted, data will be read from <code>sc8pr.data</code>.</p>
+		</div>
 </div>
 
 </article>

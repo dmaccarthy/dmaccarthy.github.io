@@ -75,8 +75,10 @@ h1 {
 }
 
 h4 {
+	color:blue;
 	margin-top:1.25em;
 	margin-bottom:0.75em;
+	font-size:125%;
 }
 
 .Center {text-align:center}

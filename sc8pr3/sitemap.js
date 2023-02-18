@@ -18,6 +18,7 @@ var sitemap = {title:"sc8pr 3 Home", link:"home", pages:[
 		{title:"GUI Controls", link:"gui_tut"},
 	]},
 	{title:"Reference", link:"ref", pages:[
+		{title:"Changes from sc8pr 2", link:"change"},
 		{title:"Graphic Class Hierarchy", link:"hierarchy30"},
 		{title:"Event Model", link:"evList"},
 		{title:"sc8pr", link:"init", pages:[
