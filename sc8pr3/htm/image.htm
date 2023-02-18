@@ -11,9 +11,10 @@
 </div>
 
 <h4>Read-Only Properties</h4><div class="Indent">
-	<p><code class="Hilite">image</code>: Returns a <code>pygame.Surface</code> of the scaled and rotated pixel data.</p>
+	<p><code class="Hilite">image</code>: Returns a <code>pygame.Surface</code> of the scaled and rotated pixel data. If no scaling or rotation has been applied, this will return the original surface .</p>
 	<p><code class="Hilite">jpg</code>: Returns the scaled and rotated image as a <code>bytes</code> object containing the JPEG-encoded data.</p>
 	<p><code class="Hilite">original</code>: Returns the original <code>pygame.Surface</code> containing the unscaled and unrotated pixel data.</p>
+	<p><code class="Hilite">pix</code>: Returns the scaled and rotated image as a <code>PixelData</code> instance. (You can then use the <a class="Hilite Code" href="javascript:goNode('pixeldata')">PixelData</a> class to convert to a <code>PIL.Image.Image</code> or <code>bytes</code> instance containing the raw binary data.)</p>
 	<p><code class="Hilite">png</code>: Returns the scaled and rotated image as a <code>bytes</code> object containing the PNG-encoded data.</p>
 </div>
 
@@ -22,7 +23,7 @@
 	<p><code><span class="Hilite">crop</span>(*args, bg=True)</code> → <code>Image</code>: Create a new <code>Image</code> instance by cropping an existing (unscaled and unrotated) image; does not copy the pixel data.</p>
 		<div class="Indent">
 		<p><code class="Hilite">*args</code>: The rectangle to crop, as a <code>pygame.Rect</code> or arguments that can be passed to <code>pygame.Rect</code>. If no arguments are provided, the image will be cropped to its non-background content based on the <code>bg</code> argument.</p>
-		<p><code class="Hilite">bg</code>: Specifies the background color; if <code>True</code>, the pixel at (0,0) is taken as the background.</p>
+		<p><code class="Hilite">bg</code>: Specifies the background color; if <code>True</code>, the pixel at (0,0) is taken as the background. This argument has no effect when rectangle arguments are prvided.</p>
 		</div>
 	<p><code><span class="Hilite">cut</span>(x=(), y=(), padding=0)</code> → <code>list</code>: Create a list of images by cutting an existing image into rectangles; does not copy the pixel data.</p>
 		<div class="Indent">
@@ -56,7 +57,7 @@
 	<p><code><span class="Hilite">fromZip</span>(key, archive=None)</code> → <code>Image</code>: Create an <code>Image</code> instance from binary data stored in a zip file.</p>
 		<div class="Indent">
 		<p><code class="Hilite">key</code>: A string identifying the data within the zip file.</p>
-		<p><code class="Hilite">archive</code>: The path to the zip file; if omitted, data will be read from <code>sc8pr.data</code>.</p>
+		<p><code class="Hilite">archive</code>: The path to the zip file; if omitted, data will be read from the <code>sc8pr</code> package data file.</p>
 		</div>
 </div>
 

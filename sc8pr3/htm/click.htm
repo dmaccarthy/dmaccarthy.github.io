@@ -7,7 +7,7 @@ from sc8pr.sprite import Sprite
 
 def hit(alien, ev):
     <span class="Comment">"CLICK event handler for the alien sprite"</span>
-    print("Click @", ev.pos)      <span class="Comment"># Coordinates relative to sketch</span>
+    print("Click @", ev.pos)       <span class="Comment"># Coordinates relative to sketch</span>
     hitPos = <span class="Hilite1">alien.relPos(ev.pos)</span>  <span class="Comment"># Coordinates relative to target</span>
     print("You hit the alien at {}.".format(hitPos))
 

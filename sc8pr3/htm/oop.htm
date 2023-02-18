@@ -16,7 +16,7 @@ class Alien(Sprite):
         self.config(spin=1, vel=(1,1), bounce=BOTH)
 
     def onclick(self, ev):
-        print("Click @", ev.pos)     <span class="Comment"># Coordinates relative to sketch</span>
+        print("Click @", ev.pos)      <span class="Comment"># Coordinates relative to sketch</span>
         hitPos = self.relPos(ev.pos)  <span class="Comment"># Coordinates relative to target</span>
         print("You hit the alien at {}.".format(hitPos))
 
@@ -35,6 +35,6 @@ Game((512,362)).play()</pre>
 
 <p>There is no need to call the <code>bind</code> method anymore because our <code>Alien</code> and <code>Game</code> instances will inherit the event handlers from their respective classes.</p>
 
-<p>If your <code>Sketch</code> subclass overrides the <code>__init__</code> method, it must call <code>Sketch.__init__</code> for the sketch to work properly. Also keep in mind that the <code>pygame</code> system will not be initialized until you call the sketch’s <code>play</code> method, so <code>__init__</code> will not be able to perform any operations that require <code>pygame</code> to be initialized; use the <code>setup</code> method instead.</p>
+<p>If your <code>Sketch</code> subclass overrides the <code>__init__</code> method, it must call <code>Sketch.__init__</code> for the sketch to work properly.</p>
 
 </article>

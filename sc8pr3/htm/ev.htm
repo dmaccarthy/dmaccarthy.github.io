@@ -2,9 +2,9 @@
 
 <p>The <code>setup</code> function runs <em>once</em>, immediately after the sketch window opens, but before the animation begins. Once the animation starts, you can control your program by writing <em>event handlers</em>.</p>
 
-<p>An event handler is a function that gets called in response to an event that occurs. Events can be triggered by user actions with the mouse or keyboard, or by the <code>sc8pr</code> software itself. For example, the user can trigger a “quit” event by closing the sketch window. Your program may want to handle this event by asking the user to confirm whether they really want to quit, or by saving any unsaved data.</p>
+<p>An event handler is a function that gets called in response to an event that occurs. Events can be triggered by user actions with the mouse or keyboard, or by the <code>sc8pr</code> software itself. For example, the user can trigger a QUIT event by closing the sketch window. Your program may want to handle this event by asking the user to confirm whether they really want to quit, or by saving any unsaved data.</p>
 
-<p>Here’s a program that uses chance to decide whether to allow the program to quit. The event handler is a function named <code>onquit</code>. It takes two arguments: a reference to the sketch and a description of the event. Four times out of five, this handler will just print a message to the console saying it can’t quit. The other time, it will print “Goodbye!” and signal that the sketch can close by setting its <code>quit</code> attribute to <code>True</code>.</p>
+<p>Here’s a program that uses chance to decide whether to allow the program to quit. The event handler is a function named <code>onquit</code>. It takes two arguments: a reference to the sketch and a description of the event. This particular function has been written so that four times out of five it prints a message to the console saying it can’t quit. One time in five, it will print “Goodbye!” and signal that the sketch can close by setting its <code>quit</code> attribute to <code>True</code>.</p>
 
 <pre class="Code Scroll" id="Ex1">from random import randint
 from sc8pr import Sketch, Image, HORIZONTAL, VERTICAL</span>
