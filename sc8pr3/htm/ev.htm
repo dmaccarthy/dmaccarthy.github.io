@@ -31,7 +31,7 @@ def setup(sk):
         wrap = HORIZONTAL
     )
 
-Sketch((512,362)).play()</pre>
+Sketch((512,368)).play()</pre>
 
 <p>As shown in blue, we need to pass the <code>onquit</code> function to the sketch’s <code>bind</code> method before the sketch will recognize it as an event handler. If we give the event handler a name other than the default name, we will have to pass it to <code>bind</code> as a keyword argument. For example, if we name the handler <code>goodbye</code>, we would change the blue line above to...</p>
 <pre class="Code">sk.bind(onquit=goodbye)</pre>

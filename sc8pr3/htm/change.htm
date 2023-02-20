@@ -3,9 +3,9 @@
 <h4>Dependencies</h4>
 <p>While <code>sc8pr</code>'s core features depend only on <code>pygame</code>, there are additional dependencies for these “extras”:</p>
 <ul>
-	<li><code>misc.media</code> module</li>
-	<li><code>plot.mpl</code> module</li>
-	<li><code>PixelData.pil</code> property</li>
+	<li><code>misc.media</code> and <code>misc.movie</code> modules and <code>misc.video.VidZip.decode</code> and <code>encode</code> methods: Encoding and decoding FFmpeg-compatible files.</li>
+	<li><code>plot.mpl</code> module: Rendering equations with <code>matplotlib</code>.</li>
+	<li><code>PixelData.pil</code> property: Converting image from <code>pygame</code> to <code>Pillow</code> format.</li>
 </ul>
 <p>These additional dependencies (<code>numpy</code>, <code>pillow</code>, <code>imageio</code>, <code>imageio-ffmpeg</code>, and <code>matplotlib</code>) are now included in <code>setup.cfg</code> so that they will be installed automatically when you install <code>sc8pr</code> using <code>pip</code>.</p>
 
@@ -18,16 +18,18 @@
 
 <h4>Removed Modules</h4>
 
-<p>These <code>sc8pr 2</code> modules have been deleted from <code>sc8pr 3</code>.</p>
+<p>These <code>sc8pr 2</code> modules have been deleted from <code>sc8pr 3</code> as they have been superceded by newer features.</p>
 <ul>
 	<li><code>examples</code></li>
 	<li><code>misc.plot</code></li>
 	<li><code>misc.webcache</code></li>
+	<li><code>misc.s8v</code></li>
 </ul>
 
 <h4>Modified / Replaced Features</h4>
 <p>Some features have been changed sufficiently that <code>sc8pr 2</code> programs may need to be modified to work under <code>sc8pr 3</code>.</p>
 <ul>
+	<li><code>misc.media</code> and <code>misc.video</code> modules has been rewritten and have a new API.</li>
 	<li><code>effect.FastDissolve</code> was an alternate version of the <code>Dissolve</code> effect in <code>sc8pr 2</code> that used a faster algorithm when <code>numpy</code> was available. This class has been removed and <code>Dissolve</code> will use the best algorithm that is available.</li>
 	<li><code>geom.transform2d_Gen</code> has been replaced by <code>geom.transform_gen</code> which uses different parameter names and order.</li>
 	<li><code>geom.transform2d</code> has had the names and order of the parameters changed to be consistent with <code>geom.transform_gen</code>.</li>

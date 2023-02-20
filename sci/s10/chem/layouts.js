@@ -37,13 +37,12 @@ layout.chem_rev = [{icons:[
 
 // Part 2: Compounds
 
-layout.poly = [uc, 1];
 layout.acid = [uc, 1];
 layout.water = [uc, 1];
 
 lesson("ionic", "1ngNJIFv1GXXhg8gZQiFBLxYwC4yHOHme", {vid:"#PLpVmtCaB-lynZX8Pn3MyzoBCoGjUyNRUi"});
-lesson("molec", "1zBGawUGNqHVnDipMt72pLBbxjzykblDz", );
-// lesson("poly", "", );
+lesson("molec", "1zBGawUGNqHVnDipMt72pLBbxjzykblDz", {vid:"#PLpVmtCaB-lymbqbJT3eh6yoIccoR1wAAm"});
+lesson("poly", "1O1PJIPG7dVkcLP7BwHhZbla2GUTnqhNO", {vid:"#PLpVmtCaB-lymw8n95Vk-jxco6DuI0TqC_"});
 // lesson("acid", "", );
 // lesson("water", "", );
 // lesson("", "", );

@@ -7,7 +7,6 @@
     <li>A <b class="Red">debugger</b> to track down errors.</li>
 </ul></p>
 <p>An <b class="Red">Integrated Development Environment</b> (IDE) is a program that collects all of these tools in a single place, to make your work as a programmer more productive. There are many different IDE’s <a href="https://wiki.python.org/moin/IntegratedDevelopmentEnvironments">available for Python</a>, including...</p>
-
 </div>
 
 <h3>repl.it</h3><div class="Note">
@@ -53,18 +52,30 @@
 <pre data-echo="copy" class="IO">py -3 -m pip install -U pip setuptools sc8pr</pre>
 
 <h3>Assignment</h3><ol class="Assign">
+<li><ol type="a">
+    <li>Create or login to <a href="https://repl.it">repl.it</a> using your <code>g.eips.ca</code> Google account.</li>
+    <li>Open <a href="https://replit.com/@DavidMacCarthy/CS10">this link</a> and click the “Fork repl” button to make a copy for yourself.</li>
+    <li>Click the “Invite” button and enter your teacher’s email: <code>david.maccarthy@eips.ca</code>.</li>
+    <li>In the “Tools” area, select “Settings” and change the “Indent size” to 4.</li>
+</ol></li>
 <li>
-<p>Test that your IDE is working properly by running the following Python 3 programs as examples. Here is an example of a simple console program (no graphics).</p>
+<p>Open the file <code>s02_print.py</code> in your copy of the repl and then type or copy-and-paste the code below into your program file.
+    You can copy the entire code example (in most desktop browsers) by holding the <i>Alt</i> key and clicking anywhere in the code.</p>
 <pre data-echo="copy" class="Code"><span class="Comment"># Program 's02_print.py'</span>
 
 print(5 * 2)</pre>
-<p>If you have “forked” the CS10 repl.it project, open the file <code>s02_print.py</code> and then paste the code into your program file. If you are using a different IDE or have not created your own fork, you will need to create this file first.</p>
-<p>You can copy the entire code example by holding the <i>Alt</i> key and clicking anywhere in the code. If you are using a touch device, double-click to copy.</p>
-
-<p>Here is an example that accepts input from the keyboard...</p>
+<p>Run the program to ensure that it works as it is supposed to.</p>
+<p>If repl.it runs a different file, click the menu button (the three dots) in the file browser and select “Show hidden files”. There will be a file called <code>.replit</code>. Open this file, and ensure that it looks like this:</p>
+<pre class="IO">language = "python3"
+run = "python3 s02_print.py"</pre>
+<p>Change the file name in the second line to the file that you want to run. (Do not change the <code>python3</code> part!)</p>
+</li>
+<li>
+<p>Here is a second example; this one accepts input from the keyboard...</p>
 <pre data-echo="copy" class="Code"><span class="Comment"># Program 's02_name.py'</span>
 
 user = input("Please enter your name: ")
 print("Hello, {}!".format(user))</pre>
+<p>Copy this program into the file <code>s02_name.py</code> and ensure that the program runs correctly.</p>
 </li>
 </ol>

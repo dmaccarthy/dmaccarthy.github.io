@@ -51,13 +51,15 @@ var sitemap = {title:"sc8pr 3 Home", link:"home", pages:[
 				{title:"class FFReader", link:"ffr"},
 				{title:"class FFWriter", link:"ffw"},
 				{title:"class Grabber", link:"grabber"},
-				{title:"class Movie", link:"movie"},
 			]},
+			{title:".movie", link:"movie"},
 			{title:".progress", link:"progress"},
-			{title:".s8v", link:"s8v"},
 			{title:".table", link:"table"},
 			{title:".typeset", link:"typeset"},
-			{title:".video", link:"video_class"},
+			{title:".video", link:"video", pages:[
+				{title:"Video", link:"video_class"},
+				{title:"VidZip", link:"vidzip"},
+			]},
 		]},
 		{title:"sc8pr.plot.*", link:"plot_pkg", pages:[
 			{title:".mpl", link:"mpl"},

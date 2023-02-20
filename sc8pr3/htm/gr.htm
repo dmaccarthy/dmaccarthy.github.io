@@ -12,7 +12,7 @@ def setup(sk):
     alien = Sprite("alien.png")   <span class="Comment"># Create a sprite</span>
     sk += alien, hello            <span class="Comment"># Add sprite and text to sketch</span>
 
-Sketch((512,362)).play()          <span class="Comment"># Create and run the sketch</span></pre>
+Sketch((512,368)).play()          <span class="Comment"># Create and run the sketch</span></pre>
 
 <p>In the example above, we are loading an image from the file “alien.png” and using the image to create a <em>sprite</em> — an interactive, animated character or object. We are also creating a text object.  The final statement of the <code>setup</code> function adds the text and the alien sprite to the sketch using the sketch’s <code>+=</code> operator. This operator adds the items to the sketch <i>anonymously</i>.</p>
 
@@ -33,7 +33,7 @@ sk["Hello"] = hello</pre>
     fontSize = 32      <span class="Comment"># Set the size of the text</span>
 )</pre>
 
-<p>All graphics have a <code>config</code> method that lets us adjust the properties of the object. All of the arguments are passed by keyword and can be in any order. <code>sc8pr</code> uses the <code>pygame</code> coordinate system where <code>(0, 0)</code> refers to the pixel at the top left of the sketch window, and <code>(511, 361)</code> refers to the lower right pixel for our sketch size of 512 × 362.</p>
+<p>All graphics have a <code>config</code> method that lets us adjust the properties of the object. All of the arguments are passed by keyword and can be in any order. <code>sc8pr</code> uses the <code>pygame</code> coordinate system where <code>(0, 0)</code> refers to the pixel at the top left of the sketch window, and <code>(511, 367)</code> refers to the lower right pixel for our sketch size of 512 × 368.</p>
 
 <p>By default, <code>sc8pr</code> graphics are anchored to their center; <code>sc8pr</code> will draw the objects with their centers at the specified coordinates. We have changed the text object’s <code>anchor</code> to <code>TOPLEFT</code> so that the text is drawn with its top left corner at the coordinates <code>(8, 8)</code>. The anchor constants — <code>CENTER</code>, <code>TOP</code>, <code>BOTTOM</code>, <code>LEFT</code>, <code>RIGHT</code>, <code>TOPLEFT</code>, <code>TOPRIGHT</code>, <code>BOTTOMLEFT</code>, <code>BOTTOMRIGHT</code> — must be imported from the <code>sc8pr</code> module.</p>
 
