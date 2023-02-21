@@ -15,6 +15,7 @@
 
 <h4>Event Handlers</h4>
 <p>In <code>sc8pr 3</code>, all event handlers require two arguments, a <code>Graphic</code> instance and a <code>pygame.event.EventType</code> instance. This was true of <em>most</em> handlers in <code>sc8pr 2</code>, but there were a few exceptions (<code>ondraw</code>, <code>onwrap</code>, <code>onbounce</code>, <code>oncollide</code>, <code>onreset</code>).</p>
+<p><code>Graphic</code> subclasses no longer implement the <code>ondraw</code> event handler. A new method, <code>update</code>, has been added to fulfill each graphic object’s internal requirements. The <code>ondraw</code> handler, if any, is called by <code>update</code>. This means that your <code>ondraw</code> event handlers do not need to call a default handler as they did in <code>sc8pr 2</code>. However, if you override the <code>update</code> method, <code>ondraw</code> will no longer be called automatically.</p>
 
 <h4>Removed Modules</h4>
 
