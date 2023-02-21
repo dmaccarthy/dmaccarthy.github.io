@@ -49,29 +49,4 @@ def setup(sk):
 Sketch().play("Time Counter")</pre>
 
 <p>Note than in creating the timer, we have used the <code>config</code> method to set a custom attribute, <code>start</code>, that can be used by <code>updateTimer</code> to calculate the time.</p>
-
-<p>Some types of graphics already have an <em>ondraw</em> event handler built in. For example, <code>Sprite</code> objects come with an event handler that is responsible for moving and spinning the sprite, changing costumes, and bouncing or wrapping at the sketch edges. If you want to give your sprites a custom <em>ondraw</em> handler, be sure it calls the default handler! The default handler name will be the object’s class connected by a dot to the event description, i.e. <code>Sprite.ondraw</code>...</p>
-
-<pre class="Code Scroll" id="Ex3">from sc8pr import Sketch, Image, BOTH
-from sc8pr.sprite import Sprite
-
-def printUpdate(alien, ev):
-    print("My position is", alien.pos)
-    <span class="Hilite">Sprite.ondraw(alien, ev)</span>  <span class="Comment"># Default ondraw handler!</span>
-
-def setup(sk):
-    sk.bg = Image("sky.png")
-    alien = Sprite("alien.png").bind(ondraw=printUpdate)
-    sk += alien.config(
-        pos = sk.center,
-        width = sk.width/10,
-        spin = -1,
-        vel = (-1, 2),
-        bounce = BOTH
-    )
-
-Sketch((512,368)).play()</pre>
-
-<p>Try deleting the <span class="Hilite">blue</span> line in the program to see what happens!</p>
-
 </article>
