@@ -23,20 +23,16 @@ def setup(sk):
     mov = Video("movie.zip", alpha=True)
     sk.size = mov.size
     sk += mov.config(
-        costumeTime = 1,   <span class="Comment"># Sketch frames per video frame</span>
-        clip = (30, 90),   <span class="Comment"># Video frame range to animate</span>
+        costumeTime = 2,                 <span class="Comment"># Sketch frames per video frame</span>
+        costumeSequence = range(30, 90), <span class="Comment"># Video frame range to animate</span>
         pos = sk.center
     )
 
 Sketch().play()</pre>
 
 <h4>Read-Only Properties</h4><div class="Indent">
+	<p><code class="Hilite">costumeList</code>: Unlike its superclass <code>CostumeImage</code>, the <code>Video</code> class does not store all of its costumes (frames) in memory as a list. The frames are kept in a ZIP archive and are read and decompressed as needed. The <code>costumeList</code> property returns a reference to the <code>VidZip</code> instance used for reading the frame data, and it can be used to access the frames in a list-like way. For example, if <code>vid</code> refers to a <code>Video</code> instance, <code>vid.costumeList[0]</code> will return the first frame of the video (in the original frame order) as a <code>PixelData</code> instance.</p>
 	<p><code class="Hilite">fps</code>: The nominal frame rate of the video.</p>
-	<p><code class="Hilite">vzip</code>: A reference to the <code>VidZip</code> instance used for reading the frame data.</p>
-</div>
-
-<h4>Assignable Properties</h4><div class="Indent">
-	<p><code class="Hilite">clip</code>: A 2-tuple identify the range of frame numbers to play.</p>
 </div>
 
 <h4>Instance Method</h4><div class="Indent">

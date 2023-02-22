@@ -14,8 +14,8 @@
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
-	<p><code><span class="Hilite">kinematics</span>(self)</code> → <code>None</code>: Performs kinematics calculations; called by <code>ondraw</code>.</p>
-	<p><code><span class="Hilite">ondraw</span>(self, ev=None)</code> → <code>None</code>: Update the sprite’s motion properties each frame and (if applicable) trace its motion with the pen. Calls the sprite’s <code>onbounce</code> or <code>onwrap</code> handler if necessary.</p>
+	<p><code><span class="Hilite">kinematics</span>(self)</code> → <code>None</code>: Performs kinematics calculations; called by the <code>motion</code> method.</p>
+	<p><code><span class="Hilite">motion</span>(self)</code> → <code>None</code>: Update the sprite’s motion properties each frame and (if applicable) trace its motion with the pen. Calls the sprite’s <code>onbounce</code> or <code>onwrap</code> handler if necessary. This method is called by the <code>update</code> method.</p>
 	<p><code><span class="Hilite">onwrap</span>(self, ev=None)</code> → <code>None</code>: Default <code>onwrap</code> handler; calls the <code>penReset</code> method.</p>
 		<div class="Indent">
 		<p><code class="Hilite">ev</code>: An object that describes the event.</p>
