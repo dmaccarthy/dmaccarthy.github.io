@@ -15,7 +15,8 @@
 
 <h4>Event Handlers</h4>
 <p>In <code>sc8pr 3</code>, all event handlers require two arguments, a <code>Graphic</code> instance and a <code>pygame.event.EventType</code> instance. This was true of <em>most</em> handlers in <code>sc8pr 2</code>, but there were a few exceptions (<code>ondraw</code>, <code>onwrap</code>, <code>onbounce</code>, <code>oncollide</code>, <code>onreset</code>).</p>
-<p><code>Graphic</code> subclasses no longer implement the <code>ondraw</code> event handler. A new method, <code>update</code>, has been added to fulfill each graphic object’s internal requirements. The <code>ondraw</code> handler, if any, is called by <code>update</code>. This means that your <code>ondraw</code> event handlers do not need to call a default handler as they did in <code>sc8pr 2</code>. However, if you override the <code>update</code> method, <code>ondraw</code> will no longer be called automatically.</p>
+<p><code>Graphic</code> subclasses no longer implement the <code>ondraw</code> event handler. A new method, <code>Graphic.update</code>, has been added to fulfill each graphic object’s internal requirements. The <code>ondraw</code> handler, if any, is called by <code>update</code>. This means that your <code>ondraw</code> event handlers do not need to call a default handler as they did in <code>sc8pr 2</code>. However, if you override the <code>update</code> method, <code>ondraw</code> will no longer be called automatically.</p>
+<p>The <code>onreset</code> event used by <code>CostumeImage</code> and its subclasses is no longer used. <code>CostumeImage.update</code> now includes costume status information as part of the event information when it calls <code>ondraw</code>, making <code>onreset</code> unnecessary.</p>
 
 <h4>Removed Modules</h4>
 
@@ -27,8 +28,8 @@
 	<li><code>misc.s8v</code></li>
 </ul>
 
-<h4>Modified / Replaced Features</h4>
-<p>Some features have been changed sufficiently that <code>sc8pr 2</code> programs may need to be modified to work under <code>sc8pr 3</code>.</p>
+<h4>Other Changes</h4>
+<p>Here is a non-echaustive list of additional changes that may require <code>sc8pr 2</code> programs to be modified to work under <code>sc8pr 3</code>.</p>
 <ul>
 	<li><code>misc.media</code> and <code>misc.video</code> modules has been rewritten and have a new API.</li>
 	<li><code>CostumeImage.costumeSequence</code> is now a property insatead of a method.</li>

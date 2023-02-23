@@ -61,6 +61,15 @@ with VidZip("movie.zip", "x") as vzip:
     vzip.interval = 3
     Sketch((512,368)).config(capture=vzip).play()</pre>
 
+    def clip(self, ):
+	<p><code><span class="Hilite">clip</span>(zfile, mode="x", start=0, frames=None)</code> → <code>self</code>: Copies a subset of the video frames to a new ZIP archive.</p>
+		<div class="Indent">
+		<p><code class="Hilite">zfile</code>: Path to the output ZIP archive file.</p>
+		<p><code class="Hilite">mode</code>: The mode to use to open the archive.</p>
+		<p><code class="Hilite">start</code>: The frame number at which to start copying.</p>
+		<p><code class="Hilite">frames</code>: The number of frames to copy; if <code>None</code>, all frames will be copied tpo the end of the video.</p>
+		</div>
+
 	<p><code><span class="Hilite">close</span>()</code> → <code>None</code>: Close the ZIP file.</p>
 	<p><code><span class="Hilite">encode</span>(mfile, fps=None, size=None, start=0, frames=None, **kwargs)</code> → <code>self</code>: Encodes the images as a movie file using FFmpeg.</p>
 		<div class="Indent">

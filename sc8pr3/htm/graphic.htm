@@ -55,7 +55,7 @@
 		<div class="Indent">
 		<p><code>trigger</code>: A <code>bool</code> indicating whether the sketch’s <code>onfocus</code> handler is to be called.</p>
 		</div>
-	<p><code><span class="Hilite">bubble</span>(eventName, ev={})</code> → <code>None</code>: Call the instance’s event handler to process an event. If no event handler exists for the specified event, the call will “bubble” to the instance’s canvas.</p>
+	<p><code><span class="Hilite">bubble</span>(eventName, ev={})</code> → <code>object</code>: Call the instance’s event handler to process an event. If no event handler exists for the specified event, the call will “bubble” to the instance’s canvas. This method returns whatever the handler returns.</p>
 		<div class="Indent">
 		<p><code>eventName</code>: A string containing the default handler name (e.g. <code>"onclick"</code>).</p>
 		<p><code>ev</code>: A description of the event as a <code>dict</code> or <code>pygame.event.EventType</code> instance.</p>
