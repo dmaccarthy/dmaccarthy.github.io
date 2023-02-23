@@ -1,4 +1,4 @@
-let vec2d = {title:"Chapter 2: 2D Vectors", show:"2023.3", id:"vec", icon:"soccer", menu:[
+let vec2d = {title:"Chapter 2: 2D Vectors", id:"vec", icon:"soccer", menu:[
     {title:"Magnitude & Direction", id:"mag"},
     {title:"Polar & Cartesian Forms", id:"polar"},
     {title:"Vector Arithmetic", id:"arith"},

@@ -37,15 +37,15 @@ layout.chem_rev = [{icons:[
 
 // Part 2: Compounds
 
-layout.acid = [uc, 1];
-layout.water = [uc, 1];
-
-lesson("ionic", "1ngNJIFv1GXXhg8gZQiFBLxYwC4yHOHme", {vid:"#PLpVmtCaB-lynZX8Pn3MyzoBCoGjUyNRUi"});
+lesson("ionic", "1ngNJIFv1GXXhg8gZQiFBLxYwC4yHOHme", {vid:"#PLpVmtCaB-lynZX8Pn3MyzoBCoGjUyNRUi"})[0].icons.push(
+    {icon:"gdrv", text:"Lab Handout", url:"16UmZJn9xumq8k2S2uR1Nb7FzlsUFkI9H"}    
+);
 lesson("molec", "1zBGawUGNqHVnDipMt72pLBbxjzykblDz", {vid:"#PLpVmtCaB-lymbqbJT3eh6yoIccoR1wAAm"});
 lesson("poly", "1O1PJIPG7dVkcLP7BwHhZbla2GUTnqhNO", {vid:"#PLpVmtCaB-lymw8n95Vk-jxco6DuI0TqC_"});
-// lesson("acid", "", );
-// lesson("water", "", );
-// lesson("", "", );
+lesson("acid", "1aCWr_vgqf_S9HTu3pRKUsVd6oBqqh3r9", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Citrus_x_limon%2C_lemon_on_tree%2C_Co%C3%ADn%2C_Spain.jpg/640px-Citrus_x_limon%2C_lemon_on_tree%2C_Co%C3%ADn%2C_Spain.jpg", width:540}})[0].icons.push(
+    {icon:"gdrv", text:"Lab Handout", url:"181mzsLvBms8hrKoLVFEZ_C0aA4fSYgjD"}
+);
+lesson("water", "", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Hoh_river_water_splash_cbubar_NPS_Photo_%2817116532299%29.jpg/640px-Hoh_river_water_splash_cbubar_NPS_Photo_%2817116532299%29.jpg", width:540}});
 
 // Part 1: Matter
 
@@ -60,10 +60,8 @@ _l[0].icons[1].text = "Lab Handout";
 _l[0].icons.pop(); // No key!
 
 lesson("classify", "1OtFHEIrGpSYUEfQ-BbS4Cx34S1aW_zih", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Water_drop_001.jpg/320px-Water_drop_001.jpg", width:"608"}});
-
 lesson("atomic", "1B4YSICICgk6GCp7rmpIJSWdzysGCxfk6", {vid:"ogPNZ_MXksM", aspect:"4/3"})[0].icons[2] =
     {icon:"gdrv", text:"Answer Key", show:"2023.2.6.12", url:"1XDp9oNYsFG59WSe8OOKwKvzB9m0XgFi1"};
-
 lesson("isotope", "1bLGfc3IslpSN-5xYvkCK_qz7AjTZ4miO", {img:{src:"https://static.simpsonswiki.com/images/thumb/c/cd/I%27m_Just_a_Girl_Who_Can%27t_Say_D%27oh_billboard_gag.png/790px-I%27m_Just_a_Girl_Who_Can%27t_Say_D%27oh_billboard_gag.png", width:"533"}});
 lesson("bohr", "1Zqoen7f551BpjqJctTSpQ-OO_BPvA793", {vid:"Vd5duzNtBuI"});
 lesson("dot", "1FyV47UafHRW3bPBemF7-5o2_z61xEby8", {img:{src:"chem/img/pt.png", width:"724"}})[0].icons.push(
