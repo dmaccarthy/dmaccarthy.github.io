@@ -31,7 +31,7 @@
 	<p><code><span class="Hilite">__getitem__</span>(i)</code> → <code>Image</code>: Returns the costume in the current costume sequence with index <code>i</code>.</p>
 	<p><code><span class="Hilite">__len__</span>()</code> → <code>int</code>: Enables the <code>len</code> function to count the number of costumes in the current costume sequence.</p>
 	<p><code><span class="Hilite">costume</span>()</code> → <code>Image</code>: Returns the sprite’s scaled and rotated current costume.</p>
-	<p><code><span class="Hilite">updateCostume</span>(self)</code> → <code>None</code>: Called by the <code>update</code> method to switch costumes based on the <code>costumeTime</code>. Calls the <code>onreset</code> handler when resetting from the last costume back to the first.</p>
+	<p><code><span class="Hilite">updateCostume</span>(ev)</code> → <code>None</code>: Called by the <code>update</code> method to switch costumes based on the <code>costumeTime</code>. Adds a <code>status</code> attribute to the event object that has one of the following values: <code>0</code> (no costume change), <code>1</code> (costume has been changed to the next one in the sequence), <code>2</code> (costume has been reset at the end of the sequence), <code>-1</code> (the end of the sequence has been reached and <code>costumeTime</code> has been set to zero).</p>
 </div>
 
 </article>

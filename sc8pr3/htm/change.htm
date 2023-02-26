@@ -26,6 +26,7 @@
 <h4>Other Changes</h4>
 <p>Here is a non-exhaustive list of additional changes that may require <code>sc8pr 2</code> programs to be modified to work under <code>sc8pr 3</code>.</p>
 <ul>
+	<li><code>PixelData</code> no longer supports compression of images. This feature is no longer needed as <code>misc.Video</code> no longer keeps the entire video in memory at once. If needed, you can convert images to <code>bytes</code> and compress the result with any of Python’s compressors (e.g. <code>zlib</code> or <code>lzma</code>).</li>
 	<li><code>CostumeImage.costumeSequence</code> is now a property insatead of a method.</li>
 	<li><code>effect.FastDissolve</code> was an alternate version of the <code>Dissolve</code> effect in <code>sc8pr 2</code> that used a faster algorithm when <code>numpy</code> was available. This class has been removed and <code>Dissolve</code> will use the best algorithm that is available.</li>
 	<li><code>geom.transform2d_Gen</code> has been replaced by <code>geom.transform_gen</code> which uses different parameter names and order.</li>

@@ -16,6 +16,10 @@
 	<p><code class="Hilite">meta</code>: A dictionary containing the number of frames (<code>nframes</code>) and possibly the frame rate (<code>fps</code>), which should be specified if creating a new archive.</p>
 </div>
 
+<h4>Assignable Property</h4><div class="Indent">
+	<p><code class="Hilite">capture_RGB</code>: A <code>bool</code> specifying whether to convert captured images to RGB mode; default <code>True</code>.</p>
+</div>
+
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">__getitem__</span>(i)</code> → <code>PixelData</code> or <code>generator</code>: Returns the requested frame number if <code>i</code> is an integer, or a generator if a slice is provided.</p>
 	<p><code><span class="Hilite">__iadd__</span></code> → <code>self</code>: A pseudonym for <code>capture</code>.</p>
@@ -52,21 +56,4 @@ with VidZip("movie.zip", "x") as vzip:
 		</div>
 
 	<p><code><span class="Hilite">close</span>()</code> → <code>None</code>: Close the ZIP file.</p>
-	<!--p><code><span class="Hilite">encode</span>(mfile, fps=None, size=None, start=0, frames=None, **kwargs)</code> → <code>self</code>: Encodes the images as a movie file using FFmpeg.</p>
-		<div class="Indent">
-		<p><code class="Hilite">mfile</code>: Path to the output movie file.</p>
-		<p><code class="Hilite">fps</code>: The frame rate of the encoded movie; if not specified, it will be taken from the <code>meta</code> dictionary, or set to <code>30</code>.</p>
-		<p><code class="Hilite">size</code>: A 2-tuple or list specifying the size of the movie to be written.</p>
-		<p><code class="Hilite">start</code>: The number of frames to omit at the beginning of the video before writing to the media file.</p>
-		<p><code class="Hilite">frames</code>: The number of frames to write to the media file; if omitted, all frames will be written to the end of the video.</p>
-		<p><code class="Hilite">kwargs</code>: Additional arguments to be passed to <code>imageio.get_writer</code>.</p>
-		</div>
-<pre class="Code" id="Ex3">from sc8pr.misc.video import VidZip
-
-with VidZip("movie.zip") as vzip:
-    kwargs = {"size": (512, 288), "output_params": ["-vcodec", "ffv1"]}
-    vzip.encode("movie.mkv", **kwargs)</pre>
-
-</div-->
-
 </article>

@@ -14,10 +14,11 @@ with Writer("movie.mkv", 30, output_params=["-vcodec", "ffv1"]) as ffw:
 <p>Call the <code>Writer</code> instance’s <code>write</code> method to write an individual frame to the movie file.</p>
 
 <h4>Constructor</h4><div class="Indent">
-	<p><code><span class="Hilite">Writer</span>(fn, fps=30, **kwargs)</code>: Create an instance to write the specified media file.</p>
+	<p><code><span class="Hilite">Writer</span>(fn, fps=30, size=None, **kwargs)</code>: Create an instance to write the specified media file.</p>
 		<div class="Indent">
 		<p><code class="Hilite">fn</code>: The path to an FFmpeg-compatible media file to be encoded.</p>
 		<p><code class="Hilite">fps</code>: The frame rate in frames-per-second.</p>
+		<p><code class="Hilite">size</code>: A 2-tuple or list specifying the size of the images to be saved. If omitted, the size of the first image written will be used.</p>
 		<p><code class="Hilite">kwargs</code>: Additional arguments to be passed to <code>imageio.get_writer</code>. For example, to save the video using a lossless codec, you can use <code>output_params = ["-vcodec", "ffv1"]</code> as a keyword argument with an <code>mkv</code> container file.</p>
 		</div>
 </div>
@@ -42,6 +43,13 @@ with Writer("movie.mkv", 30, output_params=["-vcodec", "ffv1"]) as ffw:
 
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">capture</span></code>: A pseudonym for <code>write</code>; allows the <code>Writer</code> to record the sketch.</p>
+	<p><code><span class="Hilite">concat</span>(src, start=0, frames=None)</code> → <code>self</code>: Write frames from a file to the movie.</p>
+		<div class="Indent">
+		<p><code class="Hilite">src</code>: An FFmpeg-compatible input file.</p>
+		<p><code class="Hilite">start</code>: The first frame to be written.</p>
+		<p><code class="Hilite">frames</code>: The number of frames to be written; if omitted the movie will be written to the end of the source file.</p>
+		</div>
+	<p><code><span class="Hilite">concat_zip</span></code>: This performs the same action as <code>concat</code> except using a ZIP archive video as the source.</p>
 	<p><code><span class="Hilite">write</span>(srf)</code> → <code>self</code>: Write a single frame to the movie from from the provided image.</p>
 		<div class="Indent">
 		<p><code class="Hilite">srf</code>: A <code>pygame.Surface</code> or <code>Image</code> instance; or any object that has an <code>image</code> attribute containing a <code>pygame.Surface</code>, or that can be passed to the <code>Image</code> constructor.</p>
