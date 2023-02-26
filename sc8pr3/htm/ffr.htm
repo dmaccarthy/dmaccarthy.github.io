@@ -1,15 +1,15 @@
 ﻿<article>
-<h1><code>sc8pr.misc.media.FFReader</code> Class</h1>
+<h1><code>sc8prx.ffmpeg.Reader</code> Class</h1>
 
-<p><code>FFReader</code> is used to decode media files into <a class="Hilite Code" href="javascript:goNode('pixeldata')">PixelData</a> or <a class="Hilite Code" href="javascript:goNode('movie')">Movie</a> instances that can be used with your <code>sc8pr</code> sketches. This class uses the <a href="https://imageio.readthedocs.io/en/stable/" target="im"><code>imageio</code></a> and <a href="https://imageio.readthedocs.io/en/stable/format_ffmpeg.html" target="im"><code>imageio-ffmpeg</code></a> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>).</p>
+<p><code>Reader</code> is used to decode media files into <a class="Hilite Code" href="javascript:goNode('pixeldata')">PixelData</a> or <a class="Hilite Code" href="javascript:goNode('movie')">Movie</a> instances that can be used with your <code>sc8pr</code> sketches. This class uses the <a href="https://imageio.readthedocs.io/en/stable/" target="im"><code>imageio</code></a> and <a href="https://imageio.readthedocs.io/en/stable/format_ffmpeg.html" target="im"><code>imageio-ffmpeg</code></a> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>).</p>
 
-<p>In the example below, <code>FFReader</code> loads the video from an MP4 file as a list of <code>Images</code>, which are then used to create a sprite. If the installed <code>imageio-ffmpeg</code> package does not include an FFmpeg executable, you may need to call the <code>FFReader.ffpeg</code> function to specify the path to FFmpeg.</p>
+<p>In the example below, <code>Reader</code> loads the video from an MP4 file as a list of <code>Images</code>, which are then used to create a sprite. If the installed <code>imageio-ffmpeg</code> package does not include an FFmpeg executable, you may need to call the <code>Reader.ffpeg</code> function to specify the path to FFmpeg.</p>
 <pre class="Code" id="Ex1">from sc8pr import Sketch
 from sc8pr.sprite import Sprite
-from sc8pr.misc.media import FFReader
+from sc8prx.ffmpeg import Reader
 
 def setup(sk):
-    with FFReader("movie.mp4") as ffr:
+    with Reader("movie.mp4") as ffr:
         images = ffr.read()
         sk += Sprite(images).config(pos=sk.center, costumeTime=2)
 
@@ -17,15 +17,15 @@ Sketch().play()</pre>
 
 <p>Because the images are uncompressed, loading the entire movie as a <code>Sprite</code> can use a lot of memory, depending on the size and length of the movie. It may be preferable to use the <code>Movie</code> or <a class="Hilite Code" href="javascript:goNode('video_class')">Video</a> class to play movies.</p>
 
-<p>The <code>FFReader</code> instance is iterable, producing a sequence of <code>PixelData</code> instances...</p>
-<pre class="Code" id="Ex2">from sc8pr.misc.media import FFReader
+<p>The <code>Reader</code> instance is iterable, producing a sequence of <code>PixelData</code> instances...</p>
+<pre class="Code" id="Ex2">from sc8prx.ffmpeg import Reader
 
-with FFReader("movie.mp4") as ffr:
+with Reader("movie.mp4") as ffr:
     for pix in ffr:
         print(pix)</pre>
 
 <h4>Constructor</h4><div class="Indent">
-	<p><code><span class="Hilite">FFReader</span>(src, **kwargs)</code>: Create an instance to read the specified media file.</p>
+	<p><code><span class="Hilite">Reader</span>(src, **kwargs)</code>: Create an instance to read the specified media file.</p>
 		<div class="Indent">
 		<p><code class="Hilite">src</code>: The path to an FFmpeg-compatible media file to be decoded.</p>
 		<p><code class="Hilite">kwargs</code>: Additional options to be passed to <code>imageio.get_reader</code>. This can include a <code>size</code> argument that makes FFmpeg resize the video.</p>
@@ -37,6 +37,22 @@ with FFReader("movie.mp4") as ffr:
 </div>
 
 <h4>Static Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">decode</span>(mfile, zfile, size=None, start=0, frames=None, interval=1, replace=False, compression=ZIP_DEFLATED)</code> → <code>None</code>: Decode a movie file to an ZIP archive of images. The resulting archive can then be loaded as a <code>VidZip</code> instance.</p>
+		<div class="Indent">
+		<p><code class="Hilite">mfile</code>: Path to the input movie file.</p>
+		<p><code class="Hilite">zfile</code>: Path to the output ZIP file.</p>
+		<p><code class="Hilite">size</code>: Optional 2-tuple to resize the frame images before writing them.</p>
+		<p><code class="Hilite">start</code>: The number of frames to omit at the beginning of the movie before writing to the ZIP archive.</p>
+		<p><code class="Hilite">frames</code>: The number of frames to write to the ZIP archive; if omitted, all frames will be written to the end of the movie.</p>
+		<p><code class="Hilite">interval</code>: A positive <code>int</code> specifying how often to write the frames; for example, setting this to <code>3</code> will write every third frame.</p>
+		<p><code class="Hilite">replace</code>: A <code>bool</code> specifying whether to replace the output ZIP archive (<code>True</code>) or raise an exception (<code>False</code>) if the file already exists.</p>
+		<p><code class="Hilite">compression</code>: The compression algorthim passed to the <code>ZipFile</code> constructor.</p>
+		</div>
+<pre class="Code" id="Ex1">from sc8prx.ffmpeg import Reader
+
+<span class="Comment"># This could take a while if it is a long movie...</span>
+Reader.decode("movie.mp4", "movie.zip", (512, 288))</pre>
+
 	<p><code><span class="Hilite">ffmpeg</span>(ff)</code> → <code>None</code>: Specifies the location of the FFmpeg executable if not included as part of the <code>imageio-ffmpeg</code> package.</p>
 		<div class="Indent">
 		<p><code class="Hilite">ff</code>: The path to the FFmpeg executable.</p>

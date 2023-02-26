@@ -1,10 +1,10 @@
 ﻿<article>
-<h1><code>sc8pr.misc.movie.Movie</code> Class</h1>
+<h1><code>sc8prx.movie.Movie</code> Class</h1>
 
 <p>The <code>Movie</code> class is used to play media files as they are decoded. This class uses the <a href="https://imageio.readthedocs.io/en/stable/" target="im"><code>imageio</code></a> and <a href="https://imageio.readthedocs.io/en/stable/format_ffmpeg.html" target="im"><code>imageio-ffmpeg</code></a> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>) to decode FFmpeg-compatible files.</p>
 
 <pre class="Code" id="Ex1">from sc8pr import Sketch
-from sc8pr.misc.movie import Movie
+from sc8prx.movie import Movie
 
 def setup(sk):
     mov = Movie("movie.mkv")

@@ -47,12 +47,6 @@ var sitemap = {title:"sc8pr 3 Home", link:"home", pages:[
 		{title:"sc8pr.misc.*", link:"misc", pages:[
 			{title:".effect", link:"effect"},
 			{title:".hsv", link:"hsv"},
-			{title:".media", link:"media", pages:[
-				{title:"class FFReader", link:"ffr"},
-				{title:"class FFWriter", link:"ffw"},
-				{title:"class Grabber", link:"grabber"},
-			]},
-			{title:".movie", link:"movie"},
 			{title:".progress", link:"progress"},
 			{title:".table", link:"table"},
 			{title:".typeset", link:"typeset"},
@@ -62,7 +56,6 @@ var sitemap = {title:"sc8pr 3 Home", link:"home", pages:[
 			]},
 		]},
 		{title:"sc8pr.plot.*", link:"plot_pkg", pages:[
-			{title:".mpl", link:"mpl"},
 			{title:".regression", link:"reg"},
 		]},
 		{title:"sc8pr.robot.*", link:"robot_class", pages:[
@@ -87,5 +80,16 @@ var sitemap = {title:"sc8pr 3 Home", link:"home", pages:[
 			{title:"class Text", link:"text_class"},
 		]},
 		{title:"sc8pr.util", link:"util"},
+		{title:"sc8prx", link:"sc8prx", pages:[
+			{title:".ffmpeg", link:"ffmpeg", pages:[
+				{title:"class Reader", link:"ffr"},
+				{title:"class Writer", link:"ffw"},
+			]},
+			{title:".pil", link:"pil", pages:[
+				{title:"class Grabber", link:"grabber"},
+			]},
+			{title:".movie", link:"movie"},
+			{title:".mpl", link:"mpl"},
+		]},
 	]},
 ]}

@@ -16,24 +16,6 @@
 	<p><code class="Hilite">meta</code>: A dictionary containing the number of frames (<code>nframes</code>) and possibly the frame rate (<code>fps</code>), which should be specified if creating a new archive.</p>
 </div>
 
-<h4>Static Method</h4><div class="Indent">
-	<p><code><span class="Hilite">decode</span>(mfile, zfile, size=None, start=0, frames=None, interval=1, replace=False, compression=ZIP_DEFLATED)</code> → <code>None</code>: Decode a movie file to an ZIP archive of images. The resulting archice can then be loaded as a <code>VidZip</code> instance.</p>
-		<div class="Indent">
-		<p><code class="Hilite">mfile</code>: Path to the input movie file.</p>
-		<p><code class="Hilite">zfile</code>: Path to the output ZIP file.</p>
-		<p><code class="Hilite">size</code>: Optional 2-tuple to resize the frame images before writing them.</p>
-		<p><code class="Hilite">start</code>: The number of frames to omit at the beginning of the movie before writing to the ZIP archive.</p>
-		<p><code class="Hilite">frames</code>: The number of frames to write to the ZIP archive; if omitted, all frames will be written to the end of the movie.</p>
-		<p><code class="Hilite">interval</code>: A positive <code>int</code> specifying how often to write the frames; for example, setting this to <code>3</code> will write every third frame.</p>
-		<p><code class="Hilite">replace</code>: A <code>bool</code> specifying whether to replace the output ZIP archive (<code>True</code>) or raise an exception (<code>False</code>) if the file already exists.</p>
-		<p><code class="Hilite">compression</code>: The compression algorthim passed to the <code>ZipFile</code> constructor.</p>
-		</div>
-<pre class="Code" id="Ex1">from sc8pr.misc.video import VidZip
-
-<span class="Comment"># This could take a while if it is a long movie...</span>
-VidZip.decode("movie.mp4", "movie.zip", (512, 288))</pre>
-</div>
-
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">__getitem__</span>(i)</code> → <code>PixelData</code> or <code>generator</code>: Returns the requested frame number if <code>i</code> is an integer, or a generator if a slice is provided.</p>
 	<p><code><span class="Hilite">__iadd__</span></code> → <code>self</code>: A pseudonym for <code>capture</code>.</p>
@@ -61,7 +43,6 @@ with VidZip("movie.zip", "x") as vzip:
     vzip.interval = 3
     Sketch((512,368)).config(capture=vzip).play()</pre>
 
-    def clip(self, ):
 	<p><code><span class="Hilite">clip</span>(zfile, mode="x", start=0, frames=None)</code> → <code>self</code>: Copies a subset of the video frames to a new ZIP archive.</p>
 		<div class="Indent">
 		<p><code class="Hilite">zfile</code>: Path to the output ZIP archive file.</p>
@@ -71,7 +52,7 @@ with VidZip("movie.zip", "x") as vzip:
 		</div>
 
 	<p><code><span class="Hilite">close</span>()</code> → <code>None</code>: Close the ZIP file.</p>
-	<p><code><span class="Hilite">encode</span>(mfile, fps=None, size=None, start=0, frames=None, **kwargs)</code> → <code>self</code>: Encodes the images as a movie file using FFmpeg.</p>
+	<!--p><code><span class="Hilite">encode</span>(mfile, fps=None, size=None, start=0, frames=None, **kwargs)</code> → <code>self</code>: Encodes the images as a movie file using FFmpeg.</p>
 		<div class="Indent">
 		<p><code class="Hilite">mfile</code>: Path to the output movie file.</p>
 		<p><code class="Hilite">fps</code>: The frame rate of the encoded movie; if not specified, it will be taken from the <code>meta</code> dictionary, or set to <code>30</code>.</p>
@@ -86,6 +67,6 @@ with VidZip("movie.zip") as vzip:
     kwargs = {"size": (512, 288), "output_params": ["-vcodec", "ffv1"]}
     vzip.encode("movie.mkv", **kwargs)</pre>
 
-</div>
+</div-->
 
 </article>
