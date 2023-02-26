@@ -3,7 +3,7 @@
 
 <p><code>Reader</code> is used to decode media files into <a class="Hilite Code" href="javascript:goNode('pixeldata')">PixelData</a> or <a class="Hilite Code" href="javascript:goNode('movie')">Movie</a> instances that can be used with your <code>sc8pr</code> sketches. This class uses the <a href="https://imageio.readthedocs.io/en/stable/" target="im"><code>imageio</code></a> and <a href="https://imageio.readthedocs.io/en/stable/format_ffmpeg.html" target="im"><code>imageio-ffmpeg</code></a> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>).</p>
 
-<p>In the example below, <code>Reader</code> loads the video from an MP4 file as a list of <code>Images</code>, which are then used to create a sprite. If the installed <code>imageio-ffmpeg</code> package does not include an FFmpeg executable, you may need to call the <code>Reader.ffpeg</code> function to specify the path to FFmpeg.</p>
+<p>In the example below, <code>Reader</code> loads the video from an MP4 file as a list of <code>Images</code>, which are then used to create a sprite. If the installed <code>imageio-ffmpeg</code> package does not include an FFmpeg executable, you may need to call the <code>Reader.ffmpeg</code> function to specify the path to FFmpeg.</p>
 <pre class="Code" id="Ex1">from sc8pr import Sketch
 from sc8pr.sprite import Sprite
 from sc8prx.ffmpeg import Reader

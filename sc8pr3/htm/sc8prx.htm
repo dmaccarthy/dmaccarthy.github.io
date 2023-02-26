@@ -9,8 +9,15 @@
 	<li class="Code">matplotlib</li>
 </ul>
 
-<p><code>sc8prx</code> must be installed separately from <code>sc8pr</code>. As <code>sc8pr 3</code> is still in pre-release, it needs to be installed from GitHub, but will be available on <code>PyPI</code> when it is officially released.</p>
+<p><code>sc8prx</code> must be installed separately from <code>sc8pr</code>. As <code>sc8pr 3</code> is still in pre-release, you will need to install <code>sc8prx</code> from GitHub after installing the core <code>sc8pr</code> package first. When version 3 is officially released, both packages will be available on <code>PyPI</code> and installing <code>sc8prx</code> will install all dependencies including the core <code>sc8pr</code>.</p>
 <pre class="Code">pip3 install -U https://github.com/dmaccarthy/sc8prx/archive/refs/heads/main.zip</pre>
+
+<h4>Function</h4><div class="Indent">
+	<p><code><span class="Hilite">pil</span>(pix)</code> → <code>PIL.Image.Image</code>: Convert the image format from <code>sc8pr.PixelData</code> to a Pillow format image.</p>
+		<div class="Indent">
+		<p><code class="Hilite">pix</code>: A <a href="javascript:goNode('pixeldata')"><code>PixelData</code></a> instance.</p>
+		</div>
+</div>
 
 </article></body>
 </html>

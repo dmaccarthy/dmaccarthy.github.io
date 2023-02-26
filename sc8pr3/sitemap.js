@@ -85,9 +85,7 @@ var sitemap = {title:"sc8pr 3 Home", link:"home", pages:[
 				{title:"class Reader", link:"ffr"},
 				{title:"class Writer", link:"ffw"},
 			]},
-			{title:".pil", link:"pil", pages:[
-				{title:"class Grabber", link:"grabber"},
-			]},
+			{title:".grab", link:"grabber"},
 			{title:".movie", link:"movie"},
 			{title:".mpl", link:"mpl"},
 		]},

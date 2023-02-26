@@ -1,18 +1,5 @@
 ﻿<article><h1>Changes from <code>sc8pr 2</code></h1>
 
-<h4>Dependencies</h4>
-<p>While <code>sc8pr</code>'s core features depend only on <code>pygame</code>, there are additional dependencies for these “extras”:</p>
-<ul>
-	<li><code>misc.media</code> and <code>misc.movie</code> modules and <code>misc.video.VidZip.decode</code> and <code>encode</code> methods: Encoding and decoding FFmpeg-compatible files.</li>
-	<li><code>plot.mpl</code> module: Rendering equations with <code>matplotlib</code>.</li>
-	<li><code>PixelData.pil</code> property: Converting image from <code>pygame</code> to <code>Pillow</code> format.</li>
-</ul>
-<p>These additional dependencies (<code>numpy</code>, <code>pillow</code>, <code>imageio</code>, <code>imageio-ffmpeg</code>, and <code>matplotlib</code>) are now included in <code>setup.cfg</code> so that they will be installed automatically when you install <code>sc8pr</code> using <code>pip</code>.</p>
-
-<!--p>If you do not require these features and do not want to install the extra packages, choose <code>sc8pr-core</code> rather than <code>sc8pr</code> when installing:</p>
-<pre class="Code">pip install sc8pr-core==3.0a2</pre>
-<p>This may be advisable if you are using an online IDE that re-installs dependencies regularly.</p-->
-
 <h4>Event Handlers</h4>
 <p>In <code>sc8pr 3</code>, all event handlers require two arguments, a <code>Graphic</code> instance and a <code>pygame.event.EventType</code> instance. This was true of <em>most</em> handlers in <code>sc8pr 2</code>, but there were a few exceptions (<code>ondraw</code>, <code>onwrap</code>, <code>onbounce</code>, <code>oncollide</code>, <code>onreset</code>).</p>
 <p><code>Graphic</code> subclasses no longer implement the <code>ondraw</code> event handler. A new method, <code>Graphic.update</code>, has been added to fulfill each graphic object’s internal requirements. The <code>ondraw</code> handler, if any, is called by <code>update</code>. This means that your <code>ondraw</code> event handlers do not need to call a default handler as they did in <code>sc8pr 2</code>. However, if you override the <code>update</code> method, <code>ondraw</code> will no longer be called automatically.</p>
@@ -28,10 +15,17 @@
 	<li><code>misc.s8v</code></li>
 </ul>
 
+<h4 class="Code">sc8prx</h4>
+<p>The core features of <code>sc8pr</code> depend only on <code>pygame</code>. Extras that have additional dependencies have been rewritten and are now located in a separate package called <code>sc8prx</code>. The affected <code>sc8pr 2</code> modules are:</p>
+<ul class="Code">
+	<li>misc.media</li>
+	<li>plot.mpl</li>
+</ul>
+<p>Also, the <code>PixelData.pil</code> property has been removed and a new function <code><a href="javascript:goNode('sc8prx')">sc8prx</a>.pil</code> now provides the same function.</p>
+
 <h4>Other Changes</h4>
-<p>Here is a non-echaustive list of additional changes that may require <code>sc8pr 2</code> programs to be modified to work under <code>sc8pr 3</code>.</p>
+<p>Here is a non-exhaustive list of additional changes that may require <code>sc8pr 2</code> programs to be modified to work under <code>sc8pr 3</code>.</p>
 <ul>
-	<li><code>misc.media</code> and <code>misc.video</code> modules has been rewritten and have a new API.</li>
 	<li><code>CostumeImage.costumeSequence</code> is now a property insatead of a method.</li>
 	<li><code>effect.FastDissolve</code> was an alternate version of the <code>Dissolve</code> effect in <code>sc8pr 2</code> that used a faster algorithm when <code>numpy</code> was available. This class has been removed and <code>Dissolve</code> will use the best algorithm that is available.</li>
 	<li><code>geom.transform2d_Gen</code> has been replaced by <code>geom.transform_gen</code> which uses different parameter names and order.</li>
