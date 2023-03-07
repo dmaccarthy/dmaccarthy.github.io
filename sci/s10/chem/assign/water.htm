@@ -1,11 +1,16 @@
-<div title="Properties of Water" class="Practice" data-date="2023.7">
+<div title="Properties of Water" class="Practice" data-date="2023.2.27.18">
 <h3>Review</h3>
 <style type="text/css">
 
-#Oxygen, #Hydrogen {font-size:300%}
+#Lewis {text-align:center}
+td.M2 {min-width:2em}
+
+#Sym {
+    font-size:300%;
+    font-weight:bold;
+}
 
 </style>
-   
 <ol>
     <li>Draw a Lewis dot diagram for:
         (a) <a href="javascript:show_Lewis(0)">an oxygen atom</a>,
@@ -13,10 +18,12 @@
         (c) <a href="javascript:show_Lewis(2)">H<sub>2</sub>O</a>.</li>
     <div class="Answer">Click a link above to draw...
     <table id="Lewis" class="Auto">
-        <tr><td id="Oxygen"></td></tr>
-        <tr><td id="Hydrogen"></td></tr>
-        <tr><td><img src="chem/assign/img/H2O.png"/></td></tr>
-    </table></div>
+        <tr><td class="M2"></td><td id="Dot2"></td><td class="M2"></td></tr>
+        <tr><td id="Dot1"></td><td id="Sym">O</td><td  id="Dot3"></td></tr>
+        <tr><td></td><td id="Dot0"></td><td></td></tr>       
+    </table>
+    <p class="Center" id="H20"><img src="s10/chem/assign/img/H2O.png"/></p>
+    </div>
 
     <li>Describe the shape of a water molecule.</li>
     <div class="Answer">Water molecules have an angular shape like a “V” as suggested by the Lewis dot diagram. The angle between the two bonds is 104°.</div>
@@ -42,12 +49,30 @@
 
 <script type="text/javascript">
 
-$("#Oxygen").html(lewis("O", 6));
-$("#Hydrogen").html(lewis("H", 1));
+function lewis(sym, dot) {
+    $("#Lewis td").html("");
+    $("#Sym").html(sym);
+    for (let i=0;i<4;i++) {
+        let e = $(`#Dot${i}`);
+        if (i+1 <= dot) e.html("&#9679;");
+        if (i+5 <= dot) {
+            let c = i % 2 ? "<br/>" : "&nbsp;";
+            e.append(c + " &#9679;");
+        }
+    }
+}
 
 function show_Lewis(n) {
-    let e = $("#Lewis > tbody > tr").hide();
-    if (n != null) $(e[n]).show();
+    if (n==2) {
+        $("#Lewis").hide();
+        $("#H20").show();
+    }
+    else {
+        $("#Lewis").show();
+        $("#H20").hide(); 
+        if (n == 0) lewis("O", 6);
+        else lewis("H", 1);
+    }
 }
 
 show_Lewis(0);

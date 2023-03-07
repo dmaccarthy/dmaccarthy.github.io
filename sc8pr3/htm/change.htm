@@ -33,6 +33,8 @@
 	<li><code>geom.transform2d_Gen</code> has been replaced by <code><a class="Hilite" href="javascript:goNode('geom')">geom</a>.transform_gen</code> which uses different parameter names and order.</li>
 	<li><code>geom.transform2d</code> has had the names and order of the parameters changed to be consistent with <code>geom.transform_gen</code>.</li>
 	<li><code>Graphic.relXY</code> has been renamed <code><a class="Hilite" href="javascript:goNode('graphic')">Graphic</a>.relPos</code>.</li>
+	<li>The sketch no longer has a <code>capture</code> attribute to record the sketch automatically. You can record by adding the line <code>w.write(sk)</code> to your sketch’s <code>ondraw</code> handler where <code>w</code> refers to a <a class="Hilite Code" href="javascript:goNode('ffw')">Writer</a> or <a class="Hilite Code" href="javascript:goNode('vidzip')">VidZip</a> instance.</li>
+
 </ul>
 
 <!--h4>New Features</h4-->

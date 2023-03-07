@@ -5,20 +5,26 @@
 <h4>Constructor</h4><div class="Indent">
 	<p><code><span class="Hilite">Image</span>(data=(2,2), bg=None)</code></p>
 		<div class="Indent">
-		<p><code class="Hilite">data</code>: This can be a string specifying an image file to load, an existing <code>Image</code> or <code>pygame.Surface</code> instance to be “wrapped” into a new image, or a 2-tuple specifying the pixel size for a new image.</p>
+		<p><code class="Hilite">data</code>: This can be a string specifying an image file to load, an existing <code>Image</code> or <code>pygame.Surface</code> instance to be “wrapped” into a new image without copying any pixel data, a 2-tuple specifying the width and height for a new image, a <code>PIL.Image</code> formatted image (if <code>Pillow</code> is available), or raw binary data.</p>
 		<p><code class="Hilite">bg</code>: The background color for the image.</p>
 		</div>
 </div>
 
 <h4>Read-Only Properties</h4><div class="Indent">
-	<p><code class="Hilite">image</code>: Returns a <code>pygame.Surface</code> of the scaled and rotated pixel data. If no scaling or rotation has been applied, this will return the original surface .</p>
+	<p><code class="Hilite">image</code>: Returns a <code>pygame.Surface</code> of the scaled and rotated image. If no scaling or rotation has been applied, this will return the original surface .</p>
 	<p><code class="Hilite">jpg</code>: Returns the scaled and rotated image as a <code>bytes</code> object containing the JPEG-encoded data.</p>
 	<p><code class="Hilite">original</code>: Returns the original <code>pygame.Surface</code> containing the unscaled and unrotated pixel data.</p>
-	<p><code class="Hilite">pix</code>: Returns the scaled and rotated image as a <a class="Hilite Code" href="javascript:goNode('pixeldata')">PixelData</a> instance.</p>
 	<p><code class="Hilite">png</code>: Returns the scaled and rotated image as a <code>bytes</code> object containing the PNG-encoded data.</p>
+	<p><code class="Hilite">rgba</code>: Creates a new <code>Image</code> instance that supports transparency. If the original image already supports transparency, the pixel data will not be copied.</p>
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">__bytes__</span>()</code> → <code>bytes</code>: Gets the raw pixel data by calling <code>pygame.image.tostring</code> and then adds 12 additional bytes specifiying the image size and mode (RGB or RGBA) so that the image can be reconstructed.</p>
+	<p><code><span class="Hilite">bytesTuple</span>(info=True)</code> → <code>tuple</code> or <code>bytes</code>: Similar to the <code>__bytes__</code> method except that the size and mode information is returned as a separate object rather than being appended to the raw data.</p>
+		<div class="Indent">
+		<p><code class="Hilite">info</code>: If <code>True</code>, a 2-tuple will be returned in the format <code>(data, (size, mode))</code>, where <code>data</code> is a <code>bytes</code> instance, <code>size</code> is a 2-tuple, and <code>mode</code> is either <code>"RGB"</code> or <code>"RGBA"</code>. If <code>False</code>, only the raw data will be returned as a <code>bytes</code> instance.</p>
+		</div>
+
 	<p><code><span class="Hilite">copy</span>()</code> → <code>Image</code>: Copy the pixel data and wrap it as a new <code>Image</code> instance. This method applies any scaling and rotation but does not apply any <code>effects</code>. Use the <code>snapshot</code> method to apply effects.</p>
 	<p><code><span class="Hilite">crop</span>(*args, bg=True)</code> → <code>Image</code>: Create a new <code>Image</code> instance by cropping an existing (unscaled and unrotated) image; does not copy the pixel data.</p>
 		<div class="Indent">
@@ -31,18 +37,18 @@
 		<p><code class="Hilite">y</code>: A sequence of <i>y</i> coordinates at which to make cuts.</p>
 		<p><code class="Hilite">padding</code>: The number of pixels to remove from the edge of each rectangle.</p>
 		</div>
-	<p><code><span class="Hilite">dumpCache</span>()</code> → <code>self</code>: Discards the cached pixel data for the scaled and/or rotated image. This should be called when the original pixel data of the image is modified.</p>
+	<p><code><span class="Hilite">dumpCache</span>()</code> → <code>self</code>: Discards the cached images for the scaled and/or rotated image. This should be called when the original surface of the image is modified.</p>
 	<p><code><span class="Hilite">flip</span>(mode=HORIZONTAL)</code> → <code>Image</code>: Create a new <code>Image</code> by flipping an existing image.</p>
 		<div class="Indent">
 		<p><code class="Hilite">mode</code>: One of the constants <code>HORIZONTAL</code>, <code>VERTICAL</code>, or <code>BOTH</code> from the <a class="Hilite Code" href="javascript:goNode('init')">sc8pr</a> module; specifies which direction(s) to flip.</p>
 		</div>
-	<p><code><span class="Hilite">replace</span>(oldColor=True, newColor=(255,255,255,0), dist=0.0001)</code> → <code>Image</code>: Copy the (unscaled and unrotated) image, including the pixel data, and replace one color in the copy.</p>
+	<p><code><span class="Hilite">replace</span>(oldColor=True, newColor=(255,255,255,0), dist=0.02)</code> → <code>Image</code>: Copy the (unscaled and unrotated) image, including the pixel data, and replace one color in the copy.</p>
 		<div class="Indent">
 		<p><code class="Hilite">oldColor</code>: The color to be replaced; if <code>True</code>, the pixel at (0,0) determines the color to be replaced.</p>
 		<p><code class="Hilite">newColor</code>: The replacement color.</p>
 		<p><code class="Hilite">dist</code>: A <code>float</code> between <code>0.0</code> and <code>1.0</code> that describes how “close” a pixel color needs to be to the <code>oldColor</code> to be replaced.</p>
 		</div>
-	<p><code><span class="Hilite">save</span>(fn)</code> → <code>self</code>: Saves the original (unscaled, unrotated) pixel data as an image file.  To save the transformed image, call the <code>copy</code> or <code>snapshot</code> methods before saving.</p>
+	<p><code><span class="Hilite">save</span>(fn)</code> → <code>self</code>: Saves the original (unscaled, unrotated) image as an image file.  To save the transformed image, call the <code>copy</code> or <code>snapshot</code> methods before saving.</p>
 	<p><code><span class="Hilite">tiles</span>(cols=1, rows=1, flip=0, padding=0)</code> → <code>list</code>: Slices the image into equally sized rectangular “tiles”.</p>
 		<div class="Indent">
 		<p><code class="Hilite">cols</code>: The number of columns.</p>
@@ -53,7 +59,12 @@
 </div>
 
 <h4>Static Methods</h4><div class="Indent">
-	<p><code><span class="Hilite">fromBytes</span>(data)</code> → <code>Image</code>: Create an <code>Image</code> instance from binary data or from any object that the <a class="Code" href="javascript:goNode('pixeldata')">PixelData</a> constructor can decode.</p>
+	<p><code><span class="Hilite">fromBytes</span>(data, img=True)</code> → <code>Image</code> or <code>pygame.Surface</code>: Create an image from binary data.</p>
+		<div class="Indent">
+		<p><code class="Hilite">data</code>: The image data as returned by the <code>__bytes__</code> or <code>bytesTuple</code> method.</p>
+		<p><code class="Hilite">img</code>: Specifies whether to return an <code>Image</code> (<code>True</code>) or <code>pygame.Surface</code> (<code>False</code>).</p>
+		</div>
+
 	<p><code><span class="Hilite">fromZip</span>(key, archive=None)</code> → <code>Image</code>: Create an <code>Image</code> instance from binary data stored in a zip file.</p>
 		<div class="Indent">
 		<p><code class="Hilite">key</code>: A string identifying the data within the zip file.</p>

@@ -10,7 +10,9 @@ let phys = {title:"Unit B: Physics", show:"2023.7", id:"phys", icon:"rocket", me
     ]},
 ]};
 
-layout.z = [
+// lesson("mole", "");
+
+layout._z = [
     {icons:[
         {icon:"note", text:"Lesson Notes", url:"phys/.html"},
         {icon:"gdrv", text:"Assignment", url:""},

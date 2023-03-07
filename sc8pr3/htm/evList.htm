@@ -11,9 +11,9 @@
 
 <p>Some classes of objects already have handlers for some events. If you want to customize such handlers, you may need to call the default handler to ensure that the object behaves correctly. To check if a default handler exists, you can try printing it...</p>
 
-<pre class="Code">print(Sprite.ondraw)</pre>
+<pre class="Code">print(TextInput.onkeydown)</pre>
 
-<p>If this prints <code>None</code> or raises an exception, the <code>Sprite</code> class does not have an <code>ondraw</code> handler. If it prints a function, then the handler already exists.</p>
+<p>If this prints <code>None</code> or raises an exception, the <code>TextInput</code> class does not have an <code>onkeydown</code> handler. If it prints a function, then the handler already exists.</p>
 
 <p>Event handlers take a <code>Graphics</code> instance as the first argument and a <code>pygame.event.EventType</code> instance that describes the event as the second argument. The attributes of the event instance vary depending on the type of event. The <code>sc8pr</code> system may add or modify attributes of the event, or dispatch a new event instance to the handler. The following attributes are commonly added by <code>sc8pr</code>:</p>
 
