@@ -26,10 +26,10 @@ var sitemap = {title:"sc8pr 3 Home", link:"home", pages:[
 			{title:"class BaseSprite", link:"base"},
 			{title:"class Canvas", link:"canvas"},
 			{title:"class Image", link:"image"},
-			{title:"class PixelData", link:"pixeldata"},
 			{title:"class Renderable", link:"render"},
 			{title:"class Sketch", link:"sketch"},
 		]},
+		{title:"sc8pr.effect", link:""},
 		{title:"sc8pr.geom", link:"geom"},
 		{title:"sc8pr.gui.*", link:"gui", pages:[
 			{title:".scroll", link:"scroll"},
@@ -45,15 +45,11 @@ var sitemap = {title:"sc8pr 3 Home", link:"home", pages:[
 			{title:"class TextInputCanvas", link:"ti_canvas"},
 		]},
 		{title:"sc8pr.misc.*", link:"misc", pages:[
-			{title:".effect", link:"effect"},
 			{title:".hsv", link:"hsv"},
 			{title:".progress", link:"progress"},
 			{title:".table", link:"table"},
 			{title:".typeset", link:"typeset"},
-			{title:".video", link:"video", pages:[
-				{title:"Video", link:"video_class"},
-				{title:"VidZip", link:"vidzip"},
-			]},
+			{title:".video", link:"video_class"},
 		]},
 		{title:"sc8pr.plot.*", link:"plot_pkg", pages:[
 			{title:".regression", link:"reg"},
@@ -83,11 +79,13 @@ var sitemap = {title:"sc8pr 3 Home", link:"home", pages:[
 		{title:"sc8prx", link:"sc8prx", pages:[
 			{title:".ffmpeg", link:"ffmpeg", pages:[
 				{title:"class Reader", link:"ffr"},
+				{title:"class Movie", link:"movie"},
 				{title:"class Writer", link:"ffw"},
 			]},
-			{title:".grab", link:"grabber"},
-			{title:".movie", link:"movie"},
 			{title:".mpl", link:"mpl"},
+			{title:".pil", link:"pil", pages:[
+				{title:"class Grabber", link:"grab"},
+			]},
 		]},
 	]},
 ]}
