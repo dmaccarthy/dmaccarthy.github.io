@@ -83,7 +83,11 @@
 		<p><code class="Hilite">weight</code>: The border thickness in pixels.</p>
 		<p><code class="Hilite">padding</code>: Number of pixels of padding to add around the surface. [In the development version, this can be a 2-list or 2-tuple specifying different x and y paddings, but this feature has not been released as of v2.1.0.]</p>
 		</div>
-	<p><code><span class="Hilite">surface</span>(srf)</code> → <code>pygame.Surface</code>: Check that the argument is a surface and if not convert it.</p>
+	<p><code><span class="Hilite">surface</span>(srf, alpha=None)</code> → <code>pygame.Surface</code>: Check that the argument is a surface and if not convert it.</p>
+		<div class="Indent">
+		<p><code class="Hilite">srf</code>: The original surface.</p>
+		<p><code class="Hilite">alpha</code>: Specifies whether to convert the surface (if necessary) to support (<code>True</code>) or remove (<code>False</code>) transparency.</p>
+		</div>
 	<p><code><span class="Hilite">tall</span>(w, h)</code> → <code>int</code>: Returns <code>1</code> if <code>h</code> is greater than <code>w</code> (portait orientation) otherwise <code>0</code>.</p>
 	<p><code><span class="Hilite">tile</span>(srf, tile=0, cols=1, rows=1, padding=0)</code> → <code>pygame.Surface</code>: Return a subsurface representing one “tile” of a spritesheet or similar grid image.</p>
 		<div class="Indent">

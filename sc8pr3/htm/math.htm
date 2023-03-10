@@ -1,6 +1,6 @@
-﻿<article><h1><code>sc8pr.effect</code> Package</h1>
+﻿<article><h1><code>sc8pr.effect.math</code> Module</h1>
 
-<p>This package defines several classes for applying transitions and video effects. Effects can by applied to <code>sc8pr.Image</code> and <code>pygame.Surface</code> instances, as well as any <code>Graphic</code> subclasses that implement the <code>image</code> property.</p>
+<p>This module defines several classes for applying transitions and video effects. Effects can by applied to <code>sc8pr.Image</code> and <code>pygame.Surface</code> instances, as well as any <code>Graphic</code> subclasses that implement the <code>image</code> property.</p>
 
 <p>Effects can also be applied to canvases and other graphics that have a <code>snapshot</code> method but no <code>image</code> property. This is done by rendering the object as an image before applying the effect. This can lead to slower drawing, and has the side effect of blocking mouse events to the canvas contents. Use with caution!</p>
 
@@ -8,12 +8,12 @@
 
 <p>The video below shows some examples of animated effects.</p>
 
-<div class="Center"><video controls src="misc/trDemo.mp4" width="512" height="288"/></div>
-<p class="Center"><a href="misc/transition.py">Demo Source Code</a></p>
+<div class="Center"><iframe class="Fit" data-wide="640" src="https://www.youtube.com/embed/quHgWw_BM4M?ecver=2" width="640" height="360" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+<p class="Center"><a href="misc/transitionsDemo.py">Demo Source Code</a></p>
 
 <p>All effects have an <code>apply</code> method which returns a <code>pygame.Surface</code> of the image after the effect is applied. In the example below, a “dissolve” effect is applied to the original image (<code>img</code>) to make only 25% of the pixels visible. The second argument is always a value between 0.0 and 1.0; its meaning depends on the specific effect being applied.</p>
 <pre class="Code">from sc8pr import Sketch, Image
-from sc8pr.effect import Dissolve
+from sc8pr.misc.effect import Dissolve
 
 def setup(sk):
     img = Image("alien.png")    <span class="Comment"># Load original image</span>
@@ -26,16 +26,16 @@ Sketch().play()</pre>
 <p>Most of the effects can be animated. Set the graphic’s <code>effects</code> property to a list of effect instances as in the example below. Each effect should specify two time arguments over which the effect will be applied. In the example below, the image will “transition in” with the <code>PaintDrops</code> effect between frames 60 and 180, and then will “transition out” with the <code>Dissolve</code> effect between frames 300 and 420. Note that the time arguments are in reverse order for the dissolve out effect.</p>
 
 <pre class="Code">from sc8pr import Sketch, Image
-from sc8pr.effect import Dissolve
-from sc8pr.effect.math import PaintDrops
+from sc8pr.misc.effect import Dissolve, PaintDrops, Remove
 
 def setup(sk):
     img = Image("alien.png")
     img.effects = [
         PaintDrops().time(60, 180), <span class="Comment"># Transition in (frames 60-180)</span>
         Dissolve().time(420, 300),  <span class="Comment"># Transition out (frames 300-420)</span>
+        Remove(img, True).time(420) <span class="Comment"># Remove image after final transition</span>
     ]
-    sk += img.config(pos=sk.center, removeFrame=420)
+    sk += img.config(pos=sk.center)
 
 Sketch().play()</pre>
 

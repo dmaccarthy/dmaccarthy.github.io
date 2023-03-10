@@ -29,7 +29,10 @@ var sitemap = {title:"sc8pr 3 Home", link:"home", pages:[
 			{title:"class Renderable", link:"render"},
 			{title:"class Sketch", link:"sketch"},
 		]},
-		{title:"sc8pr.effect", link:""},
+		{title:"sc8pr.effect.*", link:"effect", pages:[
+//			{title:".math", link:"math"},
+//			{title:".stamp", link:"stamp"},
+		]},
 		{title:"sc8pr.geom", link:"geom"},
 		{title:"sc8pr.gui.*", link:"gui", pages:[
 			{title:".scroll", link:"scroll"},
