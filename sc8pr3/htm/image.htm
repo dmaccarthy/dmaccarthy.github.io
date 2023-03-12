@@ -15,16 +15,13 @@
 	<p><code class="Hilite">jpg</code>: Returns the scaled and rotated image as a <code>bytes</code> object containing the JPEG-encoded data.</p>
 	<p><code class="Hilite">original</code>: Returns the original <code>pygame.Surface</code> containing the unscaled and unrotated pixel data.</p>
 	<p><code class="Hilite">png</code>: Returns the scaled and rotated image as a <code>bytes</code> object containing the PNG-encoded data.</p>
-	<p><code class="Hilite">rgba</code>: Creates a new <code>Image</code> instance that supports transparency. If the original image already supports transparency, the pixel data will not be copied.</p>
+	<p><code class="Hilite">rgb</code>: Creates a new <code>Image</code> instance without transparency, or returns the original instance if it is alreadey in the requested format.</p>
+	<p><code class="Hilite">rgba</code>: Creates a new <code>Image</code> instance that supports transparency, or returns the original instance if it is alreadey in the requested format.</p>
+</p>
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">__bytes__</span>()</code> → <code>bytes</code>: Gets the raw pixel data by calling <code>pygame.image.tostring</code> and then adds 12 additional bytes specifiying the image size and mode (RGB or RGBA) so that the image can be reconstructed.</p>
-	<p><code><span class="Hilite">bytesTuple</span>(info=True)</code> → <code>tuple</code> or <code>bytes</code>: Similar to the <code>__bytes__</code> method except that the size and mode information is returned as a separate object rather than being appended to the raw data.</p>
-		<div class="Indent">
-		<p><code class="Hilite">info</code>: If <code>True</code>, a 2-tuple will be returned in the format <code>(data, (size, mode))</code>, where <code>data</code> is a <code>bytes</code> instance, <code>size</code> is a 2-tuple, and <code>mode</code> is either <code>"RGB"</code> or <code>"RGBA"</code>. If <code>False</code>, only the raw data will be returned as a <code>bytes</code> instance.</p>
-		</div>
-
 	<p><code><span class="Hilite">copy</span>()</code> → <code>Image</code>: Copy the pixel data and wrap it as a new <code>Image</code> instance. This method applies any scaling and rotation but does not apply any <code>effects</code>. Use the <code>snapshot</code> method to apply effects.</p>
 	<p><code><span class="Hilite">crop</span>(*args, bg=True)</code> → <code>Image</code>: Create a new <code>Image</code> instance by cropping an existing (unscaled and unrotated) image; does not copy the pixel data.</p>
 		<div class="Indent">
@@ -56,10 +53,14 @@
 		<p><code class="Hilite">flip</code>: Set this to <code>HORIZONTAL</code>, <code>VERTICAL</code>, or <code>HORIZONTAL + VERTICAL</code> to include flipped copies of the tiles in the list.</p>
 		<p><code class="Hilite">padding</code>: The number of pixels to discard around the outside of each tile.</p>
 		</div>
+	<p><code><span class="Hilite">tobytes</span>(info=True)</code> → <code>tuple</code> or <code>bytes</code>: Similar to the <code>__bytes__</code> method except that the size and mode information is returned as a separate object rather than being appended to the raw data.</p>
+		<div class="Indent">
+		<p><code class="Hilite">info</code>: If <code>True</code>, a 2-tuple will be returned in the format <code>(data, (size, mode))</code>, where <code>data</code> is a <code>bytes</code> instance, <code>size</code> is a 2-tuple, and <code>mode</code> is either <code>"RGB"</code> or <code>"RGBA"</code>. If <code>False</code>, only the raw data will be returned as a <code>bytes</code> instance.</p>
+		</div>
 </div>
 
 <h4>Static Methods</h4><div class="Indent">
-	<p><code><span class="Hilite">fromBytes</span>(data, img=True)</code> → <code>Image</code> or <code>pygame.Surface</code>: Create an image from binary data.</p>
+	<p><code><span class="Hilite">frombytes</span>(data, img=True)</code> → <code>Image</code> or <code>pygame.Surface</code>: Create an image from binary data.</p>
 		<div class="Indent">
 		<p><code class="Hilite">data</code>: The image data as returned by the <code>__bytes__</code> or <code>bytesTuple</code> method.</p>
 		<p><code class="Hilite">img</code>: Specifies whether to return an <code>Image</code> (<code>True</code>) or <code>pygame.Surface</code> (<code>False</code>).</p>

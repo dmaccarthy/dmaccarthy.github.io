@@ -5,35 +5,33 @@
 <p><code>Graphic</code> subclasses no longer implement the <code>ondraw</code> event handler. A new method, <code>Graphic.update</code>, has been added to fulfill each graphic object’s internal requirements. The <code>ondraw</code> handler, if any, is called by <code>update</code>. This means that your <code>ondraw</code> event handlers do not need to call a default handler as they did in <code>sc8pr 2</code>. However, if you override the <code>update</code> method, <code>ondraw</code> will no longer be called automatically.</p>
 <p>The <code>onreset</code> event used by <a class="Hilite Code" href="javascript:goNode('sprite_class')">CostumeImage</a> and its subclasses is no longer used. <code>CostumeImage.update</code> now includes costume status information as part of the event information when it calls <code>ondraw</code>, making <code>onreset</code> unnecessary.</p>
 
-<h4>Removed Modules</h4>
+<h4>Removed or Replaced Features</h4>
 
-<p>These <code>sc8pr 2</code> modules have been deleted from <code>sc8pr 3</code> as they have been superceded by newer features.</p>
+<p>These <code>sc8pr 2</code> modules have been removed or replaced in <code>sc8pr 3</code> as they have been superceded by newer features.</p>
 <ul>
-	<li><code>examples</code></li>
-	<li><code>misc.plot</code></li>
-	<li><code>misc.webcache</code></li>
-	<li><code>misc.s8v</code></li>
+	<li><code>examples</code>: The robotics simulations are now part of the <a class="Hilite Code" href="javascript:goNode('robot_class')">robot</a> package and other examples may be found in the <a class="Hilite" href="javascript:goNode('ex')">Gallery</a> rather than the <code>sc8pr</code> package itself.</li>
+	<li><code>misc.effect</code>: This module has been rewritten and is now the <a class="Hilite Code" href="javascript:goNode('effect')">effect</a> package.</li>
+	<li><code>misc.media</code>: This module has been rewritten with a new API and is now the <a class="Hilite Code" href="javascript:goNode('sc8prx')">sc8prx</a> package. This new package contains all features that have dependencies other than <code>pygame</code>.</li>
+	<li><code>misc.plot</code>: Superceded by the <a class="Hilite Code" href="javascript:goNode('plot_pkg')">plot</a> package.</li>
+	<li><code>misc.webcache</code>: Rendering of equations can be done with <code>matplotlib</code> through the <a class="Hilite Code" href="javascript:goNode('mpl')">sc8prx.mpl</a> module.</li>
+	<li><code>misc.s8v</code>: This module is obsolete due to the rewritten <a class="Hilite Code" href="javascript:goNode('video_class')">misc.video</a> module. If you need the data from an S8V file to be readable by <code>sc8pr 3</code>, run <a href="misc/s8v_zip.py">this program</a> using <code>sc8pr 2.2</code> to convert it.</li>
 </ul>
-<p>If you need the data from an S8V file to be readable by <code>sc8pr 3</code>, run <a href="misc/s8v_zip.py">this program</a> using <code>sc8pr 2.2</code> to convert it.</p>
 
-<h4 class="Code">sc8prx</h4>
-<p>The core features of <code>sc8pr</code> depend only on <code>pygame</code>. Extras that have additional dependencies have been rewritten and are now located in a separate package called <a class="Hilite Code" href="javascript:goNode('sc8prx')">sc8prx</a>. The affected <code>sc8pr 2</code> modules are:</p>
-<ul class="Code">
-	<li>misc.media</li>
-	<li>plot.mpl</li>
+<p>This <code>sc8pr 2</code> class has been deleted from <code>sc8pr 3</code> as it has been superceded by newer features.</p>
+<ul>
+	<li><code>PixelData</code>: The functionality of this class is now part of the <a class="Hilite Code" href="javascript:goNode('image')">Image</a> class.</li>
 </ul>
-<p>Also, the <code>PixelData.pil</code> property has been removed and a new function <code>sc8prx.pil</code> now provides the same function.</p>
 
 <h4>Other Changes</h4>
 <p>Here is a non-exhaustive list of additional changes that may require <code>sc8pr 2</code> programs to be modified to work under <code>sc8pr 3</code>.</p>
 <ul>
-	<li><a class="Hilite Code" href="javascript:goNode('pixeldata')">PixelData</a> no longer supports compression of images. This feature is no longer needed as the <a class="Hilite Code" href="javascript:goNode('video_class')">Video</a> class no longer keeps the entire video in memory at once. If needed, you can convert images to <code>bytes</code> and compress the result with any of Python’s compressors (e.g. <code>zlib</code> or <code>lzma</code>).</li>
+	<li><code><a class="Hilite" href="javascript:goNode('video_class')">misc.video</a></code> has been rewitten with a new API.</li>
 	<li><code><a class="Hilite" href="javascript:goNode('sprite_class')">CostumeImage</a>.costumeSequence</code> is now a property instead of a method.</li>
-	<li><code><a class="Hilite" href="javascript:goNode('effect')">effect</a>.FastDissolve</code> was an alternate version of the <code>Dissolve</code> effect in <code>sc8pr 2</code> that used a faster algorithm when <code>numpy</code> was available. This class has been removed and <code>Dissolve</code> will use the best algorithm that is available.</li>
 	<li><code>geom.transform2d_Gen</code> has been replaced by <code><a class="Hilite" href="javascript:goNode('geom')">geom</a>.transform_gen</code> which uses different parameter names and order.</li>
 	<li><code>geom.transform2d</code> has had the names and order of the parameters changed to be consistent with <code>geom.transform_gen</code>.</li>
+	<li><code>Image.fromBytes</code> has been changed to <code><a class="Hilite" href="javascript:goNode('image')">Image</a>.frombytes</code>.</li>
 	<li><code>Graphic.relXY</code> has been renamed <code><a class="Hilite" href="javascript:goNode('graphic')">Graphic</a>.relPos</code>.</li>
-	<li>The sketch no longer has a <code>capture</code> attribute to record the sketch automatically. You can record by adding the line <code>w.write(sk)</code> to your sketch’s <code>ondraw</code> handler where <code>w</code> refers to a <a class="Hilite Code" href="javascript:goNode('ffw')">Writer</a> or <a class="Hilite Code" href="javascript:goNode('vidzip')">VidZip</a> instance.</li>
+	<li>The sketch no longer has a <code>capture</code> attribute to record the sketch automatically. You can record by adding the line <code>w.write(sk)</code> to your sketch’s <code>ondraw</code> handler where <code>w</code> refers to a <a class="Hilite Code" href="javascript:goNode('ffw')">Writer</a> or <a class="Hilite Code" href="javascript:goNode('video_class')">Video</a> instance.</li>
 
 </ul>
 

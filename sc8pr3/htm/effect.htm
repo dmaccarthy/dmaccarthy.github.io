@@ -23,100 +23,45 @@ def setup(sk):
 
 Sketch().play()</pre>
 
-<p>Most of the effects can be animated. Set the graphic’s <code>effects</code> property to a list of effect instances as in the example below. Each effect should specify two time arguments over which the effect will be applied. In the example below, the image will “transition in” with the <code>PaintDrops</code> effect between frames 60 and 180, and then will “transition out” with the <code>Dissolve</code> effect between frames 300 and 420. Note that the time arguments are in reverse order for the dissolve out effect.</p>
+<p>Most of the effects can be animated. Set the graphic’s <code>effects</code> property to a list of effect instances as in the example below. Each effect should specify two time arguments over which the effect will be applied. In the example below, the image will “transition in” with the <code>Squash</code> effect between frames 0 and 180, and then will “transition out” with the <code>Dissolve</code> effect between frames 180 and 360. Note that the time arguments are in reverse order for the “dissolve out” effect.</p>
 
-<pre class="Code">from sc8pr import Sketch, Image
-from sc8pr.effect import Dissolve
-from sc8pr.effect.math import PaintDrops
+<pre class="Code">from sc8pr import Sketch, Image, LEFT
+from sc8pr.effect import Dissolve, Squash
 
 def setup(sk):
     img = Image("alien.png")
     img.effects = [
-        PaintDrops().time(60, 180), <span class="Comment"># Transition in (frames 60-180)</span>
-        Dissolve().time(420, 300),  <span class="Comment"># Transition out (frames 300-420)</span>
+        Squash(LEFT).time(0, 180),  <span class="Comment"># Transition in (frames 0-180)</span>
+        Dissolve().time(360, 180),  <span class="Comment"># Transition out (frames 180-360)</span>
     ]
-    sk += img.config(pos=sk.center, removeFrame=420)
+    sk += img.config(pos=sk.center, removeFrame=360)
 
 Sketch().play()</pre>
 
+<p>The image to which the effects are applied has been configured to have a <code>removeFrame</code> property equal to the last frame of the transition. This will cause the image to be removed from the sketch as soon as it has finished “dissolving out”.</p>
 
-<h4>Functions</h4><div class="Indent">
-	<p><code><span class="Hilite">shift</span>(gr, dt)</code> → <code>gr</code>: Shift the timing of a graphic’s effects.</p>
+<h4>Base Class</h4><div class="Indent">
+<p><code>Effect</code>: This is the abstract base class for all effects.</p>
+</div>
+
+<h4>Assignable Properties</h4><div class="Indent">
+	<p><code class="Hilite">fill</code>: A color to use as a replacement color for the effect.</p>
+	<p><code class="Hilite">remove</code>: A <code>bool</code> that specifies whether to delete the effect from the graphic’s <code>effects</code> list when it is complete; default <code>True</code>.</p>
+</div>
+
+<h4>Static Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">adjust_time</span>(t)</code> → <code>float</code>: This function controls the timing of the transition. By default, the transition proceeds linearly with the sketch frame count. You can override this method to change the timing. For example, a function that returns <code>t**2</code> would proceed slower when <code>t</code> is closer to 0 and faster when close to 1.</p>
 		<div class="Indent">
-		<p><code class="Hilite">gr</code>: A <code>Graphic</code> instance.</p>
+		<p><code class="Hilite">t</code>: A value between 0 and 1 specifying how far into the transition the current sketch frame is. For example, if a transition occurs between frames 100 and 200, <code>t</code> will have a value of 0.5 on frame 150.</p>
+		</div>
+
+	<p><code><span class="Hilite">shift</span>(img, dt, reverse=False)</code> → <code>img</code>: Shift the timing of a graphic’s effects.</p>
+		<div class="Indent">
+		<p><code class="Hilite">img</code>: An image or another instance of <code>Graphic</code> to which the effect is to be applied..</p>
 		<p><code class="Hilite">dt</code>: The timing, in frames, by which to shift the effect start and end.</p>
+		<p><code class="Hilite">reverse</code>: Specifies whether to reverse the order of the start and end times of the transition.</p>
 		</div>
 </div>
-
-<h4>Constructors</h4><div class="Indent">
-	<p><code><span class="Hilite">Assemble</span>(grid=(16, 9), angles=(0, 360))</code>: Assemble the image from small rectangular tiles that fly in from outside the graphic. </p>
-		<div class="Indent">
-		<p><code class="Hilite">grid</code>: A 2-tuple or 2-list specifying the number of rows and columns of tiles.</p>
-		<p><code class="Hilite">angles</code>: A range of angles in degrees specifying the direction of motion of the tiles.</p>
-		</div>
-	<p><code><span class="Hilite">ClockHand</span>(clockwise=True, fill=(0,0,0,0))</code>: Transition in or out with motion like the hands of a clock.</p>
-		<div class="Indent">
-		<p><code class="Hilite">clockwise</code>: Specifies the direction of the effect.</p>
-		<p><code class="Hilite">fill</code>: The replacement color.</p>
-		</div>
-	<p><code><span class="Hilite">Dissolve</span>(colors=(0,0,0,0), keepTransparent=True, alpha=True)</code>: Dissolve the image in or out from transparency, a solid color, or random colors.</p>
-		<div class="Indent">
-		<p><code class="Hilite">colors</code>: This can be a single replacement color, or a <code>bool</code> indicating that the replacement color is to be chosen randomly for each pixel. If <code>True</code> the random color will have transparency; <code>False</code> will be opaque. The effect may be too slow if each replacement pixel is random. You can provide an <code>int</code> for this argument to generate a palette of random colors; the argument will be interpreted as the palette size.</p>
-		<p><code class="Hilite">keepTransparent</code>: Specify whether to omit transparent areas of the image from the effect.</p>
-		<p><code class="Hilite">alpha</code>: When the <code>colors</code> argument is an <code>int</code>, this should be a <code>bool</code> indicating whether the random palette colours should include transparency.</p>
-		</div>
-	<p><code><span class="Hilite">MathEffect</span>(noise=0.15, fill=(0,0,0,0))</code>: Apply a potentially non-linear “wipe” transition described by a mathematical relation. The default effect is a “noisy” vertical wipe. You can create similar effects by defining a subclass with an <code>eqn</code> method. This method takes an <i>x</i> coordinate as its first argument, and returns a <code>(float, bool)</code> 2-tuple specifying the boundary <i>y</i> value and whether to replace pixels above or below the boundary. Additional parameters to the <code>eqn</code> method are <code>n</code> (a number between 0.0 and 1.0 specifying the extent of the effect) and <code>size</code> (the size of the image).</p>
-		<div class="Indent">
-		<p><code class="Hilite">noise</code>: The amplitude of the noise as a value between -1.0 and 1.0. Positive values will draw the image above the replacement color and negative values will have the replacement color on top.</p>
-		<p><code class="Hilite">fill</code>: The replacement color.</p>
-		</div>
-	<p><code><span class="Hilite">PaintDrops</span>(drops=64, fill=(0,0,0,0))</code>: Apply a paint drop transition.</p>
-		<div class="Indent">
-		<p><code class="Hilite">drops</code>: The number of paint drops. Make this value negative to draw the image pixels below the replacement color.</p>
-		<p><code class="Hilite">fill</code>: The replacement color.</p>
-		</div>
-	<p><code><span class="Hilite">Pixelate</span>(size, linear=True)</code>: Pixelate the image. </p>
-		<div class="Indent">
-		<p><code class="Hilite">size</code>: The size of the sqaures in the pixelated image.</p>
-		<p><code class="Hilite">linear</code>: When <code>True</code> the square size at the midpoint of the transition will be half of the full effect size; when <code>False</code> the midpoint square size will be the square root of the full effect size.</p>
-		</div>
-	<p><code><span class="Hilite">Remove</span>(gr, complete=False)</code>: Remove a graphic completely, or remove its <code>effects</code> lists. This will speed up drawing the sketch once all of the transitions have been completed. </p>
-		<div class="Indent">
-		<p><code class="Hilite">gr</code>: The graphic to be modified. The <code>Remove</code> effect instance must appear in the effects list of the graphic being removed.</p>
-		<p><code class="Hilite">complete</code>: When set to <code>False</code> the graphic will remain in its canvas and its <code>effects</code> property will be reset to <code>None</code>. When <code>True</code> the graphic will be removed completely from its canvas.</p>
-		</div>
-	<p><code><span class="Hilite">ReplaceColor</span>(color, replace=(0,0,0,0), dist=0.0)</code>: Replace one color with another.</p>
-		<div class="Indent">
-		<p><code class="Hilite">color</code>: The color to be replaced.</p>
-		<p><code class="Hilite">replace</code>: The color to be substituted.</p>
-		<p><code class="Hilite">dist</code>: A value between 0.0 and 1.0 used as the threshold for color detection.</p>
-		</div>
-	<p><code><span class="Hilite">Squash</span>(start=CENTER)</code>: Apply a squash transition from any side, corner, or center.</p>
-		<div class="Indent">
-		<p><code class="Hilite">start</code>: Specifies the location from which the effect begins. Use the anchor constants (<code>TOP</code>, <code>TOPLEFT</code>, etc.) defined in the <a class="Code" href="javascript:goNode('init')">sc8pr</a> module.</p>
-		</div>
-	<p><code><span class="Hilite">Style</span>(**kwargs)</code>: Non-animated! Adds a background color and/or border to the image. Keyword arguments may include:</p>
-		<div class="Indent">
-		<p><code class="Hilite">bg</code>: The background color.</p>
-		<p><code class="Hilite">border</code>: The border color.</p>
-		<p><code class="Hilite">weight</code>: The border thickness in pixels.</p>
-		</div>
-	<p><code><span class="Hilite">Tint</span>(color=(255,255,255,0))</code>: Reduces the RGBA values of the image.</p>
-		<div class="Indent">
-		<p><code class="Hilite">color</code>: The RGBA color to tint to. The default value fades to transparency.</p>
-		</div>
-	<p><code><span class="Hilite">Wipe</span>(start=CENTER)</code>: Apply a simple “wipe” transition from any side, corner, or center.</p>
-		<div class="Indent">
-		<p><code class="Hilite">start</code>: Specifies the location from which the effect begins. Use the anchor constants (<code>TOP</code>, <code>TOPLEFT</code>, etc.) defined in the <a class="Code" href="javascript:goNode('init')">sc8pr</a> module.</p>
-		</div>
-	<p><code><span class="Hilite">WipeSlope</span>(slope=False, above=True, fill=(0,0,0,0))</code>: Apply a straight-line “wipe” transition from any corner with an arbitrary slope.</p>
-		<div class="Indent">
-		<p><code class="Hilite">slope</code>: The slope of the boundary. If a <code>bool</code> is passed, the slope will be calculated based on the dimensions of the image</p>
-		<p><code class="Hilite">above</code>: Specifies whether to draw the image pixels above or below the replacement color.</p>
-		<p><code class="Hilite">fill</code>: The replacement color.</p>
-		</div>
-</div>
-
 
 <h4>Instance Methods</h4><div class="Indent">
 	<p><code><span class="Hilite">apply</span>(img, n=0)</code> → <code>pygame.Surface</code>: Apply an effect.</p>
@@ -124,11 +69,51 @@ Sketch().play()</pre>
 		<p><code class="Hilite">img</code>: The original image as an <code>Image</code> or <code>pygame.Surface</code> instance, or an object that can contains a surface as its <code>image</code> attribute.</p>
 		<p><code class="Hilite">n</code>: The extent of the effect as a number between 0 (full effect) and 1 (original image).</p>
 		</div>
-	<p><code><span class="Hilite">time</span>(fullEffect, noEffect=0)</code> → <code>self</code>: Specifying the timing for applying the effect as a transition.</p>
+	<p><code><span class="Hilite">config</span>(**kwargs)</code> → <code>self</code>: Set one or more attributes of the effect.</p>
+	<p><code><span class="Hilite">time</span>(t0, t1)</code> → <code>self</code>: Specifying the timing for applying the effect as a transition.</p>
 		<div class="Indent">
-		<p><code class="Hilite">fullEffect</code>: The frame number at which the effect is fully applied.</p>
-		<p><code class="Hilite">noEffect</code>: The frame number at which the effect is complete and the original image is to be used.</p>
+		<p><code class="Hilite">t0</code>: The frame number at which the effect is fully applied.</p>
+		<p><code class="Hilite">t1</code>: The frame number at which the effect is complete and the original image is to be used.</p>
 		</div>
+</div>
+
+<h4>Subclass Constructors</h4>
+	<p>There are additional effects defined in the <a class="Hilite Code" href="javascript:goNode('math')">effect.math</a> and <a class="Hilite Code" href="javascript:goNode('stamp')">effect.stamp</a> modules.</p>
+	<div class="Indent">
+	<p><code><span class="Hilite">Assemble</span>(grid=(16, 9), angles=(0, 360), **kwargs)</code>: Assemble the image from small rectangular tiles that fly in from outside the graphic.</p>
+		<div class="Indent">
+		<p><code class="Hilite">grid</code>: A 2-tuple or 2-list specifying the number of rows and columns of tiles.</p>
+		<p><code class="Hilite">angles</code>: A range of angles in degrees specifying the direction of motion of the tiles.</p>
+		<p><code class="Hilite">kwargs</code>: Additional attributes to set, such as <code>fill</code>, <code>remove</code> or <code>adjust_time</code>.</p>
+		</div>
+	<p><code><span class="Hilite">Bar</span>()</code>: Draws a solid bar along the boundary between the transparent and opaque parts of the image. Instances have the following additional properties that can be set by calling the <code>config</code> method:</p>
+		<div class="Indent">
+		<p><code class="Hilite">color</code>: The color of bar.</p>
+		<p><code class="Hilite">invert</code>: When <code>True</code> the bar will be horizontal rather than vertical.</p>
+		<p><code class="Hilite">reverse</code>: Specifies whether the bar moves in the negative direction rather than the positive default.</p>
+		<p><code class="Hilite">width</code>: The width of bar as a fraction of the image width; default <code>0.08</code>.</p>
+		</div>
+
+	<p><code><span class="Hilite">Checkboard</span>()</code>: Creates a checkerboard effect. Instances have the following additional properties that can be set by calling the <code>config</code> method:</p>
+		<div class="Indent">
+		<p><code class="Hilite">grid</code>: Specifies the size of the checkerboard grid; default <code>(8, 8)</code>.</p>
+		<p><code class="Hilite">vel</code>: A four-tuple specifying the velocity of the grid squares. The first two values describe the <em>x</em> and <em>y</em> velocities for the first half of the effect (applied to the odd squares) and the last two values refer to the second half of the effect (applied to the even squares). Values of ±1 correspond to the “normal” speed of the effect. The default is <code>(0, 1, 0, 1)</code>, which moves the squares in the positive <em>y</em> direction at the speed needed to synchronize the motion with the effect timing.</p>
+		</div>
+	
+	<p><code><span class="Hilite">Dissolve</span>()</code>: Dissolve the image in or out from transparency (default) or another color as specified by the <code>fill</code> property. The <code>fill</code> property can be set to <code>True</code> to fill each pixel with a random color (may be slow).</p>
+	<p><code><span class="Hilite">Pixelate</span>(size, **kwargs)</code>: Pixelate the image. </p>
+		<div class="Indent">
+		<p><code class="Hilite">size</code>: The size (in pixels) of the sqaures in the pixelated image.</p>
+		<p><code class="Hilite">kwargs</code>: Additional attributes to set.</p>
+		</div>
+	<p><code><span class="Hilite">Squash</span>(start=CENTER, **kwargs)</code>: Apply a squash transition from any side, corner, or center.</p>
+		<div class="Indent">
+		<p><code class="Hilite">start</code>: Specifies the location from which the effect begins. Use the anchor constants (<code>TOP</code>, <code>TOPLEFT</code>, etc.) defined in the <a class="Code" href="javascript:goNode('init')">sc8pr</a> module.</p>
+		<p><code class="Hilite">kwargs</code>: Additional attributes to set.</p>
+		</div>
+	<p><code><span class="Hilite">Tint</span>()</code>: Tints the RGBA values of the image toward the color specified by the <code>fill</code> property (transparent by default).</p>
+		
+		<!-- Bar Checkerboard-->
 </div>
 
 </article>

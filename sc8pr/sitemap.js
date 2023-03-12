@@ -60,7 +60,6 @@ var sitemap = {title:"sc8pr 2 Home", link:"home", pages:[
 			{title:".progress", link:"progress"},
 			{title:".s8v", link:"s8v"},
 			{title:".typeset", link:"typeset"},
-			{title:".effect", link:"effect"},
 			{title:".video", link:"video", pages:[
 				{title:"class Video", link:"video_class"},
 			]},
