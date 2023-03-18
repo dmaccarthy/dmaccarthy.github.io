@@ -20,9 +20,9 @@ from sc8pr.sprite import Sprite
 from sc8pr.text import Text, Font
 from sc8pr.effect import Assemble, Dissolve, Squash, Tint, Pixelate, Checkerboard, Bar
 from sc8pr.effect.math import Noise, ClockHand, Wedge, Wipe, PaintDrops, Waves
-from sc8pr.effect.stamp import Pupil
+from sc8pr.effect.stamp import Pupil, Spiral
 
-DT = 150
+DT = 100
 
 def setup(sk):
     font = dict(font=Font.mono(), fontSize=36, color="red")
@@ -34,11 +34,12 @@ def setup(sk):
         [Waves().time(6*DT, 7*DT), Wedge().time(8*DT, 7*DT)],
         [Squash(BOTTOM).time(8*DT, 9*DT), Pixelate().time(10*DT, 9*DT), Tint().time(10*DT, 9*DT)],
         [Bar().time(10*DT, 11*DT), Assemble().time(12*DT, 11*DT)],
-        [PaintDrops(24).time(12*DT, 13*DT), Tint().time(14*DT, 13*DT)]
+        [PaintDrops(24).time(12*DT, 13*DT), Spiral().time(14*DT, 13*DT)],
+        [Tint().time(14*DT, 15*DT), Tint().time(16*DT, 15*DT)]
     ]
     sk.textList = [
-        "Dissolve", "ClockHand", "Pupil", "Checkerboard", "Noise", "Wipe",
-        "Waves", "Wedge", "Squash", "Pixelate", "Bar", "Assemble", "PaintDrops", "Tint"
+        "Dissolve", "ClockHand", "Pupil", "Checkerboard", "Noise", "Wipe", "Waves",
+        "Wedge", "Squash", "Pixelate", "Bar", "Assemble", "PaintDrops", "Spiral", "Tint", "Tint"
     ]
     sk.quitTime = DT * len(sk.textList)
     w, h = sk.size
@@ -68,7 +69,7 @@ def ondraw(sk, ev):
             if i % 2 == 0:
                 sk[0].effects = sk.effectList[i//2]
             sk[1].config(data=sk.textList[i])
-    
+
 def play():
     Sketch().bind(setup, ondraw).play(caption="sc8pr 3 Effects", mode=False)
 

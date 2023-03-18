@@ -10,15 +10,17 @@
 	<p><code class="Hilite">special_flags</code>: The value of the <code>special_flags</code> argument to be passed to <code>pygame.Surface.blit</code> when the images are combined; default <code>pygame.BLEND_RGBA_MIN</code>.</p>
 </div>
 
-<h4>Static Method</h4><div class="Indent">
-	<p><code><span class="Hilite">new_surface</span>(size)</code> → <code>pygame.Surface</code>: Creates a new surface of the specified size that has been filled with the RGBA value <code>(0, 0, 0, 0)</code>.</p>
-</div>
-
 <h4>Subclass Constructors</h4><div class="Indent">
 	<p><code><span class="Hilite">Pupil</span>()</code>: Defines a <code>get_stamp</code> method to stamp a circle or regular polygon over the image where the exterior of the shape is transparent and the interior is the specified <code>fill</code> color. Instances have the following additional properties that can be set by calling the <code>config</code> method:</p>
 		<div class="Indent">
 		<p><code class="Hilite">center</code>: The coordinates of the circle or polygon’s geometric centre relative to the size of the image. By default, this will be <code>(0.5, 0.5)</code> which centres the figure at the centre of the image.</p>
 		<p><code class="Hilite">sides</code>: The number of sides for a regular polygon or <code>None</code> (default) for a circle.</p>
+		</div>
+
+	<p><code><span class="Hilite">Spiral</span>()</code>: Defines a <code>get_stamp</code> method to draw a spiral effect. Instances have the following additional properties that can be set by calling the <code>config</code> method:</p>
+		<div class="Indent">
+		<p><code class="Hilite">clockwise</code>: A <code>bool</code> specifying the direction of the spiral; default <code>True</code>.</p>
+		<p><code class="Hilite">cycles</code>: An <code>int</code> specifying the number of cycles the spiral effect makes before completion; default <code>5</code>.</p>
 		</div>
 </div>
 
