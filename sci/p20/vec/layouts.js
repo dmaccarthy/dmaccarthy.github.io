@@ -17,3 +17,5 @@ lesson("vdiag", "1euqYcnG8VgNLl0ql2sUnxYGuQJH8T-nj", {img:{src:"vec/img/vector_d
 lesson("polar", "1c4OIONZR0k8KlWOawAfa8dLyUniRsUiQ", {vid:"BtUXa0JNXro"});
 lesson("arith", "1Q1QUWAW-5hjwp1JYm4hqxMy7I4S3PJOz", {vid:"ggzAUnK4J2E"});
 lesson("proj", "1NYVm2BoDRpfasewYhOHzjllS2CLbLyJ_", {vid:"KjJdh2jbuPA"});
+
+//1cZXh01761BYu-O-dgAFVfmI5L0zo-cbA

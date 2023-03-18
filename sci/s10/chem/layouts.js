@@ -14,6 +14,7 @@ let chem = {title:"Unit A: Chemistry", id:"chem", menu:[
         {title:"Polyatomic Ions & Solubility", id:"poly"},
         {title:"Acids & Bases", id:"acid"},
         {title:"Properties of Water", id:"water"},
+        {title:"Compounds Review", id:"comp_rev"},
     ]},
     {title:"Part 3: Reactions", id:"reaction", menu:[
         {title:"Chemical Reactions", id:"rxn"},
@@ -23,24 +24,17 @@ let chem = {title:"Unit A: Chemistry", id:"chem", menu:[
         {title:"Scientific Notation", id:"sciNot"},
         {title:"Molar Mass", id:"mole"},
     ]},
-    {title:"Unit Review", id:"chem_rev", menu:[
-        
-    ]},
+    {title:"Unit Review", id:"chem_rev"}
 ]};
 
 lesson.chap = "chem";
 
-// layout.chem_rev = [{icons:[
-//     {icon:"gdrv", text:"Antacids Project", url:"11UBjbZNTnvHZEb8_JpBXj1X2_jqBJt-w"},    
-//     {icon:"gdrv", text:"Assignment", url:"1X861gwjsc5jhm-0KnWObdV4ApDQjwM5S"},
-//     {icon:"gdrv", text:"Answer Key", show:"2023.7", url:"1IaRKpczT_-sy76rFqBEOcIwyQ3AORxxYAEzJGKJpY7w"},
-// ]}, 0];
+layout.chem_rev = [{icons:[
+    {icon:"gdrv", text:"Assignment", url:"1L7QCik7ThRSG7uBUSi7Z42MwsiUyd9Z7"},
+    {icon:"gdrv", text:"Answer Key", show:"2023.7", url:"1IaRKpczT_-sy76rFqBEOcIwyQ3AORxxYAEzJGKJpY7w"},
+]}, {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Gas_stove_burner_flame.jpg/800px-Gas_stove_burner_flame.jpg", style:"width:540px;height:405px;object-fit:cover"}}, 1];
 
 // Part 3: Reactions
-
-layout.sciNot = [uc, 1];
-layout.mole = [uc, 1];
-layout.chem_rev = [uc, 1];
 
 lesson("rxn", "15Xa_SKGBfi7B8MK7Yu9y77KdjlwAcB9m", {vid:"eNsVaUCzvLA"})[0].icons.push(
     {icon:"gdrv", text:"Lab Handout", url:"1uT5hoiboL7d7_AKExX-9qpYuZXXsGZBJ"}    
@@ -48,8 +42,8 @@ lesson("rxn", "15Xa_SKGBfi7B8MK7Yu9y77KdjlwAcB9m", {vid:"eNsVaUCzvLA"})[0].icons
 lesson("rxn_fd", "1cLM_ohdfG7wQFTSyqVOhoLtFq4cm1phu", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Ford_Taurus_Rust.jpg/640px-Ford_Taurus_Rust.jpg", width:540}});
 lesson("rxn_sd", "1Pwfjh6e8CmT7LymBABlpL4Rd0B_1IhNe", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Precipitate_of_HAuCl4_%2B_NaOH.jpg/524px-Precipitate_of_HAuCl4_%2B_NaOH.jpg", width:442}});
 lesson("rxn_c", "1m0haYxXS3wrYfznQWD10557Ds46wDBl9", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Gas_stove_burner_flame.jpg/800px-Gas_stove_burner_flame.jpg", style:"width:540px;height:405px;object-fit:cover"}});
-// lesson("sciNot", "");
-// lesson("mole", "");
+lesson("sciNot", "1PMCcqP2ioyC_HYrGxAXDtCubwkLo4asq", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Andromeeda1.jpg/640px-Andromeeda1.jpg", width:604}});
+lesson("mole", "10hs-zakljzCXkFoFu0Tmiuo_J7UvnJWZ", {img:{src:"chem/img/balance.jpg", width:461}});
 
 // Part 2: Compounds
 
@@ -62,6 +56,11 @@ lesson("acid", "1aCWr_vgqf_S9HTu3pRKUsVd6oBqqh3r9", {img:{src:"https://upload.wi
     {icon:"gdrv", text:"Lab Handout", url:"181mzsLvBms8hrKoLVFEZ_C0aA4fSYgjD"}
 );
 lesson("water", "1Wqy3DvoCYWjc0PPFKPgRBqAP3lDz3Nq_", {vid:"HVT3Y3_gHGg"});
+
+layout.comp_rev = [{icons:[
+    {icon:"gdrv", text:"Compounds Review", url:"1er-RIbhabNosb6_ZH9HZv7ekNGwspIBD"},
+    {icon:"gdrv", text:"Answer Key", url:"1Ue7Q5rct2HmJfJB-GAY4Rwp2BLNBtyTI"},
+]}, 0, 1];
 
 // Part 1: Matter
 

@@ -1,16 +1,25 @@
-let phys = {title:"Unit B: Physics", show:"2023.7", id:"phys", icon:"rocket", menu:[
+let phys = {title:"Unit B: Physics", id:"phys", icon:"rocket", menu:[
     {title:"Part 1: Motion", id:"motion", menu:[
+        {title:"SI Units", id:"si"},
+        {title:"Graphing Data", id:"scatter"},
+        // {title:"", id:""},
+        // {title:"", id:""},
+        // {title:"", id:""},
+    ]},
+    {title:"Part 2: Energy", show:"2023.7", id:"energy", menu:[
         {title:"", id:""},
     ]},
-    {title:"Part 2: Energy", id:"energy", menu:[
-        {title:"", id:""},
-    ]},
-    {title:"Part 3: Heat", id:"heat", menu:[
+    {title:"Part 3: Heat", show:"2023.7", id:"heat", menu:[
         {title:"", id:""},
     ]},
 ]};
 
-// lesson("mole", "");
+lesson.chap = "phys";
+
+lesson("si", "1x8E0bfm3t58KKMdKYLPigTJsjhO4I0zJ", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/International_prototype_of_the_kilogram_aka_Le_Grand_K.jpg/386px-International_prototype_of_the_kilogram_aka_Le_Grand_K.jpg", width:326}});
+lesson("scatter", "12wqPxyx5sAjEqgVkAHuZJq0tSr6YX4GJ");
+// lesson("", "");
+// lesson("", "");
 
 layout._z = [
     {icons:[

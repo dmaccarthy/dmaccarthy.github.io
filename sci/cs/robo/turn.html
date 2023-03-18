@@ -11,7 +11,8 @@ def brain(robot):
     while robot.active:        <span class="Comment"># Loop until simulation ends</span>
         robot.updateSensors()  <span class="Comment"># Update the sensor readings</span>
         gyro = robot.gyro      <span class="Comment"># Get gyro reading</span>
-        print(gyro, angleDifference(gyro, 45.0))
+        diff = angleDifference(gyro, 45.0)
+        print(f"{gyro:7.2f} {diff:7.2f}")
 
 Arena.run(brain)    <span class="Comment"># Run the simulation</span></pre>
 <p>For the arena simulation, the gyroscope has been calibrated so that <code>robot.gyro</code> will be <code>0</code> when the robot points right, <code>90</code> when it points to the bottom of the screen, <code>180</code> when it points left, and <code>270</code> when it points to the top.

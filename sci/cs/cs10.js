@@ -16,7 +16,7 @@ let cs10 = {title:"Computing Science 10", text:"CS 10", id:"cs10", menu:[
         {title:"Conditional Statements", id:"if"},
         {title:"Loops", id:"loop"},
         {title:"Flags & Counters", id:"flag"},
-        {title:"Mini-Project #2", show:"2023.7", id:"mp12"},
+        {title:"Mini-Project #2", show:"2023.3.20.10", id:"mp12"},
         {title:"Iteration & Searching", id:"iter_srch"},
         {title:"Formatted Output", id:"format"},
         {title:"Accumulation", id:"accum"},

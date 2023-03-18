@@ -10,7 +10,7 @@
 from sc8pr.robot.arena import Arena, quilt
 
 def brain(robot):
-    robot.motors = 0.3
+    robot.motors = 0.5, 0.3
     while robot.active:
         robot.updateSensors()
         print(robot.sensorDown, robot.sensorFront)
@@ -89,11 +89,11 @@ def isBlue(color):
     <span class="Red">return</span> <span class="Blue">hsvBox</span>(color, (205, 260), (60, 100), (60, 100))
 
 def brain(robot):
-    robot.motors = 0.3
+    robot.motors = 0.5, 0.3
     while robot.active:
         robot.updateSensors()
         color = robot.sensorDown
-        print("RGBA =", color)
+        print("\nRGBA =", color)
         print("HSVA =", color<span class="Blue">.hsva</span>)
         print("Blue =", isBlue(color))
 

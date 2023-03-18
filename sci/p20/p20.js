@@ -214,7 +214,7 @@ let dyn = [
         {title:"Friction Lab", gdrv:"1d9lmd_jhew9hZXY_F9STZDWIbZjoTaFJ"},
         {title:"Friction Simulation", icon:"html5", open:"../applet/pulley"},
     ]},
-    {title:"Dynamics in 2D", show:"202.1", id:"dyn2d", icon:1, menu:[
+    {title:"Dynamics in 2D", id:"dyn2d", icon:1, menu:[
         {title:"Examples", open:"dyn/dyn2d.html"},
         {title:"Review & Practice", id:"dyn2d-rp", ajax:"dyn/assign/dyn2d.htm", menu:[]},
         // {title:"Practice Solutions", gdoc:"1cPXcnazyRT1zQ9xmbCXz7gkMr6YHswAZT1lvA1bsU_w"},

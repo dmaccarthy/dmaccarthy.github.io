@@ -7,7 +7,7 @@ let cs20 = {title:"Computing Science 20", text:"CS 20", id:"cs20", menu:[
         {title:"Exception Handling", id:"try"},
     ]},
     {title:"Game Programming Project", id:"game", icon:"sc8pr", menu:[
-        {title:"Sketchs & Sprites", id:"s8"},
+        {title:"Sketches & Sprites", id:"s8"},
         {title:"Customizing the Animation", id:"s8custom"},
         {title:"Text in Animations", id:"s8text"},
         {title:"Keyboard Events", id:"s8key"},
@@ -18,7 +18,7 @@ let cs20 = {title:"Computing Science 20", text:"CS 20", id:"cs20", menu:[
         {title:"Iteration", id:"iteration"},
         {title:"Dictionaries & Sets", id:"dict"},
         {title:"Positional & Keyword Arguments", id:"kwargs"},
-        {title:"Mini-Project #1", show:"2023.2", id:"mp21"},
+        {title:"Mini-Project #1", show:"2023.7", id:"mp21"},
         {title:"List Comprehensions", id:"list_comp"},
         {title:"Generator Functions", id:"gen"},
         {title:"Arrays", id:"array"},
