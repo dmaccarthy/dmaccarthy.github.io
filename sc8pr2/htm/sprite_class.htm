@@ -1,0 +1,41 @@
+﻿<article>
+<h1><code>sc8pr.sprite.Sprite</code> Class</h1>
+<h1><code>sc8pr.sprite.CostumeImage</code> Class</h1>
+
+<p>The <code>CostumeImage</code> class (<b class="Comment">added in v2.2</b>) represents a sequence of images or costumes.</p>
+
+<p>The <code>Sprite</code> class represents animated bitmap images. <code>Sprite</code> inherits an <code>onwrap</code> event handler from <code>BaseSprite</code> and also overrides <code>ondraw</code>. If overriding these handlers, you may need to call the default handler to ensure the sprites behave correctly.</p>
+
+<p>In addition to the attributes they inherit from <a class="Code Hilite" href="javascript:goNode('graphic')">Graphic</a> or <a class="Code" href="javascript:goNode('base')">BaseSprite</a>, the following additional attributes were defined for the <code>Sprite</code> class prior to v2.2, and are defined in <code>CostumeImage</code> and inherited by <code>Sprite</code> starting in v2.2...</p>
+
+<h4>Constructors</h4><div class="Indent">
+	<p><code><span class="Hilite">Sprite</span>(image, cols=1, rows=1, flip=0, padding=0)</code></p>
+	<p><code><span class="Hilite">CostumeImage</span>(image, cols=1, rows=1, flip=0, padding=0)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">image</code>: An <a>Image</a> or <code>pygame.Surface</code> instance; a <code>str</code> describing the path to an image file; or a list or tuple of such objects to be used at sprite costumes.</p>
+		<p><code class="Hilite">cols, rows, flip, padding</code>: For a single image, these arguments are passed to <code><a href="javascript:goNode('image')">Image</a>.tiles</code> to create costumes from a spritesheet. These arguments are ignored if a sequence of images is provided.</p>
+		</div>
+</div>
+
+<h4>Assignable Properties</h4><div class="Indent">
+	<p><code class="Hilite">costumeNumber</code>: The index of the sprite’s current costume.</p>
+	<p><code class="Hilite">costumeTime</code>: The number of frames to allow between costume changes; starting in v2.2, you can assign a negative value to play the costumes in reverse order.</p>
+</div>
+
+<h4>Read-Only Properties</h4><div class="Indent">
+	<p><code class="Hilite">costumeList</code>: A list of <code>Image</code> instances containing the original sequence of costumes.</p>
+	<p><code class="Hilite">image</code>: The current costume as a <code>pygame.Surface</code> that has been scaled and rotated to the sprite’s current <code>size</code> and <code>angle</code>.</p>
+</div>
+
+<h4>Other Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">__getitem__</span>(i)</code> → <code>Image</code>: Returns the costume in the current costume sequence with index <code>i</code>.</p>
+	<p><code><span class="Hilite">__len__</span>()</code> → <code>int</code>: Enables the <code>len</code> function to count the number of costumes in the current costume sequence.</p>
+	<p><code><span class="Hilite">costume</span>()</code> → <code>Image</code>: Returns the sprite’s current costume.</p>
+	<p><code><span class="Hilite">costumeSequence</span>(seq, n=None)</code> → <code>self</code>: Specifies the order in which to change the costumes when animating.</p>
+		<div class="Indent">
+		<p><code class="Hilite">seq</code>: A sequence of indices referring to the original costume sequence.</p>
+		<p><code class="Hilite">n</code>: An index specifying the <code>costumeNumber</code>. If omitted, the current value is retained unless it would result in an <code>IndexError</code> in which case it is reset to zero. <b class="Comment">[Added in v2.1]</b></p>
+		</div>
+</div>
+
+</article>

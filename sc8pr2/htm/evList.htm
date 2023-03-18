@@ -1,0 +1,190 @@
+﻿<article><h1>Event Model</h1>
+
+<p><code>sc8pr</code> manages the <code>pygame</code> event queue by examining and responding to each event. In many cases, the response is to dispatch the event to appropriate event handling functions that have been bound to a <code>Graphics</code> instance (by calling its <code>bind</code> method or by defining the event handler in a subclass definition).</p>
+
+<pre class="Code">sk += Image("alien.png").bind(onmouseover, onclick)</pre>
+
+
+<p>Most events are dispatched to the sketch’s <code>onevent</code> handler first, then to a suitable handler of the target graphic (for example, an <code>Image</code>’s <code>onmouseover</code> handler), and finally to the sketch’s <code>onhandled</code> function.</p>
+
+<p>If the target graphic does not have an appropriate handler, the event will “bubble” to the target’s canvas, and then to its canvas, etc. Once an event has been sent to a handler, it is considered to have been handled and no further bubbling occurs. Event handlers can modify this behaviour by calling other handlers.</p>
+
+<p>Some classes of objects already have handlers for some events. If you want to customize such handlers, you may need to call the default handler to ensure that the object behaves correctly. To check if a default handler exists, you can try printing it...</p>
+
+<pre class="Code">print(Sprite.ondraw)</pre>
+
+<p>If this prints <code>None</code> or raises an exception, the <code>Sprite</code> class does not have an <code>ondraw</code> handler. If it prints a function, then the handler already exists.</p>
+
+<p>Most event handlers take a <code>Graphics</code> instance as the first argument and a <code>pygame.event.EventType</code> instance that describes the event as the second argument. The attributes of the event instance vary depending on the type of event. The <code>sc8pr</code> system may add or modify attributes of the event, or dispatch a new event instance to the handler. The following attributes are commonly added by <code>sc8pr</code> beginning in v2.2:</p>
+
+<div class="Indent">
+	<p><code class="Hilite">focus</code>: A reference to the currently focused <code>Graphic</code> instance.</p>
+	<p><code class="Hilite">handler</code>: A string containing the <i>default</i> name of the handler to which the event is dispatched by the <code>sc8pr</code> event manager. This allows you to use a single function to handle multiple event types, allowing the function to know which event was triggered. This attribute will have the value <code>None</code> when an event is passed to the sketch’s <code>onevent</code> handler, since this occurs before the event manager determines where to dispatch the event.</p>
+	<p><code class="Hilite">hover</code>: A reference to the <code>Graphic</code> instance over which the mouse is positioned.</p>
+	<p><code class="Hilite">target</code>: A reference to <code>Graphic</code> instance that was the target of the event.</p>
+</div>
+
+<p>Below is a table of currently supported event handlers, alphabetical by default name. </p>
+<!--Most handlers take the sketch (<code>sk</code>) or graphics object (<code>gr</code>) to which they are bound as the first argument, and an object that describes the <code>pygame</code> event (<code>ev</code>) which triggered the handler as the second argument.</p-->
+
+<table class="Default" style="width:95%">
+<tr>
+	<th style="width:12%">Handler</th>
+	<th style="width:12%">Arguments</th>
+	<th style="width:12%">Applies to...</th>
+	<th style="width:64%">Description</th>
+</tr>
+<tr>
+	<td><code>onactive</code></td>
+	<td><code>sk, ev</code></td>
+	<td>Sketch only</td>
+	<td>Called after the sketch window is maximized, minimized, or restored; and when the mouse is moved out of or back into the sketch window.</td>
+</tr>
+<tr>
+	<td><code>onaction</code></td>
+	<td><code>gr, ev</code></td>
+	<td>Some GUI Controls</td>
+	<td>Called by other handlers (such as <code>onclick</code> or <code>onblur</code>) to indicate a user action has occurred.</td>
+</tr>
+<tr>
+	<td><code>onbounce</code></td>
+	<td><code>gr, code</code></td>
+	<td>Sprites</td>
+	<td>Called by <code>BaseSprite.ondraw</code> when a sprite is bounced from one of the edges of the sketch. The <code>code</code> argument will be one of the constants <code>VERTICAL</code>, <code>HORIZONTAL</code> or <code>BOTH</code>.</td>
+</tr>
+<tr>
+	<td><code>onblur</code></td>
+	<td><code>gr, ev</code></td>
+	<td>Focusable Graphics</td>
+	<td>Called when the current focussed object loses focus.</td>
+</tr>
+<tr>
+	<td><code>onchange</code></td>
+	<td><code>gr, ev</code></td>
+	<td>Some GUI Controls</td>
+	<td>Called by text inputs, radios, and sliders when the status or value changes.</td>
+</tr>
+<tr>
+	<td><code>onclick</code></td>
+	<td><code>gr, ev</code></td>
+	<td>All Graphics</td>
+	<td><b class="Comment">As of v2.2</b>, this handler is called after <code>onmousedown</code> and <code>onmouseup</code> when they happen on the same target.
+		In earlier versions, <code>onmousedown</code> was not supported and <code>onclick</code> was called instead when the mouse button was pressed.</td>
+</tr>
+<tr>
+	<td><code>oncollide</code></td>
+	<td><code>gr</code></td>
+	<td>Sprites</td>
+	<td>Called by the <code>physics</code> function after a sprite’s motion is adjusted as a result of collisions. Only sprites with a <code>mass</code> property are affected. The <code>physics</code> function must be called by your program (usually your sketch’s <code>ondraw</code> handler) if you want to implement physics-based collisions.</td>
+</tr>
+<tr>
+	<td><code>ondrag</code></td>
+	<td><code>gr, ev</code></td>
+	<td>All Graphics*</td>
+	<td>Called when an object is being dragged by the mouse. There is a generic function <code>ondrag</code> that can be imported from the <code>sc8pr.util</code> module which re-positions the object as it is dragged. *The DRAG event applies to the sketch itself <b class="Comment">starting in v2.2</b>; in prior versions it only applied to non-sketch graphics objects.</td>
+</tr>
+<tr>
+	<td><code>ondraw</code></td>
+	<td><code>gr</code></td>
+	<td>All Graphics</td>
+	<td>Called after the graphics object is drawn to its canvas.</td>
+</tr>
+<tr>
+	<td><code>onevent</code></td>
+	<td><code>sk, ev</code></td>
+	<td>Sketch only</td>
+	<td>Called for all <code>pygame</code> events (except <code>VIDEORESIZE</code> and <code>WINDOWSIZECHANGED</code>) before dispatching the event to a specific handler. If it returns <code>True</code>, the event is considered to have been handled and no other handlers will be called.</td>
+</tr>
+<tr>
+	<td><code>onfocus</code></td>
+	<td><code>gr, ev</code></td>
+	<td>Focusable Graphics</td>
+	<td>Called before <code>onmousedown</code> when a graphic acquires focus. <b class="Comment">[Added in v2.2]</b></td>
+</tr>
+<tr>
+	<td><code>onhandled</code></td>
+	<td><code>sk, ev</code></td>
+	<td>Sketch only</td>
+	<td>Called for <code>pygame</code> events (except <code>VIDEORESIZE</code> and <code>WINDOWSIZECHANGED</code>) after all other handlers have finished.</td>
+</tr>
+<tr>
+	<td><code>onkeydown</code></td>
+	<td><code>gr, ev</code></td>
+	<td>Focusable Graphics</td>
+	<td>Called when a key is pressed. When a key is held, the keydown event repeats as configured by <code>pygame.key.set_repeat</code>.</td>
+</tr>
+<tr>
+	<td><code>onkeyup</code></td>
+	<td><code>gr, ev</code></td>
+	<td>Focusable Graphics</td>
+	<td>Called when a key is released.</td>
+</tr>
+<tr>
+	<td><code>onmousedown</code></td>
+	<td><code>gr, ev</code></td>
+	<td>All Graphics</td>
+	<td>Called when a mouse button is pressed while the mouse pointer is positioned on a graphics object. <b class="Comment">[Added in v2.2]</b></td>
+</tr>
+<tr>
+	<td><code>onmousemotion</code></td>
+	<td><code>gr, ev</code></td>
+	<td>All Graphics</td>
+	<td>Called when the mouse pointer is moved.</td>
+</tr>
+<tr>
+	<td><code>onmouseout</code></td>
+	<td><code>gr, ev</code></td>
+	<td>All Graphics except Sketch</td>
+	<td>Called when the mouse pointer is moved off of a graphics object. This handler is <b>not</b> called when a graphic loses the mouse due to graphics being added, removed, or repositioned within the sketch.</td>
+</tr>
+<tr>
+	<td><code>onmouseover</code></td>
+	<td><code>gr, ev</code></td>
+	<td>All Graphics except Sketch</td>
+	<td>Called when the mouse pointer is moved onto a graphics object. This handler is <b>not</b> called when a graphic appears under the mouse due to graphics being added, removed, or repositioned within the sketch.</td>
+</tr>
+<tr>
+	<td><code>onmouseup</code></td>
+	<td><code>gr, ev</code></td>
+	<td>All Graphics</td>
+	<td>Called when the mouse button is released. If an object is being dragged, the <code>onrelease</code> handler will be called instead.</td>
+</tr>
+<tr>
+	<td><code>onquit</code></td>
+	<td><code>sk, ev</code></td>
+	<td>Sketch only</td>
+	<td>Called when the user attempts to close the sketch window.</td>
+</tr>
+<tr>
+	<td><code>onrelease</code></td>
+	<td><code>gr, ev</code></td>
+	<td>All Graphics*</td>
+	<td>Called when a DRAG action is completed by releasing the mouse button. *The RELEASE event applies to the sketch itself <b class="Comment">starting in v2.2</b>; in prior versions it only applied to non-sketch graphics objects.</td>
+</tr>
+<tr>
+	<td><code>onreset</code></td>
+	<td><code>gr</code></td>
+	<td>Sprite and Movie</td>
+	<td>Called by <code>Sprite.ondraw</code> when the <code>costumeNumber</code> resets to <code>0</code> or by <code>Movie.ondraw</code> when the end of the media file is reached. <b class="Comment">[Added in v2.2]</b></td>
+</tr>
+<tr>
+	<td><code>onresize</code></td>
+	<td><code>sk, ev</code></td>
+	<td>Sketch only</td>
+	<td>Called after the sketch is resized due to a mouse or keyboard action and after <code>Canvas.resize</code> has run. <!--<b class="Comment">As of v2.2</b>, you can also bind a <code>beforeResize</code> function that is called <em>before</em> <code>Canvas.resize</code> and takes the previous sketch size as its argument.--></td>
+</tr>
+<tr>
+	<td><code>onscroll</code></td>
+	<td><code>cv, ev</code></td>
+	<td>ScrollCanvas and ScrollSketch</td>
+	<td>Called when the canvas scroll position is changed with the scroll bars. <b class="Comment">[Added in v2.2]</b></td>
+</tr>
+<tr>
+	<td><code>onwrap</code></td>
+	<td><code>gr, code</code></td>
+	<td>Sprites</td>
+	<td>Called by <code>BaseSprite.ondraw</code> when a sprite is wrapped through one of the edges of the sketch. The <code>code</code> argument will be one of the constants <code>VERTICAL</code>, <code>HORIZONTAL</code> or <code>BOTH</code>.</td>
+</tr>
+</table>
+
+</article>

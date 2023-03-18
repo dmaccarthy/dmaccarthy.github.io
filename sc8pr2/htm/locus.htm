@@ -1,0 +1,69 @@
+﻿<article><h1><code>sc8pr.shape.locus.Locus</code> Class</h1>
+<p><span class="Comment"><b>Added in v2.2</b> to replace the deprecated <a class="Hilite Code" href="javascript:goNode('locus_depr')">sc8pr.misc.plot.Locus</a> class.</span></p>
+
+<p>The <code>Locus</code> class represents graphics described by an equation or a sequence of points. Loci are  drawn directly onto the canvas. The example below produces the following output:</p>
+<p class="Center">
+<!--img class="Fit" src="img/waves.gif" alt="Image" style="border:1px solid black"/-->
+
+<video width="512" height="288" autoplay="autoplay" loop="loop">
+  <source src="img/loci.mp4" type="video/mp4">
+</video> 
+
+</p>
+<pre class="Code">from time import time
+from math import pi, sin, cos
+from sc8pr import Sketch
+from sc8pr.shape.locus import Locus
+from sc8pr.plot import gridlines
+
+def sineWave(x, A=1, k=2*pi):
+    <span class="Comment">"Calculate points on the locus"</span>
+    return A * sin(k * x)
+
+def ondraw(wave):
+    <span class="Comment">"Update amplitude each frame"</span>
+    wave.coeff["A"] = cos(2 * pi / wave.period * (time() - wave.start))
+
+def setup(sk):
+    <span class="Comment"># Define coordinate system and draw gridlines...</span>
+    sk.attachCS([-1.2, 1.2, -1.5, 1.5])
+    gridlines(sk, [-1.2, 1.2, 0.2], [-1.5, 1.5, 0.5], stroke="lightgrey")
+
+    <span class="Comment"># Plot from x = -1 to x = +1 in 500 steps...</span>
+    param = -1, 1, 500
+
+    <span class="Comment"># Static locus...</span>
+    sk += Locus(sineWave, param).config(weight=2, stroke="blue")
+
+    <span class="Comment"># Animated locus...</span>
+    wave = Locus(sineWave, param).bind(ondraw)
+    sk += wave.config(weight=2, stroke="red",
+        start=time(), period=4, coeff={"k":4*pi})
+
+Sketch().play("Locus Demo")</pre>
+<p>In addition to the attributes inherited from from <a class="Hilite Code" href="javascript:goNode('shape')">Shape</a> and <a class="Hilite Code" href="javascript:goNode('graphic')">Graphic</a> the <code>Locus</code> class defines the following...</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Locus</span>(data, param=None)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">data</code>: A list or tuple of points, or a function from which points can be generated. The function may be of the form <i>f: x → y</i> if it is a function in the mathematical sense, or <i>f: t → (x, y)</i> for a parameterized curve.</p>
+		<p><code class="Hilite">param</code>: A 3-list or 3-tuple specifying the starting and ending values of the parameter, and the number of steps. This is used to generate the data points when a function is provided as <code>data</code>. The <code>param</code> argument is ignored if <code>data</code> is a sequence of points.
+		</div>
+</div>
+
+<h4>Assignable Properties</h4><div class="Indent">
+	<p><code class="Hilite">data</code>, <code class="Hilite">param</code>: See descriptions for the constructor arguments.</p>
+	<p><code class="Hilite">coeff</code>: A dictionary of coefficients to be passed to the function that generates the data. In the example above, the dictionary may contain the keys <code>A</code> (amplitude), and <code>k</code> (wavenumber).</p>
+</div>
+
+<h4>Read-Only Properties</h4><div class="Indent">
+	<p>The inherited <code>pos</code>, <code>anchor</code>, and <code>scrollable</code> properties are read-only.</p>
+	<p><code class="Hilite">pointList</code>: A list of data points.</p>
+	<p><code class="Hilite">snapshot</code>: This attribute is set to <code>None</code> to disable the <code>snapshot</code> method. To convert a locus into an <code>Image</code>, add the locus to a <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> instance and then take a snapshot of the canvas.</p>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">pointGen</span>()</code> → <code>generator</code>: A generator for the sequence of data points.</p>
+</div>
+
+</article>

@@ -1,17 +1,12 @@
 ﻿<article><h1><code>sc8pr.robot.Robot</code> Class</h1>
 
 <p>The <code>Robot</code> class is used to create simulations of autonomous robots that can interact with their environment (i.e. the sketch). Robots can only be added directly to the <code>Sketch</code> instance and not to canvases contained by the sketch.</p>
-
 <p>Each <code>Robot</code> instance can be controlled by a “robot control function” which runs in a separate thread. You can provide a robot control function by binding it as the robot’s <code>brain</code> method. The brain has access to the robot’s sensor input (<code>collision</code>, <code>gyro</code>, <code>proximity</code>, <code>sensorDown</code>, <code>sensorFront</code>, and <code>stopped</code>), its actuators (<code>motors</code> and <code>pen</code>) and its internal clock (<code>uptime</code>). The robot control thread starts as soon as the robot is added to the sketch, so the brain function must be bound to the robot before the robot is added to the sketch.</p>
-
 <p>When the brain runs a loop for an extended period of time (e.g. waiting for certain sensor input values), it is important that the loop calls the robot’s <code>updateSensors</code> method. This will ensure that new sensor data is received and that the robot thread does not consume an excessive amount of computing power leading to a slow-running animation.</p>
-
-<p>For the robot to be able to interact with other sprites as physical objects capable of colliding, you must assign a <code>mass</code> property to each sprite (including the robot) and you must call the <code><a class="Hilite" href="javascript:goNode('sprite')">sc8pr.sprite</a>.physics</code> function, usually from your sketch’s <code>ondraw</code> event handler.</p>
-
 <p>You can provide your robot with a <code>shutdown</code> method to define operations to be performed after the robot control function is complete but before the thread shuts down.</p>
-<p>The <code>Robot</code> class implements event handlers <code>ondraw</code>, <code>onbounce</code> and <code>oncollide</code>. If you override these methods, you will usually need to call the overridden handler to ensure the robot behaves correctly.</p>
-
-<p>The <code>sc8pr.robot</code> package includes a number of example simulations for which you only need to write a robot brain. (The simulations were located in <code>sc8pr.examples</code> prior to v2.2.) If you run the simulations without providing a brain, the robot can be controlled with the arrow keys and space bar.</p>
+<p>When creating your own simulations, for the robot to be able to interact with other sprites as physical objects capable of colliding, you must assign a <code>mass</code> property to each sprite (including the robot) and you must call the <code><a class="Hilite" href="javascript:goNode('sprite')">sc8pr.sprite</a>.physics</code> function, usually from your sketch’s <code>ondraw</code> event handler.</p>
+<p>The <code>Robot</code> class implements event handlers <code>onbounce</code> and <code>oncollide</code>. If you override these methods, you will usually need to call the overridden handler to ensure the robot behaves correctly.</p>
+<p>The <code>sc8pr.robot</code> package includes a number of example simulations for which you only need to write a robot brain. If you run the simulations without providing a brain, the robot can be controlled with the arrow keys and space bar.</p>
 
 <p><code>sc8pr.robot.arena</code> simulates an empty arena for the robot to move in. The second argument to the <code>run</code> method is an image, an image file, or a function that returns an image to be drawn on the arena floor.</p>
 <pre class="Code">from sc8pr.robot.arena import Arena, curve
@@ -60,7 +55,7 @@ Party.run(brain)</pre>
 	<p><code class="Hilite">maxSpeed</code>: The maximum speed (as a fraction of the sketch width) that the robot is capable of when operating on full power to the wheel motors. The default is <code>1/512</code>, giving a maximum speed of 1 pixel per frame when the sketch is 512 pixels wide.</p>
 	<p><code class="Hilite">motors</code>: A 2-tuple (or 2-list) of <code>float</code> values between <code>-1</code> and <code>+1</code> indicating the power to the motors operating the left and right wheels respectively. If a single number is provided, it will be used for both motors.</p>
 	<p><code class="Hilite">sensorNoise</code>: The amount of “noise” added to the <code>sensorDown</code> and <code>sensorFront</code> RGB values each time a measurement is made; default <code>8</code>.</p>
-	<p><code class="Hilite">sensorResolution</code>: The resolution of the front sensor in degrees; default <code>2.0</code>. <b class="Comment">[Added in v2.1]</b></p>
+	<p><code class="Hilite">sensorResolution</code>: The resolution of the front sensor in degrees; default <code>2.0</code>. Objects that subtend an angle smaller than the resolution when viewed from the robot sensor location may not been detected by the <code>sensorFront</code> and <code>proximity</code> sensors.</p>
 	<p><code class="Hilite">sensorWidth</code>: The angle in degrees that the the <code>sensorFront</code> and <code>proximity</code> sensors are able to detect in both directions (i.e. clockwise and counter-clockwise from straight ahead); default <code>10.0</code>.</p>
 </div>
 
@@ -90,35 +85,4 @@ Party.run(brain)</pre>
 </div>
 		
 </div>
-<!--
-
-from sc8pr import Sketch, Image, BOTH
-from sc8pr.robot import Robot
-from sc8pr.sprite import physics, Sprite
-
-def setup(sk):
-    sk.bind(ondraw)
-    sk.bg = Image("sky.png")
-    sk += Robot().bind(brain).config(mass=10, pos=sk.center, height=sk.height/6, bounce=BOTH)
-    sk += Sprite("alien.png").config(mass=1, height=sk.height/6, vel=(1,1), bounce=BOTH)
-
-def ondraw(sk): physics(sk)
-def shutdown(r): print("Goodbye!")
-
-def allData(r):
-    keys = ["collision", "gyro", "proximity", "sensorDown",
-        "sensorFront", "stopped", "motors", "pen", "uptime"]
-    return {key: getattr(r, key) for key in keys}
-
-def brain(r):
-    r.bind(shutdown)
-    r.pen = "red", 3
-    r.motors = 0.8, 0.3
-    while r.active:
-        r.updateSensors()
-        print(allData(r))
-
-Sketch().play()
-
--->
 </article>

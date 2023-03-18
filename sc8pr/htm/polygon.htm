@@ -6,13 +6,13 @@
 	<p><code><span class="Hilite">Polygon</span>(pts, anchor=None)</code></p>
 		<div class="Indent">
 		<p><code class="Hilite">pts</code>: A sequence of points representing the vertices of the polygon.</p>
-		<p><code class="Hilite">anchor</code>: Polygons do not use an <code>anchor</code> property in the way that most other graphics classes do; the polygon’s <code>anchor</code> property is used as the centre for translation, rotation and scaling. If no <code>anchor</code> argument is provided, the constructor will use the centre of the polygon’s containing rectangle. Alternatively, you can provide a 2-tuple or 2-list to specify a specific point, or an <code>int</code> for the index of a vertex to use as the centre. <b class="Comment">Renamed in v2.2</b> from <code>pos</code>.</p>
+		<p><code class="Hilite">anchor</code>: Polygons do not use an <code>anchor</code> property in the way that most other graphics classes do; the polygon’s <code>anchor</code> property is used as the centre for translation, rotation and scaling. If no <code>anchor</code> argument is provided, the constructor will use the centre of the polygon’s containing rectangle. Alternatively, you can provide a 2-tuple or 2-list to specify a specific point, or an <code>int</code> for the index of a vertex to use as the centre.</p>
 		</div>
 </div>
 
 <h4>Assignable Properties</h4><div class="Indent">
 	<p><code><span class="Hilite">anchor</span></code>: Returns the polygon’s centre of rotation. When assigning new values, use <code>pos</code> or <code>xy</code> to translate the polygon, and <code>anchor</code> to change the centre of rotation without translating.</p>
-	<p><code><span class="Hilite">vertices</span></code>: Redefine the polygon with new vertices. Use the <code>setPoints</code> method instead if you also want to change the <code>anchor</code>. This property was read-only <b class="Comment">prior to v2.2</b>.</p>
+	<p><code><span class="Hilite">vertices</span></code>: Redefine the polygon with new vertices. Use the <code>setPoints</code> method instead if you also want to change the <code>anchor</code>.</p>
 </div>
 
 <h4>Read-Only Properties</h4><div class="Indent">

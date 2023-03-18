@@ -1,4 +1,4 @@
-# Copyright 2017-2022 D.G. MacCarthy <http://dmaccarthy.github.io>
+# Copyright 2017-2023 D.G. MacCarthy <http://dmaccarthy.github.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-"A demonstration of some of sc8pr 2's GUI controls"
+"A demonstration of some of sc8pr 3's GUI controls"
 
 from sc8pr import Sketch, Canvas, Image, TOPLEFT, TOPRIGHT, CENTER, TOP
 from sc8pr.util import rgba, nothing, sc8prData
@@ -23,12 +23,7 @@ from sc8pr.gui.radio import Radio, Options
 from sc8pr.gui.slider import Slider
 from sc8pr.gui.button import Button
 from sc8pr.gui.menu import Menu, R_TRIANGLE
-
-try:    # v2.2
-    from sc8pr.gui.textinput import TextInputCanvas
-except: # v2.0-2.1
-    TextInputCanvas = None
-
+from sc8pr.gui.textinput import TextInputCanvas
 
 GREY, BLUE = rgba("#ececec", "blue")
 FONT = Font.sans()
@@ -42,10 +37,7 @@ def setup(sk):
     down = lambda cv: 16 + cv[-1].height
 
     text = dict(color = BLUE, font = FONT, fontStyle = BOLD, padding = 4)
-    if TextInputCanvas: # v2.2.dev
-        ti = TextInputCanvas(336, "", "Type Some Text...", **text)
-    else: # v2.0-2.1
-        ti = TextInput("", "Type Some Text...").config(**text)
+    ti = TextInputCanvas(336, "", "Type Some Text...", **text)
     x, y = cv.center[0] - 8, 16
     cv["Input"] = ti.bind(onaction, onchange=onaction).config(anchor=TOP, pos=(x,y), bg="white", weight=1)
 
@@ -72,7 +64,7 @@ def setup(sk):
     sk.size = w + 48, h + 48
 
     # Add a Slider
-    slider = Slider((16, cv.height), [BLUE], 100, 0, 100)
+    slider = Slider((16, cv.height), BLUE, 100, 0, 100)
     slider.config(pos=(cv.width, 0), anchor=TOPRIGHT, bg=GREY, weight=1)
     cv["Slider"] = slider.bind(onchange=sliderChange)
 

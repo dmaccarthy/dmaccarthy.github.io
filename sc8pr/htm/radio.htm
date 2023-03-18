@@ -1,10 +1,9 @@
 ﻿<article><h1><code>sc8pr.gui.radio.Radio</code> Class</h1>
-<p><span class="Comment"><b>Added in v2.1</b>. The <code>radio</code> module in v2.0 was experimental and does not conform to this API!</span></p>
 
 <p><code>Radio</code> is an <a class="Hilite Code" href="javascript:goNode('options')">Options</a> subclass where selecting one of the check boxes automatically deselects the others. It does this by implementing the <code>onaction</code> event handler, and triggering <code>onchange</code> when the selected option changes.</p>
 
 <p>Usage example:</p>
-<pre class="Code">from sc8pr import Sketch
+<pre class="Code Scroll">from sc8pr import Sketch
 from sc8pr.gui.radio import Radio
 
 def setup(sk):

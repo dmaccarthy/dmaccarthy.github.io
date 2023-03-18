@@ -1,95 +1,63 @@
-﻿<article><h1><code>sc8pr.misc.video.Video</code> Class</h1>
+﻿<article><h1><code>sc8pr.misc.video</code> module</h1>
+<p><b class="Comment">Experimental!</b></p>
 
-<p>The <code>Video</code> class is used to record and playback video clips. <code>Video</code> works similar to the <code>Sprite</code> class, where each frame of the video is treated as a costume. The main difference between <code>Video</code> and <code>Sprite</code> is that <code>Video</code> frames are stored in compressed form. As a result, the <code>Video</code> class is slower but uses less memory than <code>Sprite</code>.</p>
+<p>The <code>Video</code> class renders and animates videos from frame images that are stored in a ZIP archive. Videos stored this way will result in a larger file than an MP4 but will usually load faster, and the frames do not need to be read sequentially as they do for MP4 and similar formats.</p>
 
-<p>This class loads and saves videos using a custom “sc8pr Video” format denoted by the file extension “s8v”. This format is used to load and save video clips quickly, but produces much larger files than modern video formats like MP4. You can use the <a class="Code" href="javascript:goNode('media')">sc8pr.misc.media</a> module (added in v2.2) to transcode between video formats.</p>
+<p><code>VideoSprite</code> is subclass of <code>Video</code> that is also a <code>BaseSprite</code> subclass.</p>
 
-<p>In addition to the attributes it inherits from <a class="Hilite Code" href="javascript:goNode('sprite')">Sprite</a>, the <code>Video</code> class defines the following...</p>
+<p>Use the <a class="Hilite Code" href="javascript:goNode('ffr')">sc8prx.ffmpeg.Reader</a> and <a class="Hilite Code" href="javascript:goNode('ffw')">sc8prx.ffmpeg.Writer</a> classes to transcode between FFmpeg-compatible formats like MP4 and a ZIP archive.</p>
+
+<p>In addition to the attributes the <code>Video</code> class inherits from <a class="Hilite Code" href="javascript:goNode('sprite_class')">CostumeImage</a> and <a class="Hilite Code" href="https://docs.python.org/3/library/zipfile.html#zipfile.ZipFile">ZipFile</a>, the following additional attributes are defined...</p>
 
 <h4>Constructor</h4><div class="Indent">
-	<p><code><span class="Hilite">Video</span>(data=None, alpha=False, progress=None, start=0, end=None)</code></p>
+	<p><code><span class="Hilite">Video</span>(zfile, **kwargs)</code></p>
 		<div class="Indent">
-		<p><code class="Hilite">data</code>: A string specifying an s8v file to load, a 2-tuple specifying the size of a new video, or a sequence of images to combine into a video. <b class="Comment">As of v2.1</b>, anything that can be passed to the <a class="Code" href="javascript:goNode('pixeldata')">PixelData</a> constructor can be used as an image.</p>
-		<p><code class="Hilite">alpha</code>: Specifies whether to convert frames with no alpha value; set this to <code>True</code> if you want to apply effects that require transparency, such as fade or wipe.</p>
-		<p><code class="Hilite">progress</code>: A callback function that informs the program of the load progress. This function must accept two arguments: a reference to the <code>Video</code> instance, and the number of frames loaded.</p>
-		<p><code class="Hilite">start</code>: The first frame number to load. <b class="Comment">[Added in v2.1]</b></p>
-		<p><code class="Hilite">end</code>: The frame number at which to stop loading. Omit this argument to load up to and including the last available frame. <b class="Comment">[Added in v2.1]</b></p>
+		<p><code class="Hilite">zfile</code>: Path to the ZIP archive containing the frame images to be read.</p>
+		<p><code class="Hilite">kwargs</code>: Additional arguments to be passed to the <code>ZipFile</code> constructor such as the <code>mode</code> and <code>compression</code>.</p>
 		</div>
+</div>
+
+<pre class="Code" id="Ex1">from sc8pr import Sketch
+from sc8pr.misc.video import Video
+
+def setup(sk):
+    mov = Video("movie.zip").config(read_alpha=True)
+    sk.size = mov.size
+    sk += mov.config(
+        costumeTime = 2,                 <span class="Comment"># Sketch frames per video frame</span>
+        costumeSequence = range(30, 90), <span class="Comment"># Video frame range to animate</span>
+        pos = sk.center
+    )
+
+Sketch().play()</pre>
+
+<h4>Read-Only Properties</h4><div class="Indent">
+	<p><code class="Hilite">costumeList</code>: Returns the <code>Video</code> instance itself. The video has a <code>__getitem__</code> method which gives access to the costumes/frames in a list-like way using indices and slices.</p>
+	<p><code class="Hilite">fps</code>: The nominal frame rate of the video.</p>
+	<p><code class="Hilite">meta</code>: A dictionary of metadata.</p>
 </div>
 
 <h4>Assignable Properties</h4><div class="Indent">
-	<p><code class="Hilite">frameTimes</code>: Set this to an empty list to record the capture times for each frame. This must occur before any frames are added to the video. Call the <code>sync</code> method after recrding to ensure the video can be saved and replayed with the correct frame rate. Default is <code>None</code>. <b class="Comment">[Added in v2.2]</b></p>
-	<p><code class="Hilite">meta</code>: A dictionary of metadata to be saved with the video. Data must be convertible into JSON format.</p>
+	<p><code class="Hilite">read_alpha</code>: Specifies whether to convert image transparency when the costumes/frames are read: <code>True</code> supports transparency, <code>False</code> reads images as opaque, <code>None</code> (default) loads images without conversion.</p>
+	<p><code class="Hilite">write_alpha</code>: Specifies whether to convert image transparency when the costumes/frames are saved: <code>True</code> supports transparency, <code>False</code> writes images as opaque, <code>None</code> (default) saves images without conversion.</p>
 </div>
 
-<h4>Instance Methods</h4><div class="Indent">
-	<p><code><span class="Hilite">__add__</span>(other)</code> → <code>Video</code>: Create a new <code>Video</code> instance by concatenating <code>other</code> to the current video. <b class="Comment">[Added in v2.2]</b></p>
-	<p><code><span class="Hilite">__getitem__</span>(n)</code> → <code>Image</code> (or <code>Video</code> <b class="Comment">as of v2.2</b>): Extract the specified frame number as an <code>Image</code> instance. <b class="Comment">As of v2.2</b> <code>n</code> can also be a slice object, in which case the clip will be returned as a new <code>Video</code> instance and the pixel data will not be copied.</p>
-	<p><code><span class="Hilite">__iadd__</span>(img)</code> → <code>self</code>: Append an image as a new frame at the end of the video. <b class="Comment">As of v2.2</b>, the argument can also be a <code>Video</code> instance to be concatenated in place.</p>
+<h4>Instance Method</h4><div class="Indent">
+	<p><code><span class="Hilite">__iadd__</span></code>: A pseudonym for <code>write</code>.</p>
+	<p><code><span class="Hilite">__getitem__</span>(i)</code> → <code>Image</code> or <code>generator</code>: Returns the requested frame as an <code>Image</code>, or returns a generator for a sequence of frames if <code>i</code> is a slice.</p>
+	<p><code><span class="Hilite">clip</span>(zfile, mode="x", start=0, frames=None)</code> → <code>self</code>: Save a subset of consecutive frames to a new ZIP archive.</p>
 		<div class="Indent">
-		<p><code class="Hilite">img</code>: The image to be appended. It can be an <code>Image</code> instance (or any <code>Graphic</code> subclass that implements the <code>image</code> property) or a <code>pygame.Surface</code> instance. <b class="Comment">As of v2.1</b>, any object that can be decoded by the <a class="Code" href="javascript:goNode('pixeldata')">PixelData</a> constructor, such as raw <code>bytes</code> or a <a class="Code" href="http://python-pillow.org/">Pillow</a> image, is acceptable.</p>
+		<p><code class="Hilite">zfile</code>: The path to the ZIP file being created.</p>
+		<p><code class="Hilite">mode</code>: The mode withwhich to open the file.</p>
+		<p><code class="Hilite">start</code>: The index of the first frame number to save.</p>
+		<p><code class="Hilite">frames</code>: The number of frames to save.</p>
 		</div>
-	<p><code><span class="Hilite">__len__</span>()</code> → <code>int</code>: The number of frames in the video.</p>
-	<p><code><span class="Hilite">autoSave</span>(fn=True, size=None)</code> → <code>self</code>: Automatically save and purge the video instance when the number of frames reaches the specified value. Call <code>autoSave</code> with arguments as described below to start automatic saving. Call again with no arguments to flush remaining frames, or with the argument <code>False</code> to disable autosave. <b class="Comment">Deprecated</b>: v2.2 added new classes (<a class="Hilite Code" href="javascript:goNode('s8v')">S8Vfile</a> and <a class="Hilite Code" href="javascript:goNode('ffw')">FFWriter</a>) for recording the sketch more efficiently. Use these classes for recording clips that are too long to keep in memory. <b class="Comment">[Added in v2.1]</b></p>
+	<p><code><span class="Hilite">close</span>()</code> → <code>None</code>: Close the ZIP file containing the frame images.</p>
+	<p><code><span class="Hilite">write</span>(*args, repeat=1)</code> → <code>self</code>: Append images by writing them to the <code>ZipFile</code>.</p>
 		<div class="Indent">
-		<p><code class="Hilite">fn</code>: The s8v file name.</p>
-		<p><code class="Hilite">size</code>: The number of stored frames at which the autosave operation is to occur.</p>
+		<p><code class="Hilite">args</code>: One or more <code>Image</code> instances to write, or other objects that can be converted to a <code>pygame.Surface</code>.</p>
+		<p><code class="Hilite">repeat</code>: The number of times each frame is to be repeated during playback.</p>
 		</div>
-	<p><code><span class="Hilite">capture</span>(sk)</code> → <code>None</code>: Capture the sketch window and append it to the video as a new frame. Called automatically by the sketch on its <code>capture</code> property.</p>
-	<p><code><span class="Hilite">clip</span>(start=0, end=None)</code> → <code>Video</code>: Extracts a sequence of frames as a new <code>Video</code> instance; does not copy the frame pixel data.</p>
-		<div class="Indent">
-		<p><code class="Hilite">start</code>: The first frame to include in the extracted clip, or a sequence of frame numbers. <b class="Comment">As of v2.2</b> negative values are accepted to represent frames counting from the last frame of the video.</p>
-		<p><code class="Hilite">end</code>: The frame at which to stop extracting; the end frame itself is not included. This argument is ignored when a sequence is passed for the first argument.</p>
-		</div>
-	<p><code><span class="Hilite">costumeSequence</span>(seq)</code>: Will raise a <code>NotImplementedError</code>.</p>
-	<p><code><span class="Hilite">convert_alpha</span>()</code> → <code>self</code>: Converts all costume images so that they support transparency. <b class="Comment">[Added in v2.2]</b></p>
-	<p><code><span class="Hilite">effect</span>(effect, out=False)</code> → <code>Video</code>: Create a new <code>Video</code> instance by applying an effect to an existing video. <b class="Comment">[Added in v2.2]</b></p>
-		<div class="Indent">
-		<p><code class="Hilite">effect</code>: An instance of <code>sc8pr.misc.effect.Effect</code> that defines the effect to be applied.</p>
-		<p><code class="Hilite">out</code>: A <code>bool</code> specifying whether the effect should transition in or out.</p>
-		</div>
-	<p><code><span class="Hilite">effectInPlace</span>(effect, start=0, end=None, out=False)</code> → <code>self</code>: Apply an effect to (part of) an existing video. <b class="Comment">[Added in v2.2]</b></p>
-		<div class="Indent">
-		<p><code class="Hilite">effect</code>: An instance of <code>sc8pr.misc.effect.Effect</code> that defines the effect to be applied.</p>
-		<p><code class="Hilite">start</code>: The frame number at which the effect begins.</p>
-		<p><code class="Hilite">end</code>: The frame number at which the effect ends.</p>
-		<p><code class="Hilite">out</code>: A <code>bool</code> specifying whether the effect should transition in or out.</p>
-		</div>
-	<p><code><span class="Hilite">extend</span>(imgs)</code> → <code>self</code>: Append multiple images as new frames at the end of the video.</p>
-		<div class="Indent">
-		<p><code class="Hilite">imgs</code>: An iterable sequence of images in any format that can be passed to <code>__iadd__</code>.</p>
-		</div>
-	<p><code><span class="Hilite">frame</span>(n)</code> → <code>PixelData</code>: Extract the specified frame number as a <code>PixelData</code> instance.</p>
-	<p><code><span class="Hilite">frames</span>()</code> → <code>generator</code>: Generate the sequence of frames as <code>PixelData</code> instances. You can iterate through the <code>Video</code> instance itself to obtain a sequence of frames as <code>Image</code> instances.</p>
-	<p><code><span class="Hilite">play</span>(t=None)</code> → <code>self</code>: Pause or resume playback. <b class="Comment">[Added in v2.2]</b></p>
-		<div class="Indent">
-		<p><code class="Hilite">t</code>: A value to set as <code>costumeTime</code> when resuming playback.</p>
-		</div>
-	<p><code><span class="Hilite">purge</span>()</code> → <code>self</code>: Remove all frames of the video. <b class="Comment">[Added in v2.1]</b></p>
-	<p><code><span class="Hilite">removeGaps</span>(gap, repl)</code> → <code>self</code>: Modifies the <code>frameTimes</code> data to remove large time gaps. <b class="Comment">[Added in v2.2]</b></p>
-		<div class="Indent">
-		<p><code class="Hilite">gap</code>: The minimum sive of the gap to remove.</p>
-		<p><code class="Hilite">repl</code>: The replacement gap.</p>
-		</div>	
-	<p><code><span class="Hilite">save</span>(fn, progress=None, append=False)</code> → <code>self</code>: Save the video in s8v format.</p>
-		<div class="Indent">
-		<p><code class="Hilite">fn</code>: The path to the file being saved.</p>
-		<p><code class="Hilite">progress</code>: A callback function that informs the program of the save progress. This function must accept three arguments: a reference to the <code>Video</code> instance, the number of frames saved, and the total number of frames.</p>
-		<p><code class="Hilite">append</code>: Specifies whether the data is to be appended to an existing s8v file. Metadata is only written when the file is created and cannot be overwritten when appending. If an <code>int</code> is used for this argument, appended frames will be numbered starting at the given value. If existing frames are numbered consecutively from zero, you can specify <code>True</code> to calculate the number at which to begin appending frames. <b class="Comment">[Added in v2.1]</b></p>
-		</div>	
-	<p><code><span class="Hilite">scaleFrames</span>(size=None, inPlace=False)</code> → <code>Video</code>: Adjust the frame data so that every frame has the same size. This should be called before encoding the video if there is any chance that the frame sizes vary.</p>
-		<div class="Indent">
-		<p><code class="Hilite">size</code>: The output size. If omitted, the <code>size</code> property of the video will be used.</p>
-		<p><code class="Hilite">inPlace</code>: Specifies whether to adjust the data in place, or create a new <code>Video</code> instance.</p>
-		</div>
-
-	<p><code><span class="Hilite">splice</span>(i, n=0, vid=None)</code> → <code>self</code>: Insert and/or delete frames from a video. <b class="Comment">[Added in v2.2]</b></p>
-		<div class="Indent">
-		<p><code class="Hilite">i</code>: The index (frame number) where frames are to be inserted / deleted.</p>
-		<p><code class="Hilite">n</code>: The number of frames to delete.</p>
-		<p><code class="Hilite">vid</code>: A <code>Video</code> clip or a sequence of images to be inserted.</p>
-		</div>
-	<p><code><span class="Hilite">sync</span>(fps=30, original=None)</code> → <code>self</code>: Creates a copy of the video changing the frame rate from <code>original</code> to <code>fps</code>. If <code>original</code> is <code>None</code>, frames will be synced using the recording time data in the <code>frameTimes</code> attribute or the value in <code>meta["frameRate"]</code>. <b class="Comment">[Added in v2.2]</b></p>
 </div>
 
 </article>

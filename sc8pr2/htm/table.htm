@@ -1,0 +1,71 @@
+﻿<article><h1><code>sc8pr.misc.table.Table</code> Class</h1>
+
+<p><b class="Comment">Added in v2.2.</b></p>
+<p>A <a class="Code Hilite" href="javascript:goNode('canvas')">Canvas</a> subclass for arranging graphics content into a table or grid.</p>
+
+<p class="Center"><img alt="Image" src="img/table.png"/></p>
+
+<p>The output above can be produced by the program below...</p>
+<pre class="Code" title="Shift+Click to Copy to Clipboard">from sc8pr import Sketch, Image
+from sc8pr.misc.table import Table
+from sc8pr.text import Text, Font
+
+def setup(sk):
+    <span class="Comment"># Create a 3x5 grid of 100x48 cells with red borders</span>
+    grid = Table(3*[100], 5*[48], padding=2).config(pos=sk.center) 
+    sk += grid.box(True, weight=1, stroke="red")
+
+    <span class="Comment"># Draw a green background over 4 of the cells</span>
+    grid.box((0,2), (2,4), weight=2, stroke="black", fill="green")
+
+    <span class="Comment"># Render the polygons onto the background and then remove them</span>
+    grid.flatten()
+
+    <span class="Comment"># Position some text and an image in the green area</span>
+    grid += Text("Hi there!").config(pos=grid.cell((0,2), 2).center, font=Font.sans())
+    grid += Image("alien.png").config(height=40, pos=grid.cell(1,3).center)
+
+Sketch().play()</pre>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Table</span>(cols, rows, bg=None, padding=4)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">cols</code>: A <code>list</code> or <code>tuple</code> containing the column widths in pixels.</p>
+		<p><code class="Hilite">rows</code>: A <code>list</code> or <code>tuple</code> containing the row heights in pixels.</p>
+		<p><code class="Hilite">bg</code>: A colour or image to use as the canvas background.</p>
+		<p><code class="Hilite">padding</code>: The number of pixels of padding to add around the outside of the table/grid.</p>
+		</div>
+</div>
+
+<h4>Read-Only Properties</h4><div class="Indent">
+	<p><code class="Hilite">cols</code>: The number of columns in the table/grid.</p>
+	<p><code class="Hilite">rows</code>: The number of rows in the table/grid.</p>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">box</span>(c=None, r=None, **kwargs)</code> → <code>self</code>: Add a <code>Polygon</code> instance to the canvas to draw a border and/or fill the background of a cell or groups of cells.</p>
+		<div class="Indent">
+		<p><code class="Hilite">c</code>: A column number, or a 2-tuple or 2-list identifying a group of consecutive columns. Setting this to <code>True</code> will draw polygons for every cell.</p>
+		<p><code class="Hilite">r</code>: A row number, or a 2-tuple or 2-list identifying a group of consecutive rows.</p>
+		<p><code class="Hilite">kwargs</code>: A dictionary describing the <code>Polygon</code> attributes such as <code>weight</code>, <code>stroke</code>, and <code>fill</code>.</p>
+		</div>
+	<p><code><span class="Hilite">cell</span>(c, r)</code> → <code>pygame.Rect</code>: Return a rectangle describing the location of a cell or range of cells within the canvas.</p>
+		<div class="Indent">
+		<p><code class="Hilite">c</code>: A column number, or a 2-tuple or 2-list identifying a group of consecutive columns.</p>
+		<p><code class="Hilite">r</code>: A row number, or a 2-tuple or 2-list identifying a group of consecutive rows.</p>
+		</div>
+	<p><code><span class="Hilite">corner</span>(c, r)</code> → <code>tuple</code>: Pixel coordinates of the top left corner of the specified cell; this is equivalent to the <code>topleft</code> property of the rectangle returned by the <code>cell</code> method but requires less computation. Arguments are the same as for <code>cell</code>.</p>
+	<p><code><span class="Hilite">lowerBoxes</span>()</code> → <code>self</code>: Move all <code>Polygon</code> instances in the table to the lowest layers below the non-polygon content.</p>
+</div>
+
+<h4>Static Method</h4><div class="Indent">
+	<p><code><span class="Hilite">grid</span>(*args, cols=None, size=None, fit=True)</code> → <code>Table</code>: Arrange items in a grid of cells with the same size.</p>
+		<div class="Indent">
+		<p><code class="Hilite">args</code>: A sequence of <code>Graphics</code> items to be arranged in a table/grid. Arguments can also be a <code>str</code> containing the path to an image file.</p>
+		<p><code class="Hilite">cols</code>: The number of columns in the grid; the number of rows will be calculated automatically. If omitted, all items will be arranged in a single row.</p>
+		<p><code class="Hilite">size</code>: The size of each cell; if not specified, the size of the <em>first</em> item will be used as the cell size.</p>
+		<p><code class="Hilite">fit</code>: A <code>bool</code> specifying whether to scale large items to fit with their cells.</p>
+		</div>
+</div>
+
+</article>

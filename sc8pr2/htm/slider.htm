@@ -1,0 +1,32 @@
+﻿<article><h1><code>sc8pr.gui.slider.Slider</code> Class</h1>
+<p><span class="Comment"><b>Added in v2.1</b>. The <code>Slider</code> class in v2.0 was experimental and does not conform to this API!</span></p>
+
+<p>The <code>Slider</code> class is used to create slider GUI controls. This class implements event handlers for <code>onkeydown</code> and either <code>onmousedown</code> (v2.2) or <code>onclick</code> (v2.1), and triggers <code>onchange</code>. When <code>onchange</code> is called, the event argument will have a <code>method</code> property which specifies how the slider value was changed. This property will equal one of the constants <code>CLICK</code>, <code>SCROLL</code>, <code>DRAG</code>, or <code>KEY</code>, defined in <code>sc8pr.gui.slider</code>.</p>
+<p>In addition to the attributes it inherits from <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a>, the <code>Slider</code> class defines the following...</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Slider</span>(size=(128,16), knob=None, lower=0, upper=1, steps=0)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">size</code>: The size of the slider canvas as a 2-tuple or 2-list.</p>
+		<p><code class="Hilite">knob</code>: A color or <code>Graphic</code> instance to use as the slider’s knob; defaults to <code>"grey"</code> in v2.1. <b class="Comment">In v2.2</b>, this can be a 2-tuple or 2-list where the second color is used when the mouse is hovering over the knob. If omitted the knob will be created using the colors specified by the 2-tuple <code>Knob.colors</code>.</p>
+		<p><code class="Hilite">lower</code>: The slider value when the knob is in the lowest position.</p>
+		<p><code class="Hilite">upper</code>: The slider value when the knob is in the highest position.</p>
+		<p><code class="Hilite">steps</code>: The number of increments in which to move the slider; if <code>0</code>, the arrow keys will adjust the slider value by 0.01 of the total range, and the mouse will allow the slider knob to be positioned to the nearest pixel.</p>
+		</div>
+</div>
+
+<h4>Read-Only Properties</h4><div class="Indent"><p></p>
+	<p><code class="Hilite">methodNames</code>: A list of strings describing the constants. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code class="Hilite">knob</code>: The graphic being used as the slider’s knob.</p>
+	<p><code class="Hilite">lower</code>: The lowest allowed value of the slider.</p>
+	<p><code class="Hilite">upper</code>: The highest allowed value of the slider.</p>
+</div>
+
+<h4>Assignable Properties</h4><div class="Indent">
+	<p><code class="Hilite">allowButton</code>: A tuple of mouse button numbers that will be considered clicks by the <code>onclick</code> event handler. Clicks by other mouse buttons will be ignored but will still be considered to have been handled. Default is <code>(1, 4, 5)</code>.</p>
+	<p><code class="Hilite">reverseWheel</code>: Reverses the direction of the slider motion corresponding to the scroll wheel buttons; default <code>False</code>. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code class="Hilite">steps</code>: The number of increments as described for the constructor.</p>
+	<p><code class="Hilite">val</code>: The current value of the slider.</p>
+</div>
+
+</article>

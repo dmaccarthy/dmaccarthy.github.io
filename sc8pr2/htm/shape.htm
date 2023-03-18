@@ -1,0 +1,23 @@
+﻿<article><h1><code>sc8pr.shape</code> Module</h1>
+<h4>Classes</h4>
+<div class="Indent"><p><code><span class="Hilite">Shape</span> (<a class="Hilite Code" href="javascript:goNode('graphic')">Graphic</a>)</code>: Abstract base class for geometric shapes. It defines the following assignable attributes for use by subclasses...</p>
+	<div class="Indent">
+		<p><code class="Hilite">fill</code>: The color to fill the shape with; default <code>None</code>.</p>
+		<p><code class="Hilite">stroke</code>: The color to outline the shape with; default is black.</p>
+		<p><code class="Hilite">weight</code>: The thickness in pixels of the shape outline; default <code>1</code>.</p>
+	</div>
+<p><code><a class="Hilite" href="javascript:goNode('line')">Line</a> (Shape)</code>: Represents line segments.</p>
+<p><code><a class="Hilite" href="javascript:goNode('circle')">Circle</a> (Shape)</code>: Represents circles.</p>
+<p><code><a class="Hilite" href="javascript:goNode('ellipse')">Ellipse</a> (Shape)</code>: Represents ellipses. <b class="Comment">[Added in v2.2]</b></p>
+<p><code><a class="Hilite" href="javascript:goNode('arc')">Arc</a> (Ellipse)</code>: Represents elliptical arcs. <b class="Comment">[Added in v2.2]</b></p>
+<p><code><a class="Hilite" href="javascript:goNode('polygon')">Polygon</a> (Shape)</code>: Represents polygons.</p>
+<p><code><a class="Hilite" href="javascript:goNode('arrow')">Arrow</a> (Polygon)</code>: Represents simple arrows.</p>
+<p><code><span class="Hilite">CircleSprite</span> (Circle, <a class="Hilite" href="javascript:goNode('base')">BaseSprite</a>)</code>: Does not define any additional attributes.</p>
+<p><code><span class="Hilite">PolygonSprite</span> (Polygon, <a class="Hilite" href="javascript:goNode('base')">BaseSprite</a>)</code>: Does not define any additional attributes.</p>
+<p><code><span class="Hilite">ArrowSprite</span> (Arrow, <a class="Hilite" href="javascript:goNode('base')">BaseSprite</a>)</code>: Does not define any additional attributes.</p></div>
+
+<h4>Constants</h4>
+<div class="Indent">
+<p><code class="Hilite">MIDDLE</code>, <code class="Hilite">TAIL</code>, <code class="Hilite">TIP</code>: Values for specifying the anchor point for the <code>Arrow</code> class. <b class="Comment">[Added in v2.2]</b></p>
+</div>
+</article>

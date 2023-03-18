@@ -1,0 +1,64 @@
+﻿<article><h1>Sprite Animations</h1>
+
+<p>We saw earlier that sprites can be animated by providing them with <code>spin</code>, <code>vel</code> (velocity), and <code>acc</code> (acceleration) values. Another feature of sprites is that they can have multiple <em>costumes</em><sup>†</sup>. In the example below, as highlighted in <span class="Hilite">blue</span>, we have used a different image file to create the alien sprite and we have added two additional arguments when creating the sprite.</p>
+
+<pre class="Code" id="Ex1">from sc8pr import Sketch, Image, BOTH
+from sc8pr.sprite import Sprite
+
+def setup(sk):
+    sk.bg = Image("sky.png")            <span class="Comment"># Set background</span>
+    alien = Sprite(<span class="Hilite">"aliens.png", 2, 2</span>)  <span class="Comment"># Create a sprite</span>
+    sk += alien.config(                 <span class="Comment"># Configure the alien</span>
+        pos = sk.center,
+        width = sk.width/10,
+        bounce = BOTH,
+        vel = (2, 1),
+        spin = 1,
+        <span class="Hilite1">costumeTime = 10</span>
+    )
+
+Sketch((512,362)).play()                <span class="Comment"># Create and run the sketch</span></pre>
+
+<p>Let’s focus on the line where the sprite is created...</p>
+
+<pre class="Code">alien = Sprite("aliens.png", 2, 2)      <span class="Comment"># 2 by 2 spritesheet</span></pre>
+
+<p>The file being loaded here is a <em>spritesheet</em>. Here is what the contents of the file look like...</p>
+<p class="Center"><img class="Border Fit" src="img/aliens.png" alt="Image"/></p>
+
+<p>There are four different costumes arranged into two columns by two rows. When loading the spritesheet, we have passed the number of columns and rows as the second and third arguments after the file name.  These costumes allow us to create the appearance that the alien’s eye is blinking and its crest is changing color. When we call the alien sprite’s <code>config</code> method, we have added a keyword argument, <code class="Hilite1">costumeTime = 10</code>, to indicate that we want the costume to change every ten animation frames. The default animation rate is 60 frames per second, so this would correspond to changing costume six times per second.</p>
+
+<p>If you have the costumes saved as separate files rather than as a single spritesheet, you can load the images individually and then pass the sequence of images to the <code>Sprite</code> function...</p>
+
+<pre class="Code">costumes = [Image("alien0.png"), Image("alien1.png"),
+    Image("alien2.png"), Image("alien3.png")]
+alien = Sprite(costumes)</pre>
+
+<p>In <code>sc8pr</code> version 2.1, you could convert a sequence of costume image files into a spritesheet using the <code><a class="Hilite" href="javascript:goNode('canvas')">Canvas</a>.grid</code> method...</p>
+
+<pre class="Code">from sc8pr import Canvas
+
+Canvas.grid("alien0.png", "alien1.png",
+    "alien2.png", "alien3.png").save("sheet.png")</pre>
+
+<p>In <code>sc8pr</code> 2.2, this method has been moved to the <code>Canvas</code> subclass <code><a class="Hilite" href="javascript:goNode('table')">Table</a></code>...</p>
+
+<pre class="Code">from sc8pr.misc.table import Table
+
+Table.grid("alien0.png", "alien1.png",
+    "alien2.png", "alien3.png").save("sheet.png")</pre>
+
+<p>If you run the animation, you may notice that the alien’s eye closes gradually but pops open suddenly. This happens because the animation cycles back to costume 0 after costume 3 is done. To make the eye open gradually, we can alter the costume sequence...</p>
+<pre class="Code">seq = 0, 1, 2, 3, 2, 1
+alien.costumeSequence(seq)</pre>
+
+<p>If we want to spend more time on costumes 0 and 3 before switching to the other costumes, we can repeat these costumes in the sequence...</p>
+<pre class="Code">seq = 0, 0, 0, 1, 2, 3, 3, 3, 2, 1
+alien.costumeSequence(seq)
+print(len(alien), len(alien.costumeList))  <span class="Comment"># 10 4</span></pre>
+
+<p>As the final statement above shows, you can use the <code>len</code> function to count the length of the current costume sequence, and the sprite’s <code>costumeList</code> attribute to access the original costumes.</p>
+
+<hr id="Footnotes"/><p><sup>†</sup>The term <em>costume</em> is from <a href="https://scratch.mit.edu">Scratch</a>.</p>
+
+</article>

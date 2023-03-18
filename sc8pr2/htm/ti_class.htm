@@ -1,0 +1,33 @@
+﻿<article><h1><code>sc8pr.gui.textinput.TextInput</code> Class</h1>
+
+<p>The <code>TextInput</code> class is used to obtain text input from the user asynchronously. This class implements event handlers for <code>onmousedown</code> (v2.2) or <code>onclick</code> (v2.0-2.1), <code>onkeydown</code>, and <code>onblur</code>. These events may trigger <code>onchange</code> or <code>onaction</code>. In <b class="Comment">v2.2</b>, <code>ondraw</code> refers to the <code>scroll</code> method.</p>
+<p>In addition to the attributes it inherits from <a class="Hilite Code" href="javascript:goNode('text_class')">Text</a>, the <code>TextInput</code> class defines the following...</p>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">TextInput</span>(data="", prompt=None)</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">data</code>: A <code>str</code> describing the text input content.</p>
+		<p><code class="Hilite">prompt</code>: A <code>str</code> to be displayed when the text input data is empty.</p>
+		</div>
+</div>
+
+<h4>Assignable Properties</h4>
+<p>In <code>sc8pr</code> v2.0, the <code>padding</code> property inherits a default value of <code>0</code>. This may result in the cursor becoming invisible when positioned at the end of the text input. For v2.1, the default <code>padding</code> is <code>4</code>.</p>
+<div class="Indent">
+	<p><code class="Hilite">allowButton</code>: A tuple of mouse button numbers that will be considered clicks by the <code>onclick</code> event handler. Clicks by other mouse buttons will be ignored but will still be considered to have been handled. Default is <code>(1,)</code>.</p>
+	<p><code class="Hilite">blurAction</code>: A <code>bool</code> specifying whether to trigger  <code>onaction</code> when the text input loses focus; default <code>True</code>. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code class="Hilite">cursorOn</code>: The time in seconds that the cursor remains visible before blinking off; default is <code>0.35</code>.</p>
+	<p><code class="Hilite">cursorTime</code>: The total time in seconds of the cursor on-off blink cycle; default is <code>1.0</code>.</p>
+	<p><code class="Hilite">data</code>, <code class="Hilite">prompt</code>: As described for the constructor arguments.</p>
+	<p><code class="Hilite">promptColor</code>: The text color of the prompt.</p>
+</div>
+
+<h4>Instance Method</h4><div class="Indent">
+	<p><code><span class="Hilite">scroll</span>(pix=None, rel=True)</code> → <code>self</code>: Adjusts the position of the text input within its canvas. Called automatically by <code>ondraw</code> and <code>onblur</code>. <b class="Comment">[Added in v2.2]</b></p>
+		<div class="Indent">
+		<p><code class="Hilite">pix</code>: The number of pixels to scroll the text, positive for right and negative for left. If not specified it will be calculated automatically, provided the <code>angle</code> property is <code>0</code> or <code>90</code>.</p>
+		<p><code class="Hilite">rel</code>: Specifies whether to scroll the graphic relative to its current position (<code>True</code>) or its unscrolled position (<code>False</code>).</p>
+		</div>
+</div>
+
+</article>

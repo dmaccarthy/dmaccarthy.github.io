@@ -1,6 +1,8 @@
 ﻿<article><h1>The <code>setup</code> Function</h1>
 
-<p>The example program on the previous page created a sketch that displayed a white background. If you want to change the background or add more content to the sketch, you need to create a <code>setup</code> function. This function takes a single argument, which refers to the sketch itself. In the example below, the <code>setup</code> function changes the sketch’s background color to blue. Make sure you define the <code>setup</code> function <em>before</em> your program plays the sketch.</p>
+<p>The example program on the previous page created a sketch that displayed a white background. If you want to change the background or add more content to the sketch, you need to create a <code>setup</code> function. This function takes a single argument <code>sk</code>, which refers to the sketch itself. Don’t confuse the <em>variable</em> <code>sk</code> with <code>Sketch</code> (the <em>function</em> that creates the sketch in the first place!)</p>
+
+<p>In this example, the <code>setup</code> function changes the sketch’s background color to blue. Make sure you define the <code>setup</code> function <em>before</em> your program plays the sketch.</p>
 
 <pre class="Code" id="Ex1">from sc8pr import Sketch
 
@@ -23,5 +25,11 @@ def setup(sk):
     sk.bg = Image("sky.png")
 
 Sketch().play()</pre>
+
+<p>For <code>sc8pr</code> to be able to locate your setup function on its own, your function must be named <code>setup</code> and it must be located in the same file as your main program. If you want to use a setup function with a different name or location, you will need to help <code>sc8pr</code> find it...</p>
+
+<pre class="Code" id="Ex4">Sketch().<span class="Hilite">bind(setup=mySetupFunction)</span>.play()</pre>
+
+<p>Before playing your sketch, call its <code>bind</code> method to tell <code>sc8pr</code> what you want to use as your setup function. In the example above, a function called <code>mySetupFunction</code> will be used.</p>
 
 </article>

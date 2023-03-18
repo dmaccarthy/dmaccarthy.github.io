@@ -1,16 +1,14 @@
-﻿<article><h1><code>sc8pr.plot.mpl</code> Module</h1>
-<p><b class="Comment">Experimental in v2.2.</b></p>
+﻿<article><h1><code>sc8prx.mpl</code> Module</h1>
+<p><b class="Comment">Experimental!</b></p>
 
-<p>This module defines functions for converting <a class="Code" href="https://matplotlib.org/">matplotlib</a> figures to <code>sc8pr</code> images. For example, you can use <code>matplotlib</code> to render equations.</p>
-<p>Your program must import the <code>matplotlib.figure</code> module before calling any of the functions defined in this module.</p>
+<p>This module defines functions for converting <a class="Code" href="https://matplotlib.org/">matplotlib</a> figures to <code>sc8pr</code> images. For example, you can use <code>matplotlib</code> to render equations as <code>sc8pr</code> images.</p>
 
-<pre class="Code" id="Ex1">import matplotlib.figure
-from sc8pr import Sketch
-from sc8pr.plot.mpl import text, fonts
+<pre class="Code" id="Ex1">from sc8pr import Sketch
+from sc8prx.mpl import text, fonts
 
 def setup(sk):
     fonts("cm")
-    formula = "$V = \\frac{4\\pi}{3} r^3$"
+    formula = r"$V = \frac{4\pi}{3} r^3$"
     sk += text(formula, "red").config(pos=sk.center)
 
 Sketch().play()</pre>

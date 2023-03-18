@@ -1,16 +1,11 @@
 ﻿<article><h1><code>sc8pr.shape.locus.Locus</code> Class</h1>
-<p><span class="Comment"><b>Added in v2.2</b> to replace the deprecated <a class="Hilite Code" href="javascript:goNode('locus_depr')">sc8pr.misc.plot.Locus</a> class.</span></p>
 
 <p>The <code>Locus</code> class represents graphics described by an equation or a sequence of points. Loci are  drawn directly onto the canvas. The example below produces the following output:</p>
-<p class="Center">
-<!--img class="Fit" src="img/waves.gif" alt="Image" style="border:1px solid black"/-->
-
-<video width="512" height="288" autoplay="autoplay" loop="loop">
+<p class="Center"><video width="512" height="288" autoplay="autoplay" loop="loop">
   <source src="img/loci.mp4" type="video/mp4">
-</video> 
+</video></p>
 
-</p>
-<pre class="Code">from time import time
+<pre class="Code Scroll">from time import time
 from math import pi, sin, cos
 from sc8pr import Sketch
 from sc8pr.shape.locus import Locus
@@ -20,7 +15,7 @@ def sineWave(x, A=1, k=2*pi):
     <span class="Comment">"Calculate points on the locus"</span>
     return A * sin(k * x)
 
-def ondraw(wave):
+def ondraw(wave, ev=None):
     <span class="Comment">"Update amplitude each frame"</span>
     wave.coeff["A"] = cos(2 * pi / wave.period * (time() - wave.start))
 

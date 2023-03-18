@@ -12,7 +12,7 @@ def setup(sk):
     alien = Sprite("alien.png")   <span class="Comment"># Create a sprite</span>
     sk += alien, hello            <span class="Comment"># Add sprite and text to sketch</span>
 
-Sketch((512,362)).play()          <span class="Comment"># Create and run the sketch</span></pre>
+Sketch((512,368)).play()          <span class="Comment"># Create and run the sketch</span></pre>
 
 <p>In the example above, we are loading an image from the file “alien.png” and using the image to create a <em>sprite</em> — an interactive, animated character or object. We are also creating a text object.  The final statement of the <code>setup</code> function adds the text and the alien sprite to the sketch using the sketch’s <code>+=</code> operator. This operator adds the items to the sketch <i>anonymously</i>.</p>
 
@@ -26,9 +26,14 @@ sk["Hello"] = hello</pre>
 
 <p>You will notice that the alien sprite and the text message are drawn in the upper left corner and are only partly visible on the screen. This happens because we have not provided any information about the positions or sizes of these graphics. Using the local variable <code>hello</code> which refers to the “Hello, world!” text object, we can configure the appearance by adding the following instruction to the <code>setup</code> and by adding the constant <code>TOPLEFT</code> to the imports at the beginning of the program...</p>
 
-<pre class="Code" id="Ex2">hello.config(pos=(8,8), anchor=TOPLEFT, color="red", fontSize=32)</pre>
+<pre class="Code" id="Ex2">hello.config(
+    pos = (8,8),       <span class="Comment"># Set the position of the text</span>
+    anchor = TOPLEFT,  <span class="Comment"># Draw the top left corner of the text at the set position</span>
+    color = "red",     <span class="Comment"># Set the text color</span>
+    fontSize = 32      <span class="Comment"># Set the size of the text</span>
+)</pre>
 
-<p>The <code>config</code> method lets us adjust the properties of the graphics object. All of the arguments are passed by keyword and can be in any order. The <code>color</code> and <code>fontSize</code> keywords should be self-explanatory. The <code>pos</code> keyword is used to set the object’s position. <code>sc8pr</code> uses the <code>pygame</code> coordinate system where <code>(0, 0)</code> refers to the pixel at the top left of the sketch window, and <code>(511, 361)</code> refers to the lower right pixel for our sketch size of 512 × 362.</p>
+<p>All graphics have a <code>config</code> method that lets us adjust the properties of the object. All of the arguments are passed by keyword and can be in any order. <code>sc8pr</code> uses the <code>pygame</code> coordinate system where <code>(0, 0)</code> refers to the pixel at the top left of the sketch window, and <code>(511, 367)</code> refers to the lower right pixel for our sketch size of 512 × 368.</p>
 
 <p>By default, <code>sc8pr</code> graphics are anchored to their center; <code>sc8pr</code> will draw the objects with their centers at the specified coordinates. We have changed the text object’s <code>anchor</code> to <code>TOPLEFT</code> so that the text is drawn with its top left corner at the coordinates <code>(8, 8)</code>. The anchor constants — <code>CENTER</code>, <code>TOP</code>, <code>BOTTOM</code>, <code>LEFT</code>, <code>RIGHT</code>, <code>TOPLEFT</code>, <code>TOPRIGHT</code>, <code>BOTTOMLEFT</code>, <code>BOTTOMRIGHT</code> — must be imported from the <code>sc8pr</code> module.</p>
 
@@ -39,12 +44,12 @@ sk["Hello"] = hello</pre>
 <p>The sketch should now look like this...</p>
 <p class="Center"><img class="Fit" src="img/ex2.png" alt="Image"/></p>
 
-<p class="Hilite">If an error occurs, you may have forgotten to add <code>TOPLEFT</code> to the imports in the first line of the program, or the image files might not be saved in the same folder as your program.</p>
+<p class="Warning">If an error occurs, you may have forgotten to add <code>TOPLEFT</code> to the imports in the first line of the program, or the image files might not be saved in the same folder as your program.</p>
 
 <p>When you resize the sprite using the <code>width</code> keyword, <code>sc8pr</code> will adjust the height to maintain the original aspect ratio. Similarly, if you use the <code>height</code> keyword, the width will be adjusted automatically. If you want to scale the image to change the aspect ratio, use the <code>size</code> keyword rather than <code>width</code> or <code>height</code>...</p>
 
 <pre class="Code" id="Ex4">alien.config(pos=sk.center, size=[200,50])</pre>
 
-<p><a class="Hilite Code" href="javascript:goNode('image')">Image</a>, <a class="Hilite Code" href="javascript:goNode('sprite_class')">Sprite</a> and <a class="Hilite Code" href="javascript:goNode('text_class')">Text</a> are only a few of the classes of graphics objects you can use in <code>sc8pr</code>. The <code>sc8pr</code> <a href="javascript:goNode('hierarchy22')">reference</a> includes a complete description of available graphics classes.</p>
+<p><a class="Hilite Code" href="javascript:goNode('image')">Image</a>, <a class="Hilite Code" href="javascript:goNode('sprite_class')">Sprite</a> and <a class="Hilite Code" href="javascript:goNode('text_class')">Text</a> are only a few of the classes of graphics objects you can use in <code>sc8pr</code>. The <code>sc8pr</code> <a href="javascript:goNode('hierarchy30')">reference</a> includes a complete description of available graphics classes.</p>
 
 </article>

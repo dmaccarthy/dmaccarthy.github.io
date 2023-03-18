@@ -9,23 +9,24 @@
 	<p><code class="Hilite">effects</code>: A list of <code><a href="javascript:goNode('effect')">Effect</a></code> instances to be applied before drawing the graphic; can be set to <code>None</code> (default) if no effects are to be applied.</p>
 	<p><code class="Hilite">focusable</code>: A <code>bool</code> value indicating whether the graphic can gain focus when clicked; defaults to <code>False</code> unless overridden in the subclass definition.</p>
 	<p><code class="Hilite">height</code>: The height of the graphic, not accounting for rotation. When a new value is assigned, the width is also adjusted to maintain a constant aspect ratio.</p>
-	<p><code class="Hilite">hoverable</code>: A <code>bool</code> value indicating whether the graphic can respond to mouse events; defaults to <code>True</code>. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code class="Hilite">hoverable</code>: A <code>bool</code> value indicating whether the graphic can respond to mouse events; defaults to <code>True</code>.</p>
 	<p><code class="Hilite">layer</code>: An index (<code>int</code>) specifying the drawing order of the graphic relative to all other graphics in the canvas. Layers are numbered from bottom (<code>layer = 0</code>) to top. Graphic instances can be assigned a negative layer value to specify a position relative to the top (<code>layer = -1</code>). The <code>layer</code> property can only be used while the graphic is contained by a canvas.</p>
 	<p><code class="Hilite">pos</code>: A 2-tuple describing the position of the graphic relative to its canvas in pixel coordinates.</p>
 	<p><code class="Hilite">radiusFactor</code>: A factor used to calculate the graphics <code>radius</code> property from its <code>width</code> and <code>height</code>; default <code>0.25</code>.</p>
-	<p><code class="Hilite">scrollable</code>: A <code>bool</code> specifying whether the graphic scrolls when contained within a scrollable canvas. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code class="Hilite">removeFrame</code>: Specifies a sketch frame number at which the graphic is to be removed automatically from its canvas; default <code>None</code>. An exception will be raised if an attempt is made to add a graphic to a canvas with a <code>removeFrame</code> value less than the current frame count.</p>
+	<p><code class="Hilite">scrollable</code>: A <code>bool</code> specifying whether the graphic scrolls when contained within a scrollable canvas.</p>
 	<p><code class="Hilite">size</code>: A 2-tuple describing graphic’s width and height, not accounting for rotation. Use <code>gr.rect.size</code> for the actual blit-rectangle size.</p>
-	<p><code class="Hilite">theta</code>: The rotation of the graphic in degrees; this will be the same as, or the negative of the <code>angle</code> property depending on whether the coordinate system is clockwise or counterclockwise. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code class="Hilite">theta</code>: The rotation of the graphic in degrees; this will be the same as, or the negative of the <code>angle</code> property depending on whether the coordinate system is clockwise or counterclockwise.</p>
 	<p><code class="Hilite">width</code>: The width of the graphic, not accounting for rotation. When a new value is assigned, the height is also adjusted to maintain a constant aspect ratio.</p>
-	<p><code class="Hilite">xy</code>: The coordinates of the graphic relative to its canvas’s attached coordinate system. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code class="Hilite">xy</code>: The coordinates of the graphic relative to its canvas’s attached coordinate system.</p>
 </div>
 
 <h4>Read-Only Properties</h4><div class="Indent">
 	<p><code class="Hilite">aspectRatio</code>: The ratio of the graphic’s width to height.</p>
 	<p><code class="Hilite">avgColor</code>: The average color of the graphic as an RGBA 4-tuple.</p>
 	<p><code class="Hilite">canvas</code>: The <code>Canvas</code> instance to which the graphic belongs, or <code>None</code>.</p>
-	<p><code class="Hilite">center</code>: A 2-tuple describing the coordinates of the item’s centre relative to its upper left corner, not accounting for rotation; used by the <code>relXY</code> method.</p>
-	<p><code class="Hilite">clockwise</code>: A <code>bool</code> indicating whether the item’s canvas has a clockwise coordinate system. <b>[Added in v2.2]</b></p>
+	<p><code class="Hilite">center</code>: A 2-tuple describing the coordinates of the item’s centre relative to its upper left corner, not accounting for rotation; used by the <code>relPos</code> method.</p>
+	<p><code class="Hilite">clockwise</code>: A <code>bool</code> indicating whether the item’s canvas has a clockwise coordinate system.</p>
 	<p><code class="Hilite">dialog</code>: The top canvas (one level below the sketch) in which the graphic is located. Will return the graphic itself if added directly to the sketch. An exception will occur if called on the sketch itself or on a graphic that has been removed from or not added to the sketch.</p>
 	<p><code class="Hilite">focussed</code>: A <code>bool</code> indicating whether the graphic is currently focussed.</p>
 	<p><code class="Hilite">name</code>: The key with which the graphic was added to its canvas, or <code>None</code> if added anonymously.</p>
@@ -40,7 +41,7 @@
 <h4>Instance Methods</h4><div class="Indent">
 
 	<p><code><span class="Hilite">anon</span>()</code> → <code>self</code>: Anonymize the graphic by deleting its name (key).</p>
-	<p><code><span class="Hilite">at</span>(pos, r=None)</code> → <code>pygame.Color</code> or <code>None</code>: Determines the pixel color at the given position. This method can only be called on subclasses that implement the <code>image</code> property. <b class="Comment">[Added in v2.1]</b></p>
+	<p><code><span class="Hilite">at</span>(pos, r=None)</code> → <code>pygame.Color</code> or <code>None</code>: Determines the pixel color at the given position. This method can only be called on subclasses that implement the <code>image</code> property.</p>
 		<div class="Indent">
 		<p><code class="Hilite">pos</code>: A 2-tuple specifying the pixel coordinates.</p>
 		<p><code class="Hilite">r</code>: A <code>pygame.Rect</code> describing where the position is relative to. If omitted, the method will use the graphic’s blit rectangle.</p>
@@ -53,12 +54,12 @@
 		</div>
 	<p><code><span class="Hilite">blur</span>(trigger=False)</code> → <code>self</code>: Force the instance to relinquish focus. This method does <i>not</i> call the <code>onblur</code> event handler.</p>
 		<div class="Indent">
-		<p><code>trigger</code>: A <code>bool</code> indicating whether the sketch’s <code>onfocus</code> handler is to be called. <b class="Comment">[Added in v2.2]</b></p>
+		<p><code>trigger</code>: A <code>bool</code> indicating whether the sketch’s <code>onfocus</code> handler is to be called.</p>
 		</div>
-	<p><code><span class="Hilite">bubble</span>(eventName, ev)</code> → <code>None</code>: Call the instance’s event handler to process an event. If no event handler exists for the specified event, the call will “bubble” to the instance’s canvas.</p>
+	<p><code><span class="Hilite">bubble</span>(eventName, ev={})</code> → <code>object</code>: Call the instance’s event handler to process an event. If no event handler exists for the specified event, the call will “bubble” to the instance’s canvas. This method returns whatever the handler returns.</p>
 		<div class="Indent">
 		<p><code>eventName</code>: A string containing the default handler name (e.g. <code>"onclick"</code>).</p>
-		<p><code>ev</code>: A description of the event as a <code>pygame.event.EventType</code> instance.</p>
+		<p><code>ev</code>: A description of the event as a <code>dict</code> or <code>pygame.event.EventType</code> instance.</p>
 		</div>
 	<p><code><span class="Hilite">calcBlitRect</span>(blitSize)</code> → <code>pygame.Rect</code>: Calculates the rectangle where the graphic will be drawn in the sketch, based on the graphic’s position, anchor, and canvas. This method is called when the graphic is drawn; applications would not normally call this method directly.</p>
 		<div class="Indent">
@@ -73,21 +74,21 @@
 		<div class="Indent">
 		<p><code>srf</code>: The surface being drawn upon. The surface clipping region will indicate the canvas rectangle.</p>
 		</div>
-	<p><code><span class="Hilite">focus</span>(trigger=False)</code> → <code>self</code>: Give focus to the specified graphic. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code><span class="Hilite">focus</span>(trigger=False)</code> → <code>self</code>: Give focus to the specified graphic.</p>
 		<div class="Indent">
 		<p><code>trigger</code>: A <code>bool</code> indicating whether to call the <code>onblur</code> handler of the currently focussed object and the <code>onfocus</code> handler of the newly focussed object.</p>
 		</div>
-	<p><code><span class="Hilite">pathTo</span>(cv)</code> → <code>list</code>: A list containing the graphic and all canvases that contain it, in order, up to the specified argument. <b class="Comment">[Added in v2.1]</b></p>
+	<p><code><span class="Hilite">pathTo</span>(cv)</code> → <code>list</code>: A list containing the graphic and all canvases that contain it, in order, up to the specified argument.</p>
 		<div class="Indent">
 		<p><code>cv</code>: A <code>Canvas</code> instance at which to terminate the list.</p>
 		</div>
-	<p><code><span class="Hilite">relXY</span>(pos)</code> → <code>tuple</code>: Calculate the coordinates of a point relative to the graphics instance by accounting for the instance’s <code>rect</code> and <code>angle</code> properties.</p>
+	<p><code><span class="Hilite">relPos</span>(pos)</code> → <code>tuple</code>: Calculate the coordinates of a point relative to the graphics instance by accounting for the instance’s <code>rect</code> and <code>angle</code> properties.</p>
 		<div class="Indent">
 		<p><code>pos</code>: Coordinates of a point relative to the sketch.</p>
 		</div>
 	<p><code><span class="Hilite">remove</span>(deleteRect=False)</code> → <code>self</code>: Remove the instance from its current canvas (if applicable). The canvas’s <code>-=</code> operator performs the same task; <code>cv -= gr</code> is effectively the same as <code>gr.remove()</code>, where <code>gr</code> is the <code>Graphic</code> instance and <code>cv</code> is the <code>Canvas</code>. This method deletes the graphic’s <code>name</code> property but leaves the <code>canvas</code> property unchanged, so that it still has a reference to the canvas after removal.</p>
 		<div class="Indent">
-		<p><code>deleteRect</code>: Specifies whether the <code>Graphic</code> instance’s <code>rect</code> attribute should be deleted. <b class="Comment">[Added in v2.2.]</b></p>
+		<p><code>deleteRect</code>: Specifies whether the <code>Graphic</code> instance’s <code>rect</code> attribute should be deleted.</p>
 		</div>
 
 	<p><code><span class="Hilite">resize</span>(size)</code> → <code>None</code>: Resize the graphic; called when the canvas is resized or when a new value is assigned to the <code>size</code>, <code>width</code>, or <code>height</code> properties.</p>
@@ -99,7 +100,7 @@
 		<p><code>fn</code>: The name of the file to save. The format (e.g. PNG or JPEG) is determined by the file extension.</p>
 		<p><code>**kwargs</code>: Arguments to be passed to <code>sc8pr.util.style</code> after drawing the image.</p>
 		</div>
-	<p><code><span class="Hilite">scale</span>(sx, sy=None)</code> → <code>None</code>: Scales the size of the object by the specified factor(s). <b class="Comment">[Added in v2.2.]</b></p>
+	<p><code><span class="Hilite">scale</span>(sx, sy=None)</code> → <code>None</code>: Scales the size of the object by the specified factor(s).</p>
 		<div class="Indent">
 		<p><code>sx</code>: The factor by which to adjust the width.</p>
 		<p><code>sy</code>: The factor by which to adjust the height; if <code>None</code>, <code>sx</code> will be used for both dimensions.</p>
@@ -113,11 +114,15 @@
 	<p><code><span class="Hilite">setCanvas</span>(cv, key=None)</code> → <code>self</code>: Remove the instance from its current canvas (if applicable) and add it to another one. This method is not usually called directly as the canvas’s assignment (<code>=</code>) and increment (<code>+=</code>) operators perform the same task; <code>cv += gr</code> is effectively the same as <code>gr.setCanvas(cv)</code> and <code>cv[key] = gr</code> is effectively the same as <code>gr.setCanvas(cv, key)</code>.</p>
 		<div class="Indent">
 		<p><code>cv</code>: The canvas to which the graphic should be added.</p>
-		<p><code>key</code>: A key that can be used with the canvas <code>__getitem__</code> method to obtain a reference to the graphic. <b class="Comment">[Added in v2.1]</b></p>
+		<p><code>key</code>: A key that can be used with the canvas <code>__getitem__</code> method to obtain a reference to the graphic.</p>
 		</div>
 	<p><code><span class="Hilite" id="snapshot">snapshot</span>(**kwargs)</code> → <code>Image</code>: Create a new image by drawing the graphic and applying any <code>effects</code>.</p>
 		<div class="Indent">
 		<p><code>**kwargs</code>: Arguments to be passed to <code>sc8pr.util.style</code> after drawing the image.</p>
+		</div>
+	<p><code><span class="Hilite">update</span>(ev)</code> → <code>None</code>: This method is called each time the sketch is redrawn to update the graphic’s attributes as necessary. This method is responsible for calling the <code>ondraw</code> event handler.</p>
+		<div class="Indent">
+		<p><code>ev</code>: A description of the event as a <code>pygame.event.Event</code> instance.</p>
 		</div>
 </div>
 

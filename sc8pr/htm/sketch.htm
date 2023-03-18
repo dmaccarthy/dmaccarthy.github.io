@@ -10,14 +10,13 @@
 </div>
 
 <h4>Assignable Properties</h4><div class="Indent">
-	<p><code class="Hilite">caption</code>: The caption of the sketch window. <b class="Comment">[Added in v2.1]</b></p>
-	<p><code class="Hilite">capture</code>: A <a class="Code" href="javascript:goNode('video_class')">Video</a> instance used to record the animation; default <code>None</code>. <b class="Comment">As of v2.2</b>, a <a class="Code" href="javascript:goNode('ffw')">FFWriter</a> or <a class="Code" href="javascript:goNode('s8v')">S8Vfile</a> instance can also be used. The instance must have an <code>interval</code> attribute specifying how often to record frames.</p>
-	<p><code class="Hilite">cursor</code>: A reference to the current cursor data. You can load cursor data from <code><a href="javascript:goNode('misc')">sc8pr.misc</a>.cursors</code> or create your own using <a href="https://www.pygame.org/docs/ref/cursors.html" class="Code">pygame.cursors</a>.</p>
+	<p><code class="Hilite">caption</code>: The caption of the sketch window.</p>
+	<p><code class="Hilite">cursor</code>: A reference to the current cursor data. You can load cursor data from <code><a href="javascript:goNode('misc')">sc8pr.misc</a>.cursors</code> or create your own using <a href="https://www.pygame.org/docs/ref/cursors.html" class="Code">pygame.cursors</a>. You can also assign the values <code>True</code> or <code>False</code> to choose the default cursor or no cursor.</p>
 	<p><code class="Hilite">dirtyRegions</code>: A list of <code>pygame.Rect</code> regions to be updated when drawing the next frame, compiled automatically by <code>sc8pr</code>. You can set this to <code>None</code> to always update the entire screen. To resume tracking dirty regions after disabling, set this attribute to <code>[sk.rect]</code>; i.e. a <code>list</code> containing the sketch’s <code>rect</code> attribute as its sole item.</p>
 	<p><code class="Hilite">fixedAspect</code>: When set to <code>True</code> (default), the sketch will resize itself to match the aspect ratio of its background image whenever the background is changed, and will maintain the aspect ratio when being resized. When <code>False</code>, the background image will be stetched to match the sketch aspect ratio and the aspect ratio will not be maintained when the sketch is resized.</p>
 	<p><code class="Hilite">frameCount</code>: The number of animation frames drawn; incremented at the beginning on each drawing cycle.</p>
 	<p><code class="Hilite">frameRate</code>: The approximate number of animation frames to draw each second; default <code>60</code>.</p>
-	<p><code class="Hilite">minSize</code>: An <code>int</code> specifying the minimum size in either dimension when allowing the user to resize the sketch. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code class="Hilite">minSize</code>: An <code>int</code> specifying the minimum size in either dimension when allowing the user to resize the sketch.</p>
 	<p><code class="Hilite">quit</code>: A <code>bool</code> that can be set to <code>True</code> to terminate the animation.</p>
 	<p><code class="Hilite">realTime</code>: A <code>bool</code> specifying whether to attempt to correct for actual frame rates slower than requested by the <code>frameRate</code> property; default <code>False</code>. <b class="Comment">[Experimental]</b></p>
 </div>
@@ -33,7 +32,6 @@
 </div>
 
 <h4>Instance Methods</h4><div class="Indent">
-	<p><code><span class="Hilite">cover</span>()</code> → <code>Image</code>: Creates a semi-transparent image that can cover the sketch. This is useful for blocking mouse events, for example when running a dialog on top of the sketch. <b class="Comment">In v2.2</b>, this method was moved to the <code>Canvas</code> class.</p>
 	<p><code><span class="Hilite">play</span>(caption="sc8pr", icon=None, mode=True)</code> → <code>self</code>: Run the sketch.</p>
 		<div class="Indent">
 		<p><code class="Hilite">caption</code>: Text to use as the window caption.</p>

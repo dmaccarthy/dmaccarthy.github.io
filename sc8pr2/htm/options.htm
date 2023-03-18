@@ -1,0 +1,40 @@
+﻿<article><h1><code>sc8pr.gui.radio.Options</code> Class</h1>
+<p><span class="Comment"><b>Added in v2.1</b>. The <code>radio</code> module in v2.0 was experimental and does not conform to this API!</span></p>
+
+<p><code>Options</code> is a <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> subclass for creating an options menu comprising check buttons and text. Check boxes are added to the canvas first, followed by the text labels. For example, if an <code>Options</code> instance has three items, the check boxes will have <code>layer</code> values <code>0</code> through <code>2</code> and the labels <code>3</code> through <code>5</code>.</p>
+<p>The <code>Options</code> class only defines a constructor; all other attributes are inherited from <code>Canvas</code>. Enabled check box buttons handle CLICK events and trigger ACTION events. You can bind an <code>onaction</code> event handler to detect clicks on enabled check boxes.</p>
+
+<p>Usage example:</p>
+<pre class="Code">from sc8pr import Sketch
+from sc8pr.gui.radio import Options
+
+def setup(sk):
+    labels = "Yes", "No", "Maybe"
+    sk += Options(labels).config(pos=sk.center).bind(onclick, onaction)
+
+def onaction(cv, ev):
+    btn = ev.target
+    option = btn.layer
+    label = cv[option + len(cv) // 2]
+    print("Action:", option, btn.selected, label.data)
+
+def onclick(cv, ev):
+    try:    <span class="Comment"># Click text</span>
+        print("Click:", ev.target.data)
+    except: <span class="Comment"># Click background</span>
+        print("Click:", cv)
+
+Sketch().play()</pre>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">Options</span>(text, height=None, padding=4, imgs=None, txtConfig={})</code></p>
+		<div class="Indent">
+		<p><code class="Hilite">text</code>: A sequence of strings describing the option labels.</p>
+		<p><code class="Hilite">height</code>: The height of the check boxes in pixels; if omitted, the check box size will be determined by the height of the rendered text labels.</p>
+		<p><code class="Hilite">padding</code>: Number of additional pixels to add between rows and around the outside of the canvas.</p>
+		<p><code class="Hilite">imgs</code>: A sequence of images to use for the checkbox depending on its status (<code>"normal"</code>, <code>"hover"</code>, <code>"selected"</code>, <code>"hoverselected"</code>, <code>"disabled"</code>). If omitted, the default images will be used.</p>
+		<p><code class="Hilite">txtConfig</code>: Additional properties for rendering the text labels (<code>font</code>, <code>fontSize</code>, etc.).</p>
+		</div>
+</div>
+
+</article>

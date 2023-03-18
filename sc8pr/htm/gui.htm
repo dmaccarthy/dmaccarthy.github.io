@@ -1,17 +1,16 @@
 ﻿<article><h1><code>sc8pr.gui</code> Package</h1>
-<p><span class="Comment"><b>Added in v2.1</b>. The <code>gui</code> package in v2.0 was experimental and does not conform to this API!</span></p>
 
-<p>Modules in <code>sc8pr.gui</code> define a number of graphics classes for creating Graphical User Interface (GUI) controls inside your sketches. You can use the <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> class (or the <a class="Hilite Code" href="javascript:goNode('dialog_class')">Dialog</a> class <span class="Comment"><b>added in v2.2</b></span>) to assemble controls into dialogs.</p>
+<p>Modules in <code>sc8pr.gui</code> define a number of graphics classes for creating Graphical User Interface (GUI) controls inside your sketches. You can use the <a class="Hilite Code" href="javascript:goNode('canvas')">Canvas</a> class or its <a class="Hilite Code" href="javascript:goNode('dialog_class')">Dialog</a> subclass to assemble controls into dialogs.</p>
 <ul>
 	<li><a class="Hilite Code" href="javascript:goNode('button_class')">Button</a></li>
 	<li><a class="Hilite Code" href="javascript:goNode('menu_class')">Menu</a></li>
 	<li><a class="Hilite Code" href="javascript:goNode('msgbox')">MessageBox</a></li>
-	<li><a class="Hilite Code" href="javascript:goNode('msgbox')">NumInputBox</a> [<b class="Comment">Added in v2.2</b>]</li>
+	<li><a class="Hilite Code" href="javascript:goNode('msgbox')">NumInputBox</a></li>
 	<li><a class="Hilite Code" href="javascript:goNode('options')">Options</a></li>
 	<li><a class="Hilite Code" href="javascript:goNode('radio')">Radio</a></li>
 	<li><a class="Hilite Code" href="javascript:goNode('slider')">Slider</a></li>
 	<li><a class="Hilite Code" href="javascript:goNode('ti_class')">TextInput</a></li>
-	<li><a class="Hilite Code" href="javascript:goNode('ti_canvas')">TextInputCanvas</a> [<b class="Comment">Added in v2.2</b>]</li>
+	<li><a class="Hilite Code" href="javascript:goNode('ti_canvas')">TextInputCanvas</a></li>
 </ul>
 <p>These is also an experimental module, <a class="Hilite Code" href="javascript:goNode('scroll')">scroll</a>, that defines classes for making scrollable canvases.</p>
 <p>You may also want to use <code>tkinter</code> dialogs, for example to choose a file or folder. To avoid conflicts between <code>pygame</code> and <code>tkinter</code>, use the <code>ask</code> function from the <code>sc8pr.gui.dialog</code> module...</p>

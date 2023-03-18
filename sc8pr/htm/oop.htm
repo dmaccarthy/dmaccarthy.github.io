@@ -1,6 +1,6 @@
 ﻿<article><h1>Object-Oriented Style</h1>
 
-<p class="Warning">Warning: This page discusses advanced programming techniques. Novice programmers should <span class="Link" onclick="goNext()">skip this page</span>!</p>
+<p class="Warning">Warning: This page discusses more advanced programming techniques. Novice programmers should <span class="Link" onclick="goNext()">skip this page</span>!</p>
 
 <p><code>sc8pr</code> programs can be written using an object-oriented style. In an earlier example we created an animation of an alien, with <code>onclick</code> handlers attached to both to the sprite (alien) and the sketch. These handlers printed whether we hit or missed the alien when clicking with the mouse.</p>
 
@@ -16,8 +16,8 @@ class Alien(Sprite):
         self.config(spin=1, vel=(1,1), bounce=BOTH)
 
     def onclick(self, ev):
-        print("Click @", ev.pos)     <span class="Comment"># Coordinates relative to sketch</span>
-        hitPos = self.relXY(ev.pos)  <span class="Comment"># Coordinates relative to target</span>
+        print("Click @", ev.pos)      <span class="Comment"># Coordinates relative to sketch</span>
+        hitPos = self.relPos(ev.pos)  <span class="Comment"># Coordinates relative to target</span>
         print("You hit the alien at {}.".format(hitPos))
 
 
@@ -31,10 +31,10 @@ class Game(Sketch):
         self += Alien().config(pos=self.center, width=self.width/10)
 
 
-Game((512,362)).play()</pre>
+Game((512,368)).play()</pre>
 
 <p>There is no need to call the <code>bind</code> method anymore because our <code>Alien</code> and <code>Game</code> instances will inherit the event handlers from their respective classes.</p>
 
-<p>If your <code>Sketch</code> subclass overrides the <code>__init__</code> method, it must call <code>Sketch.__init__</code> for the sketch to work properly. Also keep in mind that the <code>pygame</code> system will not be initialized until you call the sketch’s <code>play</code> method, so <code>__init__</code> will not be able to perform any operations that require <code>pygame</code> to be initialized; use the <code>setup</code> method instead.</p>
+<p>If your <code>Sketch</code> subclass overrides the <code>__init__</code> method, it must call <code>Sketch.__init__</code> for the sketch to work properly.</p>
 
 </article>

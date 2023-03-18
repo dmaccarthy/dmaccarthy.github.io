@@ -6,12 +6,23 @@
 </div>
 
 <h4>Functions</h4><div class="Indent">
+	<p><code><span class="Hilite">crop</span>(srf, bg=True)</code> → <code>pygame.Surface</code>: Crop a surface to the fit the content, excluding background. Pixel data is not copied.</p>
+		<div class="Indent">
+		<p><code class="Hilite">srf</code>: The surface to crop.</p>
+		<p><code class="Hilite">bg</code>: The background color; if <code>True</code> the pixel at (0, 0) is taken to be the background color.</p>
+		</div>
+	<p><code><span class="Hilite">customEv</span>(**kwargs)</code> → <code>pygame.event.EventType</code>: Creates a user-event using the <code>kwargs</code> as attributes.</p>
 	<p><code><span class="Hilite">drawBorder</span>(srf, color=(0,0,0), weight=1, r=None)</code> → <code>None</code>: Draws a border in place on the surface.</p>
 		<div class="Indent">
 		<p><code class="Hilite">srf</code>: A <code>pygame.Surface</code> to draw on.</p>
 		<p><code class="Hilite">color</code>: A <code>pygame.Color</code> instance or data that can be passed to the <code>rgba</code> function to return a single color.</p>
 		<p><code class="Hilite">weight</code>: The border thickness in pixels.</p>
-		<p><code class="Hilite">r</code>: A <code>pygame.Rect</code> specifying a border location other than the edge. <b class="Comment">[Added in v2.1]</b></p>
+		<p><code class="Hilite">r</code>: A <code>pygame.Rect</code> specifying a border location other than the edge.</p>
+		</div>
+	<p><code><span class="Hilite">export</span>(srf, fn="a.png")</code> → <code>BytesIO</code>: Calls <code>pygame.image.save</code> to save the image in any supported format, but writes the data to a <code>BytesIO</code> instance instead of a file.</p>
+		<div class="Indent">
+		<p><code class="Hilite">srf</code>: The <code>pygame.Surface</code> to be saved.</p>
+		<p><code class="Hilite">fn</code>: A file name hint that <code>pygame</code> uses to determine the file format.</p>
 		</div>
 	<p><code><span class="Hilite">fileExt</span>(fn, ext)</code> → <code>str</code>: Add a file extension to the file name if it does not already have an acceptable extension.</p>
 		<div class="Indent">
@@ -23,9 +34,8 @@
 		<p><code class="Hilite">data</code>: The dictionary to check.</p>
 		<p><code class="Hilite">keys</code>: A sequence of keys to check for.</p>
 		</div>
-	<!--p><code><span class="Hilite">hsva</span>(h, s, v=100, a=100)</code> → <code>pygame.Color</code>: Returns a color from HSVA data.</p-->
 	<p><code><span class="Hilite">logError</span>()</code> → <code>None</code>: Prints the last exception and stack trace to <code>sys.stderr</code>.</p>
-	<p><code><span class="Hilite">modKeys</span>()</code> → <code>int</code>: Returns a bitmask of modifier keys: 1 = Alt, 2 = Ctrl, 4 = Shift. <b class="Comment">[Added in v2.2]</b></p>
+	<p><code><span class="Hilite">modKeys</span>()</code> → <code>int</code>: Returns a bitmask of modifier keys: 1 = Alt, 2 = Ctrl, 4 = Shift.</p>
 	<p><code><span class="Hilite">mix</span>(x, y)</code> → <code>generator</code>: Generate a sequence of 2-tuple from two separate sequences.</p>
 		<div class="Indent">
 		<p><code class="Hilite">x</code>: Sequence containing the <em>x</em> data.</p>
@@ -72,6 +82,11 @@
 		<p><code class="Hilite">border</code>: The border color.</p>
 		<p><code class="Hilite">weight</code>: The border thickness in pixels.</p>
 		<p><code class="Hilite">padding</code>: Number of pixels of padding to add around the surface. [In the development version, this can be a 2-list or 2-tuple specifying different x and y paddings, but this feature has not been released as of v2.1.0.]</p>
+		</div>
+	<p><code><span class="Hilite">surface</span>(srf, alpha=None)</code> → <code>pygame.Surface</code>: Check that the argument is a surface and if not convert it.</p>
+		<div class="Indent">
+		<p><code class="Hilite">srf</code>: The original surface.</p>
+		<p><code class="Hilite">alpha</code>: Specifies whether to convert the surface (if necessary) to support (<code>True</code>) or remove (<code>False</code>) transparency.</p>
 		</div>
 	<p><code><span class="Hilite">tall</span>(w, h)</code> → <code>int</code>: Returns <code>1</code> if <code>h</code> is greater than <code>w</code> (portait orientation) otherwise <code>0</code>.</p>
 	<p><code><span class="Hilite">tile</span>(srf, tile=0, cols=1, rows=1, padding=0)</code> → <code>pygame.Surface</code>: Return a subsurface representing one “tile” of a spritesheet or similar grid image.</p>

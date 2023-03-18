@@ -11,7 +11,7 @@ def setup(sk):
     prg = ProgressBar(color="blue").bind(ondraw)
     sk += prg.config(pos=sk.center, weight=1)
 
-def ondraw(prg):
+def ondraw(prg, ev=None):
     frame = prg.sketch.frameCount
     prg.value = min(1, frame / 600)
 

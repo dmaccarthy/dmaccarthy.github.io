@@ -1,0 +1,63 @@
+﻿<article>
+<h1><code>sc8pr.misc.media.FFReader</code> Class</h1>
+<p><span class="Comment"><b>Added in v2.2</b>.</span></p>
+
+<p><code>FFReader</code> is used to decode media files into <code>Video</code> or <code>Movie</code> instances that can be used with your <code>sc8pr</code> sketches. This class uses the <a href="https://imageio.readthedocs.io/en/stable/" target="im"><code>imageio</code></a> and <a href="https://imageio.readthedocs.io/en/stable/format_ffmpeg.html" target="im"><code>imageio-ffmpeg</code></a> packages as well as their dependencies (<code>numpy</code>, <code>Pillow</code>).</p>
+
+<p>Note that <code>sc8pr</code> does not import any packages other than <code>pygame</code>; your program must import the three modules needed for <code>FFReader</code> to work as shown in <span class="Hilite">blue</span> in the first example below.</p>
+
+<p>In the example below, <code>FFReader</code> loads the video from an MP4 file into a <code>Video</code> instance. If the installed <code>imageio-ffmpeg</code> package does not include an FFmpeg executable, you may need to call the <code>FFReader.ffpeg</code> function to specify the path to FFmpeg.</p>
+<pre class="Code" id="Ex1">from sc8pr.misc.media import FFReader
+<span class="Hilite">import imageio, numpy, PIL.Image</span>
+
+with FFReader("movie.mp4") as ffr:
+    vid = ffr.read()
+print(vid, len(vid))</pre>
+
+<p>Loading the entire video can use a lot of memory, depending on the size and length of the video. It may be preferable to use the <a class="Hilite Code" href="javascript:goNode('movie')">Movie</a> class to play movies.</p>
+
+<p>You can also convert a movie to an S8V file without loading the entire video into memory...</p>
+<pre class="Code" id="Ex2">from sc8pr.misc.media import FFReader
+import imageio, numpy, PIL.Image
+
+FFReader.convert("movie.mp4")</pre>
+
+<h4>Constructor</h4><div class="Indent">
+	<p><code><span class="Hilite">FFReader</span>(src, **kwargs)</code>: Create an instance to read the specified media file.</p>
+		<div class="Indent">
+		<p><code class="Hilite">src</code>: The path to an FFmpeg-compatible media file to be decoded.</p>
+		<p><code class="Hilite">kwargs</code>: Additional <a href="https://imageio.readthedocs.io/en/stable/format_ffmpeg.html#parameters-for-reading" target="im"><code>options</code></a> to be passed to the reader. This can include a <code>size</code> argument that makes FFmpeg resize the video.</p>
+		</div>
+</div>
+
+<h4>Read-Only Property</h4><div class="Indent"><p></p>
+	<p><code class="Hilite">meta</code>: A dictionary of metadata read from the movie file.</p>
+</div>
+
+<h4>Static Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">ffmpeg</span>(ff)</code> → <code>None</code>: Specifies the location of the FFmpeg executable if not included as part of the <code>imageio-ffmpeg</code> package.</p>
+		<div class="Indent">
+		<p><code class="Hilite">ff</code>: The path to the FFmpeg executable.</p>
+		</div>
+	<p><code><span class="Hilite">convert</span>(src, dest=None, progress=None, **kwargs)</code> → <code>str</code>: Converts the named movie file and saves it as an S8V file</p>
+		<div class="Indent">
+		<p><code class="Hilite">src</code>: The path to the movie file to convert.</p>
+		<p><code class="Hilite">dest</code>: The path to the S8V file to be saved. An exception will be raised if the file already exists.</p>
+		<p><code class="Hilite">progress(i, n)</code>: A function called after each frame is converted and saved.</p>
+		<p><code class="Hilite">kwargs</code>: Additional <a href="https://imageio.readthedocs.io/en/stable/format_ffmpeg.html#parameters-for-reading" target="im"><code>options</code></a> to be passed to the reader. This can include a <code>size</code> argument that makes FFmpeg resize the video.</p>
+		</div>
+</div>
+
+<h4>Instance Methods</h4><div class="Indent">
+	<p><code><span class="Hilite">__iter__</span>()</code> → <code>generator</code>: Iterates through the frames of the movie yielding a sequence of uncompressed <code>PixelData</code> instances.</p>
+	<p><code><span class="Hilite">estimateFrames</span>()</code> → <code>int</code> or <code>None</code>: Use the movie metadata to estimate the number of frames without actually reading them.</p>
+	<p><code><span class="Hilite">read</span>(n=None, compress=None)</code> → <code>Video</code>: Read frames from the movie and convert them to a <code>Video</code> instance.</p>
+		<div class="Indent">
+		<p><code class="Hilite">n</code>: The number of frames to read; if omitted the method will read all remaining frames.</p>
+		<p><code class="Hilite">compress</code>: A <code>bool</code> specifying whether to compress the data. This will make loading much slower but will use less memory. By default, the frames will remain uncompressed when <code>n ≤ 20</code> but will be compressed otherwise. <b class="Comment">[Added in v2.3]</b></p>
+		</div>
+	<p><code><span class="Hilite">skip</span>(n)</code> → <code>self</code>: Read and discard the next <code>n</code> frames of the movie.</p>
+</div>
+	 
+</article></body>
+</html>
