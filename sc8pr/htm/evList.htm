@@ -5,7 +5,7 @@
 <pre class="Code">sk += Image("alien.png").bind(onmouseover, onclick)</pre>
 
 
-<p>Most events are dispatched to the sketch’s <code>onevent</code> handler first, then to a suitable handler of the target graphic (for example, an <code>Image</code>’s <code>onmouseover</code> handler), and finally to the sketch’s <code>onhandled</code> function.</p>
+<p>Most events are dispatched to the sketch’s <code>onevent</code> handler first, then to a suitable handler of the target graphic (for example, an <code>Image</code> instance’s <code>onmouseover</code> handler), and finally to the sketch’s <code>onhandled</code> function.</p>
 
 <p>If the target graphic does not have an appropriate handler, the event will “bubble” to the target’s canvas, and then to its canvas, etc. Once an event has been sent to a handler, it is considered to have been handled and no further bubbling occurs. Event handlers can modify this behaviour by calling other handlers.</p>
 
@@ -45,7 +45,7 @@
 <tr>
 	<td><code>onbounce</code></td>
 	<td>Sprites</td>
-	<td>Called by <code>BaseSprite.ondraw</code> when a sprite is bounced from one of the edges of the sketch.</td>
+	<td>Called by <code>BaseSprite.motion</code> (which is called in turn by <code>BaseSprite.update</code>) when a sprite is bounced from one of the edges of the sketch.</td>
 </tr>
 <tr>
 	<td><code>onblur</code></td>
@@ -75,7 +75,7 @@
 <tr>
 	<td><code>ondraw</code></td>
 	<td>All Graphics</td>
-	<td>Called after the graphics object is drawn to its canvas.</td>
+	<td>Called by each graphic object’s <code>update</code> method after the graphics object is drawn to its canvas.</td>
 </tr>
 <tr>
 	<td><code>onevent</code></td>
@@ -155,7 +155,7 @@
 <tr>
 	<td><code>onwrap</code></td>
 	<td>Sprites</td>
-	<td>Called by <code>BaseSprite.ondraw</code> when a sprite is wrapped through one of the edges of the sketch.</td>
+	<td>Called by <code>BaseSprite.motion</code> (which in turn is called by <code>BaseSprite.update</code>) when a sprite is wrapped through one of the edges of the sketch.</td>
 </tr>
 </table>
 
