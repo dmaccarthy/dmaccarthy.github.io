@@ -100,7 +100,7 @@ Sketch().play()</pre>
 		<p><code class="Hilite">vel</code>: A four-tuple specifying the velocity of the grid squares. The first two values describe the <em>x</em> and <em>y</em> velocities for the first half of the effect (applied to the odd squares) and the last two values refer to the second half of the effect (applied to the even squares). Values of ±1 correspond to the “normal” speed of the effect. The default is <code>(0, 1, 0, 1)</code>, which moves the squares in the positive <em>y</em> direction at the speed needed to synchronize the motion with the effect timing.</p>
 		</div>
 	
-	<p><code><span class="Hilite">Dissolve</span>()</code>: Dissolve the image in or out from transparency (default) or another color as specified by the <code>fill</code> property. The <code>fill</code> property can be set to <code>True</code> to fill each pixel with a random color (may be slow).</p>
+	<p><code><span class="Hilite">Dissolve</span>()</code>: Dissolve the image in or out from transparency (default) or another color as specified by the <code>fill</code> property. The <code>fill</code> property can be set to a <code>bool</code> to fill each pixel with a random color (may be slow) either with transparency (<code>True</code>) or without (<code>False</code>).</p>
 	<p><code><span class="Hilite">Pixelate</span>(size, **kwargs)</code>: Pixelate the image. </p>
 		<div class="Indent">
 		<p><code class="Hilite">size</code>: The size (in pixels) of the sqaures in the pixelated image.</p>
