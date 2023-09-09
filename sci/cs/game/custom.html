@@ -19,7 +19,7 @@ def setup(sk):
     sk.alien = Image("img/alien.png")
     <span class="Blue">sk.bind(ondraw)</span>
 
-def <span class="Blue">ondraw</span>(sk):
+def <span class="Blue">ondraw</span>(sk, ev):
     <span class="Comment">"Randomly create alien sprites"</span>
     if randint(0, sk.frameRate) == 0:
         h = sk.height / 10
@@ -34,6 +34,7 @@ Sketch().play()</pre>
 <p>The <code>ondraw</code> function in this example uses Python’s <code>randint</code> function to decide whether or not to create a new alien sprite. It chooses a random number between 0 and 60 (the sketch frame rate) and it only creates a new sprite if this random number is 0. This will result in one new sprite every second on average. The sprite’s velocity and spin are set randomly using the <code>uniform</code> function.</p>
 <p>In order for the <code>ondraw</code> function to work, you must <b class="Red">bind</b> the function to your sketch by passing the
     function to the sketch’s <code>bind</code> method (as shown above in <span class="Blue">blue</span>). If you don’t do this, <code>sc8pr</code> won’t know that it is supposed to run the <code>ondraw</code> function.</p>
+<p>The <code>ondraw</code> function requires two arguments: the first (<code>sk</code>) is a reference to the sketch and the second (<code>ev</code>) describes the event.</p>
 </div>
 
 <h3>Pre-Loading Images</h3><div class="Note">
@@ -58,7 +59,7 @@ Sketch().play()</pre>
 <pre class="Code" contenteditable="true" data-echo="copy">
 <span class="Comment">"Example 2 - Collisions"</span>
 
-def ondraw(sk):
+def ondraw(sk, ev):
     <span class="Comment"># Remove colliding sprites</span>
     remove = <span class="Blue">Collisions(sk).among()</span>
     if remove:

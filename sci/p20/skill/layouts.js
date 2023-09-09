@@ -27,9 +27,20 @@ lesson("trig", "1dY1oQV_zrJTrfQsb7-iPQh0dYwgZm2zN", {html:"$$Hyp^2 = Opp^2 + Adj
 
 // Data Analysis
 
-let da = {title:"Data Analysis", show:"2023.7", id:"data", icon:"da", menu:[
+let da = {title:"Data Analysis", id:"data", icon:"da", menu:[
+    {title:"Model Equations (Linear)", id:"eqn"},
+    {title:"Regression Analysis", id:"regr"},
     {title:"Transforming Power Data", id:"pwr"},
 ]};
 
-lesson("pwr", "#?#", {vid:"M_tUXprwPXs"});
+lesson("eqn", "1Vjhnkj-WQkSKi_5Ok4d0sceiHGHc2wE5", {desmos:"atvylhkqe5", width:720, "data-aspect":"16/9"});
+lesson("regr", "1lQnyP3Bs14yqqq7jgCMwUnXyBWcqNcf7", {vid:"RPf8SdgL_PQ"});
+
+lesson("pwr", "1LhZ_BZuPlJm8csHQoNJsN3TVK_Sj1Xiw", {vid:"M_tUXprwPXs"})[0].icons.splice(0, 0,
+    {text:"Light Bulb Simulation", url:"../applet/light/"},
+    {icon:"gdrv", text:"Light Bulb Handout", url:"1poZeIoW0Q_xl9p8jjo6zLzbRQbWUVrxN"}
+);
+
+// lesson("", "", {vid:""});
+// lesson("", "", {vid:""});
 // lesson("", "", {vid:""});

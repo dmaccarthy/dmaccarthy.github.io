@@ -36,7 +36,7 @@ function qsArgs(key, str) {
     let qs = str.split("?")[1];
     if (qs == null) return key ? null : {};
     qs = qs.split("&");
-    args = {}
+    let args = {};
     for (let i=0;i<qs.length;i++) {
         let a = qs[i].split("=");
         args[a[0]] = decodeURIComponent(a[1]);

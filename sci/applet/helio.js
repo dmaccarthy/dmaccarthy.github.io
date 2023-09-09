@@ -1,9 +1,9 @@
-/***
+/**
  * 
  * Animation of Heliocentric Solar System model showing retrograde motion of Mars
  * (c) 2020-2022 by D.G. MacCarthy
  * 
-***/
+* */
 
 let zodiac = ["Pisces", "Aries", "Taurus", "Gemini", "Cancer", "Leo",
     "Virgo", "Libra", "Scorpius", "Sagittarius", "Capricornus", "Aquarius"];

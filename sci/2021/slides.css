@@ -3,7 +3,7 @@
     --notes:256px;
 }
 
-html.Present, html.Present * {cursor:none}
+/* html.Present, html.Present * {cursor:none} */
 
 body.Print .NoPrint {display:none}
 p, ul {margin:0.5em auto}

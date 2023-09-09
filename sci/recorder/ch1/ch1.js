@@ -4,7 +4,7 @@ function initPlay() {
     // setCast("Microsoft Zira", "Microsoft David");
 }
 
-let _ = goTime; // Next marker
+// let _ = goTime; // Next marker
 
 
 /*
@@ -82,11 +82,11 @@ play.script = [
     "For the following 12 multiple choice questions, choose the letter of the choice that best completes the statement or answers the question",
     "Record your answer on the scan sheet provided.",
     {pause:2500},
-    `1.	When Niels Bohr studied atoms, he found that electrons orbit around the nucleus in fixed energy levels; how many electrons would you expect to observe in the 2nd energy level of an atom that has 17 electrons?
-a)	2
-b)	7
-c)	8
-d)	17`,
+    "1.	When Niels Bohr studied atoms, he found that electrons orbit around the nucleus in fixed energy levels; how many electrons would you expect to observe in the 2nd energy level of an atom that has 17 electrons?",
+    "a.	2.",
+    "b.	7.",
+    "c.	8.",
+    "d.	17.",
     {pause:2500},
     `2.	How many valence electrons would you expect to find if you were to observe the electrons orbiting in a neutral fluorine atom?
 a)	2

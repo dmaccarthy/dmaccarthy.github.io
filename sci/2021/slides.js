@@ -243,7 +243,7 @@ $(function() {
     }).hide();
     showNext();
     $(window).on("keydown", arrows);
-    if (mousePointer) mousePointer();
+    if (window.mousePointer) mousePointer();
 
     console.log("Ctrl + Shift + Enter = Presentation Mode");
     console.log("Ctrl + Left  = Toggle Panel\nCtrl + Right = Go to End");

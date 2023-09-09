@@ -9,20 +9,20 @@ let cs10 = {title:"Computing Science 10", text:"CS 10", id:"cs10", menu:[
         {title:"Data Types (Classes)", id:"type"},
         {title:"Modules & Packages", id:"pkg"},
         {title:"Operators", id:"oper"},
-        {title:"Mini-Project #1", show:"2023.7", id:"mp11"},
+        {title:"Mini-Project #1", show:"2024.7", id:"mp11"},
     ]},
     {title:"Structured Programming 2", id:"sp2", menu:[
         {title:"Boolean Values & Operators", id:"bool"},
         {title:"Conditional Statements", id:"if"},
         {title:"Loops", id:"loop"},
         {title:"Flags & Counters", id:"flag"},
-        {title:"Mini-Project #2", show:"2023.3.20.7", id:"mp12"},
+        {title:"Mini-Project #2", show:"2024.7", id:"mp12"},
         {title:"Iteration & Searching", id:"iter_srch"},
         {title:"Formatted Output", id:"format"},
         {title:"Accumulation", id:"accum"},
-        {title:"Mini-Project #3", show:"2023.7", id:"mp13"},
+        {title:"Mini-Project #3", show:"2024.4.25.10", id:"mp13"},
         {title:"String Methods", id:"str"},
-        {title:"Mini-Project #4", show:"2023.7", id:"mp14"},
+        {title:"Mini-Project #4", show:"2024.7", id:"mp14"},
     ]},
     {title:"Computer Science 1", id:"ct1", icon:"laptop", menu:[
         {title:"Binary Encoding", id:"bin"},
@@ -43,15 +43,15 @@ let cs10 = {title:"Computing Science 10", text:"CS 10", id:"cs10", menu:[
 ]};
 
 layout.cs10 = [{icons:[
-    {icon:"today", text:"Brightspace", url:"https://eips.brightspace.com/d2l/home/61649"},
-    {text:"Progress Update", url:pu_form},
+    {icon:"today", text:"Brightspace", url:"https://eips.brightspace.com/d2l/home/117712"},
+    // {text:"Progress Update", url:pu_form},
 ]}, 0, 1];
 
 
 // Robotics Programming
 
 layout.robo = [
-    {icons:[{text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/Robo"},]},
+    {icons:[{text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/Robo2023"},]},
     0, 1];
 
 layout.rintro = [{ajax:"robo/intro.html"}, 1];
@@ -100,7 +100,7 @@ layout.ct1 = [{html:`For each topic, open the link and save a copy of the docume
 // Structured Programming 1
 
 layout.sp1 = [{icons:[
-    {text:"repl.it Project", show:"2023.1", url:"https://replit.com/@DavidMacCarthy/CS10"},
+    {text:"repl.it Project", show:"2023.8", url:"https://replit.com/@DavidMacCarthy/CS10"},
 ]}, 0, 1];
 
 layout.intro = [{ajax:"sp1/intro.html"}, 1];

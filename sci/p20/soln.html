@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Answer Key</title>
+<link rel="shortcut icon" type="image/png" href="../media/rocket.png" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+<script type="text/javascript" src="../script/util.js"></script>
+<script type="text/javascript" src="../script/sketch5.js"></script>
+<script type="text/javascript" src="../script/soln.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700" />
+<link rel="stylesheet" href="../script/ui2023.css" />
+<link rel="stylesheet" href="../script/soln.css" />
+<script type="text/javascript">
+
+let title = "Physics 20 Answer Key"; 
+let chap = [
+    {title:"Math & Science 10 Review", dir:"skill", dates:[
+        ['2023.1.1', 5],
+        ['2023.1.4', 7],
+    ]},
+    {title:"Chapter 1: Kinematics (1D Motion)", dir:"kin", dates:[
+        ['2023.1.14', 4],        
+    ]},
+    {title:"Chapter 2: Vectors (2D Motion)", dir:"vec", dates:[]},
+    {title:"Chapter 3: Dynamics", dir:"dyn", dates:[]},
+    {title:"Chapter 6: Energy & Work", dir:"energy", dates:[]},
+    {title:"Data Analysis", dir:"data", dates:[]},
+    {title:"Chapter 5: Circular & Planetary Motion", dir:"circ", dates:[]},
+    {title:"Chapter 4: Universal Gravitation", dir:"grav", dates:[]},
+    {title:"Chapter 7: Simple Harmonic Motion", dir:"shm", dates:[]},
+    {title:"Chapter 8: Mechanical Waves", dir:"wave", dates:[]},
+];
+
+</script>
+</head>
+<body>
+<h2 class="Blue" id="Title"></h2>
+<p class="Middle"><select id="Chapter" onchange="drawSelect()"></select> &nbsp;
+&nbsp; <input id="Question" onchange="goQuestion(this)" type="number" min="1" value="1"/>
+</p>
+<article id="Answer"></article>
+</body>
+</html>

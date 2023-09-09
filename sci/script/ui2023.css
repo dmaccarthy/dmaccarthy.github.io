@@ -4,6 +4,11 @@ body {
     margin:0;
 }
 
+img.material {
+    height: 1.75em;
+    vertical-align:middle;
+}
+
 .Left {text-align:left}
 .Center, section.Image, section.IFrame {text-align:center}
 .Red {color:red}
@@ -155,7 +160,15 @@ p.Teacher {
     margin-bottom:1.5em;
 }
 
+p.CaptionTitle {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
 .Copyright {
     text-align:center;
     font-size:75%;
 }
+
+.NoWrap {white-space: nowrap}

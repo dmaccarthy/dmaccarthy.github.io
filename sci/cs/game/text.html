@@ -26,9 +26,15 @@ from sc8pr.text import <span class="Blue">Text, Font, BOLD</span>
 def setup(sk):
     <span class="Comment">"Initialize the sketch"</span>
     sk.bg ="yellow"
-    sk += <span class="Blue">Text</span>("Hello, world!").config(pos=sk.center,
-        font=<span class="Blue">Font.mono()</span>, fontSize=48, fontStyle=<span class="Blue">BOLD</span>,
-        bg="red", color="white", padding=6)
+    sk += <span class="Blue">Text</span>("Hello, world!").config(
+        pos = sk.center,
+        font = <span class="Blue">Font.mono()</span>,
+        fontSize = 48,
+        fontStyle = <span class="Blue">BOLD</span>,
+        bg = "red",
+        color = "white",
+        padding = 6
+    )
 
 <span class="Comment"># Play the sketch</span>
 Sketch().play()</pre>
@@ -49,10 +55,15 @@ def setup(sk):
     <span class="Comment">"Initialize the sketch"</span>
     sk.config(bg="yellow", frameRate=4)
     sk += Text(0).<span class="Blue">bind(ondraw)</span>.config(
-        font=Font.mono(), fontSize=48, fontStyle=BOLD,
-        pos=sk.center, bg="red", padding=6)
+        font = Font.mono(),
+        fontSize = 48,
+        fontStyle = BOLD,
+        pos = sk.center,
+        bg = "red",
+        padding = 6
+    )
 
-def <span class="Blue">ondraw</span>(text):
+def <span class="Blue">ondraw</span>(text, ev):
     <span class="Comment">"Change the number"</span>
     text.config(data=randint(0,100))
 
@@ -73,11 +84,15 @@ def setup(sk):
     <span class="Comment">"Initialize the sketch"</span>
     sk.bg ="yellow"
     sk += <span class="Blue">TextInput</span>("", "Name?").config(
-        font=Font.mono(), fontSize=48, fontStyle=BOLD,
-        pos=sk.center, bg="red", padding=6
+        font = Font.mono(),
+        fontSize = 48,
+        fontStyle = BOLD,
+        pos = sk.center,
+        bg = "red",
+        padding = 6
     ).bind(ondraw)
 
-def ondraw(text):
+def ondraw(text, ev):
     <span class="Comment">"Print the text data"</span>
     frame = text.sketch.frameCount
     print(frame, text.data)

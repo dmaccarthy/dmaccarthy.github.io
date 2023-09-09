@@ -29,9 +29,9 @@ let cs30 = {title:"Computing Science 30", text:"CS 30", id:"cs30", menu:[
 let html30 = `<p>Students are expected to complete a total of five credits during the semester. Complete any prerequisite courses under <a href="#cs20">CS 20</a> before starting the courses below.</p>`;
 
 layout.cs30 = [{icons:[
-        {icon:"today", text:"Brightspace", url:"https://eips.brightspace.com/d2l/home/63499"},
+        {icon:"today", text:"Brightspace", url:"https://eips.brightspace.com/d2l/home/117709"},
         {text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/CS30"},
-        {text:"Progress Update", url:pu_form},
+        // {text:"Progress Update", url:pu_form},
     ]},
     {html:html30}, 0, 1];
 

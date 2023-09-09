@@ -1,7 +1,7 @@
 let home_url = [
     ["https://sci.davidmaccarthy.repl.co", "/"],
     ["https://dmaccarthy.github.io/sci", "/sci"]
-][0];
+][1];
 
 function teacher(a) {
 /* Enable / disable teacher mode */
@@ -236,13 +236,18 @@ function drawIcons(item, a) {
             let k = b.icon;
             if (!k) k = b.icon = "open";
             let icon = drawIcons.map[k];
-            btn.html($("<i>").html(icon ? icon : k).addClass("material-symbols-sharp"));
+            if (drawIcons.png)
+                btn.html($("<img>").attr({src:`../media/material-icons/${icon ? icon : k}.png`}).addClass("material"));
+            else
+                btn.html($("<i>").html(icon ? icon : k).addClass("material-symbols-sharp"));
             btn.append(" " + b.text);
             btn.click(function(e) {buttonAction(b, e)});            
         }
     }
     return s;
 }
+
+drawIcons.png = !true;  // Use PNG icons if material-symbols unavailable
 
 drawIcons.map = {open:"open_in_new", gdrv:"cloud_download", gdoc:"cloud_download",
     note:"edit_note", more:"more_horiz"};
@@ -381,7 +386,7 @@ function code_echo(ev) {
         }
         else {
             text = encodeURIComponent(text);
-            window.open(`https://webapp.davidmaccarthy.repl.co/echo.${echo}?data=${text}`);                
+            window.open(`https://webapp2023.davidmaccarthy.repl.co/echo.${echo}?data=${text}`);                
         }
     }
 }

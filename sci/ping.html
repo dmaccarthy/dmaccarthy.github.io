@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Ping</title>
+<link rel="shortcut icon" type="image/png" href="media/rocket.png" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+
+function error() {
+    $("<p>").html(`Error: ${new Date()}`).appendTo($("body"));
+}
+
+function success(r) {
+    $("<p>").html(JSON.stringify(r)).appendTo($("body"));
+}
+    
+function ping() {
+    $("body").html("");
+    $.ajax({url:"ping.json", success: success, error: error});
+    $.ajax({url:"https://webapp2023.davidmaccarthy.repl.co/utc.json", success: success, error: error});
+    setTimeout(ping, 1200000);
+}
+    
+$(ping)
+
+</script>
+
+</head>
+<body>
+</body>
+</html>

@@ -1,108 +1,125 @@
 <!DOCTYPE html>
 <html lang="en-ca">
+
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width"/>
-<meta name="description" content="Simulation of uniform circular motion for a car on an unbanked curve. Centripetal acceleration is due to friction."/>
-<title>Circular Motion</title>
-<link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
-<link href="applet.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description"
+        content="Simulation of uniform circular motion for a car on an unbanked curve. Centripetal acceleration is due to friction." />
+    <title>Circular Motion</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico" />
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic" />
+    <link href="applet.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        td {
+            text-align: left;
+            padding: 0.3em 1em;
+        }
 
-td {
-    text-align:left;
-    padding:0.3em 1em;
-}
+        #a,
+        #v {
+            font-family: "Source Code Pro", Consolas, "Lucida Console", monospace
+        }
 
-#a, #v {font-family:"Source Code Pro", Consolas, "Lucida Console", monospace}
-#Drawing {background-color:green}
+        #Drawing {
+            background-color: green
+        }
+    </style>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
+    <script type="text/javascript" src="../script/plot.js"></script>
+    <script type="text/javascript">
 
-</style>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=default"></script>
-<script type="text/javascript" src="../script/plot.js"></script>
-<script type="text/javascript">
+        let app = {}, pi = Math.PI, RADIUS = 40;
 
-let app = {}, pi = Math.PI, RADIUS = 40;
+        function initSim() {
+            app.plot = new Plot("#Drawing", [-0.3, 1.1, 0]);//-0.3]);
+            restart();
+        }
 
-function initSim() {
-	app.plot = new Plot("#Drawing", [-0.3, 1.1, 0]);//-0.3]);
-    restart();
-}
+        function restart() {
+            let v = parseFloat(document.getElementById("set_v").value);
+            let a = parseFloat(document.getElementById("set_a").value);
+            document.getElementById("v").innerHTML = `${v.toPrecision(3)} m/s`;
+            document.getElementById("a").innerHTML = `${a.toPrecision(3)}`;
+            a *= 9.81;
+            let w = a / v;
+            app.r = Math.max(RADIUS, v / w);
+            app.w = v / app.r;
+            app.T = 2 * pi / app.w;
+            app.v = v;
+            app.start = new Date().getTime();
+            draw();
+        }
 
-function restart() {
-    let v = parseFloat(document.getElementById("set_v").value);
-    let a = parseFloat(document.getElementById("set_a").value);
-    document.getElementById("v").innerHTML = `${v.toPrecision(3)} m/s`;
-    document.getElementById("a").innerHTML = `${a.toPrecision(3)}`;
-    a *= 9.81;
-	let w = a / v;
-	app.r = Math.max(RADIUS, v / w);
-	app.w = v / app.r;
-	app.T = 2 * pi / app.w;
-	app.v = v;
-	app.start = new Date().getTime();
-	draw();
-}
+        function draw() {
+            clearTimeout(app.timeout);
+            app.plot.clear();
+            drawRoad("#c0c0c0", 36);
+            let go = drawCar((new Date().getTime() - app.start) / 1000);
+            if (go) app.timeout = setTimeout(draw, 2);
+        }
 
-function draw() {
-	clearTimeout(app.timeout);
-	app.plot.clear();
-	drawRoad("#c0c0c0", 36);
-	let go = drawCar((new Date().getTime() - app.start) / 1000);
-	if (go) app.timeout = setTimeout(draw, 2);
-}
+        function hyp2(x, y) {return x * x + y * y}
 
-function hyp2(x, y) {return x*x + y*y}
+        function drawCar(t) {
+            let n = pi / 2, a = t * app.w, pos;
+            if (a) {
+                let r = app.r / RADIUS;
+                pos = [r * (Math.cos(a) - 1) + 1, r * Math.sin(a)];
+            }
+            else pos = [1, app.v * t / RADIUS];
+            app.plot.blit(app.car, pos, {rotate: a + n, anchor: CENTER});
+            return a < pi && hyp2(pos[0], pos[1]) < 1.25;
+        }
 
-function drawCar(t) {
-	let n = pi / 2, a = t * app.w, pos;
-	if (a) {
-		let r = app.r / RADIUS;
-		pos = [r * (Math.cos(a) - 1) + 1, r * Math.sin(a)];
-	}
-	else pos = [1, app.v * t / RADIUS];
-	app.plot.blit(app.car, pos, {rotate:a + n, anchor:CENTER});
-	return a < pi && hyp2(pos[0], pos[1]) < 1.25;
-}
+        function drawRoad(s, w) {
+            let p = app.plot;
+            p.arc([0, 0], 1, -0.2 * pi, 0.7 * pi, {stroke: s, lineWidth: w});
+        }
 
-function drawRoad(s, w) {
-	let p = app.plot;
-	p.arc([0,0], 1, -0.2*pi, 0.7*pi, {stroke:s, lineWidth:w});
-}
+        $(function () {
+            let car = app.car = new Image();
+            car.width = 48;
+            car.height = 24;
+            car.onload = initSim;
+            car.src = "../media/car.png";
+        });
 
-$(function() {
-	let car = app.car = new Image();
-	car.width = 48;
-	car.height = 24;
-	car.onload = initSim;
-	car.src = "../media/car.png";
-});
-
-</script>
+    </script>
 </head>
+
 <body class="Center">
-<h1>Circular Motion
-    <img class="Small Icon" src="../media/info.png" alt="Info" onclick="$('#Help').show()"/></h1>
-<p><canvas id="Drawing" width="512" height="410" onclick="restart()"/></p>
-<table>
-    <tr>
-        <td>Speed</td>
-        <td class="Slider"><input id="set_v" type="range" step="0.1" min="0.5" max="30" value="20" onchange="restart()"/></td>
-        <td><span id="v"></span></td>
-    </tr>
-    <tr>
-        <td>Friction</td>
-        <td class="Slider"><input id="set_a" type="range" step="0.01" min="0" max="1" value="0.5" onchange="restart()"/></td>
-        <td><span id="a"></span></td>
-    </tr>
-</table>
-<section id="Help"><ul>
-    <li>The road is circular and unbanked (horizontal), so that the maximum acceleration is determined by the coefficient of friction: \(a = \mu g\).</li>
-    <li>Adjust the car’s speed and the coefficient of friction using the slider controls.</li>
-    <li>You can determine the radius of the curve by finding the maximum speed that the car can travel without sliding off the road.</li>
-</ul>
-<p><button onclick="$('#Help').hide()">Close</button></p></section>
+    <h1>Circular Motion
+        <img class="Small Icon" src="../media/info.png" alt="Info" onclick="$('#Help').show()" />
+    </h1>
+    <p><canvas id="Drawing" width="512" height="410" onclick="restart()" /></p>
+    <table>
+        <tr>
+            <td>Speed</td>
+            <td class="Slider"><input id="set_v" type="range" step="0.1" min="0.5" max="30" value="20"
+                    onchange="restart()" /></td>
+            <td><span id="v"></span></td>
+        </tr>
+        <tr>
+            <td>Friction</td>
+            <td class="Slider"><input id="set_a" type="range" step="0.01" min="0" max="1" value="0.5"
+                    onchange="restart()" /></td>
+            <td><span id="a"></span></td>
+        </tr>
+    </table>
+    <section id="Help">
+        <ul>
+            <li>The road is circular and unbanked (horizontal), so that the maximum acceleration is determined by the
+                coefficient of friction: \(a = \mu g\).</li>
+            <li>Adjust the car’s speed and the coefficient of friction using the slider controls.</li>
+            <li>You can determine the radius of the curve by finding the maximum speed that the car can travel without
+                sliding off the road.</li>
+        </ul>
+        <p><button onclick="$('#Help').hide()">Close</button></p>
+    </section>
 </body>
+
 </html>

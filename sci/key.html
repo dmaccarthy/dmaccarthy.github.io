@@ -36,6 +36,7 @@ $(function() {
             e = $(".Answer").hide();
             $("<p>").addClass("Red").html(`Answers available ${availDate(d)}`).insertBefore($("#AnswerKey"));
         }
+        else $(".NoAnswer").hide();
         mjTypeset();
     }});
     $("h2").find("a").attr({href:`./${arg[0]}/#${arg[2]}`});

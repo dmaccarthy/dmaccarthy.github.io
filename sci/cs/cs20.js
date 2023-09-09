@@ -5,6 +5,7 @@ let cs20 = {title:"Computing Science 20", text:"CS 20", id:"cs20", menu:[
         {title:"Top-Down Design", id:"top"},
         {title:"Pre- & Post-Conditions", id:"pre"},
         {title:"Exception Handling", id:"try"},
+        {title:"Mini-Project #1", show:"2024.7", id:"mp21"},
     ]},
     {title:"Game Programming Project", id:"game", icon:"sc8pr", menu:[
         {title:"Sketches & Sprites", id:"s8"},
@@ -18,11 +19,11 @@ let cs20 = {title:"Computing Science 20", text:"CS 20", id:"cs20", menu:[
         {title:"Iteration", id:"iteration"},
         {title:"Dictionaries & Sets", id:"dict"},
         {title:"Positional & Keyword Arguments", id:"kwargs"},
-        {title:"Mini-Project #1", show:"2023.7", id:"mp21"},
+        {title:"Mini-Project #2", show:"2024.7", id:"mp22"},
         {title:"List Comprehensions", id:"list_comp"},
         {title:"Generator Functions", id:"gen"},
         {title:"Arrays", id:"array"},
-        {title:"Mini-Project #2", show:"2023.7", id:"mp22"},
+        {title:"Mini-Project #3", show:"2024.7", id:"mp23"},
     ]},
     {title:"Files & File Structures", id:"fs", menu:[
         {title:"File Systems", id:"fsys"},
@@ -37,8 +38,8 @@ let cs20 = {title:"Computing Science 20", text:"CS 20", id:"cs20", menu:[
 let html20 = `<p>Students are expected to complete five credits over the semester. This can include <a href="#web">Web Scripting</a> or <a href="#cs30">CS 30</a> credits. <i>Data Structures</i> is a prerequisite for CS 30.</p>`;
 
 layout.cs20 = [{icons:[
-    {icon:"today", text:"Brightspace", url:"https://eips.brightspace.com/d2l/home/63493"},
-    {text:"Progress Update", url:pu_form},
+    {icon:"today", text:"Brightspace", url:"https://eips.brightspace.com/d2l/home/117707"},
+    // {text:"Progress Update", url:pu_form},
 ]}, {html:html20}, 0, 1];
 
 // Procedural Programming 1
@@ -56,7 +57,8 @@ layout.try = [{ajax:"pp/except.html"}, 1];
 // Game Programming Prject
 
 layout.game = [{icons:[
-    {text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/Game"},
+    {text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/Game2023"},
+    {text:"Project Reflection", url:"https://eips.brightspace.com/d2l/le/calendar/63493/event/129589/detailsview#129589"},
 ]}, 0];
 
 layout.s8 = [{ajax:"game/sketch.html"}, 1];
@@ -74,8 +76,9 @@ layout.kwargs = [{ajax:"ds/args.html"}, 1];
 layout.list_comp = [{ajax:"ds/comp.html"}, 1];
 layout.gen = [{ajax:"ds/gen.html"}, 1];
 layout.array = [{ajax:"ds/array.html"}, 1];
-layout.mp21 = [{ajax:"ds/mp1.html"}, 1];
+layout.mp21 = [{ajax:"pp/mp1.html"}, 1];
 layout.mp22 = [{ajax:"ds/mp2.html"}, 1];
+layout.mp23 = [{ajax:"ds/mp3.html"}, 1];
 
 // Files & File Systems
 

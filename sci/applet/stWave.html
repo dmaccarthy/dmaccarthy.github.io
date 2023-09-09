@@ -27,6 +27,7 @@ function update() {
 }
 
 $(function() {
+    if (location.search == "?iframe") $("h1").hide();
     let jplot = new JPlot("canvas", [0, 1, -1, 1], 12, {
         lineWidth: 2,
         phase: 0,

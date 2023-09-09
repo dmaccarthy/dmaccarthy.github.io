@@ -11,6 +11,13 @@
 <link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400"/>
 <link rel="stylesheet" href="applet.css"/>
+<style type="text/css">
+
+body.iframe, body.iframe > p {margin:0}
+body.iframe .iframe {display:none}
+body.iframe canvas {max-width:99%; max-height:99%}
+
+</style>
 <script type="text/javascript">
 
 $(function() {
@@ -20,14 +27,19 @@ $(function() {
         this.speed = 0.0003 * $("#Speed").val();
         this.line.frame = $("#Arrow")[0].checked;
     };
+    if (location.search == "?iframe") {
+        $("body").addClass("iframe");
+        helio.jplot.script.splice(6, 1);     
+        $("#Speed").val(20);
+    }
     helio.jplot.play(60);
 });
 
 </script>
 </head>
-<body class="Center"><h1>Heliocentric Model</h1>
+<body class="Center"><h1 class="iframe">Heliocentric Model</h1>
 <p><canvas class="BlackBG" width="600" height="600"></canvas></p>
-<p>
+<p class="iframe">
     <input id="Speed" title="Animation Speed" type="range" min="0" max="100"/> &nbsp;
     <span class="NoBreak"><input id="Arrow" type="checkbox"/> Earth → Mars</span> &nbsp;
     <span class="NoBreak"><input id="South" type="checkbox"/> South View</span>

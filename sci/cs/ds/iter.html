@@ -66,7 +66,15 @@ for num in range(10,20,3):  <span class="Comment"># 10, 13, 16, 19</span>
 
 print("a" in "Sal")      <span class="Comment"># True</span>
 print(15 in range(8))    <span class="Comment"># False</span></pre>
-</div>
+
+<p>Python has a builtin function called <code>enumerate</code> that returns a sequence of tuples from an iterable object. Each <code>tuple</code> contains an index or counter, and a value...</p>
+<pre data-echo="copy" class="Code" contenteditable="true">
+<span class="Comment"># Example 7...</span>
+
+phrase = "Salisbury Composite"
+for index, letter in enumerate(phrase):
+    print(f"The {index}th letter is '{letter}'.")
+</pre></div>
 
 <h3>Assignment</h3><ol class="Assign">
 <li>How common are each of the 26 letters in an English text? Complete the function <code>letterFrequency</code>

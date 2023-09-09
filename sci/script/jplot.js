@@ -1,4 +1,4 @@
-/***
+/*
 
 Object / JSON format (if no images are needed, can be just the array)
 {"images": {
@@ -27,7 +27,7 @@ fill
 stroke
 line
 
-***/
+*/
 
 function JPlot(cv, lrbt, margin, attr) {
 	this.plot = new Plot($(cv ? cv : "canvas")[0], lrbt, margin);
@@ -126,7 +126,7 @@ JPlot.prototype.pause = function() {
 JPlot.prototype.play = function(fps, frame) {
     clearTimeout(this._animation);
     let t = new Date().getTime();
-    console.log(t);
+    // console.log(t);
     let s = 1000 / fps;
     if (frame == null) frame = this.frame;
     this.draw(frame);

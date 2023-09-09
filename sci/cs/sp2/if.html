@@ -61,7 +61,12 @@ Annual interest in %: <span class="Blue">5</span>
 Monthly payment in $: <span class="Blue">10</span>
 
 The monthly interest charge is $20.83.
-Your payment is not enough!</pre></li>
+Your payment is not enough!</pre>
+<p>The monthly interest is calculated by converting the interest from a percent to a decimal, (<code>5 / 100 = 0.05</code>),
+    then multiplying by the loan amount (<code>0.05 * 5000 = 250</code>), and finally dividing by 12 to get the monthly amount
+    (<code>250 / 12 = 20.83</code>). Use variables to make your program do the calculations correctly for any values that the
+    user inputs.</p>
+</li>
 
 <li>In a game of “Rock, Paper, Scissors” the winner is determined by the following rules:
 <ul>
@@ -78,7 +83,7 @@ draw) and output the result. The output should look something like this.</p>
 <pre class="IO">Player 1 chose Paper.
 Player 2 chose Rock.
 Player 1 wins!</pre>
-<p>Hint: To determine the winner, first check if it’s a tie, then check if player 1 wins. If neither
-of these is the case, you can conclude the player 2 wins without having to check!</p>
+<p>Hint: To determine the winner first check if it’s a tie. Then, if it is <em>not</em> a tie check if player 1 wins. If neither
+of these is the case, you can conclude that player 2 wins without having to check anything else!</p>
 </li>
 </ol>
