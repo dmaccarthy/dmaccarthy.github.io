@@ -8,13 +8,13 @@ let chem = {title:"Unit A: Chemistry", id:"chem", menu:[
         {title:"Bohr Model (Energy Levels)", id:"bohr"},
         {title:"Periodic Table & Dot Diagrams", id:"dot"},
     ]},
-    {title:"Part 2: Compounds", show: "2024.7", id:"compound", menu:[
+    {title:"Part 2: Compounds", id:"compound", menu:[
         {title:"Binary Ionic Compounds", id:"ionic"},
         {title:"Molecular Compounds", id:"molec"},
         {title:"Polyatomic Ions & Solubility", id:"poly"},
         {title:"Acids & Bases", id:"acid"},
         {title:"Properties of Water", id:"water"},
-        {title:"Compounds Review", id:"comp_rev"},
+        {title:"Compounds Review", show: "2023.10", id:"comp_rev"},
     ]},
     {title:"Part 3: Reactions", show: "2024.7", id:"reaction", menu:[
         {title:"Chemical Reactions", id:"rxn"},
@@ -55,17 +55,19 @@ lesson("dot", "1YADHLjIhU0EQKZ1mwhV7rYfCs_COJ-nd", {img:{src:"chem/img/pt.png", 
 );
 
 // Part 2: Compounds
-// Revisions for September 2023 done up to here!!
 
-lesson("ionic", "", {vid:"#PLpVmtCaB-lynZX8Pn3MyzoBCoGjUyNRUi"})[0].icons.push(
+lesson("ionic", "1V4Zg4YntAE8tJxHvFVegjna9dltlosa8", {vid:"#PLpVmtCaB-lynZX8Pn3MyzoBCoGjUyNRUi"})[0].icons.push(
     {icon:"gdrv", text:"Lab Handout", url:"1N1WuK6aBg2ywDqSBuEvNoBFoIDLY0ULM"}    
 );
-lesson("molec", "1zBGawUGNqHVnDipMt72pLBbxjzykblDz", {vid:"#PLpVmtCaB-lymbqbJT3eh6yoIccoR1wAAm"});
-lesson("poly", "1O1PJIPG7dVkcLP7BwHhZbla2GUTnqhNO", {vid:"#PLpVmtCaB-lymw8n95Vk-jxco6DuI0TqC_"});
-lesson("acid", "1aCWr_vgqf_S9HTu3pRKUsVd6oBqqh3r9", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Citrus_x_limon%2C_lemon_on_tree%2C_Co%C3%ADn%2C_Spain.jpg/640px-Citrus_x_limon%2C_lemon_on_tree%2C_Co%C3%ADn%2C_Spain.jpg", width:540}})[0].icons.push(
-    {icon:"gdrv", text:"Lab Handout", url:"181mzsLvBms8hrKoLVFEZ_C0aA4fSYgjD"}
+lesson("molec", "1Mg5dCqzmpiKebuqkkONyWH91Hv-36Qmc", {vid:"#PLpVmtCaB-lymbqbJT3eh6yoIccoR1wAAm"});
+lesson("poly", "1cz0A5rLEuFlMo9Vw7VrR11HWe3Nej5XL", {vid:"#PLpVmtCaB-lymw8n95Vk-jxco6DuI0TqC_"});
+
+// Revisions for September 2023 done up to here!!
+
+lesson("acid", "", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Citrus_x_limon%2C_lemon_on_tree%2C_Co%C3%ADn%2C_Spain.jpg/640px-Citrus_x_limon%2C_lemon_on_tree%2C_Co%C3%ADn%2C_Spain.jpg", width:540}})[0].icons.push(
+    {icon:"gdrv", text:"Lab Handout", url:""}
 );
-lesson("water", "1Wqy3DvoCYWjc0PPFKPgRBqAP3lDz3Nq_", {vid:"HVT3Y3_gHGg"});
+lesson("water", "", {vid:"HVT3Y3_gHGg"});
 
 layout.comp_rev = [{icons:[
     {icon:"gdrv", text:"Compounds Review", url:"1er-RIbhabNosb6_ZH9HZv7ekNGwspIBD"},

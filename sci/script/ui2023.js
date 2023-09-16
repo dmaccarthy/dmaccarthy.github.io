@@ -1,7 +1,7 @@
 let home_url = [
     ["https://sci.davidmaccarthy.repl.co", "/"],
     ["https://dmaccarthy.github.io/sci", "/sci"]
-][1];
+][0];
 
 function teacher(a) {
 /* Enable / disable teacher mode */

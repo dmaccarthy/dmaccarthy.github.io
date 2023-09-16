@@ -44,6 +44,7 @@ let cs10 = {title:"Computing Science 10", text:"CS 10", id:"cs10", menu:[
 
 layout.cs10 = [{icons:[
     {icon:"today", text:"Brightspace", url:"https://eips.brightspace.com/d2l/home/117712"},
+    {icon:"check_box", text:"Assessments", url:"assess/cs10.html"},
     // {text:"Progress Update", url:pu_form},
 ]}, 0, 1];
 
