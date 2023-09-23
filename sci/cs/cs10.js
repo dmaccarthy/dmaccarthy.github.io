@@ -52,7 +52,7 @@ layout.cs10 = [{icons:[
 // Robotics Programming
 
 layout.robo = [
-    {icons:[{text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/Robo2023"},]},
+    {icons:[{text:"replit Project", url:"https://replit.com/@DavidMacCarthy/Robo2023"},]},
     0, 1];
 
 layout.rintro = [{ajax:"robo/intro.html"}, 1];
@@ -101,7 +101,7 @@ layout.ct1 = [{html:`For each topic, open the link and save a copy of the docume
 // Structured Programming 1
 
 layout.sp1 = [{icons:[
-    {text:"repl.it Project", show:"2023.8", url:"https://replit.com/@DavidMacCarthy/CS10"},
+    {text:"replit Project", show:"2023.8", url:"https://replit.com/@DavidMacCarthy/CS10"},
 ]}, 0, 1];
 
 layout.intro = [{ajax:"sp1/intro.html"}, 1];

@@ -15,25 +15,31 @@ function init() {
     for (let i=n+1;i<s.length;i++) $(s[i]).remove();
     if (n >= 0) {
         $(s[n]).show();
+        $("#Instructions").show();
         if (n == 0) $("#Old").remove();
+        else $("#Old").show();
     }
     else {
-        $("#Old").addClass("NoAssess").html("There are no assessments yet!");
         $("#Instructions").remove();
+        $("#Old").addClass("NoAssess").html("There are no assessments yet!").show();
     }
     s = $("div[data-htm]");
     for (i=0;i<s.length;i++) {
         let si = $(s[i]);
         let f = function(e, s) {
+            init.mjAjax--;
             if (s == "success") {
                 $(e.responseText).insertBefore(si);
                 si.remove();
-                setTimeout(function() {MathJax.Hub.Typeset()}, 500);
+                if (init.mjAjax == 0) MathJax.Hub.Typeset();
             }
             else console.log(e);
         }
+        init.mjAjax++;
         published(si.attr("data-htm"), {complete: f});
     }
 }
+
+init.mjAjax = 0;
 
 $(init);

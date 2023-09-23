@@ -14,7 +14,7 @@ let chem = {title:"Unit A: Chemistry", id:"chem", menu:[
         {title:"Polyatomic Ions & Solubility", id:"poly"},
         {title:"Acids & Bases", id:"acid"},
         {title:"Properties of Water", id:"water"},
-        {title:"Compounds Review", show: "2023.10", id:"comp_rev"},
+        // {title:"Compounds Review", show: "2023.10", id:"comp_rev"},
     ]},
     {title:"Part 3: Reactions", show: "2024.7", id:"reaction", menu:[
         {title:"Chemical Reactions", id:"rxn"},
@@ -61,20 +61,18 @@ lesson("ionic", "1V4Zg4YntAE8tJxHvFVegjna9dltlosa8", {vid:"#PLpVmtCaB-lynZX8Pn3M
 );
 lesson("molec", "1Mg5dCqzmpiKebuqkkONyWH91Hv-36Qmc", {vid:"#PLpVmtCaB-lymbqbJT3eh6yoIccoR1wAAm"});
 lesson("poly", "1cz0A5rLEuFlMo9Vw7VrR11HWe3Nej5XL", {vid:"#PLpVmtCaB-lymw8n95Vk-jxco6DuI0TqC_"});
-
-// Revisions for September 2023 done up to here!!
-
-lesson("acid", "", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Citrus_x_limon%2C_lemon_on_tree%2C_Co%C3%ADn%2C_Spain.jpg/640px-Citrus_x_limon%2C_lemon_on_tree%2C_Co%C3%ADn%2C_Spain.jpg", width:540}})[0].icons.push(
-    {icon:"gdrv", text:"Lab Handout", url:""}
+lesson("acid", "185yCfNH_RS7LOQSa_fkUPOLk8WKCLz8E", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Citrus_x_limon%2C_lemon_on_tree%2C_Co%C3%ADn%2C_Spain.jpg/640px-Citrus_x_limon%2C_lemon_on_tree%2C_Co%C3%ADn%2C_Spain.jpg", width:540}})[0].icons.push(
+    {icon:"gdrv", text:"Lab Handout", url:"1T3RdR1wPf3PpWxnd-XS6jWCB-Qt1_xXm"}
 );
-lesson("water", "", {vid:"HVT3Y3_gHGg"});
+lesson("water", "1cTC5MZaYYDfK7zvGoIYV2ncVRI8x6uXl", {vid:"HVT3Y3_gHGg"});
 
-layout.comp_rev = [{icons:[
-    {icon:"gdrv", text:"Compounds Review", url:"1er-RIbhabNosb6_ZH9HZv7ekNGwspIBD"},
-    {icon:"gdrv", text:"Answer Key", url:"1Ue7Q5rct2HmJfJB-GAY4Rwp2BLNBtyTI"},
-]}, 0, 1];
+// layout.comp_rev = [{icons:[
+//     {icon:"gdrv", text:"Compounds Review", url:"1er-RIbhabNosb6_ZH9HZv7ekNGwspIBD"},
+//     {icon:"gdrv", text:"Answer Key", url:"1Ue7Q5rct2HmJfJB-GAY4Rwp2BLNBtyTI"},
+// ]}, 0, 1];
 
 // Part 3: Reactions
+// Revisions for September 2023 done up to here!!
 
 lesson("rxn", "15Xa_SKGBfi7B8MK7Yu9y77KdjlwAcB9m", {vid:"eNsVaUCzvLA"})[0].icons.push(
     {icon:"gdrv", text:"Lab Handout", url:"1uT5hoiboL7d7_AKExX-9qpYuZXXsGZBJ"}    

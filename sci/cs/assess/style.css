@@ -18,8 +18,7 @@
 }
 
 #Main * {font-size: 20px}
-section[data-date] {display:none}
-
+#Instructions, #Old, section[data-date] {display:none}
 
 .NoAssess {
     text-align: center;

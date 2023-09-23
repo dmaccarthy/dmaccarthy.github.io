@@ -30,7 +30,7 @@ let html30 = `<p>Students are expected to complete a total of five credits durin
 
 layout.cs30 = [{icons:[
         {icon:"today", text:"Brightspace", url:"https://eips.brightspace.com/d2l/home/117709"},
-        {text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/CS30"},
+        {text:"replit Project", url:"https://replit.com/@DavidMacCarthy/CS30"},
         // {text:"Progress Update", url:pu_form},
     ]},
     {html:html30}, 0, 1];
@@ -45,7 +45,7 @@ layout.inher = [{ajax:"oop1/inher.html"}, 1];
 // Java Project
 
 layout.java = [{icons:[
-    // {text:"repl.it Project", url:"https://replit.com/@DavidMacCarthy/Java"},
+    // {text:"replit Project", url:"https://replit.com/@DavidMacCarthy/Java"},
     // {text:"Java Tutorial", url:"https://www.w3schools.com/java/default.asp"},
     // {icon:"gdoc", text:"Project Template", url:"1CSfKQJl9mXdgKSIg_NzxjhCDC_w2x7Dq"},
 ]}, {ajax:"java.htm"}];
