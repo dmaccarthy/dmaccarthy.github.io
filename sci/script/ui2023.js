@@ -1,3 +1,12 @@
+function backup() {
+    if (location.hostname != backup.orig) {
+        if (confirm("This is a backup of Mr. Mac’s website. Go to the original?"))
+            location.href = `https://${backup.orig}${location.pathname}`;
+    }
+}
+
+backup.orig = "sci.davidmaccarthy.repl.co";
+
 let home_url = [
     ["https://sci.davidmaccarthy.repl.co", "/"],
     ["https://dmaccarthy.github.io/sci", "/sci"]
@@ -416,4 +425,5 @@ $(function() {
             location.reload();
         });
     }
+    backup();
 });
