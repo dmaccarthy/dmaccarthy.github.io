@@ -1,8 +1,9 @@
 function backup() {
     if (location.hostname != backup.orig) {
         if (confirm("This is a backup of Mr. Mac’s website. Go to the original?")) {
-            let pn = location.pathname.split("/");
-            location.href = `https://${backup.orig}/${pn[pn.length-2]}`;
+            let url = `https://${backup.orig}/${crs}/#${current.id}`;
+            location.href = url;
+            // console.log(url);
         }
    }
 }
