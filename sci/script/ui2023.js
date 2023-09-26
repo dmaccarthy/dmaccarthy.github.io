@@ -1,8 +1,10 @@
 function backup() {
     if (location.hostname != backup.orig) {
-        if (confirm("This is a backup of Mr. Mac’s website. Go to the original?"))
-            location.href = `https://${backup.orig}${location.pathname}`;
-    }
+        if (confirm("This is a backup of Mr. Mac’s website. Go to the original?")) {
+            let pn = location.pathname.split("/");
+            location.href = `https://${backup.orig}/${pn[pn.length-1]}`;
+        }
+   }
 }
 
 backup.orig = "sci.davidmaccarthy.repl.co";
