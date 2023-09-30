@@ -16,7 +16,7 @@ let chem = {title:"Unit A: Chemistry", id:"chem", menu:[
         {title:"Properties of Water", id:"water"},
         // {title:"Compounds Review", show: "2023.10", id:"comp_rev"},
     ]},
-    {title:"Part 3: Reactions", show: "2024.7", id:"reaction", menu:[
+    {title:"Part 3: Reactions", id:"reaction", menu:[
         {title:"Chemical Reactions", id:"rxn"},
         {title:"Formation & Decomposition", id:"rxn_fd"},
         {title:"Single & Double Replacement", id:"rxn_sd"},
@@ -72,13 +72,15 @@ lesson("water", "1cTC5MZaYYDfK7zvGoIYV2ncVRI8x6uXl", {vid:"HVT3Y3_gHGg"});
 // ]}, 0, 1];
 
 // Part 3: Reactions
-// Revisions for September 2023 done up to here!!
 
-lesson("rxn", "15Xa_SKGBfi7B8MK7Yu9y77KdjlwAcB9m", {vid:"eNsVaUCzvLA"})[0].icons.push(
-    {icon:"gdrv", text:"Lab Handout", url:"1uT5hoiboL7d7_AKExX-9qpYuZXXsGZBJ"}    
+lesson("rxn", "1oSPWcBembJD8W0gaVnVetqIgk1IfZo2W", {vid:"eNsVaUCzvLA"})[0].icons.push(
+    {icon:"gdrv", text:"Lab Handout", url:"1sWlKUPtMfRpdcixuKTdtPAIIBnxk9Eyv"}    
 );
-lesson("rxn_fd", "1cLM_ohdfG7wQFTSyqVOhoLtFq4cm1phu", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Ford_Taurus_Rust.jpg/640px-Ford_Taurus_Rust.jpg", width:540}});
-lesson("rxn_sd", "1Pwfjh6e8CmT7LymBABlpL4Rd0B_1IhNe", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Precipitate_of_HAuCl4_%2B_NaOH.jpg/524px-Precipitate_of_HAuCl4_%2B_NaOH.jpg", width:442}});
-lesson("rxn_c", "1m0haYxXS3wrYfznQWD10557Ds46wDBl9", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Gas_stove_burner_flame.jpg/800px-Gas_stove_burner_flame.jpg", style:"width:540px;height:405px;object-fit:cover"}});
-lesson("sciNot", "1PMCcqP2ioyC_HYrGxAXDtCubwkLo4asq", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Andromeeda1.jpg/640px-Andromeeda1.jpg", width:604}});
-lesson("mole", "10hs-zakljzCXkFoFu0Tmiuo_J7UvnJWZ", {img:{src:"chem/img/balance.jpg", width:461}});
+lesson("rxn_fd", "1rS8a8FFiuNZLhxtH1DAkoxjHpSDf2an8", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Ford_Taurus_Rust.jpg/640px-Ford_Taurus_Rust.jpg", width:540}});
+lesson("rxn_sd", "1qludSSxPiLsKzn0zvs5GnoNXAEBacPUU", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Precipitate_of_HAuCl4_%2B_NaOH.jpg/524px-Precipitate_of_HAuCl4_%2B_NaOH.jpg", width:442}});
+
+// Revisions for October 2023 done up to here!!
+
+lesson("rxn_c", "", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Gas_stove_burner_flame.jpg/800px-Gas_stove_burner_flame.jpg", style:"width:540px;height:405px;object-fit:cover"}});
+lesson("sciNot", "", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Andromeeda1.jpg/640px-Andromeeda1.jpg", width:604}});
+lesson("mole", "", {img:{src:"chem/img/balance.jpg", width:461}});
