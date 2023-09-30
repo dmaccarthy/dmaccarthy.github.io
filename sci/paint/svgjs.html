@@ -16,6 +16,7 @@ svg {
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.0/dist/svg.min.js"></script>
 <script type="text/javascript" src="https://webapp2023.davidmaccarthy.repl.co/api.js"></script>
+<script type="text/javascript" src="../script/util.js"></script>
 <script type="text/javascript">
  
 function draw() {
@@ -26,16 +27,19 @@ function draw() {
     draw.svg = svg;
 }
 
-$(draw);
+$(function() {
+    draw();
+    let cx = $("canvas")[0].getContext("2d");
+    cx.arc(0, 0, 40, 0, 2 * Math.PI);
+    cx.fill();
+});
+
+
 
 </script>
 </head>
 <body>
-
-<form id="SVG_Form" method="post" style="display:none">
-    <textarea name="data"></textarea>
-    <input type="text" name="attachment" value="1"/>
-</form>
-    
+    <p><input type="button" value="Save" onclick="console.log(saveElem('svg', {target:true, filetype:'svg'}))"/></p>
+    <canvas id="Drawing" width="300" height="300"></canvas>
 </body>
 </html>

@@ -397,11 +397,26 @@ function code_echo(ev) {
             e.remove();    
         }
         else {
-            text = encodeURIComponent(text);
-            window.open(`https://webapp2023.davidmaccarthy.repl.co/echo.${echo}?data=${text}`);                
+            if (echo == "html") {
+                if (text.search("</body>") == -1) text = `<body>\n${text}\n</body>`;
+                if (text.search("</head>") == -1) text = `${code_echo.head}\n${text}\n`;
+                if (text.search("</html>") == -1) text = `${code_echo.html}\n${text}\n</html>`;
+            }
+            saveText(text, {target:true, filetype:echo});
+            // text = encodeURIComponent(text);
+            // window.open(`https://webapp2023.davidmaccarthy.repl.co/echo.${echo}?data=${text}`);                
         }
     }
 }
+
+code_echo.html = `<!DOCTYPE html>
+<html lang="en-ca">`;
+
+code_echo.head = `<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>HTML Document</title>
+</head>`;
 
 $(function() {
     let t = code_echo.touch = window.touchscreen ? touchscreen() : false;

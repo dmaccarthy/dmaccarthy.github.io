@@ -114,3 +114,83 @@ String.random = function(n, allowNum) {
     }
     return s;
 }
+
+
+/*** 
+
+Functions for downloading data as files or opening data in a browser window.
+
+saveText("Hello, world!", {download: "hello.txt"})
+saveText("Hello, world!", {filetype: "txt", target: true})
+saveText("[1, 2, 3, 4]", {filetype: "json", target: true})
+
+saveElem("body", {download: "body.html"})
+saveElem("#SVG", {download: "drawing.svg"})
+saveElem("#SVG", {filetype: "svg", target: true})
+
+saveCanvas("#Canvas", {download: "drawing.png"})
+saveCanvas("#Canvas", {target: true})
+
+***/
+
+
+function saveBlob(b, options) {
+// Options...
+//   download: File name to save
+//   target: Browser window name to open blob data
+    let url = URL.createObjectURL(b);
+    let attr = {href: url};
+    Object.assign(attr, options);
+    let a = $("<a>").attr(attr);
+    a[0].click();
+    return attr.target;
+}
+
+function saveText(data, options) {
+// Options...
+//   download: File name to save
+//   target: Browser window name
+//   filetype: One of the saveText.types keys
+    options = saveText.options(options);
+    let ftype = saveText.types[options.filetype];
+    if (!ftype && options.download) {
+        let ftype = options.download.split(".");
+        ftype = saveText.types[ftype[ftype.length - 1]];
+    }
+    if (!ftype) ftype = "text/plain"; 
+    return saveBlob(new Blob([data], {type:ftype}), options);
+}
+
+saveText.options = function(options) {
+/* Pick a random target name when options.target === true */
+    let attr = Object.assign({}, options);
+    if (options.target === true) {
+        attr.target = String.random(12);
+    }
+    return attr;
+}
+
+saveText.types = {
+    html: "text/html",
+    htm: "text/html",
+    js: "text/javascript",
+    xml: "text/xml",
+    svg: "image/svg+xml",
+    json: "application/json",
+    csv: "text/csv",
+    py: "text/x-python"
+}
+
+function saveElem(sel, options) {
+/* Download file or open browser tab containing element outerHTML */
+    return saveText($(sel)[0].outerHTML, options);
+}
+
+function saveCanvas(cv, options) {
+/* Save or open a canvas as a PNG image */
+    let attr = saveText.options(options);
+    $(cv)[0].toBlob(function(b) {
+        saveBlob(b, attr);
+    })
+    return attr.target;
+}
