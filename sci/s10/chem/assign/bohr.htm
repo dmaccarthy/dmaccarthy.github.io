@@ -35,7 +35,7 @@ td.Nucleus {
 <li>Explain what “valence level” and “valence electrons” mean. Why is this important?</li>
 <div class="Answer">The valence level is the highest energy level that the atom needs to use to accommodate all of its electrons. The number of valence electrons is what determines the chemical properties of the element.</div>
 
-<li>Explain how to draw an “energy level diagram” (also called a Bohr diagram) for any atom or ion using information from the Periodic Table. Use <a href="javascript:draw_bohr(15, 16)">phosphorus-31</a> as an example.</li>
+<li>Explain how to draw an “energy level diagram” (also called a Bohr diagram) for any atom or ion using information from the Periodic Table. Use <a class="Link" onclick="draw_bohr(15, 16)">phosphorus-31</a> as an example.</li>
 <div class="Answer">
     <p>Draw the nucleus at the bottom and enter the number of protons and neutrons.</p>
     <p>Draw the “energy levels” as lines above the nucleus. The number of energy levels needed is equal to the period (row) of the Periodic Table where the element appears.</p>
@@ -51,12 +51,12 @@ td.Nucleus {
     
 <li>Draw an energy level diagram for each of these neutral atoms...
 <ol type="a">
-    <li><a href="javascript:draw_bohr(7, 7)">nitrogen-14</a></li>
-    <li><a href="javascript:draw_bohr(13, 14)">aluminum-27</a></li>
-    <li><a href="javascript:draw_bohr(17, 18)">chlorine-35</a></li>
-    <li><a href="javascript:draw_bohr(8, 8)">oxygen-16</a></li>
-    <li><a href="javascript:draw_bohr(1, 2)">hydrogen-3</a></li>
-    <li><a href="javascript:draw_bohr(6, 6)">carbon-12</a></li>
+    <li><a class="Link" onclick="draw_bohr(7, 7)">nitrogen-14</a></li>
+    <li><a class="Link" onclick="draw_bohr(13, 14)">aluminum-27</a></li>
+    <li><a class="Link" onclick="draw_bohr(17, 18)">chlorine-35</a></li>
+    <li><a class="Link" onclick="draw_bohr(8, 8)">oxygen-16</a></li>
+    <li><a class="Link" onclick="draw_bohr(1, 2)">hydrogen-3</a></li>
+    <li><a class="Link" onclick="draw_bohr(6, 6)">carbon-12</a></li>
 </ol>
 <div class="Answer">
 <p>Click the isotope name above to draw...</p>
@@ -84,15 +84,15 @@ td.Nucleus {
 
 <li>Draw an energy level diagram for each of these ions. Use the most common isotope to determine the number of neutrons.
 <ol type="a">
-    <li><a href="javascript:draw_bohr(7, 7, -3, '#Ion')">\(\mathrm{N^{3-}}\)</a></li>
-    <li><a href="javascript:draw_bohr(11, 12, 1, '#Ion')">sodium ion</a></li>
-    <li><a href="javascript:draw_bohr(17, 18, -1, '#Ion')">chloride ion</a></li>
-    <li><a href="javascript:draw_bohr(8, 8, -2, '#Ion')">oxide ion</a></li>
-    <li><a href="javascript:draw_bohr(4, 5, 2, '#Ion')">\(\mathrm{Be^{2+}}\)</a></li>
-    <li><a href="javascript:draw_bohr(15, 16, -3, '#Ion')">phosphide ion</a></li>
-    <li><a href="javascript:draw_bohr(9, 10, -1, '#Ion')">fluoride ion</a></li>
-    <li><a href="javascript:draw_bohr(14, 14, -4, '#Ion')">\(\mathrm{Si^{4-}}\)</a></li>
-    <!--li><a href="javascript:draw_bohr(5, 6, 3, '#Ion')">boride ion</a></li-->
+    <li><a class="Link" onclick="draw_bohr(7, 7, -3, '#Ion')">\(\mathrm{N^{3-}}\)</a></li>
+    <li><a class="Link" onclick="draw_bohr(11, 12, 1, '#Ion')">sodium ion</a></li>
+    <li><a class="Link" onclick="draw_bohr(17, 18, -1, '#Ion')">chloride ion</a></li>
+    <li><a class="Link" onclick="draw_bohr(8, 8, -2, '#Ion')">oxide ion</a></li>
+    <li><a class="Link" onclick="draw_bohr(4, 5, 2, '#Ion')">\(\mathrm{Be^{2+}}\)</a></li>
+    <li><a class="Link" onclick="draw_bohr(15, 16, -3, '#Ion')">phosphide ion</a></li>
+    <li><a class="Link" onclick="draw_bohr(9, 10, -1, '#Ion')">fluoride ion</a></li>
+    <li><a class="Link" onclick="draw_bohr(14, 14, -4, '#Ion')">\(\mathrm{Si^{4-}}\)</a></li>
+    <!--li><a class="Link" onclick="draw_bohr(5, 6, 3, '#Ion')">boride ion</a></li-->
 </ol>
 <div class="Answer">
 <p>Click the ion above to draw...</p>
@@ -127,7 +127,7 @@ function draw_bohr(e, n, q, id) {
     e = bohr(e-q);
     for (let i=0; i<e.length;i++)
         $(lvl[3-i]).html(`\\(${e[i]} e^-\\)`).show();
-    if (window.MathJax) MathJax.Hub.Typeset();
+    mjTypeset();
     return e;
 }
 

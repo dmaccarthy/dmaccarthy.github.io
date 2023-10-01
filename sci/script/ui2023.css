@@ -13,12 +13,18 @@ img.material {
 .Center, section.Image, section.IFrame {text-align:center}
 .Red {color:red}
 .Green {color:green}
-.Blue {color:blue}
+.Blue, .Link {color:blue}
 .Black {color:black}
 .Comment {color:#666}
 p, li, div {margin:0.5em 0}
 ol, ul {padding-left:1.5em}
 h1 {margin-top:0}
+
+.Link {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 
 .w20 {width:20em}
 .w24 {width:24em}

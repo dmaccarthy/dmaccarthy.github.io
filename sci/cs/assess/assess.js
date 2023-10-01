@@ -31,7 +31,7 @@ function init() {
             if (s == "success") {
                 $(e.responseText).insertBefore(si);
                 si.remove();
-                if (init.mjAjax == 0) MathJax.Hub.Typeset();
+                if (init.mjAjax == 0) mjTypeset();
             }
             else console.log(e);
         }

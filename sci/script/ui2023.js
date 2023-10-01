@@ -3,8 +3,7 @@ function backup() {
         if (confirm("This is a backup of Mr. Mac’s website. Go to the original?")) {
             let url = `https://${backup.orig}/${crs}/#${current.id}`;
             location.href = url;
-            // console.log(url);
-        }
+       }
    }
 }
 
@@ -394,7 +393,7 @@ function code_echo(ev) {
             e = $("<textarea>").text(text).appendTo($("body"));
             e.select();
             document.execCommand("copy");
-            e.remove();    
+            e.remove();
         }
         else {
             if (echo == "html") {
@@ -402,8 +401,8 @@ function code_echo(ev) {
                 if (text.search("</head>") == -1) text = `${code_echo.head}\n${text}\n`;
                 if (text.search("</html>") == -1) text = `${code_echo.html}\n${text}\n</html>`;
             }
-            saveText(text, {target:true, filetype:echo});
-            // text = encodeURIComponent(text);
+            BData.text(text, echo).open();
+           // text = encodeURIComponent(text);
             // window.open(`https://webapp2023.davidmaccarthy.repl.co/echo.${echo}?data=${text}`);                
         }
     }

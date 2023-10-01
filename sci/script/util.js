@@ -65,7 +65,7 @@ function objectInList(data, key, val) {
     }
 }
 
-function aspect(w) {
+function aspect(w) { // Requires jQuery [code.jquery.com/jquery-3.7.1.min.js]
 /* Adjust height(width) of iframe/video tags to maintain aspect ratio */
     let e = $("[data-aspect]");
     for (let i=0;i<e.length;i++) {
@@ -78,12 +78,19 @@ function aspect(w) {
         else {
             let h = Math.round(ei.width() / a);
             e.css({height:h});            
-            }
+        }
     }
 }
 
 function mjTypeset() {
-    if (window.MathJax) MathJax.Hub.Typeset();
+    if (window.MathJax) {
+        let err;
+        try {MathJax.typeset()}
+        catch (err) {
+            console.log(err);
+            MathJax.Hub.Typeset();
+        }
+    }
 }
 
 function isAfter(due, date) {
@@ -116,81 +123,125 @@ String.random = function(n, allowNum) {
 }
 
 
-/*** 
+class BData { // Requires jQuery [code.jquery.com/jquery-3.7.1.min.js]
 
-Functions for downloading data as files or opening data in a browser window.
+/** Convert data to a Blob for downloading as a file or opening in a browser window.
 
-saveText("Hello, world!", {download: "hello.txt"})
-saveText("Hello, world!", {filetype: "txt", target: true})
-saveText("[1, 2, 3, 4]", {filetype: "json", target: true})
+static BData.text(data, filename) --> bdata (instance of BData)...
+    Converts data to a Blob. If data is a string, the MIME type will default to "text/plain".
 
-saveElem("body", {download: "body.html"})
-saveElem("#SVG", {download: "drawing.svg"})
-saveElem("#SVG", {filetype: "svg", target: true})
+    If data is an object with a tagName attribute, it is assumed to be an HTML DOM element.
+    * The data type will be "image/png" for CANVAS tags.
+    * Non-canvas tags will be converted to strings using the outerHTML attribute.
+    * Default type will be "image/svg+xml" for SVG tags and "text/html" for others.
 
-saveCanvas("#Canvas", {download: "drawing.png"})
-saveCanvas("#Canvas", {target: true})
+    If data is a non-string object without a tagName, it will be converted using JSON.stringify;
+    the default type will be "application/json". An exception is thrown if the object cannot be
+    converted to a JSON string.
 
-***/
+    The filename argument specifies a file name to use when saving the data. The file extension
+    overrides the default MIME type; for example, a filename "data.csv" will result in a Blob
+    with type "text/csv" rather than "text/plain". If the data is not intended to be saved as a
+    file, you can pass just the extension ("csv").
 
+static find(selector, filename) --> bdata...
+    This function uses jQuery to find the first match to the selector and then passes the
+    element to BData.text. Throws an exception if no matching elements are found.
 
-function saveBlob(b, options) {
-// Options...
-//   download: File name to save
-//   target: Browser window name to open blob data
-    let url = URL.createObjectURL(b);
-    let attr = {href: url};
-    Object.assign(attr, options);
-    let a = $("<a>").attr(attr);
-    a[0].click();
-    return attr.target;
-}
+bdata.open() --> bdata...
+    Opens the blob in a new browser window or tab. The BData instance has an array attribute
+    called windows. The new window in which the data is displayed will be prepended to the array.
+    For canvas data, the conversion to PNG is asynchronous and the array entry will be null
+    until the new window is actually opened.
 
-function saveText(data, options) {
-// Options...
-//   download: File name to save
-//   target: Browser window name
-//   filetype: One of the saveText.types keys
-    options = saveText.options(options);
-    let ftype = saveText.types[options.filetype];
-    if (!ftype && options.download) {
-        let ftype = options.download.split(".");
-        ftype = saveText.types[ftype[ftype.length - 1]];
+bdata.save(filename) --> bdata...
+    Saves the blob data as a downloaded file. The filename can be omitted if a filename was
+    already specified when the BData instance was created. Some browsers may change the file
+    name; for example, if the requested file extension does not match the MIME type of the data.
+
+bdata.blob...     The data as a Blob instance.
+bdata.filename... The filename (if any) associated with the data.
+bdata.windows...  An array of browser windows created by the open method.
+
+Examples...
+
+BData.text("Hello, world!", "hi.txt").open().save();
+BData.text([1, 2, 3]).open();
+
+BData.text("1, 2, 3", "num.csv").save();
+BData.text([1, 2, 3], "num.json").save();
+
+BData.find("#FooBar").open();
+BData.find("body").save("body.html");
+BData.find("canvas").save("drawing.png");
+BData.find("svg", "drawing.svg").save();
+
+**/
+
+    constructor(data, type) {
+        this.windows = [];
+        if (type) {
+            let t = type.split(".");
+            if (t.length > 1) {
+                this.filename = type;
+                type = t[t.length - 1].toLowerCase();
+            }
+        }
+        if (data.tagName) {
+            let t = data.tagName.toUpperCase();
+            if (t == "CANVAS") {
+                let bd = this;
+                data.toBlob(function(b) {bd.blob = b});
+                return;
+            }
+            if (!type) type = t == "SVG" ? "svg" : "html";
+            data = data.outerHTML;
+        }
+        else if (typeof(data) != "string") {
+            data = JSON.stringify(data);
+            if (!type) type = "json";
+        }
+        type = {
+            html: "text/html",
+            htm: "text/html",
+            js: "text/javascript",
+            xml: "text/xml",
+            svg: "image/svg+xml",
+            json: "application/json",
+            csv: "text/csv",
+            py: "text/x-python"
+        }[type];
+        this.blob = new Blob([data], {type:type ? type : "text/plain"});
     }
-    if (!ftype) ftype = "text/plain"; 
-    return saveBlob(new Blob([data], {type:ftype}), options);
-}
 
-saveText.options = function(options) {
-/* Pick a random target name when options.target === true */
-    let attr = Object.assign({}, options);
-    if (options.target === true) {
-        attr.target = String.random(12);
+    save(filename) {
+        if (this.blob) {
+            let url = URL.createObjectURL(this.blob);
+            if (!filename) filename = this.filename;
+            $("<a>").attr({href: url, download: filename})[0].click();       
+        }
+        else {
+            let b = this;
+            setTimeout(function() {b.save(filename)}, 25);
+        }
+        return this;
     }
-    return attr;
-}
 
-saveText.types = {
-    html: "text/html",
-    htm: "text/html",
-    js: "text/javascript",
-    xml: "text/xml",
-    svg: "image/svg+xml",
-    json: "application/json",
-    csv: "text/csv",
-    py: "text/x-python"
-}
+    _open() {
+        if (this.blob)
+            this.windows[0] = window.open(URL.createObjectURL(this.blob));
+        else {
+            let b = this;
+            setTimeout(function() {b._open()}, 25);
+        }
+    }
 
-function saveElem(sel, options) {
-/* Download file or open browser tab containing element outerHTML */
-    return saveText($(sel)[0].outerHTML, options);
-}
+    open() {
+        this.windows.splice(0, 0, null);
+        this._open();
+        return this;
+    }
 
-function saveCanvas(cv, options) {
-/* Save or open a canvas as a PNG image */
-    let attr = saveText.options(options);
-    $(cv)[0].toBlob(function(b) {
-        saveBlob(b, attr);
-    })
-    return attr.target;
+    static text(data, filename) {return new BData(data, filename)}
+    static find(selector, filename) {return new BData($(selector)[0], filename)}
 }
