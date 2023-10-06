@@ -19,7 +19,7 @@ let web = {
                 { title: "Stylesheets (CSS)", id: "style" },
                 { title: "External Stylesheets", id: "ext" },
                 { title: "Document Divisions", id: "div" },
-                { title: "Javascript", id: "js" },
+                { title: "JavaScript", id: "js" },
             ]
         },
         { title: "Client-Side Scripting 3", show: "2023.7", id: "web3", icon: "html5", menu: [] },

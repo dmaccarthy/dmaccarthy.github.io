@@ -20,14 +20,16 @@ let msg = [
     "<p>This website is being modified for the 2023-2024 school year. Some pages and links may not be complete yet!</p>"
 ];
 
-let today = "~", layout =  {"~": [{html:msg[0]}, 0, COPY]};
+let today = "~", layout =  {"~": [{html:msg[0]}, 0, {icons:[
+    {text:"Simulations, Applets & Tools", url:"applet/"},
+]}, COPY]};
 
 let home = {title:"Mr. Mac’s Website", id:"~", menu:[
     {title:"Science 10", href:"s10", icon:"flask"},
     // {title:"Physics 20", href:"p20", icon:"rocket"},
     // {title:"Physics 30", href:"p30", icon:"magnet"},
     {title:"Computing Science", href:"cs", icon:"laptop"},
-    {title:"Simulations, Applets & Tools", href:"applet", icon:"html5"},
+    // {title:"Simulations, Applets & Tools", href:"applet", icon:"html5"},
 ]};
 
 </script>

@@ -148,7 +148,6 @@ function drawNode(node, init) {
         let url = makeURL(true, {}, node.id);
         if (init) history.replaceState({}, "", url);
         else history.pushState({}, "", url);
-    
         drawLayout(node);
     }
 }
@@ -188,7 +187,8 @@ function drawLayout(node) {
         else if (item.icons) drawIcons(item, a);
         else if (item.vid) drawVid(item, a);
     }
-    if (!mjTypeset.ajax) mjTypeset();
+    if (!mjTypeset.ajax) setTimeout(mjTypeset, 1);
+    // mjTypeset();
     aspect();
 }
 
@@ -223,9 +223,9 @@ function ajaxDone(e, s) {
 /* Complete page update when AJAX requests are complete */
     s.html(e);
     if (code_echo.touch) s.find("pre[data-echo]").removeAttr("contenteditable");
-    s[0].item.html = s.html(); //e;
+    s[0].item.html = s.html();
     if (mjTypeset.ajax) mjTypeset.ajax--;
-    if (!mjTypeset.ajax) mjTypeset();
+    if (!mjTypeset.ajax) setTimeout(mjTypeset, 1);
     aspect();
 }
 
@@ -401,7 +401,7 @@ function code_echo(ev) {
                 if (text.search("</head>") == -1) text = `${code_echo.head}\n${text}\n`;
                 if (text.search("</html>") == -1) text = `${code_echo.html}\n${text}\n</html>`;
             }
-            BData.text(text, echo).open();
+            BData.init(text, echo).open();
            // text = encodeURIComponent(text);
             // window.open(`https://webapp2023.davidmaccarthy.repl.co/echo.${echo}?data=${text}`);                
         }
@@ -418,7 +418,7 @@ code_echo.head = `<head>
 </head>`;
 
 $(function() {
-    let t = code_echo.touch = window.touchscreen ? touchscreen() : false;
+   let t = code_echo.touch = window.touchscreen ? touchscreen() : false;
     $(window).on(t ? "dblclick" : "click", code_echo);
     // if (t) touch.swipe = swipe;
     if ($(window).width() < 640) $("body").addClass("Narrow");

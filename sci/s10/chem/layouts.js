@@ -29,10 +29,17 @@ let chem = {title:"Unit A: Chemistry", id:"chem", menu:[
 
 lesson.chap = "chem";
 
-layout.chem_rev = [{icons:[
-    {icon:"gdrv", text:"Assignment", url:"1L7QCik7ThRSG7uBUSi7Z42MwsiUyd9Z7"},
-    {icon:"gdrv", text:"Answer Key", show:"2023.12", url:"1IaRKpczT_-sy76rFqBEOcIwyQ3AORxxYAEzJGKJpY7w"},
-]}, {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Gas_stove_burner_flame.jpg/800px-Gas_stove_burner_flame.jpg", style:"width:540px;height:405px;object-fit:cover"}}, 1];
+layout.chem = [{icons:[{icon:"gdrv", text:"Antacids Project", url:"1rinCEXFXSyQ9z9o475g10YmlSgACm22g"}]}, 0, 1];
+
+layout.chem_rev = [
+    {icons:[
+        {icon:"gdrv", text:"Assignment", url:"1L7QCik7ThRSG7uBUSi7Z42MwsiUyd9Z7"},
+        {icon:"gdrv", text:"Answer Key", show:"2023.12", url:"1IaRKpczT_-sy76rFqBEOcIwyQ3AORxxYAEzJGKJpY7w"},
+    ]},
+    {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Gas_stove_burner_flame.jpg/800px-Gas_stove_burner_flame.jpg", style:"width:540px;height:405px;object-fit:cover"}},
+    1,
+    // {ajax: "chem/assign/rxn_c.htm"},
+];
 
 // Part 1: Matter
 
@@ -78,9 +85,9 @@ lesson("rxn", "1oSPWcBembJD8W0gaVnVetqIgk1IfZo2W", {vid:"eNsVaUCzvLA"})[0].icons
 );
 lesson("rxn_fd", "1rS8a8FFiuNZLhxtH1DAkoxjHpSDf2an8", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Ford_Taurus_Rust.jpg/640px-Ford_Taurus_Rust.jpg", width:540}});
 lesson("rxn_sd", "1qludSSxPiLsKzn0zvs5GnoNXAEBacPUU", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Precipitate_of_HAuCl4_%2B_NaOH.jpg/524px-Precipitate_of_HAuCl4_%2B_NaOH.jpg", width:442}});
+lesson("rxn_c", "1C3v3i1HBp-EgjjFlBkp1utrWzHSQDQsT", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Gas_stove_burner_flame.jpg/800px-Gas_stove_burner_flame.jpg", style:"width:540px;height:405px;object-fit:cover"}});
+lesson("sciNot", "16abJAJedvCO-mEPrZl0YcYfhCnpvaHqP", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Andromeeda1.jpg/640px-Andromeeda1.jpg", width:604}});
 
 // Revisions for October 2023 done up to here!!
 
-lesson("rxn_c", "", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Gas_stove_burner_flame.jpg/800px-Gas_stove_burner_flame.jpg", style:"width:540px;height:405px;object-fit:cover"}});
-lesson("sciNot", "", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Andromeeda1.jpg/640px-Andromeeda1.jpg", width:604}});
 lesson("mole", "", {img:{src:"chem/img/balance.jpg", width:461}});

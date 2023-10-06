@@ -82,14 +82,64 @@ function aspect(w) { // Requires jQuery [code.jquery.com/jquery-3.7.1.min.js]
     }
 }
 
+function loadScript(src) {
+    return new Promise((resolve, reject) => {
+        let script = document.createElement("script");
+        script.onload = () => {resolve(script)}
+        script.onerror = () => {reject(Error(`Failed to load '${src}''`))}
+        document.head.append(script);        
+        script.src = src;
+    });
+}
+
+// function mjTypeset() {
+//     clearTimeout(mjTypeset._timeout);
+//     if (!window.MathJax) {
+//         setTimeout(mjTypeset, 750);
+//         return;
+//     }
+//     if (mjTypeset.status == -1) {     // Uninitialized
+//         if (window.MathJax) {
+//             mjTypeset.status = 0;
+//             mjTypeset._run = MathJax.typeset ? MathJax.typeset : MathJax.Hub.Typeset;
+//         }
+//         else {
+//             loadScript(mjTypeset.src).then(
+//                 result => {
+//                     mjTypeset.status = 0;
+//                     mjTypeset._run = MathJax.typeset;
+//                     mjTypeset();
+//                 },
+//                 error => console.error(`Error loading MathJax: ${error}`)
+//             );
+//         }
+//     }
+//     if (mjTypeset.status == 0) {      // Ready
+//         mjTypeset.status = 1;
+//         try {mjTypeset._run()}
+//         catch(err) {console.error(err)}
+//         mjTypeset.status = 0;
+//     }
+//     else if (mjTypeset.status == 1)   // Busy
+//         mjTypeset._timeout = setTimeout(mjTypeset, 500);
+// }
+
+// mjTypeset.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+// mjTypeset.status = -1;
+
+
 function mjTypeset() {
-    if (window.MathJax) {
-        let err;
-        try {MathJax.typeset()}
-        catch (err) {
-            console.log(err);
-            MathJax.Hub.Typeset();
-        }
+/* Use MathJax to render equations */
+    let err;
+    clearTimeout(mjTypeset.retry);
+    try {
+        if (MathJax.typeset) MathJax.typeset();
+        else MathJax.Hub.Typeset();
+        // console.log("mjTypeset done!");
+    }
+    catch(err) {
+        if (window.MathJax) console.error(err);
+        else mjTypeset.retry = setTimeout(mjTypeset, 750);
     }
 }
 
@@ -123,21 +173,25 @@ String.random = function(n, allowNum) {
 }
 
 
-class BData { // Requires jQuery [code.jquery.com/jquery-3.7.1.min.js]
+class BData {
 
 /** Convert data to a Blob for downloading as a file or opening in a browser window.
 
-static BData.text(data, filename) --> bdata (instance of BData)...
+static BData.init(data, filename) --> bdata (instance of BData)...
     Converts data to a Blob. If data is a string, the MIME type will default to "text/plain".
 
-    If data is an object with a tagName attribute, it is assumed to be an HTML DOM element.
+    If data is an instance of HTMLElement or SVGElement:
     * The data type will be "image/png" for CANVAS tags.
     * Non-canvas tags will be converted to strings using the outerHTML attribute.
-    * Default type will be "image/svg+xml" for SVG tags and "text/html" for others.
+    * Default type will be "text/html" or "image/svg+xml".
 
-    If data is a non-string object without a tagName, it will be converted using JSON.stringify;
-    the default type will be "application/json". An exception is thrown if the object cannot be
-    converted to a JSON string.
+    If data is an XMLDocument or an element node within an XML document, the MIME type
+    will default to "application/xml". Text and comment nodes will default to "text/plain".
+
+    If data is any other object:
+    * It will be converted to a string using JSON.stringify.
+    * The default type will be "application/json".
+    * An exception will be thrown if the object cannot be converted to a JSON string.
 
     The filename argument specifies a file name to use when saving the data. The file extension
     overrides the default MIME type; for example, a filename "data.csv" will result in a Blob
@@ -145,8 +199,10 @@ static BData.text(data, filename) --> bdata (instance of BData)...
     file, you can pass just the extension ("csv").
 
 static find(selector, filename) --> bdata...
-    This function uses jQuery to find the first match to the selector and then passes the
-    element to BData.text. Throws an exception if no matching elements are found.
+   Finds the first match to the selector and then passes the element to BData.init.
+   Throws an exception if no matching elements are found.
+
+bdata.url() --> Returns a URL string for the blob
 
 bdata.open() --> bdata...
     Opens the blob in a new browser window or tab. The BData instance has an array attribute
@@ -161,15 +217,15 @@ bdata.save(filename) --> bdata...
 
 bdata.blob...     The data as a Blob instance.
 bdata.filename... The filename (if any) associated with the data.
-bdata.windows...  An array of browser windows created by the open method.
+bdata.windows...  An array of browser windows created by calls to bdata.open.
 
 Examples...
 
-BData.text("Hello, world!", "hi.txt").open().save();
-BData.text([1, 2, 3]).open();
+BData.init("Hello, world!", "hi.txt").open().save();
+BData.init([1, 2, 3]).open();
 
-BData.text("1, 2, 3", "num.csv").save();
-BData.text([1, 2, 3], "num.json").save();
+BData.init("1, 2, 3", "num.csv").save();
+BData.init([1, 2, 3], "num.json").save();
 
 BData.find("#FooBar").open();
 BData.find("body").save("body.html");
@@ -182,47 +238,55 @@ BData.find("svg", "drawing.svg").save();
         this.windows = [];
         if (type) {
             let t = type.split(".");
-            if (t.length > 1) {
-                this.filename = type;
-                type = t[t.length - 1].toLowerCase();
-            }
+            if (t.length > 1) this.filename = type;
+            type = t[t.length - 1].toLowerCase();
         }
-        if (data.tagName) {
-            let t = data.tagName.toUpperCase();
-            if (t == "CANVAS") {
+        let elem = data instanceof HTMLElement ? 1 : (data instanceof SVGElement ? 2 : 0);
+        if (elem) {
+           if (data.tagName.toUpperCase() == "CANVAS") {
                 let bd = this;
-                data.toBlob(function(b) {bd.blob = b});
+                data.toBlob((b) => {bd.blob = b});
                 return;
             }
-            if (!type) type = t == "SVG" ? "svg" : "html";
+            if (!type) type = elem == 1 ? "html" : "svg";
             data = data.outerHTML;
+        }
+        else if (BData.isXML(data)) {
+            if (!type) type = (data instanceof XMLDocument) || data.tagName ? "xml" : "txt";
+            data = new XMLSerializer().serializeToString(data);
         }
         else if (typeof(data) != "string") {
             data = JSON.stringify(data);
             if (!type) type = "json";
         }
-        type = {
+       type = {
             html: "text/html",
             htm: "text/html",
+            css: "text/css",
             js: "text/javascript",
-            xml: "text/xml",
-            svg: "image/svg+xml",
             json: "application/json",
+            svg: "image/svg+xml",
+            xml: "application/xml",
             csv: "text/csv",
             py: "text/x-python"
         }[type];
         this.blob = new Blob([data], {type:type ? type : "text/plain"});
     }
 
+    url() {return URL.createObjectURL(this.blob)}
+
     save(filename) {
         if (this.blob) {
             let url = URL.createObjectURL(this.blob);
             if (!filename) filename = this.filename;
-            $("<a>").attr({href: url, download: filename})[0].click();       
+            let a = document.createElement("a");
+            a.setAttribute("href", url);
+            a.setAttribute("download", filename);
+            a.click();
         }
         else {
             let b = this;
-            setTimeout(function() {b.save(filename)}, 25);
+            setTimeout(() => {b.save(filename)}, 25);
         }
         return this;
     }
@@ -232,7 +296,7 @@ BData.find("svg", "drawing.svg").save();
             this.windows[0] = window.open(URL.createObjectURL(this.blob));
         else {
             let b = this;
-            setTimeout(function() {b._open()}, 25);
+            setTimeout(() => {b._open()}, 25);
         }
     }
 
@@ -242,6 +306,17 @@ BData.find("svg", "drawing.svg").save();
         return this;
     }
 
-    static text(data, filename) {return new BData(data, filename)}
-    static find(selector, filename) {return new BData($(selector)[0], filename)}
+    static isXML(x) {
+       if (x) {
+            let parent;
+            while (parent = x.parentNode) x = parent;          
+        }
+       return x instanceof XMLDocument;
+        // if (x instanceof XMLDocument) return true;
+        // if (x && x.parentNode) return BData.isXML(x.parentNode);
+        // return false;
+    }
+
+    static init(data, filename) {return new BData(data, filename)}
+    static find(selector, filename) {return new BData(document.querySelector(selector), filename)} 
 }
