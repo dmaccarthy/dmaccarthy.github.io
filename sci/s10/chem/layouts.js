@@ -24,7 +24,7 @@ let chem = {title:"Unit A: Chemistry", id:"chem", menu:[
         {title:"Scientific Notation", id:"sciNot"},
         {title:"Molar Mass", id:"mole"},
     ]},
-    {title:"Unit Review", show: "2024.7", id:"chem_rev"}
+    {title:"Unit Review", id:"chem_rev"}
 ]};
 
 lesson.chap = "chem";
@@ -33,8 +33,8 @@ layout.chem = [{icons:[{icon:"gdrv", text:"Antacids Project", url:"1rinCEXFXSyQ9
 
 layout.chem_rev = [
     {icons:[
-        {icon:"gdrv", text:"Assignment", url:"1L7QCik7ThRSG7uBUSi7Z42MwsiUyd9Z7"},
-        {icon:"gdrv", text:"Answer Key", show:"2023.12", url:"1IaRKpczT_-sy76rFqBEOcIwyQ3AORxxYAEzJGKJpY7w"},
+        {icon:"gdrv", text:"Assignment", url:"1yLUzOsNPpyCJt1EH5_ncpmAqOG_CZBfr"},
+        {icon:"gdrv", text:"Answer Key", url:"1o8GyJDVcf-SQ2JYlKChWtwqtSd4fNjjG"},
     ]},
     {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Gas_stove_burner_flame.jpg/800px-Gas_stove_burner_flame.jpg", style:"width:540px;height:405px;object-fit:cover"}},
     1,
@@ -86,8 +86,7 @@ lesson("rxn", "1oSPWcBembJD8W0gaVnVetqIgk1IfZo2W", {vid:"eNsVaUCzvLA"})[0].icons
 lesson("rxn_fd", "1rS8a8FFiuNZLhxtH1DAkoxjHpSDf2an8", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Ford_Taurus_Rust.jpg/640px-Ford_Taurus_Rust.jpg", width:540}});
 lesson("rxn_sd", "1qludSSxPiLsKzn0zvs5GnoNXAEBacPUU", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Precipitate_of_HAuCl4_%2B_NaOH.jpg/524px-Precipitate_of_HAuCl4_%2B_NaOH.jpg", width:442}});
 lesson("rxn_c", "1C3v3i1HBp-EgjjFlBkp1utrWzHSQDQsT", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Gas_stove_burner_flame.jpg/800px-Gas_stove_burner_flame.jpg", style:"width:540px;height:405px;object-fit:cover"}});
-lesson("sciNot", "16abJAJedvCO-mEPrZl0YcYfhCnpvaHqP", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Andromeeda1.jpg/640px-Andromeeda1.jpg", width:604}});
-
-// Revisions for October 2023 done up to here!!
-
-lesson("mole", "", {img:{src:"chem/img/balance.jpg", width:461}});
+lesson("sciNot", "16abJAJedvCO-mEPrZl0YcYfhCnpvaHqP", {vid:"Dme-G4rc6NI"});
+lesson("mole", "1qDsMk6sjH5QX4b32TVvexpPzkcflZH8O", {vid:"#PLpVmtCaB-lyn5TNk1u_28pfAvGGG1Ke9i"});
+// {img:{src:"chem/img/balance.jpg", width:461}}
+// {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Andromeeda1.jpg/640px-Andromeeda1.jpg", width:604}}

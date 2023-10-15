@@ -1,0 +1,47 @@
+body {background-color: #f0f0f0}
+
+#Screen {
+    position: fixed;
+    left: 0; top: 0;
+    padding: 0 0.5em;
+    width: calc(1280px - 1em);
+    height: calc(720px - 1em);
+    overflow: auto;
+    font-family: Oxygen, sans-serif;
+    font-size: 225%;
+    background-color: white;
+}
+
+#Screen *, #Screen, #Mouse {cursor: none}
+#Mouse {position: fixed}
+
+#Screen p, #Screen li, #Screen ul, #Screen ol {
+    margin: 0.5em auto;
+}
+
+#Screen h2, #Screen h3 {
+    color: blue;
+    margin: 0.5em auto;
+}
+
+#Screen h1 {margin: 1.5em auto 0.5em auto}
+#Screen h2, #Title {text-align: center}
+#Title {color: blue}
+#Title h1 {font-size: 275%}
+
+nav {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    text-align:center;
+    width: auto;
+    background-color: white; /*#c0c0c040;*/
+    padding: 4px;
+}
+
+#Play, #Stop {
+    background-color: red;
+    width: 2em;
+}
+
+#Play {background-color: green}

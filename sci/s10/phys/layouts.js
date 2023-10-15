@@ -1,4 +1,4 @@
-let phys = {title:"Unit B: Physics", show: "2024.7", id:"phys", icon:"rocket", menu:[
+let phys = {title:"Unit B: Physics", id:"phys", icon:"rocket", menu:[
     {title:"Part 1: Motion", id:"motion", menu:[
         {title:"SI Units", id:"si"},
         {title:"Graphing Data", id:"scatter"},
@@ -7,24 +7,24 @@ let phys = {title:"Unit B: Physics", show: "2024.7", id:"phys", icon:"rocket", m
         {title:"Acceleration", id:"accel"},
         // {title:"", id:""},
     ]},
-    {title:"Part 2: Energy", id:"energy", menu:[
+    {title:"Part 2: Energy", show: "2024.7", id:"energy", menu:[
         {title:"Mechanical Energy", id:"mech"},
         {title:"Energy Transformations", id:"Etransform"},
         {title:"Work-Energy Theorem", id:"work"},
         {title:"Efficiency", id:"eff"},
         // {title:"Energy Transforming Technologies", id:"tech"},
     ]},
-    {title:"Part 3: Heat", id:"heat", menu:[
+    {title:"Part 3: Heat", show: "2024.7", id:"heat", menu:[
         {title:"Theories of Heat", id:"kmt"},
         {title:"Heat Capacity", id:"mcT"},
         {title:"Latent Heat", id:"latent"},
     ]},
-    {title:"Unit Review", id:"phys_rev"},
+    {title:"Unit Review", show: "2024.7", id:"phys_rev"},
 ]};
 
-layout.phys = [{icons:[
-    {icon:"gdoc", text:"Unit Project", url:"1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18"},
-]}, 0, 1];
+// layout.phys = [{icons:[
+//     {icon:"gdoc", text:"Unit Project", url:"1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18"},
+// ]}, 0, 1];
 
 lesson.chap = "phys";
 
@@ -41,12 +41,20 @@ lesson("eff", "1QBsDw6qFznFWBkLp6mD015bqV4sIiKjn", {img:{src:"https://upload.wik
     {icon:"gdrv", text:"Energy Transforming Technologies", url:"1FCXM6LwtdYSLMO7zfgdvavNGYl2l6r-q"}
 );
 
-lesson("si", "1x8E0bfm3t58KKMdKYLPigTJsjhO4I0zJ", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/International_prototype_of_the_kilogram_aka_Le_Grand_K.jpg/386px-International_prototype_of_the_kilogram_aka_Le_Grand_K.jpg", width:326}});
-lesson("scatter", "12wqPxyx5sAjEqgVkAHuZJq0tSr6YX4GJ", {desmos:"atvylhkqe5", width:720, "data-aspect":"16/9"});
-lesson("displ", "1GwGukfbNNNInGkFOx63WI6BO-yzLBiqx", {img:{src:"phys/img/bike2.png", width:760}})[0].icons.push(
-    {text:"Lab Handout", icon:"gdrv", url:"1Qc8ihNQzDQ7W2YdO5PCvFqTcCsNKKHje"});
-lesson("vel", "1GlGnzRa5pyJosff22wOV7_XQrjyIvznJ", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/NASCAR_practice.jpg/640px-NASCAR_practice.jpg", width:"620"}});
-lesson("accel", "1c5l8hBrLs0DQG3Y7X9nCXd_RDIgdyCWb", {img:{src:"https://c.pxhere.com/photos/4c/c7/photo-180873.jpg!d", width:608}});
+lesson("si", "1IgDtSMZplqm1gKYtxywL4YaK5cHLszp3", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/International_prototype_of_the_kilogram_aka_Le_Grand_K.jpg/386px-International_prototype_of_the_kilogram_aka_Le_Grand_K.jpg", width:326}});
+lesson("scatter", "", {desmos:"atvylhkqe5", width:720, "data-aspect":"16/9"});
+lesson("displ", "", {img:{src:"phys/img/bike2.png", width:760}})[0].icons.push(
+    {text:"Lab Handout", icon:"gdrv", url:""});
+lesson("vel", "", {img:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/NASCAR_practice.jpg/640px-NASCAR_practice.jpg", width:"620"}});
+lesson("accel", "", {img:{src:"https://c.pxhere.com/photos/4c/c7/photo-180873.jpg!d", width:608}});
+
+/*
+1x8E0bfm3t58KKMdKYLPigTJsjhO4I0zJ
+12wqPxyx5sAjEqgVkAHuZJq0tSr6YX4GJ
+1GwGukfbNNNInGkFOx63WI6BO-yzLBiqx + 1Qc8ihNQzDQ7W2YdO5PCvFqTcCsNKKHje
+1GlGnzRa5pyJosff22wOV7_XQrjyIvznJ
+1c5l8hBrLs0DQG3Y7X9nCXd_RDIgdyCWb
+*/
 
 layout.phys_rev = [{icons:[
     {icon:"gdrv", text:"Assignment", url:"1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i"},

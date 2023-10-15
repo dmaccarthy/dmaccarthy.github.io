@@ -22,7 +22,7 @@ svg {
 <script type="text/javascript">
  
 function draw() {
-    let svg = SVG().attr({id: "Draw1"}).addTo('body').size(300, 300);
+    let svg = SVG().attr({id: "Draw1"}).addTo("#SVG1").size(300, 300);
     let link = svg.link('http://svgdotjs.github.io/');
     let rect = link.rect(100, 100).radius(12).animate().move(50, 50).attr({fill: '#f06'});
     let img = svg.image("https://sci.davidmaccarthy.repl.co/media/earth.png").size(80, 80).animate().move(50, 150);
@@ -36,6 +36,23 @@ $(function() {
     cx.fill();
 });
 
+function openFile(f, callback, b) {
+    f = $(f)[0].files[0];
+    let reader = new FileReader();
+    reader.fileInfo = f;
+    reader.onload = callback;
+    if (b) reader.readAsArrayBuffer(f);
+    else reader.readAsText(f);
+}
+
+cb = (ev) => {
+    console.log(ev.target);
+    let data = ev.target.result;
+    let b = typeof(data) != "string";
+    if (b) data = new Uint8Array(data);
+    console.log(data);
+};
+    
 </script>
 </head>
 <body>
@@ -43,6 +60,10 @@ $(function() {
         <input type="button" value="Open PNG" onclick="console.log(BData.find('canvas', 'image.png').open())"/>
         <input type="button" value="Save SVG" onclick="console.log(BData.find('svg', 'image.svg').save())"/>
     </p>
-    <canvas id="Drawing" width="300" height="300"></canvas>
+    <p><canvas id="Drawing" width="300" height="300"></canvas></p>
+    <form>
+        <input id="File1" type="file"/><input type="button" value="Open" onclick="openFile('#File1', cb, 1)"/>
+    </form>
+    <p id="SVG1"></p>
 </body>
 </html>

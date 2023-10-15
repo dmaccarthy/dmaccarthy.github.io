@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head><title>Speech Synthesis</title>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">//<!--
-
 let voices, cast = {}, script = [];
 let names = [
     "David", "Hazel", "Zira", "Susan", "Richard", "George", "Linda", "Mark",
     "US English", "UK English Female", "UK English Male"
 ];
 let alias = {"US English":"Sara", "UK English Female":"Liz", "UK English Male":"Phil"};
-let pitch = {Sara:0.8, Linda:1.4, Hazel:0.8, Zira:1.2};
+let pitch = {Sara:0.9, Linda:1.1, Hazel:0.8, Zira:1.2, Richard:0.9, Liz:0.9};
 
 function loadVoices() {
     voices = speechSynthesis.getVoices();
@@ -25,23 +17,37 @@ function loadVoices() {
                 if (c != -1) key = names[j];
             }
             if (alias[key]) key = alias[key];
+            if (typeof(key) == "number") key = "#" + key;
             cast[key] = voices[i];
         }
-        for (let key in cast) console.log(key, ":=", cast[key].name);
-        console.log([M, F, A]);
+        if (!script.length) testScript();
+        loadVoices.done();
     }
 }
 
-let F = "Sara", M = "Phil", A = "Linda"; // Chrome
-if (navigator.userAgent.search("Chrome") == -1) {
-    A = "Hazel", F = "Zira", M = "David";    
-}
+loadVoices.done = () => {};
 
-loadVoices();
+function testScript() {
+   let key;
+    script = [];
+    for (key in cast) {
+        if (key.charAt(0) != "#") {
+            script.push([`I'm ${key}. This is a test of your browser's speech synthesis feature.`, key]);
+            console.log(key);
+        }
+    }
+}
 
 function play() {
     play.i = 0;
+    play.start();
     sayNext();
+}
+
+play.start = function() {
+    pluck.play();
+    $("#Screen").css("background-color", "red");
+    setTimeout(() => {$("#Screen").css("background-color", "white")}, 250);
 }
 
 function sayNext() {
@@ -49,7 +55,7 @@ function sayNext() {
     try {say(...script[play.i++])}
     catch (err) {console.log("Done!")}
 }
-    
+
 function say(text, name, pause, opt) {
     if (pause == null) pause = 0.5;
     let u = play.u = new SpeechSynthesisUtterance(text);
@@ -57,37 +63,38 @@ function say(text, name, pause, opt) {
     if (pitch[name]) u.pitch = pitch[name];
     if (opt) Object.assign(u, opt);
     u.onend = function() {
+        say.callback(u, name, 1);
         play.timeout = setTimeout(sayNext, 1000 * pause);
     }
-    console.log(u);
     speechSynthesis.speak(u);
+    say.callback(u, name, 0);
 }
+
+say.callback = function(u, name, when) {
+    if (when == 0) say.log(u, name, 0);
+}
+
+say.log = function(u, name) {console.log(`${name}: ${u.text}`)}
 
 function stop() {
     play.u.onend = function() {};
     clearTimeout(play.timeout);
 }
 
-function loadScript() {
-    if (play.u) stop();
-    let url = $("#scriptURL").val();
-    if (url.substr(0, 4) != "http")
-        url = `script/${url}.js`;
-    $.getScript({url:url, cache:false, success:function() {
-        console.log(`Loaded ${script.length} lines.`);
-    }});
-}
+// function loadScript() {
+//     if (play.u) stop();
+//     let url = $("#scriptURL").val();
+//     if (url.substr(0, 4) != "http")
+//         url = `script/${url}.js`;
+//     $.getScript({url:url, cache:false, success:loadScript.done});
+// }
 
-//--></script>
-</head>
-<body>
-    <p>
-        <input id="scriptURL" type="text" value="tts"></input>
-        <button onclick="loadScript()">Load</button>    
-    </p>
-    <p>
-        <button onclick="play()">Start</button>
-        <button onclick="stop()">Stop</button>        
-    </p>
-</body>
-</html>
+// loadScript.done = function() {
+//     console.log(`Loaded ${script.length} lines.`);
+// }
+
+$(function() {
+    $.ajax({url:"../nav.htm", success:(e) => {
+        $("body").append(e);
+   }});
+});

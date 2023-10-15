@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head><title>Speech Synthesis</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=default"></script>
+<script type="text/javascript" src="../pluck.js"></script>
+<script type="text/javascript" src="../tts.js"></script>
+<script type="text/javascript" src="../vid.js"></script>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" type="text/css" href="../tts.css" />
+<script type="text/javascript">
+
+loadVoices.done = () => {
+    script = [
+        ["", F, 2, {cue:"Title"}],
+        ["", F, 2, {cue:"S2"}],
+        ["Energy is the ability to do work; or the ability to create motion", F, 2, {cue:true}],
+        ['Motion is itself a form of energy, called "kinetic" energy', F, 2, {cue:true}],
+        ["", F, 15, {cue: () => {playVideo("output.mp4", 1, {autoplay:1, width:720})}}],
+        ["", F, 2, {cue: () => {$("video").remove()}}],
+        ["There are many types of energy", M, 2, {cue:true}],
+        ["", F, 1, {cue:() => {$("#Screen > *").fadeOut(5000)}}],
+    ];
+    runCue("Title");
+};
+
+</script>
+<style type="text/css">
+
+
+</style>
+</head>
+<body>
+<article id="Screen">
+
+<section id="Title">
+    <h1>Energy!</h1>
+    <p>Physics 20</p>
+    <p>D.G. MacCarthy</p>
+</section>
+    
+<section id="S2">
+    <h3>Mechanical Energy</h3>
+    <p data-cue="+">Testing!</p>
+    <ul data-cue="+">
+        <li>Bullet 1</li>
+        <li data-cue="+">Bullet 2</li>
+    </ul>
+    <p data-cue="+">$$E_k = \frac{1}{2}mv^2$$</p>
+</section>
+
+</article>
+<script type="text/javascript">
+
+loadVoices();
+
+</script>
+</body>
+</html>
