@@ -1,4 +1,0 @@
-let slideshows = [
-    "organelle",
-    "memb",
-];
